@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>w8_learning_objectives</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="week-8-learning-objectives">Week 8 Learning Objectives</h1>
+<h2 id="white-boarding-probably-not-on-the-exam">White-Boarding (Probably not on the exam)</h2>
+<ul>
+<li>Why
+<ul>
+<li>tests how to solve real problems</li>
+<li>how you perform in a team</li>
+<li>communication skills</li>
+<li>coding skills</li>
+</ul></li>
+<li>steps
+<ul>
+<li>clarification/edge cases
+<ul>
+<li>talk about input/output without talking about code</li>
+</ul></li>
+<li>formulate approach</li>
+<li>pseudocode</li>
+<li>code it</li>
+<li>walk through example</li>
+<li>time space complexity/ improvement</li>
+</ul></li>
+<li>strategies
+<ul>
+<li>bucketize</li>
+<li>dynamic programming</li>
+<li>mathematical properties</li>
+<li>multiple pointers for same iteration</li>
+</ul></li>
+</ul>
+<h2 id="binary-trees">Binary Trees</h2>
+<h3 id="explain-and-implement-a-binary-tree.">Explain and implement a Binary Tree.</h3>
+<ul>
+<li>defining characteristics of a binary tree:
+<ul>
+<li>is composed of nodes and edges—it is a subtype of graph</li>
+<li>has no cycles—there is no path that begins and ends at the same node</li>
+<li>has a single, top-level node or “root” from which all other nodes can be accessed through edges</li>
+<li>it is “binary” in that each node can have no more than two children</li>
+</ul></li>
+<li>terminology:
+<ul>
+<li>parent nodes / internal nodes - nodes with children</li>
+<li>leaf nodes - nodes without children</li>
+<li>sibling nodes - nodes with the same parent</li>
+<li>subtree - any non-root node and all of its children</li>
+<li>path - a series of nodes that can be traveled through edges</li>
+<li>breadth first search - access all the nodes at a given level before descending</li>
+<li>depth first search - access all children of a given child before going on to its sibling</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">class</span> TreeNode <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-2" title="2">  <span class="at">constructor</span>(val) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-3" title="3">      <span class="kw">this</span>.<span class="at">val</span> <span class="op">=</span> val<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-4" title="4">      <span class="kw">this</span>.<span class="at">left</span> <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-5" title="5">      <span class="kw">this</span>.<span class="at">right</span> <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-6" title="6">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="op">}</span></a>
+<a class="sourceLine" id="cb1-8" title="8">preorder <span class="op">=</span> root <span class="kw">=&gt;</span> (<span class="op">!</span>root) <span class="op">?</span> [] : [<span class="va">root</span>.<span class="at">val</span><span class="op">,</span> ...<span class="at">preorder</span>(<span class="va">root</span>.<span class="at">left</span>)<span class="op">,</span> ...<span class="at">preorder</span>(<span class="va">root</span>.<span class="at">right</span>)]<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-9" title="9">inorder <span class="op">=</span> root <span class="kw">=&gt;</span> (<span class="op">!</span>root) <span class="op">?</span> [] : [ ...<span class="at">inorder</span>(<span class="va">root</span>.<span class="at">left</span>)<span class="op">,</span> <span class="va">root</span>.<span class="at">val</span><span class="op">,</span> ...<span class="at">inorder</span>(<span class="va">root</span>.<span class="at">right</span>)]<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-10" title="10">postorder <span class="op">=</span> root <span class="kw">=&gt;</span> (<span class="op">!</span>root) <span class="op">?</span> [] : [ ...<span class="at">postorder</span>(<span class="va">root</span>.<span class="at">left</span>)<span class="op">,</span> ...<span class="at">postorder</span>(<span class="va">root</span>.<span class="at">right</span>)<span class="op">,</span> <span class="va">root</span>.<span class="at">val</span>]<span class="op">;</span></a></code></pre></div>
+<h3 id="identify-the-three-types-of-tree-traversals-pre-order-in-order-and-post-order.">Identify the three types of tree traversals: pre-order, in-order, and post-order.</h3></li>
+<li>pre-order, in-order, and post-order are all depth first searches</li>
+<li>pre-order:
+<ul>
+<li>access value of node</li>
+<li>recursively visit left subtree</li>
+<li>recursively visit right subtree</li>
+</ul></li>
+<li>in-order:
+<ul>
+<li>recursively visit left subtree</li>
+<li>access value of node</li>
+<li>recursively visit right subtree</li>
+</ul></li>
+<li>post-order (explore each branch as far as you can before back tracking)
+<ul>
+<li>recursively visit left subtree</li>
+<li>recursively visit right subtree</li>
+<li>access value of node ### Explain and implement a Binary Search Tree.</li>
+</ul></li>
+<li>a binary search tree is a binary tree where
+<ul>
+<li>the left subtree contains values less than the root</li>
+<li>the right subtree contains values greater than or equal to the root</li>
+<li>the left subtree is a binary search tree</li>
+<li>the right subtree is a binary search tree</li>
+</ul></li>
+<li>operations:
+<ul>
+<li>add</li>
+<li>has</li>
+<li>remove
+<ul>
+<li>if two children:
+<ul>
+<li>go to right child</li>
+<li>go down the left branch as far as you can (this accesses the greatest node in the tree that is still less than the node that is being removed)</li>
+<li>copy that value to the location of the node you want to remove and delete the leaf</li>
+</ul></li>
+<li>if one child
+<ul>
+<li>remove the node and attach the single child in its place</li>
+</ul></li>
+<li>no children
+<ul>
+<li>just remove leaf</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>examples</li>
+<li><img src="./bsts.png" alt="example binary search trees" /></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">class</span> TreeNode <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-2" title="2">    <span class="at">constructor</span>(val) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-3" title="3">        <span class="kw">this</span>.<span class="at">val</span> <span class="op">=</span> val<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-4" title="4">        <span class="kw">this</span>.<span class="at">left</span> <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-5" title="5">        <span class="kw">this</span>.<span class="at">right</span> <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-6" title="6">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="co">// these are implemented without an actual BST class</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="co">// a &quot;tree&quot; is just a root TreeNode and all its children</span></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="co">// slight modifications would be necessary to make it a BST class method</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="at">insertIterative</span>(val<span class="op">,</span> root) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-12" title="12">    <span class="co">// if root is null, it means tree is empty</span></a>
+<a class="sourceLine" id="cb2-13" title="13">    <span class="co">// rather than inserting, you just need to make a new node</span></a>
+<a class="sourceLine" id="cb2-14" title="14">    <span class="co">// and return it</span></a>
+<a class="sourceLine" id="cb2-15" title="15">    <span class="cf">if</span> (<span class="op">!</span>root) <span class="cf">return</span> <span class="kw">new</span> <span class="at">TreeNode</span>(val)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-16" title="16"></a>
+<a class="sourceLine" id="cb2-17" title="17">    <span class="kw">let</span> current <span class="op">=</span> root<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-18" title="18">    <span class="kw">let</span> previous<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-19" title="19">    <span class="co">// loop through to find the location where the node needs to be inserted</span></a>
+<a class="sourceLine" id="cb2-20" title="20">    <span class="cf">while</span> (current) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-21" title="21">        previous <span class="op">=</span> current<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-22" title="22">        <span class="cf">if</span> (val <span class="op">&gt;</span> <span class="va">current</span>.<span class="at">val</span>) current <span class="op">=</span> <span class="va">current</span>.<span class="at">right</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-23" title="23">        <span class="cf">else</span> current <span class="op">=</span> <span class="va">current</span>.<span class="at">left</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-24" title="24">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-25" title="25">    <span class="cf">if</span> (val <span class="op">&lt;</span> <span class="va">previous</span>.<span class="at">val</span>)<span class="op">{</span></a>
+<a class="sourceLine" id="cb2-26" title="26">        <span class="va">previous</span>.<span class="at">left</span> <span class="op">=</span> <span class="kw">new</span> <span class="at">TreeNode</span>(val)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-27" title="27">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-28" title="28">    <span class="cf">else</span> <span class="va">previous</span>.<span class="at">right</span> <span class="op">=</span> <span class="kw">new</span> <span class="at">TreeNode</span>(val)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-29" title="29"></a>
+<a class="sourceLine" id="cb2-30" title="30">    <span class="co">// finally return the root node—this is like returning the</span></a>
+<a class="sourceLine" id="cb2-31" title="31">    <span class="co">// whole tree</span></a>
+<a class="sourceLine" id="cb2-32" title="32">    <span class="cf">return</span> root<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-33" title="33"><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-34" title="34"></a>
+<a class="sourceLine" id="cb2-35" title="35"><span class="kw">function</span> <span class="at">insertRecursive</span>(val<span class="op">,</span> root<span class="op">,</span> prev <span class="op">=</span> <span class="kw">null</span><span class="op">,</span> node <span class="op">=</span> root) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-36" title="36">    <span class="co">// if the tree is empty, make a new node and return it</span></a>
+<a class="sourceLine" id="cb2-37" title="37">    <span class="cf">if</span> (<span class="op">!</span>root) <span class="cf">return</span> <span class="kw">new</span> <span class="at">TreeNode</span>(val)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-38" title="38"></a>
+<a class="sourceLine" id="cb2-39" title="39">    <span class="co">// if node is null, that means you&#39;ve reached a point to insert at</span></a>
+<a class="sourceLine" id="cb2-40" title="40">    <span class="cf">if</span> (<span class="op">!</span>node) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-41" title="41">        <span class="co">// insert as a child of the prev node, either on left or right</span></a>
+<a class="sourceLine" id="cb2-42" title="42">        <span class="co">// depending on value</span></a>
+<a class="sourceLine" id="cb2-43" title="43">        (val <span class="op">&lt;</span> <span class="va">prev</span>.<span class="at">val</span>) <span class="op">?</span>  <span class="va">prev</span>.<span class="at">left</span> <span class="op">=</span> <span class="kw">new</span> <span class="at">TreeNode</span>(val): <span class="va">prev</span>.<span class="at">right</span> <span class="op">=</span> <span class="kw">new</span> <span class="at">TreeNode</span>(val)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-44" title="44"></a>
+<a class="sourceLine" id="cb2-45" title="45">    <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> (val <span class="op">&lt;</span> <span class="va">node</span>.<span class="at">val</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-46" title="46">        <span class="co">// if there is a node, call insert recursively on either the</span></a>
+<a class="sourceLine" id="cb2-47" title="47">        <span class="co">// left or right depending on the value</span></a>
+<a class="sourceLine" id="cb2-48" title="48">        <span class="cf">return</span> <span class="at">insertRecursive</span>(val<span class="op">,</span> root<span class="op">,</span> node<span class="op">,</span> <span class="va">node</span>.<span class="at">left</span>)</a>
+<a class="sourceLine" id="cb2-49" title="49">    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-50" title="50">        <span class="cf">return</span> <span class="at">insertRecursive</span>(val<span class="op">,</span> root<span class="op">,</span> node<span class="op">,</span> <span class="va">node</span>.<span class="at">right</span>)</a>
+<a class="sourceLine" id="cb2-51" title="51">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-52" title="52">    <span class="co">// return the tree starting from the original root</span></a>
+<a class="sourceLine" id="cb2-53" title="53">    <span class="co">// this tree contains the node that has been inserted</span></a>
+<a class="sourceLine" id="cb2-54" title="54">    <span class="cf">return</span> root<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-55" title="55"><span class="op">}</span></a></code></pre></div>
+<h2 id="graphs">Graphs</h2>
+<h3 id="explain-and-implement-a-graph.">Explain and implement a Graph.</h3>
+<ul>
+<li>a graph is any collection of nodes and edges.</li>
+<li>graphs may have no root
+<ul>
+<li>so there is no guaranteed way to use a single node as a way to reference the complete structure</li>
+</ul></li>
+<li>graphs may have cycles
+<ul>
+<li>so there is no clearly defined parent/child relationship</li>
+</ul></li>
+<li>nodes may have any number of edges</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="co">// Three ways to implement this graph:</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="co">// E &lt;-&gt; A  -&gt; B</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="co">// ^     |     ^</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co">// |     |    /</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="co">// |     v  /</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">// F     C</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="co">//       |</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="co">//       v</span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="co">//       D</span></a>
+<a class="sourceLine" id="cb3-10" title="10"></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="co">// one style of graph implementation uses nodes like we&#39;re used to</span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="co">// but then you have no easy way to refer to the whole graph</span></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="kw">class</span> GraphNode <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-14" title="14">    <span class="at">constructor</span>(val) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-15" title="15">        <span class="kw">this</span>.<span class="at">val</span> <span class="op">=</span> val<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-16" title="16">        <span class="kw">this</span>.<span class="at">neighbors</span> <span class="op">=</span> []<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-17" title="17">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-18" title="18"><span class="op">}</span></a>
+<a class="sourceLine" id="cb3-19" title="19"><span class="kw">let</span> a <span class="op">=</span> <span class="kw">new</span> <span class="at">GraphNode</span>(<span class="st">&#39;a&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-20" title="20"><span class="kw">let</span> b <span class="op">=</span> <span class="kw">new</span> <span class="at">GraphNode</span>(<span class="st">&#39;b&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-21" title="21"><span class="kw">let</span> c <span class="op">=</span> <span class="kw">new</span> <span class="at">GraphNode</span>(<span class="st">&#39;c&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-22" title="22"><span class="kw">let</span> d <span class="op">=</span> <span class="kw">new</span> <span class="at">GraphNode</span>(<span class="st">&#39;d&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-23" title="23"><span class="kw">let</span> e <span class="op">=</span> <span class="kw">new</span> <span class="at">GraphNode</span>(<span class="st">&#39;e&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-24" title="24"><span class="kw">let</span> f <span class="op">=</span> <span class="kw">new</span> <span class="at">GraphNode</span>(<span class="st">&#39;f&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-25" title="25"><span class="va">a</span>.<span class="at">neighbors</span> <span class="op">=</span> [b<span class="op">,</span> c<span class="op">,</span> e]<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-26" title="26"><span class="va">c</span>.<span class="at">neighbors</span> <span class="op">=</span> [b<span class="op">,</span> d]<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-27" title="27"><span class="va">e</span>.<span class="at">neighbors</span> <span class="op">=</span> [a]<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-28" title="28"><span class="va">f</span>.<span class="at">neighbors</span> <span class="op">=</span> [e]<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-29" title="29"></a>
+<a class="sourceLine" id="cb3-30" title="30"><span class="co">// alternately, you can use a matrix</span></a>
+<a class="sourceLine" id="cb3-31" title="31"><span class="co">// - row index corresponds to the starting node</span></a>
+<a class="sourceLine" id="cb3-32" title="32"><span class="co">// - col index corresponds to ending node</span></a>
+<a class="sourceLine" id="cb3-33" title="33"><span class="co">// - bool value reflects whether or not an edge exists</span></a>
+<a class="sourceLine" id="cb3-34" title="34"><span class="co">// diagonal will be all true because you can think of</span></a>
+<a class="sourceLine" id="cb3-35" title="35"><span class="co">// every node as being connected to itself</span></a>
+<a class="sourceLine" id="cb3-36" title="36"><span class="co">// this implementation is convenient, but it takes</span></a>
+<a class="sourceLine" id="cb3-37" title="37"><span class="co">// quadratic space which isn&#39;t ideal</span></a>
+<a class="sourceLine" id="cb3-38" title="38"><span class="kw">let</span> matrix <span class="op">=</span> [</a>
+<a class="sourceLine" id="cb3-39" title="39"><span class="co">/*          A       B       C       D       E       F   */</span></a>
+<a class="sourceLine" id="cb3-40" title="40"><span class="co">/*A*/</span>    [<span class="kw">true</span><span class="op">,</span>  <span class="kw">true</span><span class="op">,</span>   <span class="kw">true</span><span class="op">,</span>   <span class="kw">false</span><span class="op">,</span>  <span class="kw">true</span><span class="op">,</span>   <span class="kw">false</span>]<span class="op">,</span></a>
+<a class="sourceLine" id="cb3-41" title="41"><span class="co">/*B*/</span>    [<span class="kw">false</span><span class="op">,</span> <span class="kw">true</span><span class="op">,</span>   <span class="kw">false</span><span class="op">,</span>  <span class="kw">false</span><span class="op">,</span>  <span class="kw">false</span><span class="op">,</span>  <span class="kw">false</span>]<span class="op">,</span></a>
+<a class="sourceLine" id="cb3-42" title="42"><span class="co">/*C*/</span>    [<span class="kw">false</span><span class="op">,</span> <span class="kw">true</span><span class="op">,</span>   <span class="kw">true</span><span class="op">,</span>   <span class="kw">true</span><span class="op">,</span>   <span class="kw">false</span><span class="op">,</span>  <span class="kw">false</span>]<span class="op">,</span></a>
+<a class="sourceLine" id="cb3-43" title="43"><span class="co">/*D*/</span>    [<span class="kw">false</span><span class="op">,</span> <span class="kw">false</span><span class="op">,</span>  <span class="kw">false</span><span class="op">,</span>  <span class="kw">true</span><span class="op">,</span>   <span class="kw">false</span><span class="op">,</span>  <span class="kw">false</span>]<span class="op">,</span></a>
+<a class="sourceLine" id="cb3-44" title="44"><span class="co">/*E*/</span>    [<span class="kw">true</span><span class="op">,</span>  <span class="kw">false</span><span class="op">,</span>  <span class="kw">false</span><span class="op">,</span>  <span class="kw">false</span><span class="op">,</span>  <span class="kw">true</span><span class="op">,</span>   <span class="kw">false</span>]<span class="op">,</span></a>
+<a class="sourceLine" id="cb3-45" title="45"><span class="co">/*F*/</span>    [<span class="kw">false</span><span class="op">,</span> <span class="kw">false</span><span class="op">,</span>  <span class="kw">false</span><span class="op">,</span>  <span class="kw">false</span><span class="op">,</span>  <span class="kw">true</span><span class="op">,</span>   <span class="kw">true</span>]</a>
+<a class="sourceLine" id="cb3-46" title="46">]<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-47" title="47"></a>
+<a class="sourceLine" id="cb3-48" title="48"><span class="co">// finally adjacency lists</span></a>
+<a class="sourceLine" id="cb3-49" title="49"><span class="co">// simply and allow you to have a single object which references whole objects</span></a>
+<a class="sourceLine" id="cb3-50" title="50"><span class="kw">let</span> graph <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-51" title="51">    <span class="st">&#39;a&#39;</span><span class="op">:</span> [<span class="st">&#39;b&#39;</span><span class="op">,</span> <span class="st">&#39;c&#39;</span><span class="op">,</span> <span class="st">&#39;e&#39;</span>]<span class="op">,</span></a>
+<a class="sourceLine" id="cb3-52" title="52">    <span class="st">&#39;b&#39;</span><span class="op">:</span> []<span class="op">,</span></a>
+<a class="sourceLine" id="cb3-53" title="53">    <span class="st">&#39;c&#39;</span><span class="op">:</span> [<span class="st">&#39;b&#39;</span><span class="op">,</span> <span class="st">&#39;d&#39;</span>]<span class="op">,</span></a>
+<a class="sourceLine" id="cb3-54" title="54">    <span class="st">&#39;d&#39;</span><span class="op">:</span> []<span class="op">,</span></a>
+<a class="sourceLine" id="cb3-55" title="55">    <span class="st">&#39;e&#39;</span><span class="op">:</span> [<span class="st">&#39;a&#39;</span>]<span class="op">,</span></a>
+<a class="sourceLine" id="cb3-56" title="56">    <span class="st">&#39;f&#39;</span><span class="op">:</span> [<span class="st">&#39;e&#39;</span>]</a>
+<a class="sourceLine" id="cb3-57" title="57"><span class="op">};</span></a></code></pre></div>
+<h2 id="traverse-a-graph">### Traverse a graph</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// using GraphNode representation</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="co">// this might not always work because if you are only starting with a single node, you can only visit nodes accessible from that node</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">// use a visited list to prevent from getting caught in cycles</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="kw">function</span> <span class="at">depthFirstRecur</span>(node<span class="op">,</span> visited<span class="op">=</span><span class="kw">new</span> <span class="at">Set</span>()) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-5" title="5">    <span class="co">// if this node has already been visited, then return early</span></a>
+<a class="sourceLine" id="cb4-6" title="6">    <span class="cf">if</span> (<span class="va">visited</span>.<span class="at">has</span>(<span class="va">node</span>.<span class="at">val</span>)) <span class="cf">return</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb4-7" title="7"></a>
+<a class="sourceLine" id="cb4-8" title="8">    <span class="co">// otherwise it hasn&#39;t yet been visited,</span></a>
+<a class="sourceLine" id="cb4-9" title="9">    <span class="co">// so print it&#39;s val and mark it as visited.</span></a>
+<a class="sourceLine" id="cb4-10" title="10">    <span class="va">console</span>.<span class="at">log</span>(<span class="va">node</span>.<span class="at">val</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-11" title="11">    <span class="va">visited</span>.<span class="at">add</span>(<span class="va">node</span>.<span class="at">val</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-12" title="12"></a>
+<a class="sourceLine" id="cb4-13" title="13">    <span class="co">// then explore each of its neighbors</span></a>
+<a class="sourceLine" id="cb4-14" title="14">    <span class="va">node</span>.<span class="va">neighbors</span>.<span class="at">forEach</span>(neighbor <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-15" title="15">        <span class="at">depthFirstRecur</span>(neighbor<span class="op">,</span> visited)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-16" title="16">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-17" title="17"><span class="op">}</span></a>
+<a class="sourceLine" id="cb4-18" title="18"></a>
+<a class="sourceLine" id="cb4-19" title="19"><span class="co">// using Adjacency List representation</span></a>
+<a class="sourceLine" id="cb4-20" title="20"><span class="co">// this allows you to ensure you eventually reach all nodes, even the ones that aren&#39;t accessible from the starting node</span></a>
+<a class="sourceLine" id="cb4-21" title="21"></a>
+<a class="sourceLine" id="cb4-22" title="22"><span class="kw">function</span> <span class="at">depthFirst</span>(graph) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-23" title="23">    <span class="kw">let</span> visited <span class="op">=</span> <span class="kw">new</span> <span class="at">Set</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-24" title="24"></a>
+<a class="sourceLine" id="cb4-25" title="25">    <span class="cf">for</span> (<span class="kw">let</span> node <span class="kw">in</span> graph) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-26" title="26">        <span class="at">_depthFirstRecur</span>(node<span class="op">,</span> graph<span class="op">,</span> visited)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-27" title="27">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb4-28" title="28"><span class="op">}</span></a>
+<a class="sourceLine" id="cb4-29" title="29"></a>
+<a class="sourceLine" id="cb4-30" title="30"><span class="kw">function</span> <span class="at">_depthFirstRecur</span>(node<span class="op">,</span> graph<span class="op">,</span> visited) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-31" title="31">    <span class="cf">if</span> (<span class="va">visited</span>.<span class="at">has</span>(node)) <span class="cf">return</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb4-32" title="32"></a>
+<a class="sourceLine" id="cb4-33" title="33">    <span class="va">console</span>.<span class="at">log</span>(node)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-34" title="34">    <span class="va">visited</span>.<span class="at">add</span>(node)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-35" title="35"></a>
+<a class="sourceLine" id="cb4-36" title="36">    graph[node].<span class="at">forEach</span>(neighbor <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-37" title="37">        <span class="at">_depthFirstRecur</span>(neighbor<span class="op">,</span> graph<span class="op">,</span> visited)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-38" title="38">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-39" title="39"><span class="op">}</span></a></code></pre></div>
+<h2 id="network-models">Network Models</h2>
+<p><a href="https://www.cram.com/flashcards/network-knowledge-11567338">Flashcards</a> for studying the network stuff. (These are based exactly on the filled out LOs the instructors made. They’re online, no download necessary).</p>
+<h3 id="tcpip-model-ip-suite">TCP/IP Model (IP Suite)</h3>
+<ol type="1">
+<li>Given a diagram of the TCP/IP model, be able to label each layer (LITA)</li>
+<li>Give a brief description of each layer (What is its major concern and an example)</li>
+<li>How does encapsulation apply to the model?</li>
+</ol>
+<h3 id="internet-protocol">Internet Protocol</h3>
+<ol type="1">
+<li>What are the main responsibilities of TCP and of IP?
+<ul>
+<li>tcp is for fault tolerance</li>
+<li>ip is for the end-to-end distributed nature</li>
+</ul></li>
+<li>What is a packet and what is its general structure?
+<ul>
+<li>a packet is a small unit of data for transmission</li>
+<li>it has a header and other metadata about the contents</li>
+</ul></li>
+<li>What is the first field in a packet and how is it represented in each version of IP?</li>
+<li>Know the two special addresses that we discussed and what they represent.
+<ul>
+<li>your local machine is 127:0:0:1 on IPv4</li>
+</ul></li>
+</ol>
+<h3 id="transport-protocol">Transport Protocol</h3>
+<ol type="1">
+<li>What is a port?</li>
+<li>What are the two main transport protocols that we discussed? What are the main differences? Give an example use-case for each.</li>
+</ol>
+<h3 id="domain-name-system-dns">Domain Name System (DNS)</h3>
+<ol type="1">
+<li>What is a domain?</li>
+<li>What is a top-level domain? Subdomain? Know how to parse this information from a URL.</li>
+<li>How are domains tracked? How do we know to associate a domain name with a device?</li>
+<li>There are several common DNS record types; we discussed five important ones. Be familiar with the letters, what they mean, and the use of each record type.</li>
+</ol>
+<h3 id="network-hardware">Network Hardware</h3>
+<ol type="1">
+<li>Know the three major network hardware types that we discussed.</li>
+<li>Be able to describe the function of each device and compare/contrast their uses.</li>
+</ol>
+<h3 id="binary">Binary</h3>
+<ol type="1">
+<li>Be able to convert number to binary form</li>
+</ol>
+</body>
+</html>

@@ -1,119 +1,332 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>proj_promise</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
-</head>
-<body>
-<h1 id="curl-up-with-a-nice-promise">Curl Up With A Nice Promise</h1>
-<p>You’ve learned about how to use Promise objects to help master the problems of asynchronous program logic. Now, you can really get your hands dirty by building a Node.js-based version of the popular <a href="https://curl.haxx.se/">curl</a> utility!</p>
-<p>You may not know, but <code>curl</code> is a command line program to get the <code>c</code>ontent at <code>URL</code>s. <code>cURL</code>. Get it?</p>
-<h2 id="this-project">This project</h2>
-<p>You will create a version of the <code>curl</code> utility that will be able to</p>
-<ul>
-<li>Download content from the Internet</li>
-<li>Save it into files</li>
-<li>Modify the HTTP request using command-line arguments</li>
-<li>Send data with the HTTP request</li>
-<li>Save the metadata of the HTTP response</li>
-</ul>
-<p>Detailed steps will be provided for the project setup, so you can follow along and get the pieces in place for your practice with promises.</p>
-<p>You’re going to do great!</p>
-<h2 id="getting-started">Getting started</h2>
-<p>You’ll build this in steps. Eventually, you’ll have something pretty powerful.</p>
-<p>To get started, create a project directory, create file in it named “curl.js”, and open it up in Visual Studio Code.</p>
-<p>Now, use the <code>npm</code> command to install “node-fetch”.</p>
-<h3 id="a-word-about-fetch">A word about fetch</h3>
-<p>The <code>fetch</code> command allows you to call another server or service hosted on the web and returns you the results. Since <code>fetch</code> is asynchronous, you will need to use a promise to handle the response when it returns from the remote server.</p>
-<p>Specifically, <code>fetch</code> makes HTTP requests for XML, JSON, text, files or any content that can be sent through the REST protocol.</p>
-<p>The <strong>node-fetch</strong> package includes a <code>fetch</code> function which has two arguments: a url and an options object. This function returns a promise. The promise is what allows you to wait for the response and <code>then</code> handle it.</p>
-<p>The response from the fetch promise includes a <code>text()</code> function that also returns a promise. That is because the text can stream when it’s long. Streaming text is the same as streaming video you are probably familiar with where the first part is available after a short time and the rest continues to load in the background.</p>
-<p>To learn more about using fetch within NodeJS, you may look at the npm page for <a href="https://www.npmjs.com/package/node-fetch">node-fetch</a>, specifically the [section on fetch] and <a href="https://www.npmjs.com/package/node-fetch#bodytext">section on body text</a>, or additional documentation such as <a href="https://flaviocopes.com/fetch-api/#body-content">body content</a> and <a href="https://flaviocopes.com/fetch-api/#catching-errors">catching errors</a>.</p>
-<h3 id="as-you-go-along">As you go along</h3>
-<p>Every new feature that you add should <em>not</em> break a previously-implemented feature. If your utility can print out a file to the console and then it doesn’t after you add the “save to a file” feature, you broke it. Make sure everything works every time you do something new.</p>
-<p>A good way to help with this is to initialize a Git repository at the beginning of your project. Then, whenever you get something to work, add and commit those changes. That way, you can get yourself out of an “oh, geez, I really messed it up right now” moment by doing something like <code>git checkout -- .</code>.</p>
-<h2 id="step-1-just-getting-a-url">Step 1: Just getting a URL</h2>
-<p>The first feature that you need to support is making a normal GET request to a URL and printing out the content to “standard out” (console.logging it).</p>
-<p>This service is a great starting point: <a href="https://artii.herokuapp.com/make?text=curl++this">https://artii.herokuapp.com/make?text=curl++this</a></p>
-<p>It points to the ASCII art API. It takes some text in the URL and turns it into ASCII art. You can try it in standard <code>curl</code> if you’d like to see how it works before you write your code. In you terminal, run this command.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="op">&gt;</span> <span class="ex">curl</span> https://artii.herokuapp.com/make?text=curl++this</a></code></pre></div>
-<p>Now write code in your <strong>curl.js</strong> file to make the fetch call using a promise to grab the result and log it out to the console.</p>
-<blockquote>
-<p>Tip: Put the above url into a constant or variable as you’ll be replacing it soon with a command-line parameter.</p>
-</blockquote>
-<p>When you run your program you should see the following.</p>
-<pre><code>&gt; node curl.js https://artii.herokuapp.com/make?text=curl++this
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <title>proj_promise</title>
+    <style type="text/css">
+      code {
+        white-space: pre-wrap;
+      }
+      span.smallcaps {
+        font-variant: small-caps;
+      }
+      span.underline {
+        text-decoration: underline;
+      }
+      div.column {
+        display: inline-block;
+        vertical-align: top;
+        width: 50%;
+      }
+    </style>
+    <style type="text/css">
+      a.sourceLine {
+        display: inline-block;
+        line-height: 1.25;
+      }
+      a.sourceLine {
+        pointer-events: none;
+        color: inherit;
+        text-decoration: inherit;
+      }
+      a.sourceLine:empty {
+        height: 1.2em;
+      }
+      .sourceCode {
+        overflow: visible;
+      }
+      code.sourceCode {
+        white-space: pre;
+        position: relative;
+      }
+      div.sourceCode {
+        margin: 1em 0;
+      }
+      pre.sourceCode {
+        margin: 0;
+      }
+      @media screen {
+        div.sourceCode {
+          overflow: auto;
+        }
+      }
+      @media print {
+        code.sourceCode {
+          white-space: pre-wrap;
+        }
+        a.sourceLine {
+          text-indent: -1em;
+          padding-left: 1em;
+        }
+      }
+      pre.numberSource a.sourceLine {
+        position: relative;
+        left: -4em;
+      }
+      pre.numberSource a.sourceLine::before {
+        content: attr(title);
+        position: relative;
+        left: -1em;
+        text-align: right;
+        vertical-align: baseline;
+        border: none;
+        pointer-events: all;
+        display: inline-block;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        padding: 0 4px;
+        width: 4em;
+        color: #aaaaaa;
+      }
+      pre.numberSource {
+        margin-left: 3em;
+        border-left: 1px solid #aaaaaa;
+        padding-left: 4px;
+      }
+      div.sourceCode {
+      }
+      @media screen {
+        a.sourceLine::before {
+          text-decoration: underline;
+        }
+      }
+      code span.al {
+        color: #ff0000;
+        font-weight: bold;
+      } /* Alert */
+      code span.an {
+        color: #60a0b0;
+        font-weight: bold;
+        font-style: italic;
+      } /* Annotation */
+      code span.at {
+        color: #7d9029;
+      } /* Attribute */
+      code span.bn {
+        color: #40a070;
+      } /* BaseN */
+      code span.bu {
+      } /* BuiltIn */
+      code span.cf {
+        color: #007020;
+        font-weight: bold;
+      } /* ControlFlow */
+      code span.ch {
+        color: #4070a0;
+      } /* Char */
+      code span.cn {
+        color: #880000;
+      } /* Constant */
+      code span.co {
+        color: #60a0b0;
+        font-style: italic;
+      } /* Comment */
+      code span.cv {
+        color: #60a0b0;
+        font-weight: bold;
+        font-style: italic;
+      } /* CommentVar */
+      code span.do {
+        color: #ba2121;
+        font-style: italic;
+      } /* Documentation */
+      code span.dt {
+        color: #902000;
+      } /* DataType */
+      code span.dv {
+        color: #40a070;
+      } /* DecVal */
+      code span.er {
+        color: #ff0000;
+        font-weight: bold;
+      } /* Error */
+      code span.ex {
+      } /* Extension */
+      code span.fl {
+        color: #40a070;
+      } /* Float */
+      code span.fu {
+        color: #06287e;
+      } /* Function */
+      code span.im {
+      } /* Import */
+      code span.in {
+        color: #60a0b0;
+        font-weight: bold;
+        font-style: italic;
+      } /* Information */
+      code span.kw {
+        color: #007020;
+        font-weight: bold;
+      } /* Keyword */
+      code span.op {
+        color: #666666;
+      } /* Operator */
+      code span.ot {
+        color: #007020;
+      } /* Other */
+      code span.pp {
+        color: #bc7a00;
+      } /* Preprocessor */
+      code span.sc {
+        color: #4070a0;
+      } /* SpecialChar */
+      code span.ss {
+        color: #bb6688;
+      } /* SpecialString */
+      code span.st {
+        color: #4070a0;
+      } /* String */
+      code span.va {
+        color: #19177c;
+      } /* Variable */
+      code span.vs {
+        color: #4070a0;
+      } /* VerbatimString */
+      code span.wa {
+        color: #60a0b0;
+        font-weight: bold;
+        font-style: italic;
+      } /* Warning */
+    </style>
+  </head>
+  <body>
+    <h1 id="curl-up-with-a-nice-promise">Curl Up With A Nice Promise</h1>
+    <p>
+      You’ve learned about how to use Promise objects to help master the
+      problems of asynchronous program logic. Now, you can really get your hands
+      dirty by building a Node.js-based version of the popular
+      <a href="https://curl.haxx.se/">curl</a> utility!
+    </p>
+    <p>
+      You may not know, but <code>curl</code> is a command line program to get
+      the <code>c</code>ontent at <code>URL</code>s. <code>cURL</code>. Get it?
+    </p>
+    <h2 id="this-project">This project</h2>
+    <p>
+      You will create a version of the <code>curl</code> utility that will be
+      able to
+    </p>
+    <ul>
+      <li>Download content from the Internet</li>
+      <li>Save it into files</li>
+      <li>Modify the HTTP request using command-line arguments</li>
+      <li>Send data with the HTTP request</li>
+      <li>Save the metadata of the HTTP response</li>
+    </ul>
+    <p>
+      Detailed steps will be provided for the project setup, so you can follow
+      along and get the pieces in place for your practice with promises.
+    </p>
+    <p>You’re going to do great!</p>
+    <h2 id="getting-started">Getting started</h2>
+    <p>
+      You’ll build this in steps. Eventually, you’ll have something pretty
+      powerful.
+    </p>
+    <p>
+      To get started, create a project directory, create file in it named
+      “curl.js”, and open it up in Visual Studio Code.
+    </p>
+    <p>Now, use the <code>npm</code> command to install “node-fetch”.</p>
+    <h3 id="a-word-about-fetch">A word about fetch</h3>
+    <p>
+      The <code>fetch</code> command allows you to call another server or
+      service hosted on the web and returns you the results. Since
+      <code>fetch</code> is asynchronous, you will need to use a promise to
+      handle the response when it returns from the remote server.
+    </p>
+    <p>
+      Specifically, <code>fetch</code> makes HTTP requests for XML, JSON, text,
+      files or any content that can be sent through the REST protocol.
+    </p>
+    <p>
+      The <strong>node-fetch</strong> package includes a
+      <code>fetch</code> function which has two arguments: a url and an options
+      object. This function returns a promise. The promise is what allows you to
+      wait for the response and <code>then</code> handle it.
+    </p>
+    <p>
+      The response from the fetch promise includes a
+      <code>text()</code> function that also returns a promise. That is because
+      the text can stream when it’s long. Streaming text is the same as
+      streaming video you are probably familiar with where the first part is
+      available after a short time and the rest continues to load in the
+      background.
+    </p>
+    <p>
+      To learn more about using fetch within NodeJS, you may look at the npm
+      page for
+      <a href="https://www.npmjs.com/package/node-fetch">node-fetch</a>,
+      specifically the [section on fetch] and
+      <a href="https://www.npmjs.com/package/node-fetch#bodytext"
+        >section on body text</a
+      >, or additional documentation such as
+      <a href="https://flaviocopes.com/fetch-api/#body-content">body content</a>
+      and
+      <a href="https://flaviocopes.com/fetch-api/#catching-errors"
+        >catching errors</a
+      >.
+    </p>
+    <h3 id="as-you-go-along">As you go along</h3>
+    <p>
+      Every new feature that you add should <em>not</em> break a
+      previously-implemented feature. If your utility can print out a file to
+      the console and then it doesn’t after you add the “save to a file”
+      feature, you broke it. Make sure everything works every time you do
+      something new.
+    </p>
+    <p>
+      A good way to help with this is to initialize a Git repository at the
+      beginning of your project. Then, whenever you get something to work, add
+      and commit those changes. That way, you can get yourself out of an “oh,
+      geez, I really messed it up right now” moment by doing something like
+      <code>git checkout -- .</code>.
+    </p>
+    <h2 id="step-1-just-getting-a-url">Step 1: Just getting a URL</h2>
+    <p>
+      The first feature that you need to support is making a normal GET request
+      to a URL and printing out the content to “standard out” (console.logging
+      it).
+    </p>
+    <p>
+      This service is a great starting point:
+      <a href="https://artii.herokuapp.com/make?text=curl++this"
+        >https://artii.herokuapp.com/make?text=curl++this</a
+      >
+    </p>
+    <p>
+      It points to the ASCII art API. It takes some text in the URL and turns it
+      into ASCII art. You can try it in standard <code>curl</code> if you’d like
+      to see how it works before you write your code. In you terminal, run this
+      command.
+    </p>
+    <div class="sourceCode" id="cb1">
+      <pre
+        class="sourceCode bash"
+      ><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="op">&gt;</span> <span class="ex">curl</span> https://artii.herokuapp.com/make?text=curl++this</a></code></pre>
+    </div>
+    <p>
+      Now write code in your <strong>curl.js</strong> file to make the fetch
+      call using a promise to grab the result and log it out to the console.
+    </p>
+    <blockquote>
+      <p>
+        Tip: Put the above url into a constant or variable as you’ll be
+        replacing it soon with a command-line parameter.
+      </p>
+    </blockquote>
+    <p>When you run your program you should see the following.</p>
+    <pre><code>&gt; node curl.js https://artii.herokuapp.com/make?text=curl++this
                   _    _   _     _
                  | |  | | | |   (_)
    ___ _   _ _ __| |  | |_| |__  _ ___
@@ -122,37 +335,95 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   \___|\__,_|_|  |_|   \__|_| |_|_|___/
 
 &gt;</code></pre>
-<p>Congrats! That’s ASCII art. :)</p>
-<h3 id="just-failing-to-get-a-url">Just failing to get a URL</h3>
-<p>Let’s say the host server doesn’t exist. You should handle that gracefully. You’re using Promises. That means this probably goes in a <code>catch</code> handler somewhere.</p>
-<p>Since you are emulating the <code>curl</code> command, you can see what it does with an invalid url.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="op">&gt;</span> <span class="ex">curl</span> https://artii.herokuFLAP.com/make?text=curl++this</a>
+    <p>Congrats! That’s ASCII art. :)</p>
+    <h3 id="just-failing-to-get-a-url">Just failing to get a URL</h3>
+    <p>
+      Let’s say the host server doesn’t exist. You should handle that
+      gracefully. You’re using Promises. That means this probably goes in a
+      <code>catch</code> handler somewhere.
+    </p>
+    <p>
+      Since you are emulating the <code>curl</code> command, you can see what it
+      does with an invalid url.
+    </p>
+    <div class="sourceCode" id="cb3">
+      <pre
+        class="sourceCode bash"
+      ><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="op">&gt;</span> <span class="ex">curl</span> https://artii.herokuFLAP.com/make?text=curl++this</a>
 <a class="sourceLine" id="cb3-2" title="2">  <span class="ex">curl</span>: (6) <span class="ex">Could</span> not resolve host: artii.herokuFLAP.com</a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="op">&gt;</span></a></code></pre></div>
-<p>You can check for this error (hint 1 - the code is <code>ENOTFOUND</code>) to output an equivalent message (hint 2 - the <code>URL</code> object can help you get the <code>host</code> property from a url string). Since the error message is showing that the process ended with status code “6”, you can and should do the same from your program.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="va">process</span>.<span class="at">exit</span>(<span class="dv">6</span>)<span class="op">;</span></a></code></pre></div>
-<p>Any other errors can be sent as-is through to console as an error.</p>
-<p>You can temporarily change the URL in your code to see both of these errors.</p>
-<ul>
-<li>ENOTFOUND: <code>https://artii.herokuappxxxx.com/make?text=curl++this</code></li>
-<li>Other error: <code>https://artii.herokuapp.com/makexxxx?text=curl++this</code></li>
-</ul>
-<blockquote>
-<p>Hint: Remember to change the URL back to the working one before continuing.</p>
-</blockquote>
-<h2 id="step-2-command-line-arguments">Step 2: Command-line arguments</h2>
-<p>Instead of hard-coding the URL, it would be nice to pass it to the program for more flexibility and reuse. When you’ve completed this upgrade, the command to run your program will look like this.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="op">&gt;</span> <span class="ex">node</span> curl.js https://artii.herokuapp.com/make?text=curl++this</a></code></pre></div>
-<p>There are three types of command-line arguments.</p>
-<ul>
-<li>arguments with values (e.g. <code>-o output-file.txt</code>)</li>
-<li>arguments without values, sometimes referred to as “flags” (e.g. <code>-h</code> and <code>--help</code> are often used to output help or usage information)</li>
-<li>positional arguments (e.g. the url or urls to fetch)</li>
-</ul>
-<p>Throughout the rest of this project you’ll get to try them all.</p>
-<p>In order to accept command-line arguments, you’ll want to include a package to help you access them. One of the better options is <a href="https://www.npmjs.com/package/dashdash">dashdash</a>. Install it now using <code>npm</code>.</p>
-<p>To get you started quickly, here’s some code you can add to your <strong>curl.js</strong>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">const</span> dash <span class="op">=</span> <span class="at">require</span>(<span class="st">&#39;dashdash&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="op">&gt;</span></a></code></pre>
+    </div>
+    <p>
+      You can check for this error (hint 1 - the code is <code>ENOTFOUND</code>)
+      to output an equivalent message (hint 2 - the <code>URL</code> object can
+      help you get the <code>host</code> property from a url string). Since the
+      error message is showing that the process ended with status code “6”, you
+      can and should do the same from your program.
+    </p>
+    <div class="sourceCode" id="cb4">
+      <pre
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="va">process</span>.<span class="at">exit</span>(<span class="dv">6</span>)<span class="op">;</span></a></code></pre>
+    </div>
+    <p>Any other errors can be sent as-is through to console as an error.</p>
+    <p>
+      You can temporarily change the URL in your code to see both of these
+      errors.
+    </p>
+    <ul>
+      <li>
+        ENOTFOUND:
+        <code>https://artii.herokuappxxxx.com/make?text=curl++this</code>
+      </li>
+      <li>
+        Other error:
+        <code>https://artii.herokuapp.com/makexxxx?text=curl++this</code>
+      </li>
+    </ul>
+    <blockquote>
+      <p>
+        Hint: Remember to change the URL back to the working one before
+        continuing.
+      </p>
+    </blockquote>
+    <h2 id="step-2-command-line-arguments">Step 2: Command-line arguments</h2>
+    <p>
+      Instead of hard-coding the URL, it would be nice to pass it to the program
+      for more flexibility and reuse. When you’ve completed this upgrade, the
+      command to run your program will look like this.
+    </p>
+    <div class="sourceCode" id="cb5">
+      <pre
+        class="sourceCode bash"
+      ><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="op">&gt;</span> <span class="ex">node</span> curl.js https://artii.herokuapp.com/make?text=curl++this</a></code></pre>
+    </div>
+    <p>There are three types of command-line arguments.</p>
+    <ul>
+      <li>arguments with values (e.g. <code>-o output-file.txt</code>)</li>
+      <li>
+        arguments without values, sometimes referred to as “flags” (e.g. <code
+          >-h</code
+        >
+        and <code>--help</code> are often used to output help or usage
+        information)
+      </li>
+      <li>positional arguments (e.g. the url or urls to fetch)</li>
+    </ul>
+    <p>Throughout the rest of this project you’ll get to try them all.</p>
+    <p>
+      In order to accept command-line arguments, you’ll want to include a
+      package to help you access them. One of the better options is
+      <a href="https://www.npmjs.com/package/dashdash">dashdash</a>. Install it
+      now using <code>npm</code>.
+    </p>
+    <p>
+      To get you started quickly, here’s some code you can add to your
+      <strong>curl.js</strong>.
+    </p>
+    <div class="sourceCode" id="cb6">
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">const</span> dash <span class="op">=</span> <span class="at">require</span>(<span class="st">&#39;dashdash&#39;</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb6-2" title="2"></a>
 <a class="sourceLine" id="cb6-3" title="3"><span class="kw">const</span> options <span class="op">=</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb6-4" title="4">  <span class="dt">allowUnknown</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></a>
@@ -161,155 +432,364 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb6-7" title="7"><span class="kw">const</span> parser <span class="op">=</span> <span class="va">dash</span>.<span class="at">createParser</span>(options)<span class="op">;</span></a>
 <a class="sourceLine" id="cb6-8" title="8"></a>
 <a class="sourceLine" id="cb6-9" title="9"><span class="kw">const</span> opts <span class="op">=</span> <span class="va">parser</span>.<span class="at">parse</span>(options)<span class="op">;</span></a>
-<a class="sourceLine" id="cb6-10" title="10"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Options are:&#39;</span><span class="op">,</span> opts)<span class="op">;</span></a></code></pre></div>
-<p>Remember to run your program with some options following the program name.</p>
-<pre><code>&gt; node curl.js
+<a class="sourceLine" id="cb6-10" title="10"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Options are:&#39;</span><span class="op">,</span> opts)<span class="op">;</span></a></code></pre>
+    </div>
+    <p>
+      Remember to run your program with some options following the program name.
+    </p>
+    <pre><code>&gt; node curl.js
 &gt; node curl.js -h
 &gt; node curl.js https://appacademy.io
 &gt; node curl.js -o output.txt https://appacademy.io</code></pre>
-<h3 id="predefined-options">Predefined options</h3>
-<p>Now, try adding a predefined option to the configuration, one that you would use to specify the output file name. (This isn’t the <em>entire</em> JavaScript file, here. It’s just the snippet of the <code>options</code> variable declaration. Please just modify the <code>options</code> variable.)</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">const</span> options <span class="op">=</span> <span class="op">{</span></a>
+    <h3 id="predefined-options">Predefined options</h3>
+    <p>
+      Now, try adding a predefined option to the configuration, one that you
+      would use to specify the output file name. (This isn’t the
+      <em>entire</em> JavaScript file, here. It’s just the snippet of the
+      <code>options</code> variable declaration. Please just modify the
+      <code>options</code> variable.)
+    </p>
+    <div class="sourceCode" id="cb8">
+      <pre
+        class="sourceCode js"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">const</span> options <span class="op">=</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb8-2" title="2">  <span class="dt">allowUnknown</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></a>
 <a class="sourceLine" id="cb8-3" title="3">  <span class="dt">options</span><span class="op">:</span> [<span class="op">{</span></a>
 <a class="sourceLine" id="cb8-4" title="4">    <span class="dt">names</span><span class="op">:</span> [<span class="st">&#39;output&#39;</span><span class="op">,</span> <span class="st">&#39;o&#39;</span>]<span class="op">,</span></a>
 <a class="sourceLine" id="cb8-5" title="5">    <span class="dt">type</span><span class="op">:</span> <span class="st">&#39;string&#39;</span><span class="op">,</span></a>
 <a class="sourceLine" id="cb8-6" title="6">    <span class="dt">help</span><span class="op">:</span> <span class="st">&#39;file in which to store the fetched content&#39;</span></a>
 <a class="sourceLine" id="cb8-7" title="7">  <span class="op">}</span>]<span class="op">,</span></a>
-<a class="sourceLine" id="cb8-8" title="8"><span class="op">};</span></a></code></pre></div>
-<p>Run the last command again and see how the output differs from before.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="op">&gt;</span> <span class="ex">node</span> curl.js -o output.txt https://appacademy.io</a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="op">};</span></a></code></pre>
+    </div>
+    <p>
+      Run the last command again and see how the output differs from before.
+    </p>
+    <div class="sourceCode" id="cb9">
+      <pre
+        class="sourceCode bash"
+      ><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="op">&gt;</span> <span class="ex">node</span> curl.js -o output.txt https://appacademy.io</a>
 <a class="sourceLine" id="cb9-2" title="2"><span class="ex">Options</span> are: {</a>
 <a class="sourceLine" id="cb9-3" title="3">  <span class="ex">output</span>: <span class="st">&#39;output.txt&#39;</span>,</a>
 <a class="sourceLine" id="cb9-4" title="4">  <span class="ex">_order</span>: [ { key: <span class="st">&#39;output&#39;</span>, value: <span class="st">&#39;output.txt&#39;</span>, from: <span class="st">&#39;argv&#39;</span> } ],</a>
 <a class="sourceLine" id="cb9-5" title="5">  <span class="ex">_args</span>: [ <span class="st">&#39;https://appacademy.io&#39;</span> ]</a>
 <a class="sourceLine" id="cb9-6" title="6">}</a>
-<a class="sourceLine" id="cb9-7" title="7"><span class="ex">...</span></a></code></pre></div>
-<p>Notice that you can get the list of URLs from the <code>_args</code> property. Then, you can get the value of the “output” argument that you wrote using the <code>-o</code> signifier through the <code>output</code> property on the <code>opts</code> value.</p>
-<p>Go ahead and add the option for <code>-h</code> as well. (Hint: the <code>type</code> of a flag option is <code>bool</code>.) Verify it’s working by running <code>node curl.js -h</code>.</p>
-<h3 id="url-from-command-line">Url from command-line</h3>
-<p>Now change your <code>url</code> variable (or constant) to use the argument instead of a hard-coded string. Then test it with several calls to your program with different urls.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="op">&gt;</span> <span class="ex">node</span> curl.js https://appacademy.io</a>
-<a class="sourceLine" id="cb10-2" title="2"><span class="op">&gt;</span> <span class="ex">node</span> curl.js https://artii.herokuapp.com/make?text=curl++this</a></code></pre></div>
-<p>It is pleasing for users if you provide a message when they forget to include a required option, such as at least one url. Go ahead and add that (obviously before using <code>args</code> to set the <code>url</code> so the program doesn’t crash). Verify by running <code>node curl.js</code>.</p>
-<p>Also, you may comment out or remove the logging of the options whenever you feel you don’t need them any more.</p>
-<h3 id="help-message">Help message</h3>
-<p>It is useful to map variables to the various properties of the options, if you’d like. For example, you might want to do something like this.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">const</span> <span class="op">{</span> help<span class="op">,</span> output<span class="op">,</span> <span class="dt">_args</span><span class="op">:</span> urls <span class="op">}</span> <span class="op">=</span> opts<span class="op">;</span></a></code></pre></div>
-<p>Also output the help information, if that flag is set.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="cf">if</span> (help) <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="ex">...</span></a></code></pre>
+    </div>
+    <p>
+      Notice that you can get the list of URLs from the
+      <code>_args</code> property. Then, you can get the value of the “output”
+      argument that you wrote using the <code>-o</code> signifier through the
+      <code>output</code> property on the <code>opts</code> value.
+    </p>
+    <p>
+      Go ahead and add the option for <code>-h</code> as well. (Hint: the
+      <code>type</code> of a flag option is <code>bool</code>.) Verify it’s
+      working by running <code>node curl.js -h</code>.
+    </p>
+    <h3 id="url-from-command-line">Url from command-line</h3>
+    <p>
+      Now change your <code>url</code> variable (or constant) to use the
+      argument instead of a hard-coded string. Then test it with several calls
+      to your program with different urls.
+    </p>
+    <div class="sourceCode" id="cb10">
+      <pre
+        class="sourceCode bash"
+      ><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="op">&gt;</span> <span class="ex">node</span> curl.js https://appacademy.io</a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="op">&gt;</span> <span class="ex">node</span> curl.js https://artii.herokuapp.com/make?text=curl++this</a></code></pre>
+    </div>
+    <p>
+      It is pleasing for users if you provide a message when they forget to
+      include a required option, such as at least one url. Go ahead and add that
+      (obviously before using <code>args</code> to set the <code>url</code> so
+      the program doesn’t crash). Verify by running <code>node curl.js</code>.
+    </p>
+    <p>
+      Also, you may comment out or remove the logging of the options whenever
+      you feel you don’t need them any more.
+    </p>
+    <h3 id="help-message">Help message</h3>
+    <p>
+      It is useful to map variables to the various properties of the options, if
+      you’d like. For example, you might want to do something like this.
+    </p>
+    <div class="sourceCode" id="cb11">
+      <pre
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">const</span> <span class="op">{</span> help<span class="op">,</span> output<span class="op">,</span> <span class="dt">_args</span><span class="op">:</span> urls <span class="op">}</span> <span class="op">=</span> opts<span class="op">;</span></a></code></pre>
+    </div>
+    <p>Also output the help information, if that flag is set.</p>
+    <div class="sourceCode" id="cb12">
+      <pre
+        class="sourceCode javascript"
+      ><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="cf">if</span> (help) <span class="op">{</span></a>
 <a class="sourceLine" id="cb12-2" title="2">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;node curl.js [OPTIONS] URL&#39;</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb12-3" title="3">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;OPTIONS:&#39;</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb12-4" title="4">    <span class="va">console</span>.<span class="at">log</span>(<span class="va">parser</span>.<span class="at">help</span>().<span class="at">trimRight</span>())<span class="op">;</span></a>
 <a class="sourceLine" id="cb12-5" title="5">    <span class="cf">return</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb12-6" title="6"><span class="op">}</span></a></code></pre></div>
-<h2 id="step-3-now-put-it-in-a-file">Step 3: Now, put it in a file</h2>
-<p>When the person using your utility specifies that they’d like the content of the fetch to be stored in a file, they will do it with one of these forms. Of course the string “«file-name»” will be an actual file name and not have those fancy guillemets (or those funky double bracket things).</p>
-<ul>
-<li><code>-o «file-name»</code></li>
-<li><code>--output «file-name»</code></li>
-</ul>
-<p>When your program gets that argument, it will <em>not</em> “console log” it. Instead, it will write it to the specified file. It should do that <em>asynchronously</em>, as well. In fact, node-fetch is designed to work directly with writing files, so it has built-in support for <a href="https://www.npmjs.com/package/node-fetch#streams">streams with node-fetch</a>.</p>
-<p>Remember to import <code>fs</code> (you don’t need to install, of course, because it is a native part of NodeJS), then use the documentation to write the fetched content to the <code>output</code> file, if provided by the user calling your program. (Hint: <code>process.stdout</code> works like a file stream.)</p>
-<p>Make sure you can still run without the <code>-o</code> flag or if the filename is missing (after the <code>-o</code> option in the command line).</p>
-<blockquote>
-<p>Test a variety of different commands to ensure all supported variations and previous error handling are still working.</p>
-</blockquote>
-<h3 id="error-handling-for-writing-files">Error handling for writing files</h3>
-<p>If the file fails to get written, then it should look like this. You need to modify your code to make this happen.</p>
-<pre><code>&gt; node curl.js -o node_modules https://artii.herokuapp.com/make?text=curl++this
+<a class="sourceLine" id="cb12-6" title="6"><span class="op">}</span></a></code></pre>
+    </div>
+    <h2 id="step-3-now-put-it-in-a-file">Step 3: Now, put it in a file</h2>
+    <p>
+      When the person using your utility specifies that they’d like the content
+      of the fetch to be stored in a file, they will do it with one of these
+      forms. Of course the string “«file-name»” will be an actual file name and
+      not have those fancy guillemets (or those funky double bracket things).
+    </p>
+    <ul>
+      <li><code>-o «file-name»</code></li>
+      <li><code>--output «file-name»</code></li>
+    </ul>
+    <p>
+      When your program gets that argument, it will <em>not</em> “console log”
+      it. Instead, it will write it to the specified file. It should do that
+      <em>asynchronously</em>, as well. In fact, node-fetch is designed to work
+      directly with writing files, so it has built-in support for
+      <a href="https://www.npmjs.com/package/node-fetch#streams"
+        >streams with node-fetch</a
+      >.
+    </p>
+    <p>
+      Remember to import <code>fs</code> (you don’t need to install, of course,
+      because it is a native part of NodeJS), then use the documentation to
+      write the fetched content to the <code>output</code> file, if provided by
+      the user calling your program. (Hint: <code>process.stdout</code> works
+      like a file stream.)
+    </p>
+    <p>
+      Make sure you can still run without the <code>-o</code> flag or if the
+      filename is missing (after the <code>-o</code> option in the command
+      line).
+    </p>
+    <blockquote>
+      <p>
+        Test a variety of different commands to ensure all supported variations
+        and previous error handling are still working.
+      </p>
+    </blockquote>
+    <h3 id="error-handling-for-writing-files">
+      Error handling for writing files
+    </h3>
+    <p>
+      If the file fails to get written, then it should look like this. You need
+      to modify your code to make this happen.
+    </p>
+    <pre><code>&gt; node curl.js -o node_modules https://artii.herokuapp.com/make?text=curl++this
 curl: (23) Failed writing body</code></pre>
-<p>(Though you’re still using Promises, because you’re saving as a writable stream, then it’s at that point that you’re getting this error. Hint: <code>on('error')</code> is a good place to begin according to the <a href="https://nodejs.org/api/errors.html#errors_error_propagation_and_interception">node error handling documentation</a> under the bullet that starts with “When an asynchronous method is called” because “use of the ‘error’ event mechanism is most common for stream-based … APIs”.)</p>
-<h2 id="congratulations">Congratulations!</h2>
-<p>You made it through the minimum project exploring promises and command-line arguments. As time and desire permits, you may continue with the following bonus rounds to make your program more like the <code>curl</code> command.</p>
-<h2 id="bonus-a-setting-an-arbitrary-header">Bonus A: Setting an arbitrary header</h2>
-<p>Have a look at <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Examples">Examples using Fetch</a> to see how to add headers on an invocation of <code>fetch</code> in the second code example of the section. You may also want to check out the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Syntax">Syntax of Fetch</a> for a property on the object you pass into for the “init” parameter that would allow you to set the <em>headers</em> of the request. Or, <a href="https://lmgtfy.com/?q=fetch+set+request+headers&amp;s=d">let me DuckDuckGo that for you</a>.</p>
-<p>Use that knowledge to be able to handle one or more of the <code>-H</code> or <code>--header</code> command line option. It’s value should have the form “«Header Name»: «Header Value»” like “Accept: application/json” or “Content-Type: application/json”.</p>
-<h3 id="setting-special-headers">Setting special headers</h3>
-<p>Now that you can set arbitrary headers, support the command line arguments and their meaning.</p>
-<table>
-<thead>
-<tr class="header">
-<th>Command Line Argument</th>
-<th>Meaning</th>
-<th>HTTP Header</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>-A «string»</code></td>
-<td>Set the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent">user agent header</a></td>
-<td>“User-Agent: «string»”</td>
-</tr>
-<tr class="even">
-<td><code>-e «URL»</code></td>
-<td>Set the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer">referer header</a></td>
-<td>“Referer: «URL»”</td>
-</tr>
-</tbody>
-</table>
-<h2 id="bonus-b-capturing-response-headers">Bonus B: Capturing response headers</h2>
-<p>Sometimes the person using the command wants to see the output of the metadata of the request, too. That’s where the “–dump-header” flag comes into play. When someone issues the command with that flag</p>
-<pre><code>&gt; node curl.js --dump-header ./headers.txt \
+    <p>
+      (Though you’re still using Promises, because you’re saving as a writable
+      stream, then it’s at that point that you’re getting this error. Hint:
+      <code>on('error')</code> is a good place to begin according to the
+      <a
+        href="https://nodejs.org/api/errors.html#errors_error_propagation_and_interception"
+        >node error handling documentation</a
+      >
+      under the bullet that starts with “When an asynchronous method is called”
+      because “use of the ‘error’ event mechanism is most common for
+      stream-based … APIs”.)
+    </p>
+    <h2 id="congratulations">Congratulations!</h2>
+    <p>
+      You made it through the minimum project exploring promises and
+      command-line arguments. As time and desire permits, you may continue with
+      the following bonus rounds to make your program more like the
+      <code>curl</code> command.
+    </p>
+    <h2 id="bonus-a-setting-an-arbitrary-header">
+      Bonus A: Setting an arbitrary header
+    </h2>
+    <p>
+      Have a look at
+      <a
+        href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Examples"
+        >Examples using Fetch</a
+      >
+      to see how to add headers on an invocation of <code>fetch</code> in the
+      second code example of the section. You may also want to check out the
+      <a
+        href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Syntax"
+        >Syntax of Fetch</a
+      >
+      for a property on the object you pass into for the “init” parameter that
+      would allow you to set the <em>headers</em> of the request. Or,
+      <a href="https://lmgtfy.com/?q=fetch+set+request+headers&amp;s=d"
+        >let me DuckDuckGo that for you</a
+      >.
+    </p>
+    <p>
+      Use that knowledge to be able to handle one or more of the
+      <code>-H</code> or <code>--header</code> command line option. It’s value
+      should have the form “«Header Name»: «Header Value»” like “Accept:
+      application/json” or “Content-Type: application/json”.
+    </p>
+    <h3 id="setting-special-headers">Setting special headers</h3>
+    <p>
+      Now that you can set arbitrary headers, support the command line arguments
+      and their meaning.
+    </p>
+    <table>
+      <thead>
+        <tr class="header">
+          <th>Command Line Argument</th>
+          <th>Meaning</th>
+          <th>HTTP Header</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="odd">
+          <td><code>-A «string»</code></td>
+          <td>
+            Set the
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent"
+              >user agent header</a
+            >
+          </td>
+          <td>“User-Agent: «string»”</td>
+        </tr>
+        <tr class="even">
+          <td><code>-e «URL»</code></td>
+          <td>
+            Set the
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer"
+              >referer header</a
+            >
+          </td>
+          <td>“Referer: «URL»”</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="bonus-b-capturing-response-headers">
+      Bonus B: Capturing response headers
+    </h2>
+    <p>
+      Sometimes the person using the command wants to see the output of the
+      metadata of the request, too. That’s where the “–dump-header” flag comes
+      into play. When someone issues the command with that flag
+    </p>
+    <pre><code>&gt; node curl.js --dump-header ./headers.txt \
                https://artii.herokuapp.com/make?text=curl++this</code></pre>
-<p>Then it will print out the content of the response like it normally does. In addition to that, though, it will create a file named “./headers.txt” and put the HTTP response status line and all of the headers of the response in it. An example content of the file would look like this.</p>
-<pre><code>HTTP/1.1 200 OK
+    <p>
+      Then it will print out the content of the response like it normally does.
+      In addition to that, though, it will create a file named “./headers.txt”
+      and put the HTTP response status line and all of the headers of the
+      response in it. An example content of the file would look like this.
+    </p>
+    <pre><code>HTTP/1.1 200 OK
 Connection: keep-alive
 Content-Type: text/plain
 Content-Length: 319
 Server: Goliath
 Date: Tue, 03 Feb 2019 05:52:55 GMT
 Via: 1.1 vegur</code></pre>
-<h2 id="bonus-c-sending-data">Bonus C: Sending data</h2>
-<p>When someone adds the <code>-d «string»</code> or <code>--data «string»</code> flag to the command, that should become the body of the HTTP request. So, make it the body of your <code>fetch</code>. Check out the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Syntax">Syntax of Fetch</a> for a property on the object you pass into for the “init” parameter that would allow you to set the <em>body</em> of a request. This should also set the method of the request to POST.</p>
-<h3 id="overriding-the-method-of-the-request">Overriding the method of the request</h3>
-<p>When someone adds the <code>-X</code> command line argument followed by an HTTP method, then set that method on the fetch request. You’ll want to find the property on the “init” parameter that would allow you to override the <em>method</em> of the HTTP request.</p>
-<pre><code>&gt; node curl.js -X &#39;POST&#39;                              \
+    <h2 id="bonus-c-sending-data">Bonus C: Sending data</h2>
+    <p>
+      When someone adds the <code>-d «string»</code> or
+      <code>--data «string»</code> flag to the command, that should become the
+      body of the HTTP request. So, make it the body of your <code>fetch</code>.
+      Check out the
+      <a
+        href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Syntax"
+        >Syntax of Fetch</a
+      >
+      for a property on the object you pass into for the “init” parameter that
+      would allow you to set the <em>body</em> of a request. This should also
+      set the method of the request to POST.
+    </p>
+    <h3 id="overriding-the-method-of-the-request">
+      Overriding the method of the request
+    </h3>
+    <p>
+      When someone adds the <code>-X</code> command line argument followed by an
+      HTTP method, then set that method on the fetch request. You’ll want to
+      find the property on the “init” parameter that would allow you to override
+      the <em>method</em> of the HTTP request.
+    </p>
+    <pre><code>&gt; node curl.js -X &#39;POST&#39;                              \
                -d &#39;{&quot;title&quot;: &quot;Sir&quot;, &quot;name&quot;: &quot;Robin&quot;}&#39; \
                -H &#39;Content-Type: application/json&#39;    \
                https://jsonplaceholder.typicode.com/posts</code></pre>
-<p>which should result in something like</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb17-1" title="1"><span class="fu">{</span></a>
+    <p>which should result in something like</p>
+    <div class="sourceCode" id="cb17">
+      <pre
+        class="sourceCode json"
+      ><code class="sourceCode json"><a class="sourceLine" id="cb17-1" title="1"><span class="fu">{</span></a>
 <a class="sourceLine" id="cb17-2" title="2">  <span class="dt">&quot;title&quot;</span><span class="fu">:</span> <span class="st">&quot;Sir&quot;</span><span class="fu">,</span></a>
 <a class="sourceLine" id="cb17-3" title="3">  <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Robin&quot;</span><span class="fu">,</span></a>
 <a class="sourceLine" id="cb17-4" title="4">  <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">101</span></a>
-<a class="sourceLine" id="cb17-5" title="5"><span class="fu">}</span></a></code></pre></div>
-<h2 id="bonus-d-multiple-files-multiple-output-destinations">Bonus D: Multiple files, multiple output destinations</h2>
-<p>Now that you can download a single file, make it like the way <code>curl</code> handles multiple URLs and <code>-o</code> parameters.</p>
-<ul>
-<li>Do the transfers in parallel, not one right after another</li>
-<li>For each URL provided, a corresponding <code>-o</code> or <code>--output</code> is its target. If there are more URLs than there are output targets, the remainder of the content gets output to standard out.</li>
-</ul>
-<p>Here are some examples to get you used to it.</p>
-<p>Prints both files to standard out</p>
-<pre><code>&gt; node curl.js https://artii.herokuapp.com/make?text=curl++this \
+<a class="sourceLine" id="cb17-5" title="5"><span class="fu">}</span></a></code></pre>
+    </div>
+    <h2 id="bonus-d-multiple-files-multiple-output-destinations">
+      Bonus D: Multiple files, multiple output destinations
+    </h2>
+    <p>
+      Now that you can download a single file, make it like the way
+      <code>curl</code> handles multiple URLs and <code>-o</code> parameters.
+    </p>
+    <ul>
+      <li>Do the transfers in parallel, not one right after another</li>
+      <li>
+        For each URL provided, a corresponding <code>-o</code> or
+        <code>--output</code> is its target. If there are more URLs than there
+        are output targets, the remainder of the content gets output to standard
+        out.
+      </li>
+    </ul>
+    <p>Here are some examples to get you used to it.</p>
+    <p>Prints both files to standard out</p>
+    <pre><code>&gt; node curl.js https://artii.herokuapp.com/make?text=curl++this \
               https://artii.herokuapp.com/make?text=curl++that</code></pre>
-<p>Saves the first to the file “first.txt” and prints the second to standard out</p>
-<pre><code>&gt; node curl.js -o first.txt \
+    <p>
+      Saves the first to the file “first.txt” and prints the second to standard
+      out
+    </p>
+    <pre><code>&gt; node curl.js -o first.txt \
                https://artii.herokuapp.com/make?text=curl++this \
                https://artii.herokuapp.com/make?text=curl++that</code></pre>
-<p>Saves the first to the file “first.txt” and saves the second to the file “second.txt”</p>
-<pre><code>&gt; node curl.js -o first.txt \
+    <p>
+      Saves the first to the file “first.txt” and saves the second to the file
+      “second.txt”
+    </p>
+    <pre><code>&gt; node curl.js -o first.txt \
                -o second.txt \
                https://artii.herokuapp.com/make?text=curl++this \
                https://artii.herokuapp.com/make?text=curl++that</code></pre>
-<h2 id="bonus-e-list-globbing">Bonus E: List globbing</h2>
-<p>If a person specifies a “list glob”, then expand it to all of the files that it represents. A list glob uses curly braces to specify a list.</p>
-<pre><code>&gt; node curl.js https://artii.herokuapp.com/make?text={this,that,the+other}</code></pre>
-<p>The previous statement would “expand” to the following equivalent command.</p>
-<pre><code>&gt; node curl.js https://artii.herokuapp.com/make?text=this \
+    <h2 id="bonus-e-list-globbing">Bonus E: List globbing</h2>
+    <p>
+      If a person specifies a “list glob”, then expand it to all of the files
+      that it represents. A list glob uses curly braces to specify a list.
+    </p>
+    <pre><code>&gt; node curl.js https://artii.herokuapp.com/make?text={this,that,the+other}</code></pre>
+    <p>
+      The previous statement would “expand” to the following equivalent command.
+    </p>
+    <pre><code>&gt; node curl.js https://artii.herokuapp.com/make?text=this \
               https://artii.herokuapp.com/make?text=that \
               https://artii.herokuapp.com/make?text=the+other</code></pre>
-<h2 id="nightmare-round-a-the-progress-meter">Nightmare round A: The progress meter</h2>
-<p>When your utility saves all of its contents into files, then show a progress meter for the download. It should show the percent total that it is at. You’ll need to look at the “Content-Length” header of the <em>response</em> headers. Then, you can get a reader from the response body to monitor how much has been read.</p>
-<pre><code>      %  Total
+    <h2 id="nightmare-round-a-the-progress-meter">
+      Nightmare round A: The progress meter
+    </h2>
+    <p>
+      When your utility saves all of its contents into files, then show a
+      progress meter for the download. It should show the percent total that it
+      is at. You’ll need to look at the “Content-Length” header of the
+      <em>response</em> headers. Then, you can get a reader from the response
+      body to monitor how much has been read.
+    </p>
+    <pre><code>      %  Total
      --  -----
 make 18  151M</code></pre>
-<h2 id="nightmare-round-b-progress-meter-for-multiple-files">Nightmare round B: Progress meter for multiple files</h2>
-<p>What you just did for the download progress meter, do it so that it can track multiple files, too.</p>
-<pre><code>      %  Total
+    <h2 id="nightmare-round-b-progress-meter-for-multiple-files">
+      Nightmare round B: Progress meter for multiple files
+    </h2>
+    <p>
+      What you just did for the download progress meter, do it so that it can
+      track multiple files, too.
+    </p>
+    <pre><code>      %  Total
      --  -----
 make 18  151M
 make 14  111M</code></pre>
-</body>
+  </body>
 </html>

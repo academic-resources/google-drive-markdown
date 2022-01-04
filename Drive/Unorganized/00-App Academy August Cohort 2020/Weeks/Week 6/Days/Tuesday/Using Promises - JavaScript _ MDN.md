@@ -1,46 +1,46 @@
--   [Skip to main
-    content](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#content)
--   [Select
-    language](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#language)
--   [Skip to
-    search](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#main-q)
+- [Skip to main
+  content](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#content)
+- [Select
+  language](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#language)
+- [Skip to
+  search](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#main-q)
 
 [](https://developer.mozilla.org/en-US/)
 
--   Technologies
-    -   [Technologies
-        Overview](https://developer.mozilla.org/en-US/docs/Web)
-    -   [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
-    -   [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-    -   [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-    -   [Graphics](https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics)
-    -   [HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
-    -   [APIs / DOM](https://developer.mozilla.org/en-US/docs/Web/API)
-    -   [Browser
-        Extensions](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions)
-    -   [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML)
--   References & Guides
-    -   [Learn web
-        development](https://developer.mozilla.org/en-US/docs/Learn)
-    -   [Tutorials](https://developer.mozilla.org/en-US/docs/Web/Tutorials)
-    -   [References](https://developer.mozilla.org/en-US/docs/Web/Reference)
-    -   [Developer
-        Guides](https://developer.mozilla.org/en-US/docs/Web/Guide)
-    -   [Accessibility](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
-    -   [Game
-        development](https://developer.mozilla.org/en-US/docs/Games)
-    -   [...more docs](https://developer.mozilla.org/en-US/docs/Web)
--   Feedback
-    -   [Send
-        Feedback](https://developer.mozilla.org/en-US/docs/MDN/Feedback)
-    -   [Get Firefox help 🌐](https://support.mozilla.org/)
-    -   [Get web development help 🌐](https://stackoverflow.com/)
-    -   [Join the MDN
-        community](https://developer.mozilla.org/en-US/docs/MDN/Community)
-    -   [Report a content problem
-        🌐](https://github.com/mdn/sprints/issues/new?template=issue-template.md&projects=mdn/sprints/2&labels=user-report&title=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)
-    -   [Report an issue
-        🌐](https://github.com/mdn/kuma/issues/new/choose)
+- Technologies
+  - [Technologies
+    Overview](https://developer.mozilla.org/en-US/docs/Web)
+  - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+  - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+  - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+  - [Graphics](https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics)
+  - [HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
+  - [APIs / DOM](https://developer.mozilla.org/en-US/docs/Web/API)
+  - [Browser
+    Extensions](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions)
+  - [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML)
+- References & Guides
+  - [Learn web
+    development](https://developer.mozilla.org/en-US/docs/Learn)
+  - [Tutorials](https://developer.mozilla.org/en-US/docs/Web/Tutorials)
+  - [References](https://developer.mozilla.org/en-US/docs/Web/Reference)
+  - [Developer
+    Guides](https://developer.mozilla.org/en-US/docs/Web/Guide)
+  - [Accessibility](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
+  - [Game
+    development](https://developer.mozilla.org/en-US/docs/Games)
+  - [...more docs](https://developer.mozilla.org/en-US/docs/Web)
+- Feedback
+  - [Send
+    Feedback](https://developer.mozilla.org/en-US/docs/MDN/Feedback)
+  - [Get Firefox help 🌐](https://support.mozilla.org/)
+  - [Get web development help 🌐](https://stackoverflow.com/)
+  - [Join the MDN
+    community](https://developer.mozilla.org/en-US/docs/MDN/Community)
+  - [Report a content problem
+    🌐](https://github.com/mdn/sprints/issues/new?template=issue-template.md&projects=mdn/sprints/2&labels=user-report&title=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)
+  - [Report an issue
+    🌐](https://github.com/mdn/kuma/issues/new/choose)
 
 Search MDN
 
@@ -59,49 +59,48 @@ in](https://developer.mozilla.org/en-US/users/account/signup-landing?next=/en-US
 
 English▼
 
--   [Български](https://developer.mozilla.org/bg/docs/Web/JavaScript/Guide/Using_promises "Bulgarian")
--   [Deutsch](https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Using_promises "German")
--   [Español](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Usar_promesas "Spanish")
--   [Français](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Utiliser_les_promesses "French")
--   [日本語](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Using_promises "Japanese")
--   [한국어](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Using_promises "Korean")
--   [Português
-    (do Brasil)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Usando_promises "Portuguese (Brazilian)")
--   [Русский](https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Ispolzovanie_promisov "Russian")
--   [Українська](https://developer.mozilla.org/uk/docs/Web/JavaScript/Guide/Using_promises "Ukrainian")
--   [Tiếng
-    Việt](https://developer.mozilla.org/vi/docs/Web/JavaScript/Guide/Using_promises "Vietnamese")
--   [中文
-    (简体)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises "Chinese (Simplified)")
--   [正體中文
-    (繁體)](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises "Chinese (Traditional)")
--   [Add a
-    translation](https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises$locales)
+- [Български](https://developer.mozilla.org/bg/docs/Web/JavaScript/Guide/Using_promises "Bulgarian")
+- [Deutsch](https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Using_promises "German")
+- [Español](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Usar_promesas "Spanish")
+- [Français](https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Utiliser_les_promesses "French")
+- [日本語](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Using_promises "Japanese")
+- [한국어](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Using_promises "Korean")
+- [Português
+  (do Brasil)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Usando_promises "Portuguese (Brazilian)")
+- [Русский](https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Ispolzovanie_promisov "Russian")
+- [Українська](https://developer.mozilla.org/uk/docs/Web/JavaScript/Guide/Using_promises "Ukrainian")
+- [Tiếng
+  Việt](https://developer.mozilla.org/vi/docs/Web/JavaScript/Guide/Using_promises "Vietnamese")
+- [中文
+  (简体)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises "Chinese (Simplified)")
+- [正體中文
+  (繁體)](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises "Chinese (Traditional)")
+- [Add a
+  translation](https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises$locales)
 
-On this Page
-------------
+## On this Page
 
 Jump to section
 
--   [Guarantees](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Guarantees)
--   [Chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Chaining)
--   [Error
-    propagation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Error_propagation)
--   [Promise rejection
-    events](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Promise_rejection_events)
--   [Creating a Promise around an old callback
-    API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Creating_a_Promise_around_an_old_callback_API)
--   [Composition](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Composition)
--   [Timing](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Timing)
--   [Nesting](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Nesting)
--   [Common
-    mistakes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Common_mistakes)
--   [When promises and tasks
-    collide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#When_promises_and_tasks_collide)
--   [See
-    also](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#See_also)
--   [Related
-    topics](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#sidebar-quicklinks)
+- [Guarantees](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Guarantees)
+- [Chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Chaining)
+- [Error
+  propagation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Error_propagation)
+- [Promise rejection
+  events](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Promise_rejection_events)
+- [Creating a Promise around an old callback
+  API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Creating_a_Promise_around_an_old_callback_API)
+- [Composition](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Composition)
+- [Timing](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Timing)
+- [Nesting](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Nesting)
+- [Common
+  mistakes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#Common_mistakes)
+- [When promises and tasks
+  collide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#When_promises_and_tasks_collide)
+- [See
+  also](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#See_also)
+- [Related
+  topics](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#sidebar-quicklinks)
 
 [«
 Previous](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Details_of_the_Object_Model)[Next
@@ -124,7 +123,7 @@ other called if an error occurs.
 
 Here's some code that uses `createAudioFileAsync()`:
 
-``` {.brush: .js .line-numbers .notranslate .language-js}
+```{.brush: .js .line-numbers .notranslate .language-js}
 function successCallback(result) {
   console.log("Audio file ready at URL: " + result);
 }
@@ -142,39 +141,37 @@ instead:
 If `createAudioFileAsync()` were rewritten to return a promise, using it
 could be as simple as this:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 createAudioFileAsync(audioSettings).then(successCallback, failureCallback);
 ```
 
 That's shorthand for:
 
-``` {.brush: .js .line-numbers .notranslate .language-js}
-const promise = createAudioFileAsync(audioSettings); 
+```{.brush: .js .line-numbers .notranslate .language-js}
+const promise = createAudioFileAsync(audioSettings);
 promise.then(successCallback, failureCallback);
 ```
 
-We call this an *asynchronous function call*. This convention has
+We call this an _asynchronous function call_. This convention has
 several advantages. We will explore each one.
 
-Guarantees {#Guarantees}
-----------
+## Guarantees {#Guarantees}
 
-Unlike old-fashioned *passed-in* callbacks, a promise comes with some
+Unlike old-fashioned _passed-in_ callbacks, a promise comes with some
 guarantees:
 
--   Callbacks will never be called before the [completion of the current
-    run](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Run-to-completion)
-    of the JavaScript event loop.
--   Callbacks added with `then()`, as above, will be called even *after*
-    the success or failure of the asynchronous operation.
--   Multiple callbacks may be added by calling `then()` several times.
-    Each callback is executed one after another, in the order in which
-    they were inserted.
+- Callbacks will never be called before the [completion of the current
+  run](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Run-to-completion)
+  of the JavaScript event loop.
+- Callbacks added with `then()`, as above, will be called even _after_
+  the success or failure of the asynchronous operation.
+- Multiple callbacks may be added by calling `then()` several times.
+  Each callback is executed one after another, in the order in which
+  they were inserted.
 
 One of the great things about using promises is **chaining**.
 
-Chaining {#Chaining}
---------
+## Chaining {#Chaining}
 
 A common need is to execute two or more asynchronous operations back to
 back, where each subsequent operation starts when the previous operation
@@ -184,14 +181,14 @@ creating a **promise chain**.
 Here's the magic: the `then()` function returns a **new promise**,
 different from the original:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 const promise = doSomething();
 const promise2 = promise.then(successCallback, failureCallback);
 ```
 
 or
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 const promise2 = doSomething().then(successCallback, failureCallback);
 ```
 
@@ -208,7 +205,7 @@ asynchronous step in the chain.
 In the old days, doing several asynchronous operations in a row would
 lead to the classic callback pyramid of doom:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 doSomething(function(result) {
   doSomethingElse(result, function(newResult) {
     doThirdThing(newResult, function(finalResult) {
@@ -221,7 +218,7 @@ doSomething(function(result) {
 With modern functions, we attach our callbacks to the returned promises
 instead, forming a promise chain:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 doSomething()
 .then(function(result) {
   return doSomethingElse(result);
@@ -241,7 +238,7 @@ with [arrow
 functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 instead:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 doSomething()
 .then(result => doSomethingElse(result))
 .then(newResult => doThirdThing(newResult))
@@ -257,11 +254,11 @@ is short for `() => { return x; }`).
 
 ### Chaining after a catch {#Chaining_after_a_catch}
 
-It's possible to chain *after* a failure, i.e. a `catch`, which is
+It's possible to chain _after_ a failure, i.e. a `catch`, which is
 useful to accomplish new actions even after an action failed in the
 chain. Read the following example:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 new Promise((resolve, reject) => {
     console.log('Initial');
 
@@ -269,7 +266,7 @@ new Promise((resolve, reject) => {
 })
 .then(() => {
     throw new Error('Something failed');
-        
+
     console.log('Do this');
 })
 .catch(() => {
@@ -282,7 +279,7 @@ new Promise((resolve, reject) => {
 
 This will output the following text:
 
-``` {.notranslate .line-numbers .language-html}
+```{.notranslate .line-numbers .language-html}
 Initial
 Do that
 Do this, no matter what happened before
@@ -291,13 +288,12 @@ Do this, no matter what happened before
 **Note:** The text “Do this” is not displayed because the “Something
 failed” error caused a rejection.
 
-Error propagation {#Error_propagation}
------------------
+## Error propagation {#Error_propagation}
 
 You might recall seeing `failureCallback` three times in the pyramid of
 doom earlier, compared to only once at the end of the promise chain:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 doSomething()
 .then(result => doSomethingElse(result))
 .then(newResult => doThirdThing(newResult))
@@ -309,7 +305,7 @@ If there's an exception, the browser will look down the chain for
 `.catch()` handlers or `onRejected`. This is very much modeled after how
 synchronous code works:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 try {
   const result = syncDoSomething();
   const newResult = syncDoSomethingElse(result);
@@ -324,7 +320,7 @@ This symmetry with asynchronous code culminates in the
 [`async`/`await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
 syntactic sugar in ECMAScript 2017:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 async function foo() {
   try {
     const result = await doSomething();
@@ -345,8 +341,7 @@ Promises solve a fundamental flaw with the callback pyramid of doom, by
 catching all errors, even thrown exceptions and programming errors. This
 is essential for functional composition of asynchronous operations.
 
-Promise rejection events {#Promise_rejection_events}
-------------------------
+## Promise rejection events {#Promise_rejection_events}
 
 Whenever a promise is rejected, one of two events is sent to the global
 scope (generally, this is either the
@@ -356,11 +351,11 @@ or, if being used in a web worker, it's the
 or other worker-based interface). The two events are:
 
 [`rejectionhandled`](https://developer.mozilla.org/en-US/docs/Web/API/Window/rejectionhandled_event "The rejectionhandled event is sent to the script's global scope (usually window but also Worker) whenever a JavaScript Promise is rejected but after the promise rejection has been handled.")
-:   Sent when a promise is rejected, after that rejection has been
-    handled by the executor's `reject` function.
+: Sent when a promise is rejected, after that rejection has been
+handled by the executor's `reject` function.
 [`unhandledrejection`](https://developer.mozilla.org/en-US/docs/Web/API/Window/unhandledrejection_event "The unhandledrejection event is sent to the global scope of a script when a JavaScript Promise that has no rejection handler is rejected; typically, this is the window, but may also be a Worker.")
-:   Sent when a promise is rejected but there is no rejection handler
-    available.
+: Sent when a promise is rejected but there is no rejection handler
+available.
 
 In both cases, the event (of type
 [`PromiseRejectionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PromiseRejectionEvent "The PromiseRejectionEvent interface represents events which are sent to the global script context when JavaScript Promises are rejected."))
@@ -384,7 +379,7 @@ avoid having them cluttering up your output—by adding a handler for the
 [`unhandledrejection`](https://developer.mozilla.org/en-US/docs/Web/API/Window/unhandledrejection_event "The unhandledrejection event is sent to the global scope of a script when a JavaScript Promise that has no rejection handler is rejected; typically, this is the window, but may also be a Worker.")
 event, like this:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 window.addEventListener("unhandledrejection", event => {
   /* You might start here by adding code to examine the
      promise specified by event.promise and the reason in
@@ -405,8 +400,7 @@ Ideally, of course, you should examine the rejected promises to make
 sure none of them are actual code bugs before just discarding these
 events.
 
-Creating a Promise around an old callback API {#Creating_a_Promise_around_an_old_callback_API}
----------------------------------------------
+## Creating a Promise around an old callback API {#Creating_a_Promise_around_an_old_callback_API}
 
 A
 [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
@@ -419,7 +413,7 @@ callbacks to be passed in the old way. The most obvious example is the
 [`setTimeout()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout "The documentation about this has not yet been written; please consider contributing!")
 function:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 setTimeout(() => saySomething("10 seconds passed"), 10*1000);
 ```
 
@@ -431,7 +425,7 @@ Luckily we can wrap `setTimeout` in a promise. Best practice is to wrap
 problematic functions at the lowest possible level, and then never call
 them directly again:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 wait(10*1000).then(() => saySomething("10 seconds")).catch(failureCallback);
@@ -441,8 +435,7 @@ Basically, the promise constructor takes an executor function that lets
 us resolve or reject a promise manually. Since `setTimeout()` doesn't
 really fail, we left out reject in this case.
 
-Composition {#Composition}
------------
+## Composition {#Composition}
 
 [`Promise.resolve()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve)
 and
@@ -458,14 +451,14 @@ parallel.
 We can start operations in parallel and wait for them all to finish like
 this:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 Promise.all([func1(), func2(), func3()])
 .then(([result1, result2, result3]) => { /* use result1, result2 and result3 */ });
 ```
 
 Sequential composition is possible using some clever JavaScript:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 [func1, func2, func3].reduce((p, f) => p.then(f), Promise.resolve())
 .then(result3 => { /* use result3 */ });
 ```
@@ -477,7 +470,7 @@ promise chain equivalent to:
 This can be made into a reusable compose function, which is common in
 functional programming:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 const applyAsync = (acc,val) => acc.then(val);
 const composeAsync = (...funcs) => x => funcs.reduce(applyAsync, Promise.resolve(x));
 ```
@@ -486,7 +479,7 @@ The `composeAsync()` function will accept any number of functions as
 arguments, and will return a new function that accepts an initial value
 to be passed through the composition pipeline:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 const transformData = composeAsync(func1, func2, func3);
 const result3 = transformData(data);
 ```
@@ -494,7 +487,7 @@ const result3 = transformData(data);
 In ECMAScript 2017, sequential composition can be done more simply with
 async/await:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 let result;
 for (const f of [func1, func2, func3]) {
   result = await f(result);
@@ -502,13 +495,12 @@ for (const f of [func1, func2, func3]) {
 /* use last result (i.e. result3) */
 ```
 
-Timing {#Timing}
-------
+## Timing {#Timing}
 
 To avoid surprises, functions passed to `then()` will never be called
 synchronously, even with an already-resolved promise:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 Promise.resolve().then(() => console.log(2));
 console.log(1); // 1, 2
 ```
@@ -518,7 +510,7 @@ microtask queue, which means it runs later when the queue is emptied at
 the end of the current run of the JavaScript event loop, i.e. pretty
 soon:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 wait().then(() => console.log(4));
@@ -526,8 +518,7 @@ Promise.resolve().then(() => console.log(2)).then(() => console.log(3));
 console.log(1); // 1, 2, 3, 4
 ```
 
-Nesting {#Nesting}
--------
+## Nesting {#Nesting}
 
 Simple promise chains are best kept flat without nesting, as nesting can
 be a result of careless composition. See [common
@@ -538,7 +529,7 @@ Specifically, a nested `catch` only catches failures in its scope and
 below, not errors higher up in the chain outside the nested scope. When
 used correctly, this gives greater precision in error recovery:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 doSomethingCritical()
 .then(result => doSomethingOptional(result)
   .then(optionalResult => doSomethingExtraNice(optionalResult))
@@ -556,13 +547,12 @@ code resumes with `moreCriticalStuff()`. Importantly, if
 `doSomethingCritical()` fails, its error is caught by the final (outer)
 `catch` only.
 
-Common mistakes {#Common_mistakes}
----------------
+## Common mistakes {#Common_mistakes}
 
 Here are some common mistakes to watch out for when composing promise
 chains. Several of these mistakes manifest in the following example:
 
-``` {.brush: .js .example-bad .notranslate .line-numbers .language-js}
+```{.brush: .js .example-bad .notranslate .line-numbers .language-js}
 // Bad example! Spot 3 mistakes!
 
 doSomething().then(function(result) {
@@ -596,7 +586,7 @@ A good rule-of-thumb is to always either return or terminate promise
 chains, and as soon as you get a new promise, return it immediately, to
 flatten things:
 
-``` {.brush: .js .example-good .notranslate .line-numbers .language-js}
+```{.brush: .js .example-good .notranslate .line-numbers .language-js}
 doSomething()
 .then(function(result) {
   return doSomethingElse(result);
@@ -617,8 +607,7 @@ most common mistake with that syntax is forgetting the
 [`await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
 keyword.
 
-When promises and tasks collide {#When_promises_and_tasks_collide}
--------------------------------
+## When promises and tasks collide {#When_promises_and_tasks_collide}
 
 If you run into situations in which you have promises and tasks (such as
 events or callbacks) which are firing in unpredictable orders, it's
@@ -631,21 +620,20 @@ to learn more about how to use
 [`queueMicrotask()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/queueMicrotask "The queueMicrotask() method, which is exposed on the Window or Worker interface, queues a microtask to be executed at a safe time prior to control returning to the browser's event loop.")
 to enqueue a function as a microtask.
 
-See also {#See_also}
---------
+## See also {#See_also}
 
--   [`Promise.then()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)
--   [`async`/`await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) 
--   [Promises/A+ specification](http://promisesaplus.com/)
--   [Venkatraman.R - JS Promise (Part 1,
-    Basics)](https://medium.com/@ramsunvtech/promises-of-promise-part-1-53f769245a53)
--   [Venkatraman.R - JS Promise (Part 2 - Using Q.js, When.js and
-    RSVP.js)](https://medium.com/@ramsunvtech/js-promise-part-2-q-js-when-js-and-rsvp-js-af596232525c#.dzlqh6ski)
--   [Venkatraman.R - Tools for Promises
-    Unit Testing](https://tech.io/playgrounds/11107/tools-for-promises-unittesting/introduction)
--   [Nolan Lawson: We have a problem with promises — Common mistakes
-    with
-    promises](http://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html)
+- [`Promise.then()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)
+- [`async`/`await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
+- [Promises/A+ specification](http://promisesaplus.com/)
+- [Venkatraman.R - JS Promise (Part 1,
+  Basics)](https://medium.com/@ramsunvtech/promises-of-promise-part-1-53f769245a53)
+- [Venkatraman.R - JS Promise (Part 2 - Using Q.js, When.js and
+  RSVP.js)](https://medium.com/@ramsunvtech/js-promise-part-2-q-js-when-js-and-rsvp-js-af596232525c#.dzlqh6ski)
+- [Venkatraman.R - Tools for Promises
+  Unit Testing](https://tech.io/playgrounds/11107/tools-for-promises-unittesting/introduction)
+- [Nolan Lawson: We have a problem with promises — Common mistakes
+  with
+  promises](http://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html)
 
 [«
 Previous](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Details_of_the_Object_Model)[Next
@@ -653,14 +641,15 @@ Previous](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Details_
 
 #### Metadata
 
--   **Last modified:** Jul 20, 2020, [by MDN
-    contributors](https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises$history)
+- **Last modified:** Jul 20, 2020, [by MDN
+  contributors](https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises$history)
 
 Related Topics
 
-1.  [***JavaScript***](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+1.  [**_JavaScript_**](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 2.  [**Tutorials:**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Tutorials)
 3.  Complete beginners
+
     1.  [JavaScript
         basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics)
     2.  [JavaScript first
@@ -671,6 +660,7 @@ Related Topics
         objects](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects)
 
 4.  JavaScript Guide
+
     1.  [Introduction](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Introduction)
     2.  [Grammar and
         types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_Types)
@@ -705,6 +695,7 @@ Related Topics
         modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
 
 5.  Intermediate
+
     1.  [Client-side JavaScript
         frameworks](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks)
     2.  [Client-side web
@@ -718,6 +709,7 @@ Related Topics
     6.  [Closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 
 6.  Advanced
+
     1.  [Inheritance and the prototype
         chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
     2.  [Strict
@@ -731,7 +723,8 @@ Related Topics
 
 7.  **[References:](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)**
 8.  Built-in objects
-    1.  **[AggregateError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AggregateError "The AggregateError object represents an error when several errors need to be wrapped in a single error. It is thrown when multiple errors need to be reported by an operation, for example by Promise.any(), when all promises passed to it reject.")
+
+    1.  \*\*[AggregateError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AggregateError "The AggregateError object represents an error when several errors need to be wrapped in a single error. It is thrown when multiple errors need to be reported by an operation, for example by Promise.any(), when all promises passed to it reject.")
     2.  [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array "The JavaScript Array class is a global object that is used in the construction of arrays; which are high-level, list-like objects.")
     3.  [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer "The ArrayBuffer object is used to represent a generic, fixed-length raw binary data buffer.")
     4.  [AsyncFunction](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncFunction "The AsyncFunction constructor creates a new async function object. In JavaScript, every asynchronous function is actually an AsyncFunction object.")
@@ -788,7 +781,7 @@ Related Topics
     55. [decodeURIComponent()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent "The decodeURIComponent() function decodes a Uniform Resource Identifier (URI) component previously created by encodeURIComponent or by a similar routine.")
     56. [encodeURI()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI "The encodeURI() function encodes a URI by replacing each instance of certain characters by one, two, three, or four escape sequences representing the UTF-8 encoding of the character (will only be four escape sequences for characters composed of two "surrogate" characters).")
     57. [encodeURIComponent()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent "The encodeURIComponent() function encodes a URI by replacing each instance of certain characters by one, two, three, or four escape sequences representing the UTF-8 encoding of the character (will only be four escape sequences for characters composed of two "surrogate" characters).")
-    58. **[escape()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/escape "The escape() function computes a new string in which certain characters have been replaced by a hexadecimal escape sequence.")
+    58. \*\*[escape()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/escape "The escape() function computes a new string in which certain characters have been replaced by a hexadecimal escape sequence.")
     59. [eval()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval "The eval() function evaluates JavaScript code represented as a string.")
     60. [globalThis](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis "The global globalThis property contains the global this value, which is akin to the global object.")
     61. [isFinite()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isFinite "The global isFinite() function determines whether the passed value is a finite number. If  needed, the parameter is first converted to a number.")
@@ -797,10 +790,11 @@ Related Topics
     64. [parseFloat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseFloat "The parseFloat() function parses an argument (converting it to a string first if needed) and returns a floating point number.")
     65. [parseInt()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt "The parseInt() function parses a string argument and returns an integer of the specified radix (the base in mathematical numeral systems).")
     66. [undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined "The global undefined property represents the primitive value <undefined. It is one of JavaScript's primitive types.")
-    67. **[unescape()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/unescape "The unescape() function computes a new string in which hexadecimal escape sequences are replaced with the character that it represents. The escape sequences might be introduced by a function like escape. Usually, decodeURI or decodeURIComponent are preferred over unescape.")
-    68. **[uneval()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/uneval "The uneval() function creates a string representation of the source code of an Object.")
+    67. \*\*[unescape()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/unescape "The unescape() function computes a new string in which hexadecimal escape sequences are replaced with the character that it represents. The escape sequences might be introduced by a function like escape. Usually, decodeURI or decodeURIComponent are preferred over unescape.")
+    68. \*\*[uneval()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/uneval "The uneval() function creates a string representation of the source code of an Object.")
 
 9.  Expressions & operators
+
     1.  [Addition
         (+)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Addition "The addition operator (+) produces the sum of numeric operands or string concatenation.")
     2.  [Addition assignment
@@ -883,7 +877,7 @@ Related Topics
         precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence "Operator precedence determines how operators are parsed concerning each other. Operators with higher precedence become the operands of operators with lower precedence.")
     41. [Optional chaining
         (?.)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining "The ?. operator functions similarly to the . chaining operator, except that instead of causing an error if a reference is nullish (null or undefined), the expression short-circuits with a return value of undefined.")
-    42. **[Pipeline operator
+    42. \*\*[Pipeline operator
         (|\>)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Pipeline_operator "The experimental pipeline operator |> (currently at stage 1) pipes the value of an expression into a function. This allows the creation of chained function calls in a readable manner. The result is syntactic sugar in which a function call with a single argument can be written like this:")
     43. [Property
         accessors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors "Property accessors provide access to an object's properties by using the dot notation or the bracket notation.")
@@ -937,6 +931,7 @@ Related Topics
     71. [yield\*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield* "The yield* expression is used to delegate to another generator or iterable object.")
 
 10. Statements & declarations
+
     1.  [async
         function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function "An async function is a function declared with the async keyword. Async functions are instances of the AsyncFunction constructor, and the await keyword is permitted within them. The async and await keywords enable asynchronous, promise-based behavior to be written in a cleaner style, avoiding the need to explicitly configure promise chains.")
     2.  [block](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/block "A block statement (or compound statement in other languages) is used to group zero or more statements. The block is delimited by a pair of braces ("curly brackets") and may optionally be labelled:")
@@ -967,9 +962,10 @@ Related Topics
     25. [try...catch](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch "The try...catch statement marks a block of statements to try and specifies a response should an exception be thrown.")
     26. [var](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var "The var statement declares a function-scoped or globally-scoped variable, optionally initializing it to a value.")
     27. [while](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while "The while statement creates a loop that executes a specified statement as long as the test condition evaluates to true. The condition is evaluated before executing the statement.")
-    28. **[with](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with "The with statement extends the scope chain for a statement.")
+    28. \*\*[with](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with "The with statement extends the scope chain for a statement.")
 
 11. Functions
+
     1.  [Arrow function
         expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions "An arrow function expression is a syntactically compact alternative to a regular function expression, although without its own bindings to the this, arguments, super, or new.target keywords. Arrow function expressions are ill suited as methods, and they cannot be used as constructors.")
     2.  [Default
@@ -984,6 +980,7 @@ Related Topics
     7.  [setter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set "The set syntax binds an object property to a function to be called when there is an attempt to set that property.")
 
 12. Classes
+
     1.  [Private class
         fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields "Class properties are public by default and can be examined or modified outside the class. In ES2019, the ability to define private class fields using a hash # prefix is added.")
     2.  [Public class
@@ -993,6 +990,7 @@ Related Topics
     5.  [static](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static "The static keyword defines a static method for a class. Static methods aren't called on instances of the class. Instead, they're called on the class itself.")
 
 13. Errors
+
     1.  [Error: Permission denied to access property
         "x"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Property_access_denied "The JavaScript exception "Permission denied to access property" occurs when there was an attempt to access an object for which you have no permission.")
     2.  [InternalError: too much
@@ -1051,7 +1049,7 @@ Related Topics
     26. [SyntaxError: function statement requires a
         name](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Unnamed_function_statement "The JavaScript exception "function statement requires a name" occurs when there is a function statement in the code that requires a name.")
     27. [SyntaxError: identifier starts immediately after numeric
-        literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Identifier_after_number "The JavaScript exception "identifier starts immediately after numeric literal" occurs when an identifier started with a digit. Identifiers can only start with a letter, underscore (_), or dollar sign ($).")
+        literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Identifier_after_number "The JavaScript exception "identifier starts immediately after numeric literal" occurs when an identifier started with a digit. Identifiers can only start with a letter, underscore (\_), or dollar sign ($).")
     28. [SyntaxError: illegal
         character](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Illegal_character "The JavaScript exception "illegal character" occurs when there is an invalid or unexpected token that doesn't belong at this position in the code.")
     29. [SyntaxError: invalid regular expression flag
@@ -1174,8 +1172,7 @@ Related Topics
     9.  [Deprecated
         features](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Deprecated_and_obsolete_features)
 
-Learn the best of web development {.newsletter-teaser}
----------------------------------
+## Learn the best of web development {.newsletter-teaser}
 
 Get the latest and greatest from MDN delivered straight to your inbox.
 
@@ -1192,37 +1189,36 @@ Hide Newsletter Sign-up
 
 [MDN Web Docs](https://developer.mozilla.org/en-US/)
 
--   [Web Technologies](https://developer.mozilla.org/en-US/docs/Web)
--   [Learn Web
-    Development](https://developer.mozilla.org/en-US/docs/Learn)
--   [About MDN](https://developer.mozilla.org/en-US/docs/MDN/About)
--   [Feedback](https://developer.mozilla.org/en-US/docs/MDN/Feedback)
+- [Web Technologies](https://developer.mozilla.org/en-US/docs/Web)
+- [Learn Web
+  Development](https://developer.mozilla.org/en-US/docs/Learn)
+- [About MDN](https://developer.mozilla.org/en-US/docs/MDN/About)
+- [Feedback](https://developer.mozilla.org/en-US/docs/MDN/Feedback)
 
--   [About](https://www.mozilla.org/about/)
--   [MDN Web Docs Store](https://shop.spreadshirt.com/mdn-store/)
--   [Contact Us](https://www.mozilla.org/contact/)
--   [Firefox](https://www.mozilla.org/firefox/?utm_source=developer.mozilla.org&utm_campaign=footer&utm_medium=referral)
+- [About](https://www.mozilla.org/about/)
+- [MDN Web Docs Store](https://shop.spreadshirt.com/mdn-store/)
+- [Contact Us](https://www.mozilla.org/contact/)
+- [Firefox](https://www.mozilla.org/firefox/?utm_source=developer.mozilla.org&utm_campaign=footer&utm_medium=referral)
 
 #### MDN
 
--   [](https://twitter.com/mozdevnet)
--   [](https://github.com/mdn/)
+- [](https://twitter.com/mozdevnet)
+- [](https://github.com/mdn/)
 
 #### Mozilla
 
--   [](https://twitter.com/mozilla)
--   [](https://www.instagram.com/mozillagram/)
+- [](https://twitter.com/mozilla)
+- [](https://www.instagram.com/mozillagram/)
 
 © 2005-2020 Mozilla and individual contributors. Content is available
 under [these
 licenses](https://developer.mozilla.org/docs/MDN/About#Copyrights_and_licenses).
 
--   [Terms](https://www.mozilla.org/about/legal/terms/mozilla)
--   [Privacy](https://www.mozilla.org/privacy/websites/)
--   [Cookies](https://www.mozilla.org/privacy/websites/#cookies)
+- [Terms](https://www.mozilla.org/about/legal/terms/mozilla)
+- [Privacy](https://www.mozilla.org/privacy/websites/)
+- [Cookies](https://www.mozilla.org/privacy/websites/#cookies)
 
-Sign In {#modal-main-heading}
--------
+## Sign In {#modal-main-heading}
 
 Sign in to enjoy the benefits of an MDN account. If you haven’t already
 created an account, you will be prompted to do so after signing in.

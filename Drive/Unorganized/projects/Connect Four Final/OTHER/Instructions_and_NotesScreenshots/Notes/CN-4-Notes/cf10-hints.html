@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>cf10-hints</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="hints-for-save-game-state-to-survive-page-refreshes">Hints For Save Game State To Survive Page Refreshes</h1>
+<p>The hardest part about this is figuring out how to model the data to store. In the past, you were able to just plop down whatever data you saved and go with it. Now that you have proper objects with behavior (methods, that is, methods and constructors), you should interact with the object through those constructors and methods rather than trying to access data directly in it. That breaks the Law of Demeter and leads to brittle serializers and deserializers.</p>
+<p>Here are two ways that solve the problem of saving the game state.</p>
+<h2 id="the-algorithmic-way">The algorithmic way</h2>
+<p>This way preserves the Law of Demeter.</p>
+<p>The strategy for this is that you have to come up with a way to restore the board using only the methods that allow someone to play the game. This means that restoring the board should mimic what happens when players play the tokens.</p>
+<p>For what it’s worth, it doesn’t have to be in <em>the exact order</em> in which the tokens were originally played. As long as the board state remains the same, then you are ok. That’s why you can use the following algorithm to generate a list of column indexes that will restore the board based on the alternation of current players found in the <code>Game</code> class.</p>
+<ul>
+<li>Create an array of seven fives called <code>currentIndexes</code>. These will be the tokens to inspect.</li>
+<li>Create an empty list (array) called <code>instructions</code> to hold the column indexes that you will serialize.</li>
+<li>Initialize the <code>valueToLookFor</code> variable to <code>1</code></li>
+<li>Initialize the <code>columnIndex</code> loop at 0
+<ul>
+<li>Get the value out of <code>currentIndexes</code> and call it the <code>rowIndex</code>.</li>
+<li>Get the token value for <code>rowIndex</code> of the column at <code>columnIndex</code>.</li>
+<li>If the token value is the <code>valueToLookFor</code>:
+<ul>
+<li>Push the value of <code>columnIndex</code> onto the <code>instructions</code> array.</li>
+<li>Change the <code>valueToLookFor</code> from <code>1</code> to <code>2</code>, or <code>2</code> to <code>1</code>.</li>
+<li>Add one to the value in <code>currentIndexes</code> at <code>columnIndex</code>.</li>
+<li>Set the <code>columnIndex</code> back to 0 and loop</li>
+</ul></li>
+<li>Otherwise, increment the value of <code>columnIndex</code> and loop</li>
+</ul></li>
+</ul>
+<p>Or…</p>
+<h2 id="the-brute-force-method">The brute force method</h2>
+<p>This way does not preserve the Law of Demeter, but is much easier to implement.</p>
+<p>Create a method called <code>boardToArray</code> on the <code>Game</code> class. Use it to convert the state of the columns into an array that contains seven arrays of six entries each. Each entry in the outer array is a column.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">[</a>
+<a class="sourceLine" id="cb1-2" title="2">  [<span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span>]<span class="op">,</span> <span class="co">// Column 1</span></a>
+<a class="sourceLine" id="cb1-3" title="3">  [<span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span>]<span class="op">,</span> <span class="co">// Column 2</span></a>
+<a class="sourceLine" id="cb1-4" title="4">  [<span class="dv">1</span><span class="op">,</span>    <span class="dv">1</span><span class="op">,</span>    <span class="dv">1</span><span class="op">,</span>    <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span>]<span class="op">,</span> <span class="co">// Column 3</span></a>
+<a class="sourceLine" id="cb1-5" title="5">  [<span class="dv">2</span><span class="op">,</span>    <span class="dv">2</span><span class="op">,</span>    <span class="dv">2</span><span class="op">,</span>    <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span>]<span class="op">,</span> <span class="co">// Column 4</span></a>
+<a class="sourceLine" id="cb1-6" title="6">  [<span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span>]<span class="op">,</span> <span class="co">// Column 5</span></a>
+<a class="sourceLine" id="cb1-7" title="7">  [<span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span>]<span class="op">,</span> <span class="co">// Column 6</span></a>
+<a class="sourceLine" id="cb1-8" title="8">  [<span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="kw">null</span>]<span class="op">,</span> <span class="co">// Column 7</span></a>
+<a class="sourceLine" id="cb1-9" title="9">]</a></code></pre></div>
+<p>Create a method on the <code>Column</code> class called <code>restore</code>. Make is accept six values to restore the contents of its state.</p>
+<p>Create a method on <code>Game</code> called <code>arraysToBoard</code> which takes that kind of array and restores each <code>Column</code> to its state by passing the corresponding array to the <code>restore</code> method.</p>
+<p>The reason this is the less favorable method is because you changed the code classes to respond to serialization and deserialization, which breaks the Law of Demeter. Sometimes, for the sake of expedience, you must make this choice. However, if you can avoid it, it is recommended that you should not make choices for expedience.</p>
+</body>
+</html>

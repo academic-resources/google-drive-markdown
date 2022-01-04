@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>video_notes</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<h1 id="video-1---intro-to-built-in-node-packages">VIDEO 1 - INTRO TO BUILT-IN NODE PACKAGES</h1>
+<p>Packages and objects of interest - Console: the console object - File System: reading and writing files - Path: manipulating file paths - Process: object representing the running program - Readline: reading data from somewhere (like a file) line by line</p>
+<h2 id="console-methods">Console Methods</h2>
+<p>console.log - prints to terminal - comes out on STDOUT steam - can be directed elsewhere (<code>node console.js &gt; output.txt</code>)</p>
+<p>console.log - prints to terminal - comes out on STDERR stream</p>
+<h2 id="file-system-methods">File System Methods</h2>
+<p>Requiring Packages - <code>const packageName = require("packageName")</code>; - can name variable whatever you want</p>
+<p>Methods: <code>fs.appendFile(fileName, content, errorHandler)</code> - fileName: path to / name of file you want to create - content: content of file - errorHandler: callback that handles any errors</p>
+<p>Methods: <code>fs.readFile(pathToFile, contentType, errorHandler)</code> - pathToFile: path to file you want to read - contentType: type of data in file - callback: callback that is invoked after file is read - two args: error and data that was read</p>
+<p>Methods: <code>fs.readdir(dirName, callback)</code> - reads files in directory</p>
+<ul>
+<li>NOTE: THESE METHODS ARE ASYNC
+<ul>
+<li>callbacks invoked in order of completion</li>
+</ul></li>
+</ul>
+<p>Method: <code>fs.createReadStream(pathTofile, dataType);</code></p>
+<h2 id="path">PATH</h2>
+<p><code>__dirname</code> - global var that contains directory name of current files path - “dunder dirname”</p>
+<h2 id="process">PROCESS</h2>
+<p>process.argv - returns all args typed into command line - <code>node process.js</code> - <code>node process.js arg3 arg4</code></p>
+<p>process.cwd() - returns directory from where you ran executible</p>
+<p>process.exit() - exits program - can provide exit code, defualt is 0 (success)</p>
+<h2 id="readline">READLINE</h2>
+<ul>
+<li>SEE CODE</li>
+</ul>
+<h1 id="video-2---intro-to-npm">VIDEO 2 - INTRO TO NPM</h1>
+<p>Overview - NPM: default package manager for JavaScript runtime environment, Node.js - consists of: 1. CLI tool (ex: <code>npm init</code>, <code>npm install</code>) 2. online database of public &amp; paid-for packages</p>
+<p>File Structure - npm requirements must be at root level of application - files: 1. <code>package.json</code> - metadata: name of app, version, author - scripts: automate tasks - dependencies: packages app relies on - safe to edit! 2. <code>package-lock.json</code> - contains exact details about installed dependencies (versions, etc) - represents an exact, reproducible npm environment - specifying versions ensures each user recieves exact same package - dont edit this! 3. <code>node_modules</code> - contains subdir for each dependency - includes dependenciees of dependencies - contains every package you should need - dont include in version control (gitignore)</p>
+<h1 id="video-3---ignoring-things-in-git">VIDEO 3 - IGNORING THINGS IN GIT</h1>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>cf10_saving-game-state</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<h1 id="bonus-save-game-state-to-survive-page-refreshes">Bonus: Save Game State To Survive Page Refreshes</h1>
+<p>To do this, you need a way to save the state of a <code>Game</code> into local storage and, then, a way to get it out. Sounds like a job for a <code>GameJsonSerializer</code> class and a <code>GameJsonDeserializer</code> class!</p>
+<p>You may need to change the <code>Game</code> class to serialize and deserialize with respect to the instructions below. Feel free to do that! This is your code, after all.</p>
+<h2 id="the-serializer">The serializer</h2>
+<p>In this case, you want to turn the game into a a JSON string that you can use to save into local storage. To do that, create and export a <code>GameJsonSerializer</code> class. Have its constructor take a <code>Game</code> object. Here’s the hard part: you have to get the data out and store it in a way that you can put it back into a <code>Game</code> object using only the methods and properties available to you, namely:</p>
+<ul>
+<li><code>getTokenAt(rowIndex, columnIndex)</code></li>
+<li><code>player1Name</code></li>
+<li><code>player2Name</code></li>
+<li><code>playInColumn(columnIndex)</code></li>
+</ul>
+<p>The serializer should not mess around with the <code>columns</code> array because those are <code>Column</code> objects in there and, by the Law of Demeter, the serializer should only talk directly to the <code>Game</code> object.</p>
+<p>Once you figure out how to organize your data, create a <code>serialize</code> method on the <code>GameJsonSerializer</code>, have it build the data, <code>JSON.stringify</code> it, and return that string.</p>
+<h2 id="the-deserializer">The deserializer</h2>
+<p>In this case, you have the JSON string, and you want to create a <code>Game</code> object from it. To do this, you should declare and export a class named <code>GameJsonDeserializer</code> which has a constructor that accepts the JSON string. It should have a <code>deserialize</code> method that calls <code>JSON.parse</code> on the JSON string. Then, it should create a new instance of the <code>Game</code> class and pass in the save player names to the constructor. Then, using the <code>playInColumn</code> method, you need to restore the state of the board. Once you’ve done that, return that configured <code>Game</code> object.</p>
+<h2 id="hooking-them-up">Hooking them up</h2>
+<p>Now that you have those, in your <strong>connect-four.js</strong>, you should use the <code>GameJsonSerializer</code> at the end of the handler for the click targets. Create a new serializer by passing in the <code>Game</code> object into its constructor, call serialize on it, and save the returned string into local storage.</p>
+<p>You should use the <code>GameJsonDeserializer</code> as the last line of the “DOMContentLoaded” handler. It should read a value from local storage and, if that value’s not <code>null</code>, then create an instance of the deserializer and pass the string into its constructor. Call the <code>deserialize</code> method and set the global <code>game</code> variable to the return value. Then, call <code>updateUI</code> because you now have a game!</p>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>lecture_notes</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="overview">OVERVIEW</h1>
+<p>What is OOP - approach for breaking down large, complex products into siimple solutions - smaller parts can be implemented and tested separately - results in higher confidence in overall solution - makes it easier to pinpoint issues with code</p>
+<p>The Big Picture - group data and related actions / behaviors together - treat as single entity within a larger system</p>
+<p>The PROBLEM - designing a program where people can adopt animals - we can break this program into smaller, manageable parts - each part has a specific responsibility - can test each part individually - if each part works, the program should work as a whole</p>
+<ul>
+<li>WHAT ARE STEPS WE CAN TAKE TO DESIGN OUR APPLICATION</li>
+</ul>
+<p>STEP 1: Identify Potential classes - <code>Class User</code> - responsible for keeping track of user props/behavior - <code>Class Dog</code><br />
+- responsible for keeping track of dog props/behavior - <code>Class Cat</code><br />
+- responsible for keeping track of cat props/behavior - <code>Class Animal</code> - dogs and cats have many similar props/behavior - can group those shared behaviors into a parent class - <code>Class Adoption</code> - responsible for keeping track of user/animal interactions - <code>Class AnimalShelter</code> - responsible for keeping track of aggregate dog/cat info - responsible for keeping track of adoptions</p>
+<p>STEP 2: Specify Propreties and Methods for each class - <code>Class User</code> - props: name, currentPets, age - methods: adoptAnimal - <code>Class Dog</code> - props: isHousetrained, learnedTricks, animalFriendly - methods: bark, learnNewTrick - <code>Class Cat</code> - methods: meow - <code>Class Animal</code> - props: name, age, breed - methods: speak - <code>Class Adoption</code> - props: user, animal - methods: validateAdoption - <code>Class AnimalShelter</code> - props: currentAnimals, maxCapacity, adoptions - methods: acceptNewAnimal, createAdoption</p>
+<p>STEP 3 - Define Relationships - <code>Class Dog</code> extends <code>Class Animal</code> - <code>Class Cat</code> extends <code>Class Animal</code> - currentPets property of <code>Class User</code> contains instances of <code>Cat</code> &amp; <code>Dog</code> - currentAnimals property of <code>Class AnimalShelter</code> contains instances of <code>Cat</code> &amp; <code>Dog</code> - adoptions property of <code>Class AnimalShelter</code> contains instances of <code>Adoption</code> - user property of <code>Class Adoption</code> contains an instance of <code>User</code> - animal property of <code>Class Adoption</code> contains instance of <code>Cat</code> or <code>Dog</code></p>
+<ul>
+<li>NOTE: FOR REST OF DEMO WE WILL FOCUS ON DOG, CAT, AND ANIMAL CLASSES</li>
+</ul>
+<h1 id="constructor-functions-constructor_funcs.js">CONSTRUCTOR FUNCTIONS : constructor_funcs.js</h1>
+<p>creating objects using literal notation - all we’ve done up until this point - attributes of “Cat” object representeed by obj literal’s keys</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">// OBJECT LITERAL NOTATION</span></a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">let</span> dog <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-5" title="5">    <span class="dt">name</span><span class="op">:</span> <span class="st">&#39;Bodhi&#39;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="dt">bark</span><span class="op">:</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-7" title="7">        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;bark bark&#39;</span>)</a>
+<a class="sourceLine" id="cb1-8" title="8">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="op">}</span></a>
+<a class="sourceLine" id="cb1-10" title="10"></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="va">dog</span>.<span class="at">bark</span>()<span class="op">;</span> <span class="co">// bark bark </span></a></code></pre></div>
+<p>creating objects using constructor function - “factory” for creating objects of a specific type - calling a constructor function returns new object - attributes initialized to provided argument values - can access attribute using dot notation</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="co">// CONSTRUCTOR FUNCTIONS</span></a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4"></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="kw">function</span> <span class="at">Dog</span> (name) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-6" title="6">    <span class="kw">this</span>.<span class="at">name</span> <span class="op">=</span> name<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-7" title="7">    <span class="va">console</span>.<span class="at">log</span>(<span class="kw">this</span>)</a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-9" title="9"></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="kw">let</span> bodhi <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&#39;bodhi&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="kw">let</span> lucy <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&#39;lucy&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-12" title="12"></a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="va">console</span>.<span class="at">log</span>(bodhi)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="va">console</span>.<span class="at">log</span>(lucy)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-15" title="15"></a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="va">console</span>.<span class="at">log</span>(<span class="va">bodhi</span>.<span class="at">name</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-17" title="17"><span class="va">console</span>.<span class="at">log</span>(<span class="va">lucy</span>.<span class="at">name</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-18" title="18"></a>
+<a class="sourceLine" id="cb2-19" title="19"></a></code></pre></div>
+<p>Notice anything weird about this function? 1. name is capitalized to help distinguish func as a constructor 2. function doesn’t explicitely return a value 3. “this” references newly created object inside constructor func - more on this in a minute 4. function invoked with <code>new</code> keyword</p>
+<p>Prototypes - every function we define comes with a property called <code>prototype</code> - allows us to define shareable methods across all instances</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="co">// PROTOTYPE PROPERTY</span></a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4"></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="co">// when Dog function is declared:</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">// - default property named `prototype` is created</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="co">// - `Dog.prototype` is an object we can define shareable methods on</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="co">// - basically a blueprint for future Dog instances</span></a>
+<a class="sourceLine" id="cb3-9" title="9"></a>
+<a class="sourceLine" id="cb3-10" title="10"></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="kw">function</span> <span class="at">Dog</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-12" title="12"></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="op">}</span></a>
+<a class="sourceLine" id="cb3-14" title="14"></a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="va">console</span>.<span class="at">log</span>(Dog)<span class="op">;</span> <span class="co">// [Function: Dog]</span></a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="va">console</span>.<span class="at">log</span>(<span class="va">Dog</span>.<span class="at">prototype</span>)<span class="op">;</span> <span class="co">// Dog {}</span></a>
+<a class="sourceLine" id="cb3-17" title="17"><span class="va">console</span>.<span class="at">log</span>(<span class="va">Dog</span>.<span class="va">prototype</span>.<span class="at">constructor</span> <span class="op">===</span> Dog) <span class="co">// true</span></a>
+<a class="sourceLine" id="cb3-18" title="18"></a>
+<a class="sourceLine" id="cb3-19" title="19"></a>
+<a class="sourceLine" id="cb3-20" title="20"><span class="co">// can use Dog.prototype to define shareable properties</span></a>
+<a class="sourceLine" id="cb3-21" title="21"><span class="co">// - attributes defined on prototypes will be available to all instances</span></a>
+<a class="sourceLine" id="cb3-22" title="22"><span class="co">// - note: you wouldnt hardcode like this</span></a>
+<a class="sourceLine" id="cb3-23" title="23"></a>
+<a class="sourceLine" id="cb3-24" title="24"><span class="va">Dog</span>.<span class="va">prototype</span>.<span class="at">name</span> <span class="op">=</span> <span class="st">&#39;bodhi&#39;</span></a>
+<a class="sourceLine" id="cb3-25" title="25"><span class="va">console</span>.<span class="at">log</span>(<span class="va">Dog</span>.<span class="at">prototype</span>)<span class="op">;</span> <span class="co">// Dog { name: &#39;bodhi&#39; }</span></a></code></pre></div>
+<p>In order to give instances of function access to prototype - invoke function with new keyword</p>
+<p>What happens when function invoked with NEW 1. an new empty object is created using <code>Object.create</code> - i.e <code>Object.create(Dog.prototype)</code> - delegates failed lookups to constructor funcs prototype 2. newly created object is named <code>this</code> 3. newly created object is returned</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"></a>
+<a class="sourceLine" id="cb4-2" title="2"></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">// USING NEW KEYWORD</span></a>
+<a class="sourceLine" id="cb4-4" title="4"></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="co">// wouldnt make sense to define a name property on prototype</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">// - can pass values to constructor function</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="co">// - assign those values to newly created object</span></a>
+<a class="sourceLine" id="cb4-8" title="8"></a>
+<a class="sourceLine" id="cb4-9" title="9"></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="co">// commented out code occurs under the hood</span></a>
+<a class="sourceLine" id="cb4-11" title="11"></a>
+<a class="sourceLine" id="cb4-12" title="12"><span class="kw">function</span> <span class="at">Dog</span>(name) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-13" title="13">    <span class="co">// 1: const this = Object.create(Dog.prototype);</span></a>
+<a class="sourceLine" id="cb4-14" title="14"></a>
+<a class="sourceLine" id="cb4-15" title="15">    <span class="va">console</span>.<span class="at">log</span>(<span class="kw">this</span>) <span class="co">// Dog {}</span></a>
+<a class="sourceLine" id="cb4-16" title="16"></a>
+<a class="sourceLine" id="cb4-17" title="17">    <span class="kw">this</span>.<span class="at">name</span> <span class="op">=</span> name<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-18" title="18"></a>
+<a class="sourceLine" id="cb4-19" title="19">    <span class="va">console</span>.<span class="at">log</span>(<span class="kw">this</span>) <span class="co">// Dog { name: &#39;bodhi&#39; }</span></a>
+<a class="sourceLine" id="cb4-20" title="20"></a>
+<a class="sourceLine" id="cb4-21" title="21">    <span class="co">// 2: return this;</span></a>
+<a class="sourceLine" id="cb4-22" title="22"><span class="op">}</span></a>
+<a class="sourceLine" id="cb4-23" title="23"></a>
+<a class="sourceLine" id="cb4-24" title="24"><span class="co">// newly created object inherits all properties from `Dog.prototype`</span></a>
+<a class="sourceLine" id="cb4-25" title="25"></a>
+<a class="sourceLine" id="cb4-26" title="26"><span class="kw">let</span> bodhi <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&#39;bodhi&#39;</span>)</a>
+<a class="sourceLine" id="cb4-27" title="27"><span class="va">console</span>.<span class="at">log</span>(bodhi) <span class="co">// Dog { name: &#39;bodhi&#39; }</span></a>
+<a class="sourceLine" id="cb4-28" title="28"><span class="va">console</span>.<span class="at">log</span>(<span class="va">bodhi</span>.<span class="at">name</span>) <span class="co">// &#39;bodhi&#39;</span></a></code></pre></div>
+<p>invoking a constructor without the <code>new</code> keyword - no object is created - in strict mode: <code>this</code> will be undefined -&gt; error - in non-strict mode: <code>this</code> will be global object</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">function</span> <span class="at">Dog</span> (name<span class="op">,</span> age) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">    <span class="cf">if</span> (<span class="op">!</span>(<span class="kw">this</span> <span class="kw">instanceof</span> Dog)) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-3" title="3">        <span class="cf">throw</span> <span class="kw">new</span> <span class="at">Error</span> (<span class="st">&#39;Dog must be called with new keyword&#39;</span>)</a>
+<a class="sourceLine" id="cb5-4" title="4">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb5-5" title="5">    <span class="kw">this</span>.<span class="at">name</span> <span class="op">=</span> name<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-6" title="6">    <span class="kw">this</span>.<span class="at">age</span> <span class="op">=</span> age<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="op">}</span></a></code></pre></div>
+<h1 id="defining-shareable-methods-shareable_methods.js">DEFINING SHAREABLE METHODS : shareable_methods.js</h1>
+<p>DONT define methods within constructor func - inefficient in terms of computer memory usage - each instance would have its own method definition - 100 instances = 100 of the same method definitions</p>
+<p>DO use Prototype - property of a class constructor - reference to object that contians common attributes/properties across all instances - specifies the object from which object inherits from - “blueprint” for isntances of class</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="co">// DEFINING SHAREABLE METHODS - THE RIGHT WAY</span></a>
+<a class="sourceLine" id="cb6-3" title="3"></a>
+<a class="sourceLine" id="cb6-4" title="4"></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="kw">function</span> <span class="at">Dog</span>(name<span class="op">,</span> age) <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-6" title="6">  <span class="kw">this</span>.<span class="at">name</span> <span class="op">=</span> name<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-7" title="7">  <span class="kw">this</span>.<span class="at">age</span> <span class="op">=</span> age<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="op">}</span></a>
+<a class="sourceLine" id="cb6-9" title="9"></a>
+<a class="sourceLine" id="cb6-10" title="10"></a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="co">// add shared method Dog#speak to prototype</span></a>
+<a class="sourceLine" id="cb6-12" title="12"><span class="va">Dog</span>.<span class="va">prototype</span>.<span class="at">speak</span> <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-13" title="13">    <span class="va">console</span>.<span class="at">log</span>(<span class="vs">`hi my name is </span><span class="sc">${</span><span class="kw">this</span>.<span class="at">name</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-14" title="14"><span class="op">}</span></a>
+<a class="sourceLine" id="cb6-15" title="15"></a>
+<a class="sourceLine" id="cb6-16" title="16"><span class="co">// add shared method Dog#bark to prototype</span></a>
+<a class="sourceLine" id="cb6-17" title="17"><span class="va">Dog</span>.<span class="va">prototype</span>.<span class="at">bark</span> <span class="op">=</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-18" title="18">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;bark bark bark&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-19" title="19"><span class="op">};</span></a>
+<a class="sourceLine" id="cb6-20" title="20"></a>
+<a class="sourceLine" id="cb6-21" title="21"><span class="co">// newly created object inherits all properties from Dog.prototype</span></a>
+<a class="sourceLine" id="cb6-22" title="22"><span class="kw">let</span> bodhi <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&quot;bodhi&quot;</span><span class="op">,</span> <span class="dv">5</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-23" title="23"></a>
+<a class="sourceLine" id="cb6-24" title="24"><span class="va">console</span>.<span class="at">log</span>(<span class="va">Dog</span>.<span class="at">prototype</span>) <span class="co">// Dog { speak: [Function], bark: [Function] }</span></a>
+<a class="sourceLine" id="cb6-25" title="25"><span class="va">console</span>.<span class="at">log</span>(bodhi) <span class="co">// Dog { name: &#39;bodhi&#39;, age: 5 }</span></a>
+<a class="sourceLine" id="cb6-26" title="26"></a>
+<a class="sourceLine" id="cb6-27" title="27"></a>
+<a class="sourceLine" id="cb6-28" title="28"><span class="co">// if property doesn&#39;t exist on object:</span></a>
+<a class="sourceLine" id="cb6-29" title="29"><span class="co">//  - failed lookup delegated to Dog.prototype</span></a>
+<a class="sourceLine" id="cb6-30" title="30"><span class="co">// if property is found on Dog.prototype:</span></a>
+<a class="sourceLine" id="cb6-31" title="31"><span class="co">//  - &quot;this&quot; is bound to object the prop was called on (bodhi)</span></a>
+<a class="sourceLine" id="cb6-32" title="32"></a>
+<a class="sourceLine" id="cb6-33" title="33"></a>
+<a class="sourceLine" id="cb6-34" title="34"><span class="va">bodhi</span>.<span class="at">speak</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-35" title="35"><span class="va">bodhi</span>.<span class="at">bark</span>()<span class="op">;</span></a></code></pre></div>
+<h1 id="video-1---class-declarations">VIDEO 1 - CLASS DECLARATIONS</h1>
+<p>Class Overview - ES2015 class defines attributes and behaviors of object type - used to create instances of that type just like constructor function - “blueprint” for new data type</p>
+<p>Class Constructors - similar to constructor functions - dont explicitly return a value - assigns attributes to newly created instance - <code>this</code> refers to newly created instance</p>
+<p>Defining a class 1. the name of the class (capitalized) 2. constructor - initializes an object - communicates data required to initialize object 3. instance variables - properties (state) of the newly created object 4. instance methods - behavior of newly created object - accessors: get data from obj - mutators: change state of obj</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="co">// USING CLASSES</span></a>
+<a class="sourceLine" id="cb7-3" title="3"></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="kw">class</span> Dog <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-5" title="5">    <span class="at">constructor</span>(name<span class="op">,</span> age) <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-6" title="6">        <span class="kw">this</span>.<span class="at">name</span> <span class="op">=</span> name<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-7" title="7">        <span class="kw">this</span>.<span class="at">age</span> <span class="op">=</span> age<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-8" title="8">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb7-9" title="9"><span class="op">}</span></a>
+<a class="sourceLine" id="cb7-10" title="10"></a>
+<a class="sourceLine" id="cb7-11" title="11"></a>
+<a class="sourceLine" id="cb7-12" title="12"><span class="va">console</span>.<span class="at">log</span>(Dog)</a>
+<a class="sourceLine" id="cb7-13" title="13"></a></code></pre></div>
+<p>Hoisting - functions are hoisted - classes are not</p>
+<p>Defining Instance Methods - called in instance of class - shared across all instances</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="co">// DEFINE INSTANCE METHODS - USING CLASSES</span></a>
+<a class="sourceLine" id="cb8-3" title="3"></a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="kw">class</span> Dog <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-5" title="5">  <span class="at">constructor</span>(name<span class="op">,</span> age) <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-6" title="6">    <span class="kw">this</span>.<span class="at">name</span> <span class="op">=</span> name<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-7" title="7">        <span class="kw">this</span>.<span class="at">age</span> <span class="op">=</span> age<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-8" title="8">        <span class="kw">this</span>.<span class="at">tricks</span> <span class="op">=</span> []<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-9" title="9">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb8-10" title="10"></a>
+<a class="sourceLine" id="cb8-11" title="11">  <span class="at">bark</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-12" title="12">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;bark bark bark&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-13" title="13">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb8-14" title="14"></a>
+<a class="sourceLine" id="cb8-15" title="15">  <span class="at">speak</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-16" title="16">    <span class="va">console</span>.<span class="at">log</span>(<span class="vs">`hi my name is </span><span class="sc">${</span><span class="kw">this</span>.<span class="at">name</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-17" title="17">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb8-18" title="18">    </a>
+<a class="sourceLine" id="cb8-19" title="19">    <span class="at">learnNewTrick</span>(trick) <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-20" title="20">        <span class="kw">this</span>.<span class="va">tricks</span>.<span class="at">push</span>(trick)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-21" title="21">        <span class="va">console</span>.<span class="at">log</span>(<span class="vs">`New trick learned: </span><span class="sc">${</span>trick<span class="sc">}</span><span class="vs">`</span>)</a>
+<a class="sourceLine" id="cb8-22" title="22">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb8-23" title="23"></a>
+<a class="sourceLine" id="cb8-24" title="24">    <span class="at">performTricks</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-25" title="25">        <span class="kw">this</span>.<span class="va">tricks</span>.<span class="at">forEach</span>(trick <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-26" title="26">            <span class="va">console</span>.<span class="at">log</span>(<span class="vs">`</span><span class="sc">${</span><span class="kw">this</span>.<span class="at">name</span><span class="sc">}</span><span class="vs"> performs trick: </span><span class="sc">${</span>trick<span class="sc">}</span><span class="vs">`</span>)</a>
+<a class="sourceLine" id="cb8-27" title="27">        <span class="op">}</span>)</a>
+<a class="sourceLine" id="cb8-28" title="28">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb8-29" title="29"><span class="op">}</span></a>
+<a class="sourceLine" id="cb8-30" title="30"></a>
+<a class="sourceLine" id="cb8-31" title="31"></a>
+<a class="sourceLine" id="cb8-32" title="32"><span class="kw">let</span> bodhi <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&quot;bodhi&quot;</span><span class="op">,</span> <span class="dv">5</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-33" title="33"><span class="va">bodhi</span>.<span class="at">speak</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-34" title="34"><span class="va">bodhi</span>.<span class="at">learnNewTrick</span>(<span class="st">&#39;sit&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-35" title="35"><span class="va">bodhi</span>.<span class="at">performTricks</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-36" title="36"><span class="va">bodhi</span>.<span class="at">learnNewTrick</span>(<span class="st">&#39;roll over&#39;</span>)</a>
+<a class="sourceLine" id="cb8-37" title="37"><span class="va">bodhi</span>.<span class="at">performTricks</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-38" title="38"></a>
+<a class="sourceLine" id="cb8-39" title="39"></a></code></pre></div>
+<p>Defining Static Methods - called on Class itself</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="co">// DEFINE STATIC METHODS - USING CLASSES</span></a>
+<a class="sourceLine" id="cb9-3" title="3"></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="kw">class</span> Dog <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-5" title="5">  <span class="at">constructor</span>(name<span class="op">,</span> age) <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-6" title="6">    <span class="kw">this</span>.<span class="at">name</span> <span class="op">=</span> name<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-7" title="7">    <span class="kw">this</span>.<span class="at">age</span> <span class="op">=</span> age<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-8" title="8">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb9-9" title="9"></a>
+<a class="sourceLine" id="cb9-10" title="10">  <span class="kw">static</span> <span class="at">findOldest</span>(...<span class="at">dogs</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-11" title="11">        <span class="kw">let</span> oldest <span class="op">=</span> dogs[<span class="dv">0</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-12" title="12">        <span class="va">dogs</span>.<span class="at">forEach</span>((dog) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-13" title="13">            <span class="cf">if</span> (<span class="va">dog</span>.<span class="at">age</span> <span class="op">&gt;</span> <span class="va">oldest</span>.<span class="at">age</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-14" title="14">                oldest <span class="op">=</span> dog<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-15" title="15">            <span class="op">}</span></a>
+<a class="sourceLine" id="cb9-16" title="16">        <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-17" title="17">        <span class="va">console</span>.<span class="at">log</span>(<span class="vs">`</span><span class="sc">${</span><span class="va">oldest</span>.<span class="at">name</span><span class="sc">}</span><span class="vs"> is the oldest dog`</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-18" title="18">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb9-19" title="19"><span class="op">}</span></a>
+<a class="sourceLine" id="cb9-20" title="20"></a>
+<a class="sourceLine" id="cb9-21" title="21"></a>
+<a class="sourceLine" id="cb9-22" title="22"><span class="kw">let</span> bodhi <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&quot;bodhi&quot;</span><span class="op">,</span> <span class="dv">5</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-23" title="23"><span class="kw">let</span> lucy <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&quot;lucy&quot;</span><span class="op">,</span> <span class="dv">10</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-24" title="24"></a>
+<a class="sourceLine" id="cb9-25" title="25"><span class="va">Dog</span>.<span class="at">findOldest</span>(bodhi<span class="op">,</span> lucy)</a></code></pre></div>
+<h1 id="inheritance">INHERITANCE</h1>
+<ul>
+<li>TODO : CREATE ANIMAL PARENT CLASS FOR DOGS AND CATS
+<ul>
+<li>dogs and cats both have a name and age property</li>
+<li>dogs and cats both have a speak method</li>
+</ul></li>
+</ul>
+<figure>
+<img src="./images/class_def.jpg" alt="classes" /><figcaption>classes</figcaption>
+</figure>
+<p>Inheritance - base a class (child class) upon another class (parent class) - child class will have access to properties and methods defined within parent - use <code>extends</code> keyword to extend Child class from Parent class</p>
+<p>Using super - calls parent classes constructor function with specified arguments - calling <code>super(name, age)</code> assigns <code>this.name</code> and <code>this.age</code> prop to dog instance</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="co">// INHERITANCE</span></a>
+<a class="sourceLine" id="cb10-3" title="3"></a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="kw">class</span> Animal <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-5" title="5">  <span class="at">constructor</span>(name<span class="op">,</span> age) <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-6" title="6">    <span class="kw">this</span>.<span class="at">name</span> <span class="op">=</span> name<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-7" title="7">    <span class="kw">this</span>.<span class="at">age</span> <span class="op">=</span> age<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-8" title="8">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb10-9" title="9"></a>
+<a class="sourceLine" id="cb10-10" title="10">  <span class="at">speak</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-11" title="11">    <span class="va">console</span>.<span class="at">log</span>(<span class="vs">`hi my name is </span><span class="sc">${</span><span class="kw">this</span>.<span class="at">name</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-12" title="12">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb10-13" title="13"><span class="op">}</span></a>
+<a class="sourceLine" id="cb10-14" title="14"></a>
+<a class="sourceLine" id="cb10-15" title="15"></a>
+<a class="sourceLine" id="cb10-16" title="16"><span class="kw">class</span> Dog <span class="kw">extends</span> Animal <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-17" title="17">    <span class="at">constructor</span>(name<span class="op">,</span> age) <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-18" title="18">        <span class="kw">super</span>(name<span class="op">,</span> age)<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-19" title="19">        <span class="kw">this</span>.<span class="at">tricks</span> <span class="op">=</span> []</a>
+<a class="sourceLine" id="cb10-20" title="20">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb10-21" title="21"></a>
+<a class="sourceLine" id="cb10-22" title="22">    <span class="at">bark</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-23" title="23">        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;bark bark bark&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-24" title="24">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb10-25" title="25"><span class="op">}</span></a>
+<a class="sourceLine" id="cb10-26" title="26"></a>
+<a class="sourceLine" id="cb10-27" title="27"><span class="kw">let</span> bodhi <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&#39;bodhi&#39;</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="st">&#39;german shepherd mix&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-28" title="28"><span class="va">bodhi</span>.<span class="at">speak</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-29" title="29"></a>
+<a class="sourceLine" id="cb10-30" title="30"></a></code></pre></div>
+<p>Leaving off constructor - if there arent any additional attributes, can leave off constructor func - automatically runs parents constructor function</p>
+<p>Overwriting and adding onto inherited methods - without <code>super</code> =&gt; overwrites - calling <code>super.method(args)</code> is essentially copying code from parent method into the specified location</p>
+<p>THIS - always references the instance object (obj created with new keyword)</p>
+<h1 id="video-2---commmon-js-modules">VIDEO 2 - COMMMON JS MODULES</h1>
+<p>Overview - up until now we’ve put all our code in single JS file - as code base gets larger we’ll want to break our code up into multiple files - each file containing a logical unit of code that defines a module.</p>
+<p>Modules - a module is just a javascript file - local module: defined within your project - core modules: native modules contained within Node.js - don’t have to npm install - ex: <code>path</code>, <code>readline</code>, <code>fs</code> - third party modules: imported using npm</p>
+<p>Module systems - recent node versions contain two different systems 1. CommonJS (legacy system) 2. ES Modules (newer system) - conceptually similar - syntax/implementation details differ</p>
+<p>The Module Object - each module in node has access to a <code>module</code> object - represents current module - contains number of properties with info about current module</p>
+<ul>
+<li>TODO: SHOW CONSOLE.LOG(MODULE) IN ANIMAL.JS</li>
+</ul>
+<p>The <code>module.exports</code> Property - object used to export items from the module</p>
+<ul>
+<li>TODO: SHOW CONSOLE.LOG(MODULE.EXPORTS) IN ANIMAL.JS</li>
+</ul>
+<p>To Export a Single Item: - set <code>module.exports</code> equal to that item - OR - define properety for that item on the <code>module.exports</code> obj</p>
+</body>
+</html>

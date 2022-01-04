@@ -1,18 +1,17 @@
-``` {aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Lato, sans-serif; font-size: 18px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"}
+```{aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Lato, sans-serif; font-size: 18px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"}
+
 ```
 
 [![freeCodeCamp.org](./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/fcc_primary_large_24X210.svg)](https://www.freecodecamp.org/news)
 
 [Donate](https://www.freecodecamp.org/donate/)
 
-Stay safe, friends. Learn to code from home. [Use our free 2,000 hour curriculum.](https://www.freecodecamp.org/) {.donation-banner}
------------------------------------------------------------------------------------------------------------------
+## Stay safe, friends. Learn to code from home. [Use our free 2,000 hour curriculum.](https://www.freecodecamp.org/) {.donation-banner}
 
 8 June 2020 /
 [\#JavaScript](https://www.freecodecamp.org/news/tag/javascript/)
 
-JavaScript Promise Tutorial: Resolve, Reject, and Chaining in JS and ES6 {.post-full-title}
-========================================================================
+# JavaScript Promise Tutorial: Resolve, Reject, and Chaining in JS and ES6 {.post-full-title}
 
 ![Cem
 Eygi](./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/Ekran-Resmi-2019-08-01-12.13.08.png)
@@ -35,8 +34,7 @@ example for creating and using Promises.
 post about [JavaScript
 Callbacks](https://www.freecodecamp.org/news/javascript-callback-functions-what-are-callbacks-in-js-and-how-to-use-them/).
 
-What is a Promise?
-------------------
+## What is a Promise?
 
 A promise in JavaScript is similar to a promise in real life. When we
 make a promise in real life, it is a guarantee that we are going to do
@@ -55,9 +53,9 @@ will get rejected.
 First of all, a Promise is an object. There are 3 states of the Promise
 object:
 
--   **Pending:** Initial State, before the Promise succeeds or fails
--   **Resolved:** Completed Promise
--   **Rejected:** Failed Promise
+- **Pending:** Initial State, before the Promise succeeds or fails
+- **Resolved:** Completed Promise
+- **Rejected:** Failed Promise
 
 ![](./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/Ekran-Resmi-2020-06-06-12.21.27.png)
 
@@ -94,12 +92,12 @@ If there are multiple async operations to be done and if we try to use
 good-old Callbacks for them, we’ll find ourselves quickly inside a
 situation called [Callback hell](http://callbackhell.com/):
 
-``` {.language-javascript}
-firstRequest(function(response) {  
-    secondRequest(response, function(nextResponse) {    
-        thirdRequest(nextResponse, function(finalResponse) {     
-            console.log('Final response: ' + finalResponse);    
-        }, failureCallback);  
+```{.language-javascript}
+firstRequest(function(response) {
+    secondRequest(response, function(nextResponse) {
+        thirdRequest(nextResponse, function(finalResponse) {
+            console.log('Final response: ' + finalResponse);
+        }, failureCallback);
     }, failureCallback);
 }, failureCallback);
 ```
@@ -108,13 +106,13 @@ However if we handle the same operation with Promises, since we can
 attach Callbacks rather than passing them, this time the same code above
 looks much cleaner and easier to read:
 
-``` {.language-javascript}
+```{.language-javascript}
 firstRequest()
   .then(function(response) {
     return secondRequest(response);
-}).then(function(nextResponse) {  
+}).then(function(nextResponse) {
     return thirdRequest(nextResponse);
-}).then(function(finalResponse) {  
+}).then(function(finalResponse) {
     console.log('Final response: ' + finalResponse);
 }).catch(failureCallback);
 ```
@@ -126,15 +124,15 @@ after another. Chaining is one of the best features of Promises.
 
 Firstly, we use a constructor to create a Promise object:
 
-``` {.language-javascript}
+```{.language-javascript}
 const myPromise = new Promise();
 ```
 
 It takes two parameters, one for success (resolve) and one for fail
 (reject):
 
-``` {.language-javascript}
-const myPromise = new Promise((resolve, reject) => {  
+```{.language-javascript}
+const myPromise = new Promise((resolve, reject) => {
     // condition
 });
 ```
@@ -142,14 +140,14 @@ const myPromise = new Promise((resolve, reject) => {
 Finally, there will be a condition. If the condition is met, the Promise
 will be resolved, otherwise it will be rejected:
 
-``` {.language-javascript}
-const myPromise = new Promise((resolve, reject) => {  
-    let condition;  
-    
-    if(condition is met) {    
-        resolve('Promise is resolved successfully.');  
-    } else {    
-        reject('Promise is rejected');  
+```{.language-javascript}
+const myPromise = new Promise((resolve, reject) => {
+    let condition;
+
+    if(condition is met) {
+        resolve('Promise is resolved successfully.');
+    } else {
+        reject('Promise is rejected');
     }
 });
 ```
@@ -163,7 +161,7 @@ that there are 2 cases: One for resolved promises and one for rejected.
 If the Promise gets resolved (success case), then something will happen
 next (depends on what we do with the successful Promise).
 
-``` {.language-javascript}
+```{.language-javascript}
 myPromise.then();
 ```
 
@@ -173,8 +171,8 @@ decide what to do with the resolved Promise.
 For example, let’s log the message to the console that we got from the
 Promise:
 
-``` {.language-javascript}
-myPromise.then((message) => {  
+```{.language-javascript}
+myPromise.then((message) => {
     console.log(message);
 });
 ```
@@ -187,10 +185,10 @@ Promise fails? Then, we need to use the catch( ) method.
 Likewise we attach the then( ) method. We can also directly attach the
 catch( ) method right after then( ):
 
-``` {.language-javascript}
-myPromise.then((message) => { 
+```{.language-javascript}
+myPromise.then((message) => {
     console.log(message);
-}).catch((message) => { 
+}).catch((message) => {
     console.log(message);
 });
 ```
@@ -198,8 +196,7 @@ myPromise.then((message) => {
 So if the promise gets rejected, it will jump to the catch( ) method and
 this time we will see a different message on the console.
 
-Wrap Up
--------
+## Wrap Up
 
 So this is how we create a Promise in JavaScript and use it for resolved
 and rejected cases. Promises are a broader topic, and there are many
@@ -217,7 +214,7 @@ for more.
 
 Thank you for reading!
 
-* * * * *
+---
 
 ![Cem
 Eygi](./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/Ekran-Resmi-2019-08-01-12.13.08.png)
@@ -226,7 +223,7 @@ Eygi](./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%2
 
 Front-end Developer // Follow Me on Youtube: https://bit.ly/3dBiTUT
 
-* * * * *
+---
 
 If you read this far, tweet to the author to show them you care. Tweet a
 thanks
@@ -239,13 +236,13 @@ Countinue reading about
 
 ### [JavaScript](https://www.freecodecamp.org/news/tag/javascript/) {.read-next-card-header-title}
 
--   [How to Build and Validate Beautiful Forms with Vanilla HTML, CSS, &
-    JS](https://www.freecodecamp.org/news/build-and-validate-beautiful-forms-with-vanilla-html-css-js/)
--   [How to Build a Responsive and Dynamic Progress Bar with HTML, CSS,
-    and
-    JavaScript](https://www.freecodecamp.org/news/how-to-build-a-responsive-and-dynamic-progress-bar/)
--   [How to Understand Recursion in
-    JavaScript](https://www.freecodecamp.org/news/understanding-recursion-in-javascript/)
+- [How to Build and Validate Beautiful Forms with Vanilla HTML, CSS, &
+  JS](https://www.freecodecamp.org/news/build-and-validate-beautiful-forms-with-vanilla-html-css-js/)
+- [How to Build a Responsive and Dynamic Progress Bar with HTML, CSS,
+  and
+  JavaScript](https://www.freecodecamp.org/news/how-to-build-a-responsive-and-dynamic-progress-bar/)
+- [How to Understand Recursion in
+  JavaScript](https://www.freecodecamp.org/news/understanding-recursion-in-javascript/)
 
 [See all 1668 posts
 →](https://www.freecodecamp.org/news/tag/javascript/)
@@ -255,12 +252,11 @@ Minutes](./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chainin
 
 [\#svelte](https://www.freecodecamp.org/news/tag/svelte/)
 
-[Learn Svelte in 5 Minutes](https://www.freecodecamp.org/news/learn-svelte-in-5-minutes/) {.post-card-title}
------------------------------------------------------------------------------------------
+## [Learn Svelte in 5 Minutes](https://www.freecodecamp.org/news/learn-svelte-in-5-minutes/) {.post-card-title}
 
--   Leanne Rybintsev
-    [![Leanne
-    Rybintsev](./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/IMG_5731.jpeg)](https://www.freecodecamp.org/news/author/leanne/)
+- Leanne Rybintsev
+  [![Leanne
+Rybintsev](./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/IMG_5731.jpeg)](https://www.freecodecamp.org/news/author/leanne/)
 
 [Leanne Rybintsev](https://www.freecodecamp.org/news/author/leanne/) 3
 months ago
@@ -270,12 +266,11 @@ Repository](./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chai
 
 [\#Git](https://www.freecodecamp.org/news/tag/git/)
 
-[How to Switch Between Issues in Your Local Git Repository](https://www.freecodecamp.org/news/how-to-switch-between-issues-in-git/) {.post-card-title}
------------------------------------------------------------------------------------------------------------------------------------
+## [How to Switch Between Issues in Your Local Git Repository](https://www.freecodecamp.org/news/how-to-switch-between-issues-in-git/) {.post-card-title}
 
--   Sule-Balogun Olanrewaju Ganiu
-    [![Sule-Balogun Olanrewaju
-    Ganiu](./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/ece3b32613eb3326895fe9af59aea2ff.jpeg)](https://www.freecodecamp.org/news/author/devlarri/)
+- Sule-Balogun Olanrewaju Ganiu
+  [![Sule-Balogun Olanrewaju
+Ganiu](./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/ece3b32613eb3326895fe9af59aea2ff.jpeg)](https://www.freecodecamp.org/news/author/devlarri/)
 
 [Sule-Balogun Olanrewaju
 Ganiu](https://www.freecodecamp.org/news/author/devlarri/) 3 months ago

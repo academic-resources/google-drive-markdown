@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>all-notes</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="monday">1. Monday:————————————–</h1>
+<h1 id="notes"><strong>Notes</strong></h1>
+<h2 id="http-basics"><strong>HTTP Basics</strong></h2>
+<blockquote>
+<p>“If you want to build a ship, don’t drum up the men and women to gather wood, divide the work, and give orders. Instead, teach them to yearn for the vast and endless sea.” - Antoine de Saint-Exupery;</p>
+</blockquote>
+<ul>
+<li><p><strong><code>HTTP</code></strong> : Hypertext Transfer Protocol.</p>
+<ul>
+<li><strong><code>HT</code></strong> : Hypertext - content with references to other content.
+<ul>
+<li>Term used to refer to content in computing.</li>
+<li>What makes the Web a “web”.</li>
+<li>Most fundamental part of how we interact.</li>
+<li><strong><code>Hyperlinks</code></strong> : Links; references between HT resources.</li>
+</ul></li>
+<li><strong><code>TP</code></strong> : Transfer Protocol - set of guidelines surrounding the transmission of data.
+<ul>
+<li>Defines the expectations for both ends of the transer.</li>
+<li>Defines some ways the transfer might fail.</li>
+</ul></li>
+</ul></li>
+<li>HTTP is a <strong><code>request/response</code></strong> protocol.</li>
+<li>HTTP works between <strong><code>clients</code></strong> &amp; <strong><code>servers</code></strong>.
+<ul>
+<li><strong><code>Clients</code></strong> : User Agent - the data consumer.</li>
+<li><strong><code>Servers</code></strong> : Origin - Data provider &amp; where the application is running.</li>
+</ul></li>
+</ul>
+<figure>
+<img src="https://assets.aaonline.io/Module-Web/http/image-http-exchange.svg" alt="pic" /><figcaption>pic</figcaption>
+</figure>
+<p><strong>Properties of HTTP</strong></p>
+<ul>
+<li><p><strong><code>Reliable Connections</code></strong> : Messages passed between a client &amp; server sacrifice a little speed for the sake of trust.</p>
+<ul>
+<li><strong><code>TCP</code></strong> is HTTP’s preferred connection type.</li>
+</ul></li>
+<li><p><strong><code>Stateless Transfer</code></strong> : HTTP is a stateless protocol - meaning it does not store any kind of information.</p>
+<ul>
+<li>HTTP supports cookies.</li>
+</ul></li>
+<li><strong><code>Intermediaries</code></strong> : Servers or devices that pass your request along which come in three types:
+<ul>
+<li><ol type="1">
+<li><strong><code>Proxies</code></strong> : Modify your request so it appears to come from a different source.</li>
+</ol></li>
+<li><ol start="2" type="1">
+<li><strong><code>Gateways</code></strong> : Pretend to be the resource server you requested.</li>
+</ol></li>
+<li><ol start="3" type="1">
+<li><strong><code>Tunnels</code></strong> : Simply passes your request along.</li>
+</ol></li>
+</ul></li>
+</ul>
+<figure>
+<img src="https://assets.aaonline.io/Module-Web/http/image-http-proxy-tunnel-gateway.svg" alt="pic" /><figcaption>pic</figcaption>
+</figure>
+<hr />
+<h2 id="http-requests"><strong>HTTP Requests</strong></h2>
+<p><strong>Structure of an HTTP Request</strong></p>
+<pre><code>GET / HTTP/1.1
+Host: appacademy.io
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9</code></pre>
+<blockquote>
+<p>Example of how an HTTP request looks like for visiting appacademy.io</p>
+</blockquote>
+<ul>
+<li><p><strong>Request-line &amp; HTTP verbs</strong></p>
+<ul>
+<li>The first line of an HTTP Request made up of three parts:
+<ol type="1">
+<li>The <strong><code>Method</code></strong> : Indicated by an HTTP Verb.</li>
+<li>The <strong><code>URI</code></strong> : Uniform Resource Indicator that ID’s our request.</li>
+<li>THe <strong><code>HTTP</code> Version</strong> : Version we expect to use.</li>
+</ol></li>
+<li>HTTP Verbs are a simply way of declaring our intention to the server.
+<ul>
+<li><strong><code>GET</code></strong> : Used for direct requests.</li>
+<li><strong><code>POST</code></strong>: Used for creating new resources on the server.</li>
+<li><strong><code>PUT</code></strong>: Used to updated a resource on the server.</li>
+<li><strong><code>PATCH</code></strong> : Similar to PUT, but do not require the whole resource to perform the update.</li>
+<li><strong><code>DELETE</code></strong> : Used to destroy resources on the server.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Headers</strong></p>
+<ul>
+<li>Key-Value pairs that come after the request line - they appear on sep. lines and define metadata needed to process the request.</li>
+<li>Some common headers:
+<ul>
+<li><strong><code>Host</code></strong> : Root path for our URI.</li>
+<li><strong><code>User-Agent</code></strong> : Displays information about which browser the request originated from.</li>
+<li><strong><code>Referer</code></strong> : Defines the URL you’re coming from.</li>
+<li><strong><code>Accept</code></strong> : Indicates what the client will receive.</li>
+<li><strong><code>Content</code>-</strong> : Define Details about the body of the request.</li>
+</ul></li>
+</ul></li>
+<li><strong>Body</strong>
+<ul>
+<li>For when we need to send data that doesn’t fit into the header &amp; is too complex for the URI we can use the <em>body</em>.</li>
+<li><strong><code>URL encoding</code></strong> : Most common way form data is formatted.</li>
+<li><code>name=claire&amp;age=29&amp;iceCream=vanilla</code></li>
+<li>We can also format using JSON or XML.</li>
+</ul></li>
+</ul>
+<p><strong>Sending an HTTP request from the command line</strong></p>
+<ul>
+<li><strong>netcat</strong> : (nc) A Utility that comes as part of Unix-line environments such as Ubuntu and macOS.
+<ul>
+<li>Allows us to open a direct connection with a URL and manually send HTTP requests.</li>
+<li><code>nc -v appacademy.io 80</code></li>
+<li><code>man nc</code> to open the netcat manual.</li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="http-responses"><strong>HTTP Responses</strong></h2>
+<p><strong>Structure of a Response</strong></p>
+<pre><code>HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+Transfer-Encoding: chunked
+Connection: close
+X-Frame-Options: SAMEORIGIN
+X-Xss-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Cache-Control: max-age=0, private, must-revalidate
+Set-Cookie: _rails-class-site_session=BAh7CEkiD3Nlc3Npb25faWQGOgZFVEkiJTM5NWM5YTVlNTEyZDFmNTNlN; path=/; secure; HttpOnly
+X-Request-Id: cf5f30dd-99d0-46d7-86d7-6fe57753b20d
+X-Runtime: 0.006894
+Strict-Transport-Security: max-age=31536000
+Vary: Origin
+Via: 1.1 vegur
+Expect-CT: max-age=604800, report-uri=&quot;https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct&quot;
+Server: cloudflare
+CF-RAY: 51d641d1ca7d2d45-TXL
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+...
+...
+&lt;/html&gt;</code></pre>
+<ul>
+<li><p><strong>Status</strong></p>
+<ul>
+<li>First line of an HTTP response - gives us a high level overview of the server’s intentions. (<strong><code>status line</code></strong>)</li>
+<li><code>HTTP/1.1 200 OK</code></li>
+<li><strong><code>HTTP status codes</code></strong> : numeric way of representing a server’s response.
+<ul>
+<li>Follow the structure: x: xxx - xxx;</li>
+<li><strong><code>Status codes 100 - 199: Informational</code></strong>
+<ul>
+<li>Allow the clinet to know that a req. was received, and provides extra info from the server.</li>
+</ul></li>
+<li><strong><code>Status codes 200 - 299: Successful</code></strong>
+<ul>
+<li>Indicate that the request has succeeded and the server is handling it.</li>
+<li>Common Examples: 200 OK (req received and fulfilled) &amp; 201 Created (received and new record was created)</li>
+</ul></li>
+<li><strong><code>Status codes 300 - 399: Redirection</code></strong>
+<ul>
+<li>Let the client know if there has been a change.</li>
+<li>Common Examples: 301 Moved Permanently (resource you requested is in a totally new location) &amp; 302 Found (indicates a temporary move)</li>
+</ul></li>
+<li><strong><code>Status codes 400 - 499: Client Error</code></strong>
+<ul>
+<li>Indicate problem with client’s request.</li>
+<li>Common Examples: 400 Bad Request (received, but could not understand) &amp; 401 Unauthorized (resource exists but you’re not allowed to see w/o authentication) &amp; 403 Forbidden (resource exists but you’re not allowed to see it at all ) &amp; 404 Not Found (resource requested does not exist);</li>
+</ul></li>
+<li><strong><code>Status codes 500 - 599: Server Error</code></strong>
+<ul>
+<li>Indicates request was formatted correctly, but the server couldn’t do what you asked due to an internal problem.</li>
+<li>Common Examples: 500 Internal Server Error (Server had trouble processing) &amp; 504 Gateway Timeout (Server timeout);</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><p><strong>Headers</strong> : Work just like HTTP requests.</p>
+<ul>
+<li>Common Examples:
+<ul>
+<li><strong><code>Location</code></strong> : Used by client for redirection responses.</li>
+<li><strong><code>Content-Type</code></strong> : Let’s client know what format the body is in.</li>
+<li><strong><code>Expires</code></strong> : When response is no longer valid</li>
+<li><strong><code>Content-Disposition</code></strong> : Let’s client know how to display the response.</li>
+<li><strong><code>Set-Cookie</code></strong> : Sends data back to the client to set on the cookie.</li>
+</ul></li>
+</ul></li>
+<li><p><strong><code>Data</code></strong> : If the request is successful, the body of the response will contain the resource you have requested. Send a simple HTTP request to google.com - We can use netcat in the terminal to make a connection to a URL and send an HTTP request - <code>nc google.com 80</code> opens our connection to google.com - After we make our connection, we specify the three parts of an HTTP request: - Request line - Headers - Body - <code>GET / HTTP/1.1</code> creates the request-line, indicating our verb (GET), URI (/), and version (HTTP/1.1) - any other headers we would like (optional), such as <code>Accept: application/json</code> - body of the request (optional), such as <code>myKey=myValue</code></p></li>
+</ul>
+<p>Write a very simple HTTP server using ‘http’ in node with paths that will result in the common HTTP status codes.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">const</span> http <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;http&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-2" title="2"></a>
+<a class="sourceLine" id="cb3-3" title="3">http</a>
+<a class="sourceLine" id="cb3-4" title="4">    .<span class="at">createServer</span>(<span class="kw">function</span> (request<span class="op">,</span> response) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-5" title="5">        <span class="cf">if</span> (<span class="va">request</span>.<span class="at">url</span> <span class="op">===</span> <span class="st">&quot;/200&quot;</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-6" title="6">            <span class="va">response</span>.<span class="at">writeHead</span>(<span class="dv">200</span><span class="op">,</span> <span class="op">{</span> <span class="st">&quot;Content-Type&quot;</span><span class="op">:</span> <span class="st">&quot;text/html&quot;</span> <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-7" title="7">            <span class="va">response</span>.<span class="at">write</span>(<span class="st">&quot;&lt;h1&gt;Hello, world! Status 200 OK!&lt;/h1&gt;&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-8" title="8">        <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> (<span class="va">request</span>.<span class="at">url</span> <span class="op">===</span> <span class="st">&quot;/403&quot;</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-9" title="9">            <span class="va">response</span>.<span class="at">writeHead</span>(<span class="dv">403</span><span class="op">,</span> <span class="op">{</span> <span class="st">&quot;Content-Type&quot;</span><span class="op">:</span> <span class="st">&quot;text/html&quot;</span> <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-10" title="10">            <span class="va">response</span>.<span class="at">write</span>(<span class="st">&quot;&lt;h1&gt;This is Forbidden! Status 403 Forbidden!&lt;/h1&gt;&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-11" title="11">        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-12" title="12">            <span class="va">response</span>.<span class="at">writeHead</span>(<span class="dv">404</span><span class="op">,</span> <span class="op">{</span> <span class="st">&quot;Content-Type&quot;</span><span class="op">:</span> <span class="st">&quot;text/html&quot;</span> <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-13" title="13">            <span class="va">response</span>.<span class="at">write</span>(<span class="st">&quot;&lt;h1&gt;What is that? Status 404 Not Found!&lt;/h1&gt;&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-14" title="14">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-15" title="15">        <span class="va">response</span>.<span class="at">end</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-16" title="16">    <span class="op">}</span>)</a>
+<a class="sourceLine" id="cb3-17" title="17">    .<span class="at">listen</span>(<span class="dv">8080</span><span class="op">,</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-18" title="18">        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Listening for requests on port 8080...&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-19" title="19">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<hr />
+<h1 id="tuesday">2. Tuesday:————————————–</h1>
+<h1 id="notes-1"><strong>Notes</strong></h1>
+<h2 id="promises"><strong>Promises</strong></h2>
+<p>When you declare a function normally:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">function</span> <span class="at">loudLog</span>(message) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-2" title="2">    <span class="va">console</span>.<span class="at">log</span>(<span class="va">message</span>.<span class="at">toUpperCase</span>())<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="op">}</span></a></code></pre></div>
+<ul>
+<li>Just declaring it like that does not actually run the function.</li>
+<li>It <em>does</em> create a Function object and stores that in a variable named <strong>loudLoud</strong>.</li>
+<li><strong>Promises</strong> are wrappers around asychronous code.</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="at">readFile</span>(<span class="st">&quot;~/Documents/todos.txt&quot;</span><span class="op">,</span> <span class="st">&quot;utf8&quot;</span><span class="op">,</span> <span class="kw">function</span> (err<span class="op">,</span> content) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;YOUR FILE CONTAINS:&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-3" title="3">    <span class="va">console</span>.<span class="at">log</span>(content)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<ul>
+<li>Javascript is idiomatic, so if you’re only going to call a function once just set it directly into the callback of your readfile in this example.</li>
+<li>To take it up a notch, JS now just wants you to write the callback with an arrow function.</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="at">readFile</span>(<span class="st">&quot;~/Documents/todos.txt&quot;</span><span class="op">,</span> <span class="st">&quot;utf8&quot;</span><span class="op">,</span> (err<span class="op">,</span> content) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-2" title="2">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;YOUR FILE CONTAINS:&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-3" title="3">    <span class="va">console</span>.<span class="at">log</span>(content)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<ul>
+<li><p><strong><code>Promise</code></strong> : a commitment that sometime in the future, your code will get a value from some operation (like reading a file or getting JSON from a Website) or your code will get an error from that operation (like the file doesn’t exist or the Web site is down).</p>
+<ul>
+<li>Promises exist in three states:</li>
+</ul>
+<ol type="1">
+<li><strong><code>Pending</code></strong> : Promise object has not resolved. Once it does, the state of the Promise object may transition to either the fulfilled or rejected state.</li>
+<li><strong><code>Fulfilled</code></strong> : Whatever operation the Promise represented succeeded and your success handler will get called. After fulfillment, the Promise:
+<ul>
+<li><em>must not transition to any other state</em></li>
+<li><em>must have a value, which must not change</em></li>
+</ul></li>
+<li><strong><code>Rejected</code></strong> : Whatever operation the Promise represented failed and your error handler will get called. When it is <em>rejected</em>:
+<ul>
+<li><em>must not transition to any other state</em></li>
+<li><em>must have a reason, which must not change</em></li>
+</ul></li>
+</ol></li>
+<li>Promise objects use the following methods to go through these stages.
+<ul>
+<li><strong><code>then</code>(successHandler, errorHandler)</strong></li>
+<li><strong><code>catch</code>(errorHandler)</strong></li>
+</ul></li>
+<li><p><strong><code>Success Handler</code></strong> : function that has one parameter, the value that a fulfilled <em>promise</em> has.</p></li>
+<li><p><strong><code>Error Handler</code></strong> : funvtion that has one parameter, the reason that the <em>promise</em> failed.</p></li>
+</ul>
+<p><strong>Handling Success with Then</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="at">readFilePromise</span>(<span class="st">&quot;manifest.txt&quot;</span>).<span class="at">then</span>((manifest) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-2" title="2">    <span class="kw">const</span> fileList <span class="op">=</span> <span class="va">manifest</span>.<span class="at">split</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-3" title="3">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Reading&quot;</span><span class="op">,</span> <span class="va">fileList</span>.<span class="at">length</span><span class="op">,</span> <span class="st">&quot;files&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<ul>
+<li>Each promise has a then() method that handles what will happen when the Promise comes out fof the <strong>pending</strong> state.</li>
+<li>Each then, returns another Promise that transitions out of it’s pending state when the <strong>then</strong> that created it completes.</li>
+<li>You can pass a second argument into the then method as the <strong>error handler</strong>; (essentially saying, if this then does not resolve, then this error handler will do something.)</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="at">readFilePromise</span>(<span class="st">&quot;manifest.txt&quot;</span>)</a>
+<a class="sourceLine" id="cb8-2" title="2">    .<span class="at">then</span>((manifest) <span class="kw">=&gt;</span> <span class="va">manifest</span>.<span class="at">split</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>))</a>
+<a class="sourceLine" id="cb8-3" title="3">    .<span class="at">then</span>((fileList) <span class="kw">=&gt;</span> <span class="va">fileList</span>.<span class="at">length</span>)</a>
+<a class="sourceLine" id="cb8-4" title="4">    .<span class="at">then</span>(</a>
+<a class="sourceLine" id="cb8-5" title="5">        (numberOfFiles) <span class="kw">=&gt;</span> <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Reading&quot;</span><span class="op">,</span> numberOfFiles<span class="op">,</span> <span class="st">&quot;files&quot;</span>)<span class="op">,</span></a>
+<a class="sourceLine" id="cb8-6" title="6">        (reason) <span class="kw">=&gt;</span> <span class="va">console</span>.<span class="at">err</span>(<span class="st">&quot;Badness happened&quot;</span><span class="op">,</span> reason)</a>
+<a class="sourceLine" id="cb8-7" title="7">    )<span class="op">;</span></a></code></pre></div>
+<ul>
+<li>You can also use a <strong>catch</strong> error handler at the end of your then chain to catch any error that may happen along the way.</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="at">readFilePromise</span>(<span class="st">&quot;manifest.txt&quot;</span>)</a>
+<a class="sourceLine" id="cb9-2" title="2">    .<span class="at">then</span>((manifest) <span class="kw">=&gt;</span> <span class="va">manifest</span>.<span class="at">split</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>))</a>
+<a class="sourceLine" id="cb9-3" title="3">    .<span class="at">then</span>((fileList) <span class="kw">=&gt;</span> <span class="va">fileList</span>.<span class="at">length</span>)</a>
+<a class="sourceLine" id="cb9-4" title="4">    .<span class="at">then</span>((numberOfFiles) <span class="kw">=&gt;</span> <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Reading&quot;</span><span class="op">,</span> numberOfFiles<span class="op">,</span> <span class="st">&quot;files&quot;</span>))</a>
+<a class="sourceLine" id="cb9-5" title="5">    .<span class="at">catch</span>((reason) <span class="kw">=&gt;</span> <span class="va">console</span>.<span class="at">err</span>(<span class="st">&quot;Badness happened&quot;</span><span class="op">,</span> reason))<span class="op">;</span></a></code></pre></div>
+<p><strong>Using Promise.all</strong></p>
+<ul>
+<li>Promise.all is a method that accepts an array of values and returns another Promise object called a <strong><code>SUPER PROMISE</code></strong>; it converts all non-promise values into Promise objects that are immediately in the fulfilled state.
+<ul>
+<li>If any of the promises in the array fail, then the whole thing falls to an error.</li>
+<li>All of the inner promises need to be fulfilled for the super promise to reach a <strong>fulfilled state</strong>.</li>
+</ul></li>
+</ul>
+<p><strong>Flattening Promises</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="at">readFilePromise</span>(<span class="st">&quot;manifest.txt&quot;</span>)</a>
+<a class="sourceLine" id="cb10-2" title="2">    .<span class="at">then</span>((manifestContent) <span class="kw">=&gt;</span> <span class="va">manifestContent</span>.<span class="at">split</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>))</a>
+<a class="sourceLine" id="cb10-3" title="3">    .<span class="at">then</span>((manifestList) <span class="kw">=&gt;</span> manifestList[<span class="dv">0</span>])</a>
+<a class="sourceLine" id="cb10-4" title="4">    .<span class="at">then</span>((fileName) <span class="kw">=&gt;</span> <span class="at">readFilePromise</span>(fileName))</a>
+<a class="sourceLine" id="cb10-5" title="5">    .<span class="at">then</span>((otherFileContent) <span class="kw">=&gt;</span> <span class="va">console</span>.<span class="at">log</span>(otherFileContent))<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-6" title="6"></a>
+<a class="sourceLine" id="cb10-7" title="7"><span class="co">// Interpreted as:</span></a>
+<a class="sourceLine" id="cb10-8" title="8"><span class="co">// 1. Read the file of the manifest.txt file and pass the</span></a>
+<a class="sourceLine" id="cb10-9" title="9"><span class="co">//    content to the first then.</span></a>
+<a class="sourceLine" id="cb10-10" title="10"><span class="co">// 2. Split the content from manifest.txt on newline chars</span></a>
+<a class="sourceLine" id="cb10-11" title="11"><span class="co">//    to get the full list of files.</span></a>
+<a class="sourceLine" id="cb10-12" title="12"><span class="co">// 3. Return just the first entry in the list of files.</span></a>
+<a class="sourceLine" id="cb10-13" title="13"><span class="co">// 4. RETURN A PROMISE THAT WILL READ THE FILE NAMED ON THE</span></a>
+<a class="sourceLine" id="cb10-14" title="14"><span class="co">//    FIRST LINE OF THE manifest.txt! The next then method</span></a>
+<a class="sourceLine" id="cb10-15" title="15"><span class="co">//    doesn&#39;t get called until this Promise object completes!</span></a>
+<a class="sourceLine" id="cb10-16" title="16"><span class="co">// 5. Get the content of the file just read and print it.</span></a></code></pre></div>
+<ul>
+<li>You can pass another promise object inside a promise then chain, and the current then chain will not continue until the promise on the inside is resolved.</li>
+</ul>
+<h2 id="promises---part-1-w6d2---learning-objectives">Promises - Part 1 (W6D2) - Learning Objectives</h2>
+<h3 id="promises-1">Promises</h3>
+<ol type="1">
+<li>Instantiate a Promise object</li>
+</ol>
+<ul>
+<li>We can instantiate a Promise object using the <code>new</code> keyword.</li>
+<li>The Promise takes in a callback that we can invoke, taking in two arguments: typically labelled <code>resolve</code> and <code>reject</code>.
+<ul>
+<li><code>resolve</code> is invoked when we want to indicate our function has successfully completed. A value can be passed as the successful return value.</li>
+<li><code>reject</code> is invoked when we want to indicate that our function failed in some way. A value can be passed as the fail value (what would be used in a <code>catch</code> or the second argument to <code>then</code>).</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">function</span> <span class="at">pause</span>(numberOfSeconds) <span class="op">{</span></a>
+<a class="sourceLine" id="cb11-2" title="2">    <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span> reject) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb11-3" title="3">        <span class="co">// resolve is invoked to indicate a success, reject is a failure</span></a>
+<a class="sourceLine" id="cb11-4" title="4">        <span class="co">// if a value is passed to resolve, it will be caught as the first argument to .then()</span></a>
+<a class="sourceLine" id="cb11-5" title="5">        <span class="co">// if a value is passed to reject, it will be caught as the first argument to .catch(), or the second argument to .then()</span></a>
+<a class="sourceLine" id="cb11-6" title="6">        <span class="at">setTimeout</span>(() <span class="kw">=&gt;</span> <span class="at">resolve</span>()<span class="op">,</span> numberOfSeconds <span class="op">*</span> <span class="dv">1000</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-7" title="7">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-8" title="8"><span class="op">}</span></a></code></pre></div>
+<ol start="2" type="1">
+<li><p>Use Promises to write more maintainable asynchronous code</p>
+<ul>
+<li>We can chain .then calls on Promises, ensuring that the callback will not be run until the previous statement has finished executing.</li>
+<li>Prevents us from having to nest our callbacks</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="co">// Without Promises, we have to nest our code.</span></a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="co">// These can get very confusing; this is a simple example, but it&#39;s already hard to tell what each setTimeout&#39;s delay is connected to.</span></a>
+<a class="sourceLine" id="cb12-3" title="3"><span class="at">setTimeout</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-4" title="4"> <span class="va">console</span>.<span class="at">log</span>(message)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-5" title="5"> <span class="at">setTimeout</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-6" title="6">     <span class="va">console</span>.<span class="at">log</span>(<span class="va">message</span>.<span class="at">toUpperCase</span>() <span class="op">+</span> <span class="st">&quot;!&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-7" title="7">     <span class="at">setTimeout</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-8" title="8">         <span class="va">console</span>.<span class="at">log</span>(message <span class="op">+</span> <span class="st">&quot;?&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-9" title="9">         <span class="at">setTimeout</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-10" title="10">             <span class="va">console</span>.<span class="at">log</span>(<span class="va">message</span>.<span class="at">toLowerCase</span>() <span class="op">+</span> <span class="st">&quot;...&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-11" title="11">         <span class="op">},</span> <span class="dv">1</span> <span class="op">*</span> <span class="dv">1000</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-12" title="12">     <span class="op">},</span> <span class="dv">3</span> <span class="op">*</span> <span class="dv">1000</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-13" title="13"> <span class="op">},</span> <span class="dv">2</span> <span class="op">*</span> <span class="dv">1000</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-14" title="14"><span class="op">},</span> <span class="dv">1</span> <span class="op">*</span> <span class="dv">1000</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-15" title="15"></a>
+<a class="sourceLine" id="cb12-16" title="16"><span class="co">// With Promises, we write more code up front in order for us to have more readable and maintainable code</span></a>
+<a class="sourceLine" id="cb12-17" title="17"><span class="co">// We define our promises</span></a>
+<a class="sourceLine" id="cb12-18" title="18"><span class="kw">function</span> <span class="at">promise1</span>(message<span class="op">,</span> delay) <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-19" title="19"> <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span> reject) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-20" title="20">     <span class="at">setTimeout</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-21" title="21">         <span class="at">resolve</span>(message)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-22" title="22">     <span class="op">},</span> delay <span class="op">*</span> <span class="dv">1000</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-23" title="23"> <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-24" title="24"><span class="op">}</span></a>
+<a class="sourceLine" id="cb12-25" title="25"></a>
+<a class="sourceLine" id="cb12-26" title="26"><span class="kw">function</span> <span class="at">promise2</span>(message<span class="op">,</span> delay) <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-27" title="27"> <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span> reject) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-28" title="28">     <span class="at">setTimeout</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-29" title="29">         <span class="at">resolve</span>(<span class="va">message</span>.<span class="at">toUpperCase</span>() <span class="op">+</span> <span class="st">&quot;!&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-30" title="30">     <span class="op">},</span> delay <span class="op">*</span> <span class="dv">1000</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-31" title="31"> <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-32" title="32"><span class="op">}</span></a>
+<a class="sourceLine" id="cb12-33" title="33"></a>
+<a class="sourceLine" id="cb12-34" title="34"><span class="kw">function</span> <span class="at">promise3</span>(message<span class="op">,</span> delay) <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-35" title="35"> <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span> reject) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-36" title="36">     <span class="at">setTimeout</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-37" title="37">         <span class="at">resolve</span>(message <span class="op">+</span> <span class="st">&quot;?&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-38" title="38">     <span class="op">},</span> delay <span class="op">*</span> <span class="dv">1000</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-39" title="39"> <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-40" title="40"><span class="op">}</span></a>
+<a class="sourceLine" id="cb12-41" title="41"></a>
+<a class="sourceLine" id="cb12-42" title="42"><span class="kw">function</span> <span class="at">promise4</span>(message<span class="op">,</span> delay) <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-43" title="43"> <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span> reject) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-44" title="44">     <span class="at">setTimeout</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-45" title="45">         <span class="at">resolve</span>(<span class="va">message</span>.<span class="at">toLowerCase</span>() <span class="op">+</span> <span class="st">&quot;...&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-46" title="46">     <span class="op">},</span> delay <span class="op">*</span> <span class="dv">1000</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-47" title="47"> <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-48" title="48"><span class="op">}</span></a>
+<a class="sourceLine" id="cb12-49" title="49"></a>
+<a class="sourceLine" id="cb12-50" title="50"><span class="co">// Then we chain can chain them however we like.</span></a>
+<a class="sourceLine" id="cb12-51" title="51"><span class="co">// Returning our strings from our Promises is adding flexibility to our code, allowing us to use the results however we like.</span></a>
+<a class="sourceLine" id="cb12-52" title="52"><span class="co">// We replaced the complicated nesting with more modular chaining of .then</span></a>
+<a class="sourceLine" id="cb12-53" title="53"><span class="at">promise1</span>(<span class="st">&quot;hello&quot;</span><span class="op">,</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb12-54" title="54"> .<span class="at">then</span>((res1) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-55" title="55">     <span class="va">console</span>.<span class="at">log</span>(res1)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-56" title="56">     <span class="cf">return</span> <span class="at">promise2</span>(<span class="st">&quot;hi&quot;</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-57" title="57"> <span class="op">}</span>)</a>
+<a class="sourceLine" id="cb12-58" title="58"> .<span class="at">then</span>((res2) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-59" title="59">     <span class="va">console</span>.<span class="at">log</span>(res2)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-60" title="60">     <span class="cf">return</span> <span class="at">promise3</span>(<span class="st">&quot;hey&quot;</span><span class="op">,</span> <span class="dv">3</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-61" title="61"> <span class="op">}</span>)</a>
+<a class="sourceLine" id="cb12-62" title="62"> .<span class="at">then</span>((res3) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-63" title="63">     <span class="va">console</span>.<span class="at">log</span>(res3)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-64" title="64">     <span class="cf">return</span> <span class="at">promise4</span>(<span class="st">&quot;what&#39;s up&quot;</span><span class="op">,</span> <span class="dv">1</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-65" title="65"> <span class="op">}</span>)</a>
+<a class="sourceLine" id="cb12-66" title="66"> .<span class="at">then</span>((res4) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-67" title="67">     <span class="va">console</span>.<span class="at">log</span>(res4)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-68" title="68"> <span class="op">}</span>)<span class="op">;</span></a></code></pre></div></li>
+<li><p>Use the fetch API to make Promise-based API calls</p></li>
+</ol>
+<div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="co">// init is an optional object argument to customize the method (default is &#39;GET&#39;), headers, or body of the request</span></a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="co">// For example, it could take the form:</span></a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="co">// const init = { method: &#39;POST&#39;, headers: { &#39;Content-Type&#39;: &#39;application/json&#39; }, body: &#39;{&quot;title&quot;: &quot;Sir&quot;, &quot;name&quot;: &quot;Robin&quot;}&#39; }</span></a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="at">fetch</span>(url<span class="op">,</span> init)</a>
+<a class="sourceLine" id="cb13-5" title="5">    .<span class="at">then</span>((response) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb13-6" title="6">        <span class="co">// do something with the response</span></a>
+<a class="sourceLine" id="cb13-7" title="7">        <span class="co">// common first action to take would be parsing the response</span></a>
+<a class="sourceLine" id="cb13-8" title="8">        <span class="co">// parsing json with response.json(), or text with response.text()</span></a>
+<a class="sourceLine" id="cb13-9" title="9">    <span class="op">}</span>)</a>
+<a class="sourceLine" id="cb13-10" title="10">    .<span class="at">then</span>((data) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb13-11" title="11">        <span class="co">// since fetch is returning a promise, we can chain on as many .then calls as we need</span></a>
+<a class="sourceLine" id="cb13-12" title="12">    <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h1 id="wednesday-">3. Wednesday:———————————-</h1>
+<h1 id="notes-2"><strong>Notes</strong></h1>
+<h2 id="modern-promises-with-async-and-await"><strong>Modern Promises with Async and Await</strong></h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">function</span> <span class="at">walkTheDog</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb14-2" title="2">    <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>((resolve<span class="op">,</span> reject) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb14-3" title="3">        <span class="at">setTimeout</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb14-4" title="4">            <span class="at">resolve</span>(<span class="st">&quot;happy dog&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-5" title="5">        <span class="op">},</span> <span class="dv">1000</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-6" title="6">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-7" title="7"><span class="op">}</span></a>
+<a class="sourceLine" id="cb14-8" title="8"></a>
+<a class="sourceLine" id="cb14-9" title="9"><span class="kw">function</span> <span class="at">doChores</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb14-10" title="10">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;before walking the dog&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-11" title="11">    <span class="at">walkTheDog</span>().<span class="at">then</span>((res) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb14-12" title="12">        <span class="va">console</span>.<span class="at">log</span>(res)<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-13" title="13">        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;after walking the dog&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-14" title="14">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-15" title="15">    <span class="cf">return</span> <span class="st">&quot;done&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb14-16" title="16"><span class="op">}</span></a>
+<a class="sourceLine" id="cb14-17" title="17"></a>
+<a class="sourceLine" id="cb14-18" title="18"><span class="va">console</span>.<span class="at">log</span>(<span class="at">doChores</span>())<span class="op">;</span></a></code></pre></div>
+<h2 id="promises---part-2-and-html-review-w6d3---learning-objectives">Promises - Part 2 and HTML Review (W6D3) - Learning Objectives</h2>
+<h3 id="promises-2">Promises</h3>
+<ol type="1">
+<li>Use async/await with promise-based functions to write asynchrnous code that behaves synchronously.</li>
+</ol>
+<div class="sourceCode" id="cb15"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb15-1" title="1"><span class="co">// Without async/await, we can use .then chains</span></a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="co">// We use a .catch method to catch errors</span></a>
+<a class="sourceLine" id="cb15-3" title="3"><span class="kw">function</span> <span class="at">wrapper</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb15-4" title="4">    <span class="at">promise1</span>(<span class="st">&quot;hello&quot;</span><span class="op">,</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb15-5" title="5">        .<span class="at">then</span>((res1) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb15-6" title="6">            <span class="va">console</span>.<span class="at">log</span>(res1)<span class="op">;</span></a>
+<a class="sourceLine" id="cb15-7" title="7">            <span class="cf">return</span> <span class="at">promise2</span>(<span class="st">&quot;hi&quot;</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb15-8" title="8">        <span class="op">}</span>)</a>
+<a class="sourceLine" id="cb15-9" title="9">        .<span class="at">then</span>((res2) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb15-10" title="10">            <span class="va">console</span>.<span class="at">log</span>(res2)<span class="op">;</span></a>
+<a class="sourceLine" id="cb15-11" title="11">            <span class="cf">return</span> <span class="at">promise3</span>(<span class="st">&quot;hey&quot;</span><span class="op">,</span> <span class="dv">3</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb15-12" title="12">        <span class="op">}</span>)</a>
+<a class="sourceLine" id="cb15-13" title="13">        .<span class="at">then</span>((res3) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb15-14" title="14">            <span class="va">console</span>.<span class="at">log</span>(res3)<span class="op">;</span></a>
+<a class="sourceLine" id="cb15-15" title="15">            <span class="cf">return</span> <span class="at">promise4</span>(<span class="st">&quot;what&#39;s up&quot;</span><span class="op">,</span> <span class="dv">1</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb15-16" title="16">        <span class="op">}</span>)</a>
+<a class="sourceLine" id="cb15-17" title="17">        .<span class="at">then</span>((res4) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb15-18" title="18">            <span class="va">console</span>.<span class="at">log</span>(res4)<span class="op">;</span></a>
+<a class="sourceLine" id="cb15-19" title="19">        <span class="op">}</span>)</a>
+<a class="sourceLine" id="cb15-20" title="20">        .<span class="at">catch</span>((err) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb15-21" title="21">            <span class="va">console</span>.<span class="at">error</span>(<span class="st">&quot;Error encountered:&quot;</span><span class="op">,</span> err)<span class="op">;</span></a>
+<a class="sourceLine" id="cb15-22" title="22">        <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb15-23" title="23"><span class="op">}</span></a>
+<a class="sourceLine" id="cb15-24" title="24"></a>
+<a class="sourceLine" id="cb15-25" title="25"><span class="at">wrapper</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb15-26" title="26"></a>
+<a class="sourceLine" id="cb15-27" title="27"><span class="co">// With async/await, our code looks more like synchronous code</span></a>
+<a class="sourceLine" id="cb15-28" title="28"><span class="co">// We use a standard try/catch block to handle errors</span></a>
+<a class="sourceLine" id="cb15-29" title="29"><span class="co">// In order for us to use `await` we must be in a function declared with `async`</span></a>
+<a class="sourceLine" id="cb15-30" title="30"><span class="kw">async</span> <span class="kw">function</span> <span class="at">wrapper</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb15-31" title="31">    <span class="cf">try</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb15-32" title="32">        <span class="va">console</span>.<span class="at">log</span>(<span class="cf">await</span> <span class="at">promise1</span>(<span class="st">&quot;hello&quot;</span><span class="op">,</span> <span class="dv">1</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb15-33" title="33">        <span class="va">console</span>.<span class="at">log</span>(<span class="cf">await</span> <span class="at">promise2</span>(<span class="st">&quot;hi&quot;</span><span class="op">,</span> <span class="dv">2</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb15-34" title="34">        <span class="va">console</span>.<span class="at">log</span>(<span class="cf">await</span> <span class="at">promise3</span>(<span class="st">&quot;hey&quot;</span><span class="op">,</span> <span class="dv">3</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb15-35" title="35">        <span class="va">console</span>.<span class="at">log</span>(<span class="cf">await</span> <span class="at">promise4</span>(<span class="st">&quot;what&#39;s up&quot;</span><span class="op">,</span> <span class="dv">1</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb15-36" title="36">    <span class="op">}</span> <span class="cf">catch</span> (err) <span class="op">{</span></a>
+<a class="sourceLine" id="cb15-37" title="37">        <span class="va">console</span>.<span class="at">error</span>(<span class="st">&quot;Error encountered:&quot;</span><span class="op">,</span> err)<span class="op">;</span></a>
+<a class="sourceLine" id="cb15-38" title="38">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb15-39" title="39"><span class="op">}</span></a>
+<a class="sourceLine" id="cb15-40" title="40"></a>
+<a class="sourceLine" id="cb15-41" title="41"><span class="at">wrapper</span>()<span class="op">;</span></a></code></pre></div>
+<blockquote>
+<p>Classic example of promise handling using two functions.</p>
+</blockquote>
+<h1 id="thursday-">4. Thursday:————————————-</h1>
+<h1 id="flashcards"><strong>Flashcards</strong></h1>
+<h2 id="javascript-errors"><strong>Javascript Errors</strong></h2>
+<p><strong>1. How do you halt program execution with an instance of an error object in JavaScript?</strong></p>
+<ul>
+<li>Using the keyword throw you can throw your own runtime errors that will stop program execution.</li>
+</ul>
+<p><strong>2. What kind of error is thrown when a variable or parameter is not of a valid type?</strong></p>
+<ul>
+<li>A TypeError is thrown when an operation cannot be performed because the operand is a value of the wrong type.</li>
+</ul>
+<p><strong>3. What kind of error will be thrown when the below code is executed?</strong></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">function</span> <span class="at">callPuppy</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb16-2" title="2">    <span class="kw">const</span> puppy <span class="op">=</span> <span class="st">&quot;puppy&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb16-3" title="3">    <span class="va">console</span>.<span class="at">log</span>(pupy)<span class="op">;</span></a>
+<a class="sourceLine" id="cb16-4" title="4"><span class="op">}</span></a>
+<a class="sourceLine" id="cb16-5" title="5"></a>
+<a class="sourceLine" id="cb16-6" title="6"><span class="at">callPuppy</span>()<span class="op">;</span></a></code></pre></div>
+<ul>
+<li>ReferenceError: pupy is not defined</li>
+</ul>
+<p><strong>4. What kind of error will be thrown when the below code is run?</strong></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">function</span> <span class="at">broken</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb17-2" title="2">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;I&#39;m broke&quot;</span>)</a>
+<a class="sourceLine" id="cb17-3" title="3"><span class="op">}</span>}</a></code></pre></div>
+<ul>
+<li>SyntaxError: Unexpected token ‘}’</li>
+</ul>
+<p><strong>5. What kind of error will the below code throw when executed?</strong></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">const</span> puppy <span class="op">=</span> <span class="st">&quot;puppy&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb18-2" title="2"></a>
+<a class="sourceLine" id="cb18-3" title="3">puppy <span class="op">=</span> <span class="st">&quot;apple&quot;</span><span class="op">;</span></a></code></pre></div>
+<ul>
+<li>TypeError: Assignment to constant variable.</li>
+</ul>
+<p><strong>6. What kind of error will the below code throw when executed?</strong></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">let</span> dog<span class="op">;</span></a>
+<a class="sourceLine" id="cb19-2" title="2"></a>
+<a class="sourceLine" id="cb19-3" title="3"><span class="at">dog</span>()<span class="op">;</span></a></code></pre></div>
+<ul>
+<li>TypeError: dog is not a function</li>
+</ul>
+<p><strong>7. What type of block will allow you to run an erroring function then continue the execution of code after that function is run?</strong></p>
+<ul>
+<li>We can use try…catch blocks with functions that might throw an error to catch that error and continue code execution after that error was thrown</li>
+</ul>
+<p><strong>8. What type of error is thrown when a non-existent variable is referenced?</strong></p>
+<ul>
+<li>The ReferenceError object represents an error when a non-existent variable is referenced.</li>
+</ul>
+<p><strong>9. When is a JavaScript Error Object thrown?</strong></p>
+<ul>
+<li>The Error object is how JavaScript deals with runtime errors - so at code runtime!</li>
+</ul>
+<p><strong>10. When kind of error is thrown when the JavaScript engine attempts to parse code that does not conform to the syntax of the JavaScript language?</strong></p>
+<ul>
+<li>A SyntaxError is thrown when there is an error in the syntax of the executed code.</li>
+</ul>
+<hr />
+<h2 id="tdd"><strong>TDD</strong></h2>
+<p><strong>1. Identify at least two reasons why developers use TDD.</strong></p>
+<ul>
+<li><ol type="1">
+<li>Writing tests before code ensures that the code written works.</li>
+<li>Only required code is written.</li>
+<li>TDD helps enforce code modularity.</li>
+<li>Better understanding of what the code should be doing.</li>
+</ol></li>
+</ul>
+<p><strong>2. What are the three steps of the TDD workflow?</strong></p>
+<ul>
+<li>Red, Green, Refactor</li>
+</ul>
+<p><strong>3. What does a developer do in the Green step in the TDD workflow?</strong></p>
+<ul>
+<li>Write the minimum amount of code to ensure the tests pass (a passing test will be green).</li>
+</ul>
+<p><strong>4. What does a developer do in the Red step in the TDD workflow?</strong></p>
+<ul>
+<li>Write the tests and watch them fail (a failing test is red). It’s important to ensure the tests initially fail so that you don’t have false positives.</li>
+</ul>
+<p><strong>5. What does a developer do in the Refactor step in the TDD workflow?</strong></p>
+<ul>
+<li>Refactor the code you just wrote. Your job is not over when the tests pass! One of the most important things you do as a software developer is to ensure the code you write is easy to maintain and read.</li>
+</ul>
+<p><strong>6. What does TDD stand for?</strong></p>
+<ul>
+<li>Test Driven Development.</li>
+</ul>
+<hr />
+<h3 id="testing">Testing</h3>
+<ol type="1">
+<li>Explain the “red-green-refactor” loop of test-driven development.</li>
+</ol>
+<ul>
+<li>Red: Write tests and watch them fail (protect against false positives)</li>
+<li>Green: Write the minimum amount of code to get the test to pass</li>
+<li>Refactor: Refactor the written code so that it is easy to maintain and understand</li>
+</ul>
+<ol start="2" type="1">
+<li>Identify the definitions of SyntaxError, ReferenceError, and TypeError</li>
+</ol>
+<ul>
+<li>SyntaxError
+<ul>
+<li>an error in how the code is written</li>
+<li>encountered at compile-time, ie the code cannot be parsed to determine the instructions</li>
+<li>since our code cannot be run, SyntaxErrors cannot be caught by a try-catch block</li>
+<li>common examples would be:
+<ul>
+<li>a misspelled function keyword (<code>funtion broken() {...}</code>)</li>
+<li>incorrect number of curly braces</li>
+</ul></li>
+</ul></li>
+<li><p>ReferenceError</p>
+<ul>
+<li>when a nonexistent variable is referenced</li>
+<li>most commonly seen when you mistype a variable name, or refer to one out of the current scope</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb20-1" title="1"><span class="kw">const</span> puppy <span class="op">=</span> <span class="st">&quot;puppy&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb20-2" title="2"><span class="va">console</span>.<span class="at">log</span>(pupy)<span class="op">;</span> <span class="co">// mistyped variable name</span></a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb21-1" title="1"><span class="kw">function</span> <span class="at">callPuppy</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb21-2" title="2">  <span class="kw">const</span> puppy <span class="op">=</span> <span class="st">&quot;puppy&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb21-3" title="3"><span class="op">}</span></a>
+<a class="sourceLine" id="cb21-4" title="4"><span class="va">console</span>.<span class="at">log</span>(puppy)<span class="op">;</span> <span class="co">// puppy is not in scope, it was created in the callPuppy function</span></a></code></pre></div></li>
+</ul>
+<ol start="3" type="1">
+<li>Create, modify, and get to pass a suite of Mocha tests</li>
+</ol>
+<ul>
+<li>File Structure
+<ul>
+<li>Mocha will expect a <code>test</code> directory at the location that we are running our <code>mocha</code> command (typically the top level of our project)</li>
+</ul>
+<pre><code>testing-demo
+└──
+problems
+    └── reverse-string.js
+test
+    └── reverse-string-spec.js</code></pre></li>
+<li>Setting up <code>describe</code> and <code>it</code> blocks
+<ul>
+<li>We want to keep our tests organized just like our code.</li>
+<li>A <code>describe</code> block gives a high level indication of what we are going to be testing, like the name of the function, module, or unit of code.</li>
+<li>An <code>it</code> block tells us something that we are specifically testing. It defines an individual test that we are running.</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb23-1" title="1"><span class="at">describe</span> (<span class="st">&#39;reverseString()&#39;</span><span class="op">,</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb23-2" title="2">    <span class="at">it</span>(<span class="st">&#39;should reverse the input string&#39;</span><span class="op">,</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb23-3" title="3">        <span class="co">// a test will go here!</span></a>
+<a class="sourceLine" id="cb23-4" title="4">    <span class="op">}</span>)</a>
+<a class="sourceLine" id="cb23-5" title="5"><span class="op">}</span></a></code></pre></div></li>
+<li>Using <code>assert</code> to test
+<ul>
+<li>Inside our <code>it</code> blocks we can use the <code>assert</code> module to execute a test.</li>
+<li>There are many different functions we can use in this module.</li>
+<li>A very common one is to use the <code>strictEqual</code> function, which compares two values. We can see other less common functions in the docs: https://nodejs.org/docs/latest-v12.x/api/assert.html#</li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb24-1" title="1"><span class="co">// remember we required the assert module and reverseString function at the top of this file</span></a>
+<a class="sourceLine" id="cb24-2" title="2"><span class="at">describe</span>(<span class="st">&quot;reverseString()&quot;</span><span class="op">,</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb24-3" title="3">  <span class="at">it</span>(<span class="st">&quot;should reverse the input string&quot;</span><span class="op">,</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb24-4" title="4">      <span class="kw">let</span> test <span class="op">=</span> <span class="at">reverseString</span>(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-5" title="5">      <span class="kw">let</span> result <span class="op">=</span> <span class="st">&quot;olleh&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb24-6" title="6">      <span class="co">// the line below is where the actual test is!</span></a>
+<a class="sourceLine" id="cb24-7" title="7">      <span class="va">assert</span>.<span class="at">strictEqual</span>(test<span class="op">,</span> result)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-8" title="8">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-9" title="9"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<ul>
+<li>Another common thing to test is that a function throws an error appropriately. We can use the <code>throws</code> function, which accepts a callback to invoke, the error we expect when that callback is invoked, and a message to show if the fail doesn’t go through correctly.
+<ul>
+<li>It’s important to note here that if we expect our function to throw an error, we cannot invoke it immediately, or else our test file itself will error out. We need to surround it in another function creating a callback to be invoked later. Our assertion is then able to compare the error to the second argument.</li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb25-1" title="1"><span class="co">// note that we are passing function(){reverseString(3);} as an argument, not reverseString(3) directly</span></a>
+<a class="sourceLine" id="cb25-2" title="2"><span class="at">context</span>(<span class="st">&quot;given an argument that is not a string&quot;</span><span class="op">,</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb25-3" title="3"><span class="at">it</span>(<span class="st">&quot;should throw a TypeError when given an argument that is not a string&quot;</span><span class="op">,</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb25-4" title="4">    <span class="va">assert</span>.<span class="at">throws</span>(</a>
+<a class="sourceLine" id="cb25-5" title="5">        <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb25-6" title="6">            <span class="at">reverseString</span>(<span class="dv">3</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb25-7" title="7">        <span class="op">},</span></a>
+<a class="sourceLine" id="cb25-8" title="8">        TypeError<span class="op">,</span></a>
+<a class="sourceLine" id="cb25-9" title="9">        <span class="st">&quot;this function only accepts string args&quot;</span></a>
+<a class="sourceLine" id="cb25-10" title="10">    )<span class="op">;</span></a>
+<a class="sourceLine" id="cb25-11" title="11"><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb25-12" title="12"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div></li>
+</ul></li>
+</ul>
+<ol start="4" type="1">
+<li>Use Chai to structure your tests using behavior-driven development principles.</li>
+</ol>
+<ul>
+<li>BDD vs. TDD =&gt; behavior driven development centers around what an application should do in plain english while TDD centers around how an application is implemented</li>
+<li>The Chai testing library provides additional functionality compared to using the basic <code>assert</code> module that comes with Node.</li>
+<li>Since it is external, we need to add it to our project with <code>npm install chai</code></li>
+<li>After adding the library, we can require it just like the <code>assert</code> module with <code>const chai = require("chai");</code> at the top of our test files.</li>
+<li>Using <code>expect</code> from the <code>chai</code> library, we can chain “getters” together to construct tests that read like English. Since we use <code>expect</code> so much in our code, we generally separate it out at the top once instead of for each test: <code>const expect = chai.expect;</code></li>
+</ul>
+<div class="sourceCode" id="cb26"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb26-1" title="1"><span class="kw">const</span> chai <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;chai&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb26-2" title="2"><span class="kw">const</span> expect <span class="op">=</span> <span class="va">chai</span>.<span class="at">expect</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb26-3" title="3"></a>
+<a class="sourceLine" id="cb26-4" title="4"><span class="co">// don&#39;t forget to import the class you are testing!</span></a>
+<a class="sourceLine" id="cb26-5" title="5"><span class="kw">const</span> Dog <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;../problems/dog.js&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb26-6" title="6"></a>
+<a class="sourceLine" id="cb26-7" title="7"><span class="at">describe</span>(<span class="st">&quot;Dog Constructor Function&quot;</span><span class="op">,</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb26-8" title="8">    <span class="at">it</span>(<span class="st">&#39;should have a &quot;name&quot; property&#39;</span><span class="op">,</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb26-9" title="9">        <span class="kw">const</span> layla <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&quot;Layla&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb26-10" title="10">        <span class="at">expect</span>(layla).<span class="va">to</span>.<span class="va">have</span>.<span class="at">property</span>(<span class="st">&quot;name&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb26-11" title="11">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb26-12" title="12"></a>
+<a class="sourceLine" id="cb26-13" title="13">    <span class="at">it</span>(<span class="st">&#39;should set the &quot;name&quot; property when a new dog is created&#39;</span><span class="op">,</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb26-14" title="14">        <span class="kw">const</span> layla <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&quot;Layla&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb26-15" title="15">        <span class="co">// we are using the eql function to compare the value of layla.name</span></a>
+<a class="sourceLine" id="cb26-16" title="16">        <span class="co">// with the provided string</span></a>
+<a class="sourceLine" id="cb26-17" title="17">        <span class="at">expect</span>(<span class="va">layla</span>.<span class="at">name</span>).<span class="va">to</span>.<span class="at">eql</span>(<span class="st">&quot;Layla&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb26-18" title="18">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb26-19" title="19"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<ul>
+<li>This is a great cheatsheet for understanding what common chains are available to us: https://devhints.io/chai</li>
+<li>We can also reference the docs for a more detailed explanation: https://www.chaijs.com/api/bdd/</li>
+</ul>
+<ol start="5" type="1">
+<li>Use the pre- and post-test hooks provided by Mocha</li>
+</ol>
+<ul>
+<li>We learned about four hooks
+<ul>
+<li>before(‘description’, callback): Callback is invoked before the block of test code is run</li>
+<li>beforeEach(‘description’, callback): Callback is invoked before each <code>it</code> statement in the block of test code</li>
+<li>after(‘description’, callback): Callback is invoked after the block of test code is run</li>
+<li>afterEach(‘description’, callback): Callback is invoked after each <code>it</code> statement in the block of test code</li>
+</ul></li>
+<li>before and beforeEach allows us to set up our test, pulling out common Arrange or Act portions of our tests</li>
+<li>after and afterEach are going to be less common for us, but allow us to do any kind of cleanup that may be necessary after a test has run
+<ul>
+<li>Looking forward, maybe we need to remove something from our database that our test created</li>
+</ul></li>
+</ul>
+<ol start="6" type="1">
+<li>Be familiar with <code>chai-spies</code> and its ability to test how many times a function is invoked</li>
+</ol>
+<ul>
+<li>After adding the <code>chai-spies</code> package to our project with <code>npm install chai-spies</code>, we can require it in our testing file. We are extending the functionality of the <code>chai</code> library, which has the <code>use</code> function to allow us to do so:</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">const</span> spies <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;chai-spies&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="va">chai</span>.<span class="at">use</span>(spies)<span class="op">;</span></a></code></pre></div>
+<ul>
+<li>After this initial setup, we can spy on a particular function by creating a spy:</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb28-1" title="1"><span class="co">// `on` takes in the object that we are spying on and the method we want to specifically watch</span></a>
+<a class="sourceLine" id="cb28-2" title="2"><span class="co">// Here we are saying to look at the layla object and track the calls to the chaseTail method</span></a>
+<a class="sourceLine" id="cb28-3" title="3"><span class="kw">const</span> chaseTailSpy <span class="op">=</span> <span class="va">chai</span>.<span class="va">spy</span>.<span class="at">on</span>(layla<span class="op">,</span> <span class="st">&quot;chaseTail&quot;</span>)<span class="op">;</span></a></code></pre></div>
+<ul>
+<li>With our spy created, we can invoke whatever functions we would expect to call (or not call, if we are expecting 0 invocations) our method. We can then expect that our spy has been called any number of times:</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb29-1" title="1"><span class="at">context</span>(<span class="st">&quot;with a valid number parameter&quot;</span><span class="op">,</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb29-2" title="2">    <span class="at">it</span>(<span class="st">&quot;should call the chaseTail method n times&quot;</span><span class="op">,</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb29-3" title="3">        <span class="kw">const</span> chaseTailSpy <span class="op">=</span> <span class="va">chai</span>.<span class="va">spy</span>.<span class="at">on</span>(layla<span class="op">,</span> <span class="st">&quot;chaseTail&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb29-4" title="4">        <span class="va">layla</span>.<span class="at">chainChaseTail</span>(<span class="dv">3</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb29-5" title="5">        <span class="co">// below is our actual test to see how many times our spy was invoked</span></a>
+<a class="sourceLine" id="cb29-6" title="6">        <span class="at">expect</span>(chaseTailSpy).<span class="va">to</span>.<span class="va">have</span>.<span class="va">been</span>.<span class="va">called</span>.<span class="at">exactly</span>(<span class="dv">3</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb29-7" title="7">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb29-8" title="8"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb30-1" title="1"><span class="at">describe</span>(<span class="st">&quot;myMap(array, callback)&quot;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb30-2" title="2">    <span class="kw">let</span> inputArray<span class="op">;</span></a>
+<a class="sourceLine" id="cb30-3" title="3">    <span class="kw">let</span> callback <span class="op">=</span> (el) <span class="kw">=&gt;</span> el <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb30-4" title="4">    <span class="at">beforeEach</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb30-5" title="5">        inputArray <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb30-6" title="6">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb30-7" title="7">    <span class="co">// ...other tests</span></a>
+<a class="sourceLine" id="cb30-8" title="8">    <span class="at">it</span>(<span class="st">&quot;should not call Array#map&quot;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb30-9" title="9">        <span class="co">// The object we are spying on is the inputArray</span></a>
+<a class="sourceLine" id="cb30-10" title="10">        <span class="co">// We want to make sure we don&#39;t call `map` on it</span></a>
+<a class="sourceLine" id="cb30-11" title="11">        <span class="co">// We want our function do its own iteration and invocation</span></a>
+<a class="sourceLine" id="cb30-12" title="12">        <span class="co">// We are emulating Array#map instead of calling it directly</span></a>
+<a class="sourceLine" id="cb30-13" title="13">        <span class="kw">const</span> mapSpy <span class="op">=</span> <span class="va">chai</span>.<span class="va">spy</span>.<span class="at">on</span>(inputArray<span class="op">,</span> <span class="st">&quot;map&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb30-14" title="14">        <span class="at">myMap</span>(inputArray<span class="op">,</span> callback)<span class="op">;</span></a>
+<a class="sourceLine" id="cb30-15" title="15"></a>
+<a class="sourceLine" id="cb30-16" title="16">        <span class="at">expect</span>(mapSpy).<span class="va">to</span>.<span class="va">not</span>.<span class="va">have</span>.<span class="va">been</span>.<span class="at">called</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb30-17" title="17">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb30-18" title="18"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+</body>
+</html>

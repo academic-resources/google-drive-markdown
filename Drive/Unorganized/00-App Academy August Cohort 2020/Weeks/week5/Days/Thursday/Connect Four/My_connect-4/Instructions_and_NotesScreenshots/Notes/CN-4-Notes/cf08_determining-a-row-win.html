@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>cf08_determining-a-row-win</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<h1 id="determine-a-win-part-two-the-rows">Determine A Win, Part Two, The Rows</h1>
+<figure>
+<img src="https://assets.aaonline.io/Module-JavaScript/oop/oop-connect-four-end-of-step-8.gif" alt="tie game announces tie below board" /><figcaption>tie game announces tie below board</figcaption>
+</figure>
+<p>This is going to be something similar to what you did for the columns. But, obviously, it’s for the rows.</p>
+<p>In this case, you want to check for the existence of four in a row across the rows four columns at a time. Here’s an animation to show you what that means. Choose four contiguous columns and check each row to see if the entries in the row are the same as one another.</p>
+<figure>
+<img src="https://assets.aaonline.io/Module-JavaScript/oop/oop-connect-four-show-row-selection-strategy.gif" alt="row checking strategy animation" /><figcaption>row checking strategy animation</figcaption>
+</figure>
+<p>Here are the steps.</p>
+<p>For the new class:</p>
+<ul>
+<li>Create a file named <strong>row-win-inspector.js</strong>.</li>
+<li>Create and export a class named <code>RowWinInspector</code>.</li>
+<li>Declare the constructor to have a <code>columns</code> parameter that should contain four column objects. Save them in an instance variable.</li>
+<li>Create an <code>inspect</code> method (with no parameters) that loops through the six rows and checks the token at each row in each of the columns. If any of the rows have identical entries in all four areas, then return the value of that winner’s number. Otherwise, if there is no winner, return <code>0</code>.</li>
+</ul>
+<p>In <code>Game</code> class:</p>
+<ul>
+<li>At the end of the <code>playInColumn</code> method, call a new method, this time named <code>checkForRowWin</code>.</li>
+<li>Create the <code>checkForRowWin</code> method in the <code>Game</code> class.</li>
+<li>If the value of <code>winnerNumber</code> is already non-zero, skip the method.</li>
+<li>Slice the <code>columns</code> array with groups of columns 0 - 3, 1 - 4, 2 - 5, and 3 -
+<ol start="6" type="1">
+<li></li>
+</ol></li>
+<li>For each of those slices, create a new instance of the <code>RowWinInspector</code> class.</li>
+<li>Call the <code>RowWinInspector</code> class’ <code>inspect</code> method. If the return value is greater than <code>0</code>, then set the winner number and break.</li>
+</ul>
+</body>
+</html>

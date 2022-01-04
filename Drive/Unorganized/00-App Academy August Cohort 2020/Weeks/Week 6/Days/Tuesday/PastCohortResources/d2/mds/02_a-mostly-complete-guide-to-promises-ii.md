@@ -5,8 +5,8 @@ not read part one, we recommend that you navigate to the previous task to do so.
 
 When you finish this article, you should be able to:
 
-* Create your own `Promise`s
-* Use `Promise` objects returned by language and framework libraries
+- Create your own `Promise`s
+- Use `Promise` objects returned by language and framework libraries
 
 ## Handling success with `then`
 
@@ -61,7 +61,7 @@ Spend a moment comparing and contrasting the forms from **very explicit** to
 **idiomatic**.
 
 ```javascript
-readFilePromise("manifest.txt").then(manifest => {
+readFilePromise("manifest.txt").then((manifest) => {
   const fileList = manifest.split("\n");
   console.log("Reading", fileList.length, "files");
 });
@@ -103,18 +103,18 @@ const filePromise = readFilePromise("manifest.txt");
 // which is the content of the file, split it on newline
 // characters, and return a Promise whose fulfilled value is
 // list of lines.
-const fileListPromise = filePromise.then(manifest => manifest.split("\n"));
+const fileListPromise = filePromise.then((manifest) => manifest.split("\n"));
 
 // Register a success handler to the fileListPromise that
 // receives the fulfilled value in the "fileList" parameter
-// and returns a Promise whose fulfilled value is the length 
+// and returns a Promise whose fulfilled value is the length
 // of the fileList array.
-const lengthPromise = fileListPromise.then(fileList => fileList.length);
+const lengthPromise = fileListPromise.then((fileList) => fileList.length);
 
 // Register a success handler to the lengthPromise that
 // receives the fulfilled value in the "numberOfFiles" parameter
 // and uses it to print the number of files to be read.
-lengthPromise.then(numberOfFiles =>
+lengthPromise.then((numberOfFiles) =>
   console.log("Reading", numberOfFiles, "files")
 );
 ```
@@ -125,9 +125,9 @@ code in a real application, it would likely look like the following.
 
 ```javascript
 readFilePromise("manifest.txt")
-  .then(manifest => manifest.split("\n"))
-  .then(fileList => fileList.length)
-  .then(numberOfFiles => console.log("Reading", numberOfFiles, "files"));
+  .then((manifest) => manifest.split("\n"))
+  .then((fileList) => fileList.length)
+  .then((numberOfFiles) => console.log("Reading", numberOfFiles, "files"));
 ```
 
 Here's a diagram of what happens in the above code.
@@ -153,11 +153,11 @@ trying to read a _huge_ file.
 
 ```javascript
 readFilePromise("manifest.txt").then(
-  manifest => {
+  (manifest) => {
     const fileList = manifest.split("\n");
     console.log("Reading", fileList.length, "files");
   },
-  reason => {
+  (reason) => {
     console.error("Badness happened", reason);
   }
 );
@@ -169,11 +169,11 @@ success handler. What happens if you did it like this? How does this work?
 ```javascript
 readFilePromise("manifest.txt")
   .then(
-    manifest => manifest.split("\n"),
-    reason => console.err("Badness happened", reason)
+    (manifest) => manifest.split("\n"),
+    (reason) => console.err("Badness happened", reason)
   )
-  .then(fileList => fileList.length)
-  .then(numberOfFiles => console.log("Reading", numberOfFiles, "files"));
+  .then((fileList) => fileList.length)
+  .then((numberOfFiles) => console.log("Reading", numberOfFiles, "files"));
 ```
 
 Here's what happens with regard to the `Promise`s in this chain of `then`s.
@@ -215,11 +215,11 @@ other lines of code run properly, you should write the following code.
 
 ```javascript
 readFilePromise("manifest.txt")
-  .then(manifest => manifest.split("\n"))
-  .then(fileList => fileList.length)
+  .then((manifest) => manifest.split("\n"))
+  .then((fileList) => fileList.length)
   .then(
-    numberOfFiles => console.log("Reading", numberOfFiles, "files"),
-    reason => console.err("Badness happened", reason)
+    (numberOfFiles) => console.log("Reading", numberOfFiles, "files"),
+    (reason) => console.err("Badness happened", reason)
   );
 ```
 
@@ -257,10 +257,10 @@ from the last section ends up looking like this.
 
 ```javascript
 readFilePromise("manifest.txt")
-  .then(manifest => manifest.split("\n"))
-  .then(fileList => fileList.length)
-  .then(numberOfFiles => console.log("Reading", numberOfFiles, "files"))
-  .catch(reason => console.err("Badness happened", reason));
+  .then((manifest) => manifest.split("\n"))
+  .then((fileList) => fileList.length)
+  .then((numberOfFiles) => console.log("Reading", numberOfFiles, "files"))
+  .catch((reason) => console.err("Badness happened", reason));
 ```
 
 That is exactly what the design expressed. The `catch` acts just like an error
@@ -321,8 +321,8 @@ that would demonstrate what happens.
 
 ```javascript
 superPromise
-  .then(values => console.log(values))
-  .catch(reason => console.error(reason));
+  .then((values) => console.log(values))
+  .catch((reason) => console.error(reason));
 
 // If the function successfully reads the file, the values passed
 // to the then come from the values that were in the superPromise
@@ -358,10 +358,10 @@ happens when you type the following code. It's step 4 that is the amazing part.
 
 ```javascript
 readFilePromise("manifest.txt")
-  .then(manifestContent => manifestContent.split("\n"))
-  .then(manifestList => manifestList[0])
-  .then(fileName => readFilePromise(fileName))
-  .then(otherFileContent => console.log(otherFileContent));
+  .then((manifestContent) => manifestContent.split("\n"))
+  .then((manifestList) => manifestList[0])
+  .then((fileName) => readFilePromise(fileName))
+  .then((otherFileContent) => console.log(otherFileContent));
 
 // Interpreted as:
 // 1. Read the file of the manifest.txt file and pass the
@@ -591,4 +591,4 @@ learning that...
   JavaScript.
 
 †: There's a corresponding `Promise.reject(reason)` method that creates a
-  `Promise` object immediately in the **rejected** state.
+`Promise` object immediately in the **rejected** state.

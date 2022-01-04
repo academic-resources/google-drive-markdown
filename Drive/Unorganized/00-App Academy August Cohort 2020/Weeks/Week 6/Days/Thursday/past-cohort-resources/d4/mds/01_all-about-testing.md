@@ -165,10 +165,8 @@ tests are end-to-end tests your tests could be running for **hours**.
 Here is a great blog from google about why they use the [testing
 pyramid][google-test].
 
-[test-pry]:
-  https://2.bp.blogspot.com/-YTzv_O4TnkA/VTgexlumP1I/AAAAAAAAAJ8/57-rnwyvP6g/s1600/image02.png
-[google-test]:
-  https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html
+[test-pry]: https://2.bp.blogspot.com/-YTzv_O4TnkA/VTgexlumP1I/AAAAAAAAAJ8/57-rnwyvP6g/s1600/image02.png
+[google-test]: https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html
 
 ## Reading Tests
 
@@ -181,8 +179,8 @@ We'll be diving more into the actual syntax of writing tests soon but for right
 now let's see what you can glean without knowing the syntax:
 
 ```js
-describe("avgValue()", function() {
-  it("should return the average of an array of numbers", function() {
+describe("avgValue()", function () {
+  it("should return the average of an array of numbers", function () {
     assert.equal(avgValue([10, 20]), 15);
   });
 });

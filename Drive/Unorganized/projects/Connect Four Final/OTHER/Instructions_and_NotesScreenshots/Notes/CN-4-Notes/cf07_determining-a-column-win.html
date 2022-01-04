@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>cf07_determining-a-column-win</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<h1 id="determine-a-win-part-one-the-columns">Determine A Win, Part One, The Columns</h1>
+<figure>
+<img src="https://assets.aaonline.io/Module-JavaScript/oop/oop-connect-four-end-of-step-7.gif" alt="tie game announces tie below board" /><figcaption>tie game announces tie below board</figcaption>
+</figure>
+<p>Now that you are checking for a tie, you should now start checking for wins to complete this game. The first step will be to check the columns to see if there are four in a row in any of the columns.</p>
+<p>Your first instinct may be to say to yourself, “Self, I have this nifty Column class. How about if I put a ‘check for a winner’ method on there?” That’s a good first thought! Try applying the SRP to determine if it’s a good place to do it!</p>
+<p>The purpose of the <code>Column</code> class is to manage the placement of tokens in the column. Everything it does is about managing the state of the board. Managing the state of the board and checking for a win in the column are <em>two different kinds of behavior</em>. So, even though it makes sense at first to put that behavior on the <code>Column</code> class, a mindful application of the Single-Responsibility Principle warns you away from it.</p>
+<p>Now, that you’ve talked yourself out of putting it on the <code>Column</code> class, you say to yourself, “Self, maybe I should put it on the ‘Game’ class.” You look at the <code>Game</code> class and think that you’re going to end up putting a lot of looping and stuff right there in the <code>Game</code> class which muddies up the reason for the <code>Game</code> class to exist: managing the state of the game and using helper classes (like <code>Column</code>) to help it.</p>
+<p>“Hey,” you excitedly reason with yourself. “Hey! Helper classes! I can just create another helper class to help me check whether or not a column has a winner in it! I’ll call it the ‘ColumnWinInspector’!” (Yes, naming things is one of the hardest things in computer programming.)</p>
+<h2 id="a-new-class">A new class</h2>
+<p>Create a new file named <strong>column-win-inspector.js</strong>. In it, create and export a class named <code>ColumnWinInspector</code>. Now, for this inspector to exist, it needs a column on which to perform its inspection. So, create a constructor that accepts a <code>Column</code> object.</p>
+<p>Create a method named <code>inspect</code> that takes no parameters. In that method, have it check to see if the column has four contiguous tokens of the same player. If they do, return that player’s number. Otherwise, return <code>0</code>.</p>
+<h2 id="check-for-a-column-win">Check for a column win</h2>
+<p>In the <strong>game.js</strong> file, import the <code>ColumnWinInspector</code> class so that you can use it.</p>
+<p>Create a new method in the <code>Game</code> class called <code>checkForColumnWin</code>. Call it after you call the <code>checkForTie</code> method in the <code>playInColumn</code> method. As a first step, if the value of <code>winnerNumber</code> is already non-zero, skip the method. There’s already a winner, in this case; there’s no need to go on checking. In the <code>checkForColumnWin</code>, loop over every column in the <code>columns</code> array. For each column, create a new instance of the <code>ColumnWinInspector</code> class handing it the <code>column</code> that you’re currently inspecting. Call the <code>inspect</code> method on the inspector object. If it returns <code>1</code> or <code>2</code>, then there’s a winner. Set the value of <code>winnerNumber</code> to the value and stop inspecting.</p>
+<p>It’s is <em>totally</em> ok to create an instance of an object and use it in just a method. There are programmers out there that detest creating objects just for the lifetime of a method. That’s left over from old languages where memory management is at a premium, and programmers had to do it all by hand. In modern computers, you are blessed with significant memory. Feel free to <code>new</code> up objects for use in a method. The JavaScript runtime will manage that memory for you.</p>
+<h2 id="update-the-name-of-the-game">Update the name of the game</h2>
+<p>In the <code>getName</code> method, if the <code>winnerNumber</code> is <code>1</code>, return the message “«Player one name» wins!”. If the <code>winnerNumber</code> is <code>2</code>, return the message “«Player two name» wins!”. Otherwise, just return the “tie” message or the “vs” message like before.</p>
+<h2 id="make-it-so-the-columns-are-full">Make it so the columns are “full”</h2>
+<p>If there is a winner, it’s as if all of the columns are full. In the <code>isColumnFull</code> method, check to see if <code>winnerNumber</code> is <code>1</code> or <code>2</code>. If so, just return <code>true</code>. (You don’t have to check if there is a tie, that is, if <code>winnerNumber</code> is <code>3</code>. Why is that?)</p>
+</body>
+</html>

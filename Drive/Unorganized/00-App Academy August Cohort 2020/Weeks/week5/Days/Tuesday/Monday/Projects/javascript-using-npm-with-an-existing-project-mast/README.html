@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="using-npm-with-an-existing-project">Using npm with an Existing Project</h1>
+<p>Most of your time working as a developer won’t be spent creating new applications, but rather maintaining existing applications. npm is useful throughout the lifetime of a application, so let’s practice using npm with an existing project.</p>
+<p>In this project, you’ll:</p>
+<ul>
+<li>clone an existing project from a GitHub repository;</li>
+<li>use npm to install the project’s dependencies;</li>
+<li>run each of the project’s npm scripts;</li>
+<li>use npm to remove a dependency;</li>
+<li>and use npm to update a dependency.</li>
+</ul>
+<h2 id="phase-1-using-npm-with-an-existing-project">Phase 1: Using npm with an existing project</h2>
+<p>Let’s get started!</p>
+<h3 id="phase-1a-setting-up-the-project">Phase 1A: Setting up the project</h3>
+<p>To set up the project, clone the following GitHub repository:</p>
+<p><a href="https://github.com/appacademy-starters/javascript-using-npm-with-an-existing-project">https://github.com/appacademy-starters/javascript-using-npm-with-an-existing-project</a></p>
+<p>Then use npm to install the project’s dependencies.</p>
+<h3 id="phase-1b-running-the-provided-scripts">Phase 1B: Running the provided scripts</h3>
+<p>After installing the project’s dependencies, you can test your project by running each of the provided npm scripts that are defined in the <code>package.json</code> file:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="op">{</span></a>
+<a class="sourceLine" id="cb1-2" title="2">  <span class="st">&quot;scripts&quot;</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="st">&quot;start&quot;</span><span class="op">:</span> <span class="st">&quot;node index.js&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-4" title="4">    <span class="st">&quot;test&quot;</span><span class="op">:</span> <span class="st">&quot;mocha&quot;</span></a>
+<a class="sourceLine" id="cb1-5" title="5">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="op">}</span></a></code></pre></div>
+<p>Running the <code>start</code> script will start the application and display three knock-knock jokes in the terminal:</p>
+<pre><code>Knock, knock.
+Who’s there?
+Abby.
+Abby who?
+Abby birthday to you!
+
+Knock, knock.
+Who’s there?
+Lettuce.
+Lettuce who?
+Lettuce in. It&#39;s cold out here!
+
+Knock, knock.
+Who’s there?
+Bed.
+Bed who?
+Bed you can not guess who I am.</code></pre>
+<p>Running the <code>test</code> script will run a single unit test and display the following output:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1">The <span class="at">getJoke</span>() <span class="kw">function</span></a>
+<a class="sourceLine" id="cb3-2" title="2">    ✓ should <span class="cf">return</span> a joke</a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4">  <span class="dv">1</span> <span class="at">passing</span> (5ms)</a></code></pre></div>
+<h3 id="phase-1c-removing-a-dependency">Phase 1C: Removing a dependency</h3>
+<p>The project contains three development dependencies: <code>mocha</code>, <code>chai</code>, and <code>chai-spies</code>. <code>mocha</code> and <code>chai</code> are both being used to unit test the project, but <code>chai-spies</code> is not currently being used. Go ahead and use npm to remove the <code>chai-spies</code> from the project.</p>
+<p>After removing the <code>chai-spies</code> package, you can open the <code>package.json</code> file to confirm that the project’s dependencies were correctly updated.</p>
+<h2 id="phase-2-using-npm-to-update-a-dependency">Phase 2: Using npm to update a dependency</h2>
+<p>This project was created a bit ago, so it’d be a good idea to ensure that the project is using the latest minor and patch versions of each of its dependencies. Go ahead and use npm to update any all of its dependencies.</p>
+<p>After updating the project, be sure to run the <code>start</code> and <code>test</code> scripts again to check that everything still works as expected.</p>
+<h2 id="what-weve-learned">What we’ve learned</h2>
+<p>In this project, you</p>
+<ul>
+<li>cloned an existing project from a GitHub repository;</li>
+<li>used npm to install the project’s dependencies;</li>
+<li>ran each of the project’s npm scripts;</li>
+<li>used npm to remove a dependency;</li>
+<li>and used npm to update a dependency.</li>
+</ul>
+</body>
+</html>

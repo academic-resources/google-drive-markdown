@@ -4,13 +4,13 @@ This article is about a JavaScript feature formally introduced into the language
 in 2015: the `Promise` object. The technical committee that governs the
 JavaScript language recognized that programmers had a hard time reasoning about
 and maintaining asynchronous code. They included `Promise`s as a way to
-encourage writing asynchronous code in a way that *appeared* synchronous.
+encourage writing asynchronous code in a way that _appeared_ synchronous.
 
 When you finish this article, you should be able to:
 
-* Provide examples of why `Promise`-based code is easier to maintain than
+- Provide examples of why `Promise`-based code is easier to maintain than
   traditional asynchronous callbacks;
-* Recall the three states of a `Promise`, what each state means, and any
+- Recall the three states of a `Promise`, what each state means, and any
   associated data with that state.
 
 ## A quick review of function declarations
@@ -72,7 +72,7 @@ function writeWithHeader(err, content) {
   console.log(content);
 }
 
-readFile('~/Documents/todos.txt', 'utf8', writeWithHeader);
+readFile("~/Documents/todos.txt", "utf8", writeWithHeader);
 ```
 
 Recall that when JavaScript found the function declaration at the beginning of
@@ -88,7 +88,7 @@ and declare it directly as the second argument of the `readFile` functions. That
 would turn the above code block into the following.
 
 ```javascript
-readFile('~/Documents/todos.txt', 'utf8', function (err, content) {
+readFile("~/Documents/todos.txt", "utf8", function (err, content) {
   console.log("YOUR FILE CONTAINS:");
   console.log(content);
 });
@@ -98,7 +98,7 @@ Since 2015, idiomatic JavaScript would instruct you to get rid of the function
 keyword and just use an arrow function.
 
 ```javascript
-readFile('~/Documents/todos.txt', 'utf8', (err, content) => {
+readFile("~/Documents/todos.txt", "utf8", (err, content) => {
   console.log("YOUR FILE CONTAINS:");
   console.log(content);
 });
@@ -116,8 +116,8 @@ You would start out by reading `manifest.txt` and splitting the content on the
 newline character to get the names of the files. That would look like this:
 
 ```javascript
-readFile('manifest.txt', 'utf8', (err, manifest) => {
-  const fileNames = manifest.split('\n');
+readFile("manifest.txt", "utf8", (err, manifest) => {
+  const fileNames = manifest.split("\n");
 
   // More to come
 });
@@ -129,14 +129,14 @@ in each file. Imagine that you already have the function named `countCharacters`
 somewhere. The looping code could look like this:
 
 ```javascript
-readFile('manifest.txt', 'utf8', (err, manifest) => {
-  const fileNames = manifest.split('\n');
+readFile("manifest.txt", "utf8", (err, manifest) => {
+  const fileNames = manifest.split("\n");
   const characterCounts = {};
 
   // Loop over each file name
   for (let fileName of fileNames) {
     // Read that file's content
-    readFile(fileName, 'utf8', (err, content) => {
+    readFile(fileName, "utf8", (err, content) => {
       // Count the characters and store it in
       // characterCounts
       countCharacters(characterCounts, content);
@@ -155,14 +155,14 @@ works now.
 If you put it here:
 
 ```javascript
-readFile('manifest.txt', 'utf8', (err, manifest) => {
-  const fileNames = manifest.split('\n');
+readFile("manifest.txt", "utf8", (err, manifest) => {
+  const fileNames = manifest.split("\n");
   const characterCounts = {};
 
   // Loop over each file name
   for (let fileName of fileNames) {
     // Read that file's content
-    readFile(fileName, 'utf8', (err, content) => {
+    readFile(fileName, "utf8", (err, content) => {
       // Count the characters and store it in
       // characterCounts
       countCharacters(characterCounts, content);
@@ -182,14 +182,14 @@ read and the current function completes.
 If you put it here:
 
 ```javascript
-readFile('manifest.txt', 'utf8', (err, manifest) => {
-  const fileNames = manifest.split('\n');
+readFile("manifest.txt", "utf8", (err, manifest) => {
+  const fileNames = manifest.split("\n");
   const characterCounts = {};
 
   // Loop over each file name
   for (let fileName of fileNames) {
     // Read that file's content
-    readFile(fileName, 'utf8', (err, content) => {
+    readFile(fileName, "utf8", (err, content) => {
       // Count the characters and store it in
       // characterCounts
       countCharacters(characterCounts, content);
@@ -207,15 +207,15 @@ that have been read each time one completes. Then, you only print when that
 number equals the total number of files to be read. The code could like this:
 
 ```javascript
-readFile('manifest.txt', 'utf8', (err, manifest) => {
-  const fileNames = manifest.split('\n');
+readFile("manifest.txt", "utf8", (err, manifest) => {
+  const fileNames = manifest.split("\n");
   const characterCounts = {};
   let numberOfFilesRead = 0;
 
   // Loop over each file name
   for (let fileName of fileNames) {
     // Read that file's content
-    readFile(fileName, 'utf8', (err, content) => {
+    readFile(fileName, "utf8", (err, content) => {
       // Count the characters and store it in
       // characterCounts
       countCharacters(characterCounts, content);
@@ -241,6 +241,7 @@ world, even with code comments. That leads to a maintenance nightmare. The
 JavaScript community wanted a way to code better and clearer.
 
 <a name="designing-a-better-solution"></a>
+
 ## Designing a better solution
 
 Look at the following code that has numbers in the order in which the
@@ -248,15 +249,15 @@ Look at the following code that has numbers in the order in which the
 on separate lines.†
 
 ```javascript
-console.log('Q'); //---- 1
+console.log("Q"); //---- 1
 setTimeout(() => {
-  console.log('E'); //-- 3
+  console.log("E"); //-- 3
   setTimeout(() => {
-    console.log('T'); // 5
+    console.log("T"); // 5
   }, 100);
-  console.log('R'); //-- 4
+  console.log("R"); //-- 4
 }, 200);
-console.log('W'); //---- 2
+console.log("W"); //---- 2
 ```
 
 What would really help is if you could get those numbers in order so that what
@@ -268,13 +269,13 @@ Reordering the code above to reflect how it really runs, you'd get this somewhat
 more maintainable block.
 
 ```javascript
-console.log('Q'); //---- 1
-console.log('W'); //---- 2
+console.log("Q"); //---- 1
+console.log("W"); //---- 2
 setTimeout(() => {
-  console.log('E'); //-- 3
-  console.log('R'); //-- 4
+  console.log("E"); //-- 3
+  console.log("R"); //-- 4
   setTimeout(() => {
-    console.log('T'); // 5
+    console.log("T"); // 5
   }, 100);
 }, 200);
 ```
@@ -287,13 +288,13 @@ chain a bunch of those things together without the indentation, something like
 this. (The function names are completely invented for this code block.);
 
 ```javascript
-log('Q')
-  .then(() => log('W'))
+log("Q")
+  .then(() => log("W"))
   .then(() => pause(200))
-  .then(() => log('E'))
-  .then(() => log('R'))
+  .then(() => log("E"))
+  .then(() => log("R"))
   .then(() => pause(100))
-  .then(() => log('T'));
+  .then(() => log("T"));
 ```
 
 The JavaScript community realized that they'd have to use functions in the
@@ -305,6 +306,7 @@ in this example. They decided to create a new kind of abstraction in JavaScript
 named the "Promise".
 
 <a name="so-what-is-a-promise"></a>
+
 ## So, what is a "Promise"?
 
 Look at a line of code using the `readFile` method found in Node.js. Don't worry
@@ -332,29 +334,29 @@ get an error or the value of the operation. So that's what a `Promise` is.
 
 Promises can exist in three states. They are:
 
-* **Pending**: The `Promise` object has not resolved. Once it does, the state of
+- **Pending**: The `Promise` object has not resolved. Once it does, the state of
   the `Promise` object may transition to either the fulfilled or rejected state.
-* **Fulfilled**: Whatever operation the `Promise` represented succeeded and your
+- **Fulfilled**: Whatever operation the `Promise` represented succeeded and your
   success handler will get called. Now that it's _fulfilled_, the `Promise`:
-  * must not transition to any other state.
-  * must have a value, which must not change.
-* **Rejected**: Whatever operation the `Promise` represented failed and your
+  - must not transition to any other state.
+  - must have a value, which must not change.
+- **Rejected**: Whatever operation the `Promise` represented failed and your
   error handler will get called. Now that it's _rejected_, the `Promise`:
-  * must not transition to any other state.
-  * must have a reason, which must not change.
+  - must not transition to any other state.
+  - must have a reason, which must not change.
 
 `Promise` objects have the following methods available on them so that you can
 handle the state change from _pending_ to either _fulfilled_ or _rejected_.
 
-* `then(successHandler, errorHandler)` is a way to handle a `Promise` when it
+- `then(successHandler, errorHandler)` is a way to handle a `Promise` when it
   leaves the _pending_ state.
-* `catch(errorHandler)`
+- `catch(errorHandler)`
 
 The handlers mentioned in the previous list are:
 
-* **Success Handler** is a function that has one parameter, the value that a
+- **Success Handler** is a function that has one parameter, the value that a
   _fulfilled_ `Promise` has.
-* **Error Handler** is a function that has one parameter, the reason that the
+- **Error Handler** is a function that has one parameter, the reason that the
   `Promise` failed.
 
 We'll elaborate on these methods in part two of this article.
@@ -371,6 +373,6 @@ learning that...
   (like the file doesn't exist or the Web site is down).
 
 †: One can argue that the code following this statement is already very bad
-      and shouldn't be written that way. I would agree. Please don't write code
-      like that. It is *only* for demonstration purposes. However, do not be
-      surprised if you find **someone else** wrote code like that. ;-)
+and shouldn't be written that way. I would agree. Please don't write code
+like that. It is _only_ for demonstration purposes. However, do not be
+surprised if you find **someone else** wrote code like that. ;-)

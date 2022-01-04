@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>notes</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<h1 id="constructor-functions">Constructor Functions</h1>
+<p>creating objects using literal notation / object initializer - attributes of “Cat” object representeed by obj literal’s keys</p>
+<p>creating objects using constructor function - “factory” for creating objects of a specific type - calling a constructor function returns new object - props initialized to provided argument values</p>
+<p>Notice anything weird about this function? - name is capitalized to help distinguish func as a constructor - function doesn’t explicitely return a value - “this” references newly created object</p>
+<p>invoking a constructor function with “new” 1. new empty obj is created ({}) 2. new obj prototype is set to obj referenced by constructor funcs prototype prop 3. constructor func is called and “this” is bound to new object 4. new object is returned</p>
+<p>understanding object type instances</p>
+<p>invoking a constructor without the <code>new</code> keyword - in strict mode: <code>this</code> will be undefined - in non-strict mode: <code>this</code> will be global object</p>
+<h1 id="defining-shareable-methods">Defining Shareable Methods</h1>
+<p>DONT define methods within constructor func - inefficient in terms of computer memory usage - each instance would ahve its own method definition - 100 instances = 100 method definitions</p>
+<p>DO use prototypes and delegation - a prototype is an object that is delegated to when a reference to an object property or method can’t be resolved - in JS you can make an object the prototype of another object - when an object is a prototype of another object, it’s properties and methods are made available to the other object. - if prop or method isnt available on an obj, JS will look up prototypal chain</p>
+<p>Object.setPrototypeOf(a, b) - sets betaObject as prototype of alphaObject - only used as example / debugging - can have negative impact on app performance so avoid using</p>
+<p>Object.getPrototypeOf(a) - gets prototype of object passed in</p>
+<p>The <strong>proto</strong> property (“dunder proto”) - prior to ES2015 no official way to get/set obj internal prototype object - many browsers made <strong>proto</strong> property available - only use for debugging, never in code - not supported by all browsers, will stop working - deprecated in favor of Object.setPrototypeOf - references object that points to the prototype it was created from</p>
+<p>defining shareable methods on a constructor funcs <code>prototype</code> property</p>
+<p>every constructor function has a <code>prototype</code> property - represents object that’ll be used as prototype for instances created by invoking the constructor function with the <code>new</code> keyword - can confirm by comparing prototype for an instance to constructor functions prototype property</p>
+<p>summary - every instance created from constructor func has its prototype set to the object referenced by the constructor function’s prototype property - any method we define on constructor functions prototype will be shared across all instances of that object type</p>
+<p>when speak() is called: 1. <code>fluffy</code> object is checked to see if method is defined on that object 2. when method isn’t found, method call is delegated to instance’s prototype 3. instance’s prototype is set to <code>Dog</code> constructor funcs <code>prototype</code> property 4. this time, speak() method is found and called - note: can use <code>this</code> to access properties on the instance we’re calling method on (this refers to the instance of dog, fluffy)</p>
+<p>problems with arrow functions - don’t have their own “this” binding - they use “this” binding from lexical scope</p>
+<p>instanceof operator uses prototypes to determine if obj is an instance of a specific constructor function - checks if prototype of obj on left side of operator is set to prototype property of constructor function on the right side</p>
+<h1 id="javascript-classes">JAVASCRIPT CLASSES</h1>
+<p>javascript classes - constructor funcs and prototypes mimic class behavior - support for classes added to language in ES2015</p>
+<p>ES2015 classes - defines attributes and behavior for object type - used to create instances of that type, just like constructor func - begin with capital letter</p>
+<p>constructor method not required, similar to constructor func 1. don’t explicitly return a value, implicitly returns new obj instance 2. <code>this</code> keyword refrences newly created object instance</p>
+<p>when instantiating an instance of class: 1. new empty obj is created 2. new obj prototype is set to class’s <code>prototype</code> property 3. <code>constuctor</code> method is called and <code>this</code> is bound to object 4. new obj is returned</p>
+<p>HOISTING - in JS, you can call a function before it’s declared</p>
+<h1 id="inheritance">INHERITANCE</h1>
+<p>javascript inheritance - classes don’t havee to be defined and used in isolation from one another - possible to base a class - a child class - upon another class - a parent class - child class can inherit properties and methods defined within parent class</p>
+<p>benefits of inheritance - gives you a way to share code across classes - prevents code duplication and keeps code DRY</p>
+<p>understanding how <code>this</code> works - <code>this</code> always references the instance object created using <code>new</code>, regardless of where it is used - allows constructor() method to initialize properties eon the instance object</p>
+<p>OVERRIDING METHODS IN PARENT CLASS - simply define method in child class with same name</p>
+<p>UNDERSTANDING HOW INHERITANCE WORKS - implemented using prototypes</p>
+</body>
+</html>

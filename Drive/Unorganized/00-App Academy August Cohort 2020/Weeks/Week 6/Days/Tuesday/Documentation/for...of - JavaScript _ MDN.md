@@ -1,46 +1,46 @@
--   [Skip to main
-    content](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#content)
--   [Select
-    language](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#language)
--   [Skip to
-    search](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#main-q)
+- [Skip to main
+  content](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#content)
+- [Select
+  language](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#language)
+- [Skip to
+  search](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#main-q)
 
 [](https://developer.mozilla.org/en-US/)
 
--   Technologies
-    -   [Technologies
-        Overview](https://developer.mozilla.org/en-US/docs/Web)
-    -   [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
-    -   [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-    -   [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-    -   [Graphics](https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics)
-    -   [HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
-    -   [APIs / DOM](https://developer.mozilla.org/en-US/docs/Web/API)
-    -   [Browser
-        Extensions](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions)
-    -   [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML)
--   References & Guides
-    -   [Learn web
-        development](https://developer.mozilla.org/en-US/docs/Learn)
-    -   [Tutorials](https://developer.mozilla.org/en-US/docs/Web/Tutorials)
-    -   [References](https://developer.mozilla.org/en-US/docs/Web/Reference)
-    -   [Developer
-        Guides](https://developer.mozilla.org/en-US/docs/Web/Guide)
-    -   [Accessibility](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
-    -   [Game
-        development](https://developer.mozilla.org/en-US/docs/Games)
-    -   [...more docs](https://developer.mozilla.org/en-US/docs/Web)
--   Feedback
-    -   [Send
-        Feedback](https://developer.mozilla.org/en-US/docs/MDN/Feedback)
-    -   [Get Firefox help 🌐](https://support.mozilla.org/)
-    -   [Get web development help 🌐](https://stackoverflow.com/)
-    -   [Join the MDN
-        community](https://developer.mozilla.org/en-US/docs/MDN/Community)
-    -   [Report a content problem
-        🌐](https://github.com/mdn/sprints/issues/new?template=issue-template.md&projects=mdn/sprints/2&labels=user-report&title=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of)
-    -   [Report an issue
-        🌐](https://github.com/mdn/kuma/issues/new/choose)
+- Technologies
+  - [Technologies
+    Overview](https://developer.mozilla.org/en-US/docs/Web)
+  - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+  - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+  - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+  - [Graphics](https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics)
+  - [HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
+  - [APIs / DOM](https://developer.mozilla.org/en-US/docs/Web/API)
+  - [Browser
+    Extensions](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions)
+  - [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML)
+- References & Guides
+  - [Learn web
+    development](https://developer.mozilla.org/en-US/docs/Learn)
+  - [Tutorials](https://developer.mozilla.org/en-US/docs/Web/Tutorials)
+  - [References](https://developer.mozilla.org/en-US/docs/Web/Reference)
+  - [Developer
+    Guides](https://developer.mozilla.org/en-US/docs/Web/Guide)
+  - [Accessibility](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
+  - [Game
+    development](https://developer.mozilla.org/en-US/docs/Games)
+  - [...more docs](https://developer.mozilla.org/en-US/docs/Web)
+- Feedback
+  - [Send
+    Feedback](https://developer.mozilla.org/en-US/docs/MDN/Feedback)
+  - [Get Firefox help 🌐](https://support.mozilla.org/)
+  - [Get web development help 🌐](https://stackoverflow.com/)
+  - [Join the MDN
+    community](https://developer.mozilla.org/en-US/docs/MDN/Community)
+  - [Report a content problem
+    🌐](https://github.com/mdn/sprints/issues/new?template=issue-template.md&projects=mdn/sprints/2&labels=user-report&title=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of)
+  - [Report an issue
+    🌐](https://github.com/mdn/kuma/issues/new/choose)
 
 Search MDN
 
@@ -60,39 +60,38 @@ in](https://developer.mozilla.org/en-US/users/account/signup-landing?next=/en-US
 
 English▼
 
--   [Català](https://developer.mozilla.org/ca/docs/Web/JavaScript/Referencia/Sentencies/for...of "Catalan")
--   [Deutsch](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/for...of "German")
--   [Español](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/for...of "Spanish")
--   [Français](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/for...of "French")
--   [עברית](https://developer.mozilla.org/he/docs/Web/JavaScript/Reference/Statements/for...of "Hebrew")
--   [Italiano](https://developer.mozilla.org/it/docs/Web/JavaScript/Reference/Statements/for...of "Italian")
--   [日本語](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for...of "Japanese")
--   [한국어](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/for...of "Korean")
--   [Português
-    (do Brasil)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/for...of "Portuguese (Brazilian)")
--   [Русский](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/for...of "Russian")
--   [Українська](https://developer.mozilla.org/uk/docs/Web/JavaScript/Reference/Statements/for...of "Ukrainian")
--   [Tiếng
-    Việt](https://developer.mozilla.org/vi/docs/Web/JavaScript/Reference/Statements/for...of "Vietnamese")
--   [中文
-    (简体)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for...of "Chinese (Simplified)")
--   [Add a
-    translation](https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of$locales)
+- [Català](https://developer.mozilla.org/ca/docs/Web/JavaScript/Referencia/Sentencies/for...of "Catalan")
+- [Deutsch](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/for...of "German")
+- [Español](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/for...of "Spanish")
+- [Français](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/for...of "French")
+- [עברית](https://developer.mozilla.org/he/docs/Web/JavaScript/Reference/Statements/for...of "Hebrew")
+- [Italiano](https://developer.mozilla.org/it/docs/Web/JavaScript/Reference/Statements/for...of "Italian")
+- [日本語](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for...of "Japanese")
+- [한국어](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/for...of "Korean")
+- [Português
+  (do Brasil)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/for...of "Portuguese (Brazilian)")
+- [Русский](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/for...of "Russian")
+- [Українська](https://developer.mozilla.org/uk/docs/Web/JavaScript/Reference/Statements/for...of "Ukrainian")
+- [Tiếng
+  Việt](https://developer.mozilla.org/vi/docs/Web/JavaScript/Reference/Statements/for...of "Vietnamese")
+- [中文
+  (简体)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for...of "Chinese (Simplified)")
+- [Add a
+  translation](https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of$locales)
 
-On this Page
-------------
+## On this Page
 
 Jump to section
 
--   [Syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#Syntax)
--   [Examples](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#Examples)
--   [Specifications](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#Specifications)
--   [Browser
-    compatibility](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#Browser_compatibility)
--   [See
-    also](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#See_also)
--   [Related
-    topics](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#sidebar-quicklinks)
+- [Syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#Syntax)
+- [Examples](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#Examples)
+- [Specifications](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#Specifications)
+- [Browser
+  compatibility](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#Browser_compatibility)
+- [See
+  also](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#See_also)
+- [Related
+  topics](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#sidebar-quicklinks)
 
 The **`for...of` statement** creates a loop iterating over [iterable
 objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#The_iterable_protocol),
@@ -115,28 +114,26 @@ project, please clone
 [https://github.com/mdn/interactive-examples](https://github.com/mdn/interactive-examples)
 and send us a pull request.
 
-Syntax {#Syntax}
-------
+## Syntax {#Syntax}
 
-``` {.syntaxbox .notranslate}
+```{.syntaxbox .notranslate}
 for (variable of iterable) {
   statement
 }
 ```
 
 `variable`
-:   On each iteration a value of a different property is assigned to
-    `variable`. `variable` may be declared with `const`, `let`, or
-    `var`.
+: On each iteration a value of a different property is assigned to
+`variable`. `variable` may be declared with `const`, `let`, or
+`var`.
 `iterable`
-:   Object whose iterable properties are iterated.
+: Object whose iterable properties are iterated.
 
-Examples {#Examples}
---------
+## Examples {#Examples}
 
 ### Iterating over an [`Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) {#Iterating_over_an_Array}
 
-``` {.brush:js .notranslate .line-numbers .language-js}
+```{.brush:js .notranslate .line-numbers .language-js}
 const iterable = [10, 20, 30];
 
 for (const value of iterable) {
@@ -153,7 +150,7 @@ instead of
 [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
 too, if you reassign the variable inside the block.
 
-``` {.brush:js .notranslate .line-numbers .language-js}
+```{.brush:js .notranslate .line-numbers .language-js}
 const iterable = [10, 20, 30];
 
 for (let value of iterable) {
@@ -167,7 +164,7 @@ for (let value of iterable) {
 
 ### Iterating over a [`String`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) {#Iterating_over_a_String}
 
-``` {.brush:js .notranslate .line-numbers .language-js}
+```{.brush:js .notranslate .line-numbers .language-js}
 const iterable = 'boo';
 
 for (const value of iterable) {
@@ -180,7 +177,7 @@ for (const value of iterable) {
 
 ### Iterating over a [`TypedArray`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) {#Iterating_over_a_TypedArray}
 
-``` {.brush:js .notranslate .line-numbers .language-js}
+```{.brush:js .notranslate .line-numbers .language-js}
 const iterable = new Uint8Array([0x00, 0xff]);
 
 for (const value of iterable) {
@@ -192,7 +189,7 @@ for (const value of iterable) {
 
 ### Iterating over a [`Map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) {#Iterating_over_a_Map}
 
-``` {.brush:js .notranslate .line-numbers .language-js}
+```{.brush:js .notranslate .line-numbers .language-js}
 const iterable = new Map([['a', 1], ['b', 2], ['c', 3]]);
 
 for (const entry of iterable) {
@@ -212,7 +209,7 @@ for (const [key, value] of iterable) {
 
 ### Iterating over a [`Set`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) {#Iterating_over_a_Set}
 
-``` {.brush:js .notranslate .line-numbers .language-js}
+```{.brush:js .notranslate .line-numbers .language-js}
 const iterable = new Set([1, 1, 2, 2, 3, 3]);
 
 for (const value of iterable) {
@@ -230,7 +227,7 @@ You can iterate over the
 object to examine all of the parameters passed into a JavaScript
 function:
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 (function() {
   for (const argument of arguments) {
     console.log(argument);
@@ -249,7 +246,7 @@ Iterating over DOM collections like
 the following example adds a `read` class to paragraphs that are direct
 descendants of an article:
 
-``` {.brush:js .notranslate .line-numbers .language-js}
+```{.brush:js .notranslate .line-numbers .language-js}
 // Note: This will only work in platforms that have
 // implemented NodeList.prototype[Symbol.iterator]
 const articleParagraphs = document.querySelectorAll('article > p');
@@ -264,15 +261,15 @@ for (const paragraph of articleParagraphs) {
 In `for...of` loops, abrupt iteration termination can be caused by
 `break`, `throw` or `return`. In these cases, the iterator is closed.
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
-function* foo(){ 
-  yield 1; 
-  yield 2; 
-  yield 3; 
-}; 
+```{.brush: .js .notranslate .line-numbers .language-js}
+function* foo(){
+  yield 1;
+  yield 2;
+  yield 3;
+};
 
-for (const o of foo()) { 
-  console.log(o); 
+for (const o of foo()) {
+  console.log(o);
   break; // closes iterator, execution continues outside of the loop
 }
 console.log('done');
@@ -284,7 +281,7 @@ You can also iterate over
 [generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*),
 i.e. functions generating an iterable object:
 
-``` {.brush:js .notranslate .line-numbers .language-js}
+```{.brush:js .notranslate .line-numbers .language-js}
 function* fibonacci() { // a generator function
   let [prev, curr] = [0, 1];
   while (true) {
@@ -310,7 +307,7 @@ terminated early, for example via the
 keyword. Upon exiting a loop, the generator is closed and trying to
 iterate over it again does not yield any further results.
 
-``` {.brush: .js .example-bad .notranslate .line-numbers .language-js}
+```{.brush: .js .example-bad .notranslate .line-numbers .language-js}
 const gen = (function *(){
   yield 1;
   yield 2;
@@ -333,7 +330,7 @@ You can also iterate over an object that explicitly implements
 the [iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#iterable)
 protocol:
 
-``` {.brush:js .notranslate .line-numbers .language-js}
+```{.brush:js .notranslate .line-numbers .language-js}
 const iterable = {
   [Symbol.iterator]() {
     return {
@@ -375,8 +372,8 @@ The following example shows the difference between a `for...of` loop and
 a `for...in` loop when used with an
 [`Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array).
 
-``` {.brush:js .notranslate .line-numbers .language-js}
-Object.prototype.objCustom = function() {}; 
+```{.brush:js .notranslate .line-numbers .language-js}
+Object.prototype.objCustom = function() {};
 Array.prototype.arrCustom = function() {};
 
 const iterable = [3, 5, 7];
@@ -399,11 +396,11 @@ for (const i of iterable) {
 
 Let us look into the above code step by step.
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 Object.prototype.objCustom = function() {};
-Array.prototype.arrCustom = function() {}; 
+Array.prototype.arrCustom = function() {};
 
-const iterable = [3, 5, 7]; 
+const iterable = [3, 5, 7];
 iterable.foo = 'hello';
 ```
 
@@ -418,9 +415,9 @@ properties `objCustom` and `arrCustom` because of [inheritance and the
 prototype
 chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain).
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 for (const i in iterable) {
-  console.log(i); // logs 0, 1, 2, "foo", "arrCustom", "objCustom" 
+  console.log(i); // logs 0, 1, 2, "foo", "arrCustom", "objCustom"
 }
 ```
 
@@ -435,7 +432,7 @@ iterated over, there's a more thorough explanation of how
 [`array iteration and for...in`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in#Array_iteration_and_for...in)
 work.
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 for (const i in iterable) {
   if (iterable.hasOwnProperty(i)) {
     console.log(i); // logs 0, 1, 2, "foo"
@@ -451,9 +448,9 @@ and `foo` are logged because they are own properties (**not
 inherited**). Properties `arrCustom` and `objCustom` are not logged
 because they **are inherited**.
 
-``` {.brush: .js .notranslate .line-numbers .language-js}
+```{.brush: .js .notranslate .line-numbers .language-js}
 for (const i of iterable) {
-  console.log(i); // logs 3, 5, 7 
+  console.log(i); // logs 3, 5, 7
 }
 ```
 
@@ -462,18 +459,20 @@ object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_
 defines to be iterated over. The object's **elements** `3`, `5`, `7` are
 shown, but none of the object's **properties**.
 
-Specifications {#Specifications}
---------------
+## Specifications {#Specifications}
 
-  ---------------------------------------------------------------------------------------------------------------------------
-  Specification
-  ---------------------------------------------------------------------------------------------------------------------------
-  [ECMAScript (ECMA-262)\
-  The definition of 'for...of statement' in that specification.](https://tc39.es/ecma262/#sec-for-in-and-for-of-statements)
-  ---------------------------------------------------------------------------------------------------------------------------
+---
 
-Browser compatibility {#Browser_compatibility}
----------------------
+Specification
+
+---
+
+[ECMAScript (ECMA-262)\
+ The definition of 'for...of statement' in that specification.](https://tc39.es/ecma262/#sec-for-in-and-for-of-statements)
+
+---
+
+## Browser compatibility {#Browser_compatibility}
 
 The compatibility table on this page is generated from structured data.
 If you'd like to contribute to the data, please check out
@@ -523,15 +522,15 @@ Edge Full support 12
 
 Firefox Full support 13
 
-Notes**
+Notes\*\*
 
-Open**
+Open\*\*
 
 Full support 13
 
-Notes**
+Notes\*\*
 
-Notes** Prior to Firefox 51, using the `for...of` loop construct with
+Notes\*\* Prior to Firefox 51, using the `for...of` loop construct with
 the `const` keyword threw a `SyntaxError` ("missing = in const
 declaration").
 
@@ -547,15 +546,15 @@ Chrome Android Full support 38
 
 Firefox Android Full support 14
 
-Notes**
+Notes\*\*
 
-Open**
+Open\*\*
 
 Full support 14
 
-Notes**
+Notes\*\*
 
-Notes** Prior to Firefox 51, using the `for...of` loop construct with
+Notes\*\* Prior to Firefox 51, using the `for...of` loop construct with
 the `const` keyword threw a `SyntaxError` ("missing = in const
 declaration").
 
@@ -623,8 +622,7 @@ Samsung Internet Android Full support 5.0
 
 nodejs Full support 6.5.0
 
-Thank you! {.complete-left-block-header}
-----------
+## Thank you! {.complete-left-block-header}
 
 ### Report sent {.right-block-header}
 
@@ -643,8 +641,7 @@ table data:
 
 Finish
 
-Tell us what’s wrong with this table {.left-block-header}
-------------------------------------
+## Tell us what’s wrong with this table {.left-block-header}
 
 Our goal is to provide accurate, real values for all our compatibility
 data tables. Notifying MDN of inaccurate data or supplying new data
@@ -652,7 +649,7 @@ pushes us further towards our goal of providing 100% real values to the
 developer community.\
 Thank you for helping.
 
-###  {.highlight-spanned}
+### {.highlight-spanned}
 
 1Which browsers are affected?
 
@@ -743,38 +740,38 @@ Send report
 
 Previous step
 
-* * * * *
+---
 
 [What are we
 missing?](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#)
 
 ### Legend {#Legend .offscreen}
 
-  Full support   
-:   Full support
-  No support   
-:   No support
-See implementation notes.**
-:   See implementation notes.
+Full support  
+: Full support
+No support  
+: No support
+See implementation notes.\*\*
+: See implementation notes.
 
-See also {#See_also}
---------
+## See also {#See_also}
 
--   [`Array.prototype.forEach()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
--   [`Map.prototype.forEach()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/forEach)
--   [`Object.entries()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries)
-    – Useful when using **`for...of`** over an object.
+- [`Array.prototype.forEach()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+- [`Map.prototype.forEach()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/forEach)
+- [`Object.entries()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries)
+  – Useful when using **`for...of`** over an object.
 
 #### Metadata
 
--   **Last modified:** Apr 20, 2020, [by MDN
-    contributors](https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of$history)
+- **Last modified:** Apr 20, 2020, [by MDN
+  contributors](https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of$history)
 
 Related Topics
 
-1.  [***JavaScript***](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+1.  [**_JavaScript_**](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 2.  [**Tutorials:**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Tutorials)
 3.  Complete beginners
+
     1.  [JavaScript
         basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics)
     2.  [JavaScript first
@@ -785,6 +782,7 @@ Related Topics
         objects](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects)
 
 4.  JavaScript Guide
+
     1.  [Introduction](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Introduction)
     2.  [Grammar and
         types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_Types)
@@ -819,6 +817,7 @@ Related Topics
         modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
 
 5.  Intermediate
+
     1.  [Client-side JavaScript
         frameworks](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks)
     2.  [Client-side web
@@ -832,6 +831,7 @@ Related Topics
     6.  [Closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 
 6.  Advanced
+
     1.  [Inheritance and the prototype
         chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
     2.  [Strict
@@ -845,7 +845,8 @@ Related Topics
 
 7.  **[References:](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)**
 8.  Built-in objects
-    1.  **[AggregateError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AggregateError "The AggregateError object represents an error when several errors need to be wrapped in a single error. It is thrown when multiple errors need to be reported by an operation, for example by Promise.any(), when all promises passed to it reject.")
+
+    1.  \*\*[AggregateError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AggregateError "The AggregateError object represents an error when several errors need to be wrapped in a single error. It is thrown when multiple errors need to be reported by an operation, for example by Promise.any(), when all promises passed to it reject.")
     2.  [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array "The JavaScript Array class is a global object that is used in the construction of arrays; which are high-level, list-like objects.")
     3.  [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer "The ArrayBuffer object is used to represent a generic, fixed-length raw binary data buffer.")
     4.  [AsyncFunction](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncFunction "The AsyncFunction constructor creates a new async function object. In JavaScript, every asynchronous function is actually an AsyncFunction object.")
@@ -902,7 +903,7 @@ Related Topics
     55. [decodeURIComponent()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent "The decodeURIComponent() function decodes a Uniform Resource Identifier (URI) component previously created by encodeURIComponent or by a similar routine.")
     56. [encodeURI()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI "The encodeURI() function encodes a URI by replacing each instance of certain characters by one, two, three, or four escape sequences representing the UTF-8 encoding of the character (will only be four escape sequences for characters composed of two "surrogate" characters).")
     57. [encodeURIComponent()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent "The encodeURIComponent() function encodes a URI by replacing each instance of certain characters by one, two, three, or four escape sequences representing the UTF-8 encoding of the character (will only be four escape sequences for characters composed of two "surrogate" characters).")
-    58. **[escape()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/escape "The escape() function computes a new string in which certain characters have been replaced by a hexadecimal escape sequence.")
+    58. \*\*[escape()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/escape "The escape() function computes a new string in which certain characters have been replaced by a hexadecimal escape sequence.")
     59. [eval()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval "The eval() function evaluates JavaScript code represented as a string.")
     60. [globalThis](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis "The global globalThis property contains the global this value, which is akin to the global object.")
     61. [isFinite()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isFinite "The global isFinite() function determines whether the passed value is a finite number. If  needed, the parameter is first converted to a number.")
@@ -911,10 +912,11 @@ Related Topics
     64. [parseFloat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseFloat "The parseFloat() function parses an argument (converting it to a string first if needed) and returns a floating point number.")
     65. [parseInt()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt "The parseInt() function parses a string argument and returns an integer of the specified radix (the base in mathematical numeral systems).")
     66. [undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined "The global undefined property represents the primitive value <undefined. It is one of JavaScript's primitive types.")
-    67. **[unescape()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/unescape "The unescape() function computes a new string in which hexadecimal escape sequences are replaced with the character that it represents. The escape sequences might be introduced by a function like escape. Usually, decodeURI or decodeURIComponent are preferred over unescape.")
-    68. **[uneval()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/uneval "The uneval() function creates a string representation of the source code of an Object.")
+    67. \*\*[unescape()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/unescape "The unescape() function computes a new string in which hexadecimal escape sequences are replaced with the character that it represents. The escape sequences might be introduced by a function like escape. Usually, decodeURI or decodeURIComponent are preferred over unescape.")
+    68. \*\*[uneval()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/uneval "The uneval() function creates a string representation of the source code of an Object.")
 
 9.  Expressions & operators
+
     1.  [Addition
         (+)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Addition "The addition operator (+) produces the sum of numeric operands or string concatenation.")
     2.  [Addition assignment
@@ -997,7 +999,7 @@ Related Topics
         precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence "Operator precedence determines how operators are parsed concerning each other. Operators with higher precedence become the operands of operators with lower precedence.")
     41. [Optional chaining
         (?.)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining "The ?. operator functions similarly to the . chaining operator, except that instead of causing an error if a reference is nullish (null or undefined), the expression short-circuits with a return value of undefined.")
-    42. **[Pipeline operator
+    42. \*\*[Pipeline operator
         (|\>)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Pipeline_operator "The experimental pipeline operator |> (currently at stage 1) pipes the value of an expression into a function. This allows the creation of chained function calls in a readable manner. The result is syntactic sugar in which a function call with a single argument can be written like this:")
     43. [Property
         accessors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors "Property accessors provide access to an object's properties by using the dot notation or the bracket notation.")
@@ -1051,6 +1053,7 @@ Related Topics
     71. [yield\*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield* "The yield* expression is used to delegate to another generator or iterable object.")
 
 10. Statements & declarations
+
     1.  [async
         function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function "An async function is a function declared with the async keyword. Async functions are instances of the AsyncFunction constructor, and the await keyword is permitted within them. The async and await keywords enable asynchronous, promise-based behavior to be written in a cleaner style, avoiding the need to explicitly configure promise chains.")
     2.  [block](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/block "A block statement (or compound statement in other languages) is used to group zero or more statements. The block is delimited by a pair of braces ("curly brackets") and may optionally be labelled:")
@@ -1081,9 +1084,10 @@ Related Topics
     25. [try...catch](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch "The try...catch statement marks a block of statements to try and specifies a response should an exception be thrown.")
     26. [var](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var "The var statement declares a function-scoped or globally-scoped variable, optionally initializing it to a value.")
     27. [while](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while "The while statement creates a loop that executes a specified statement as long as the test condition evaluates to true. The condition is evaluated before executing the statement.")
-    28. **[with](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with "The with statement extends the scope chain for a statement.")
+    28. \*\*[with](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with "The with statement extends the scope chain for a statement.")
 
 11. Functions
+
     1.  [Arrow function
         expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions "An arrow function expression is a syntactically compact alternative to a regular function expression, although without its own bindings to the this, arguments, super, or new.target keywords. Arrow function expressions are all suited as methods, and they cannot be used as constructors.")
     2.  [Default
@@ -1098,6 +1102,7 @@ Related Topics
     7.  [setter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set "The set syntax binds an object property to a function to be called when there is an attempt to set that property.")
 
 12. Classes
+
     1.  [Private class
         fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields "Class properties are public by default and can be examined or modified outside the class. In ES2019, the ability to define private class fields using a hash # prefix is added.")
     2.  [Public class
@@ -1107,6 +1112,7 @@ Related Topics
     5.  [static](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static "The static keyword defines a static method for a class. Static methods aren't called on instances of the class. Instead, they're called on the class itself.")
 
 13. Errors
+
     1.  [Error: Permission denied to access property
         "x"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Property_access_denied "The JavaScript exception "Permission denied to access property" occurs when there was an attempt to access an object for which you have no permission.")
     2.  [InternalError: too much
@@ -1165,7 +1171,7 @@ Related Topics
     26. [SyntaxError: function statement requires a
         name](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Unnamed_function_statement "The JavaScript exception "function statement requires a name" occurs when there is a function statement in the code that requires a name.")
     27. [SyntaxError: identifier starts immediately after numeric
-        literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Identifier_after_number "The JavaScript exception "identifier starts immediately after numeric literal" occurs when an identifier started with a digit. Identifiers can only start with a letter, underscore (_), or dollar sign ($).")
+        literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Identifier_after_number "The JavaScript exception "identifier starts immediately after numeric literal" occurs when an identifier started with a digit. Identifiers can only start with a letter, underscore (\_), or dollar sign ($).")
     28. [SyntaxError: illegal
         character](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Illegal_character "The JavaScript exception "illegal character" occurs when there is an invalid or unexpected token that doesn't belong at this position in the code.")
     29. [SyntaxError: invalid regular expression flag
@@ -1288,8 +1294,7 @@ Related Topics
     9.  [Deprecated
         features](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Deprecated_and_obsolete_features)
 
-Learn the best of web development {.newsletter-teaser}
----------------------------------
+## Learn the best of web development {.newsletter-teaser}
 
 Get the latest and greatest from MDN delivered straight to your inbox.
 
@@ -1306,37 +1311,36 @@ Hide Newsletter Sign-up
 
 [MDN Web Docs](https://developer.mozilla.org/en-US/)
 
--   [Web Technologies](https://developer.mozilla.org/en-US/docs/Web)
--   [Learn Web
-    Development](https://developer.mozilla.org/en-US/docs/Learn)
--   [About MDN](https://developer.mozilla.org/en-US/docs/MDN/About)
--   [Feedback](https://developer.mozilla.org/en-US/docs/MDN/Feedback)
+- [Web Technologies](https://developer.mozilla.org/en-US/docs/Web)
+- [Learn Web
+  Development](https://developer.mozilla.org/en-US/docs/Learn)
+- [About MDN](https://developer.mozilla.org/en-US/docs/MDN/About)
+- [Feedback](https://developer.mozilla.org/en-US/docs/MDN/Feedback)
 
--   [About](https://www.mozilla.org/about/)
--   [MDN Web Docs Store](https://shop.spreadshirt.com/mdn-store/)
--   [Contact Us](https://www.mozilla.org/contact/)
--   [Firefox](https://www.mozilla.org/firefox/?utm_source=developer.mozilla.org&utm_campaign=footer&utm_medium=referral)
+- [About](https://www.mozilla.org/about/)
+- [MDN Web Docs Store](https://shop.spreadshirt.com/mdn-store/)
+- [Contact Us](https://www.mozilla.org/contact/)
+- [Firefox](https://www.mozilla.org/firefox/?utm_source=developer.mozilla.org&utm_campaign=footer&utm_medium=referral)
 
 #### MDN
 
--   [](https://twitter.com/mozdevnet)
--   [](https://github.com/mdn/)
+- [](https://twitter.com/mozdevnet)
+- [](https://github.com/mdn/)
 
 #### Mozilla
 
--   [](https://twitter.com/mozilla)
--   [](https://www.instagram.com/mozillagram/)
+- [](https://twitter.com/mozilla)
+- [](https://www.instagram.com/mozillagram/)
 
 © 2005-2020 Mozilla and individual contributors. Content is available
 under [these
 licenses](https://developer.mozilla.org/docs/MDN/About#Copyrights_and_licenses).
 
--   [Terms](https://www.mozilla.org/about/legal/terms/mozilla)
--   [Privacy](https://www.mozilla.org/privacy/websites/)
--   [Cookies](https://www.mozilla.org/privacy/websites/#cookies)
+- [Terms](https://www.mozilla.org/about/legal/terms/mozilla)
+- [Privacy](https://www.mozilla.org/privacy/websites/)
+- [Cookies](https://www.mozilla.org/privacy/websites/#cookies)
 
-Sign In {#modal-main-heading}
--------
+## Sign In {#modal-main-heading}
 
 Sign in to enjoy the benefits of an MDN account. If you haven’t already
 created an account, you will be prompted to do so after signing in.

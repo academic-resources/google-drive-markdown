@@ -1,66 +1,198 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>JavaScript Promise Tutorial_ Resolve, Reject, an</title>
-  <style type="text/css">
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-</head>
-<body>
-<pre data-aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Lato, sans-serif; font-size: 18px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"><code></code></pre>
-<p><a href="https://www.freecodecamp.org/news"><img src="./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/fcc_primary_large_24X210.svg" alt="freeCodeCamp.org" /></a></p>
-<p><a href="https://www.freecodecamp.org/donate/">Donate</a></p>
-<h2 id="stay-safe-friends.-learn-to-code-from-home.-use-our-free-2000-hour-curriculum." class="donation-banner">Stay safe, friends. Learn to code from home. <a href="https://www.freecodecamp.org/">Use our free 2,000 hour curriculum.</a></h2>
-<p>8 June 2020 / <a href="https://www.freecodecamp.org/news/tag/javascript/">#JavaScript</a></p>
-<h1 id="javascript-promise-tutorial-resolve-reject-and-chaining-in-js-and-es6" class="post-full-title">JavaScript Promise Tutorial: Resolve, Reject, and Chaining in JS and ES6</h1>
-<figure>
-<img src="./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/Ekran-Resmi-2019-08-01-12.13.08.png" alt="Cem Eygi" /><figcaption>Cem Eygi</figcaption>
-</figure>
-<h4 id="cem-eygi" class="author-card-name"><a href="https://www.freecodecamp.org/news/author/cemeygi/">Cem Eygi</a></h4>
-<figure>
-<img src="./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/photo-1571171637578-41bc2dd41cd2" alt="JavaScript Promise Tutorial: Resolve, Reject, and Chaining in JS and ES6" /><figcaption>JavaScript Promise Tutorial: Resolve, Reject, and Chaining in JS and ES6</figcaption>
-</figure>
-<p>Promises are one of the ways we can deal with asynchronous operations in JavaScript. Many people struggle with understanding how Promises work, so in this post I will try to explain them as simply as I can.</p>
-<p>Promises are a broad topic so I can’t go into every detail in this article. But you’ll find an overall introduction to what Promises are, explanations of terms like resolve, reject, and chaining, and a code example for creating and using Promises.</p>
-<p><strong>Prerequisite:</strong>To understand this article better, check out my other post about <a href="https://www.freecodecamp.org/news/javascript-callback-functions-what-are-callbacks-in-js-and-how-to-use-them/">JavaScript Callbacks</a>.</p>
-<h2 id="what-is-a-promise">What is a Promise?</h2>
-<p>A promise in JavaScript is similar to a promise in real life. When we make a promise in real life, it is a guarantee that we are going to do something in the future. Because promises can only be made for the future.</p>
-<p>A promise has 2 possible outcomes: it will either be kept when the time comes, or it won’t.</p>
-<p>This is also the same for promises in JavaScript. When we define a promise in JavaScript, it will be resolved when the time comes, or it will get rejected.</p>
-<h3 id="promises-in-javascript">Promises in JavaScript</h3>
-<p>First of all, a Promise is an object. There are 3 states of the Promise object:</p>
-<ul>
-<li><strong>Pending:</strong> Initial State, before the Promise succeeds or fails</li>
-<li><strong>Resolved:</strong> Completed Promise</li>
-<li><strong>Rejected:</strong> Failed Promise</li>
-</ul>
-<p><img src="./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/Ekran-Resmi-2020-06-06-12.21.27.png" /></p>
-<p><strong>Representation of the process of Promises</strong></p>
-<p>For example, when we request data from the server by using a Promise, it will be in pending mode until we receive our data.</p>
-<p>If we achieve to get the information from the server, the Promise will be resolved successfully. But if we don’t get the information, then the Promise will be in the rejected state.</p>
-<p>Additionally, if there are multiple requests, then after the first Promise is resolved (or rejected), a new process will start to which we can attach it directly by a method called chaining.</p>
-<p>If you prefer, you can also watch the video version below:</p>
-<h3 id="what-is-the-difference-between-callbacks-and-promises">What is the difference between Callbacks and Promises?</h3>
-<p>The main difference between Callback Functions and Promises is that we attach a callback to a Promise rather than passing it. So we still use callback functions with Promises, but in a different way (chaining).</p>
-<p>This is one of the greatest advantages of using Promises, but why?</p>
-<h3 id="what-is-chaining">What is Chaining?</h3>
-<p>Callback functions have been used alone for asynchronous operations in JavaScript for many years. But in some cases, using Promises can be a better option.</p>
-<p>If there are multiple async operations to be done and if we try to use good-old Callbacks for them, we’ll find ourselves quickly inside a situation called <a href="http://callbackhell.com/">Callback hell</a>:</p>
-<pre class="language-javascript"><code>firstRequest(function(response) {  
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <title>JavaScript Promise Tutorial_ Resolve, Reject, an</title>
+    <style type="text/css">
+      code {
+        white-space: pre-wrap;
+      }
+      span.smallcaps {
+        font-variant: small-caps;
+      }
+      span.underline {
+        text-decoration: underline;
+      }
+      div.column {
+        display: inline-block;
+        vertical-align: top;
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <pre
+      data-aria-hidden="true"
+      style="
+        position: absolute;
+        visibility: hidden;
+        white-space: pre;
+        font-family: Lato, sans-serif;
+        font-size: 18px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 400;
+        word-spacing: 0px;
+        letter-spacing: normal;
+        text-indent: 0px;
+        text-rendering: auto;
+        text-transform: none;
+      "
+    ><code></code></pre>
+    <p>
+      <a href="https://www.freecodecamp.org/news"
+        ><img
+          src="./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/fcc_primary_large_24X210.svg"
+          alt="freeCodeCamp.org"
+      /></a>
+    </p>
+    <p><a href="https://www.freecodecamp.org/donate/">Donate</a></p>
+    <h2
+      id="stay-safe-friends.-learn-to-code-from-home.-use-our-free-2000-hour-curriculum."
+      class="donation-banner"
+    >
+      Stay safe, friends. Learn to code from home.
+      <a href="https://www.freecodecamp.org/"
+        >Use our free 2,000 hour curriculum.</a
+      >
+    </h2>
+    <p>
+      8 June 2020 /
+      <a href="https://www.freecodecamp.org/news/tag/javascript/"
+        >#JavaScript</a
+      >
+    </p>
+    <h1
+      id="javascript-promise-tutorial-resolve-reject-and-chaining-in-js-and-es6"
+      class="post-full-title"
+    >
+      JavaScript Promise Tutorial: Resolve, Reject, and Chaining in JS and ES6
+    </h1>
+    <figure>
+      <img
+        src="./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/Ekran-Resmi-2019-08-01-12.13.08.png"
+        alt="Cem Eygi"
+      />
+      <figcaption>Cem Eygi</figcaption>
+    </figure>
+    <h4 id="cem-eygi" class="author-card-name">
+      <a href="https://www.freecodecamp.org/news/author/cemeygi/">Cem Eygi</a>
+    </h4>
+    <figure>
+      <img
+        src="./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/photo-1571171637578-41bc2dd41cd2"
+        alt="JavaScript Promise Tutorial: Resolve, Reject, and Chaining in JS and ES6"
+      />
+      <figcaption>
+        JavaScript Promise Tutorial: Resolve, Reject, and Chaining in JS and ES6
+      </figcaption>
+    </figure>
+    <p>
+      Promises are one of the ways we can deal with asynchronous operations in
+      JavaScript. Many people struggle with understanding how Promises work, so
+      in this post I will try to explain them as simply as I can.
+    </p>
+    <p>
+      Promises are a broad topic so I can’t go into every detail in this
+      article. But you’ll find an overall introduction to what Promises are,
+      explanations of terms like resolve, reject, and chaining, and a code
+      example for creating and using Promises.
+    </p>
+    <p>
+      <strong>Prerequisite:</strong>To understand this article better, check out
+      my other post about
+      <a
+        href="https://www.freecodecamp.org/news/javascript-callback-functions-what-are-callbacks-in-js-and-how-to-use-them/"
+        >JavaScript Callbacks</a
+      >.
+    </p>
+    <h2 id="what-is-a-promise">What is a Promise?</h2>
+    <p>
+      A promise in JavaScript is similar to a promise in real life. When we make
+      a promise in real life, it is a guarantee that we are going to do
+      something in the future. Because promises can only be made for the future.
+    </p>
+    <p>
+      A promise has 2 possible outcomes: it will either be kept when the time
+      comes, or it won’t.
+    </p>
+    <p>
+      This is also the same for promises in JavaScript. When we define a promise
+      in JavaScript, it will be resolved when the time comes, or it will get
+      rejected.
+    </p>
+    <h3 id="promises-in-javascript">Promises in JavaScript</h3>
+    <p>
+      First of all, a Promise is an object. There are 3 states of the Promise
+      object:
+    </p>
+    <ul>
+      <li>
+        <strong>Pending:</strong> Initial State, before the Promise succeeds or
+        fails
+      </li>
+      <li><strong>Resolved:</strong> Completed Promise</li>
+      <li><strong>Rejected:</strong> Failed Promise</li>
+    </ul>
+    <p>
+      <img
+        src="./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/Ekran-Resmi-2020-06-06-12.21.27.png"
+      />
+    </p>
+    <p><strong>Representation of the process of Promises</strong></p>
+    <p>
+      For example, when we request data from the server by using a Promise, it
+      will be in pending mode until we receive our data.
+    </p>
+    <p>
+      If we achieve to get the information from the server, the Promise will be
+      resolved successfully. But if we don’t get the information, then the
+      Promise will be in the rejected state.
+    </p>
+    <p>
+      Additionally, if there are multiple requests, then after the first Promise
+      is resolved (or rejected), a new process will start to which we can attach
+      it directly by a method called chaining.
+    </p>
+    <p>If you prefer, you can also watch the video version below:</p>
+    <h3 id="what-is-the-difference-between-callbacks-and-promises">
+      What is the difference between Callbacks and Promises?
+    </h3>
+    <p>
+      The main difference between Callback Functions and Promises is that we
+      attach a callback to a Promise rather than passing it. So we still use
+      callback functions with Promises, but in a different way (chaining).
+    </p>
+    <p>This is one of the greatest advantages of using Promises, but why?</p>
+    <h3 id="what-is-chaining">What is Chaining?</h3>
+    <p>
+      Callback functions have been used alone for asynchronous operations in
+      JavaScript for many years. But in some cases, using Promises can be a
+      better option.
+    </p>
+    <p>
+      If there are multiple async operations to be done and if we try to use
+      good-old Callbacks for them, we’ll find ourselves quickly inside a
+      situation called <a href="http://callbackhell.com/">Callback hell</a>:
+    </p>
+    <pre class="language-javascript"><code>firstRequest(function(response) {  
     secondRequest(response, function(nextResponse) {    
         thirdRequest(nextResponse, function(finalResponse) {     
             console.log(&#39;Final response: &#39; + finalResponse);    
         }, failureCallback);  
     }, failureCallback);
 }, failureCallback);</code></pre>
-<p>However if we handle the same operation with Promises, since we can attach Callbacks rather than passing them, this time the same code above looks much cleaner and easier to read:</p>
-<pre class="language-javascript"><code>firstRequest()
+    <p>
+      However if we handle the same operation with Promises, since we can attach
+      Callbacks rather than passing them, this time the same code above looks
+      much cleaner and easier to read:
+    </p>
+    <pre class="language-javascript"><code>firstRequest()
   .then(function(response) {
     return secondRequest(response);
 }).then(function(nextResponse) {  
@@ -68,16 +200,33 @@
 }).then(function(finalResponse) {  
     console.log(&#39;Final response: &#39; + finalResponse);
 }).catch(failureCallback);</code></pre>
-<p>The code just above shows how multiple callbacks can be chained one after another. Chaining is one of the best features of Promises.</p>
-<h3 id="creating-and-using-a-promise-step-by-step">Creating and Using A Promise Step by Step</h3>
-<p>Firstly, we use a constructor to create a Promise object:</p>
-<pre class="language-javascript"><code>const myPromise = new Promise();</code></pre>
-<p>It takes two parameters, one for success (resolve) and one for fail (reject):</p>
-<pre class="language-javascript"><code>const myPromise = new Promise((resolve, reject) =&gt; {  
+    <p>
+      The code just above shows how multiple callbacks can be chained one after
+      another. Chaining is one of the best features of Promises.
+    </p>
+    <h3 id="creating-and-using-a-promise-step-by-step">
+      Creating and Using A Promise Step by Step
+    </h3>
+    <p>Firstly, we use a constructor to create a Promise object:</p>
+    <pre
+      class="language-javascript"
+    ><code>const myPromise = new Promise();</code></pre>
+    <p>
+      It takes two parameters, one for success (resolve) and one for fail
+      (reject):
+    </p>
+    <pre
+      class="language-javascript"
+    ><code>const myPromise = new Promise((resolve, reject) =&gt; {  
     // condition
 });</code></pre>
-<p>Finally, there will be a condition. If the condition is met, the Promise will be resolved, otherwise it will be rejected:</p>
-<pre class="language-javascript"><code>const myPromise = new Promise((resolve, reject) =&gt; {  
+    <p>
+      Finally, there will be a condition. If the condition is met, the Promise
+      will be resolved, otherwise it will be rejected:
+    </p>
+    <pre
+      class="language-javascript"
+    ><code>const myPromise = new Promise((resolve, reject) =&gt; {  
     let condition;  
     
     if(condition is met) {    
@@ -86,70 +235,344 @@
         reject(&#39;Promise is rejected&#39;);  
     }
 });</code></pre>
-<p>So we have created our first Promise. Now let’s use it.</p>
-<h3 id="then-for-resolved-promises-">then( ) for resolved Promises:</h3>
-<p>If you revisit the picture at the beginning of this post, you’ll see that there are 2 cases: One for resolved promises and one for rejected. If the Promise gets resolved (success case), then something will happen next (depends on what we do with the successful Promise).</p>
-<pre class="language-javascript"><code>myPromise.then();</code></pre>
-<p>The then( ) method is called after the Promise is resolved. Then we can decide what to do with the resolved Promise.</p>
-<p>For example, let’s log the message to the console that we got from the Promise:</p>
-<pre class="language-javascript"><code>myPromise.then((message) =&gt; {  
+    <p>So we have created our first Promise. Now let’s use it.</p>
+    <h3 id="then-for-resolved-promises-">then( ) for resolved Promises:</h3>
+    <p>
+      If you revisit the picture at the beginning of this post, you’ll see that
+      there are 2 cases: One for resolved promises and one for rejected. If the
+      Promise gets resolved (success case), then something will happen next
+      (depends on what we do with the successful Promise).
+    </p>
+    <pre class="language-javascript"><code>myPromise.then();</code></pre>
+    <p>
+      The then( ) method is called after the Promise is resolved. Then we can
+      decide what to do with the resolved Promise.
+    </p>
+    <p>
+      For example, let’s log the message to the console that we got from the
+      Promise:
+    </p>
+    <pre class="language-javascript"><code>myPromise.then((message) =&gt; {  
     console.log(message);
 });</code></pre>
-<h3 id="catch-for-rejected-promises-">catch( ) for rejected Promises:</h3>
-<p>However, the then( ) method is only for resolved Promises. What if the Promise fails? Then, we need to use the catch( ) method.</p>
-<p>Likewise we attach the then( ) method. We can also directly attach the catch( ) method right after then( ):</p>
-<pre class="language-javascript"><code>myPromise.then((message) =&gt; { 
+    <h3 id="catch-for-rejected-promises-">catch( ) for rejected Promises:</h3>
+    <p>
+      However, the then( ) method is only for resolved Promises. What if the
+      Promise fails? Then, we need to use the catch( ) method.
+    </p>
+    <p>
+      Likewise we attach the then( ) method. We can also directly attach the
+      catch( ) method right after then( ):
+    </p>
+    <pre class="language-javascript"><code>myPromise.then((message) =&gt; { 
     console.log(message);
 }).catch((message) =&gt; { 
     console.log(message);
 });</code></pre>
-<p>So if the promise gets rejected, it will jump to the catch( ) method and this time we will see a different message on the console.</p>
-<h2 id="wrap-up">Wrap Up</h2>
-<p>So this is how we create a Promise in JavaScript and use it for resolved and rejected cases. Promises are a broader topic, and there are many more things to learn about them. So understanding how they work takes time.</p>
-<p>This post is just an introduction to Promises, and I hope you found it helpful for getting an idea about what JavaScript Promises are and how to use them.</p>
-<p>If you want to learn more about Web Development, feel free to visit my <a href="https://www.youtube.com/channel/UC1EgYPCvKCXFn8HlpoJwY3Q?view_as=subscriber">Youtube Channel</a> for more.</p>
-<p>Thank you for reading!</p>
-<hr />
-<figure>
-<img src="./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/Ekran-Resmi-2019-08-01-12.13.08.png" alt="Cem Eygi" /><figcaption>Cem Eygi</figcaption>
-</figure>
-<h4 id="cem-eygi-1" class="author-card-name"><a href="https://www.freecodecamp.org/news/author/cemeygi/">Cem Eygi</a></h4>
-<p>Front-end Developer // Follow Me on Youtube: https://bit.ly/3dBiTUT</p>
-<hr />
-<p>If you read this far, tweet to the author to show them you care. Tweet a thanks</p>
-<p>Learn to code for free. freeCodeCamp’s open source curriculum has helped more than 40,000 people get jobs as developers. <a href="https://www.freecodecamp.org/learn">Get started</a></p>
-<p>Countinue reading about</p>
-<h3 id="javascript" class="read-next-card-header-title"><a href="https://www.freecodecamp.org/news/tag/javascript/">JavaScript</a></h3>
-<ul>
-<li><a href="https://www.freecodecamp.org/news/build-and-validate-beautiful-forms-with-vanilla-html-css-js/">How to Build and Validate Beautiful Forms with Vanilla HTML, CSS, &amp; JS</a></li>
-<li><a href="https://www.freecodecamp.org/news/how-to-build-a-responsive-and-dynamic-progress-bar/">How to Build a Responsive and Dynamic Progress Bar with HTML, CSS, and JavaScript</a></li>
-<li><a href="https://www.freecodecamp.org/news/understanding-recursion-in-javascript/">How to Understand Recursion in JavaScript</a></li>
-</ul>
-<p><a href="https://www.freecodecamp.org/news/tag/javascript/">See all 1668 posts →</a></p>
-<p><a href="https://www.freecodecamp.org/news/learn-svelte-in-5-minutes/"><img src="./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/Screenshot-2020-06-06-at-16.10.39.png" alt="Learn Svelte in 5 Minutes" /></a></p>
-<p><a href="https://www.freecodecamp.org/news/tag/svelte/">#svelte</a></p>
-<h2 id="learn-svelte-in-5-minutes" class="post-card-title"><a href="https://www.freecodecamp.org/news/learn-svelte-in-5-minutes/">Learn Svelte in 5 Minutes</a></h2>
-<ul>
-<li>Leanne Rybintsev <a href="https://www.freecodecamp.org/news/author/leanne/"><img src="./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/IMG_5731.jpeg" alt="Leanne Rybintsev" /></a></li>
-</ul>
-<p><a href="https://www.freecodecamp.org/news/author/leanne/">Leanne Rybintsev</a> 3 months ago</p>
-<p><a href="https://www.freecodecamp.org/news/how-to-switch-between-issues-in-git/"><img src="./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/photo-1587613981449-f3962dbba9b5" alt="How to Switch Between Issues in Your Local Git Repository" /></a></p>
-<p><a href="https://www.freecodecamp.org/news/tag/git/">#Git</a></p>
-<h2 id="how-to-switch-between-issues-in-your-local-git-repository" class="post-card-title"><a href="https://www.freecodecamp.org/news/how-to-switch-between-issues-in-git/">How to Switch Between Issues in Your Local Git Repository</a></h2>
-<ul>
-<li>Sule-Balogun Olanrewaju Ganiu <a href="https://www.freecodecamp.org/news/author/devlarri/"><img src="./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/ece3b32613eb3326895fe9af59aea2ff.jpeg" alt="Sule-Balogun Olanrewaju Ganiu" /></a></li>
-</ul>
-<p><a href="https://www.freecodecamp.org/news/author/devlarri/">Sule-Balogun Olanrewaju Ganiu</a> 3 months ago</p>
-<p>freeCodeCamp is a donor-supported tax-exempt 501(c)(3) nonprofit organization (United States Federal Tax Identification Number: 82-0779546)</p>
-<p>Our mission: to help people learn to code for free. We accomplish this by creating thousands of videos, articles, and interactive coding lessons - all freely available to the public. We also have thousands of freeCodeCamp study groups around the world.</p>
-<p>Donations to freeCodeCamp go toward our education initiatives, and help pay for servers, services, and staff.</p>
-<p>You can <a href="https://freecodecamp.org/donate">make a tax-deductible donation here</a>.</p>
-<p>Trending Guides</p>
-<p><a href="https://www.freecodecamp.org/news/javascript-closure-tutorial-with-js-closure-example-code/">JavaScript Closure</a> <a href="https://www.freecodecamp.org/news/css-tutorial-drop-shadow/">CSS Box Shadow</a> <a href="https://www.freecodecamp.org/news/python-list-append-how-to-add-an-element-to-an-array-explained-with-examples/">Python List Append</a> <a href="https://www.freecodecamp.org/news/javascript-array-sort-tutorial-how-to-use-js-sort-methods-with-code-examples/">JavaScript Array Sort</a> <a href="https://www.freecodecamp.org/news/symlink-tutorial-in-linux-how-to-create-and-remove-a-symbolic-link/">Symlink in Linux</a> <a href="https://www.freecodecamp.org/news/grep-command-tutorial-how-to-search-for-a-file-in-linux-and-unix/">Linux Grep Command</a> <a href="https://www.freecodecamp.org/news/what-is-dns/">What is DNS?</a> <a href="https://www.freecodecamp.org/news/primary-key-sql-tutorial-how-to-define-a-primary-key-in-a-database/">Primary Key SQL</a> <a href="https://www.freecodecamp.org/news/sql-update-statement-example-queries-for-updating-table-values/">SQL Update Statement</a> <a href="https://www.freecodecamp.org/news/how-to-screenshot-on-windows/">Screenshot on PC</a></p>
-<p><a href="https://www.freecodecamp.org/news/javascript-es6-promises-for-beginners-resolve-reject-and-chaining-explained/">JavaScript Promise</a> <a href="https://www.freecodecamp.org/news/what-is-github-what-is-git-and-how-to-use-these-developer-tools/">What is GitHub?</a> <a href="https://www.freecodecamp.org/news/the-python-sort-list-array-method-ascending-and-descending-explained-with-examples/">Python Sort List</a> <a href="https://www.freecodecamp.org/news/json-comment-example-how-to-comment-in-json-files/">Comments in JSON</a> <a href="https://www.freecodecamp.org/news/what-is-kanban-the-agile-methodology-defined-and-how-to-use-it-for-your-software-development-team-2/">What is Kanban?</a> <a href="https://www.freecodecamp.org/news/python-write-to-file-open-read-append-and-other-file-handling-functions-explained/">Python Write to File</a> <a href="https://www.freecodecamp.org/news/css-media-queries-breakpoints-media-types-standard-resolutions-and-more/">CSS Media Queries</a> <a href="https://www.freecodecamp.org/news/html-entities-symbols-special-character-codes-list/">HTML Entities</a> <a href="https://www.freecodecamp.org/news/excel-vba-tutorial/">Excel VBA</a> <a href="https://www.freecodecamp.org/news/vlookup-in-excel/">LOOKUP in Excel</a></p>
-<p><a href="https://www.freecodecamp.org/news/what-is-a-proxy-server-in-english-please/">What is a Proxy Server?</a> <a href="https://www.freecodecamp.org/news/the-cat-command-in-linux-concatenation-explained-with-bash-examples/">Cat Command in Linux</a> <a href="https://www.freecodecamp.org/news/how-to-add-an-image-url-to-your-div/">CSS Background Image</a> <a href="https://www.freecodecamp.org/news/html-background-color-tutorial-how-to-change-a-div-background-color-explained-with-code-examples/">HTML Background Color</a> <a href="https://www.freecodecamp.org/news/comments-in-css/">CSS Comment Example</a></p>
-<p><a href="https://www.freecodecamp.org/news/arrow-function-javascript-tutorial-how-to-declare-a-js-function-with-the-new-es6-syntax/">Arrow Function JavaScript</a> <a href="https://www.freecodecamp.org/news/how-to-remove-duplicates-in-excel-delete-duplicate-rows-with-a-few-clicks/">Remove Duplicates in Excel</a> <a href="https://www.freecodecamp.org/news/what-is-dllhost-exe-and-com-surrogate-in-windows-task-manager-solved/">dllhost.exe COM Surrogate</a> <a href="https://www.freecodecamp.org/news/boolean-algebra/">Boolean Algebra Truth Table</a> <a href="https://www.freecodecamp.org/news/can-you-facetime-on-android-no-but-here-are-some-alternative-video-conferencing-apps/">Video Chat for Android</a></p>
-<p>Our Nonprofit</p>
-<p><a href="https://www.freecodecamp.org/news/about/">About</a> <a href="https://www.linkedin.com/school/free-code-camp/people/">Alumni Network</a> <a href="https://github.com/freeCodeCamp/">Open Source</a> <a href="https://www.freecodecamp.org/shop/">Shop</a> <a href="https://www.freecodecamp.org/news/support/">Support</a> <a href="https://www.freecodecamp.org/news/sponsors/">Sponsors</a> <a href="https://www.freecodecamp.org/news/academic-honesty-policy/">Academic Honesty</a> <a href="https://www.freecodecamp.org/news/code-of-conduct/">Code of Conduct</a> <a href="https://www.freecodecamp.org/news/privacy-policy/">Privacy Policy</a> <a href="https://www.freecodecamp.org/news/terms-of-service/">Terms of Service</a> <a href="https://www.freecodecamp.org/news/copyright-policy/">Copyright Policy</a></p>
-</body>
+    <p>
+      So if the promise gets rejected, it will jump to the catch( ) method and
+      this time we will see a different message on the console.
+    </p>
+    <h2 id="wrap-up">Wrap Up</h2>
+    <p>
+      So this is how we create a Promise in JavaScript and use it for resolved
+      and rejected cases. Promises are a broader topic, and there are many more
+      things to learn about them. So understanding how they work takes time.
+    </p>
+    <p>
+      This post is just an introduction to Promises, and I hope you found it
+      helpful for getting an idea about what JavaScript Promises are and how to
+      use them.
+    </p>
+    <p>
+      If you want to learn more about Web Development, feel free to visit my
+      <a
+        href="https://www.youtube.com/channel/UC1EgYPCvKCXFn8HlpoJwY3Q?view_as=subscriber"
+        >Youtube Channel</a
+      >
+      for more.
+    </p>
+    <p>Thank you for reading!</p>
+    <hr />
+    <figure>
+      <img
+        src="./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/Ekran-Resmi-2019-08-01-12.13.08.png"
+        alt="Cem Eygi"
+      />
+      <figcaption>Cem Eygi</figcaption>
+    </figure>
+    <h4 id="cem-eygi-1" class="author-card-name">
+      <a href="https://www.freecodecamp.org/news/author/cemeygi/">Cem Eygi</a>
+    </h4>
+    <p>Front-end Developer // Follow Me on Youtube: https://bit.ly/3dBiTUT</p>
+    <hr />
+    <p>
+      If you read this far, tweet to the author to show them you care. Tweet a
+      thanks
+    </p>
+    <p>
+      Learn to code for free. freeCodeCamp’s open source curriculum has helped
+      more than 40,000 people get jobs as developers.
+      <a href="https://www.freecodecamp.org/learn">Get started</a>
+    </p>
+    <p>Countinue reading about</p>
+    <h3 id="javascript" class="read-next-card-header-title">
+      <a href="https://www.freecodecamp.org/news/tag/javascript/">JavaScript</a>
+    </h3>
+    <ul>
+      <li>
+        <a
+          href="https://www.freecodecamp.org/news/build-and-validate-beautiful-forms-with-vanilla-html-css-js/"
+          >How to Build and Validate Beautiful Forms with Vanilla HTML, CSS,
+          &amp; JS</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.freecodecamp.org/news/how-to-build-a-responsive-and-dynamic-progress-bar/"
+          >How to Build a Responsive and Dynamic Progress Bar with HTML, CSS,
+          and JavaScript</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.freecodecamp.org/news/understanding-recursion-in-javascript/"
+          >How to Understand Recursion in JavaScript</a
+        >
+      </li>
+    </ul>
+    <p>
+      <a href="https://www.freecodecamp.org/news/tag/javascript/"
+        >See all 1668 posts →</a
+      >
+    </p>
+    <p>
+      <a href="https://www.freecodecamp.org/news/learn-svelte-in-5-minutes/"
+        ><img
+          src="./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/Screenshot-2020-06-06-at-16.10.39.png"
+          alt="Learn Svelte in 5 Minutes"
+      /></a>
+    </p>
+    <p><a href="https://www.freecodecamp.org/news/tag/svelte/">#svelte</a></p>
+    <h2 id="learn-svelte-in-5-minutes" class="post-card-title">
+      <a href="https://www.freecodecamp.org/news/learn-svelte-in-5-minutes/"
+        >Learn Svelte in 5 Minutes</a
+      >
+    </h2>
+    <ul>
+      <li>
+        Leanne Rybintsev
+        <a href="https://www.freecodecamp.org/news/author/leanne/"
+          ><img
+            src="./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/IMG_5731.jpeg"
+            alt="Leanne Rybintsev"
+        /></a>
+      </li>
+    </ul>
+    <p>
+      <a href="https://www.freecodecamp.org/news/author/leanne/"
+        >Leanne Rybintsev</a
+      >
+      3 months ago
+    </p>
+    <p>
+      <a
+        href="https://www.freecodecamp.org/news/how-to-switch-between-issues-in-git/"
+        ><img
+          src="./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/photo-1587613981449-f3962dbba9b5"
+          alt="How to Switch Between Issues in Your Local Git Repository"
+      /></a>
+    </p>
+    <p><a href="https://www.freecodecamp.org/news/tag/git/">#Git</a></p>
+    <h2
+      id="how-to-switch-between-issues-in-your-local-git-repository"
+      class="post-card-title"
+    >
+      <a
+        href="https://www.freecodecamp.org/news/how-to-switch-between-issues-in-git/"
+        >How to Switch Between Issues in Your Local Git Repository</a
+      >
+    </h2>
+    <ul>
+      <li>
+        Sule-Balogun Olanrewaju Ganiu
+        <a href="https://www.freecodecamp.org/news/author/devlarri/"
+          ><img
+            src="./JavaScript%20Promise%20Tutorial_%20Resolve,%20Reject,%20and%20Chaining%20in%20JS%20and%20ES6_files/ece3b32613eb3326895fe9af59aea2ff.jpeg"
+            alt="Sule-Balogun Olanrewaju Ganiu"
+        /></a>
+      </li>
+    </ul>
+    <p>
+      <a href="https://www.freecodecamp.org/news/author/devlarri/"
+        >Sule-Balogun Olanrewaju Ganiu</a
+      >
+      3 months ago
+    </p>
+    <p>
+      freeCodeCamp is a donor-supported tax-exempt 501(c)(3) nonprofit
+      organization (United States Federal Tax Identification Number: 82-0779546)
+    </p>
+    <p>
+      Our mission: to help people learn to code for free. We accomplish this by
+      creating thousands of videos, articles, and interactive coding lessons -
+      all freely available to the public. We also have thousands of freeCodeCamp
+      study groups around the world.
+    </p>
+    <p>
+      Donations to freeCodeCamp go toward our education initiatives, and help
+      pay for servers, services, and staff.
+    </p>
+    <p>
+      You can <a href="https://freecodecamp.org/donate"
+        >make a tax-deductible donation here</a
+      >.
+    </p>
+    <p>Trending Guides</p>
+    <p>
+      <a
+        href="https://www.freecodecamp.org/news/javascript-closure-tutorial-with-js-closure-example-code/"
+        >JavaScript Closure</a
+      >
+      <a href="https://www.freecodecamp.org/news/css-tutorial-drop-shadow/"
+        >CSS Box Shadow</a
+      >
+      <a
+        href="https://www.freecodecamp.org/news/python-list-append-how-to-add-an-element-to-an-array-explained-with-examples/"
+        >Python List Append</a
+      >
+      <a
+        href="https://www.freecodecamp.org/news/javascript-array-sort-tutorial-how-to-use-js-sort-methods-with-code-examples/"
+        >JavaScript Array Sort</a
+      >
+      <a
+        href="https://www.freecodecamp.org/news/symlink-tutorial-in-linux-how-to-create-and-remove-a-symbolic-link/"
+        >Symlink in Linux</a
+      >
+      <a
+        href="https://www.freecodecamp.org/news/grep-command-tutorial-how-to-search-for-a-file-in-linux-and-unix/"
+        >Linux Grep Command</a
+      >
+      <a href="https://www.freecodecamp.org/news/what-is-dns/">What is DNS?</a>
+      <a
+        href="https://www.freecodecamp.org/news/primary-key-sql-tutorial-how-to-define-a-primary-key-in-a-database/"
+        >Primary Key SQL</a
+      >
+      <a
+        href="https://www.freecodecamp.org/news/sql-update-statement-example-queries-for-updating-table-values/"
+        >SQL Update Statement</a
+      >
+      <a href="https://www.freecodecamp.org/news/how-to-screenshot-on-windows/"
+        >Screenshot on PC</a
+      >
+    </p>
+    <p>
+      <a
+        href="https://www.freecodecamp.org/news/javascript-es6-promises-for-beginners-resolve-reject-and-chaining-explained/"
+        >JavaScript Promise</a
+      >
+      <a
+        href="https://www.freecodecamp.org/news/what-is-github-what-is-git-and-how-to-use-these-developer-tools/"
+        >What is GitHub?</a
+      >
+      <a
+        href="https://www.freecodecamp.org/news/the-python-sort-list-array-method-ascending-and-descending-explained-with-examples/"
+        >Python Sort List</a
+      >
+      <a
+        href="https://www.freecodecamp.org/news/json-comment-example-how-to-comment-in-json-files/"
+        >Comments in JSON</a
+      >
+      <a
+        href="https://www.freecodecamp.org/news/what-is-kanban-the-agile-methodology-defined-and-how-to-use-it-for-your-software-development-team-2/"
+        >What is Kanban?</a
+      >
+      <a
+        href="https://www.freecodecamp.org/news/python-write-to-file-open-read-append-and-other-file-handling-functions-explained/"
+        >Python Write to File</a
+      >
+      <a
+        href="https://www.freecodecamp.org/news/css-media-queries-breakpoints-media-types-standard-resolutions-and-more/"
+        >CSS Media Queries</a
+      >
+      <a
+        href="https://www.freecodecamp.org/news/html-entities-symbols-special-character-codes-list/"
+        >HTML Entities</a
+      >
+      <a href="https://www.freecodecamp.org/news/excel-vba-tutorial/"
+        >Excel VBA</a
+      >
+      <a href="https://www.freecodecamp.org/news/vlookup-in-excel/"
+        >LOOKUP in Excel</a
+      >
+    </p>
+    <p>
+      <a
+        href="https://www.freecodecamp.org/news/what-is-a-proxy-server-in-english-please/"
+        >What is a Proxy Server?</a
+      >
+      <a
+        href="https://www.freecodecamp.org/news/the-cat-command-in-linux-concatenation-explained-with-bash-examples/"
+        >Cat Command in Linux</a
+      >
+      <a
+        href="https://www.freecodecamp.org/news/how-to-add-an-image-url-to-your-div/"
+        >CSS Background Image</a
+      >
+      <a
+        href="https://www.freecodecamp.org/news/html-background-color-tutorial-how-to-change-a-div-background-color-explained-with-code-examples/"
+        >HTML Background Color</a
+      >
+      <a href="https://www.freecodecamp.org/news/comments-in-css/"
+        >CSS Comment Example</a
+      >
+    </p>
+    <p>
+      <a
+        href="https://www.freecodecamp.org/news/arrow-function-javascript-tutorial-how-to-declare-a-js-function-with-the-new-es6-syntax/"
+        >Arrow Function JavaScript</a
+      >
+      <a
+        href="https://www.freecodecamp.org/news/how-to-remove-duplicates-in-excel-delete-duplicate-rows-with-a-few-clicks/"
+        >Remove Duplicates in Excel</a
+      >
+      <a
+        href="https://www.freecodecamp.org/news/what-is-dllhost-exe-and-com-surrogate-in-windows-task-manager-solved/"
+        >dllhost.exe COM Surrogate</a
+      >
+      <a href="https://www.freecodecamp.org/news/boolean-algebra/"
+        >Boolean Algebra Truth Table</a
+      >
+      <a
+        href="https://www.freecodecamp.org/news/can-you-facetime-on-android-no-but-here-are-some-alternative-video-conferencing-apps/"
+        >Video Chat for Android</a
+      >
+    </p>
+    <p>Our Nonprofit</p>
+    <p>
+      <a href="https://www.freecodecamp.org/news/about/">About</a>
+      <a href="https://www.linkedin.com/school/free-code-camp/people/"
+        >Alumni Network</a
+      >
+      <a href="https://github.com/freeCodeCamp/">Open Source</a>
+      <a href="https://www.freecodecamp.org/shop/">Shop</a>
+      <a href="https://www.freecodecamp.org/news/support/">Support</a>
+      <a href="https://www.freecodecamp.org/news/sponsors/">Sponsors</a>
+      <a href="https://www.freecodecamp.org/news/academic-honesty-policy/"
+        >Academic Honesty</a
+      >
+      <a href="https://www.freecodecamp.org/news/code-of-conduct/"
+        >Code of Conduct</a
+      >
+      <a href="https://www.freecodecamp.org/news/privacy-policy/"
+        >Privacy Policy</a
+      >
+      <a href="https://www.freecodecamp.org/news/terms-of-service/"
+        >Terms of Service</a
+      >
+      <a href="https://www.freecodecamp.org/news/copyright-policy/"
+        >Copyright Policy</a
+      >
+    </p>
+  </body>
 </html>

@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>W14-LOs-explained</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="assessment-summary">Assessment Summary</h1>
+<ul>
+<li><p>Open notes assessment:</p>
+<ul>
+<li>React documentation</li>
+<li>React Router documentation</li>
+<li>Mozilla Developer Network</li>
+<li>Any of your previous projects or assessments</li>
+</ul></li>
+<li>2 hours 30 min project assessment</li>
+<li>No MC’s</li>
+<li><p>No short answers</p></li>
+</ul>
+<h2 id="how-to-prepare">How to Prepare</h2>
+<p>Be able to do the projects mostly without instructions</p>
+<ul>
+<li><p>Some projects to look at:</p>
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---may-2020-online/week-14-may-2020-online/simple-calculator">Simple Calculator</a>
+<ul>
+<li>Intro to State</li>
+<li>Class Components</li>
+</ul></li>
+<li><a href="https://open.appacademy.io/learn/js-py---may-2020-online/week-14-may-2020-online/a-widget-library">Widgets</a> - Clock part
+<ul>
+<li>Lifecycle</li>
+</ul></li>
+<li><a href="https://open.appacademy.io/learn/js-py---may-2020-online/week-14-may-2020-online/context-to-do-list">Context To-Do List</a>
+<ul>
+<li>Context</li>
+<li>Class Components</li>
+<li>Functional Components</li>
+</ul></li>
+<li><a href="https://open.appacademy.io/learn/js-py---may-2020-online/week-14-may-2020-online/tweets-revisited">Tweets Revisited</a>
+<ul>
+<li>Context</li>
+<li>Routes</li>
+<li>Class Components</li>
+<li>Functional Components</li>
+</ul></li>
+</ul></li>
+<li><p>Know how to use Functional components</p>
+<ul>
+<li>Review Day 1 + 2 Material</li>
+</ul></li>
+<li><p>Know how to use Class components</p>
+<ul>
+<li>Review Day 3 Material</li>
+<li><code>this.state</code></li>
+<li><code>this.setState</code></li>
+<li>Forms</li>
+<li>lifecycle methods
+<ul>
+<li><code>componentDidMount</code></li>
+<li><code>componentDidUpdate</code></li>
+<li><code>componentWillUnmount</code></li>
+</ul></li>
+</ul></li>
+<li><p>Know how to use <code>react-router-dom</code></p>
+<ul>
+<li>Review Day 4 Material</li>
+<li><code>Switch</code> component</li>
+<li><code>Route</code> component, props: <code>path</code>, <code>exact</code>, <code>render</code>, <code>component</code>
+<ul>
+<li>use <code>exact</code> unless specified otherwise</li>
+</ul></li>
+<li><code>NavLink</code> component, props: <code>to</code>, <code>activeClassName</code></li>
+</ul></li>
+<li>Know how to use Context with dynamic values
+<ul>
+<li>Review Day 5 Material</li>
+<li><code>React.createContext</code></li>
+<li>providers</li>
+<li>consumers
+<ul>
+<li>how to access the <code>value</code> of the context in a component
+<ul>
+<li><code>&lt;ContextName.Consumer&gt;</code>
+<ul>
+<li>For both Functional AND Class components</li>
+</ul></li>
+<li><code>static contextType = ContextName;</code>
+<ul>
+<li>For Class component ONLY</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>how to update the value of a context</li>
+</ul></li>
+<li>PRACTICE ASSESSMENT
+<ul>
+<li>Posted in Slack</li>
+</ul></li>
+</ul>
+<h1 id="week-14-learning-objectives---react">Week 14 Learning Objectives - React</h1>
+<h2 id="basic-react-learning-objectives">Basic React Learning Objectives</h2>
+<ol type="1">
+<li>Explain how React uses a tree data structure called the “virtual DOM” to model the DOM</li>
+</ol>
+<ul>
+<li>React mirrors the DOM’s tree structure with nodes that represent the HTML elements that are being rendered. When changes to these virtual elements occur, React is able to easily match them up with the HTML that needs to be changed in the actual DOM.</li>
+</ul>
+<ol start="2" type="1">
+<li>Show how to use <code>React.createElement</code> to create virtual DOM nodes</li>
+</ol>
+<ul>
+<li>React.createElement takes in three types of arguments. First is the type of element we are trying to make (the HTML tag passed as a string or a reference to another component). The second is the properties that we are passing to the newly created element. Finally we can specify children that this element should have.</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="va">React</span>.<span class="at">createElement</span>(</a>
+<a class="sourceLine" id="cb1-2" title="2">  <span class="co">// type</span></a>
+<a class="sourceLine" id="cb1-3" title="3">  <span class="st">&quot;div&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-4" title="4">  <span class="co">// properties</span></a>
+<a class="sourceLine" id="cb1-5" title="5">  <span class="op">{</span> <span class="dt">className</span><span class="op">:</span> <span class="st">&quot;App123&quot;</span> <span class="op">},</span></a>
+<a class="sourceLine" id="cb1-6" title="6">  <span class="co">// children</span></a>
+<a class="sourceLine" id="cb1-7" title="7">  <span class="va">React</span>.<span class="at">createElement</span>(<span class="st">&quot;h1&quot;</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="st">&quot;Product Sections&quot;</span>)<span class="op">,</span></a>
+<a class="sourceLine" id="cb1-8" title="8">  <span class="va">React</span>.<span class="at">createElement</span>(ProductSection<span class="op">,</span> <span class="op">{</span> <span class="dt">items</span><span class="op">:</span> <span class="va">props</span>.<span class="at">fruits</span><span class="op">,</span> <span class="dt">type</span><span class="op">:</span> <span class="st">&quot;Fruits&quot;</span> <span class="op">}</span>)<span class="op">,</span></a>
+<a class="sourceLine" id="cb1-9" title="9">  <span class="va">React</span>.<span class="at">createElement</span>(ProductSection<span class="op">,</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-10" title="10">    <span class="dt">items</span><span class="op">:</span> <span class="va">props</span>.<span class="at">vegetables</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-11" title="11">    <span class="dt">type</span><span class="op">:</span> <span class="st">&quot;Vegetables&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-12" title="12">  <span class="op">}</span>)</a>
+<a class="sourceLine" id="cb1-13" title="13">)<span class="op">;</span></a></code></pre></div>
+<ol start="3" type="1">
+<li>Use <code>React.createElement</code> to create nodes that represent HTML tags</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1">  <span class="va">React</span>.<span class="at">createElement</span>(<span class="st">&#39;a&#39;</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="st">&#39;Hello World!&#39;</span>})<span class="op">;</span></a></code></pre></div>
+<ol start="4" type="1">
+<li>Use <code>React.createElement</code> to create elements based on components</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="co">// Here we are creating a ProductSection component (defined elsewhere), passing in props for items and type, with no children defined directly here</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="va">React</span>.<span class="at">createElement</span>(ProductSection<span class="op">,</span> <span class="op">{</span> <span class="dt">items</span><span class="op">:</span> <span class="va">props</span>.<span class="at">fruits</span><span class="op">,</span> <span class="dt">type</span><span class="op">:</span> <span class="st">&quot;Fruits&quot;</span> <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<ol start="5" type="1">
+<li>Use <code>ReactDOM.render</code> to have React render your virtual DOM nodes into the actual Web page</li>
+</ol>
+<ul>
+<li>ReactDOM.render takes in two arguments: the element that we would like to render and a a reference to the HTML element that we are taking over and replacing the contents of.</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// Reference to our main tag that we are taking over</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw">const</span> target <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;main&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">// The element that we are creating and placing inside of main</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="kw">const</span> app <span class="op">=</span> <span class="va">React</span>.<span class="at">createElement</span>(App<span class="op">,</span> <span class="op">{</span> fruits<span class="op">,</span> vegetables <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-5" title="5"></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="va">ReactDOM</span>.<span class="at">render</span>(app<span class="op">,</span> target)<span class="op">;</span></a></code></pre></div>
+<ol start="6" type="1">
+<li>Use <code>ReactDOM.render</code> to update existing DOM</li>
+</ol>
+<ul>
+<li>React keeps track of what it has already rendered with its virtual DOM. When we rerender, it compares what we had previously created with the new content. If anything is new or changed, it will implement those changes in the DOM.</li>
+<li>In this example, we had already rendered our App component. Clicking the button with class <code>apple</code> adds a new apple item into our fruits array. Since we want the new apple to be rendered as well, we invoke render with the App component and the updated props. React will see that we only have one new element to create. It won’t regenerate the entire HTML, just add in the new element.</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&quot;.apple&quot;</span>).<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">  <span class="va">fruits</span>.<span class="at">push</span>(<span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;apple&quot;</span><span class="op">,</span> <span class="dt">imgSrc</span><span class="op">:</span> <span class="st">&quot;./images/apple.jpg&quot;</span> <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-3" title="3"></a>
+<a class="sourceLine" id="cb5-4" title="4">  <span class="co">// react takes existing virtual DOM from last time it rendered</span></a>
+<a class="sourceLine" id="cb5-5" title="5">  <span class="co">// compares to new thing trying to render</span></a>
+<a class="sourceLine" id="cb5-6" title="6">  <span class="co">// if anything has changed, updates</span></a>
+<a class="sourceLine" id="cb5-7" title="7">  <span class="va">ReactDOM</span>.<span class="at">render</span>(<span class="va">React</span>.<span class="at">createElement</span>(App<span class="op">,</span> <span class="op">{</span> fruits<span class="op">,</span> vegetables <span class="op">}</span>)<span class="op">,</span> target)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<ol start="7" type="1">
+<li>Use the second argument to <code>React.createElement</code> to pass data to your components through the conventionally-named <code>props</code> argument</li>
+</ol>
+<ul>
+<li>When we create our ProductSection component, we pass items and type properties to the component as the second argument.</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="co">// Here we are creating a ProductSection component (defined elsewhere), passing in props for items and type, with no children defined directly here</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="va">React</span>.<span class="at">createElement</span>(ProductSection<span class="op">,</span> <span class="op">{</span> <span class="dt">items</span><span class="op">:</span> <span class="va">props</span>.<span class="at">fruits</span><span class="op">,</span> <span class="dt">type</span><span class="op">:</span> <span class="st">&quot;Fruits&quot;</span> <span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<ul>
+<li>In the ProductSection component, we traditionally capture the properties that we passed in as the <code>props</code> parameter. We can reference the different keys that we created for each property anywhere within this component by using <code>props.propertyName</code>.</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">const</span> ProductSection <span class="op">=</span> (props) <span class="kw">=&gt;</span></a>
+<a class="sourceLine" id="cb7-2" title="2">  <span class="va">React</span>.<span class="at">createElement</span>(</a>
+<a class="sourceLine" id="cb7-3" title="3">    <span class="co">// type</span></a>
+<a class="sourceLine" id="cb7-4" title="4">    <span class="st">&quot;section&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb7-5" title="5">    <span class="co">// properties</span></a>
+<a class="sourceLine" id="cb7-6" title="6">    <span class="op">{</span> <span class="dt">className</span><span class="op">:</span> <span class="st">&quot;product-section&quot;</span> <span class="op">},</span></a>
+<a class="sourceLine" id="cb7-7" title="7">    <span class="co">// children</span></a>
+<a class="sourceLine" id="cb7-8" title="8">    <span class="va">React</span>.<span class="at">createElement</span>(<span class="st">&quot;h2&quot;</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="va">props</span>.<span class="at">type</span>)<span class="op">,</span> <span class="co">// The type that we passed down from our App component</span></a>
+<a class="sourceLine" id="cb7-9" title="9">    <span class="va">React</span>.<span class="at">createElement</span>(</a>
+<a class="sourceLine" id="cb7-10" title="10">      ProductList<span class="op">,</span></a>
+<a class="sourceLine" id="cb7-11" title="11">      <span class="op">{</span> <span class="dt">items</span><span class="op">:</span> <span class="va">props</span>.<span class="at">items</span> <span class="op">}</span> <span class="co">// The items that we passed down from our App component</span></a>
+<a class="sourceLine" id="cb7-12" title="12">    )</a>
+<a class="sourceLine" id="cb7-13" title="13">  )<span class="op">;</span></a></code></pre></div>
+<ul>
+<li>You may also see props destructured, such as:</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">const</span> ProductSection <span class="op">=</span> <span class="op">{</span>type<span class="op">,</span> items<span class="op">}</span> <span class="kw">=&gt;</span> <span class="va">React</span>.<span class="at">createElement</span>(</a>
+<a class="sourceLine" id="cb8-2" title="2">  <span class="co">// code removed for brevity</span></a>
+<a class="sourceLine" id="cb8-3" title="3">  <span class="va">React</span>.<span class="at">createElement</span>(<span class="st">&#39;h2&#39;</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> type)<span class="op">,</span> <span class="co">// we can now use type instead of props.type</span></a>
+<a class="sourceLine" id="cb8-4" title="4">   <span class="va">React</span>.<span class="at">createElement</span>(</a>
+<a class="sourceLine" id="cb8-5" title="5">    ProductList<span class="op">,</span></a>
+<a class="sourceLine" id="cb8-6" title="6">    <span class="op">{</span> <span class="dt">items</span><span class="op">:</span> items<span class="op">}</span> <span class="co">// We can now use items instead of props.items</span></a>
+<a class="sourceLine" id="cb8-7" title="7">  )</a>
+<a class="sourceLine" id="cb8-8" title="8">)<span class="op">;</span></a></code></pre></div>
+<ol start="8" type="1">
+<li>Use the second argument of <code>React.createElement</code> to specify attributes to render on actual DOM nodes</li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="co">// Here we are creating an h1 tag with a className property and the content of &#39;Hello World!&#39;</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="co">// We have to use className instead of class because class is a key word in JavaScript, so React maps the className key to the class property for us.</span></a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="co">// We can similarly assign any attributes in this way, such as the type of inputs</span></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="va">React</span>.<span class="at">createElement</span>(<span class="st">&#39;h1&#39;</span><span class="op">,</span> <span class="op">{</span> <span class="dt">className</span><span class="op">:</span><span class="st">&#39;greeting&#39;</span> <span class="op">},</span> <span class="st">&#39;Hello World!&#39;</span>})<span class="op">;</span></a></code></pre></div>
+<ol start="9" type="1">
+<li>Use <code>Array#map</code> to create an array of virtual DOM nodes while specifying a unique key for each created virtual DOM node</li>
+</ol>
+<ul>
+<li>All arguments after the first two that are passed to <code>React.createElement</code>, including arrays of elements, are used as children for element we are creating.</li>
+<li>In order for React to more easily keep track of each individual element being produced from a mapping function, it wants us to specify a <code>key</code> attribute with a unique value for each mapped element. That way if a change occurs to one of the elements, it will be able to update just the one node instead of all mapped nodes.</li>
+<li>This is easy to implement by just adding a <code>key</code> to the second argument of <code>createElement</code>. If we are dealing with items from a database, we’ll often use that item’s <code>id</code> as the key, since we know it is unique. In this case we are just using the index of the array being created since our elements don’t have ids, but ideally we would have something unique to that individual element.</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">const</span> ProductList <span class="op">=</span> (props) <span class="kw">=&gt;</span></a>
+<a class="sourceLine" id="cb10-2" title="2">  <span class="va">React</span>.<span class="at">createElement</span>(</a>
+<a class="sourceLine" id="cb10-3" title="3">    <span class="co">// type</span></a>
+<a class="sourceLine" id="cb10-4" title="4">    <span class="st">&quot;ul&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb10-5" title="5">    <span class="co">// properties</span></a>
+<a class="sourceLine" id="cb10-6" title="6">    <span class="op">{</span> <span class="dt">className</span><span class="op">:</span> <span class="st">&quot;product-list&quot;</span> <span class="op">},</span></a>
+<a class="sourceLine" id="cb10-7" title="7">    <span class="co">// children</span></a>
+<a class="sourceLine" id="cb10-8" title="8"></a>
+<a class="sourceLine" id="cb10-9" title="9">    <span class="va">props</span>.<span class="va">items</span>.<span class="at">map</span>((item<span class="op">,</span> i) <span class="kw">=&gt;</span></a>
+<a class="sourceLine" id="cb10-10" title="10">      <span class="va">React</span>.<span class="at">createElement</span>(ProductListItem<span class="op">,</span> <span class="op">{</span> item<span class="op">,</span> <span class="dt">key</span><span class="op">:</span> i <span class="op">}</span>)</a>
+<a class="sourceLine" id="cb10-11" title="11">    )</a>
+<a class="sourceLine" id="cb10-12" title="12">  )<span class="op">;</span></a></code></pre></div>
+<h2 id="react-class-components">React Class Components</h2>
+<ol type="1">
+<li>Create a simple React application by removing items and content from a project generated by the Create React App default template</li>
+</ol>
+<ul>
+<li>We can generate a React app using <code>create-react-app</code></li>
+</ul>
+<pre><code>npx create-react-app my-app-name</code></pre>
+<ul>
+<li><p>This command will generate a default application. We generally don’t need a lot of the files that are created this way. Things we can remove/alter for our basic purposes include:</p>
+<ul>
+<li>Remove all files in the <code>public</code> folder except for <code>index.html</code></li>
+<li>Alter <code>index.html</code> to just include a <code>div</code> tag in the body, with an id of <code>root</code></li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb12-1" title="1"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb12-3" title="3">  <span class="kw">&lt;head&gt;</span></a>
+<a class="sourceLine" id="cb12-4" title="4">    <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span> <span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb12-5" title="5">    <span class="kw">&lt;title&gt;</span>React App<span class="kw">&lt;/title&gt;</span></a>
+<a class="sourceLine" id="cb12-6" title="6">  <span class="kw">&lt;/head&gt;</span></a>
+<a class="sourceLine" id="cb12-7" title="7">  <span class="kw">&lt;body&gt;</span></a>
+<a class="sourceLine" id="cb12-8" title="8">    <span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;root&quot;</span><span class="kw">&gt;&lt;/div&gt;</span></a>
+<a class="sourceLine" id="cb12-9" title="9">  <span class="kw">&lt;/body&gt;</span></a>
+<a class="sourceLine" id="cb12-10" title="10"><span class="kw">&lt;/html&gt;</span></a></code></pre></div>
+<ul>
+<li>From the src folder, remove the following extra files:
+<ul>
+<li><code>App.css</code></li>
+<li><code>App.test.js</code></li>
+<li><code>logo.svg</code></li>
+<li><code>serviceWorker.js</code></li>
+<li><code>setupTests.js</code></li>
+</ul></li>
+<li>Update the contents of <code>App.js</code> to the simplified code:</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="co">// ./src/App.js</span></a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="im">import</span> React <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb13-3" title="3"></a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="kw">function</span> <span class="at">App</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb13-5" title="5">  <span class="cf">return</span> <span class="op">&lt;</span>h1<span class="op">&gt;</span>Hello world<span class="op">!</span>&lt;/h1<span class="op">&gt;;</span></a>
+<a class="sourceLine" id="cb13-6" title="6"><span class="op">}</span></a>
+<a class="sourceLine" id="cb13-7" title="7"></a>
+<a class="sourceLine" id="cb13-8" title="8"><span class="im">export</span> <span class="im">default</span> App<span class="op">;</span></a></code></pre></div>
+<ul>
+<li>Update the contents of <code>index.js</code> to the simplified code:</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="co">// ./src/index.js</span></a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="im">import</span> React <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="im">import</span> ReactDOM <span class="im">from</span> <span class="st">&quot;react-dom&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb14-4" title="4"><span class="im">import</span> <span class="st">&quot;./index.css&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb14-5" title="5"><span class="im">import</span> App <span class="im">from</span> <span class="st">&quot;./App&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb14-6" title="6"></a>
+<a class="sourceLine" id="cb14-7" title="7"><span class="va">ReactDOM</span>.<span class="at">render</span>(</a>
+<a class="sourceLine" id="cb14-8" title="8">  <span class="op">&lt;</span><span class="va">React</span>.<span class="at">StrictMode</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb14-9" title="9">    <span class="op">&lt;</span>App /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb14-10" title="10">  &lt;/<span class="va">React</span>.<span class="at">StrictMode</span><span class="op">&gt;,</span></a>
+<a class="sourceLine" id="cb14-11" title="11">  <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;root&quot;</span>)</a>
+<a class="sourceLine" id="cb14-12" title="12">)<span class="op">;</span></a></code></pre></div>
+<ul>
+<li>Remove any default styles generated for you in <code>index.css</code></li>
+</ul></li>
+</ul>
+<ol start="2" type="1">
+<li>Create a simple React application using a custom Create React App template</li>
+</ol>
+<ul>
+<li>Templates allow you to change what is generated by <code>create-react-app</code>, which can save you from having to make all of the adjustments each time we want to create a simple application.</li>
+<li>App Academy has created a template that does the changes suggested above for you automatically:</li>
+</ul>
+<pre><code>npx create-react-app my-app-name --template @appacademy/simple</code></pre>
+<ol start="3" type="1">
+<li>Create a React component using ES2015 class syntax</li>
+</ol>
+<ul>
+<li>In order for us to make a class component, we need to extend <code>React.Component</code> in our class definition.</li>
+<li>If we have functionality that we want to implement in our constructor (such as setting a default state or binding functions), we need to first invoke <code>super(props)</code>, which will set up the default functionality of the class that we inherit from <code>React.Component</code></li>
+<li>Lifecycle methods can be written in the body of the class and will be invoked at the appropriate time during the component’s life</li>
+<li>We are required to have a <code>render</code> function in our class that returns the content of our component to be rendered in the browser. This function will be invoked whenever our component mounts, when its state is set, when it receives new props, or when its parent component rerenders.</li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb16-1" title="1"><span class="co">// Clock.js</span></a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="im">import</span> React <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb16-3" title="3"></a>
+<a class="sourceLine" id="cb16-4" title="4"><span class="kw">class</span> Clock <span class="kw">extends</span> <span class="va">React</span>.<span class="at">Component</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb16-5" title="5">  <span class="at">constructor</span>(props) <span class="op">{</span></a>
+<a class="sourceLine" id="cb16-6" title="6">    <span class="kw">super</span>(props)<span class="op">;</span></a>
+<a class="sourceLine" id="cb16-7" title="7">    <span class="kw">this</span>.<span class="at">state</span> <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb16-8" title="8">      <span class="dt">time</span><span class="op">:</span> <span class="kw">new</span> <span class="at">Date</span>()<span class="op">,</span></a>
+<a class="sourceLine" id="cb16-9" title="9">    <span class="op">};</span></a>
+<a class="sourceLine" id="cb16-10" title="10">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb16-11" title="11"></a>
+<a class="sourceLine" id="cb16-12" title="12">  <span class="at">componentDidMount</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb16-13" title="13">    <span class="kw">this</span>.<span class="at">interval</span> <span class="op">=</span> <span class="at">setInterval</span>(<span class="kw">this</span>.<span class="at">tick</span><span class="op">,</span> <span class="dv">1000</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb16-14" title="14">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb16-15" title="15"></a>
+<a class="sourceLine" id="cb16-16" title="16">  <span class="at">componentWillUnmount</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb16-17" title="17">    <span class="at">clearInterval</span>(<span class="kw">this</span>.<span class="at">interval</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb16-18" title="18">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb16-19" title="19"></a>
+<a class="sourceLine" id="cb16-20" title="20">  tick <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb16-21" title="21">    <span class="kw">this</span>.<span class="at">setState</span>(<span class="op">{</span> <span class="dt">time</span><span class="op">:</span> <span class="kw">new</span> <span class="at">Date</span>() <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb16-22" title="22">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb16-23" title="23"></a>
+<a class="sourceLine" id="cb16-24" title="24">  <span class="at">render</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb16-25" title="25">    <span class="kw">let</span> hours <span class="op">=</span> <span class="kw">this</span>.<span class="va">state</span>.<span class="va">time</span>.<span class="at">getHours</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb16-26" title="26">    <span class="kw">let</span> minutes <span class="op">=</span> <span class="kw">this</span>.<span class="va">state</span>.<span class="va">time</span>.<span class="at">getMinutes</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb16-27" title="27">    <span class="kw">let</span> seconds <span class="op">=</span> <span class="kw">this</span>.<span class="va">state</span>.<span class="va">time</span>.<span class="at">getSeconds</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb16-28" title="28"></a>
+<a class="sourceLine" id="cb16-29" title="29">    hours <span class="op">=</span> hours <span class="op">&lt;</span> <span class="dv">10</span> <span class="op">?</span> <span class="vs">`0</span><span class="sc">${</span>hours<span class="sc">}</span><span class="vs">`</span> : hours<span class="op">;</span></a>
+<a class="sourceLine" id="cb16-30" title="30">    minutes <span class="op">=</span> minutes <span class="op">&lt;</span> <span class="dv">10</span> <span class="op">?</span> <span class="vs">`0</span><span class="sc">${</span>minutes<span class="sc">}</span><span class="vs">`</span> : minutes<span class="op">;</span></a>
+<a class="sourceLine" id="cb16-31" title="31">    seconds <span class="op">=</span> seconds <span class="op">&lt;</span> <span class="dv">10</span> <span class="op">?</span> <span class="vs">`0</span><span class="sc">${</span>seconds<span class="sc">}</span><span class="vs">`</span> : seconds<span class="op">;</span></a>
+<a class="sourceLine" id="cb16-32" title="32"></a>
+<a class="sourceLine" id="cb16-33" title="33">    <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb16-34" title="34">      <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb16-35" title="35">        <span class="op">&lt;</span>h1<span class="op">&gt;</span>Clock&lt;/h1<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb16-36" title="36">        <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;clock&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb16-37" title="37">          <span class="op">&lt;</span>p<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb16-38" title="38">            <span class="op">&lt;</span>span<span class="op">&gt;</span><span class="dt">Time</span><span class="op">:</span>&lt;/span<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb16-39" title="39">            <span class="op">&lt;</span>span<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb16-40" title="40">              <span class="op">{</span>hours<span class="op">}:{</span>minutes<span class="op">}:{</span>seconds<span class="op">}</span> PDT</a>
+<a class="sourceLine" id="cb16-41" title="41">            &lt;/span<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb16-42" title="42">          &lt;/p<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb16-43" title="43">          <span class="op">&lt;</span>p<span class="op">&gt;</span><span class="dt">Date</span><span class="op">:</span> <span class="op">{</span><span class="kw">this</span>.<span class="va">state</span>.<span class="va">time</span>.<span class="at">toDateString</span>()<span class="op">}</span>&lt;/p<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb16-44" title="44">        &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb16-45" title="45">      &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb16-46" title="46">    )<span class="op">;</span></a>
+<a class="sourceLine" id="cb16-47" title="47">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb16-48" title="48"><span class="op">}</span></a>
+<a class="sourceLine" id="cb16-49" title="49"></a>
+<a class="sourceLine" id="cb16-50" title="50"><span class="im">export</span> <span class="im">default</span> Clock<span class="op">;</span></a></code></pre></div>
+<ol start="4" type="1">
+<li>Understand when it’s appropriate to use a class component</li>
+</ol>
+<ul>
+<li>Class components are useful when we want to keep track of the state of the application or perform lifecycle methods.</li>
+<li>If interacting with the component should change some data, such as keeping track of a form’s input, or altering values based on button clicks, we would want to keep track of the changing data in state.</li>
+<li>If we want to perform some action when a component mounts, updates, or unmounts, we want to use the lifecycle methods <code>componentDidMount</code>, <code>componentDidUpdate</code>, or <code>componentWillUnmount</code>, which are available to us in a class component.
+<ul>
+<li>Common use case for lifecycle methods would be if we want to fetch data from a database or other API after mounting</li>
+</ul></li>
+</ul>
+<ol start="5" type="1">
+<li>Initialize and update state within a class component</li>
+</ol>
+<ul>
+<li>To initialize state, we assign <code>this.state</code> to our object with default values in the constructor</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb17-1" title="1"><span class="at">constructor</span>(props) <span class="op">{</span></a>
+<a class="sourceLine" id="cb17-2" title="2">  <span class="kw">super</span>(props)<span class="op">;</span></a>
+<a class="sourceLine" id="cb17-3" title="3">  <span class="kw">this</span>.<span class="at">state</span> <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb17-4" title="4">    <span class="dt">time</span><span class="op">:</span> <span class="kw">new</span> <span class="at">Date</span>()</a>
+<a class="sourceLine" id="cb17-5" title="5">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb17-6" title="6"><span class="op">}</span></a></code></pre></div>
+<ul>
+<li>Whenever we want to update our state, we have to invoke the <code>setState</code> method, passing in whatever keys/values we would like to update on state. This is important because the method is what tells React that we need to rerender. If we reassign the value of state directly instead of invoking this method, React will not trigger a rerender and our component won’t change in our browser.</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb18-1" title="1">tick <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb18-2" title="2">  <span class="kw">this</span>.<span class="at">setState</span>(<span class="op">{</span> <span class="dt">time</span><span class="op">:</span> <span class="kw">new</span> <span class="at">Date</span>() <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb18-3" title="3"><span class="op">};</span></a></code></pre></div>
+<ol start="6" type="1">
+<li>Provide default values for a class component’s props</li>
+</ol>
+<ul>
+<li>To provide a default value for props, we can assign the <code>defaultProps</code> key on the class before we export it.</li>
+<li>This is especially important if we are keying into values on props that we are expecting. If we don’t have a prop the first time we render and try to key in to a property on an undefined value, our code will error out. Assigning default values ensures keying in to these nested values does not result in an error before those props can be passed in to us (perhaps from an asynchronous call to a database or other API)</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb19-1" title="1"><span class="va">PetDetails</span>.<span class="at">defaultProps</span> <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb19-2" title="2">  <span class="dt">pet</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb19-3" title="3">    <span class="dt">PetType</span><span class="op">:</span> <span class="op">{},</span></a>
+<a class="sourceLine" id="cb19-4" title="4">  <span class="op">},</span></a>
+<a class="sourceLine" id="cb19-5" title="5"><span class="op">};</span></a></code></pre></div>
+<ol start="7" type="1">
+<li>Add event listeners to elements</li>
+</ol>
+<ul>
+<li>In our JSX, we can use the camelCased versions of event attributes to assign callbacks to be invoked for those events.</li>
+<li>In the following example, the function <code>handleSecondNum</code> will be invoked whenever a change in value is detected in the input, and <code>add</code> will be invoked whenever the button is clicked.</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb20-1" title="1"><span class="op">&lt;</span>input onChange<span class="op">={</span><span class="kw">this</span>.<span class="at">handleSecondNum</span><span class="op">}</span> value<span class="op">={</span>num2<span class="op">}</span> placeholder<span class="op">=</span><span class="st">&quot;Second number&quot;</span> /&gt;</a>
+<a class="sourceLine" id="cb20-2" title="2"><span class="op">&lt;</span>button onClick<span class="op">={</span><span class="kw">this</span>.<span class="at">add</span><span class="op">}&gt;+</span>&lt;/button<span class="op">&gt;</span></a></code></pre></div>
+<ol start="8" type="1">
+<li>Prevent event default behavior</li>
+</ol>
+<ul>
+<li>When an event is triggered, the a reference to the event is passed to the event handler. By capturing this argument and invoking <code>preventDefault()</code> on it, we can prevent the default behavior from occuring.</li>
+</ul>
+<div class="sourceCode" id="cb21"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb21-1" title="1">handleSubmit <span class="op">=</span> (e) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb21-2" title="2">  <span class="va">e</span>.<span class="at">preventDefault</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb21-3" title="3">  <span class="co">// ... whatever code we would like our handler to invoke instead of the default form submission behavior</span></a>
+<a class="sourceLine" id="cb21-4" title="4"><span class="op">};</span></a></code></pre></div>
+<ol start="9" type="1">
+<li>Safely use the <code>this</code> keyword within event handlers</li>
+</ol>
+<ul>
+<li>In order to preserve the context of <code>this</code> within an event handler, we can either define the function as a fat arrow function, or bind its context within the constructor.</li>
+<li>The reason we need to do one of these approaches is because the event handlers are invoked function style as callbacks, so <code>this</code> will be undefined in the browser.</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb22-1" title="1"><span class="co">// fat arrow implementation</span></a>
+<a class="sourceLine" id="cb22-2" title="2">add <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb22-3" title="3">  <span class="kw">const</span> result <span class="op">=</span> <span class="kw">this</span>.<span class="va">state</span>.<span class="at">num1</span> <span class="op">+</span> <span class="kw">this</span>.<span class="va">state</span>.<span class="at">num2</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb22-4" title="4">  <span class="kw">this</span>.<span class="at">setState</span>(<span class="op">{</span> result <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb22-5" title="5"><span class="op">};</span></a>
+<a class="sourceLine" id="cb22-6" title="6"></a>
+<a class="sourceLine" id="cb22-7" title="7"><span class="co">// bind approach</span></a>
+<a class="sourceLine" id="cb22-8" title="8"><span class="at">constructor</span>(props)<span class="op">{</span></a>
+<a class="sourceLine" id="cb22-9" title="9">  <span class="kw">super</span>(props)<span class="op">;</span></a>
+<a class="sourceLine" id="cb22-10" title="10">  <span class="co">// ... other functionality, like setting up state</span></a>
+<a class="sourceLine" id="cb22-11" title="11">  <span class="kw">this</span>.<span class="at">add</span> <span class="op">=</span> <span class="kw">this</span>.<span class="va">add</span>.<span class="at">bind</span>(<span class="kw">this</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb22-12" title="12"><span class="op">}</span></a>
+<a class="sourceLine" id="cb22-13" title="13"></a>
+<a class="sourceLine" id="cb22-14" title="14">add <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb22-15" title="15">  <span class="kw">const</span> result <span class="op">=</span> <span class="kw">this</span>.<span class="va">state</span>.<span class="at">num1</span> <span class="op">+</span> <span class="kw">this</span>.<span class="va">state</span>.<span class="at">num2</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb22-16" title="16">  <span class="kw">this</span>.<span class="at">setState</span>(<span class="op">{</span> result <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb22-17" title="17"><span class="op">};</span></a></code></pre></div>
+<ol start="10" type="1">
+<li>Understand what the React <code>SyntheticEvent</code> object is and the role it plays in handling events</li>
+</ol>
+<ul>
+<li>React wraps events triggered in the browser in a class called <code>SyntheticEvent</code></li>
+<li>All of the functionality of the event is preserved, but it provides a standard interface that React can interact with, which is important since different browsers may create event objects slightly differently.</li>
+</ul>
+<ol start="11" type="1">
+<li>Create a React class component containing a simple form</li>
+</ol>
+<ul>
+<li>Below you’ll see a <code>ContactUs</code> component which uses a form so that a user can submit contact information (we’ll expand on this with comments later).</li>
+<li>Notable parts of this component are that a change in the inputs triggers an event listener callback. We want to tie this change in to an update to our component’s state, which we are linking to the value.</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb23-1" title="1"><span class="co">// ./src/ContactUs.js</span></a>
+<a class="sourceLine" id="cb23-2" title="2"></a>
+<a class="sourceLine" id="cb23-3" title="3"><span class="im">import</span> React <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb23-4" title="4"></a>
+<a class="sourceLine" id="cb23-5" title="5"><span class="kw">class</span> ContactUs <span class="kw">extends</span> <span class="va">React</span>.<span class="at">Component</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb23-6" title="6">  <span class="at">constructor</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb23-7" title="7">    <span class="kw">super</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb23-8" title="8"></a>
+<a class="sourceLine" id="cb23-9" title="9">    <span class="kw">this</span>.<span class="at">state</span> <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb23-10" title="10">      <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb23-11" title="11">      <span class="dt">email</span><span class="op">:</span> <span class="st">&quot;&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb23-12" title="12">      <span class="dt">phone</span><span class="op">:</span> <span class="st">&quot;&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb23-13" title="13">    <span class="op">};</span></a>
+<a class="sourceLine" id="cb23-14" title="14">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb23-15" title="15"></a>
+<a class="sourceLine" id="cb23-16" title="16">  onChange <span class="op">=</span> (e) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb23-17" title="17">    <span class="kw">const</span> <span class="op">{</span> name<span class="op">,</span> value <span class="op">}</span> <span class="op">=</span> <span class="va">e</span>.<span class="at">target</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb23-18" title="18">    <span class="kw">this</span>.<span class="at">setState</span>(<span class="op">{</span> [name]<span class="op">:</span> value <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb23-19" title="19">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb23-20" title="20"></a>
+<a class="sourceLine" id="cb23-21" title="21">  onSubmit <span class="op">=</span> (e) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb23-22" title="22">    <span class="co">// Prevent the default form behavior</span></a>
+<a class="sourceLine" id="cb23-23" title="23">    <span class="co">// so the page doesn&#39;t reload.</span></a>
+<a class="sourceLine" id="cb23-24" title="24">    <span class="va">e</span>.<span class="at">preventDefault</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb23-25" title="25"></a>
+<a class="sourceLine" id="cb23-26" title="26">    <span class="co">// Retrieve the contact us information from state.</span></a>
+<a class="sourceLine" id="cb23-27" title="27">    <span class="kw">const</span> <span class="op">{</span> name<span class="op">,</span> email<span class="op">,</span> phone <span class="op">}</span> <span class="op">=</span> <span class="kw">this</span>.<span class="at">state</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb23-28" title="28"></a>
+<a class="sourceLine" id="cb23-29" title="29">    <span class="co">// Create a new object for the contact us information.</span></a>
+<a class="sourceLine" id="cb23-30" title="30">    <span class="kw">const</span> contactUsInformation <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb23-31" title="31">      name<span class="op">,</span></a>
+<a class="sourceLine" id="cb23-32" title="32">      email<span class="op">,</span></a>
+<a class="sourceLine" id="cb23-33" title="33">      phone<span class="op">,</span></a>
+<a class="sourceLine" id="cb23-34" title="34">      <span class="dt">submittedOn</span><span class="op">:</span> <span class="kw">new</span> <span class="at">Date</span>()<span class="op">,</span></a>
+<a class="sourceLine" id="cb23-35" title="35">    <span class="op">};</span></a>
+<a class="sourceLine" id="cb23-36" title="36"></a>
+<a class="sourceLine" id="cb23-37" title="37">    <span class="co">// For now, just log the contact us information to the console</span></a>
+<a class="sourceLine" id="cb23-38" title="38">    <span class="co">// though ideally, we&#39;d persist this information to a database</span></a>
+<a class="sourceLine" id="cb23-39" title="39">    <span class="co">// using a REST API.</span></a>
+<a class="sourceLine" id="cb23-40" title="40">    <span class="va">console</span>.<span class="at">log</span>(contactUsInformation)<span class="op">;</span></a>
+<a class="sourceLine" id="cb23-41" title="41"></a>
+<a class="sourceLine" id="cb23-42" title="42">    <span class="co">// Reset the form state.</span></a>
+<a class="sourceLine" id="cb23-43" title="43">    <span class="kw">this</span>.<span class="at">setState</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb23-44" title="44">      <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb23-45" title="45">      <span class="dt">email</span><span class="op">:</span> <span class="st">&quot;&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb23-46" title="46">      <span class="dt">phone</span><span class="op">:</span> <span class="st">&quot;&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb23-47" title="47">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb23-48" title="48">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb23-49" title="49"></a>
+<a class="sourceLine" id="cb23-50" title="50">  <span class="at">render</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb23-51" title="51">    <span class="kw">const</span> <span class="op">{</span> name<span class="op">,</span> email<span class="op">,</span> phone <span class="op">}</span> <span class="op">=</span> <span class="kw">this</span>.<span class="at">state</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb23-52" title="52"></a>
+<a class="sourceLine" id="cb23-53" title="53">    <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb23-54" title="54">      <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb23-55" title="55">        <span class="op">&lt;</span>h2<span class="op">&gt;</span>Contact Us&lt;/h2<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb23-56" title="56">        <span class="op">&lt;</span>form onSubmit<span class="op">={</span><span class="kw">this</span>.<span class="at">onSubmit</span><span class="op">}&gt;</span></a>
+<a class="sourceLine" id="cb23-57" title="57">          <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb23-58" title="58">            <span class="op">&lt;</span>label htmlFor<span class="op">=</span><span class="st">&quot;name&quot;</span><span class="op">&gt;</span><span class="dt">Name</span><span class="op">:</span>&lt;/label<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb23-59" title="59">            <span class="op">&lt;</span>input</a>
+<a class="sourceLine" id="cb23-60" title="60">              id<span class="op">=</span><span class="st">&quot;name&quot;</span></a>
+<a class="sourceLine" id="cb23-61" title="61">              name<span class="op">=</span><span class="st">&quot;name&quot;</span></a>
+<a class="sourceLine" id="cb23-62" title="62">              type<span class="op">=</span><span class="st">&quot;text&quot;</span></a>
+<a class="sourceLine" id="cb23-63" title="63">              onChange<span class="op">={</span><span class="kw">this</span>.<span class="at">onChange</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb23-64" title="64">              value<span class="op">={</span>name<span class="op">}</span></a>
+<a class="sourceLine" id="cb23-65" title="65">            /&gt;</a>
+<a class="sourceLine" id="cb23-66" title="66">            <span class="op">{</span><span class="co">/* The onChange attribute is linked the the event listener this.onChange, which is triggered whenever we type in the input */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb23-67" title="67">            <span class="op">{</span><span class="co">/* The value for each input is linked to the state&#39;s key associated with this field */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb23-68" title="68">          &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb23-69" title="69">          <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb23-70" title="70">            <span class="op">&lt;</span>label htmlFor<span class="op">=</span><span class="st">&quot;email&quot;</span><span class="op">&gt;</span><span class="dt">Email</span><span class="op">:</span>&lt;/label<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb23-71" title="71">            <span class="op">&lt;</span>input</a>
+<a class="sourceLine" id="cb23-72" title="72">              id<span class="op">=</span><span class="st">&quot;email&quot;</span></a>
+<a class="sourceLine" id="cb23-73" title="73">              name<span class="op">=</span><span class="st">&quot;email&quot;</span></a>
+<a class="sourceLine" id="cb23-74" title="74">              type<span class="op">=</span><span class="st">&quot;text&quot;</span></a>
+<a class="sourceLine" id="cb23-75" title="75">              onChange<span class="op">={</span><span class="kw">this</span>.<span class="at">onChange</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb23-76" title="76">              value<span class="op">={</span>email<span class="op">}</span></a>
+<a class="sourceLine" id="cb23-77" title="77">            /&gt;</a>
+<a class="sourceLine" id="cb23-78" title="78">          &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb23-79" title="79">          <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb23-80" title="80">            <span class="op">&lt;</span>label htmlFor<span class="op">=</span><span class="st">&quot;phone&quot;</span><span class="op">&gt;</span><span class="dt">Phone</span><span class="op">:</span>&lt;/label<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb23-81" title="81">            <span class="op">&lt;</span>input</a>
+<a class="sourceLine" id="cb23-82" title="82">              id<span class="op">=</span><span class="st">&quot;phone&quot;</span></a>
+<a class="sourceLine" id="cb23-83" title="83">              name<span class="op">=</span><span class="st">&quot;phone&quot;</span></a>
+<a class="sourceLine" id="cb23-84" title="84">              type<span class="op">=</span><span class="st">&quot;text&quot;</span></a>
+<a class="sourceLine" id="cb23-85" title="85">              onChange<span class="op">={</span><span class="kw">this</span>.<span class="at">onChange</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb23-86" title="86">              value<span class="op">={</span>phone<span class="op">}</span></a>
+<a class="sourceLine" id="cb23-87" title="87">            /&gt;</a>
+<a class="sourceLine" id="cb23-88" title="88">          &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb23-89" title="89">          <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb23-90" title="90">            <span class="op">&lt;</span>button<span class="op">&gt;</span>Submit&lt;/button<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb23-91" title="91">          &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb23-92" title="92">        &lt;/form<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb23-93" title="93">      &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb23-94" title="94">    )<span class="op">;</span></a>
+<a class="sourceLine" id="cb23-95" title="95">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb23-96" title="96"><span class="op">}</span></a>
+<a class="sourceLine" id="cb23-97" title="97"></a>
+<a class="sourceLine" id="cb23-98" title="98"><span class="im">export</span> <span class="im">default</span> ContactUs<span class="op">;</span></a></code></pre></div>
+<ol start="12" type="1">
+<li>Define a single event handler method to handle <code>onChange</code> events for multiple <code>&lt;input&gt;</code> elements</li>
+</ol>
+<ul>
+<li>By utilizing the <code>name</code> attribute of our form’s components, we can get a reference to which part of state we are trying to update from the event’s target, just like how we are getting the value.</li>
+<li>In our call to setState, we use brackets around the name in order to evaluate the key, instead of creating/updating a key that is literally called <code>name</code></li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb24-1" title="1"><span class="co">// event handler</span></a>
+<a class="sourceLine" id="cb24-2" title="2">onChange <span class="op">=</span> (e) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb24-3" title="3">  <span class="kw">const</span> <span class="op">{</span> name<span class="op">,</span> value <span class="op">}</span> <span class="op">=</span> <span class="va">e</span>.<span class="at">target</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb24-4" title="4">  <span class="kw">this</span>.<span class="at">setState</span>(<span class="op">{</span> [name]<span class="op">:</span> value <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-5" title="5"><span class="op">};</span></a>
+<a class="sourceLine" id="cb24-6" title="6"></a>
+<a class="sourceLine" id="cb24-7" title="7"><span class="co">// in our form</span></a>
+<a class="sourceLine" id="cb24-8" title="8"><span class="co">// The div is being used to collect the label and input into one container for easier styling (there&#39;s no functional purpose to it)</span></a>
+<a class="sourceLine" id="cb24-9" title="9"><span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb24-10" title="10">  <span class="op">&lt;</span>label htmlFor<span class="op">=</span><span class="st">&quot;phone&quot;</span><span class="op">&gt;</span>Phone<span class="op">:</span>&lt;/label<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb24-11" title="11">  <span class="op">&lt;</span>input</a>
+<a class="sourceLine" id="cb24-12" title="12">    id<span class="op">=</span><span class="st">&quot;phone&quot;</span></a>
+<a class="sourceLine" id="cb24-13" title="13">    name<span class="op">=</span><span class="st">&quot;phone&quot;</span></a>
+<a class="sourceLine" id="cb24-14" title="14">    type<span class="op">=</span><span class="st">&quot;text&quot;</span></a>
+<a class="sourceLine" id="cb24-15" title="15">    onChange<span class="op">={</span><span class="kw">this</span>.<span class="at">onChange</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb24-16" title="16">    value<span class="op">={</span><span class="kw">this</span>.<span class="va">state</span>.<span class="at">phone</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb24-17" title="17">  /&gt;</a>
+<a class="sourceLine" id="cb24-18" title="18">  <span class="op">&lt;</span>input</a>
+<a class="sourceLine" id="cb24-19" title="19">    id<span class="op">=</span><span class="st">&quot;name&quot;</span></a>
+<a class="sourceLine" id="cb24-20" title="20">    name<span class="op">=</span><span class="st">&quot;name&quot;</span></a>
+<a class="sourceLine" id="cb24-21" title="21">    type<span class="op">=</span><span class="st">&quot;text&quot;</span></a>
+<a class="sourceLine" id="cb24-22" title="22">    onChange<span class="op">={</span><span class="kw">this</span>.<span class="at">onChange</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb24-23" title="23">    value<span class="op">={</span><span class="kw">this</span>.<span class="va">state</span>.<span class="at">name</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb24-24" title="24">  /&gt;</a>
+<a class="sourceLine" id="cb24-25" title="25">&lt;/div<span class="op">&gt;;</span></a></code></pre></div>
+<ol start="13" type="1">
+<li>Add a <code>&lt;textarea&gt;</code> element to a form</li>
+</ol>
+<ul>
+<li>Textareas are actually easier and more consistent to work with within React than their standard HTML counterparts.</li>
+<li>In HTML, the content of textareas are the values, the value is between the opening and closing tags.</li>
+<li>In React, we treat the value as an attribute just like our input tags, making our textarea a self-closing tag:</li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb25-1" title="1"><span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb25-2" title="2">  <span class="op">&lt;</span>label htmlFor<span class="op">=</span><span class="st">&quot;comments&quot;</span><span class="op">&gt;</span>Comments<span class="op">:</span>&lt;/label<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb25-3" title="3">  <span class="op">&lt;</span>textarea</a>
+<a class="sourceLine" id="cb25-4" title="4">    id<span class="op">=</span><span class="st">&quot;comments&quot;</span></a>
+<a class="sourceLine" id="cb25-5" title="5">    name<span class="op">=</span><span class="st">&quot;comments&quot;</span></a>
+<a class="sourceLine" id="cb25-6" title="6">    onChange<span class="op">={</span><span class="kw">this</span>.<span class="at">onChange</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb25-7" title="7">    value<span class="op">={</span>comments<span class="op">}</span></a>
+<a class="sourceLine" id="cb25-8" title="8">  /&gt;</a>
+<a class="sourceLine" id="cb25-9" title="9">&lt;/div<span class="op">&gt;</span></a></code></pre></div>
+<ul>
+<li>In practice, this means we can treat <code>textarea</code> tags just like a regular <code>input</code> tag in React</li>
+</ul>
+<ol start="14" type="1">
+<li>Add a <code>&lt;select&gt;</code> element to a form</li>
+</ol>
+<ul>
+<li>In React, the value associated with our <code>select</code> reflects which option has been selected.</li>
+<li>In the following example, we map over many options for a <code>phoneType</code> and create a new <code>option</code> tag for each type.</li>
+<li>The <code>select</code> has many similarities to <code>input</code> in that we can assign an event listener to onChange, and a name and value so that our event handler can update the appropriate key in our state.</li>
+</ul>
+<div class="sourceCode" id="cb26"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb26-1" title="1"><span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb26-2" title="2">  <span class="op">&lt;</span>label htmlFor<span class="op">=</span><span class="st">&quot;phone&quot;</span><span class="op">&gt;</span>Phone<span class="op">:</span>&lt;/label<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb26-3" title="3">  <span class="op">&lt;</span>input</a>
+<a class="sourceLine" id="cb26-4" title="4">    id<span class="op">=</span><span class="st">&quot;phone&quot;</span></a>
+<a class="sourceLine" id="cb26-5" title="5">    name<span class="op">=</span><span class="st">&quot;phone&quot;</span></a>
+<a class="sourceLine" id="cb26-6" title="6">    type<span class="op">=</span><span class="st">&quot;text&quot;</span></a>
+<a class="sourceLine" id="cb26-7" title="7">    onChange<span class="op">={</span><span class="kw">this</span>.<span class="at">onChange</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb26-8" title="8">    value<span class="op">={</span>phone<span class="op">}</span></a>
+<a class="sourceLine" id="cb26-9" title="9">  /&gt;</a>
+<a class="sourceLine" id="cb26-10" title="10">  <span class="op">&lt;</span>select name<span class="op">=</span><span class="st">&quot;phoneType&quot;</span> onChange<span class="op">={</span><span class="kw">this</span>.<span class="at">onChange</span><span class="op">}</span> value<span class="op">={</span>phoneType<span class="op">}&gt;</span></a>
+<a class="sourceLine" id="cb26-11" title="11">    <span class="op">&lt;</span>option value<span class="op">=</span><span class="st">&quot;&quot;</span><span class="op">&gt;</span>Select a phone <span class="va">type</span>...&lt;/option<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb26-12" title="12">    <span class="op">{</span><span class="kw">this</span>.<span class="va">props</span>.<span class="va">phoneTypes</span>.<span class="at">map</span>((phoneType) <span class="kw">=&gt;</span> (</a>
+<a class="sourceLine" id="cb26-13" title="13">      <span class="op">&lt;</span>option key<span class="op">={</span>phoneType<span class="op">}&gt;{</span>phoneType<span class="op">}</span>&lt;/option<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb26-14" title="14">    ))<span class="op">}</span></a>
+<a class="sourceLine" id="cb26-15" title="15">  &lt;/select<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb26-16" title="16">&lt;/div<span class="op">&gt;</span></a></code></pre></div>
+<ol start="15" type="1">
+<li>Implement form validations</li>
+</ol>
+<ul>
+<li>In order to validate user input, we can track any validation errors related to the form as an array in our component’s state.</li>
+<li>When we attempt to submit our form, we can run our validations and put any error messages that we want to display in an array.</li>
+<li>If the array has any content, we know that at least one of our validations failed. Instead of sending off our request to our server, we can set our component’s state to include these error messages.</li>
+<li>In our render method, if our state has any errors to display, we can show them to the user directly within the component.</li>
+<li>Below is a simplified version of our <code>ContactUs</code> component, with validations for name and email.</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb27-1" title="1"><span class="co">// Our custom validate functions checks that a name and email are both present. If not, it pushes a descriptive message into the array that it returns.</span></a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="at">validate</span>(name<span class="op">,</span> email) <span class="op">{</span></a>
+<a class="sourceLine" id="cb27-3" title="3">  <span class="kw">const</span> validationErrors <span class="op">=</span> []<span class="op">;</span></a>
+<a class="sourceLine" id="cb27-4" title="4"></a>
+<a class="sourceLine" id="cb27-5" title="5">  <span class="cf">if</span> (<span class="op">!</span>name) <span class="op">{</span></a>
+<a class="sourceLine" id="cb27-6" title="6">    <span class="va">validationErrors</span>.<span class="at">push</span>(<span class="st">&#39;Please provide a Name&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb27-7" title="7">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb27-8" title="8"></a>
+<a class="sourceLine" id="cb27-9" title="9">  <span class="cf">if</span> (<span class="op">!</span>email) <span class="op">{</span></a>
+<a class="sourceLine" id="cb27-10" title="10">    <span class="va">validationErrors</span>.<span class="at">push</span>(<span class="st">&#39;Please provide an Email&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb27-11" title="11">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb27-12" title="12"></a>
+<a class="sourceLine" id="cb27-13" title="13">  <span class="cf">return</span> validationErrors<span class="op">;</span></a>
+<a class="sourceLine" id="cb27-14" title="14"><span class="op">}</span></a>
+<a class="sourceLine" id="cb27-15" title="15"></a>
+<a class="sourceLine" id="cb27-16" title="16"><span class="co">// Our submit event handler invokes our validate function. If we had errors, it sets the state of our component with these errors. If we didn&#39;t it processes the submission like normal</span></a>
+<a class="sourceLine" id="cb27-17" title="17">onSubmit <span class="op">=</span> (e) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb27-18" title="18">  <span class="va">e</span>.<span class="at">preventDefault</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb27-19" title="19"></a>
+<a class="sourceLine" id="cb27-20" title="20">  <span class="kw">const</span> <span class="op">{</span> name<span class="op">,</span> email <span class="op">}</span> <span class="op">=</span> <span class="kw">this</span>.<span class="at">state</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb27-21" title="21"></a>
+<a class="sourceLine" id="cb27-22" title="22">  <span class="co">// Get validation errors.</span></a>
+<a class="sourceLine" id="cb27-23" title="23">  <span class="kw">const</span> validationErrors <span class="op">=</span> <span class="kw">this</span>.<span class="at">validate</span>(name<span class="op">,</span> email)<span class="op">;</span></a>
+<a class="sourceLine" id="cb27-24" title="24"></a>
+<a class="sourceLine" id="cb27-25" title="25">  <span class="co">// If we have validation errors...</span></a>
+<a class="sourceLine" id="cb27-26" title="26">  <span class="cf">if</span> (<span class="va">validationErrors</span>.<span class="at">length</span> <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb27-27" title="27">    <span class="co">// Update the state to display the validation errors.</span></a>
+<a class="sourceLine" id="cb27-28" title="28">    <span class="kw">this</span>.<span class="at">setState</span>(<span class="op">{</span> validationErrors <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb27-29" title="29">  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb27-30" title="30">    <span class="co">// Create a new object for the contact us information.</span></a>
+<a class="sourceLine" id="cb27-31" title="31">    <span class="kw">const</span> contactUsInformation <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb27-32" title="32">      name<span class="op">,</span></a>
+<a class="sourceLine" id="cb27-33" title="33">      email<span class="op">,</span></a>
+<a class="sourceLine" id="cb27-34" title="34">    <span class="op">};</span></a>
+<a class="sourceLine" id="cb27-35" title="35"></a>
+<a class="sourceLine" id="cb27-36" title="36">    <span class="co">// For now, just log the contact us information to the console</span></a>
+<a class="sourceLine" id="cb27-37" title="37">    <span class="co">// though ideally, we&#39;d persist this information to a database</span></a>
+<a class="sourceLine" id="cb27-38" title="38">    <span class="co">// using a REST API.</span></a>
+<a class="sourceLine" id="cb27-39" title="39">    <span class="va">console</span>.<span class="at">log</span>(contactUsInformation)<span class="op">;</span></a>
+<a class="sourceLine" id="cb27-40" title="40"></a>
+<a class="sourceLine" id="cb27-41" title="41">    <span class="co">// Reset the form state.</span></a>
+<a class="sourceLine" id="cb27-42" title="42">    <span class="kw">this</span>.<span class="at">setState</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb27-43" title="43">      <span class="dt">name</span><span class="op">:</span> <span class="st">&#39;&#39;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb27-44" title="44">      <span class="dt">email</span><span class="op">:</span> <span class="st">&#39;&#39;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb27-45" title="45">      <span class="dt">validationErrors</span><span class="op">:</span> []<span class="op">,</span></a>
+<a class="sourceLine" id="cb27-46" title="46">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb27-47" title="47">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb27-48" title="48"><span class="op">}</span></a>
+<a class="sourceLine" id="cb27-49" title="49"></a>
+<a class="sourceLine" id="cb27-50" title="50"><span class="co">// Our render function checks to see if our validationErrors slice of state has any content (length &gt; 0)</span></a>
+<a class="sourceLine" id="cb27-51" title="51"><span class="co">// If it does, the second part of the conditional is evaluated and returned, which displays a div that houses each error message</span></a>
+<a class="sourceLine" id="cb27-52" title="52"><span class="at">render</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb27-53" title="53">    <span class="kw">const</span> <span class="op">{</span> name<span class="op">,</span> email<span class="op">,</span> validationErrors <span class="op">}</span> <span class="op">=</span> <span class="kw">this</span>.<span class="at">state</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb27-54" title="54"></a>
+<a class="sourceLine" id="cb27-55" title="55">    <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb27-56" title="56">      <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb27-57" title="57">        <span class="op">&lt;</span>h2<span class="op">&gt;</span>Contact Us&lt;/h2<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb27-58" title="58">        <span class="op">{</span> <span class="va">validationErrors</span>.<span class="at">length</span> <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> (</a>
+<a class="sourceLine" id="cb27-59" title="59">            <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb27-60" title="60">              The following errors were <span class="dt">found</span><span class="op">:</span></a>
+<a class="sourceLine" id="cb27-61" title="61">              <span class="op">&lt;</span>ul<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb27-62" title="62">                <span class="op">{</span><span class="va">validationErrors</span>.<span class="at">map</span>(error <span class="kw">=&gt;</span> <span class="op">&lt;</span>li key<span class="op">={</span>error<span class="op">}&gt;{</span>error<span class="op">}</span>&lt;/li<span class="op">&gt;</span>)<span class="op">}</span></a>
+<a class="sourceLine" id="cb27-63" title="63">              &lt;/ul<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb27-64" title="64">            &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb27-65" title="65">          )</a>
+<a class="sourceLine" id="cb27-66" title="66">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb27-67" title="67">        <span class="op">&lt;</span>form onSubmit<span class="op">={</span><span class="kw">this</span>.<span class="at">onSubmit</span><span class="op">}&gt;</span></a>
+<a class="sourceLine" id="cb27-68" title="68">          <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb27-69" title="69">            <span class="op">&lt;</span>label htmlFor<span class="op">=</span><span class="st">&#39;name&#39;</span><span class="op">&gt;</span><span class="dt">Name</span><span class="op">:</span>&lt;/label<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb27-70" title="70">            <span class="op">&lt;</span>input id<span class="op">=</span><span class="st">&#39;name&#39;</span> name<span class="op">=</span><span class="st">&#39;name&#39;</span> type<span class="op">=</span><span class="st">&#39;text&#39;</span> onChange<span class="op">={</span><span class="kw">this</span>.<span class="at">onChange</span><span class="op">}</span> value<span class="op">={</span>name<span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb27-71" title="71">          &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb27-72" title="72">          <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb27-73" title="73">            <span class="op">&lt;</span>label htmlFor<span class="op">=</span><span class="st">&#39;email&#39;</span><span class="op">&gt;</span><span class="dt">Email</span><span class="op">:</span>&lt;/label<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb27-74" title="74">            <span class="op">&lt;</span>input id<span class="op">=</span><span class="st">&#39;email&#39;</span> name<span class="op">=</span><span class="st">&#39;email&#39;</span> type<span class="op">=</span><span class="st">&#39;text&#39;</span> onChange<span class="op">={</span><span class="kw">this</span>.<span class="at">onChange</span><span class="op">}</span> value<span class="op">={</span>email<span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb27-75" title="75">          &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb27-76" title="76">          <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb27-77" title="77">            <span class="op">&lt;</span>button<span class="op">&gt;</span>Submit&lt;/button<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb27-78" title="78">          &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb27-79" title="79">        &lt;/form<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb27-80" title="80">      &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb27-81" title="81">    )<span class="op">;</span></a>
+<a class="sourceLine" id="cb27-82" title="82">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb27-83" title="83">}</a></code></pre></div>
+<ol start="16" type="1">
+<li>Understand the lifecycle of a React component</li>
+</ol>
+<ul>
+<li>When we render a React component, we follow a specific order of events
+<ol type="1">
+<li>Our constructor function is invoked</li>
+<li>We render our component</li>
+<li>Our <code>componentDidMount</code> method is invoked</li>
+<li>If we receive any new props, our state changes by invoking <code>setState</code>, or our parent rerenders, our <code>render</code> function is invoked, then <code>componentDidUpdate</code> (which itself could trigger any of these events and another rerender)</li>
+<li>Before our component is taken off of the page, our <code>componentWillUnmount</code> function is invoked</li>
+</ol></li>
+</ul>
+<ol start="17" type="1">
+<li><p>Recall that the commonly used component lifecycle methods include <code>componentDidMount</code>, <code>componentDidUpdate</code>, and <code>componentWillUnmount</code></p></li>
+<li><p>Use the <code>componentDidMount</code> component lifecycle method to fetch data from an API</p></li>
+</ol>
+<ul>
+<li>We will often want our component to get data from an outside source to then display to the user. This can be an API call to our own server to get database information, or to a third-party API.</li>
+<li>In our <code>componentDidMount</code> function, we can invoke an ajax function to get this information.</li>
+<li>In the following example, we’re waiting for a response, then setting our state with the retrieved data, triggering a rerender of our component (allowing us to display the new content that we didn’t previously have to the user)</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb28-1" title="1"><span class="at">componentDidMount</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb28-2" title="2">    <span class="va">navigator</span>.<span class="va">geolocation</span>.<span class="at">getCurrentPosition</span>(<span class="kw">this</span>.<span class="at">pollWeather</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb28-3" title="3">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb28-4" title="4"></a>
+<a class="sourceLine" id="cb28-5" title="5">  <span class="co">// This functionality of getting the weather data is broken our from the componentDidMount function for clarity. It could have just as easily all been within the same function, but making this helper function makes it easier to parse what is happening.</span></a>
+<a class="sourceLine" id="cb28-6" title="6">  pollWeather <span class="op">=</span> (location) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb28-7" title="7">    <span class="kw">let</span> url <span class="op">=</span> <span class="st">&#39;http://api.openweathermap.org/data/2.5/weather?&#39;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb28-8" title="8">    <span class="kw">const</span> params <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb28-9" title="9">      <span class="dt">lat</span><span class="op">:</span> <span class="va">location</span>.<span class="va">coords</span>.<span class="at">latitude</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb28-10" title="10">      <span class="dt">lon</span><span class="op">:</span> <span class="va">location</span>.<span class="va">coords</span>.<span class="at">longitude</span></a>
+<a class="sourceLine" id="cb28-11" title="11">    <span class="op">};</span></a>
+<a class="sourceLine" id="cb28-12" title="12"></a>
+<a class="sourceLine" id="cb28-13" title="13">    <span class="co">/* Remember that it&#39;s unsafe to expose your API key! In production,</span></a>
+<a class="sourceLine" id="cb28-14" title="14"><span class="co">    you would definitely save your key in an environment variable.</span></a>
+<a class="sourceLine" id="cb28-15" title="15"><span class="co">    To keep API keys simple during the development of your project,</span></a>
+<a class="sourceLine" id="cb28-16" title="16"><span class="co">    you can set an `apiKey` variable in this file for now. */</span></a>
+<a class="sourceLine" id="cb28-17" title="17">    <span class="kw">const</span> apiKey <span class="op">=</span> <span class="st">&#39;???&#39;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb28-18" title="18"></a>
+<a class="sourceLine" id="cb28-19" title="19">    url <span class="op">+=</span> <span class="at">toQueryString</span>(params)<span class="op">;</span></a>
+<a class="sourceLine" id="cb28-20" title="20">    url <span class="op">+=</span> <span class="vs">`&amp;APPID=</span><span class="sc">${</span>apiKey<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb28-21" title="21"></a>
+<a class="sourceLine" id="cb28-22" title="22">    <span class="co">// We wait for our response, parse the data, then invoke setState, triggering a rerender.</span></a>
+<a class="sourceLine" id="cb28-23" title="23">    <span class="at">fetch</span>(url)</a>
+<a class="sourceLine" id="cb28-24" title="24">      .<span class="at">then</span>((res) <span class="kw">=&gt;</span> <span class="va">res</span>.<span class="at">json</span>())</a>
+<a class="sourceLine" id="cb28-25" title="25">      .<span class="at">then</span>((weather) <span class="kw">=&gt;</span> <span class="kw">this</span>.<span class="at">setState</span>(<span class="op">{</span> weather <span class="op">}</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb28-26" title="26">  <span class="op">}</span></a></code></pre></div>
+<h2 id="react-router-objectives">React Router Objectives</h2>
+<ol type="1">
+<li>Use <code>&lt;BrowserRouter&gt;</code> to provide your application access to the <code>react-router-dom</code> library.</li>
+</ol>
+<ul>
+<li>The <code>BrowserRouter</code> component will pass down props related to the user’s url, history, and path (including parameters), to any nested component.</li>
+<li>After adding <code>react-router-dom</code> to our application (<code>npm install react-router-dom@^5.1.2</code>, or similar/newer version), we can import the <code>BrowserRouter</code> component and nest our app’s component inside of it:</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb29-1" title="1"><span class="im">import</span> <span class="op">{</span> BrowserRouter <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;react-router-dom&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb29-2" title="2"><span class="im">import</span> Rainbow <span class="im">from</span> <span class="st">&quot;./components/Rainbow&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb29-3" title="3"></a>
+<a class="sourceLine" id="cb29-4" title="4"><span class="kw">const</span> Root <span class="op">=</span> () <span class="kw">=&gt;</span> (</a>
+<a class="sourceLine" id="cb29-5" title="5">  <span class="op">&lt;</span>BrowserRouter<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb29-6" title="6">    <span class="op">&lt;</span>Rainbow /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb29-7" title="7">  &lt;/BrowserRouter<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb29-8" title="8">)<span class="op">;</span></a></code></pre></div>
+<ol start="2" type="1">
+<li>Use <code>&lt;Route&gt;</code> to connect specific URL paths to specific components you want rendered.</li>
+</ol>
+<ul>
+<li>Inside of our <code>BrowserRouter</code> (most likely inside of our main component that we nested), we can use <code>Route</code> components in order to only render components when we have navigated to a specific path.</li>
+<li><code>Route</code> takes specific props to indicate what to render and when:
+<ul>
+<li><code>component</code>: Used to reference the component that is to be rendered at the specified path</li>
+<li><code>path</code>: Specifies what path the component will be rendered at (such as <code>/</code> or <code>/users</code>)</li>
+<li><code>exact</code>: An optional flag. If it is present, the component will only be rendered at the exact path specified. If it is not present. The component will be rendered as long as the user’s path begins with the provided <code>path</code> argument.</li>
+<li><code>render</code>: Can be used instead of the <code>component</code> prop. One main difference between the two is that <code>render</code> takes in a callback function to be invoked instead of a component directly. The other main difference is that whenever a <code>Route</code> renders, a <code>component</code> will be remounted, but a function passed to <code>render</code> will just be updated and rerendered. <code>render</code> can also be useful if we want to pass props to the component our route is rendering, since we can have our callback function return the component with the props passed in.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb30"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb30-1" title="1"><span class="im">import</span> <span class="op">{</span> BrowserRouter<span class="op">,</span> Route <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;react-router-dom&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb30-2" title="2"><span class="im">import</span> App <span class="im">from</span> <span class="st">&quot;./App.js&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb30-3" title="3"><span class="im">import</span> Users <span class="im">from</span> <span class="st">&quot;./Users.js&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb30-4" title="4"></a>
+<a class="sourceLine" id="cb30-5" title="5"><span class="kw">const</span> Root <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb30-6" title="6">  <span class="kw">const</span> users <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb30-7" title="7">    <span class="dv">1</span><span class="op">:</span> <span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Andrew&quot;</span> <span class="op">},</span></a>
+<a class="sourceLine" id="cb30-8" title="8">    <span class="dv">2</span><span class="op">:</span> <span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Raymond&quot;</span> <span class="op">},</span></a>
+<a class="sourceLine" id="cb30-9" title="9">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb30-10" title="10"></a>
+<a class="sourceLine" id="cb30-11" title="11">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb30-12" title="12">    <span class="op">&lt;</span>BrowserRouter<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb30-13" title="13">      <span class="op">{</span><span class="co">/* The BrowserRouter can only have one child, so we wrapped our Routes in a div */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb30-14" title="14">      <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb30-15" title="15">        <span class="op">&lt;</span>h1<span class="op">&gt;</span>Hi<span class="op">,</span> I<span class="st">&#39;m Root!&lt;/h1&gt;</span></a>
+<a class="sourceLine" id="cb30-16" title="16">        <span class="op">{</span><span class="co">/* The `exact` flag is ensuring our App component is only rendered at `/` */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb30-17" title="17">        <span class="op">{</span><span class="co">/* If we didn&#39;t include it, App would be rendered at each route that starts with `/` (ie every page) */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb30-18" title="18">        <span class="op">&lt;</span>Route exact path<span class="op">=</span><span class="st">&quot;/&quot;</span> component<span class="op">={</span>App<span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb30-19" title="19">        <span class="op">{</span><span class="co">/* Using render instead of component because what we want to render is so simple */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb30-20" title="20">        <span class="op">&lt;</span>Route path<span class="op">=</span><span class="st">&quot;/hello&quot;</span> render<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="op">&lt;</span>h1<span class="op">&gt;</span>Hello<span class="op">!</span>&lt;/h1<span class="op">&gt;}</span> /&gt;</a>
+<a class="sourceLine" id="cb30-21" title="21">        <span class="op">{</span><span class="co">/* Using render instead of component because we want to pass a `users` prop to Users */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb30-22" title="22">        <span class="op">&lt;</span>Route path<span class="op">=</span><span class="st">&quot;/users&quot;</span> render<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="op">&lt;</span>Users users<span class="op">={</span>users<span class="op">}</span> /&gt;<span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb30-23" title="23">        <span class="op">{</span><span class="co">/* We want to have access to the userId param captured by the Route, so we are</span></a>
+<a class="sourceLine" id="cb30-24" title="24"><span class="co">        spreading our props that Route creates and giving Uers access to all of them. */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb30-25" title="25">        <span class="op">{</span><span class="co">/* If we only wanted Users to have access to the userId and not everything that Route creates,</span></a>
+<a class="sourceLine" id="cb30-26" title="26"><span class="co">        we could pass it specifically: &lt;Users users={users} userId={props.match.params.userId} /&gt; */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb30-27" title="27">        <span class="op">&lt;</span>Route</a>
+<a class="sourceLine" id="cb30-28" title="28">          path<span class="op">=</span><span class="st">&quot;/users/:userId&quot;</span></a>
+<a class="sourceLine" id="cb30-29" title="29">          render<span class="op">={</span>(props) <span class="kw">=&gt;</span> <span class="op">&lt;</span>Users users<span class="op">={</span>users<span class="op">}</span> <span class="op">{</span>...<span class="at">props</span><span class="op">}</span> /&gt;<span class="op">}</span></a>
+<a class="sourceLine" id="cb30-30" title="30">        /&gt;</a>
+<a class="sourceLine" id="cb30-31" title="31">      &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb30-32" title="32">    &lt;/BrowserRouter<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb30-33" title="33">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb30-34" title="34"><span class="op">};</span></a></code></pre></div>
+<ol start="3" type="1">
+<li>Use <code>&lt;Switch&gt;</code> to wrap several Route elements, rendering only one even if several match the current URL.</li>
+</ol>
+<ul>
+<li>By wrapping our <code>Routes</code> in a <code>Switch</code> component, we can ensure that only one <code>Route</code> will be rendered.</li>
+<li>Only the first <code>Route</code> that has a matching <code>path</code> will be rendered, even if later routes also match.</li>
+<li>Since order matters in a <code>Switch</code> component, we can set up our routes to perform such actions as responding to more generic routes down the line, or providing a 404 page if none of our routes matched.</li>
+</ul>
+<div class="sourceCode" id="cb31"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb31-1" title="1"><span class="im">import</span> <span class="op">{</span> Route<span class="op">,</span> Switch <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;react-router-dom&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb31-2" title="2"></a>
+<a class="sourceLine" id="cb31-3" title="3"><span class="co">// Other component code removed for brevity</span></a>
+<a class="sourceLine" id="cb31-4" title="4"></a>
+<a class="sourceLine" id="cb31-5" title="5"><span class="op">&lt;</span>Switch<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb31-6" title="6">  <span class="op">&lt;</span>Route exact path<span class="op">=</span><span class="st">&quot;/users&quot;</span> render<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="op">&lt;</span>Users users<span class="op">={</span>users<span class="op">}</span> /&gt;<span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb31-7" title="7">  <span class="op">&lt;</span>Route path<span class="op">=</span><span class="st">&quot;/hello&quot;</span> render<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="op">&lt;</span>h1<span class="op">&gt;</span>Hello<span class="op">!</span>&lt;/h1<span class="op">&gt;}</span> /&gt;</a>
+<a class="sourceLine" id="cb31-8" title="8">  <span class="op">&lt;</span>Route exact path<span class="op">=</span><span class="st">&quot;/&quot;</span> component<span class="op">={</span>App<span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb31-9" title="9">  <span class="op">&lt;</span>Route render<span class="op">={</span>() <span class="kw">=&gt;</span> <span class="op">&lt;</span>h1<span class="op">&gt;</span><span class="dv">404</span><span class="op">:</span> Page not found&lt;/h1<span class="op">&gt;}</span> /&gt;</a>
+<a class="sourceLine" id="cb31-10" title="10">&lt;/Switch<span class="op">&gt;;</span></a></code></pre></div>
+<ol start="4" type="1">
+<li>Use React Router’s <code>match</code> prop to access route path parameters.</li>
+</ol>
+<ul>
+<li>We can use route <em>wildcards</em> in order to capture values from the path that the user has navigated to.</li>
+<li>In React’s routes, we can use a <code>:</code> to indicate that we are capturing the value as a parameter.
+<ul>
+<li>The path <code>/users/:userId/posts</code> will capture the value between <code>/users/</code> and <code>/posts</code> and make it available to us under the <code>match</code> prop that <code>BrowserRouter</code> creates for us.</li>
+<li>If we navigate to <code>/users/7/posts</code>, the component that was rendered by our <code>Route</code> will be given access to <code>7</code> through <code>props.match.params.userId</code></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb32"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb32-1" title="1"><span class="co">// ./src/App.js</span></a>
+<a class="sourceLine" id="cb32-2" title="2"></a>
+<a class="sourceLine" id="cb32-3" title="3"><span class="co">// App component code omitted for brevity</span></a>
+<a class="sourceLine" id="cb32-4" title="4"><span class="co">// We want to make sure we pass all of the props that BrowserRouter gave us to Profile, in addition to the new `users` prop</span></a>
+<a class="sourceLine" id="cb32-5" title="5"><span class="op">&lt;</span>Route</a>
+<a class="sourceLine" id="cb32-6" title="6">  path<span class="op">=</span><span class="st">&quot;/users/:userId&quot;</span></a>
+<a class="sourceLine" id="cb32-7" title="7">  render<span class="op">={</span>(props) <span class="kw">=&gt;</span> <span class="op">&lt;</span>Profile users<span class="op">={</span>users<span class="op">}</span> <span class="op">{</span>...<span class="at">props</span><span class="op">}</span> /&gt;<span class="op">}</span></a>
+<a class="sourceLine" id="cb32-8" title="8">/&gt;</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb33-1" title="1"><span class="co">// ./src/Profile.js</span></a>
+<a class="sourceLine" id="cb33-2" title="2"><span class="im">import</span> React <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb33-3" title="3"></a>
+<a class="sourceLine" id="cb33-4" title="4"><span class="kw">const</span> Profile <span class="op">=</span> (<span class="op">{</span> users<span class="op">,</span> <span class="dt">match</span><span class="op">:</span> <span class="op">{</span> params <span class="op">}</span> <span class="op">}</span>) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb33-5" title="5">  <span class="co">// In a real-world scenario, you&#39;d make a call to an API to fetch the user,</span></a>
+<a class="sourceLine" id="cb33-6" title="6">  <span class="co">// instead of passing down and keying into a `users` prop.</span></a>
+<a class="sourceLine" id="cb33-7" title="7"></a>
+<a class="sourceLine" id="cb33-8" title="8">  <span class="co">// If we hadn&#39;t destructured our props above, we would access our userId through props.match.params.userId and users through props.users</span></a>
+<a class="sourceLine" id="cb33-9" title="9">  <span class="co">// Overall we would have</span></a>
+<a class="sourceLine" id="cb33-10" title="10">  <span class="co">// const user = props.users[props.match.params.userId]</span></a>
+<a class="sourceLine" id="cb33-11" title="11">  <span class="co">// You can see from this how destructuring can make your code more clear</span></a>
+<a class="sourceLine" id="cb33-12" title="12"></a>
+<a class="sourceLine" id="cb33-13" title="13">  <span class="kw">const</span> user <span class="op">=</span> users[<span class="va">params</span>.<span class="at">userId</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb33-14" title="14"></a>
+<a class="sourceLine" id="cb33-15" title="15">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb33-16" title="16">    <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb33-17" title="17">      The user<span class="st">&#39;s id is {params.userId} and the user&#39;</span>s name is <span class="op">{</span><span class="va">user</span>.<span class="at">name</span><span class="op">}</span>.</a>
+<a class="sourceLine" id="cb33-18" title="18">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb33-19" title="19">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb33-20" title="20"><span class="op">};</span></a>
+<a class="sourceLine" id="cb33-21" title="21"></a>
+<a class="sourceLine" id="cb33-22" title="22"><span class="im">export</span> <span class="im">default</span> Profile<span class="op">;</span></a></code></pre></div>
+<ul>
+<li><code>match</code> also gives us access to a couple of other useful values:
+<ul>
+<li><code>url</code>: The url that matched the specified route, ie <code>/users/1</code></li>
+<li><code>path</code>: The path that was matched without wildcards filled in, ie <code>/users/:userId</code></li>
+<li><code>isExact</code>: a boolean that indicates if this component was rendered because our path was exactly matching the specified route path, ie for a <code>Route</code> with path <code>/users/:userId</code>, would return true <code>true</code> if our user is at <code>/users/1</code>, but false if they are at <code>/users/1/posts</code></li>
+</ul></li>
+</ul>
+<ol start="5" type="1">
+<li>Use <code>&lt;Link&gt;</code> or <code>&lt;NavLink&gt;</code> to create links with absolute paths to routes in your application (like <code>/users/1</code>).</li>
+</ol>
+<ul>
+<li>In order for us to make a link to a path within our application, we can import either <code>NavLink</code> or <code>Link</code> from <code>react-router-dom</code>.</li>
+<li>Either component takes in a <code>to</code> prop that indicates where we would like to send the user. The content between the open and close tags is the text to be displayed in the link.</li>
+<li>A <code>NavLink</code> is different from a <code>Link</code> in that it will apply a class name (default is <code>active</code>) to a link if the user’s location currently matches the <code>to</code> path.
+<ul>
+<li>We can specify that we only want this class to be added at the exact route by adding in the <code>exact</code> flag</li>
+<li>We can alter what class gets added by setting the <code>activeClassName</code> prop. In the below example we added <code>violet</code> instead of the default <code>active</code> class when navigating to <code>/violet</code> (maybe we already have a <code>violet</code> CSS class selector that changes the color and font-weight for some <code>violet</code> components, for example).</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb34"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb34-1" title="1"><span class="im">import</span> <span class="op">{</span> NavLink<span class="op">,</span> Link <span class="op">}</span> <span class="im">from</span> <span class="st">&#39;react-router-dom&#39;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb34-2" title="2"></a>
+<a class="sourceLine" id="cb34-3" title="3"><span class="op">&lt;</span>NavLink exact to<span class="op">=</span><span class="st">&quot;/red&quot;</span><span class="op">&gt;</span>Red&lt;/NavLink<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb34-4" title="4"><span class="op">&lt;</span>NavLink to<span class="op">=</span><span class="st">&quot;/green&quot;</span><span class="op">&gt;</span>Green&lt;/NavLink<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb34-5" title="5"><span class="op">&lt;</span>NavLink exact to<span class="op">=</span><span class="st">&quot;/blue&quot;</span><span class="op">&gt;</span>Blue&lt;/NavLink<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb34-6" title="6"><span class="op">&lt;</span>NavLink activeClassName<span class="op">=</span><span class="st">&quot;violet&quot;</span> to<span class="op">=</span><span class="st">&quot;/violet&quot;</span><span class="op">&gt;</span>Violet&lt;/NavLink<span class="op">&gt;</span></a></code></pre></div>
+<ol start="6" type="1">
+<li>Use <code>&lt;Redirect&gt;</code> to redirect a user to another path (i.e. a login page when the user is not logged in).</li>
+</ol>
+<ul>
+<li>A <code>Redirect</code> component, imported from <code>react-router-dom</code>, will automatically push a user to a different location.</li>
+<li>This functionality is mostly used with a conditional to determine whether a user should have access to some component.</li>
+<li>In the below example, we are only rendering our <code>Home</code> component when our props indicate that we are logged in. If we aren’t logged in, we are sending the user to the login page.</li>
+</ul>
+<div class="sourceCode" id="cb35"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb35-1" title="1"><span class="im">import</span> <span class="op">{</span> Route<span class="op">,</span> Redirect <span class="op">}</span> <span class="im">from</span> <span class="vs">`react-router-dom`</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb35-2" title="2"></a>
+<a class="sourceLine" id="cb35-3" title="3"><span class="im">import</span> Home <span class="im">from</span> <span class="st">&#39;./Home.js&#39;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb35-4" title="4"></a>
+<a class="sourceLine" id="cb35-5" title="5"><span class="co">// Component details omitted for brevity</span></a>
+<a class="sourceLine" id="cb35-6" title="6"></a>
+<a class="sourceLine" id="cb35-7" title="7"><span class="op">&lt;</span>Route</a>
+<a class="sourceLine" id="cb35-8" title="8">  exact path<span class="op">=</span><span class="st">&quot;/&quot;</span></a>
+<a class="sourceLine" id="cb35-9" title="9">  render<span class="op">={</span>() <span class="kw">=&gt;</span> (<span class="kw">this</span>.<span class="va">props</span>.<span class="at">currentUser</span> <span class="op">?</span> <span class="op">&lt;</span>Home /<span class="op">&gt;</span> : <span class="op">&lt;</span>Redirect to<span class="op">=</span><span class="st">&quot;/login&quot;</span> /&gt;)<span class="op">}</span></a>
+<a class="sourceLine" id="cb35-10" title="10">/&gt;</a></code></pre></div>
+<ol start="7" type="1">
+<li>Use React Router’s <code>history</code> prop to update a browser’s URL programmatically.</li>
+</ol>
+<ul>
+<li>In addition to links, we can react to events happening by pushing a user to a new location.</li>
+<li>We can use the <code>push</code> or <code>replace</code> methods on <code>history</code> to send the user to a new location.
+<ul>
+<li><code>push</code> adds the new location to the history stack</li>
+<li><code>replace</code> changes the current location in the stack to the new one, acting as if the user was never here if they use the back button on their browser.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb36"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb36-1" title="1">addNewItem <span class="op">=</span> (item) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb36-2" title="2">  <span class="co">// If the user tries to add a tomato the the Vegetable section, push them over to the Fruit section, otherwise, add the item like usual</span></a>
+<a class="sourceLine" id="cb36-3" title="3">  <span class="cf">if</span> (<span class="va">item</span>.<span class="va">name</span>.<span class="at">toLowerCase</span>() <span class="op">===</span> <span class="st">&quot;tomato&quot;</span> <span class="op">&amp;&amp;</span> <span class="kw">this</span>.<span class="va">props</span>.<span class="at">type</span> <span class="op">===</span> <span class="st">&quot;Vegetable&quot;</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb36-4" title="4">    <span class="kw">this</span>.<span class="va">props</span>.<span class="va">history</span>.<span class="at">push</span>(<span class="st">&quot;/fruits&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb36-5" title="5">  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb36-6" title="6">    <span class="kw">let</span> newItems <span class="op">=</span> <span class="kw">this</span>.<span class="va">state</span>.<span class="va">items</span>.<span class="at">concat</span>(item)<span class="op">;</span></a>
+<a class="sourceLine" id="cb36-7" title="7">    <span class="kw">this</span>.<span class="at">setState</span>(<span class="op">{</span> <span class="dt">items</span><span class="op">:</span> newItems <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb36-8" title="8">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb36-9" title="9"><span class="op">};</span></a></code></pre></div>
+<ol start="8" type="1">
+<li>Understand what nested routes are.</li>
+</ol>
+<ul>
+<li>Nested routes are routes that are created within other components, after our application has already been initialized.</li>
+<li>We are not bound to creating all of our routes in one location, but instead can build our routes within other components, utilizing the path that the user has navigated to.</li>
+<li>If we have a route to <code>/users/:userId</code> that renders a Profile component, we can have our Profile component render routes to <code>/users/:userId/posts</code> and <code>/users/:userId/photos</code></li>
+</ul>
+<ol start="9" type="1">
+<li>Be able to use React Router to create and navigate nested routes.</li>
+</ol>
+<ul>
+<li>Within our Profile component (which is rendered at <code>/users/:userId</code>), we can make nested routes to our UserPosts and UserPhotos components. This will allow us to render these components within our Profile component based on our url.</li>
+</ul>
+<div class="sourceCode" id="cb37"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb37-1" title="1"><span class="kw">const</span> Profile <span class="op">=</span> (props) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb37-2" title="2">  <span class="co">// Custom call to database to fetch a user by a user ID.</span></a>
+<a class="sourceLine" id="cb37-3" title="3">  <span class="kw">const</span> user <span class="op">=</span> <span class="at">fetchUser</span>(<span class="va">props</span>.<span class="va">match</span>.<span class="va">params</span>.<span class="at">userId</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb37-4" title="4">  <span class="kw">const</span> <span class="op">{</span> name<span class="op">,</span> id <span class="op">}</span> <span class="op">=</span> user<span class="op">;</span></a>
+<a class="sourceLine" id="cb37-5" title="5"></a>
+<a class="sourceLine" id="cb37-6" title="6">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb37-7" title="7">    <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb37-8" title="8">      <span class="op">&lt;</span>h1<span class="op">&gt;</span>Welcome to the profile <span class="kw">of</span> <span class="op">{</span>name<span class="op">}!</span>&lt;/h1<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb37-9" title="9"></a>
+<a class="sourceLine" id="cb37-10" title="10">      <span class="op">{</span><span class="co">/* Links to a specific user&#39;s posts and photos */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb37-11" title="11">      <span class="op">&lt;</span>Link to<span class="op">={</span><span class="vs">`/users/</span><span class="sc">${</span>id<span class="sc">}</span><span class="vs">/posts`</span><span class="op">}&gt;{</span>name<span class="op">}</span><span class="st">&#39;s Posts&lt;/Link&gt;</span></a>
+<a class="sourceLine" id="cb37-12" title="12">      <span class="op">&lt;</span>Link to<span class="op">={</span><span class="vs">`/users/</span><span class="sc">${</span>id<span class="sc">}</span><span class="vs">/photos`</span><span class="op">}&gt;{</span>name<span class="op">}</span><span class="st">&#39;s Photos&lt;/Link&gt;</span></a>
+<a class="sourceLine" id="cb37-13" title="13"></a>
+<a class="sourceLine" id="cb37-14" title="14">      <span class="op">{</span><span class="co">/* Routes to a specific user&#39;s posts and photos */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb37-15" title="15">      <span class="op">&lt;</span>Route path<span class="op">=</span><span class="st">&quot;/users/:userId/posts&quot;</span> component<span class="op">={</span>UserPosts<span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb37-16" title="16">      <span class="op">&lt;</span>Route path<span class="op">=</span><span class="st">&quot;/users/:userId/photos&quot;</span> component<span class="op">={</span>UserPhotos<span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb37-17" title="17">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb37-18" title="18">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb37-19" title="19"><span class="op">};</span></a></code></pre></div>
+<ol start="10" type="1">
+<li>Know how to use the React Router <code>match</code> prop to generate links and routes.</li>
+</ol>
+<ul>
+<li>By utilizing our match’s <code>url</code> and <code>path</code>, we can build out nested routes and links based on our current location without having to hard code those paths.</li>
+<li>If our Profile component is rendered at multiple urls, this also allows our nested routes to maintain the beginning path no matter where it was rendered from.</li>
+</ul>
+<div class="sourceCode" id="cb38"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb38-1" title="1"><span class="co">// Destructure `match` prop</span></a>
+<a class="sourceLine" id="cb38-2" title="2"><span class="kw">const</span> Profile <span class="op">=</span> (<span class="op">{</span> <span class="dt">match</span><span class="op">:</span> <span class="op">{</span> url<span class="op">,</span> path<span class="op">,</span> params <span class="op">}</span>) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb38-3" title="3"></a>
+<a class="sourceLine" id="cb38-4" title="4">  <span class="co">// Custom call to database to fetch a user by a user ID.</span></a>
+<a class="sourceLine" id="cb38-5" title="5">  <span class="kw">const</span> user <span class="op">=</span> <span class="at">fetchUser</span>(<span class="va">params</span>.<span class="at">userId</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb38-6" title="6">  <span class="kw">const</span> <span class="op">{</span> name<span class="op">,</span> id <span class="op">}</span> <span class="op">=</span> user<span class="op">;</span></a>
+<a class="sourceLine" id="cb38-7" title="7"></a>
+<a class="sourceLine" id="cb38-8" title="8">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb38-9" title="9">    <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb38-10" title="10">      <span class="op">&lt;</span>h1<span class="op">&gt;</span>Welcome to the profile <span class="kw">of</span> <span class="op">{</span>name<span class="op">}!</span>&lt;/h1<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb38-11" title="11"></a>
+<a class="sourceLine" id="cb38-12" title="12">      <span class="op">{</span><span class="co">/* Replaced `/users/${id}` URL with `props.match.url` */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb38-13" title="13">      <span class="op">&lt;</span>Link to<span class="op">={</span><span class="vs">`</span><span class="sc">${</span>url<span class="sc">}</span><span class="vs">/posts`</span><span class="op">}&gt;{</span>name<span class="op">}</span><span class="st">&#39;s Posts&lt;/Link&gt;</span></a>
+<a class="sourceLine" id="cb38-14" title="14">      <span class="op">&lt;</span>Link to<span class="op">={</span><span class="vs">`</span><span class="sc">${</span>url<span class="sc">}</span><span class="vs">/photos`</span><span class="op">}&gt;{</span>name<span class="op">}</span><span class="st">&#39;s Photos&lt;/Link&gt;</span></a>
+<a class="sourceLine" id="cb38-15" title="15"></a>
+<a class="sourceLine" id="cb38-16" title="16">      <span class="op">{</span><span class="co">/* Replaced `/users/:userId` path with `props.match.path` */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb38-17" title="17">      <span class="op">&lt;</span>Route path<span class="op">={</span><span class="vs">`</span><span class="sc">${</span>path<span class="sc">}</span><span class="vs">/posts`</span><span class="op">}</span> component<span class="op">={</span>UserPosts<span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb38-18" title="18">      <span class="op">&lt;</span>Route path<span class="op">={</span><span class="vs">`</span><span class="sc">${</span>path<span class="sc">}</span><span class="vs">/photos`</span><span class="op">}</span> component<span class="op">={</span>UserPhotos<span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb38-19" title="19">    &lt;/div<span class="op">&gt;}</span></a>
+<a class="sourceLine" id="cb38-20" title="20">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb38-21" title="21"><span class="op">};</span></a></code></pre></div>
+<h2 id="react-builds-objectives">React Builds Objectives</h2>
+<ol type="1">
+<li>Understand what front-end builds are and why they’re needed.</li>
+</ol>
+<ul>
+<li>Front-end builds take our files and convert them into optimized versions that are compatible with execution in browsers.</li>
+<li>Extended file types like JSX, TypeScript, or Sass, which are not recognizable by browsers, are converted into their standard library formats (JavaScript and CSS in these cases).</li>
+<li>New features of languages can be converted to older syntax to ensure compatibility with browsers that have not been updated to understand the new features of the language.</li>
+<li>Code can be minified, removing unnecessary characters and converting to smaller names which may not be easily readable by humans but are more efficient for the browser to interact with.</li>
+<li>Files can be bundled, combining multiple files into fewer, larger files. This reduces the number of fetches that need to be done for resources.</li>
+</ul>
+<ol start="2" type="1">
+<li>Describe at a high level what happens in a Create React App when you run <code>npm start</code>.</li>
+</ol>
+<ul>
+<li>Environment variables are loaded</li>
+<li>The list of browsers to support are checked</li>
+<li>The configured HTTP port is checked to ensure that it’s available</li>
+<li>The application compiler is configured and created</li>
+<li><code>webpack-dev-server</code> is started</li>
+<li><code>webpack-dev-server</code> compiles your application</li>
+<li>The <code>index.html</code> file is loaded into the browser</li>
+<li>A file watcher is started to watch your files, waiting for changes</li>
+</ul>
+<ol start="3" type="1">
+<li>Prepare to deploy a React application into a production environment.</li>
+</ol>
+<ul>
+<li>Environment variables that may be needed by the application can be added to a <code>.env</code> file. These variables have to start with the prefix <code>REACT_APP_</code> in order for Create React App to process them. Environment variables are useful for values that will change across environments (maybe you want to indicate in your title that you are in a development build in development, but just have the standard title in production, for example)</li>
+<li>In the <code>package.json</code>, you can specify which versions of browsers you would like to make your build for. This will affect how your code is transpiled (using older JavaScript syntax for older browsers, etc.). To make these changes, you can adjust the <code>browserslist</code> key to indicate which browser versions are acceptable. In general, the default values are going to suit you just fine, but we can increase compatibility (and possibly sacrifice some performance) by building for older browsers.</li>
+<li>Run the <code>npm run build</code> script. This will create your production files in a <code>build</code> folder. The bundled files that are generated can then be served in a production environment, such as from an express server.</li>
+<li>It’s important to note that all of the bundling, transpiling, etc., that occurs when we create a build is also occurring in development, it is just being kept in memory instead of being written to files.</li>
+</ul>
+<h2 id="react-context-objectives">React Context Objectives</h2>
+<ul>
+<li>The first four objectives have small code snippets that focus on each aspect, but the final objective has a full working example. It may be helpful to reference the full example if greater context is helpful.</li>
+</ul>
+<ol type="1">
+<li>Use React Context to pass down global information.</li>
+</ol>
+<ul>
+<li>In order to create a context for our application, we can import the <code>createContext</code> function from <code>react</code> and store a reference to the invoked value. This context can then be used to make Provider and Consumer wrapper components.</li>
+<li>We can provide a default value for the context as an argument to <code>createContext</code>. This value will be overwritten if we provide a value in the Provider (see below)</li>
+</ul>
+<div class="sourceCode" id="cb39"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb39-1" title="1"><span class="im">import</span> <span class="op">{</span> createContext <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb39-2" title="2"></a>
+<a class="sourceLine" id="cb39-3" title="3"><span class="kw">const</span> ThemeContext <span class="op">=</span> <span class="at">createContext</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb39-4" title="4"></a>
+<a class="sourceLine" id="cb39-5" title="5"><span class="im">export</span> <span class="im">default</span> ThemeContext<span class="op">;</span></a></code></pre></div>
+<ol start="2" type="1">
+<li>Create a Provider wrapper component to set a default context.</li>
+</ol>
+<ul>
+<li>We can wrap the component that we want to have the top-most access to our context with a Provider component. Any Consumer component that we want to make (gaining access to our context) must be nested under our Provider, so making this at the highest level that we would need access is important.</li>
+<li>In this example, we want our <code>App</code> to be able to react to the <code>color</code> key of our context, with a further nested <code>Profile</code> component changing the context’s value. Because of this, we wrap our <code>App</code> in a new component that we make, <code>AppWithContext</code>, that returns our <code>Provider</code> wrapped component.</li>
+<li>The <code>value</code> prop that we pass to our <code>Provider</code> will be the value of our context. In this example, we assign the value to be the state of this component. This is an easy way for us to make sure we can update the values and rerender our components.</li>
+<li>By making a function <code>updateContext</code> that invokes <code>setState</code>, then adding a reference to the function to our state, we can make sure that any component that has access to our context can also update it and trigger a rerender of components that rely on its data.</li>
+</ul>
+<div class="sourceCode" id="cb40"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb40-1" title="1"><span class="im">import</span> React <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb40-2" title="2"><span class="im">import</span> ThemeContext <span class="im">from</span> <span class="st">&#39;./ThemeContext&#39;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb40-3" title="3"><span class="im">import</span> Home <span class="im">from</span> <span class="st">&#39;./Home&#39;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb40-4" title="4"></a>
+<a class="sourceLine" id="cb40-5" title="5"><span class="kw">const</span> App <span class="op">=</span> (<span class="op">{</span> color <span class="op">}</span>) <span class="kw">=&gt;</span> (</a>
+<a class="sourceLine" id="cb40-6" title="6">    <span class="op">&lt;</span>div id<span class="op">=</span><span class="st">&#39;app&#39;</span> style<span class="op">={{</span> <span class="dt">backgroundColor</span><span class="op">:</span> <span class="vs">`</span><span class="sc">${</span>color<span class="sc">}</span><span class="vs">`</span> <span class="op">}}&gt;</span></a>
+<a class="sourceLine" id="cb40-7" title="7">        <span class="op">&lt;</span>Home /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb40-8" title="8">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb40-9" title="9">)<span class="op">;</span></a>
+<a class="sourceLine" id="cb40-10" title="10"></a>
+<a class="sourceLine" id="cb40-11" title="11"><span class="kw">class</span> AppWithContext <span class="kw">extends</span> <span class="va">React</span>.<span class="at">Component</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb40-12" title="12">    <span class="at">constructor</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb40-13" title="13">    <span class="kw">super</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb40-14" title="14">    <span class="co">// The updateContext key of our state references the function that is going to invoke setState. Whenever this function is invoked, our state is updated and our component rerenders, triggering an update to our value prop to our Provider and ultimately rerendering our nested components that rely on this data.</span></a>
+<a class="sourceLine" id="cb40-15" title="15">        <span class="kw">this</span>.<span class="at">state</span> <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb40-16" title="16">            <span class="dt">color</span><span class="op">:</span> <span class="st">&#39;white&#39;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb40-17" title="17">            <span class="dt">updateContext</span><span class="op">:</span> <span class="kw">this</span>.<span class="at">updateContext</span></a>
+<a class="sourceLine" id="cb40-18" title="18">        <span class="op">};</span></a>
+<a class="sourceLine" id="cb40-19" title="19">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb40-20" title="20"></a>
+<a class="sourceLine" id="cb40-21" title="21">    updateContext <span class="op">=</span> (color) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb40-22" title="22">        <span class="kw">this</span>.<span class="at">setState</span>(<span class="op">{</span> color <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb40-23" title="23">    <span class="op">};</span></a>
+<a class="sourceLine" id="cb40-24" title="24"></a>
+<a class="sourceLine" id="cb40-25" title="25">    <span class="at">render</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb40-26" title="26">        <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb40-27" title="27">      <span class="op">{</span><span class="co">/* The value prop is what we are setting as the value of our context. This is what our Consumer components will ultimately have access to. */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb40-28" title="28">      <span class="op">&lt;</span><span class="va">ThemeContext</span>.<span class="at">Provider</span> value<span class="op">={</span><span class="kw">this</span>.<span class="at">state</span><span class="op">}&gt;</span></a>
+<a class="sourceLine" id="cb40-29" title="29">        <span class="op">{</span><span class="co">/* Here we are passing the color prop directly to app to avoid having to make a Consumer component for this top-level component. */</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb40-30" title="30">                <span class="op">&lt;</span>App color<span class="op">={</span><span class="kw">this</span>.<span class="va">state</span>.<span class="at">color</span><span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb40-31" title="31">            &lt;/<span class="va">ThemeContext</span>.<span class="at">Provider</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb40-32" title="32">        )<span class="op">;</span></a>
+<a class="sourceLine" id="cb40-33" title="33">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb40-34" title="34"><span class="op">}</span></a>
+<a class="sourceLine" id="cb40-35" title="35"></a>
+<a class="sourceLine" id="cb40-36" title="36"><span class="im">export</span> <span class="im">default</span> AppWithContext<span class="op">;</span></a></code></pre></div>
+<ol start="3" type="1">
+<li>Create a Consumer wrapper component to allow child components to subscribe to a global context.</li>
+</ol>
+<ul>
+<li>Similar to our <code>Provider</code> component that set up the value of our context, we can create a <code>Consumer</code> component that gets a reference to this value and passes it along as props to the wrapped component.</li>
+<li>In our example, our context has a reference to the <code>updateContext</code> function that we made in our <code>Provider</code> wrapper, which updates the value of our context. We are passing this function along as a prop to <code>Profile</code> so that when we submit our form, we can invoke the function, update our context’s value and impact any components that relied on it (namely our top-level <code>App</code> component that changed the backgroundColor based on this value).</li>
+</ul>
+<div class="sourceCode" id="cb41"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb41-1" title="1"><span class="im">import</span> React <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb41-2" title="2"><span class="im">import</span> ThemeContext <span class="im">from</span> <span class="st">&quot;./ThemeContext&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb41-3" title="3"></a>
+<a class="sourceLine" id="cb41-4" title="4"><span class="kw">class</span> Profile <span class="kw">extends</span> <span class="va">React</span>.<span class="at">Component</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb41-5" title="5">  <span class="at">constructor</span>(props) <span class="op">{</span></a>
+<a class="sourceLine" id="cb41-6" title="6">    <span class="kw">super</span>(props)<span class="op">;</span></a>
+<a class="sourceLine" id="cb41-7" title="7">    <span class="kw">this</span>.<span class="at">state</span> <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb41-8" title="8">      <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb41-9" title="9">    <span class="op">};</span></a>
+<a class="sourceLine" id="cb41-10" title="10">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb41-11" title="11"></a>
+<a class="sourceLine" id="cb41-12" title="12">  updateSelection <span class="op">=</span> (e) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb41-13" title="13">    <span class="kw">this</span>.<span class="at">setState</span>(<span class="op">{</span> <span class="dt">color</span><span class="op">:</span> <span class="va">e</span>.<span class="va">target</span>.<span class="at">value</span> <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb41-14" title="14">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb41-15" title="15"></a>
+<a class="sourceLine" id="cb41-16" title="16">  handleClick <span class="op">=</span> (e) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb41-17" title="17">    <span class="va">e</span>.<span class="at">preventDefault</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb41-18" title="18">    <span class="kw">this</span>.<span class="va">props</span>.<span class="at">updateContext</span>(<span class="kw">this</span>.<span class="va">state</span>.<span class="at">color</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb41-19" title="19">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb41-20" title="20"></a>
+<a class="sourceLine" id="cb41-21" title="21">  <span class="at">render</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb41-22" title="22">    <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb41-23" title="23">      <span class="op">&lt;</span>form<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb41-24" title="24">        <span class="op">&lt;</span>input</a>
+<a class="sourceLine" id="cb41-25" title="25">          type<span class="op">=</span><span class="st">&quot;text&quot;</span></a>
+<a class="sourceLine" id="cb41-26" title="26">          onChange<span class="op">={</span><span class="kw">this</span>.<span class="at">updateSelection</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb41-27" title="27">          value<span class="op">={</span><span class="kw">this</span>.<span class="va">state</span>.<span class="at">color</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb41-28" title="28">          placeholder<span class="op">=</span><span class="st">&quot;Type a color!&quot;</span></a>
+<a class="sourceLine" id="cb41-29" title="29">        /&gt;</a>
+<a class="sourceLine" id="cb41-30" title="30">        <span class="op">&lt;</span>button onClick<span class="op">={</span><span class="kw">this</span>.<span class="at">handleClick</span><span class="op">}&gt;</span>Submit&lt;/button<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb41-31" title="31">      &lt;/form<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb41-32" title="32">    )<span class="op">;</span></a>
+<a class="sourceLine" id="cb41-33" title="33">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb41-34" title="34"><span class="op">}</span></a>
+<a class="sourceLine" id="cb41-35" title="35"></a>
+<a class="sourceLine" id="cb41-36" title="36"><span class="kw">const</span> ProfileWithContext <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb41-37" title="37">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb41-38" title="38">    <span class="op">&lt;</span><span class="va">ThemeContext</span>.<span class="at">Consumer</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb41-39" title="39">      <span class="op">{</span>(value) <span class="kw">=&gt;</span> <span class="op">&lt;</span>Profile updateContext<span class="op">={</span><span class="va">value</span>.<span class="at">updateContext</span><span class="op">}</span> /&gt;<span class="op">}</span></a>
+<a class="sourceLine" id="cb41-40" title="40">    &lt;/<span class="va">ThemeContext</span>.<span class="at">Consumer</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb41-41" title="41">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb41-42" title="42"><span class="op">};</span></a>
+<a class="sourceLine" id="cb41-43" title="43"></a>
+<a class="sourceLine" id="cb41-44" title="44"><span class="im">export</span> <span class="im">default</span> ProfileWithContext<span class="op">;</span></a></code></pre></div>
+<ol start="4" type="1">
+<li>Use the <code>static contextType</code> property to access the global context.</li>
+</ol>
+<ul>
+<li>Instead of creating a context Consumer wrapper, we can also set the <code>contextType</code> property of a component class and gain access to a designated context through <code>this.context</code> instead of <code>this.props</code>.</li>
+<li>This strategy only works for class components, not functional components, which require us to use the Consumer wrapper and use <code>this.props</code>.</li>
+<li>In general, since functional components are generally preferred over class components if possible, we will prefer to make a Consumer wrapper, but it’s good to be familiar with this alternative approach.</li>
+</ul>
+<div class="sourceCode" id="cb42"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb42-1" title="1"><span class="im">import</span> React <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb42-2" title="2"></a>
+<a class="sourceLine" id="cb42-3" title="3"><span class="im">import</span> ThemeContext <span class="im">from</span> <span class="st">&quot;./ThemeContext.js&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb42-4" title="4"></a>
+<a class="sourceLine" id="cb42-5" title="5"><span class="kw">class</span> Profile <span class="kw">extends</span> <span class="va">React</span>.<span class="at">Component</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb42-6" title="6">  <span class="at">constructor</span>(props) <span class="op">{</span></a>
+<a class="sourceLine" id="cb42-7" title="7">    <span class="kw">super</span>(props)<span class="op">;</span></a>
+<a class="sourceLine" id="cb42-8" title="8">    <span class="kw">this</span>.<span class="at">state</span> <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb42-9" title="9">      <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb42-10" title="10">    <span class="op">};</span></a>
+<a class="sourceLine" id="cb42-11" title="11">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb42-12" title="12"></a>
+<a class="sourceLine" id="cb42-13" title="13">  <span class="co">// The static keyword is defining contextType on the whole class</span></a>
+<a class="sourceLine" id="cb42-14" title="14">  <span class="co">// We could have also said Profile.contextType = ThemeContext after our class definition</span></a>
+<a class="sourceLine" id="cb42-15" title="15">  <span class="kw">static</span> contextType <span class="op">=</span> ThemeContext<span class="op">;</span></a>
+<a class="sourceLine" id="cb42-16" title="16"></a>
+<a class="sourceLine" id="cb42-17" title="17">  handleClick <span class="op">=</span> (e) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb42-18" title="18">    <span class="va">e</span>.<span class="at">preventDefault</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb42-19" title="19">    <span class="co">// Note our use of this.context instead of this.props</span></a>
+<a class="sourceLine" id="cb42-20" title="20">    <span class="kw">this</span>.<span class="va">context</span>.<span class="at">updateContext</span>(<span class="kw">this</span>.<span class="va">state</span>.<span class="at">color</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb42-21" title="21">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb42-22" title="22">  <span class="co">// Rest of component class not shown</span></a>
+<a class="sourceLine" id="cb42-23" title="23"><span class="op">}</span></a>
+<a class="sourceLine" id="cb42-24" title="24"></a>
+<a class="sourceLine" id="cb42-25" title="25"><span class="co">// Instead of using static within the class, we can also assign the property after the class definition</span></a>
+<a class="sourceLine" id="cb42-26" title="26"><span class="co">// Profile.contextType = ThemeContext</span></a>
+<a class="sourceLine" id="cb42-27" title="27"></a>
+<a class="sourceLine" id="cb42-28" title="28"><span class="co">// Note how we don&#39;t use a Consumer wrapper in this implementation, instead exporting the component directly.</span></a>
+<a class="sourceLine" id="cb42-29" title="29"><span class="im">export</span> <span class="im">default</span> Profile<span class="op">;</span></a></code></pre></div>
+<ol start="5" type="1">
+<li>Update the global context from a nested component.</li>
+</ol>
+<ul>
+<li>Our Provider wrapper component is setting the value of our context to be equal to the component’s state. By adding a reference to our updateContext function to this state, we can invoke it anywhere that we have access to context, updating this component’s state, which in turn represents a change in the value of our overall context.</li>
+<li>The code block below is a combination of all of the necessary components to make our Pup image update</li>
+</ul>
+<div class="sourceCode" id="cb43"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb43-1" title="1"><span class="im">import</span> React<span class="op">,</span> <span class="op">{</span> createContext <span class="op">}</span> <span class="im">from</span> <span class="st">&quot;react&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb43-2" title="2"></a>
+<a class="sourceLine" id="cb43-3" title="3"><span class="co">// ThemeContext.js</span></a>
+<a class="sourceLine" id="cb43-4" title="4"><span class="co">// All that we need to do is invoke createContext in order to set up a basis for our Provider and Consumer wrappers</span></a>
+<a class="sourceLine" id="cb43-5" title="5"><span class="kw">const</span> ThemeContext <span class="op">=</span> <span class="at">createContext</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb43-6" title="6"></a>
+<a class="sourceLine" id="cb43-7" title="7"><span class="co">// App.js</span></a>
+<a class="sourceLine" id="cb43-8" title="8"><span class="co">// We&#39;re applying the color from context that was passed as a prop to us from our Provider as a style for our component&#39;s backgroundColor</span></a>
+<a class="sourceLine" id="cb43-9" title="9"><span class="kw">const</span> App <span class="op">=</span> (<span class="op">{</span> color <span class="op">}</span>) <span class="kw">=&gt;</span> (</a>
+<a class="sourceLine" id="cb43-10" title="10">  <span class="op">&lt;</span>div id<span class="op">=</span><span class="st">&quot;app&quot;</span> style<span class="op">={{</span> <span class="dt">backgroundColor</span><span class="op">:</span> <span class="vs">`</span><span class="sc">${</span>color<span class="sc">}</span><span class="vs">`</span> <span class="op">}}&gt;</span></a>
+<a class="sourceLine" id="cb43-11" title="11">    <span class="op">&lt;</span>Home /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb43-12" title="12">  &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb43-13" title="13">)<span class="op">;</span></a>
+<a class="sourceLine" id="cb43-14" title="14"></a>
+<a class="sourceLine" id="cb43-15" title="15"><span class="co">// This wrapped Provider component can be in the same file as the App component it is wrapping or in its own file, as long as wherever we are trying to render our app we are using this component that has access to our context.</span></a>
+<a class="sourceLine" id="cb43-16" title="16"><span class="co">// The state is being used as the value for our context. Anywhere that we are giving access to our context, we will be referencing the values stored here.</span></a>
+<a class="sourceLine" id="cb43-17" title="17"><span class="co">// By storing a reference to a function that updates state within state itself, we are then able to update the context anywhere that we have access to it by invoking this function.</span></a>
+<a class="sourceLine" id="cb43-18" title="18"><span class="kw">class</span> AppWithContext <span class="kw">extends</span> <span class="va">React</span>.<span class="at">Component</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb43-19" title="19">  <span class="at">constructor</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb43-20" title="20">    <span class="kw">super</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb43-21" title="21">    <span class="kw">this</span>.<span class="at">state</span> <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb43-22" title="22">      <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;white&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb43-23" title="23">      <span class="dt">updateContext</span><span class="op">:</span> <span class="kw">this</span>.<span class="at">updateContext</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb43-24" title="24">    <span class="op">};</span></a>
+<a class="sourceLine" id="cb43-25" title="25">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb43-26" title="26"></a>
+<a class="sourceLine" id="cb43-27" title="27">  updateContext <span class="op">=</span> (color) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb43-28" title="28">    <span class="kw">this</span>.<span class="at">setState</span>(<span class="op">{</span> color <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb43-29" title="29">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb43-30" title="30"></a>
+<a class="sourceLine" id="cb43-31" title="31">  <span class="at">render</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb43-32" title="32">    <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb43-33" title="33">      <span class="op">&lt;</span><span class="va">ThemeContext</span>.<span class="at">Provider</span> value<span class="op">={</span><span class="kw">this</span>.<span class="at">state</span><span class="op">}&gt;</span></a>
+<a class="sourceLine" id="cb43-34" title="34">        <span class="op">&lt;</span>App color<span class="op">={</span><span class="kw">this</span>.<span class="va">state</span>.<span class="at">color</span><span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb43-35" title="35">      &lt;/<span class="va">ThemeContext</span>.<span class="at">Provider</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb43-36" title="36">    )<span class="op">;</span></a>
+<a class="sourceLine" id="cb43-37" title="37">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb43-38" title="38"><span class="op">}</span></a>
+<a class="sourceLine" id="cb43-39" title="39"></a>
+<a class="sourceLine" id="cb43-40" title="40"><span class="co">// Home.js</span></a>
+<a class="sourceLine" id="cb43-41" title="41"><span class="co">// This component has no real functional purpose in this app.</span></a>
+<a class="sourceLine" id="cb43-42" title="42"><span class="co">// It was created to show that we can access context at any point in our tree, eliminating the need to thread props down directly from each parent to child in the chain.</span></a>
+<a class="sourceLine" id="cb43-43" title="43"><span class="kw">const</span> Home <span class="op">=</span> () <span class="kw">=&gt;</span> (</a>
+<a class="sourceLine" id="cb43-44" title="44">  <span class="op">&lt;</span>div id<span class="op">=</span><span class="st">&quot;home&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb43-45" title="45">    <span class="op">&lt;</span>Profile /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb43-46" title="46">  &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb43-47" title="47">)<span class="op">;</span></a>
+<a class="sourceLine" id="cb43-48" title="48"></a>
+<a class="sourceLine" id="cb43-49" title="49"><span class="co">// Profile.js</span></a>
+<a class="sourceLine" id="cb43-50" title="50"><span class="co">// This component is where the user is interacting in order to change the value of our context.</span></a>
+<a class="sourceLine" id="cb43-51" title="51"><span class="co">// By submitting the form, we are invoking the updateContext prop that we received from our Consumer wrapper. This updates the state of our Provider wrapper component, which is where the value of our context is being tracked.</span></a>
+<a class="sourceLine" id="cb43-52" title="52"><span class="kw">class</span> Profile <span class="kw">extends</span> <span class="va">React</span>.<span class="at">Component</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb43-53" title="53">  <span class="at">constructor</span>(props) <span class="op">{</span></a>
+<a class="sourceLine" id="cb43-54" title="54">    <span class="kw">super</span>(props)<span class="op">;</span></a>
+<a class="sourceLine" id="cb43-55" title="55">    <span class="kw">this</span>.<span class="at">state</span> <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb43-56" title="56">      <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb43-57" title="57">    <span class="op">};</span></a>
+<a class="sourceLine" id="cb43-58" title="58">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb43-59" title="59"></a>
+<a class="sourceLine" id="cb43-60" title="60">  updateSelection <span class="op">=</span> (e) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb43-61" title="61">    <span class="kw">this</span>.<span class="at">setState</span>(<span class="op">{</span> <span class="dt">color</span><span class="op">:</span> <span class="va">e</span>.<span class="va">target</span>.<span class="at">value</span> <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb43-62" title="62">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb43-63" title="63"></a>
+<a class="sourceLine" id="cb43-64" title="64">  handleClick <span class="op">=</span> (e) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb43-65" title="65">    <span class="va">e</span>.<span class="at">preventDefault</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb43-66" title="66">    <span class="kw">this</span>.<span class="va">props</span>.<span class="at">updateContext</span>(<span class="kw">this</span>.<span class="va">state</span>.<span class="at">color</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb43-67" title="67">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb43-68" title="68"></a>
+<a class="sourceLine" id="cb43-69" title="69">  <span class="at">render</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb43-70" title="70">    <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb43-71" title="71">      <span class="op">&lt;</span>form<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb43-72" title="72">        <span class="op">&lt;</span>input</a>
+<a class="sourceLine" id="cb43-73" title="73">          type<span class="op">=</span><span class="st">&quot;text&quot;</span></a>
+<a class="sourceLine" id="cb43-74" title="74">          onChange<span class="op">={</span><span class="kw">this</span>.<span class="at">updateSelection</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb43-75" title="75">          value<span class="op">={</span><span class="kw">this</span>.<span class="va">state</span>.<span class="at">color</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb43-76" title="76">          placeholder<span class="op">=</span><span class="st">&quot;Type a color!&quot;</span></a>
+<a class="sourceLine" id="cb43-77" title="77">        /&gt;</a>
+<a class="sourceLine" id="cb43-78" title="78">        <span class="op">&lt;</span>button onClick<span class="op">={</span><span class="kw">this</span>.<span class="at">handleClick</span><span class="op">}&gt;</span>Submit&lt;/button<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb43-79" title="79">      &lt;/form<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb43-80" title="80">    )<span class="op">;</span></a>
+<a class="sourceLine" id="cb43-81" title="81">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb43-82" title="82"><span class="op">}</span></a>
+<a class="sourceLine" id="cb43-83" title="83"></a>
+<a class="sourceLine" id="cb43-84" title="84"><span class="co">// Like with our Provider wrapper, the Consumer wrapper can either be in the same file as the wrapped component and exported instead of it, or it can be in its own file, as long as wherever we intend to use the wrapped component we are referencing this version with Context.</span></a>
+<a class="sourceLine" id="cb43-85" title="85"><span class="co">// The value that we are receiving as an argument is the value of our context (the state of our Provider component in this particular example). Here we are destructuring the updateContext key of that state since that is the only part we need access to in Profile, but we also could have just passed the value directly and destructured in the Profile component.</span></a>
+<a class="sourceLine" id="cb43-86" title="86"><span class="kw">const</span> ProfileWithContext <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb43-87" title="87">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb43-88" title="88">    <span class="op">&lt;</span><span class="va">ThemeContext</span>.<span class="at">Consumer</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb43-89" title="89">      <span class="op">{</span>(value) <span class="kw">=&gt;</span> <span class="op">&lt;</span>Profile updateContext<span class="op">={</span><span class="va">value</span>.<span class="at">updateContext</span><span class="op">}</span> /&gt;<span class="op">}</span></a>
+<a class="sourceLine" id="cb43-90" title="90">    &lt;/<span class="va">ThemeContext</span>.<span class="at">Consumer</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb43-91" title="91">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb43-92" title="92"><span class="op">};</span></a></code></pre></div>
+</body>
+</html>
