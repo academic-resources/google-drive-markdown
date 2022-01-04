@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>06_wt-p3_testing-classes-with-chai</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="writing-tests">Writing Tests</h1>
+<p>In this reading we’ll be covering:</p>
+<ul>
+<li>how to test classes using <code>Mocha</code> and <code>Chai</code></li>
+</ul>
+<h2 id="part-three-testing-classes-using-mocha-and-chai">Part Three: Testing classes using Mocha and Chai</h2>
+<p>Let’s expand our knowledge of testing syntax by testing some classes! In order to fully test a class, we’ll be looking to test that class’s instance and static methods. Create a new file in the <code>problems</code> folder - <code>dog.js</code>. We’ll use the following code for the rest of our tests so make sure to copy it over:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="co">// testing-demo/problems/dog.js</span></a>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">class</span> Dog <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-4" title="4">  <span class="at">constructor</span>(name) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-5" title="5">    <span class="kw">this</span>.<span class="at">name</span> <span class="op">=</span> name<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-6" title="6">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-7" title="7"></a>
+<a class="sourceLine" id="cb1-8" title="8">  <span class="at">bark</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-9" title="9">    <span class="cf">return</span> <span class="vs">`</span><span class="sc">${</span><span class="kw">this</span>.<span class="at">name</span><span class="sc">}</span><span class="vs"> is barking`</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-10" title="10">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-11" title="11"></a>
+<a class="sourceLine" id="cb1-12" title="12">  <span class="at">chainChaseTail</span>(num) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-13" title="13">    <span class="cf">if</span> (<span class="kw">typeof</span> num <span class="op">!==</span> <span class="st">&quot;number&quot;</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-14" title="14">      <span class="cf">throw</span> <span class="kw">new</span> <span class="at">TypeError</span>(<span class="st">&quot;please only use numbers for this function&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-15" title="15">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-16" title="16">    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> num<span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-17" title="17">      <span class="kw">this</span>.<span class="at">chaseTail</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-18" title="18">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-19" title="19">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-20" title="20"></a>
+<a class="sourceLine" id="cb1-21" title="21">  <span class="at">chaseTail</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-22" title="22">    <span class="va">console</span>.<span class="at">log</span>(<span class="vs">`</span><span class="sc">${</span><span class="kw">this</span>.<span class="at">name</span><span class="sc">}</span><span class="vs"> is chasing their tail`</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-23" title="23">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-24" title="24"></a>
+<a class="sourceLine" id="cb1-25" title="25">  <span class="kw">static</span> <span class="at">cleanDogs</span>(dogs) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-26" title="26">    <span class="kw">let</span> cleanDogs <span class="op">=</span> []<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-27" title="27">    <span class="va">dogs</span>.<span class="at">forEach</span>(dog <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-28" title="28">      <span class="kw">let</span> dogStr <span class="op">=</span> <span class="vs">`I cleaned </span><span class="sc">${</span><span class="va">dog</span>.<span class="at">name</span><span class="sc">}</span><span class="vs">&#39;s paws.`</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-29" title="29">      <span class="va">cleanDogs</span>.<span class="at">push</span>(dogStr)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-30" title="30">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-31" title="31">    <span class="cf">return</span> cleanDogs<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-32" title="32">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-33" title="33"><span class="op">}</span></a>
+<a class="sourceLine" id="cb1-34" title="34"></a>
+<a class="sourceLine" id="cb1-35" title="35"><span class="co">// ensure to export our class!</span></a>
+<a class="sourceLine" id="cb1-36" title="36"><span class="va">module</span>.<span class="at">exports</span> <span class="op">=</span> Dog<span class="op">;</span></a></code></pre></div>
+<p>To test this class we’ll create a new file in our <code>test</code> directory - <code>dog-spec.js</code> so your file structure should now look like this:</p>
+<pre class="plaintext"><code>testing-demo
+  └──
+  problems
+    └── reverse-string.js
+    └── dog.js
+  test
+    └── reverse-string-spec.js
+    └── dog-spec.js</code></pre>
+<p>Let’s now set up our <code>dog-spec.js</code> file. For this example we’ll get experience using another assertion library named <a href="https://www.chaijs.com/"><code>Chai</code></a>. As you’ll soon see, the Chai library comes with a lot more built-in more functionality than Node’s <code>Assert</code> module.</p>
+<p>Now since <code>Chai</code> is another external library we’ll need to import it in order to use it. We need to run a few commands to first create a <code>package.json</code> and then we can import the <code>chai</code> library. Start off by running <code>npm init --y</code> in the top level directory (<code>testing-demo</code>) to create a <code>package.json</code> file. After that is finished you can import the <code>Chai</code> library by running <code>npm install chai</code>.</p>
+<p>Here is what that will look like in your terminal:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">~</span> <span class="ex">testing-demo</span> $ npm init --y</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="ex">Wrote</span> to /testing-demo/problems/package.json:</a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="kw">{</span></a>
+<a class="sourceLine" id="cb3-5" title="5">  <span class="st">&quot;name&quot;</span>: <span class="st">&quot;testing-demo&quot;</span>,</a>
+<a class="sourceLine" id="cb3-6" title="6">  <span class="st">&quot;version&quot;</span>: <span class="st">&quot;1.0.0&quot;</span>,</a>
+<a class="sourceLine" id="cb3-7" title="7">  <span class="st">&quot;description&quot;</span>: <span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb3-8" title="8">  <span class="st">&quot;main&quot;</span>: <span class="st">&quot;index.js&quot;</span>,</a>
+<a class="sourceLine" id="cb3-9" title="9">  <span class="st">&quot;directories&quot;</span>: <span class="kw">{</span></a>
+<a class="sourceLine" id="cb3-10" title="10">    <span class="st">&quot;test&quot;</span>: <span class="st">&quot;test&quot;</span></a>
+<a class="sourceLine" id="cb3-11" title="11">  <span class="kw">}</span>,</a>
+<a class="sourceLine" id="cb3-12" title="12">  <span class="st">&quot;scripts&quot;</span>: <span class="kw">{</span></a>
+<a class="sourceLine" id="cb3-13" title="13">    <span class="st">&quot;test&quot;</span>: <span class="st">&quot;echo </span><span class="dt">\&quot;</span><span class="st">Error: no test specified</span><span class="dt">\&quot;</span><span class="st"> &amp;&amp; exit 1&quot;</span></a>
+<a class="sourceLine" id="cb3-14" title="14">  <span class="kw">}</span>,</a>
+<a class="sourceLine" id="cb3-15" title="15">  <span class="st">&quot;keywords&quot;</span>: [],</a>
+<a class="sourceLine" id="cb3-16" title="16">  <span class="st">&quot;author&quot;</span>: <span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb3-17" title="17">  <span class="st">&quot;license&quot;</span>: <span class="st">&quot;ISC&quot;</span></a>
+<a class="sourceLine" id="cb3-18" title="18"><span class="kw">}</span></a>
+<a class="sourceLine" id="cb3-19" title="19"></a>
+<a class="sourceLine" id="cb3-20" title="20"><span class="ex">~</span> <span class="ex">testing-demo</span> $ npm install chai</a></code></pre></div>
+<p>Now that we’ve installed <code>Chai</code> we can set up our test file. Create a new file in the <code>test</code> folder named <code>dog-spec.js</code> We’ll require the <code>expect</code> module from Chai for our assertions, import our <code>Dog</code> class, and set up our outer <code>describe</code> function for testing the <code>Dog</code> class:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// testing-demo/test/dog-spec.js</span></a>
+<a class="sourceLine" id="cb4-2" title="2"></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">// set up chai</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="kw">const</span> chai <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;chai&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="kw">const</span> expect <span class="op">=</span> <span class="va">chai</span>.<span class="at">expect</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb4-6" title="6"></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="co">// don&#39;t forget to import the class you are testing!</span></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="kw">const</span> Dog <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;../problems/dog.js&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-9" title="9"></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="co">// our outer describe for the whole Dog class</span></a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="at">describe</span>(<span class="st">&quot;Dog&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{}</span>)<span class="op">;</span></a></code></pre></div>
+<p>So the first thing we’ll generally want to test on classes is their <code>constructor</code> functions - we need to make sure new instances have the correct properties and that those properties are being set properly before we can test anything else. For the <code>Dog</code> class it looks like a name is accepted on instantiation, so let’s test that!</p>
+<p>We’ll start with a nested describe function within our outer <code>Dog</code> describe function:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="at">describe</span>(<span class="st">&quot;Dog&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">  <span class="at">describe</span>(<span class="st">&quot;Dog Constructor Function&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-3" title="3">    <span class="at">it</span>(<span class="st">&#39;should have a &quot;name&quot; property&#39;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-4" title="4">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Now we are using a different assertion library so we’ll be working with some different syntax. Open up the <a href="https://www.chaijs.com/api/bdd/"><code>Chai Expect</code></a> documentation for reference, we won’t be going into tons of detail into every function we use with Chai because Chai allows for a lot of smaller chainable functions and we know you have lives outide this reading.</p>
+<p>The nice thing about Chai is that the chainable functions available will often read like English. Check out the right column of this handy <a href="https://devhints.io/chai">Chai cheatsheet</a> for a quick and easy reference on chainable functions.</p>
+<p>We’ll start our first spec off by using the <a href="https://www.chaijs.com/api/bdd/#method_property"><code>property</code></a> matcher to ensure that a newly instantiated object has a specified property:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="at">describe</span>(<span class="st">&quot;Dog&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-2" title="2">  <span class="at">describe</span>(<span class="st">&quot;Dog Constructor Function&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-3" title="3">    <span class="at">it</span>(<span class="st">&#39;should have a &quot;name&quot; property&#39;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-4" title="4">      <span class="kw">const</span> layla <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&quot;Layla&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-5" title="5">      <span class="co">// all our of chai tests will begin with the expect function</span></a>
+<a class="sourceLine" id="cb6-6" title="6">      <span class="co">// .to and .have are Chai chainable functions</span></a>
+<a class="sourceLine" id="cb6-7" title="7">      <span class="co">// .property is the matcher we are using</span></a>
+<a class="sourceLine" id="cb6-8" title="8">      <span class="at">expect</span>(layla).<span class="va">to</span>.<span class="va">have</span>.<span class="at">property</span>(<span class="st">&quot;name&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-9" title="9">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-10" title="10">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Now to test our new spec we can run just the Dog class specs by running <code>mocha test/dog-spec.js</code> from our top level directory. Running that command we’ll see:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">Dog</span></a>
+<a class="sourceLine" id="cb7-2" title="2">  <span class="ex">Dog</span> Constructor Function</a>
+<a class="sourceLine" id="cb7-3" title="3">    ✓ <span class="ex">should</span> have a <span class="st">&quot;name&quot;</span> property</a>
+<a class="sourceLine" id="cb7-4" title="4"></a>
+<a class="sourceLine" id="cb7-5" title="5"></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="ex">1</span> passing (8ms)</a></code></pre></div>
+<p>Nice! We tested that the name property exists on a new dog instance. Next, we can make sure our name is set properly with another test:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="at">describe</span>(<span class="st">&quot;Dog Constructor Function&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-2" title="2">  <span class="at">it</span>(<span class="st">&#39;should have a &quot;name&quot; property&#39;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-3" title="3">    <span class="kw">const</span> layla <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&quot;Layla&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-4" title="4">    <span class="at">expect</span>(layla).<span class="va">to</span>.<span class="va">have</span>.<span class="at">property</span>(<span class="st">&quot;name&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-5" title="5">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-6" title="6"></a>
+<a class="sourceLine" id="cb8-7" title="7">  <span class="at">it</span>(<span class="st">&#39;should set the &quot;name&quot; property when a new dog is created&#39;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-8" title="8">    <span class="kw">const</span> layla <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&quot;Layla&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-9" title="9">    <span class="co">// we are using the eql function to compare the value of layla.name</span></a>
+<a class="sourceLine" id="cb8-10" title="10">    <span class="co">// with the provided string</span></a>
+<a class="sourceLine" id="cb8-11" title="11">    <span class="at">expect</span>(<span class="va">layla</span>.<span class="at">name</span>).<span class="va">to</span>.<span class="at">eql</span>(<span class="st">&quot;Layla&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-12" title="12">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-13" title="13"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Running the above using <code>mocha</code> we’ll see both of our specs passing! Now take extra note of the fact that we are defining the same variable twice using <code>const</code> within the above <code>it</code> callbacks. This is important to note because it underlines the fact that each of the unit tests you write will have their own scope - meaning that they are each independent of the specs that came before or after them.</p>
+<p>Head to the next reading to refactor some of the code we just wrote using <code>Mocha</code> hooks!</p>
+</body>
+</html>

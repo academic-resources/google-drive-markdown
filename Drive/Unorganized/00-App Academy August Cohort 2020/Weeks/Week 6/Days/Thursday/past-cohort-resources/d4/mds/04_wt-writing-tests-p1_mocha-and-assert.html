@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>04_wt-writing-tests-p1_mocha-and-assert</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="writing-tests">Writing Tests</h1>
+<p>For weeks you have been using one of JavaScript’s most popular test frameworks, <code>Mocha</code>, to run tests that ensure a function you’ve written works as expected. It’s time to dive deeper into <strong>how</strong> to write our own tests using <code>Mocha</code> as our test framework coupled with Assertion libraries such as the built-in <code>Assert</code> module of Node or the <code>Chai</code> library.</p>
+<p>For the rest of the readings in this section we will be covering how to write tests. These readings will be done in the style of a code-along demo so make sure you follow these in order. When you have finished the next series of reading you should know how to:</p>
+<ul>
+<li>properly format and denote your mocha tests using <code>describe</code>, <code>context</code> and <code>it</code> blocks</li>
+<li>write tests for individual functions as well as writing tests for class instance and static methods</li>
+<li>test that functions will throw certain errors</li>
+<li>use <code>chai-spies</code> to test how many times a function has been called</li>
+<li>recognize and utilize the Mocha hooks: <code>before</code>, <code>beforeEach</code>, <code>after</code>, and <code>afterEach</code></li>
+</ul>
+<p>In this reading we’ll be covering:</p>
+<ul>
+<li>the file structure of testing with <code>Mocha</code></li>
+<li>testing with <code>Mocha</code> and Node’s built-in <code>Assert</code> module</li>
+</ul>
+<h2 id="part-zero-testing-file-structure">Part Zero: Testing file structure</h2>
+<p>We find that reading about testing is best understood when you can play around within the functions being tested so for that reason this reading will be in the style of a code along demo. We started this reading by created a directory called <code>testing-demo</code> where all the code within this reading will be written.</p>
+<p>Let’s start off with how to write tests for a basic function. Say we’ve been handed a directory with a function to test <code>problems/reverse-string.js</code>. Below is the named function we’ll be testing, <code>reverseString</code>, which will intake a string argument and then reverse it:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="co">// in testing-demo/problems/reverse-string.js</span></a>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">const</span> reverseString <span class="op">=</span> str <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-4" title="4">  <span class="co">// throws a specific error unless the the incoming arg is a string</span></a>
+<a class="sourceLine" id="cb1-5" title="5">  <span class="cf">if</span> (<span class="kw">typeof</span> str <span class="op">!==</span> <span class="st">&quot;string&quot;</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="cf">throw</span> <span class="kw">new</span> <span class="at">TypeError</span>(<span class="st">&quot;this function only accepts string args&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-7" title="7">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-8" title="8"></a>
+<a class="sourceLine" id="cb1-9" title="9">  <span class="cf">return</span> str</a>
+<a class="sourceLine" id="cb1-10" title="10">    .<span class="at">split</span>(<span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb1-11" title="11">    .<span class="at">reverse</span>()</a>
+<a class="sourceLine" id="cb1-12" title="12">    .<span class="at">join</span>(<span class="st">&quot;&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="op">};</span></a>
+<a class="sourceLine" id="cb1-14" title="14"></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="co">// note this function is being exported!</span></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="va">module</span>.<span class="at">exports</span> <span class="op">=</span> reverseString<span class="op">;</span></a></code></pre></div>
+<p>How would you go about testing the above function? Let’s start by setting up our file system correctly. Whenever you are running tests with <code>Mocha</code> the important thing to know is that the <code>Mocha</code> CLI will automatically be looking for a directory named <code>test</code>.</p>
+<p>The created <code>test</code> directory’s file structure should mirror that of the files you intend to test - with each test file appending the word “spec” to the end of the file name. So for the above example we would create <code>test/reverse-string-spec.js</code> which should be on the same level as the <code>problems</code> directory.</p>
+<p>Our file structure should look like this:</p>
+<pre class="plaintext"><code>testing-demo
+  └──
+  problems
+    └── reverse-string.js
+  test
+    └── reverse-string-spec.js</code></pre>
+<p>Take a moment to ensure your file structure looks like the one above and that you’ve copied and pasted the <code>reverseString</code> function into the <code>reverse-string.js</code> file. Now that we’ve ensured our file structure is correct let’s write some tests!</p>
+<h2 id="part-one-writing-tests-with-mocha-and-assert">Part One: Writing tests with Mocha and Assert</h2>
+<p>The first step in any testing workflow is initializing our test file. Now let’s make a clear distinction before moving forward - <code>Mocha</code> is a test framework that specializes in <em>running</em> tests and presenting them in an organized user friendly way. The code responsible for actually verifying things for us will come from using an <em>Assertion Library</em>. Assertion Libraries will do the heavy lifting of comparing and verifying code while <code>Mocha</code> will run those tests and then present them to us.</p>
+<p>The tests we’ll be writing for this next section will use Node’s built-in <code>Assert</code> module as our Assertion Library.</p>
+<p>So inside of <code>test/reverse-string-spec.js</code> at the top of the file we will require the <code>assert</code> module and the function we intend to test:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">const</span> assert <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;assert&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="co">// this is a relative path to the function&#39;s location</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="kw">const</span> reverseString <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;../problems/reverse-string.js&quot;</span>)<span class="op">;</span></a></code></pre></div>
+<p>Take a moment to open up the <a href="https://mochajs.org/#getting-started"><code>Mocha</code></a> documentation - it will come in handy as a reference for the syntax we’ll be using. The <code>Mocha</code> DSL (Domain Specific Language) comes with a few different interfaces or “flavors” of their DSL for our purposes we’ll be structuring our tests using the <a href="https://mochajs.org/#bdd">BDD interface</a>.</p>
+<p>The <code>describe</code> function is an organizational function that accepts a descriptive string and a callback. We’ll use the <code>describe</code> function to <strong>describe</strong> what we will be testing - in this case the <code>reverseString</code> function:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// test/reverse-string-spec.js</span></a>
+<a class="sourceLine" id="cb4-2" title="2"></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="kw">const</span> assert <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;assert&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="kw">const</span> reverseString <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;../problems/reverse-string.js&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-5" title="5"></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="at">describe</span>(<span class="st">&quot;reverseString()&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{}</span>)<span class="op">;</span></a></code></pre></div>
+<p>The callback handed to the <code>describe</code> function will be where we insert our actual tests. We can now use the <code>it</code> function - the <code>it</code> function is an organizational function we will use to wrap around each test we write. The <code>it</code> function accepts a descriptive string and callback to set up our test:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="at">describe</span> (<span class="st">&#39;reverseString()&#39;</span><span class="op">,</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">  <span class="at">it</span>(<span class="st">&#39;should reverse the input string&#39;</span><span class="op">,</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-3" title="3">    <span class="co">// a test will go here!</span></a>
+<a class="sourceLine" id="cb5-4" title="4">  <span class="op">}</span>)</a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="op">}</span></a></code></pre></div>
+<p>The code written above will serve as a great template for future tests we wish to write. Finally, we can insert the actual test we intend to write within the callback handed to the <code>it</code> function. We’ll use the <a href="https://nodejs.org/api/assert.html#assert_assert_equal_actual_expected_message"><code>assert.strictEqual</code></a> function which allows you to compare one value with another value. We’ll use <code>assert.strictEqual</code> to compare two strings - one from our function’s result and our expected result which we will we define ourselves:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="co">// remember we required the assert module at the top of this file</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="at">describe</span>(<span class="st">&quot;reverseString()&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-3" title="3">  <span class="at">it</span>(<span class="st">&quot;should reverse the input string&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-4" title="4">    <span class="kw">let</span> test <span class="op">=</span> <span class="at">reverseString</span>(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-5" title="5">    <span class="kw">let</span> result <span class="op">=</span> <span class="st">&quot;olleh&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb6-6" title="6">    <span class="co">// the line below is where the actual test is!</span></a>
+<a class="sourceLine" id="cb6-7" title="7">    <span class="va">assert</span>.<span class="at">strictEqual</span>(test<span class="op">,</span> result)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-8" title="8">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-9" title="9"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Now if we run <code>mocha</code> in the upper most <code>testing-demo</code> directory we will see:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="fu">reverseString()</span></a>
+<a class="sourceLine" id="cb7-2" title="2">  ✓ <span class="ex">should</span> reverse the input string</a>
+<a class="sourceLine" id="cb7-3" title="3"></a>
+<a class="sourceLine" id="cb7-4" title="4"></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="ex">1</span> passing (5ms)</a></code></pre></div>
+<p>We now have a working spec! Take notice of how <code>Mocha</code> structures its response in exactly the way we nested our test. The outer <code>describe</code> function’s message of <code>reverseString()</code> is on the upper level and the inner <code>it</code> function’s message of <code>should reverse the input string</code> is nested within.</p>
+<p>Strictly speaking we aren’t required to nest our <code>it</code> functions within <code>describe</code> functions but it is best practice to do so. As you can see yourself - it will make your tests a lot easier to read!</p>
+<p>Let’s add one more spec for <code>reverseString</code>, we’ll do this by adding another <code>it</code> function within the <code>describe</code> callback:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="at">describe</span>(<span class="st">&quot;reverseString()&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-2" title="2">  <span class="at">it</span>(<span class="st">&quot;should reverse the input string&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-3" title="3">    <span class="kw">let</span> test <span class="op">=</span> <span class="at">reverseString</span>(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-4" title="4">    <span class="kw">let</span> result <span class="op">=</span> <span class="st">&quot;olleh&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb8-5" title="5"></a>
+<a class="sourceLine" id="cb8-6" title="6">    <span class="va">assert</span>.<span class="at">strictEqual</span>(test<span class="op">,</span> result)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-7" title="7">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-8" title="8"></a>
+<a class="sourceLine" id="cb8-9" title="9">  <span class="at">it</span>(<span class="st">&quot;should reverse the input string and output the same capitalization&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-10" title="10">    <span class="kw">let</span> test <span class="op">=</span> <span class="at">reverseString</span>(<span class="st">&quot;Apple&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-11" title="11">    <span class="kw">let</span> result <span class="op">=</span> <span class="st">&quot;elppA&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb8-12" title="12"></a>
+<a class="sourceLine" id="cb8-13" title="13">    <span class="va">assert</span>.<span class="at">strictEqual</span>(test<span class="op">,</span> result)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-14" title="14">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-15" title="15"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Running the <code>mocha</code> command again will return:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="fu">reverseString()</span></a>
+<a class="sourceLine" id="cb9-2" title="2">  ✓ <span class="ex">should</span> reverse the input string</a>
+<a class="sourceLine" id="cb9-3" title="3">  ✓ <span class="ex">should</span> reverse the input string and output the same capitalization</a>
+<a class="sourceLine" id="cb9-4" title="4"></a>
+<a class="sourceLine" id="cb9-5" title="5"></a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="ex">2</span> passing (11ms)</a></code></pre></div>
+<p>Looking good so far - head to the next reading to learn how to test errors.</p>
+</body>
+</html>

@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Promise - JavaScript _ MDN</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#content">Skip to main content</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#language">Select language</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#main-q">Skip to search</a></li>
+</ul>
+<p><a href="https://developer.mozilla.org/en-US/"></a></p>
+<ul>
+<li>Technologies
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web">Technologies Overview</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP">HTTP</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">Browser Extensions</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+</ul></li>
+<li>References &amp; Guides
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learn web development</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web">…more docs</a></li>
+</ul></li>
+<li>Feedback
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Send Feedback</a></li>
+<li><a href="https://support.mozilla.org/">Get Firefox help 🌐</a></li>
+<li><a href="https://stackoverflow.com/">Get web development help 🌐</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+<li><a href="https://github.com/mdn/sprints/issues/new?template=issue-template.md&amp;projects=mdn/sprints/2&amp;labels=user-report&amp;title=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Report a content problem 🌐</a></li>
+<li><a href="https://github.com/mdn/kuma/issues/new/choose">Report an issue 🌐</a></li>
+</ul></li>
+</ul>
+<p>Search MDN</p>
+<p>Open search</p>
+<p><a href="https://developer.mozilla.org/en-US/users/account/signup-landing?next=/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Sign in</a></p>
+<ol type="1">
+<li><a href="https://developer.mozilla.org/en-US/docs/Web">See Web technology for developers</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">See JavaScript</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">See JavaScript reference</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects">See Standard built-in objects</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></li>
+</ol>
+<p>English▼</p>
+<ul>
+<li><a href="https://developer.mozilla.org/bg/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Bulgarian">Български</a></li>
+<li><a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="German">Deutsch</a></li>
+<li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Promise" title="Spanish">Español</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Promise" title="French">Français</a></li>
+<li><a href="https://developer.mozilla.org/he/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Hebrew">עברית</a></li>
+<li><a href="https://developer.mozilla.org/id/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Indonesian">Bahasa Indonesia</a></li>
+<li><a href="https://developer.mozilla.org/it/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Italian">Italiano</a></li>
+<li><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Japanese">日本語</a></li>
+<li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Korean">한국어</a></li>
+<li><a href="https://developer.mozilla.org/pl/docs/Web/JavaScript/Referencje/Obiekty/Promise" title="Polish">Polski</a></li>
+<li><a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Portuguese (Brazilian)">Português (do Brasil)</a></li>
+<li><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Russian">Русский</a></li>
+<li><a href="https://developer.mozilla.org/tr/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Turkish">Türkçe</a></li>
+<li><a href="https://developer.mozilla.org/uk/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Ukrainian">Українська</a></li>
+<li><a href="https://developer.mozilla.org/vi/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Vietnamese">Tiếng Việt</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Chinese (Simplified)">中文 (简体)</a></li>
+<li><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise" title="Chinese (Traditional)">正體中文 (繁體)</a></li>
+<li><a href="https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise$locales">Add a translation</a></li>
+</ul>
+<h2 id="on-this-page">On this Page</h2>
+<p>Jump to section</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#Description">Description</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#Constructor">Constructor</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#Static_methods">Static methods</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#Instance_methods">Instance methods</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#Examples">Examples</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#Specifications">Specifications</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#Browser_compatibility">Browser compatibility</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#See_also">See also</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#sidebar-quicklinks">Related topics</a></li>
+</ul>
+<p>The <strong><code>Promise</code></strong> object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.</p>
+<p>To learn about the way promises work and how you can use them, we advise you to read <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises">Using promises</a> first.</p>
+<h2 id="Description">Description</h2>
+<p>A <code>Promise</code> is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action’s eventual success value or failure reason. This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, the asynchronous method returns a <em>promise</em> to supply the value at some point in the future.</p>
+<p>A <code>Promise</code> is in one of these states:</p>
+<ul>
+<li><em>pending</em>: initial state, neither fulfilled nor rejected.</li>
+<li><em>fulfilled</em>: meaning that the operation was completed successfully.</li>
+<li><em>rejected</em>: meaning that the operation failed.</li>
+</ul>
+<p>A pending promise can either be <em>fulfilled</em> with a value or <em>rejected</em> with a reason (error). When either of these options happens, the associated handlers queued up by a promise’s <code>then</code> method are called. If the promise has already been fulfilled or rejected when a corresponding handler is attached, the handler will be called, so there is no race condition between an asynchronous operation completing and its handlers being attached.</p>
+<p>As the <code>Promise.prototype.then()</code> and <code>Promise.prototype.catch()</code> methods return promises, they can be chained.</p>
+<p><img src="./Promise%20-%20JavaScript%20_%20MDN_files/promises.png" /></p>
+<p><strong>Not to be confused with:</strong> Several other languages have mechanisms for lazy evaluation and deferring a computation, which they also call “promises”, e.g. Scheme. Promises in JavaScript represent processes that are already happening, which can be chained with callback functions. If you are looking to lazily evaluate an expression, consider the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">arrow function</a> with no arguments: <code>f = () =&gt; expression</code> to create the lazily-evaluated expression, and <code>f()</code> to evaluate.</p>
+<p><strong>Note</strong>: A promise is said to be <em>settled</em> if it is either fulfilled or rejected, but not pending. You will also hear the term <em>resolved</em> used with promises — this means that the promise is settled or “locked-in” to match the state of another promise. <a href="https://github.com/domenic/promises-unwrapping/blob/master/docs/states-and-fates.md">States and fates</a> contain more details about promise terminology.</p>
+<h3 id="Chained_Promises">Chained Promises</h3>
+<p>The methods <code>promise.then()</code>, <code>promise.catch()</code>, and <code>promise.finally()</code> are used to associate further action with a promise that becomes settled. These methods also return a newly generated promise object, which can optionally be used for chaining; for example, like this:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode brush: js notranslate line-numbers language-js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">const</span> myPromise <span class="op">=</span> </a>
+<a class="sourceLine" id="cb1-2" title="2">  (<span class="kw">new</span> <span class="at">Promise</span>(myExecutorFunc))</a>
+<a class="sourceLine" id="cb1-3" title="3">  .<span class="at">then</span>(handleFulfilledA<span class="op">,</span>handleRejectedA)</a>
+<a class="sourceLine" id="cb1-4" title="4">  .<span class="at">then</span>(handleFulfilledB<span class="op">,</span>handleRejectedB)</a>
+<a class="sourceLine" id="cb1-5" title="5">  .<span class="at">then</span>(handleFulfilledC<span class="op">,</span>handleRejectedC)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-6" title="6"></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">// or, perhaps better ...</span></a>
+<a class="sourceLine" id="cb1-8" title="8"></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="kw">const</span> myPromise <span class="op">=</span></a>
+<a class="sourceLine" id="cb1-10" title="10">  (<span class="kw">new</span> <span class="at">Promise</span>(myExecutorFunc))</a>
+<a class="sourceLine" id="cb1-11" title="11">  .<span class="at">then</span>(handleFulfilledA)</a>
+<a class="sourceLine" id="cb1-12" title="12">  .<span class="at">then</span>(handleFulfilledB)</a>
+<a class="sourceLine" id="cb1-13" title="13">  .<span class="at">then</span>(handleFulfilledC)</a>
+<a class="sourceLine" id="cb1-14" title="14">  .<span class="at">catch</span>(handleRejectedAny)<span class="op">;</span></a></code></pre></div>
+<p>Handling a rejected promise too early has consequences further down the promise chain. Sometimes there is no choice because an error must be handled immediately. (See <code>throw -999</code> in the example, below, for a technique to handle the consequences.) On the other hand, in the absence of an immediate need, it is simpler to leave out error handling until a final .catch() statement.</p>
+<p>The signatures of these two functions are simple, they accept a single parameter of any type. These functions are written by you, the programmer. The termination condition of these functions determines the “settled” state of the next promise in the chain. Any termination other than a <code>throw</code> creates a “resolved” state while terminating with a <code>throw</code> creates a “rejected” state.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode brush: js notranslate line-numbers language-js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="at">handleFulfilled</span>(value)       <span class="op">{</span> <span class="co">/*...*/</span><span class="op">;</span> <span class="cf">return</span> nextValue<span class="op">;</span>  <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="at">handleRejection</span>(reason)  <span class="op">{</span> <span class="co">/*...*/</span><span class="op">;</span> <span class="cf">throw</span>  nextReason<span class="op">;</span> <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="at">handleRejection</span>(reason)  <span class="op">{</span> <span class="co">/*...*/</span><span class="op">;</span> <span class="cf">return</span> nextValue<span class="op">;</span>  <span class="op">}</span></a></code></pre></div>
+<p>The returned <code>nextValue</code> can be another promise object, in which case the promise gets dynamically inserted into the chain.</p>
+<p>When a <code>.then()</code> lacks the appropriate function that returns a Promise object, processing simply continues to the next link of the chain. Therefore, a chain can safely omit every <code>handleRejection</code> until the final <code>.catch()</code>. Similarly, <code>.catch()</code> is really just a <code>.then()</code> without a slot for <code>handleFulfilled</code>.</p>
+<p>The promises of a chain are nested like Russian dolls, but get popped like the top of a stack. The first promise in the chain is most deeply nested and is the first to pop.</p>
+<pre class="notranslate line-numbers language-html"><code>(promise D, (promise C, (promise B, (promise A) ) ) )</code></pre>
+<p>When a <code>nextValue</code> is a promise, the effect is a dynamic replacement. The <code>return</code> causes a promise to be popped, but the <code>nextValue</code> promise is pushed into its place. For the nesting shown above, suppose the <code>.then()</code> associated with “promise B” returns a <code>nextValue</code> of “promise X”. The resulting nesting would look like this:</p>
+<pre class="notranslate line-numbers language-html"><code>(promise D, (promise C, (promise X) ) )</code></pre>
+<p>A promise can participate in more than one nesting. For the following code, the transition of <code>promiseA</code> into a “settled” state will cause both instances of <code>.then()</code> to be invoked.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode brush: js notranslate line-numbers language-js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">const</span> promiseA <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>(myExecutorFunc)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw">const</span> promiseB <span class="op">=</span> <span class="va">promiseA</span>.<span class="at">then</span>(handleFulfilled1<span class="op">,</span> handleRejected1)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="kw">const</span> promiseC <span class="op">=</span> <span class="va">promiseA</span>.<span class="at">then</span>(handleFulfilled2<span class="op">,</span> handleRejected2)<span class="op">;</span> </a></code></pre></div>
+<p>An action can be assigned to an already “settled” promise. In that case, the action (if appropriate) will be performed at the first asynchronous opportunity. Note that promises are guaranteed to be asynchronous. Therefore, an action for an already “settled” promise will occur only after the stack has cleared and a clock-tick has passed. The effect is much like that of <code>setTimeout(action,10)</code>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode brush: js notranslate line-numbers language-js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">const</span> promiseA <span class="op">=</span> <span class="kw">new</span> <span class="at">Promise</span>( (resolutionFunc<span class="op">,</span>rejectionFunc) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-2" title="2">    <span class="at">resolutionFunc</span>(<span class="dv">777</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="co">// At this point, &quot;promiseA&quot; is already settled.</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="va">promiseA</span>.<span class="at">then</span>( (val) <span class="kw">=&gt;</span> <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;asynchronous logging has val:&quot;</span><span class="op">,</span>val) )<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;immediate logging&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-7" title="7"></a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="co">// produces output in this order:</span></a>
+<a class="sourceLine" id="cb6-9" title="9"><span class="co">// immediate logging</span></a>
+<a class="sourceLine" id="cb6-10" title="10"><span class="co">// asynchronous logging has val: 777</span></a></code></pre></div>
+<h2 id="Constructor">Constructor</h2>
+<dl>
+<dt><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise"><code>Promise()</code></a></dt>
+<dd>Creates a new <code>Promise</code> object. The constructor is primarily used to wrap functions that do not already support promises.
+</dd>
+</dl>
+<h2 id="Static_methods">Static methods</h2>
+<dl>
+<dt><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all"><code>Promise.all(iterable)</code></a></dt>
+<dd>Wait for all promises to be resolved, or for any to be rejected.
+</dd>
+<dd>If the returned promise resolves, it is resolved with an aggregating array of the values from the resolved promises, in the same order as defined in the iterable of multiple promises.
+</dd>
+<dd>If it rejects, it is rejected with the reason from the first promise in the iterable that was rejected. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled"><code>Promise.allSettled(iterable)</code></a>
+</dd>
+<dd>Wait until all promises have settled (each may resolve or reject).
+</dd>
+<dd>Returns a Promise that resolves after all of the given promises have either resolved or rejected, with an array of objects that each describe the outcome of each promise. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any"><code>Promise.any(iterable)</code></a>
+</dd>
+<dd>Takes an iterable of Promise objects and, as soon as one of the promises in the iterable fulfills, returns a single promise that resolves with the value from that promise. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race"><code>Promise.race(iterable)</code></a>
+</dd>
+<dd>Wait until any of the promises is resolved or rejected.
+</dd>
+<dd>If the returned promise resolves, it is resolved with the value of the first promise in the iterable that resolved.
+</dd>
+<dd>If it rejects, it is rejected with the reason from the first promise that was rejected. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject"><code>Promise.reject(reason)</code></a>
+</dd>
+<dd>Returns a new <code>Promise</code> object that is rejected with the given reason. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve"><code>Promise.resolve(value)</code></a>
+</dd>
+<dd>Returns a new <code>Promise</code> object that is resolved with the given value. If the value is a thenable (i.e. has a <code>then</code> method), the returned promise will “follow” that thenable, adopting its eventual state; otherwise, the returned promise will be fulfilled with the value.
+</dd>
+<dd>Generally, if you don’t know if a value is a promise or not, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve"><code>Promise.resolve(value)</code></a> it instead and work with the return value as a promise.
+</dd>
+</dl>
+<h2 id="Instance_methods">Instance methods</h2>
+<dl>
+<dt><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch"><code>Promise.prototype.catch()</code></a></dt>
+<dd>Appends a rejection handler callback to the promise, and returns a new promise resolving to the return value of the callback if it is called, or to its original fulfillment value if the promise is instead fulfilled. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then"><code>Promise.prototype.then()</code></a>
+</dd>
+<dd>Appends fulfillment and rejection handlers to the promise, and returns a new promise resolving to the return value of the called handler, or to its original settled value if the promise was not handled (i.e. if the relevant handler <code>onFulfilled</code> or <code>onRejected</code> is not a function). <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally"><code>Promise.prototype.finally()</code></a>
+</dd>
+<dd>Appends a handler to the promise, and returns a new promise that is resolved when the original promise is resolved. The handler is called when the promise is settled, whether fulfilled or rejected.
+</dd>
+</dl>
+<h2 id="Examples">Examples</h2>
+<h3 id="Basic_Example">Basic Example</h3>
+<p>``` {.brush: .js; .notranslate .line-numbers .language-js} let myFirstPromise = new Promise((resolve, reject) =&gt; { // We call resolve(…) when what we were doing asynchronously was successful, and reject(…) when it failed. // In this example, we use setTimeout(…) to simulate async code. // In reality, you will probably be using something like XHR or an HTML5 API. setTimeout( function() { resolve(“Success!”) // Yay! Everything went well! }, 250) })</p>
+<p>myFirstPromise.then((successMessage) =&gt; { // successMessage is whatever we passed in the resolve(…) function above. // It doesn’t have to be a string, but if it is only a succeed message, it probably will be. console.log(“Yay!” + successMessage) }); ```</p>
+<h3 id="Example_with_diverse_situations">Example with diverse situations</h3>
+<p>This example shows diverse techniques for using Promise capabilities and diverse situations that can occur. To understand this, start by scrolling to the bottom of the code block, and examine the promise chain. Upon provision of an initial promise, a chain of promises can follow. The chain is composed of <code>.then()</code> calls, and typically (but not necessarily) has a single <code>.catch()</code> at the end, optionally followed by <code>.finally()</code>. In this example, the promise chain is initiated by a custom-written <code>new Promise()</code> construct; but in actual practice, promise chains more typically start with an API function (written by someone else) that returns a promise.</p>
+<p>The example function <code>tetheredGetNumber()</code> shows that a promise generator will utilize <code>reject()</code> while setting up an asynchronous call, or within the call-back, or both. The function <code>promiseGetWord()</code> illustrates how an API function might generate and return a promise in a self-contained manner.</p>
+<p>Note that the function <code>troubleWithGetNumber()</code> ends with a <code>throw()</code>. That is forced because an ES6 promise chain goes through all the <code>.then()</code> promises, even after an error, and without the “throw()”, the error would seem “fixed”. This is a hassle, and for this reason, it is common to omit <code>rejectionFunc</code> throughout the chain of <code>.then()</code> promises, and just have a single <code>rejectionFunc</code> in the final <code>catch()</code>. The alternative is to throw a special value (in this case “-999”, but a custom Error type would be more appropriate).</p>
+<p>This code can be run under NodeJS. Comprehension is enhanced by seeing the errors actually occur. To force more errors, change the <code>threshold</code> values.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode brush: js notranslate line-numbers language-js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="st">&quot;use strict&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-2" title="2"></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="co">// To experiment with error handling, &quot;threshold&quot; values cause errors randomly</span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="kw">const</span> THRESHOLD_A <span class="op">=</span> <span class="dv">8</span><span class="op">;</span> <span class="co">// can use zero 0 to guarantee error</span></a>
+<a class="sourceLine" id="cb7-5" title="5"></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="kw">function</span> <span class="at">tetheredGetNumber</span>(resolve<span class="op">,</span> reject) <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-7" title="7">  <span class="cf">try</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-8" title="8">    <span class="at">setTimeout</span>( </a>
+<a class="sourceLine" id="cb7-9" title="9">      <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-10" title="10">        <span class="kw">const</span> randomInt <span class="op">=</span> <span class="va">Date</span>.<span class="at">now</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-11" title="11">        <span class="kw">const</span> value <span class="op">=</span> randomInt <span class="op">%</span> <span class="dv">10</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-12" title="12">        <span class="cf">try</span> <span class="op">{</span> </a>
+<a class="sourceLine" id="cb7-13" title="13">          <span class="cf">if</span>(value <span class="op">&gt;=</span> THRESHOLD_A) <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-14" title="14">            <span class="cf">throw</span> <span class="kw">new</span> <span class="at">Error</span>(<span class="vs">`Too large: </span><span class="sc">${</span>value<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-15" title="15">          <span class="op">}</span> </a>
+<a class="sourceLine" id="cb7-16" title="16">        <span class="op">}</span> <span class="cf">catch</span>(msg) <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-17" title="17">            <span class="at">reject</span>(<span class="vs">`Error in callback </span><span class="sc">${</span>msg<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span> </a>
+<a class="sourceLine" id="cb7-18" title="18">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb7-19" title="19">      <span class="at">resolve</span>(value)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-20" title="20">      <span class="cf">return</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-21" title="21">    <span class="op">},</span> <span class="dv">500</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-22" title="22">    <span class="co">// To experiment with error at set-up, uncomment the following &#39;throw&#39;.</span></a>
+<a class="sourceLine" id="cb7-23" title="23">    <span class="co">// throw new Error(&quot;Bad setup&quot;);</span></a>
+<a class="sourceLine" id="cb7-24" title="24">  <span class="op">}</span> <span class="cf">catch</span>(err) <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-25" title="25">    <span class="at">reject</span>(<span class="vs">`Error during setup: </span><span class="sc">${</span>err<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-26" title="26">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb7-27" title="27">  <span class="cf">return</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-28" title="28"><span class="op">}</span></a>
+<a class="sourceLine" id="cb7-29" title="29"></a>
+<a class="sourceLine" id="cb7-30" title="30"><span class="kw">function</span> <span class="at">determineParity</span>(value) <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-31" title="31">  <span class="kw">const</span> isOdd <span class="op">=</span> value <span class="op">%</span> <span class="dv">2</span> <span class="op">?</span> <span class="kw">true</span> : <span class="kw">false</span> <span class="op">;</span></a>
+<a class="sourceLine" id="cb7-32" title="32">  <span class="kw">const</span> parityInfo <span class="op">=</span> <span class="op">{</span> <span class="dt">theNumber</span><span class="op">:</span> value<span class="op">,</span> <span class="dt">isOdd</span><span class="op">:</span> isOdd <span class="op">};</span></a>
+<a class="sourceLine" id="cb7-33" title="33">  <span class="cf">return</span> parityInfo<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-34" title="34"><span class="op">}</span></a>
+<a class="sourceLine" id="cb7-35" title="35"></a>
+<a class="sourceLine" id="cb7-36" title="36"><span class="kw">function</span> <span class="at">troubleWithGetNumber</span>(reason) <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-37" title="37">  <span class="va">console</span>.<span class="at">error</span>(<span class="vs">`Trouble getting number: </span><span class="sc">${</span>reason<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-38" title="38">  <span class="cf">throw</span> <span class="dv">-999</span><span class="op">;</span> <span class="co">// must &quot;throw&quot; something, to maintain error state down the chain</span></a>
+<a class="sourceLine" id="cb7-39" title="39"><span class="op">}</span></a>
+<a class="sourceLine" id="cb7-40" title="40"></a>
+<a class="sourceLine" id="cb7-41" title="41"><span class="kw">function</span> <span class="at">promiseGetWord</span>(parityInfo) <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-42" title="42">  <span class="co">// The &quot;tetheredGetWord()&quot; function gets &quot;parityInfo&quot; as closure variable.</span></a>
+<a class="sourceLine" id="cb7-43" title="43">  <span class="kw">var</span> tetheredGetWord <span class="op">=</span> <span class="kw">function</span>(resolve<span class="op">,</span>reject) <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-44" title="44">    <span class="kw">const</span> theNumber <span class="op">=</span> <span class="va">parityInfo</span>.<span class="at">theNumber</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-45" title="45">    <span class="kw">const</span> threshold_B <span class="op">=</span> THRESHOLD_A <span class="op">-</span> <span class="dv">1</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-46" title="46">    <span class="cf">if</span>(theNumber <span class="op">&gt;=</span> threshold_B) <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-47" title="47">      <span class="at">reject</span>(<span class="vs">`Still too large: </span><span class="sc">${</span>theNumber<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-48" title="48">    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-49" title="49">      <span class="va">parityInfo</span>.<span class="at">wordEvenOdd</span> <span class="op">=</span> <span class="va">parityInfo</span>.<span class="at">isOdd</span> <span class="op">?</span> <span class="st">&#39;odd&#39;</span> : <span class="st">&#39;even&#39;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-50" title="50">      <span class="at">resolve</span>(parityInfo)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-51" title="51">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb7-52" title="52">    <span class="cf">return</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-53" title="53">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb7-54" title="54">  <span class="cf">return</span> <span class="kw">new</span> <span class="at">Promise</span>(tetheredGetWord)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-55" title="55"><span class="op">}</span></a>
+<a class="sourceLine" id="cb7-56" title="56"></a>
+<a class="sourceLine" id="cb7-57" title="57">(<span class="kw">new</span> <span class="at">Promise</span>(tetheredGetNumber))</a>
+<a class="sourceLine" id="cb7-58" title="58">  .<span class="at">then</span>(determineParity<span class="op">,</span>troubleWithGetNumber)</a>
+<a class="sourceLine" id="cb7-59" title="59">  .<span class="at">then</span>(promiseGetWord)</a>
+<a class="sourceLine" id="cb7-60" title="60">  .<span class="at">then</span>((info) <span class="kw">=&gt;</span> <span class="op">{</span> </a>
+<a class="sourceLine" id="cb7-61" title="61">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Got: &quot;</span><span class="op">,</span><span class="va">info</span>.<span class="at">theNumber</span><span class="op">,</span><span class="st">&quot; , &quot;</span><span class="op">,</span> <span class="va">info</span>.<span class="at">wordEvenOdd</span>)<span class="op">;</span> </a>
+<a class="sourceLine" id="cb7-62" title="62">    <span class="cf">return</span> info<span class="op">;</span> </a>
+<a class="sourceLine" id="cb7-63" title="63">  <span class="op">}</span>)</a>
+<a class="sourceLine" id="cb7-64" title="64">  .<span class="at">catch</span>((reason) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-65" title="65">    <span class="cf">if</span>(reason <span class="op">===</span> <span class="dv">-999</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-66" title="66">      <span class="va">console</span>.<span class="at">error</span>(<span class="st">&quot;Had previously handled error&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-67" title="67">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb7-68" title="68">    <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-69" title="69">      <span class="va">console</span>.<span class="at">error</span>(<span class="vs">`Trouble with promiseGetWord(): </span><span class="sc">${</span>reason<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-70" title="70">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb7-71" title="71">   <span class="op">}</span>)</a>
+<a class="sourceLine" id="cb7-72" title="72">  .<span class="at">finally</span>((info) <span class="kw">=&gt;</span> <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;All done&quot;</span>))<span class="op">;</span></a></code></pre></div>
+<h3 id="Advanced_Example">Advanced Example</h3>
+<p><code>{.brush: .html; .notranslate .line-numbers .language-html} &lt;button id="btn"&gt;Make a promise!&lt;/button&gt; &lt;div id="log"&gt;&lt;/div&gt;</code></p>
+<p>This small example shows the mechanism of a <code>Promise</code>. The <code>testPromise()</code> method is called each time the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button" title="The HTML &lt;button&gt; element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality."><code>&lt;button&gt;</code></a> is clicked. It creates a promise that will be fulfilled, using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout"><code>window.setTimeout()</code></a>, to the promise count (number starting from 1) every 1-3 seconds, at random. The <code>Promise()</code> constructor is used to create the promise.</p>
+<p>The fulfillment of the promise is simply logged, via a fulfill callback set using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then"><code>p1.then()</code></a>. A few logs show how the synchronous part of the method is decoupled from the asynchronous completion of the promise.</p>
+<p>``` {.brush: .js; .notranslate} “use strict”; var promiseCount = 0;</p>
+<p>function testPromise() { let thisPromiseCount = ++promiseCount; let log = document.getElementById(‘log’); // begin log.insertAdjacentHTML(‘beforeend’, thisPromiseCount + ‘) Started (Sync code started)’); // We make a new promise: we promise a numeric count of this promise, starting from 1 (after waiting 3s) let p1 = new Promise((resolve, reject) =&gt; { // The executor function is called with the ability to resolve or reject the promise log.insertAdjacentHTML(‘beforeend’, thisPromiseCount + ‘) Promise started (Async code started)’); // This is only an example to create asynchronism window.setTimeout(function() { // We fulfill the promise ! resolve(thisPromiseCount); }, Math.random() * 2000 + 1000); });</p>
+<p>// We define what to do when the promise is resolved with the then() call, // and what to do when the promise is rejected with the catch() call p1.then(function(val) { // Log the fulfillment value log.insertAdjacentHTML(‘beforeend’, val + ‘) Promise fulfilled (Async code terminated)’); }).catch((reason) =&gt; { // Log the rejection reason console.log(<code>Handle rejected promise (${reason}) here.</code>); }); // end log.insertAdjacentHTML(‘beforeend’, thisPromiseCount + ‘) Promise made (Sync code terminated)’); } ```</p>
+<p><code>{.brush: .js; .notranslate .line-numbers .language-js} if ("Promise" in window) {   let btn = document.getElementById("btn");   btn.addEventListener("click",testPromise); } else {   log = document.getElementById('log');   log.innerHTML = "Live example not available as your browser doesn't support the &lt;code&gt;Promise&lt;code&gt; interface."; }</code></p>
+<p>This example is started by clicking the button. (You need a browser that supports <code>Promise</code>. )</p>
+<p>By clicking the button several times in a short amount of time, you’ll even see the different promises being fulfilled one after another.</p>
+<h3 id="Loading_an_image_with_XHR">Loading an image with XHR</h3>
+<p>Another simple example using <code>Promise</code> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest"><code>XMLHttpRequest</code></a> to load an image is available at the MDN GitHub <a href="https://github.com/mdn/js-examples/tree/master/promises-test">js-examples</a> repository. You can also <a href="https://mdn.github.io/js-examples/promises-test/">see it in action</a>. Each step is commented on and allows you to follow the Promise and XHR architecture closely.</p>
+<h2 id="Specifications">Specifications</h2>
+<p>Specification</p>
+<p><a href="https://tc39.es/ecma262/#sec-promise-objects">ECMAScript (ECMA-262)<br />
+The definition of ‘Promise’ in that specification.</a></p>
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+<p>To contribute to this compatibility data, please write a pull request against this repository: <a href="https://github.com/mdn/browser-compat-data">https://github.com/mdn/browser-compat-data</a>.</p>
+<p><a href="https://github.com/mdn/browser-compat-data">Update compatibility data on GitHub</a></p>
+<p>Desktop</p>
+<p>Mobile</p>
+<p>Server</p>
+<p>Chrome</p>
+<p>Edge</p>
+<p>Firefox</p>
+<p>Internet Explorer</p>
+<p>Opera</p>
+<p>Safari</p>
+<p>Android webview</p>
+<p>Chrome for Android</p>
+<p>Firefox for Android</p>
+<p>Opera for Android</p>
+<p>Safari on iOS</p>
+<p>Samsung Internet</p>
+<p>Node.js</p>
+<p><code>Promise</code></p>
+<p>Chrome Full support 32</p>
+<p>Edge Full support 12</p>
+<p>Firefox Full support 29</p>
+<p>IE No support No</p>
+<p>Opera Full support 19</p>
+<p>Safari Full support 8</p>
+<p>WebView Android Full support 4.4.3</p>
+<p>Chrome Android Full support 32</p>
+<p>Firefox Android Full support 29</p>
+<p>Opera Android Full support 19</p>
+<p>Safari iOS Full support 8</p>
+<p>Samsung Internet Android Full support 2.0</p>
+<p>nodejs Full support 0.12</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise"><code>Promise()</code> constructor</a></p>
+<p>Chrome Full support 32</p>
+<p>Edge Full support 12</p>
+<p>Firefox Full support 29</p>
+<p>Notes**</p>
+<p>Open**</p>
+<p>Full support 29</p>
+<p>Notes**</p>
+<p>Notes** Constructor requires a new operator since version 37.</p>
+<p>IE No support No</p>
+<p>Opera Full support 19</p>
+<p>Safari Full support 8</p>
+<p>Notes**</p>
+<p>Open**</p>
+<p>Full support 8</p>
+<p>Notes**</p>
+<p>Notes** Constructor requires a new operator since version 10.</p>
+<p>WebView Android Full support 4.4.3</p>
+<p>Chrome Android Full support 32</p>
+<p>Firefox Android Full support 29</p>
+<p>Notes**</p>
+<p>Open**</p>
+<p>Full support 29</p>
+<p>Notes**</p>
+<p>Notes** Constructor requires a new operator since version 37.</p>
+<p>Opera Android Full support 19</p>
+<p>Safari iOS Full support 8</p>
+<p>Notes**</p>
+<p>Open**</p>
+<p>Full support 8</p>
+<p>Notes**</p>
+<p>Notes** Constructor requires a new operator since version 10.</p>
+<p>Samsung Internet Android Full support 2.0</p>
+<p>nodejs Full support 0.12</p>
+<p>Notes**</p>
+<p>Open**</p>
+<p>Full support 0.12</p>
+<p>Notes**</p>
+<p>Notes** Constructor requires a new operator since version 4.</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all"><code>all()</code></a></p>
+<p>Chrome Full support 32</p>
+<p>Edge Full support 12</p>
+<p>Firefox Full support 29</p>
+<p>IE No support No</p>
+<p>Opera Full support 19</p>
+<p>Safari Full support 8</p>
+<p>WebView Android Full support 4.4.3</p>
+<p>Chrome Android Full support 32</p>
+<p>Firefox Android Full support 29</p>
+<p>Opera Android Full support 19</p>
+<p>Safari iOS Full support 8</p>
+<p>Samsung Internet Android Full support 2.0</p>
+<p>nodejs Full support 0.12</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled"><code>allSettled()</code></a></p>
+<p>Chrome Full support 76</p>
+<p>Edge Full support 79</p>
+<p>Firefox Full support 71</p>
+<p>IE No support No</p>
+<p>Opera Full support 63</p>
+<p>Safari Full support 13</p>
+<p>WebView Android Full support 76</p>
+<p>Chrome Android Full support 76</p>
+<p>Firefox Android No support No</p>
+<p>Opera Android Full support 54</p>
+<p>Safari iOS Full support 13</p>
+<p>Samsung Internet Android No support No</p>
+<p>nodejs Full support 12.9.0</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any"><code>any</code></a></p>
+<p>Chrome Full support 85</p>
+<p>Edge No support No</p>
+<p>Firefox Full support 79</p>
+<p>IE No support No</p>
+<p>Opera No support No</p>
+<p>Safari Full support 14</p>
+<p>WebView Android Full support 85</p>
+<p>Chrome Android Full support 85</p>
+<p>Firefox Android No support No</p>
+<p>Opera Android No support No</p>
+<p>Safari iOS Full support 14</p>
+<p>Samsung Internet Android No support No</p>
+<p>nodejs No support No</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch"><code>catch()</code></a></p>
+<p>Chrome Full support 32</p>
+<p>Edge Full support 12</p>
+<p>Firefox Full support 29</p>
+<p>IE No support No</p>
+<p>Opera Full support 19</p>
+<p>Safari Full support 8</p>
+<p>WebView Android Full support 4.4.3</p>
+<p>Chrome Android Full support 32</p>
+<p>Firefox Android Full support 29</p>
+<p>Opera Android Full support 19</p>
+<p>Safari iOS Full support 8</p>
+<p>Samsung Internet Android Full support 2.0</p>
+<p>nodejs Full support 0.12</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally"><code>finally()</code></a></p>
+<p>Chrome Full support 63</p>
+<p>Edge Full support 18</p>
+<p>Firefox Full support 58</p>
+<p>IE No support No</p>
+<p>Opera Full support 50</p>
+<p>Safari Full support 11.1</p>
+<p>WebView Android Full support 63</p>
+<p>Chrome Android Full support 63</p>
+<p>Firefox Android Full support 58</p>
+<p>Opera Android Full support 46</p>
+<p>Safari iOS Full support 11.3</p>
+<p>Samsung Internet Android Full support 8.0</p>
+<p>nodejs Full support 10.0.0</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race"><code>race()</code></a></p>
+<p>Chrome Full support 32</p>
+<p>Edge Full support 12</p>
+<p>Firefox Full support 29</p>
+<p>IE No support No</p>
+<p>Opera Full support 19</p>
+<p>Safari Full support 8</p>
+<p>WebView Android Full support 4.4.3</p>
+<p>Chrome Android Full support 32</p>
+<p>Firefox Android Full support 29</p>
+<p>Opera Android Full support 19</p>
+<p>Safari iOS Full support 8</p>
+<p>Samsung Internet Android Full support 2.0</p>
+<p>nodejs Full support 0.12</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject"><code>reject()</code></a></p>
+<p>Chrome Full support 32</p>
+<p>Edge Full support 12</p>
+<p>Firefox Full support 29</p>
+<p>IE No support No</p>
+<p>Opera Full support 19</p>
+<p>Safari Full support 8</p>
+<p>WebView Android Full support 4.4.3</p>
+<p>Chrome Android Full support 32</p>
+<p>Firefox Android Full support 29</p>
+<p>Opera Android Full support 19</p>
+<p>Safari iOS Full support 8</p>
+<p>Samsung Internet Android Full support 2.0</p>
+<p>nodejs Full support 0.12</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve"><code>resolve()</code></a></p>
+<p>Chrome Full support 32</p>
+<p>Edge Full support 12</p>
+<p>Firefox Full support 29</p>
+<p>IE No support No</p>
+<p>Opera Full support 19</p>
+<p>Safari Full support 8</p>
+<p>WebView Android Full support 4.4.3</p>
+<p>Chrome Android Full support 32</p>
+<p>Firefox Android Full support 29</p>
+<p>Opera Android Full support 19</p>
+<p>Safari iOS Full support 8</p>
+<p>Samsung Internet Android Full support 2.0</p>
+<p>nodejs Full support 0.12</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then"><code>then()</code></a></p>
+<p>Chrome Full support 32</p>
+<p>Edge Full support 12</p>
+<p>Firefox Full support 29</p>
+<p>IE No support No</p>
+<p>Opera Full support 19</p>
+<p>Safari Full support 8</p>
+<p>WebView Android Full support 4.4.3</p>
+<p>Chrome Android Full support 32</p>
+<p>Firefox Android Full support 29</p>
+<p>Opera Android Full support 19</p>
+<p>Safari iOS Full support 8</p>
+<p>Samsung Internet Android Full support 2.0</p>
+<p>nodejs Full support 0.12</p>
+<h2 id="thank-you" class="complete-left-block-header">Thank you!</h2>
+<h3 id="report-sent" class="right-block-header">Report sent</h3>
+<h4 id="what-happens-next">What happens next?</h4>
+<p>Our team will review your report. Once we verify the information you have supplied we will update this browser compatability table accordingly.</p>
+<h4 id="can-i-keep-track-of-my-report">Can I keep track of my report?</h4>
+<p>You can join the GitHub repository to see updates and commits for this table data:</p>
+<p><a href="https://github.com/mdn/browser-compat-data">https://github.com/mdn/browser-compat-data</a></p>
+<p>Finish</p>
+<h2 id="tell-us-whats-wrong-with-this-table" class="left-block-header">Tell us what’s wrong with this table</h2>
+<p>Our goal is to provide accurate, real values for all our compatibility data tables. Notifying MDN of inaccurate data or supplying new data pushes us further towards our goal of providing 100% real values to the developer community.<br />
+Thank you for helping.</p>
+<h3 id="section" class="highlight-spanned"></h3>
+<p>1Which browsers are affected?</p>
+<p>Please select the browser or browsers which are affected.</p>
+<figure>
+<img src="./Promise%20-%20JavaScript%20_%20MDN_files/chrome.b49946f7739f.svg" alt="Chrome" /><figcaption>Chrome</figcaption>
+</figure>
+<p>Chrome</p>
+<figure>
+<img src="./Promise%20-%20JavaScript%20_%20MDN_files/edge.17e0c684cea1.svg" alt="Edge" /><figcaption>Edge</figcaption>
+</figure>
+<p>Edge</p>
+<figure>
+<img src="./Promise%20-%20JavaScript%20_%20MDN_files/firefox.1c9f202ae696.svg" alt="Firefox" /><figcaption>Firefox</figcaption>
+</figure>
+<p>Firefox</p>
+<figure>
+<img src="./Promise%20-%20JavaScript%20_%20MDN_files/internet-explorer.4bb2b5f99e82.svg" alt="Internet Explorer" /><figcaption>Internet Explorer</figcaption>
+</figure>
+<p>Internet Explorer</p>
+<figure>
+<img src="./Promise%20-%20JavaScript%20_%20MDN_files/opera.da441711d2f6.svg" alt="Opera" /><figcaption>Opera</figcaption>
+</figure>
+<p>Opera</p>
+<figure>
+<img src="./Promise%20-%20JavaScript%20_%20MDN_files/safari.aca6ae03b671.svg" alt="Safari" /><figcaption>Safari</figcaption>
+</figure>
+<p>Safari</p>
+<figure>
+<img src="./Promise%20-%20JavaScript%20_%20MDN_files/android.201ce5d041f7.svg" alt="Android webview" /><figcaption>Android webview</figcaption>
+</figure>
+<p>Android webview</p>
+<figure>
+<img src="./Promise%20-%20JavaScript%20_%20MDN_files/chrome.b49946f7739f.svg" alt="Chrome for Android" /><figcaption>Chrome for Android</figcaption>
+</figure>
+<p>Chrome for Android</p>
+<figure>
+<img src="./Promise%20-%20JavaScript%20_%20MDN_files/firefox.1c9f202ae696.svg" alt="Firefox for Android" /><figcaption>Firefox for Android</figcaption>
+</figure>
+<p>Firefox for Android</p>
+<figure>
+<img src="./Promise%20-%20JavaScript%20_%20MDN_files/opera.da441711d2f6.svg" alt="Opera for Android" /><figcaption>Opera for Android</figcaption>
+</figure>
+<p>Opera for Android</p>
+<figure>
+<img src="./Promise%20-%20JavaScript%20_%20MDN_files/safari.aca6ae03b671.svg" alt="Safari on iOS" /><figcaption>Safari on iOS</figcaption>
+</figure>
+<p>Safari on iOS</p>
+<figure>
+<img src="./Promise%20-%20JavaScript%20_%20MDN_files/samsung-internet.8faa2ee1b8a1.svg" alt="Samsung Internet" /><figcaption>Samsung Internet</figcaption>
+</figure>
+<p>Samsung Internet</p>
+<figure>
+<img src="./Promise%20-%20JavaScript%20_%20MDN_files/nodejs.33dfe169dc5c.svg" alt="Node.js" /><figcaption>Node.js</figcaption>
+</figure>
+<p>Node.js</p>
+<p>2Which table row is affected?</p>
+<p>PromisePromise() constructorall()allSettled()anycatch()finally()race()reject()resolve()then()</p>
+<p>Next step (2 of 2)</p>
+<p>3Can you provide a brief explanation?</p>
+<p>Briefly outline the issue you are highlighting. Minimum 10 and maximum 1,000 characters.</p>
+<p>4Do you have any supporting material?</p>
+<p>Optional</p>
+<p>Browser documentation and release notes are good supporting items to accompany your message. A demo hosted on services like Codepen or JSBin are perfect for providing real examples of your findings.</p>
+<p>Connection error:Sorry, we can’t seem to reach the server. We are working to fix the problem. Please try again later.</p>
+<p>Send report</p>
+<p>Previous step</p>
+<hr />
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#">What are we missing?</a></p>
+<h3 id="Legend" class="offscreen">Legend</h3>
+<dl>
+<dt>Full support  </dt>
+<dd>Full support No support  
+</dd>
+<dd>No support See implementation notes.**
+</dd>
+<dd>See implementation notes.
+</dd>
+</dl>
+<h2 id="See_also">See also</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises">Using promises</a></li>
+<li><a href="http://promisesaplus.com/">Promises/A+ specification</a></li>
+<li><a href="https://medium.com/@ramsunvtech/promises-of-promise-part-1-53f769245a53">Venkatraman.R - JS Promise (Part 1, Basics)</a></li>
+<li><a href="https://medium.com/@ramsunvtech/js-promise-part-2-q-js-when-js-and-rsvp-js-af596232525c#.dzlqh6ski">Venkatraman.R - JS Promise (Part 2 - Using Q.js, When.js and RSVP.js)</a></li>
+<li><a href="https://tech.io/playgrounds/11107/tools-for-promises-unittesting/introduction">Venkatraman.R - Tools for Promises Unit Testing</a></li>
+<li><a href="http://www.html5rocks.com/en/tutorials/es6/promises/">Jake Archibald: JavaScript Promises: There and Back Again</a></li>
+<li><a href="http://de.slideshare.net/domenicdenicola/callbacks-promises-and-coroutines-oh-my-the-evolution-of-asynchronicity-in-javascript">Domenic Denicola: Callbacks, Promises, and Coroutines – Asynchronous Programming Patterns in JavaScript</a></li>
+<li><a href="http://www.mattgreer.org/articles/promises-in-wicked-detail/">Matt Greer: JavaScript Promises … In Wicked Detail</a></li>
+<li><a href="https://www.promisejs.org/">Forbes Lindesay: promisejs.org</a></li>
+<li><a href="https://github.com/anonyco/SPromiseMeSpeedJS/blob/master/README.md">Speed-polyfill to polyfill both promise availability and promise performance.</a></li>
+<li><a href="https://github.com/jakearchibald/es6-promise/">Promise polyfill</a></li>
+<li><a href="https://www.udacity.com/course/javascript-promises--ud898">Udacity: JavaScript Promises</a></li>
+</ul>
+<h4 id="metadata">Metadata</h4>
+<ul>
+<li><strong>Last modified:</strong> Sep 8, 2020, <a href="https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise$history">by MDN contributors</a></li>
+</ul>
+<p>Related Topics</p>
+<ol type="1">
+<li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects">Standard built-in objects</a></strong></li>
+<li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a></strong></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#"><strong>Methods</strong></a>
+<ol type="1">
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all" title="The Promise.all() method takes an iterable of promises as an input, and returns a single Promise that resolves to an array of the results of the input promises. This returned promise will resolve when all of the input&#39;s promises have resolved, or if the input iterable contains no promises. It rejects immediately upon any of the input promises rejecting or non-promises throwing an error, and will reject with this first rejection message / error."><code>Promise.all()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled" title="The Promise.allSettled() method returns a promise that resolves after all of the given promises have either fulfilled or rejected, with an array of objects that each describes the outcome of each promise."><code>Promise.allSettled()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any" title="Promise.any() takes an iterable of Promise objects and, as soon as one of the promises in the iterable fulfils, returns a single promise that resolves with the value from that promise. If no promises in the iterable fulfil (if all of the given promises are rejected), then the returned promise is rejected with an AggregateError, a new subclass of Error that groups together individual errors. Essentially, this method is the opposite of Promise.all()."><code>Promise.any()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch" title="The catch() method returns a Promise and deals with rejected cases only. It behaves the same as calling Promise.prototype.then(undefined, onRejected) (in fact, calling obj.catch(onRejected) internally calls obj.then(undefined, onRejected)). This means that you have to provide an onRejected function even if you want to fall back to an undefined result value - for example obj.catch(() =&gt; {})."><code>Promise.prototype.catch()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally" title="The finally() method returns a Promise. When the promise is settled, i.e either fulfilled or rejected, the specified callback function is executed. This provides a way for code to be run whether the promise was fulfilled successfully or rejected once the Promise has been dealt with."><code>Promise.prototype.finally()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then" title="The then() method returns a Promise. It takes up to two arguments: callback functions for the success and failure cases of the Promise."><code>Promise.prototype.then()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race" title="The Promise.race() method returns a promise that fulfills or rejects as soon as one of the promises in an iterable fulfills or rejects, with the value or reason from that promise."><code>Promise.race()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject" title="The Promise.reject() method returns a Promise object that is rejected with a given reason."><code>Promise.reject()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve" title="The Promise.resolve() method returns a Promise object that is resolved with a given value. If the value is a promise, that promise is returned; if the value is a thenable (i.e. has a &quot;then&quot; method), the returned promise will &quot;follow&quot; that thenable, adopting its eventual state; otherwise the returned promise will be fulfilled with the value. This function flattens nested layers of promise-like objects (e.g. a promise that resolves to a promise that resolves to something) into a single layer."><code>Promise.resolve()</code></a></li>
+</ol></li>
+<li><strong>Inheritance:</strong></li>
+<li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function"><code>Function</code></a></strong></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#"><strong>Properties</strong></a>
+<ol type="1">
+<li>**<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/arguments" title="The function.arguments property refers to an an array-like object corresponding to the arguments passed to a function. Use the simple variable arguments instead. This property is restricted to non-strict functions."><code>Function.arguments</code></a></li>
+<li>**<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/caller" title="The function.caller property returns the function that invoked the specified function. It returns null for strict, async function and generator function callers."><code>Function.caller</code></a></li>
+<li>**<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/displayName" title="The function.displayName property returns the display name of the function."><code>Function.displayName</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/length" title="The length property indicates the number of parameters expected by the function."><code>Function.length</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/name" title="A Function object&#39;s read-only name property indicates the function&#39;s name as specified when it was created, or it may be rather anonymous or &#39;&#39;(an empty string) for functions created anonymously."><code>Function.name</code></a></li>
+</ol></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#"><strong>Methods</strong></a>
+<ol type="1">
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply" title="The apply() method calls a function with a given this value, and arguments provided as an array (or an array-like object)."><code>Function.prototype.apply()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind" title="The bind() method creates a new function that, when called, has its this keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called."><code>Function.prototype.bind()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call" title="The call() method calls a function with a given this value and arguments provided individually."><code>Function.prototype.call()</code></a></li>
+<li>****<del><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/toSource" title="The toSource() method returns a string representing the source code of the object. This method is usually called internally by JavaScript and not explicitly in code. You can call toSource() while debugging to examine the contents of an object."><code>Function.prototype.toSource()</code></a></del></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/toString" title="The toString() method returns a string representing the source code of the function."><code>Function.prototype.toString()</code></a></li>
+</ol></li>
+<li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"><code>Object</code></a></strong></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#"><strong>Properties</strong></a>
+<ol type="1">
+<li>**<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/proto" title="The __proto__ property of Object.prototype is an accessor property (a getter function and a setter function) that exposes the internal [[Prototype]] (either an object or null) of the object through which it is accessed."><code>Object.prototype.__proto__</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor" title="The constructor property returns a reference to the Object constructor function that created the instance object. Note that the value of this property is a reference to the function itself, not a string containing the function&#39;s name."><code>Object.prototype.constructor</code></a></li>
+</ol></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#"><strong>Methods</strong></a>
+<ol type="1">
+<li>**<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/__defineGetter__" title="The __defineGetter__ method binds an object&#39;s property to a function to be called when that property is looked up."><code>Object.prototype.__defineGetter__()</code></a></li>
+<li>**<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/__defineSetter__" title="The __defineSetter__ method binds an object&#39;s property to a function to be called when an attempt is made to set that property."><code>Object.prototype.__defineSetter__()</code></a></li>
+<li>**<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/__lookupGetter__" title="The __lookupGetter__ method returns the function bound as a getter to the specified property."><code>Object.prototype.__lookupGetter__()</code></a></li>
+<li>**<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/__lookupSetter__" title="The __lookupSetter__ method returns the function bound as a setter to the specified property."><code>Object.prototype.__lookupSetter__()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty" title="The hasOwnProperty() method returns a boolean indicating whether the object has the specified property as its own property (as opposed to inheriting it)."><code>Object.prototype.hasOwnProperty()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/isPrototypeOf" title="The isPrototypeOf() method checks if an object exists in another object&#39;s prototype chain."><code>Object.prototype.isPrototypeOf()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/propertyIsEnumerable" title="The propertyIsEnumerable() method returns a Boolean indicating whether the specified property is enumerable and is the object&#39;s own property."><code>Object.prototype.propertyIsEnumerable()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toLocaleString" title="The toLocaleString() method returns a string representing the object. This method is meant to be overridden by derived objects for locale-specific purposes."><code>Object.prototype.toLocaleString()</code></a></li>
+<li>****<del><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toSource" title="The toSource() method returns a string representing the source code of the object."><code>Object.prototype.toSource()</code></a></del></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString" title="The toString() method returns a string representing the object."><code>Object.prototype.toString()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf" title="The valueOf() method returns the primitive value of the specified object."><code>Object.prototype.valueOf()</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf" title="The Object.setPrototypeOf() method sets the prototype (i.e., the internal [[Prototype]] property) of a specified object to another object or null."><code>Object.setPrototypeOf()</code></a></li>
+</ol></li>
+</ol>
+<h2 id="learn-the-best-of-web-development" class="newsletter-teaser">Learn the best of web development</h2>
+<p>Get the latest and greatest from MDN delivered straight to your inbox.</p>
+<p>The newsletter is offered in English only at the moment.</p>
+<p>E-mail</p>
+<p>I’m okay with Mozilla handling my info as explained in this <a href="https://www.mozilla.org/privacy/">Privacy Policy</a>.</p>
+<p>Sign up now</p>
+<p>Hide Newsletter Sign-up</p>
+<p><a href="https://developer.mozilla.org/en-US/">MDN Web Docs</a></p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learn Web Development</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/MDN/About">About MDN</a></li>
+<li><p><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback</a></p></li>
+<li><a href="https://www.mozilla.org/about/">About</a></li>
+<li><a href="https://shop.spreadshirt.com/mdn-store/">MDN Web Docs Store</a></li>
+<li><a href="https://www.mozilla.org/contact/">Contact Us</a></li>
+<li><p><a href="https://www.mozilla.org/firefox/?utm_source=developer.mozilla.org&amp;utm_campaign=footer&amp;utm_medium=referral">Firefox</a></p></li>
+</ul>
+<h4 id="mdn">MDN</h4>
+<ul>
+<li><a href="https://twitter.com/mozdevnet"></a></li>
+<li><a href="https://github.com/mdn/"></a></li>
+</ul>
+<h4 id="mozilla">Mozilla</h4>
+<ul>
+<li><a href="https://twitter.com/mozilla"></a></li>
+<li><a href="https://www.instagram.com/mozillagram/"></a></li>
+</ul>
+<p>© 2005-2020 Mozilla and individual contributors. Content is available under <a href="https://developer.mozilla.org/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+<ul>
+<li><a href="https://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+<li><a href="https://www.mozilla.org/privacy/websites/">Privacy</a></li>
+<li><a href="https://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+</ul>
+<h2 id="modal-main-heading">Sign In</h2>
+<p>Sign in to enjoy the benefits of an MDN account. If you haven’t already created an account, you will be prompted to do so after signing in.</p>
+<p><a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FJavaScript%2FReference%2FGlobal_Objects%2FPromise">Sign in with Github</a> <a href="https://developer.mozilla.org/users/google/login/?next=%2Fen-US%2Fdocs%2FWeb%2FJavaScript%2FReference%2FGlobal_Objects%2FPromise">Sign in with Google</a></p>
+<p>Close modal</p>
+</body>
+</html>

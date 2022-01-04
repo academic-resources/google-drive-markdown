@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>02_http-requests</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="http-requests">HTTP Requests</h1>
+<p>Without a query, there wouldn’t be a need for a response! Let’s take a look at the <em>request</em>: the client-initiated portion of an HTTP exchange.</p>
+<p>We’ll cover:</p>
+<ul>
+<li>what an HTTP request looks like,</li>
+<li>fields that make up a request,</li>
+<li>and how to send a request of your own!</li>
+</ul>
+<h2 id="retrieving-hypertext">Retrieving hypertext</h2>
+<p>Years ago, daily shopping looked very different. Instead of walking the aisles and picking up what they wanted, customers would approach a counter and ask a clerk to retrieve the items on their list. The clerk was responsible for knowing where those items were located and how best to get them to the customer.</p>
+<p>While the retail industry has changed dramatically since that time, the Web follows that old tried-and-true pattern. You tell your browser which website you would like to access, and your browser hands that request off to a server that can get you what you’ve asked for. At the simplest level, the Web is just made up of computers asking each other for things!</p>
+<p>Your browser’s part in this transaction is called the <em>request</em>. Since the browser is acting on your behalf, we sometimes refer to it as the <em>user-agent</em> (you being the <em>user</em>). You might also hear this referred to more generically as the <em>client</em> in the exchange.</p>
+<h2 id="structure-of-an-http-request">Structure of an HTTP request</h2>
+<p>Your browser is designed to be compliant with the HTTP specification, so it knows how to translate your instructions into a well-formatted HTTP request. An important part of the HTTP spec is that it’s simple to read, so let’s take a look at an example.</p>
+<p>Here’s what the HTTP request looks like for visiting <code>appacademy.io</code>:</p>
+<pre class="text"><code>GET / HTTP/1.1
+Host: appacademy.io
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9</code></pre>
+<p>Let’s break it down!</p>
+<h3 id="request-line-http-verbs">Request-line &amp; HTTP verbs</h3>
+<p>The first line of an HTTP request is called the <strong>request-line</strong>, and it sets the stage for everything to come. It’s made up of three parts, separated by spaces:</p>
+<ul>
+<li>the <em>method</em>, indicated by an <em>HTTP verb</em>,</li>
+<li>the <em>URI (Uniform Resource Indicator)</em> that identifies what we’ve requested,</li>
+<li>and the <em>HTTP version</em> we expect to use (usually <code>HTTP/1.1</code> or <code>HTTP/2</code>).</li>
+</ul>
+<p>In our <code>appacademy.io</code> example, we can see that our version matches the most common HTTP version (<code>1.1</code>) and that our URI is <code>/</code>, or the <em>root</em> resource of our target. That first word, <code>GET</code> is the HTTP verb we’re using for this request.</p>
+<p>HTTP verbs are a simple way of declaring our intention to the server. We do the same thing with English verbs when asking for help: “Can you <strong>get</strong> me that?”, “Should I <strong>remove</strong> this?”, etc. HTTP has a small handful of verbs available, but we’re going to look at the five most common: <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>PATCH</code>, and <code>DELETE</code>.</p>
+<ul>
+<li><p><code>GET</code> is used for direct requests. A <code>GET</code> request is generally how websites are retrieved, and they only require that the server return a resource. These types of requests will never have a body. Any data you need to send in a <code>GET</code> request must be shared via the URI.</p></li>
+<li><p><code>POST</code> is typically used for creating new resources on the server. Most of the time, when you submit a form a <code>POST</code> request is generated. These types of requests can have a <em>body</em> containing any data the server might need to complete your request, like your username &amp; password or the contents of your shopping cart.</p></li>
+<li><p><code>PUT</code> requests are used to update a resource on the server. These will contain the whole resource you’d like to update. For example: when updating your name on a website, a <code>PUT</code> request will be generated containing not just your new name but also your user ID, email, etc.</p></li>
+<li><p><code>PATCH</code> requests are very similar to <code>PUT</code> requests, but do not require the whole resource to perform the update. Keeping with our example of updating your name: a <code>PATCH</code> request would only require your new name, not the rest of your account details, to succeed.</p></li>
+<li><p><code>DELETE</code> requests destroy resources on the server. These might be saved database records, like removing a product that’s sold out, or more ephemeral resources, like logging a user out of their current session.</p></li>
+</ul>
+<p>Ultimately, how these verbs get acted upon is up to the server. You could write an application that totally ignores these rules and uses a <code>DELETE</code> request to log in, but that’s only going to confuse your teammates and frustrate you in the future! It’s best to use them as the spec intends.</p>
+<h3 id="headers">Headers</h3>
+<p>The <em>request-line</em> sets the table, but it’s the headers that describe the menu! <em>Headers</em> are key/value pairs that come after the <em>request-line</em>. They each appear on separate lines and define metadata needed to process the request. Here are some common request headers you’ll see:</p>
+<ul>
+<li><p><code>Host</code>: The root path for our URI. This is typically the <em>domain</em> we’d like to request our resource from. As you can see above, our <code>Host</code> header for <code>appacademy.io</code> is, appropriately, <code>appacademy.io</code>.!</p></li>
+<li><p><code>User-Agent</code>: This header displays information about which browser the request originated from. It’s generally formatted as <code>name/version</code>. You can see in the <code>User-Agent</code> header above that we’re using <code>Chrome/76.0</code> &gt; Our <code>User-Agent</code> has much more content, including references to Mozilla, &gt;makers of the popular Firefox browser, and Safari, Apple’s default browser of &gt;choice. What gives? &gt; &gt;There is some <a href="https://security.stackexchange.com/questions/126407/why-does-chrome-send-four-browsers-in-the-user-agent-header">interesting history</a> behind those additional references, &gt;and you can use <a href="http://www.useragentstring.com/">www.useragentstring.com</a> for additional details about &gt;your current browser’s <code>user-agent</code>.</p></li>
+<li><p><code>Referer</code>: This defines the URL you’re coming from. There’s none in our example since we navigated directly to the App Academy website, but if we click any link on the page, the resulting HTTP request will have <code>Referer: https://appacademy.io/</code> in its headers. Also, you’re not reading it wrong - this header is misspelled! It should be “referrer”, but it was written incorrectly in the original specification and the typo stuck. Let this be a lesson: your poorly-written code might still be around in 20 years, too!</p></li>
+<li><p><code>Accept</code>: “Accept-” headers indicate what the client can receive. When we go to most websites, our <code>Accept</code> header will be long to ensure we get all the various types of content that site might include. However, we can modify this header in our requests to only get back certain types of data. One common use is setting <code>Accept: application/json</code> to get a response in JSON format instead of HTML. You may see variations of this header like <code>Accept-Language</code> for internationalized websites or <code>Accept-Encoding</code> for sites that support alternative compression formats.</p></li>
+<li><p><code>Content-*</code>: Content headers define details about the body of the request. The most common content header is <code>Content-Type</code>, which lets the server know what format we’re sending our body data as. This might be <code>application/json</code> from a JavaScript app or <code>application/x-www-form-urlencoded</code> for info submitted from a web form. Content headers will only show up on requests that support content in the body, so <code>GET</code> requests should never have this!</p></li>
+</ul>
+<p>There are LOTS of other header keys! <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers">MDN</a> has an exhaustive reference list with examples.</p>
+<h3 id="body">Body</h3>
+<p>When we need to send data that doesn’t fit in a header &amp; is too complex for the URI, we can place it in the <em>body</em> of our HTTP request. The body comes right after the headers and can be formatted a few different ways.</p>
+<p>The most common way form data is formatted is <em>URL encoding</em>. This is the default for data from web forms and looks a little like this:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb2-1" title="1">name=claire<span class="er">&amp;</span>age=29<span class="er">&amp;</span>iceCream=vanilla</a></code></pre></div>
+<p>Alternatively, you might format your request body using JSON or XML or some other standard. What’s most important is that you remember to set the appropriate <code>Content-Type</code> header so the server knows how to interpret your body.</p>
+<h2 id="sending-an-http-request-from-the-command-line">Sending an HTTP request from the command line</h2>
+<p>We’ve discussed HTTP requests mostly in the context of your web browser, but that’s not the only way. There are lots of HTTP clients out there you can use to send requests.</p>
+<p>Let’s stay close to the exchange itself with a lightweight tool that requires us to do most of the work ourselves. We’ll use <code>netcat</code> (also known as <code>nc</code>), a utility that comes as part of Unix-like environments such as Ubuntu and macOS.</p>
+<p><code>netcat</code> allows you to open a direct connection with a URL and manually send HTTP requests. Let’s see how this works with a quick <code>GET</code> request to App Academy’s homepage.</p>
+<p>From your command line, type <code>nc -v appacademy.io 80</code>. This will open a connection to <code>appacademy.io</code> on port 80 (the port most-often used for web connections). Once the connection is established, you’ll be able to type out a simple HTTP request by hand! Let’s copy the <em>request-line</em> and <code>Host:</code> header from our request above:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">GET</span> / HTTP/1.1</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="ex">Host</span>: appacademy.io</a></code></pre></div>
+<p>Now hit “Return” on your keyboard twice. This will send the request and display the server’s response. You should see something similar to this:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">HTTP/1.1</span> 301 Moved Permanently</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="ex">Date</span>: Thu, 03 Oct 2019 04:17:23 GMT</a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="ex">Transfer-Encoding</span>: chunked</a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="ex">Connection</span>: keep-alive</a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="ex">Cache-Control</span>: max-age=3600</a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="ex">Expires</span>: Thu, 03 Oct 2019 05:17:23 GMT</a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="ex">Location</span>: https://www.appacademy.io/</a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="ex">Server</span>: cloudflare</a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="ex">CF-RAY</span>: 51fc1b0f8b98d304-ATL</a></code></pre></div>
+<p>Congratulations! You’ve sent your first manual HTTP request. We’ll discuss the parts of the HTTP response you received in an upcoming lesson.</p>
+<p>Try it one more time, this time typing <code>nc -v neverssl.com 80</code> and making the same HTTP request with the command <code>GET / HTTP/1.1</code> and the header <code>Host: neverssl.com</code>. Don’t forget to hit Enter twice. Look! That’s the HTML coming back from the server! Neat-o!</p>
+<p>You can read much more about <code>netcat</code> by invoking the manual: <code>man nc</code>. We’ll also use it in an upcoming project for extra practice.</p>
+<h2 id="what-weve-learned">What we’ve learned</h2>
+<p>HTTP requests are the first step to getting what you want on the web. Having completed this lesson, you should be able to recount:</p>
+<ul>
+<li>what an HTTP request is,</li>
+<li>some common HTTP request verbs,</li>
+<li>a rough outline of the HTTP request format,</li>
+<li>and how to use <code>netcat</code> to send HTTP requests from your command line.</li>
+</ul>
+</body>
+</html>

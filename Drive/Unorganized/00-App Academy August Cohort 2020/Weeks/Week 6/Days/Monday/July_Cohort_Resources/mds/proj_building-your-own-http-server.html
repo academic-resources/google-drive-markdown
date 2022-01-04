@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>proj_building-your-own-http-server</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="http-from-zero-to-server">HTTP: From Zero To Server</h1>
+<p>We’ve been knee-deep in everyone else’s HTTP workflow; let’s build one of our own! Together we’re going to build an HTTP server from scratch. We’ll cover:</p>
+<ul>
+<li>Node’s <code>http</code> module &amp; <code>createServer</code> method,</li>
+<li>Routing requests based on multiple factors,</li>
+<li>Returning content and headers in your response,</li>
+<li>and testing your server locally using command line tools.</li>
+</ul>
+<p><strong>DO NOT GIVE INTO COPY &amp; PASTE!</strong> In the following instructions, you will see code samples. Do <em>not</em> copy and paste them. Type them in or watch someone type them in. Do this so that you <em>feel</em> the syntax. If you just copy and paste, when it comes to typing the code yourself, you will be at a loss.</p>
+<h2 id="phase-1-proof-of-concept">Phase 1: Proof of concept</h2>
+<p>Your goal is to go from “zero to server” in this project, so let’s get “zero” ready. Clone this project’s starter repo:</p>
+<pre><code>git clone https://github.com/appacademy-starters/http-from-zero-to-server-starter.git</code></pre>
+<p>You’ll notice that this starter project only has a <code>test</code> directory. In the project directory, outside of the <code>test</code> folder, create an empty file named <code>server.js</code>.</p>
+<p>You’ll be basing your server on the <code>http</code> module that’s built into Node.js. You can’t use this module until we include it in your application! Use the <code>require</code> directive to import Node’s <code>http</code> module right away and assign it to a variable named <code>http</code>.</p>
+<p>Next, time to get a bare bones server up and running. Drop down a line and call the <code>createServer</code> method on <code>http</code>. This method accepts a single argument that is a function. The function should have two parameters. By convention, we name the parameters <code>req</code> (short for “<em>req</em>uest”) and <code>res</code> (short for “<em>res</em>ponse”). Within the body of that function argument, call the <code>end</code> method on <code>response</code>. This will generate a simple <code>200 OK</code> response to any request at all, regardless of what’s asking for.</p>
+<p>Remember that you can’t run your server without letting it know where to expect requests from! Chain the <code>listen</code> method on to the end of the <code>createServer</code> call we just made. <code>listen</code> accepts two parameters: a port number and a function. The port number indicates where the server will be accessible from, and the function argument is meant for any initialization code you’d like to run when the server starts. Use port <code>3000</code> and, within your function argument, <code>console.log</code> a helpful startup message. Make sure you include the port number in your message in case your users forget!</p>
+<p>By now you should have a dead-simple HTTP server. This app will accept requests and respond with <code>http</code>’s default response: <code>200 OK</code>, no custom headers, no body content. You can confirm this by running the server in your terminal and visiting <code>http://localhost:3000</code> in your browser. You won’t see any content in the browser, but check the “Network” tab in your dev tools to confirm that the server response matches what you expect. You may need to refresh the page to see the request/response.</p>
+<p>Save and commit your changes to version control! This completes your first unit of work and results in a runnable server that’s all your own. We know we can do better, though! Let’s look into routing.</p>
+<p>To see what this should look like, have a peek at [About Node.js®].</p>
+<h2 id="phase-2-status-code-all-the-things">Phase 2: Status code all the things!</h2>
+<p>When discussing Web servers, <em>routing</em> generally refers to controlling which part of your application processes each request. For example, you may route emails differently than website requests. There are lots of complex, high throughput routing libraries available for Node, but you’ll keep it as simple as possible here and rely on your hard work.</p>
+<p>You need something to control how we route each request. For your server, the best bet is the request’s <code>url</code> property. This is a key provided by <code>http</code> that’s present on every <code>request</code> our server processes. You can check the <code>url</code> of each inbound request and decide what we want to return for that particular resource.</p>
+<h3 id="phase-2a-start-small">Phase 2a: Start small</h3>
+<p>Build out your routing like so: when someone requests a particular <code>Reason-Phrase</code>, you should respond with the matching HTTP <code>Status-Code</code>. For example:</p>
+<ul>
+<li><code>http://localhost:300/OK</code> should return <code>HTTP/1.1 200 OK</code></li>
+</ul>
+<p>You can use the [<code>writeHead</code>] method on the <code>response</code> object to control which status code gets returned.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="cf">if</span> (<span class="va">req</span>.<span class="at">url</span> <span class="op">===</span> <span class="st">&quot;/OK&quot;</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-2" title="2">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Inbound &#39;OK&#39; request being processed...&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-3" title="3">  <span class="va">res</span>.<span class="at">writeHead</span>(<span class="dv">200</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-4" title="4">  <span class="va">res</span>.<span class="at">end</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="op">}</span></a></code></pre></div>
+<p>There are a couple important details to note in this condition:</p>
+<ul>
+<li>Your <code>url</code> property includes a leading slash.</li>
+<li>You still have to <code>end()</code> each response to send it back to the client. If you don’t do this, the browser will wait and wait and wait and, eventually, tell you that the request timed out.</li>
+</ul>
+<p>This code should go in the function argument of <code>createServer</code>, where your <code>req</code> and <code>res</code> params are accessible.</p>
+<p>You’re only controlling for one <code>url</code> option here. What about all the other possibilities? Before you save this portion of our work as done, you should add an <code>else</code> to this condition that returns a appropriate status code. A perfect choice would be status code 404! Don’t forget to include a relevant <code>console.log</code> in your else condition as well.</p>
+<p>Before saving &amp; committing, make sure you can run your server, and that visiting <code>http://localhost:3000/OK</code> returns a <code>200</code>, while visiting any other URL returns a <code>404</code>. You should see a new line in your terminal, consistent with the messages in your <code>console.log</code>s, for each request that’s made.</p>
+<h3 id="phase-2b-rinse-repeat">Phase 2b: Rinse, repeat</h3>
+<p>You’ve read about many more codes than <code>200</code> and <code>404</code>. Extend your server to respond to each reason phrase we discussed in our readings. You can omit <code>OK</code> and <code>Not Found</code> because we’ve already handled those cases.</p>
+<p>Here’s an alphabetical list of each <code>url</code> your server should respond to:</p>
+<pre class="text"><code>- /Bad-Request
+- /Created
+- /Forbidden
+- /Found
+- /Gateway-Timeout
+- /Internal-Server-Error
+- /Moved-Permanently
+- /Unauthorized</code></pre>
+<p>It’s up to you to look up the matching HTTP status codes each will need to return. Use [DuckDuckGo] (or your favorite search engine) to search for HTTP status codes. You can bet there’s at least a Wikipedia entry on it!</p>
+<p>Follow the pattern you used with <code>/OK</code> and don’t forget the details. This may feel a little repetitive, but it’s a great opportunity to practice matching status codes to reasons. This is the sort of minutiae that technical interviewers will want to quiz you on during your job hunt - try to lock it down now!</p>
+<p>Save, commit, and test your new server out.</p>
+<h2 id="phase-3-confirming-functionality">Phase 3: Confirming functionality</h2>
+<p>The tricky thing about the HTTP specification that most clients are configured to respond to certain codes in certain ways. Browsers, for example, will try to follow redirection codes and will show special pages for server errors unless directed otherwise. This means that browser testing can be a little flaky.</p>
+<p>Try using one of a couple tools you already know how to use to test our server, instead of hoping the browser will keep working the way you’d like.</p>
+<h2 id="phase-3a-a-command-line-client">Phase 3a: A command line client</h2>
+<p>The lowest-friction approach you can take is using a native command line tool to test our HTTP server like <code>netcat</code>.</p>
+<p>Run your server in one terminal, and in another terminal run <code>nc -v localhost 3000</code>. This will run <code>netcat</code> in “verbose” mode, so you get a little extra info with each request. Now you can manually craft HTTP requests to your server.</p>
+<p>Try typing (or copying/pasting) <code>GET /OK HTTP/1.1</code> first. Remember to press the “Return” key twice after entering that request line. You should receive a <code>200 OK</code> response immediately. If your response is taking more than a couple seconds to process, try restarting <code>netcat</code> by pressing <code>Ctrl</code> + <code>C</code> on your keyboard and starting over.</p>
+<p>Now test your other routes - do they all return what you expect?</p>
+<h2 id="phase-3b-double-check-your-work">Phase 3b: Double-check your work</h2>
+<p>Automated testing can be a little more work, but don’t worry: we’ve put some tests together for you!</p>
+<p>With your server running on port 3000 and run <code>mocha</code> on your command line to watch the tests fly!</p>
+<p>Your tests will confirm that your routes are all returning the expected status codes, and will let you know of any that might have been missed. If you get confused, don’t be afraid to read the test file for extra details. The code &amp; comments within may be clearer than mocha’s error messaging.</p>
+<h2 id="bonus-phase-take-it-up-a-notch">Bonus phase: Take it up a notch</h2>
+<p>Ready to go beyond the basics? Here are some improvements to explore:</p>
+<ul>
+<li><p>The [<code>writeHead</code>] on <em>response</em> accepts a second argument: an object containing custom headers. Knowing this, try to update your responses with redirection codes to <em>actually</em> redirect. Is there a custom header you can use to tell your browser where the request should be directed to? Try searching for more information about the status code that redirects the browser to another resource.</p></li>
+<li><p>This project didn’t discuss the <a href="https://nodejs.org/api/http.html#http_response_write_chunk_encoding_callback"><code>write</code></a> method on the <em>response</em> object, but it adds content to the body of your response. Using both the correct <code>Content-Type</code> header and the <code>write</code> method, try sending some HTML back with responses. Can you render a very simple webpage from your server?</p></li>
+<li><p>Certain codes (like <em>201</em>, for example) are often only seen in response to <code>POST</code> requests. You’ve only been using <code>GET</code> requests so far, but you could improve your server by having it check the <code>request.method</code> before responding to some URLs. Try limiting the <code>Created</code> response to <code>POST</code> requests only. Otherwise, it should respond with a <em>405 Method Not Allowed</em>, a status code created for just the purpose of telling clients that they’ve used an HTTP method (GET, POST, PUT, PATCH, or DELETE) that the URL doesn’t support.</p></li>
+</ul>
+<h2 id="what-youve-learned">What you’ve learned</h2>
+<p>You’ve mastered the art of the HTTP server - congratulations! You’ll soon grow into larger, more fully-featured frameworks, but don’t forget your basics. Every server out there is based on these same simple principles.</p>
+<p>After completing this project, you should be able to:</p>
+<ul>
+<li>write up a basic server for Node,</li>
+<li>respond to requests of all types with appropriate status codes &amp; data,</li>
+<li>and test servers (both your own and others’) using reliable command line tools.</li>
+</ul>
+<p>[About Node.js®]: https://nodejs.org/en/about/#about-node-js [<code>writeHead</code>]: https://nodejs.org/api/http.html#http_response_writehead_statuscode_statusmessage_headers [DuckDuckGo]: https://www.duckduckgo.com</p>
+</body>
+</html>

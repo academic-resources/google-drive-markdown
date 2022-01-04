@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>07_wt-pt4_mocha-hooks-and-chai-spies</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h2 id="writing-tests">Writing Tests</h2>
+<p>This will be the final demo in our writing tests series! In this reading we’ll be covering:</p>
+<ul>
+<li>Using <code>Mocha</code> Hooks to DRY up testing</li>
+<li>Using <code>Chai Spies</code> to “spy” on functions to see how many times they’ve been invoked</li>
+</ul>
+<h2 id="part-four-mocha-hooks-and-chai-spies">Part Four: Mocha Hooks and Chai Spies</h2>
+<p>Let’s jump right back in. We’ve written some nice unit tests up to this point:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="at">describe</span>(<span class="st">&quot;Dog Constructor Function&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-2" title="2">  <span class="at">it</span>(<span class="st">&#39;should have a &quot;name&quot; property&#39;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="kw">const</span> layla <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&quot;Layla&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-4" title="4">    <span class="at">expect</span>(layla).<span class="va">to</span>.<span class="va">have</span>.<span class="at">property</span>(<span class="st">&quot;name&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-5" title="5">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-6" title="6"></a>
+<a class="sourceLine" id="cb1-7" title="7">  <span class="at">it</span>(<span class="st">&#39;should set the &quot;name&quot; property when a new dog is created&#39;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-8" title="8">    <span class="kw">const</span> layla <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&quot;Layla&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-9" title="9">    <span class="co">// we are using the eql function to compare the value of layla.name</span></a>
+<a class="sourceLine" id="cb1-10" title="10">    <span class="co">// with the provided string</span></a>
+<a class="sourceLine" id="cb1-11" title="11">    <span class="at">expect</span>(<span class="va">layla</span>.<span class="at">name</span>).<span class="va">to</span>.<span class="at">eql</span>(<span class="st">&quot;Layla&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-12" title="12">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>This is how unit tests are supposed to work, buuuut it will be annoying over time if we have to define a new <code>Dog</code> instance in <em>every single spec</em>. <code>Mocha</code> has some built in functionality to help us with this problem though: Mocha Hooks!</p>
+<h3 id="introducing-mocha-hooks">Introducing Mocha Hooks</h3>
+<p><a href="https://mochajs.org/#hooks">Mocha Hooks</a> give you a convenient way to do set up prior to running a related group of specs or to do some clean up after running those specs. Using hooks helps to keep your testing code DRY so you don’t unnecessarily repeat set up and clean up code within each test.</p>
+<p>Mocha Hooks have very descriptive function names and two levels of granularity - before/after each block of tests <em>or</em> before/after each test:</p>
+<ol type="1">
+<li>the hooks <code>before</code> and <code>after</code> will be invoked either before or after the block of tests is run (depending on which function is used)</li>
+<li>the hooks <code>beforeEach</code> and <code>afterEach</code> will be invoked either before or after <strong>each</strong> test (depending on which function is used)</li>
+</ol>
+<p>Let’s look at a simple example that uses each of the available hooks to log a message to the console. Two placeholder tests are also defined to help demonstrate the differences between the available hooks:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">const</span> assert <span class="op">=</span> <span class="at">require</span>(<span class="st">&#39;assert&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="at">describe</span>(<span class="st">&#39;Hooks demo&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-4" title="4">  <span class="at">before</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-5" title="5">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Before hook...&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-6" title="6">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-7" title="7"></a>
+<a class="sourceLine" id="cb2-8" title="8">  <span class="at">beforeEach</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-9" title="9">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Before each hook...&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-10" title="10">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-11" title="11"></a>
+<a class="sourceLine" id="cb2-12" title="12">  <span class="at">afterEach</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-13" title="13">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;After each hook...&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-14" title="14">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-15" title="15"></a>
+<a class="sourceLine" id="cb2-16" title="16">  <span class="at">after</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-17" title="17">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;After hook...&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-18" title="18">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-19" title="19"></a>
+<a class="sourceLine" id="cb2-20" title="20">  <span class="at">it</span>(<span class="st">&#39;Placeholder one&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-21" title="21">    <span class="va">assert</span>.<span class="at">equal</span>(<span class="kw">true</span><span class="op">,</span> <span class="kw">true</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-22" title="22">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-23" title="23"></a>
+<a class="sourceLine" id="cb2-24" title="24">  <span class="at">it</span>(<span class="st">&#39;Placeholder two&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-25" title="25">    <span class="va">assert</span>.<span class="at">equal</span>(<span class="kw">true</span><span class="op">,</span> <span class="kw">true</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-26" title="26">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-27" title="27"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Running the above spec produces the following output:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">  <span class="ex">Hooks</span> demo</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="ex">Before</span> hook...</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="ex">Before</span> each hook...</a>
+<a class="sourceLine" id="cb3-4" title="4">    ✓ <span class="ex">Placeholder</span> one</a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="ex">After</span> each hook...</a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="ex">Before</span> each hook...</a>
+<a class="sourceLine" id="cb3-7" title="7">    ✓ <span class="ex">Placeholder</span> two</a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="ex">After</span> each hook...</a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="ex">After</span> hook...</a>
+<a class="sourceLine" id="cb3-10" title="10"></a>
+<a class="sourceLine" id="cb3-11" title="11"></a>
+<a class="sourceLine" id="cb3-12" title="12">  <span class="ex">2</span> passing (5ms)</a></code></pre></div>
+<p>Notice that the <code>before</code> and <code>after</code> hooks only ran once while the <code>beforeEach</code> and <code>afterEach</code> hooks each ran once per test.</p>
+<p>Hooks are defined within a <code>describe</code> or <code>context</code> function. While hooks can be defined before, after, or interspersed with your tests, keeping all of your hooks together (before or after your tests) will help others to read and understand your code.</p>
+<p>Defining hooks out of their logical order has no effect on when they’re ran. Consider the following example that defines an <code>afterHook</code> before a <code>beforeEach</code> hook:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">const</span> assert <span class="op">=</span> <span class="at">require</span>(<span class="st">&#39;assert&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-2" title="2"></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="at">describe</span>(<span class="st">&#39;Hooks demo&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-4" title="4">  <span class="at">afterEach</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-5" title="5">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;After each hook...&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-6" title="6">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-7" title="7"></a>
+<a class="sourceLine" id="cb4-8" title="8">  <span class="at">beforeEach</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-9" title="9">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Before each hook...&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-10" title="10">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-11" title="11"></a>
+<a class="sourceLine" id="cb4-12" title="12">  <span class="at">it</span>(<span class="st">&#39;Placeholder one&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-13" title="13">    <span class="va">assert</span>.<span class="at">equal</span>(<span class="kw">true</span><span class="op">,</span> <span class="kw">true</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-14" title="14">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-15" title="15"></a>
+<a class="sourceLine" id="cb4-16" title="16">  <span class="at">it</span>(<span class="st">&#39;Placeholder two&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-17" title="17">    <span class="va">assert</span>.<span class="at">equal</span>(<span class="kw">true</span><span class="op">,</span> <span class="kw">true</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-18" title="18">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-19" title="19"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Running the above spec produces the following output:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">  <span class="ex">Hooks</span> demo</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="ex">Before</span> each hook...</a>
+<a class="sourceLine" id="cb5-3" title="3">    ✓ <span class="ex">Placeholder</span> one</a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="ex">After</span> each hook...</a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="ex">Before</span> each hook...</a>
+<a class="sourceLine" id="cb5-6" title="6">    ✓ <span class="ex">Placeholder</span> two</a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="ex">After</span> each hook...</a>
+<a class="sourceLine" id="cb5-8" title="8"></a>
+<a class="sourceLine" id="cb5-9" title="9"></a>
+<a class="sourceLine" id="cb5-10" title="10">  <span class="ex">2</span> passing (6ms)</a></code></pre></div>
+<p>The order of your hooks only matters when you define multiple hooks of the same type. When a hook type is defined more than once, they’ll be ran in the order that they’re defined in:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">const</span> assert <span class="op">=</span> <span class="at">require</span>(<span class="st">&#39;assert&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-2" title="2"></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="at">describe</span>(<span class="st">&#39;Hooks demo&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-4" title="4">  <span class="at">beforeEach</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-5" title="5">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Before each hook #1...&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-6" title="6">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-7" title="7"></a>
+<a class="sourceLine" id="cb6-8" title="8">  <span class="at">beforeEach</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-9" title="9">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Before each hook #2...&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-10" title="10">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-11" title="11"></a>
+<a class="sourceLine" id="cb6-12" title="12">  <span class="at">it</span>(<span class="st">&#39;Placeholder one&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-13" title="13">    <span class="va">assert</span>.<span class="at">equal</span>(<span class="kw">true</span><span class="op">,</span> <span class="kw">true</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-14" title="14">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-15" title="15"></a>
+<a class="sourceLine" id="cb6-16" title="16">  <span class="at">it</span>(<span class="st">&#39;Placeholder two&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-17" title="17">    <span class="va">assert</span>.<span class="at">equal</span>(<span class="kw">true</span><span class="op">,</span> <span class="kw">true</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-18" title="18">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-19" title="19"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Running the above spec produces the following output:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1">  <span class="ex">Hooks</span> demo</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="ex">Before</span> each hook <span class="co">#1...</span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="ex">Before</span> each hook <span class="co">#2...</span></a>
+<a class="sourceLine" id="cb7-4" title="4">    ✓ <span class="ex">Placeholder</span> one</a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="ex">Before</span> each hook <span class="co">#1...</span></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="ex">Before</span> each hook <span class="co">#2...</span></a>
+<a class="sourceLine" id="cb7-7" title="7">    ✓ <span class="ex">Placeholder</span> two</a>
+<a class="sourceLine" id="cb7-8" title="8"></a>
+<a class="sourceLine" id="cb7-9" title="9"></a>
+<a class="sourceLine" id="cb7-10" title="10">  <span class="ex">2</span> passing (5ms)</a></code></pre></div>
+<p>You can also define hooks within nested <code>describe</code> or <code>context</code> functions:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">const</span> assert <span class="op">=</span> <span class="at">require</span>(<span class="st">&#39;assert&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-2" title="2"></a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="at">describe</span>(<span class="st">&#39;Hooks demo&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-4" title="4">  <span class="at">before</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-5" title="5">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Before hook...&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-6" title="6">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-7" title="7"></a>
+<a class="sourceLine" id="cb8-8" title="8">  <span class="at">beforeEach</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-9" title="9">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Before each hook...&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-10" title="10">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-11" title="11"></a>
+<a class="sourceLine" id="cb8-12" title="12">  <span class="at">afterEach</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-13" title="13">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;After each hook...&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-14" title="14">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-15" title="15"></a>
+<a class="sourceLine" id="cb8-16" title="16">  <span class="at">after</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-17" title="17">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;After hook...&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-18" title="18">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-19" title="19"></a>
+<a class="sourceLine" id="cb8-20" title="20">  <span class="at">it</span>(<span class="st">&#39;Placeholder one&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-21" title="21">    <span class="va">assert</span>.<span class="at">equal</span>(<span class="kw">true</span><span class="op">,</span> <span class="kw">true</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-22" title="22">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-23" title="23"></a>
+<a class="sourceLine" id="cb8-24" title="24">  <span class="at">it</span>(<span class="st">&#39;Placeholder two&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-25" title="25">    <span class="va">assert</span>.<span class="at">equal</span>(<span class="kw">true</span><span class="op">,</span> <span class="kw">true</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-26" title="26">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-27" title="27"></a>
+<a class="sourceLine" id="cb8-28" title="28">  <span class="at">describe</span>(<span class="st">&#39;nested tests&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-29" title="29">    <span class="at">before</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-30" title="30">      <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Nested before hook...&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-31" title="31">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-32" title="32">  </a>
+<a class="sourceLine" id="cb8-33" title="33">    <span class="at">beforeEach</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-34" title="34">      <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Nested before each hook...&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-35" title="35">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-36" title="36">  </a>
+<a class="sourceLine" id="cb8-37" title="37">    <span class="at">afterEach</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-38" title="38">      <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Nested after each hook...&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-39" title="39">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-40" title="40">  </a>
+<a class="sourceLine" id="cb8-41" title="41">    <span class="at">after</span>(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-42" title="42">      <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Nested after hook...&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-43" title="43">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-44" title="44"></a>
+<a class="sourceLine" id="cb8-45" title="45">    <span class="at">it</span>(<span class="st">&#39;Placeholder one&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-46" title="46">      <span class="va">assert</span>.<span class="at">equal</span>(<span class="kw">true</span><span class="op">,</span> <span class="kw">true</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-47" title="47">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-48" title="48">  </a>
+<a class="sourceLine" id="cb8-49" title="49">    <span class="at">it</span>(<span class="st">&#39;Placeholder two&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-50" title="50">      <span class="va">assert</span>.<span class="at">equal</span>(<span class="kw">true</span><span class="op">,</span> <span class="kw">true</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-51" title="51">    <span class="op">}</span>)<span class="op">;</span>  </a>
+<a class="sourceLine" id="cb8-52" title="52">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-53" title="53"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Running the above spec produces the following output:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1">  <span class="ex">Hooks</span> demo</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="ex">Before</span> hook...</a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="ex">Before</span> each hook...</a>
+<a class="sourceLine" id="cb9-4" title="4">    ✓ <span class="ex">Placeholder</span> one</a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="ex">After</span> each hook...</a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="ex">Before</span> each hook...</a>
+<a class="sourceLine" id="cb9-7" title="7">    ✓ <span class="ex">Placeholder</span> two</a>
+<a class="sourceLine" id="cb9-8" title="8"><span class="ex">After</span> each hook...</a>
+<a class="sourceLine" id="cb9-9" title="9">    <span class="ex">nested</span> tests</a>
+<a class="sourceLine" id="cb9-10" title="10"><span class="ex">Nested</span> before hook...</a>
+<a class="sourceLine" id="cb9-11" title="11"><span class="ex">Before</span> each hook...</a>
+<a class="sourceLine" id="cb9-12" title="12"><span class="ex">Nested</span> before each hook...</a>
+<a class="sourceLine" id="cb9-13" title="13">      ✓ <span class="ex">Placeholder</span> one</a>
+<a class="sourceLine" id="cb9-14" title="14"><span class="ex">Nested</span> after each hook...</a>
+<a class="sourceLine" id="cb9-15" title="15"><span class="ex">After</span> each hook...</a>
+<a class="sourceLine" id="cb9-16" title="16"><span class="ex">Before</span> each hook...</a>
+<a class="sourceLine" id="cb9-17" title="17"><span class="ex">Nested</span> before each hook...</a>
+<a class="sourceLine" id="cb9-18" title="18">      ✓ <span class="ex">Placeholder</span> two</a>
+<a class="sourceLine" id="cb9-19" title="19"><span class="ex">Nested</span> after each hook...</a>
+<a class="sourceLine" id="cb9-20" title="20"><span class="ex">After</span> each hook...</a>
+<a class="sourceLine" id="cb9-21" title="21"><span class="ex">Nested</span> after hook...</a>
+<a class="sourceLine" id="cb9-22" title="22"><span class="ex">After</span> hook...</a>
+<a class="sourceLine" id="cb9-23" title="23"></a>
+<a class="sourceLine" id="cb9-24" title="24"></a>
+<a class="sourceLine" id="cb9-25" title="25">  <span class="ex">4</span> passing (7ms)</a></code></pre></div>
+<p>Notice that the <code>before</code> and <code>after</code> hooks defined in the top-level <code>describe</code> function run only once while the <code>beforeEach</code> and <code>afterEach</code> hooks run before and after (respectively) for each of the tests defined in the top-level <code>describe</code> function <em>and</em> for each of the tests defined in the nested <code>describe</code> function.</p>
+<blockquote>
+<p>While the need to define nested hooks won’t come up very often (especially when you’re just starting out with unit testing), it is very helpful to be able to define a <code>beforeEach</code> hook in a top-level <code>describe</code> function that will run before every test in that block <em>and</em> before every test within nested <code>describe</code> or <code>context</code> functions (you’ll do exactly that in just a bit).</p>
+</blockquote>
+<p>You can also optionally pass a description for a hook or a named function:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="at">beforeEach</span>(<span class="st">&#39;My hook description&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-2" title="2">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Before each hook...&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-4" title="4"></a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="at">beforeEach</span>(<span class="kw">function</span> <span class="at">myHookName</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-6" title="6">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Before each hook...&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-7" title="7"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>If an error occurs with executing the hook, the hook description or function name will display in the console along with the error information to assist with debugging.</p>
+<h3 id="using-the-beforeeach-mocha-hook">Using the <code>beforeEach</code> Mocha Hook</h3>
+<p>Let’s go back to our spec and see how we can use hooks to DRY up our code. Here’s where we left off:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="at">describe</span>(<span class="st">&quot;Dog Constructor Function&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb11-2" title="2">  <span class="at">it</span>(<span class="st">&#39;should have a &quot;name&quot; property&#39;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb11-3" title="3">    <span class="kw">const</span> layla <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&quot;Layla&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-4" title="4">    <span class="at">expect</span>(layla).<span class="va">to</span>.<span class="va">have</span>.<span class="at">property</span>(<span class="st">&quot;name&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-5" title="5">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-6" title="6"></a>
+<a class="sourceLine" id="cb11-7" title="7">  <span class="at">it</span>(<span class="st">&#39;should set the &quot;name&quot; property when a new dog is created&#39;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb11-8" title="8">    <span class="kw">const</span> layla <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&quot;Layla&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-9" title="9">    <span class="co">// we are using the eql function to compare the value of layla.name</span></a>
+<a class="sourceLine" id="cb11-10" title="10">    <span class="co">// with the provided string</span></a>
+<a class="sourceLine" id="cb11-11" title="11">    <span class="at">expect</span>(<span class="va">layla</span>.<span class="at">name</span>).<span class="va">to</span>.<span class="at">eql</span>(<span class="st">&quot;Layla&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-12" title="12">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-13" title="13"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Let’s refactor our code to use a <code>beforeEach</code> hook to assign the value of our new dog instance:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="at">describe</span>(<span class="st">&quot;Dog&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-2" title="2">  <span class="co">// we&#39;ll declare our variable here to ensure it&#39;s available within the scope</span></a>
+<a class="sourceLine" id="cb12-3" title="3">  <span class="co">// of all the specs below</span></a>
+<a class="sourceLine" id="cb12-4" title="4">  <span class="kw">let</span> layla<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-5" title="5"></a>
+<a class="sourceLine" id="cb12-6" title="6">  <span class="co">// now for each test below we&#39;ll create a new instance to ensure each of our</span></a>
+<a class="sourceLine" id="cb12-7" title="7">  <span class="co">// dog instances is exactly the same</span></a>
+<a class="sourceLine" id="cb12-8" title="8">  <span class="at">beforeEach</span>(<span class="st">&quot;set up a dog instance&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-9" title="9">    layla <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&quot;Layla&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-10" title="10">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-11" title="11"></a>
+<a class="sourceLine" id="cb12-12" title="12">  <span class="at">describe</span>(<span class="st">&quot;Dog Constructor Function&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-13" title="13">    <span class="at">it</span>(<span class="st">&#39;should have a &quot;name&quot; property&#39;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-14" title="14">      <span class="at">expect</span>(layla).<span class="va">to</span>.<span class="va">have</span>.<span class="at">property</span>(<span class="st">&quot;name&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-15" title="15">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-16" title="16"></a>
+<a class="sourceLine" id="cb12-17" title="17">    <span class="at">it</span>(<span class="st">&#39;should set the &quot;name&quot; property when a new dog is created&#39;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-18" title="18">      <span class="at">expect</span>(<span class="va">layla</span>.<span class="at">name</span>).<span class="va">to</span>.<span class="at">eql</span>(<span class="st">&quot;Layla&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-19" title="19">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-20" title="20">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-21" title="21"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Now let’s write a test from the next method on the <code>Dog</code> class: <code>Dog.prototype.bark()</code>. For testing classes we’ll create a new <code>describe</code> function to test each individual method. We’ll now write our unit test inside taking advantage of our <code>beforeEach</code> hook:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="at">describe</span>(<span class="st">&quot;Dog&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb13-2" title="2">  <span class="kw">let</span> layla<span class="op">;</span></a>
+<a class="sourceLine" id="cb13-3" title="3"></a>
+<a class="sourceLine" id="cb13-4" title="4">  <span class="at">beforeEach</span>(<span class="st">&quot;set up a dog instance&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb13-5" title="5">    layla <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&quot;Layla&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb13-6" title="6">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb13-7" title="7"></a>
+<a class="sourceLine" id="cb13-8" title="8">  <span class="co">// etc, etc.</span></a>
+<a class="sourceLine" id="cb13-9" title="9"></a>
+<a class="sourceLine" id="cb13-10" title="10">  <span class="at">describe</span>(<span class="st">&quot;prototype.bark()&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb13-11" title="11">    <span class="at">it</span>(<span class="st">&quot;should return a string with the name of the dog barking&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb13-12" title="12">      <span class="at">expect</span>(<span class="va">layla</span>.<span class="at">bark</span>()).<span class="va">to</span>.<span class="at">eql</span>(<span class="st">&quot;Layla is barking&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb13-13" title="13">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb13-14" title="14">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb13-15" title="15"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Not only are we avoiding repeating our setup code within each test but we’ve improved the readability of our code by making it more self-descriptive. The code that runs before each test is literally contained with a hook named <code>beforeEach</code>!</p>
+<p>The <code>after</code> and <code>afterEach</code> hooks are generally used less often than the <code>before</code> and <code>beforeEach</code> hooks. Most of the time, it’s preferable to avoid using the <code>after</code> and <code>afterEach</code> hooks to perform clean up tasks after your tests. Instead, simply use the <code>before</code> and <code>beforeEach</code> hooks to create a clean starting point for each of your tests. Doing this will ensure that your tests run in a consistent, predictable manner.</p>
+<h3 id="using-chai-spies">Using Chai Spies</h3>
+<p>Sweet - let’s now look to the next method on the <code>Dog.prototype</code> - <code>Dog.prototype.chainChaseTail</code>. This instance method intakes a number (num) and will then invoke the <code>Dog.prototype.chaseTail</code> function <code>num</code> number of times. The <code>chaseTail</code> function will just <code>console.log</code> a string - meaning that we have no function output to test. The <code>Dog.prototype.chainChaseTail</code> function will additionally throw a <code>TypeError</code> if the incoming argument is not a number.</p>
+<p>We’ll start by setting up our outer <code>describe</code> block for the <code>prototype.chainChaseTail</code> method. Next we’ll add two <code>context</code> functions for our two contexts - valid <strong>or</strong> invalid parameters:</p>
+<blockquote>
+<p><code>context</code> is just an alias for <code>describe</code> it’s just another way to make your tests more understandable and readable, in this case we are testing our method with different parameters, and thus in different contexts. (not to be confused with “context” in the javascript sense of the value of <code>this</code>)</p>
+</blockquote>
+<div class="sourceCode" id="cb14"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="at">describe</span>(<span class="st">&quot;prototype.chainChaseTail()&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb14-2" title="2">  <span class="at">context</span>(<span class="st">&quot;with an invalid parameter&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-3" title="3">  <span class="at">context</span>(<span class="st">&quot;with a valid number parameter&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-4" title="4"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>We’ll start by writing our test for when the method is invoked with invalid parameters. To do this we’ll use Chai’s <a href="https://www.chaijs.com/api/bdd/#method_throw"><code>throw</code></a> method ensuring to wrap our error throwing function in another function:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb15-1" title="1"><span class="at">context</span>(<span class="st">&quot;with an invalid parameter&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb15-2" title="2">  <span class="at">it</span>(<span class="st">&quot;should throw a TypeError when given an argument that is not a number&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb15-3" title="3">    <span class="at">expect</span>(() <span class="kw">=&gt;</span> <span class="va">layla</span>.<span class="at">chainChaseTail</span>(<span class="st">&quot;3&quot;</span>)).<span class="va">to</span>.<span class="at">throw</span>(TypeError)<span class="op">;</span></a>
+<a class="sourceLine" id="cb15-4" title="4">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb15-5" title="5"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<blockquote>
+<p>Note here we are passing the literal string <code>"3"</code> not the number 3.</p>
+</blockquote>
+<p>Nice, now we can concentrate on our other context with a valid parameter - and how to go about testing this function. In order to test <code>chainChaseTail</code> properly we’ll need to see <em>how many times</em> the <code>chaseTail</code> method is invoked. Which means we’ll need to import another library that will add extra functionality to <code>Chai</code>. We’ll import the <a href="https://www.chaijs.com/plugins/chai-spies/"><code>Chai Spies</code></a> library using <code>npm install chai-spies</code> in our top level directory.</p>
+<p>Now we’ll insert a few lines of code to the top of file to set up our shiny new Chai Spies:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb16-1" title="1"><span class="co">// top of dog-spec.js</span></a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="kw">const</span> chai <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;chai&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb16-3" title="3"><span class="kw">const</span> expect <span class="op">=</span> <span class="va">chai</span>.<span class="at">expect</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb16-4" title="4"><span class="kw">const</span> spies <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;chai-spies&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb16-5" title="5"><span class="va">chai</span>.<span class="at">use</span>(spies)<span class="op">;</span></a></code></pre></div>
+<p>We now have access to the <code>chai-spies</code> module in our tests. The <code>Chai Spies</code> library provides a lot of added functionality including the ability to determine if a function has been called and how many times that function has been called.</p>
+<p>So let’s get started spying! We’ll setup our <code>it</code> function with an appropriate string:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb17-1" title="1"><span class="at">context</span>(<span class="st">&quot;with a valid number parameter&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb17-2" title="2">  <span class="at">it</span>(<span class="st">&quot;should call the chaseTail method n times&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb17-3" title="3"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Now in order to spy on a function we first need to tell Chai which function we’d like to spy on using the <code>chai.spy.on</code> method. In this case we’d like to spy on the instance of a Dog that will be invoking the <code>chainChaseTail</code> method to determine how many times the <code>chaseTail</code> method is then invoked.</p>
+<p>So we will set up our spy on the dog instance in question, as well as tell our chai spy which method to keep track of:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb18-1" title="1"><span class="at">context</span>(<span class="st">&quot;with a valid number parameter&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb18-2" title="2">  <span class="at">it</span>(<span class="st">&quot;should call the chaseTail method n times&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb18-3" title="3">    <span class="co">// the first argument will be the instance we are spying on</span></a>
+<a class="sourceLine" id="cb18-4" title="4">    <span class="co">// the second argument will be the method we want to keep track of</span></a>
+<a class="sourceLine" id="cb18-5" title="5">    <span class="kw">const</span> chaseTailSpy <span class="op">=</span> <span class="va">chai</span>.<span class="va">spy</span>.<span class="at">on</span>(layla<span class="op">,</span> <span class="st">&quot;chaseTail&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb18-6" title="6">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb18-7" title="7"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Now that our spy is set up we now need make sure our dog instance will actually call the <code>chainChaseTail</code> function! Otherwise our spy won’t have anything to spy on:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb19-1" title="1"><span class="at">context</span>(<span class="st">&quot;with a valid number parameter&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb19-2" title="2">  <span class="at">it</span>(<span class="st">&quot;should call the chaseTail method n times&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb19-3" title="3">    <span class="kw">const</span> chaseTailSpy <span class="op">=</span> <span class="va">chai</span>.<span class="va">spy</span>.<span class="at">on</span>(layla<span class="op">,</span> <span class="st">&quot;chaseTail&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb19-4" title="4">    <span class="co">// we need to invoke chainChaseTail because that is the method that</span></a>
+<a class="sourceLine" id="cb19-5" title="5">    <span class="co">// will invoke chaseTail which is the method we are spying on</span></a>
+<a class="sourceLine" id="cb19-6" title="6">    <span class="va">layla</span>.<span class="at">chainChaseTail</span>(<span class="dv">3</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb19-7" title="7">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb19-8" title="8"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Finally, we need to add our actual test - otherwise this is all for naught! Chai has some really nice chaining methods when it comes to checking how many times a function has been invoked. Here we’ll use the method chain of <code>expect(func).to.have.been.called.exactly(n)</code> to test that the method we are spying on - <code>chaseTail</code> was invoked a certain number of times:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb20-1" title="1"><span class="at">context</span>(<span class="st">&quot;with a valid number parameter&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb20-2" title="2">  <span class="at">it</span>(<span class="st">&quot;should call the chaseTail method n times&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb20-3" title="3">    <span class="kw">const</span> chaseTailSpy <span class="op">=</span> <span class="va">chai</span>.<span class="va">spy</span>.<span class="at">on</span>(layla<span class="op">,</span> <span class="st">&quot;chaseTail&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb20-4" title="4">    <span class="va">layla</span>.<span class="at">chainChaseTail</span>(<span class="dv">3</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb20-5" title="5">    <span class="co">// below is our actual test to see how many times our spy was invoked</span></a>
+<a class="sourceLine" id="cb20-6" title="6">    <span class="at">expect</span>(chaseTailSpy).<span class="va">to</span>.<span class="va">have</span>.<span class="va">been</span>.<span class="va">called</span>.<span class="at">exactly</span>(<span class="dv">3</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb20-7" title="7">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb20-8" title="8"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h3 id="testing-static-methods-on-classes">Testing static methods on classes</h3>
+<p>Sweet! We are almost done testing this class - just one more method to go. We’ll now work on testing the class method <code>Dog.cleanDogs</code>. To denote that this is a class method, not an instance method, our <code>describe</code> string will not use the word <code>prototype</code>:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb21-1" title="1"><span class="at">describe</span>(<span class="st">&quot;cleanDogs()&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb21-2" title="2">  <span class="at">it</span>(<span class="st">&quot;should return an array of each cleaned dog string&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb21-3" title="3"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Now the <code>Dog.cleanDogs</code> class method will intake an array of dogs and output an array where each element is a string noting that the passed in dog instance’s paws are now clean. In order to properly test this function we’ll probably want an array of more than one dog instance. Let’s create a new dog and pass an array of two dog instances to the <code>Dog.cleanDogs</code> method:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb22-1" title="1"><span class="at">describe</span>(<span class="st">&quot;cleanDogs()&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb22-2" title="2">  <span class="at">it</span>(<span class="st">&quot;should return an array of each cleaned dog string&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb22-3" title="3">    <span class="kw">const</span> zoey <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&quot;Zoey&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb22-4" title="4">    <span class="kw">let</span> cleanDogsArray <span class="op">=</span> <span class="va">Dog</span>.<span class="at">cleanDogs</span>([layla<span class="op">,</span> zoey])<span class="op">;</span></a>
+<a class="sourceLine" id="cb22-5" title="5">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb22-6" title="6"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Then we’ll create a variable for our expected output and compare the output we received from <code>Dog.cleanDogs</code>:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb23-1" title="1"><span class="at">describe</span>(<span class="st">&quot;cleanDogs()&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb23-2" title="2">  <span class="at">it</span>(<span class="st">&quot;should return an array of each cleaned dog string&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb23-3" title="3">    <span class="kw">const</span> zoey <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&quot;Zoey&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb23-4" title="4">    <span class="kw">let</span> cleanDogsArray <span class="op">=</span> <span class="va">Dog</span>.<span class="at">cleanDogs</span>([layla<span class="op">,</span> zoey])<span class="op">;</span></a>
+<a class="sourceLine" id="cb23-5" title="5">    <span class="kw">let</span> result <span class="op">=</span> [<span class="st">&quot;I cleaned Layla&#39;s paws.&quot;</span><span class="op">,</span> <span class="st">&quot;I cleaned Zoey&#39;s paws.&quot;</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb23-6" title="6">    <span class="at">expect</span>(cleanDogsArray).<span class="va">to</span>.<span class="at">eql</span>(result)<span class="op">;</span></a>
+<a class="sourceLine" id="cb23-7" title="7">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb23-8" title="8"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Awesome! We have fully testing the <code>Dog</code> class’s methods and learned a lot about testing along the way.</p>
+<p>Here is our full testing file so you can ensure you got everything:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">const</span> chai <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;chai&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-2" title="2"><span class="kw">const</span> expect <span class="op">=</span> <span class="va">chai</span>.<span class="at">expect</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb24-3" title="3"><span class="kw">const</span> spies <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;chai-spies&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-4" title="4"><span class="va">chai</span>.<span class="at">use</span>(spies)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-5" title="5"></a>
+<a class="sourceLine" id="cb24-6" title="6"><span class="co">// this is a relative path to the function location</span></a>
+<a class="sourceLine" id="cb24-7" title="7"><span class="kw">const</span> Dog <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;../problems/dog.js&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-8" title="8"></a>
+<a class="sourceLine" id="cb24-9" title="9"><span class="at">describe</span>(<span class="st">&quot;Dog&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb24-10" title="10">  <span class="kw">let</span> layla<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-11" title="11"></a>
+<a class="sourceLine" id="cb24-12" title="12">  <span class="at">beforeEach</span>(<span class="st">&quot;set up a dog instance&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb24-13" title="13">    layla <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&quot;Layla&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-14" title="14">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-15" title="15"></a>
+<a class="sourceLine" id="cb24-16" title="16">  <span class="at">describe</span>(<span class="st">&quot;Dog Constructor Function&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb24-17" title="17">    <span class="at">it</span>(<span class="st">&#39;should have a &quot;name&quot; property&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb24-18" title="18">      <span class="at">expect</span>(layla).<span class="va">to</span>.<span class="va">have</span>.<span class="at">property</span>(<span class="st">&quot;name&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-19" title="19">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-20" title="20"></a>
+<a class="sourceLine" id="cb24-21" title="21">    <span class="at">it</span>(<span class="st">&#39;should set the &quot;name&quot; property when a new dog is created&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb24-22" title="22">      <span class="at">expect</span>(<span class="va">layla</span>.<span class="at">name</span>).<span class="va">to</span>.<span class="at">eql</span>(<span class="st">&quot;Layla&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-23" title="23">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-24" title="24">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-25" title="25"></a>
+<a class="sourceLine" id="cb24-26" title="26">  <span class="at">describe</span>(<span class="st">&quot;prototype.bark()&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb24-27" title="27">    <span class="at">it</span>(<span class="st">&quot;should return a string with the name of the dog barking&quot;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb24-28" title="28">      <span class="at">expect</span>(<span class="va">layla</span>.<span class="at">bark</span>()).<span class="va">to</span>.<span class="at">eql</span>(<span class="st">&quot;Layla is barking&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-29" title="29">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-30" title="30">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-31" title="31"></a>
+<a class="sourceLine" id="cb24-32" title="32">  <span class="at">describe</span>(<span class="st">&quot;prototype.chainChaseTail()&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb24-33" title="33">    <span class="at">context</span>(<span class="st">&quot;with a valid number parameter&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb24-34" title="34">      <span class="at">it</span>(<span class="st">&quot;should call the chaseTail method n times&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb24-35" title="35">        <span class="kw">const</span> chaseTailSpy <span class="op">=</span> <span class="va">chai</span>.<span class="va">spy</span>.<span class="at">on</span>(layla<span class="op">,</span> <span class="st">&quot;chaseTail&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-36" title="36">        <span class="va">layla</span>.<span class="at">chainChaseTail</span>(<span class="dv">3</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-37" title="37"></a>
+<a class="sourceLine" id="cb24-38" title="38">        <span class="at">expect</span>(chaseTailSpy).<span class="va">to</span>.<span class="va">have</span>.<span class="va">been</span>.<span class="va">called</span>.<span class="at">exactly</span>(<span class="dv">3</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-39" title="39">      <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-40" title="40">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-41" title="41"></a>
+<a class="sourceLine" id="cb24-42" title="42">    <span class="at">context</span>(<span class="st">&quot;with an invalid parameter&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb24-43" title="43">      <span class="at">it</span>(<span class="st">&quot;should throw a TypeError when given an argument that is not a number&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb24-44" title="44">        <span class="at">expect</span>(() <span class="kw">=&gt;</span> <span class="va">layla</span>.<span class="at">chainChaseTail</span>(<span class="st">&quot;3&quot;</span>)).<span class="va">to</span>.<span class="at">throw</span>(TypeError)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-45" title="45">      <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-46" title="46">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-47" title="47">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-48" title="48"></a>
+<a class="sourceLine" id="cb24-49" title="49">  <span class="at">describe</span>(<span class="st">&quot;cleanDogs()&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb24-50" title="50">    <span class="at">it</span>(<span class="st">&quot;should return an array of each cleaned dog string&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb24-51" title="51">      <span class="kw">const</span> zoey <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>(<span class="st">&quot;Zoey&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-52" title="52">      <span class="kw">let</span> cleanDogsArray <span class="op">=</span> <span class="va">Dog</span>.<span class="at">cleanDogs</span>([layla<span class="op">,</span> zoey])<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-53" title="53">      <span class="kw">let</span> result <span class="op">=</span> [<span class="st">&quot;I cleaned Layla&#39;s paws.&quot;</span><span class="op">,</span> <span class="st">&quot;I cleaned Zoey&#39;s paws.&quot;</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-54" title="54">      <span class="at">expect</span>(cleanDogsArray).<span class="va">to</span>.<span class="at">eql</span>(result)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-55" title="55">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-56" title="56">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb24-57" title="57"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h2 id="what-you-learned">What you learned</h2>
+<p>In the upcoming project we’ll be covering a lot more Chai syntax - but don’t worry about memorizing this syntax! The point we are trying to make is that in the future you’ll be using a variety of software testing frameworks and assertion libraries - the most important things are to know the basics of how to structure tests as well as being able to read and parse documentation to write tests.</p>
+<p>In this series of readings we covered the basics of how to:</p>
+<ul>
+<li>properly format and denote your mocha tests using <code>describe</code>, <code>context</code> and <code>it</code> blocks</li>
+<li>write tests for individual functions as well as writing tests for classes</li>
+<li>use <code>chai-spies</code> to test how many times a function has been called</li>
+<li>test that functions will throw certain errors</li>
+<li>recognize and utilize the Mocha hooks: <code>before</code>, <code>beforeEach</code>, <code>after</code>, and <code>afterEach</code></li>
+</ul>
+</body>
+</html>

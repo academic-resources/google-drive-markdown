@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Test-Driven Development</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<h1 id="test-driven-development">Test-Driven Development</h1>
+<p>At this point of the course you have all encountered an automated test also known as a “spec” - short for specification. In software engineering a collection of automated tests, also known as test suites, are a common way to ensure that when a piece of code is run it will perform the minimum of a specified set of behaviors. We’ve used the JavaScript testing framework, Mocha, up to this point to test the behavior of functions of all kinds from <code class="sc-cMljjf hbDMZX">myForEach</code> to <code class="sc-cMljjf hbDMZX">avgValue</code> to ensure each function runs as intended.</p>
+<p>The main question we should be able to answer when writing any piece of code is: what does this code do? How should this code behave? One of the popular ways to answer this question is through a software development process called Test-driven development or TDD. TDD is a quick repetitive cycle that revolves around <em>first</em> determining what a piece of code should do and writing tests for that behavior <em>before actually writing any code</em>.</p>
+<p><em>Test-driven development</em> dictates that tests, not application code, should be written first, and then application code should only be written to pass the already written tests. When you finish this reading you should be able to identify the three steps of Test Driven Development as well as identify the advantages of using TDD to write code.</p>
+<h2 id="motivations-for-tdd">Motivations for TDD</h2>
+<p>Imagine being handed a file of 10 functions that all invoke each other and being told to add a new function to the mix and ensure all the previous functions work properly. First you’d have to figure out what each function actually did, then determine if they did what they were supposed to do. Sounds like a total pain right? A modern web application is thousands of lines of code that are worked on and maintained by teams of developers. Using TDD is one way for developers to ensure that the code written by every member of their team is testable and modular.</p>
+<p>Here are some of the biggest motivations for why developers use test-driven development:</p>
+<ol type="1">
+<li><p>Writing tests before code ensures that the code written <em>works</em>.</p>
+<ul>
+<li>Code written to pass specs is guaranteed to be testable.</li>
+<li>Code with pre-written tests easily allows other developers to add and test new code while ensuring nothing else breaks along the way.</li>
+</ul></li>
+<li><p>Only required code is written.</p>
+<ul>
+<li>In the face of having to write tests for every piece of added functionality TDD can help reduce bloated un-needed functionality.</li>
+<li>TDD and YAGNI (“you ain’t gonna need it”) go hand in hand!</li>
+</ul></li>
+<li><p>TDD helps enforce code modularity.</p>
+<ul>
+<li>A TDD developer is forced to think about their application in small, testable chunks - this ensures the developer will write each chunk to be modular and capable of individual testing.</li>
+</ul></li>
+<li>Better understanding of <em>what</em> the code should be doing.
+<ul>
+<li>Writing tests for a piece of code ensures that the developer writing that code knows what the piece of code is trying to achieve.</li>
+</ul></li>
+</ol>
+<p>Now that we’ve covered why developers would want to use TDD let’s go into <em>how</em> to do TDD.</p>
+<h2 id="the-three-steps-of-tdd-red-green-refactor">The three steps of TDD: red, green, refactor!</h2>
+<figure>
+<img src="./Test-Driven%20Development_files/rgr.png" alt="tdd-cycle" /><figcaption>tdd-cycle</figcaption>
+</figure>
+<p>The Test-driven development workflow can be broken down intro three simple steps. <strong>Red, Green, Refactor</strong>:</p>
+<ol type="1">
+<li><strong>Red</strong>: Write the tests and watch them fail (a failing test is red). It’s important to ensure the tests initially fail so that you don’t have false positives.</li>
+<li><strong>Green</strong>: Write the minimum amount of code to ensure the tests pass (a passing test will be green).</li>
+<li><strong>Refactor</strong>: Refactor the code you just wrote. Your job is not over when the tests pass! One of the most important things you do as a software developer is to ensure the code you write is easy to maintain and read.</li>
+</ol>
+<p>Generally, the TDD workflow loop of Red, Green, Refactor is quick. TDD developers will write small tests ensuring each individual part of their application works properly and their code looks good before moving on - making for a short development cycle.</p>
+<h2 id="what-you-learned">What you learned</h2>
+<p>TDD stands for test-driven development. TDD is a repetitive process that revolves around three steps: Red, Green, Refactor.</p>
+<p>Did you find this lesson helpful?</p>
+<p>No</p>
+<p>Yes</p>
+<p>✔︎ Mark As Complete</p>
+<p>Finished with this task? Click <strong>Mark as Complete</strong> to continue to the next page!</p>
+</body>
+</html>

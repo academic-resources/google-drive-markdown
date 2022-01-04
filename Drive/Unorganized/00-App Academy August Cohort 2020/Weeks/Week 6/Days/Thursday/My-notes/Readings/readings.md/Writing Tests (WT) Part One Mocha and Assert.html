@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Writing Tests (WT) Part One Mocha and Assert</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<p>**</p>
+<h1 id="writing-tests">Writing Tests</h1>
+<p>For weeks you have been using one of JavaScript’s most popular test frameworks, <code>Mocha</code> , to run tests that ensure a function you’ve written works as expected. It’s time to dive deeper into <strong>how</strong> to write our own tests using <code>Mocha</code> as our test framework coupled with Assertion libraries such as the built-in <code>Assert</code> module of Node or the <code>Chai</code> library.</p>
+<p>For the rest of the readings in this section we will be covering how to write tests. These readings will be done in the style of a code-along demo so make sure you follow these in order. When you have finished the next series of reading you should know how to:</p>
+<ul>
+<li>properly format and denote your mocha tests using <code>describe</code>, <code>context</code> and <code>it</code> blocks</li>
+<li>write tests for individual functions as well as writing tests for class instance and static methods</li>
+<li>test that functions will throw certain errors</li>
+<li>use <code>chai-spies</code> to test how many times a function has been called</li>
+<li>recognize and utilize the Mocha hooks: <code>before</code> , <code>beforeEach</code> , <code>after</code> , and <code>afterEach</code></li>
+</ul>
+<p>In this reading we’ll be covering:</p>
+<ul>
+<li>the file structure of testing with <code>Mocha</code></li>
+<li>testing with <code>Mocha</code> and Node’s built-in <code>Assert</code> module</li>
+</ul>
+<h2 id="part-zero-testing-file-structure">Part Zero: Testing file structure</h2>
+<p>We find that reading about testing is best understood when you can play around within the functions being tested so for that reason this reading will be in the style of a code along demo. We started this reading by created a directory called <code>testing-demo</code> where all the code within this reading will be written.</p>
+<p>Let’s start off with how to write tests for a basic function. Say we’ve been handed a directory with a function to test <code>problems/reverse-string.js</code> . Below is the named function we’ll be testing, <code>reverseString</code> , which will intake a string argument and then reverse it:</p>
+<p>```{style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} // in testing-demo/problems/reverse-string.js</p>
+<p>const reverseString = str =&gt; { // throws a specific error unless the the incoming arg is a string if (typeof str !== “string”) { throw new TypeError(“this function only accepts string args”); }</p>
+<p>return str .split("“) .reverse() .join(”"); };</p>
+<p>// note this function is being exported! module.exports = reverseString; ```</p>
+<p>How would you go about testing the above function? Let’s start by setting up our file system correctly. Whenever you are running tests with <code>Mocha</code> the important thing to know is that the <code>Mocha</code> CLI will automatically be looking for a directory named <code>test</code> .</p>
+<p>The created <code>test</code> directory’s file structure should mirror that of the files you intend to test - with each test file appending the word “spec” to the end of the file name. So for the above example we would create <code>test/reverse-string-spec.js</code> which should be on the same level as the <code>problems</code> directory.</p>
+<p>Our file structure should look like this:</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} testing-demo   └──   problems     └── reverse-string.js   test     └── reverse-string-spec.js</code></p>
+<p>Take a moment to ensure your file structure looks like the one above and that you’ve copied and pasted the <code>reverseString</code> function into the <code>reverse-string.js</code> file. Now that we’ve ensured our file structure is correct let’s write some tests!</p>
+<h2 id="part-one-writing-tests-with-mocha-and-assert">Part One: Writing tests with Mocha and Assert</h2>
+<p>The first step in any testing workflow is initializing our test file. Now let’s make a clear distinction before moving forward - <code>Mocha</code> is a test framework that specializes in <em>running</em> tests and presenting them in an organized user friendly way. The code responsible for actually verifying things for us will come from using an <em>Assertion Library</em>. Assertion Libraries will do the heavy lifting of comparing and verifying code while <code>Mocha</code> will run those tests and then present them to us.</p>
+<p>The tests we’ll be writing for this next section will use Node’s built-in <code>Assert</code> module as our Assertion Library.</p>
+<p>So inside of <code>test/reverse-string-spec.js</code> at the top of the file we will require the <code>assert</code> module and the function we intend to test:</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} const assert = require("assert"); // this is a relative path to the function's location const reverseString = require("../problems/reverse-string.js");</code></p>
+<p>Take a moment to open up the <a href="https://mochajs.org/#getting-started"><code>Mocha</code></a> documentation - it will come in handy as a reference for the syntax we’ll be using. The <code>Mocha</code> DSL (Domain Specific Language) comes with a few different interfaces or “flavors” of their DSL for our purposes we’ll be structuring our tests using the <a href="https://mochajs.org/#bdd">BDD interface</a>.</p>
+<p>The <code>describe</code> function is an organizational function that accepts a descriptive string and a callback. We’ll use the <code>describe</code> function to <strong>describe</strong> what we will be testing - in this case the <code>reverseString</code> function:</p>
+<p>```{style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} // test/reverse-string-spec.js</p>
+<p>const assert = require(“assert”); const reverseString = require(“../problems/reverse-string.js”);</p>
+<p>describe(“reverseString()”, function() {}); ```</p>
+<p>The callback handed to the <code>describe</code> function will be where we insert our actual tests. We can now use the <code>it</code> function - the <code>it</code> function is an organizational function we will use to wrap around each test we write. The <code>it</code> function accepts a descriptive string and callback to set up our test:</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} describe ('reverseString()', function () {   it('should reverse the input string', function () {     // a test will go here!   }) }</code></p>
+<p>The code written above will serve as a great template for future tests we wish to write. Finally, we can insert the actual test we intend to write within the callback handed to the <code>it</code> function. We’ll use the <a href="https://nodejs.org/api/assert.html#assert_assert_equal_actual_expected_message"><code>assert.strictEqual</code></a> function which allows you to compare one value with another value. We’ll use <code>assert.strictEqual</code> to compare two strings - one from our function’s result and our expected result which we will we define ourselves:</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} // remember we required the assert module at the top of this file describe("reverseString()", function() {   it("should reverse the input string", function() {     let test = reverseString("hello");     let result = "olleh";     // the line below is where the actual test is!     assert.strictEqual(test, result);   }); });</code></p>
+<p>Now if we run <code>mocha</code> in the upper most <code>testing-demo</code> directory we will see:</p>
+<p>```{style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} reverseString() ✓ should reverse the input string</p>
+<p>1 passing (5ms) ```</p>
+<p>We now have a working spec! Take notice of how <code>Mocha</code> structures its response in exactly the way we nested our test. The outer <code>describe</code> function’s message of <code>reverseString()</code> is on the upper level and the inner <code>it</code> function’s message of <code>should reverse the input string</code> is nested within.</p>
+<p>Strictly speaking we aren’t required to nest our <code>it</code> functions within <code>describe</code> functions but it is best practice to do so. As you can see yourself - it will make your tests a lot easier to read!</p>
+<p>Let’s add one more spec for <code>reverseString</code> , we’ll do this by adding another <code>it</code> function within the <code>describe</code> callback:</p>
+<p>```{style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} describe(“reverseString()”, function() { it(“should reverse the input string”, function() { let test = reverseString(“hello”); let result = “olleh”;</p>
+<pre><code>assert.strictEqual(test, result);</code></pre>
+<p>});</p>
+<p>it(“should reverse the input string and output the same capitalization”, function() { let test = reverseString(“Apple”); let result = “elppA”;</p>
+<pre><code>assert.strictEqual(test, result);</code></pre>
+<p>}); }); ```</p>
+<p>Running the <code>mocha</code> command again will return:</p>
+<p>```{style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} reverseString() ✓ should reverse the input string ✓ should reverse the input string and output the same capitalization</p>
+<p>2 passing (11ms) ```</p>
+<p>Looking good so far - head to the next reading to learn how to test errors.</p>
+<p>Did you find this lesson helpful?</p>
+<p>No</p>
+<p>Yes</p>
+<p>✔︎ Mark As Complete</p>
+<p>Finished with this task? Click <strong>Mark as Complete</strong> to continue to the next page!</p>
+</body>
+</html>

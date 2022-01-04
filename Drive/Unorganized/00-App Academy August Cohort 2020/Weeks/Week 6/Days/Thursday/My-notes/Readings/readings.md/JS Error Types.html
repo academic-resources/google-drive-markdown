@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>JS Error Types</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<p>**</p>
+<h1 id="a-comedy-of-errors-in-javascript">A Comedy of Errors in JavaScript</h1>
+<p>You know that feeling when you’ve just finished your perfect function then you go to run your code and: BAM! A big error is thrown? We all have felt that pain from the starting student to the experienced engineer. Runtime errors are a part of daily life when writing code. It is now time to dive into what each type of error you encounter means in order to more quickly and efficiently fix the problem that created that error.</p>
+<p>When you finish this reading you should be able to: identify the difference between <code class="sc-cMljjf hbDMZX">SyntaxError</code>, <code class="sc-cMljjf hbDMZX">ReferenceError</code>, and <code class="sc-cMljjf hbDMZX">TypeError</code>s as well as create and <code class="sc-cMljjf hbDMZX">throw</code> new errors.</p>
+<h2 id="javascript-errors">JavaScript Errors</h2>
+<p>In JavaScript the <code class="sc-cMljjf hbDMZX">Error</code> constructor function is responsible for creating different instances of <code class="sc-cMljjf hbDMZX">Error</code> objects. The <code class="sc-cMljjf hbDMZX">Error</code> object is how JavaScript deals with runtime errors and the <em>type</em> of error created and thrown will attempt to communicate <em>why</em> that error occurred.</p>
+<h3 id="creating-your-own-errors">Creating your own errors</h3>
+<p>Since the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error"><code class="sc-cMljjf hbDMZX">Error</code></a> constructor is just a constructor function we can use it to create new <code class="sc-cMljjf hbDMZX">Error</code> object instances with the following syntax:</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} new Error([message[, fileName[, lineNumber]]])</code></p>
+<p>As seen above you can optionally supply a <code class="sc-cMljjf hbDMZX">message</code>, <code class="sc-cMljjf hbDMZX">fileName</code> and <code class="sc-cMljjf hbDMZX">lineNumber</code> where the error occurred. The <code class="sc-cMljjf hbDMZX">Error</code> constructor is also somewhat unique in that you can call it with or without the <code class="sc-cMljjf hbDMZX">new</code> keyword and it will return a new <code class="sc-cMljjf hbDMZX">Error</code> object:</p>
+<p>```{style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} const first = Error(“I am an error object!”); const second = new Error(“I am too an error object!”);</p>
+<p>console.log(first); // Error: I am an error object! console.log(second); // Error: I am too an error object! ```</p>
+<p>Let’s take a look at what we can do with our newly created <code class="sc-cMljjf hbDMZX">Error</code> objects.</p>
+<h3 id="throwing-your-own-errors">Throwing your own errors</h3>
+<p>Tired of JavaScript being the only one to throw errors? Well you can too! Using the keyword <code class="sc-cMljjf hbDMZX">throw</code> you can throw your own runtime errors that will stop program execution.</p>
+<p>Let’s take a look at the syntax for <code class="sc-cMljjf hbDMZX">throw</code>:</p>
+<p>```{style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} function giveMeNumber(num) { if (typeof num !== “number”) { throw new Error(“Give me a number!”); } else { return “yay number!”; } }</p>
+<p>console.log(giveMeNumber(1)); // prints “yay number!”; console.log(giveMeNumber(“apple”)); // Uncaught Error: Give me a number! console.log(giveMeNumber(1)); // doesn’t get run ```</p>
+<p>Now as we can see in the above example throwing an error is a powerful tool that stops program execution. If we wanted to throw an error <em>without</em> stopping program execution we can use a <code class="sc-cMljjf hbDMZX">try...catch</code> block.</p>
+<p>Let’s look at the syntax for using the <code class="sc-cMljjf hbDMZX">try...catch</code> block syntax:</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} try {   // statements that will be attempted to here } catch (error) {   // if an error is thrown it will be "caught"   // allowing the program to continue execution   // these statements will be run and the program will continue! }</code></p>
+<p>We normally use <code class="sc-cMljjf hbDMZX">try...catch</code> blocks with functions that might throw an error. Let’s look at an example where an error <em>will not</em> be thrown:</p>
+<p>```{style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} function safeDivide(a, b) { if (b === 0) { throw new Error(“cannot divide by zero”); } else { return a / b; } }</p>
+<p>try { console.log(safeDivide(30, 5)); // prints 6 } catch (error) { console.error(error.name + “:” + error.message); }</p>
+<p>console.log(“hello”); // prints hello ```</p>
+<p><strong>Note</strong>: We can use <code class="sc-cMljjf hbDMZX">console.error</code> instead of <code class="sc-cMljjf hbDMZX">console.log</code> to make logged errors more noticeable.</p>
+<p>Above you can see our <code class="sc-cMljjf hbDMZX">safeDivide</code> function ran as expected. Now let’s see what happens when an error will be thrown and <strong>caught</strong> inside a <code class="sc-cMljjf hbDMZX">try...catch</code> block:</p>
+<p>```{style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} function safeDivide(a, b) { if (b === 0) { throw new Error(“cannot divide by zero”); } else { return a / b; } }</p>
+<p>try { console.log(safeDivide(30, 0)); } catch (error) { console.error(error.name + “:” + error.message); // Error: cannot divide by zero } // the above error will be caught allowing our program to continue! console.log(“hello”); // prints “hello” ```</p>
+<p>Those are the basics of creating and throwing your own errors. You can <code class="sc-cMljjf hbDMZX">throw</code> your newly created <code class="sc-cMljjf hbDMZX">Error</code> to stop program execution or use a <code class="sc-cMljjf hbDMZX">try...catch</code> block to catch your error and continue running your code. Now that we’ve learned how to create new errors let’s go over the core errors built into JavaScript and what they signify.</p>
+<h2 id="types-of-javascript-errors">Types of JavaScript errors</h2>
+<p>There are seven core errors you’ll encounter in JavaScript and each type of error will try to communicate why that error occurred:</p>
+<ol type="1">
+<li><code class="sc-cMljjf hbDMZX">SyntaxError</code> - represents an error in the syntax of the code.</li>
+<li><code class="sc-cMljjf hbDMZX">ReferenceError</code> - represents an error thrown when an invalid reference is made.</li>
+<li><code class="sc-cMljjf hbDMZX">TypeError</code> - represents an error when a variable or parameter is not of a valid type.</li>
+<li><code class="sc-cMljjf hbDMZX">RangeError</code> - representing an error for when a numeric variable or parameter is outside of its valid range.</li>
+<li><code class="sc-cMljjf hbDMZX">InternalError</code> - represents an error in the internal JavaScript engine.</li>
+<li><code class="sc-cMljjf hbDMZX">EvalError</code> - represents an error with the global <code class="sc-cMljjf hbDMZX">eval</code> function.</li>
+<li><code class="sc-cMljjf hbDMZX">URIError</code> - represents an error that occurs when <code class="sc-cMljjf hbDMZX">encodeURI()</code> or <code class="sc-cMljjf hbDMZX">decodeURI()</code> are passed invalid parameters.</li>
+</ol>
+<p>For this reading we’ll be going in depth of the three most common errors you have encountered so far: <code class="sc-cMljjf hbDMZX">SyntaxError</code>, <code class="sc-cMljjf hbDMZX">ReferenceError</code>, and <code class="sc-cMljjf hbDMZX">TypeError</code>.</p>
+<h3 id="syntaxerror">SyntaxError</h3>
+<p>A SyntaxError is thrown when the JavaScript engine attempts to parse code that does not conform to the syntax of the JavaScript language. When learning the JavaScript language this error is a constant companion for any missing <code class="sc-cMljjf hbDMZX">}</code> or misspelled <code class="sc-cMljjf hbDMZX">function</code> keywords.</p>
+<p>Let’s look at a piece of code that would throw a syntax error:</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} funtion broken () { // Uncaught SyntaxError: Unexpected identifier   console.log("I'm broke") }</code></p>
+<p>Another example with an extra curly brace <code class="sc-cMljjf hbDMZX">}</code>:</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} function broken () { // Uncaught SyntaxError: Unexpected identifier   console.log("I'm broke") }} // Uncaught SyntaxError: Unexpected token '}'</code></p>
+<p>The examples go on and on - you can count on a <code class="sc-cMljjf hbDMZX">SyntaxError</code> to be thrown whenever you attempt to run code that is not syntactically correct JavaScript.</p>
+<p><strong>Important!</strong> One thing to note about Syntax Errors is that many of them can’t be caught using <code class="sc-cMljjf hbDMZX">try</code> <code class="sc-cMljjf hbDMZX">catch</code> blocks.</p>
+<p>For instance, the following code will throw a <code class="sc-cMljjf hbDMZX">SyntaxError</code> and no matter how hard you try, you can’t catch it.</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} try {     if (true { // throws "SyntaxError: Unexpected token '{'"         console.log("SyntaxErrors are the worst!");     } } catch (e) {     console.log(e); }</code></p>
+<p>The missing parenthesis after <code class="sc-cMljjf hbDMZX">true</code> will throw a <code class="sc-cMljjf hbDMZX">SyntaxError</code> but can’t be caught by the <code class="sc-cMljjf hbDMZX">catch</code> block.</p>
+<p>This is because this kind of <code class="sc-cMljjf hbDMZX">SyntaxError</code> happens at <em>compile time</em> not <em>run time</em>. Any errors that happen at <em>compile time</em> can’t be caught using <code class="sc-cMljjf hbDMZX">try</code> <code class="sc-cMljjf hbDMZX">catch</code> blocks.</p>
+<h3 id="referenceerror">ReferenceError</h3>
+<p>Straight from the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError">MDN docs</a>: “The <code class="sc-cMljjf hbDMZX">ReferenceError</code> object represents an error when a non-existent variable is referenced.” This is the error that you’ll encounter when attempting to reference a variable that does not exist (either within your current scope or at all).</p>
+<p>Let’s take a took at some examples for the causes of this error. One common cause for this error is misspelling a variable name:</p>
+<p>```{style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} function callPuppy() { const puppy = “puppy”; console.log(pupy); }</p>
+<p>callPuppy(); // ReferenceError: pupy is not defined ```</p>
+<p>Another common cause for a thrown <code class="sc-cMljjf hbDMZX">ReferenceError</code> is attempting to access a variable that is not in scope:</p>
+<p>```{style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} function callPuppy() { const puppy = “puppy”; }</p>
+<p>console.log(puppy); // ReferenceError: puppy is not defined ```</p>
+<p>The aptly named <code class="sc-cMljjf hbDMZX">ReferenceError</code> will be thrown whenever you attempt to <em>reference</em> a variable that doesn’t exist.</p>
+<h3 id="typeerror">TypeError</h3>
+<p>A <code class="sc-cMljjf hbDMZX">TypeError</code> is commonly thrown for a couple of reasons:</p>
+<ol type="1">
+<li>When an operation cannot be performed because the operand is a value of the wrong type.</li>
+<li>When you are attempting to modify a value that cannot be changed.</li>
+</ol>
+<p>Let’s look at a couple of examples that will each throw a <code class="sc-cMljjf hbDMZX">TypeError</code> for a different reason. Below we are attempting an operation (in this case a function call) on a value of the wrong type:</p>
+<p>```{style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} let dog; // Remember unassigned variables are undefined!</p>
+<p>dog(); // TypeError: dog is not a function ```</p>
+<p>In the above example we attempt to invoke a declared but not assigned variable (which will evaluate to <code class="sc-cMljjf hbDMZX">undefined</code>). This will cause a <code class="sc-cMljjf hbDMZX">TypeError</code> because <code class="sc-cMljjf hbDMZX">undefined</code> cannot be invoked - it is the wrong type.</p>
+<p>Next let’s look at a example of attempting to change a value that cannot be changed:</p>
+<p>```{style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} const puppy = “puppy”;</p>
+<p>puppy = “apple”; // TypeError: Assignment to constant variable. ```</p>
+<p>Attempting te reassign a <code class="sc-cMljjf hbDMZX">const</code> declared variable will result in a <code class="sc-cMljjf hbDMZX">TypeError</code>. You’ve probably run into many other examples of <code class="sc-cMljjf hbDMZX">TypeError</code> yourself but, the most important thing to know is that a <code class="sc-cMljjf hbDMZX">TypeError</code> is thrown when you attempting to perform an operation on the wrong type of value.</p>
+<h3 id="catching-known-errors">Catching known errors</h3>
+<p>Now that we’ve covered the the names of common JavaScript errors as well as how to use a <code class="sc-cMljjf hbDMZX">try...catch</code> block we can combine these two ideas to catch specific types of errors using <code class="sc-cMljjf hbDMZX">instanceof</code>:</p>
+<p>```{style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} function callThatArg(arg) { arg(); // this will cause a TypeError because callThatArg is being passed a number }</p>
+<p>try { callThatArg(42); console.log(“call successful”); // this line never executes } catch (error) { if (error instanceof TypeError) { console.error(<code>Wrong Type: ${error.message}</code>); // prints: Wrong Type: arg is not a function } else { console.error(error.message); // prints out any errors that aren’t TypeErrors; } }</p>
+<p>console.log(“done”); // prints: done ```</p>
+<h2 id="what-you-learned">What you learned</h2>
+<p>If you read an error and know <em>why</em> that error is being thrown it’ll be much easier to find the cause of the problem! In this reading we went over how to create and throw new <code class="sc-cMljjf hbDMZX">Error</code> objects as well as the definitions for some of the most common types of errors: <code class="sc-cMljjf hbDMZX">SyntaxError</code>, <code class="sc-cMljjf hbDMZX">ReferenceError</code>, and <code class="sc-cMljjf hbDMZX">TypeError</code>s.</p>
+<p>Did you find this lesson helpful?</p>
+<p>No</p>
+<p>Yes</p>
+<p>✔︎ Mark As Complete</p>
+<p>Finished with this task? Click <strong>Mark as Complete</strong> to continue to the next page!</p>
+</body>
+</html>

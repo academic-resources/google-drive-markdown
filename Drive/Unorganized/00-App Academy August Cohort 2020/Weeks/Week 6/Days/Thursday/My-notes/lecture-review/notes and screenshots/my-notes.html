@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>my-notes</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<h1 id="why-do-we-test">Why do we test</h1>
+<ul>
+<li><p>Make collaboration easier</p></li>
+<li><p>Produce documentation</p></li>
+</ul>
+<h3 id="the-job-of-a-testing-framework-is-to-run-tests-and-present-them-to-a-user.">The job of a testing framework is to run tests and present them to a user.</h3>
+<h3 id="an-assertion-library-is-the-backbone-of-any-written-test---it-is-the-code-that-we-use-to-write-our-tests.">An assertion library is the backbone of any written test - it is the code that we use to write our tests.</h3>
+<p><img src="2020-09-17-11-09-33.png" /></p>
+<h1 id="mocha">Mocha</h1>
+<ul>
+<li><h2 id="mocha-is-a-javascript-testing-framework-that-specializes-in-running-tests-and-presenting-them-in-an-organized-user-friendly-way.">Mocha is a JavaScript testing framework that specializes in running tests and presenting them in an organized user friendly way.</h2></li>
+<li><h3 id="the-mocha-testing-framework-is-widely-used-because-of-its-flexibility.-mocha-supports-a-whole-variety-of-different-assertion-libraries-and-dsl-interfaces-for-writing-tests-in-the-way-the-best-suites-the-developer.">The Mocha testing framework is widely used because of it’s flexibility. Mocha supports a whole variety of different assertion libraries and DSL interfaces for writing tests in the way the best suites the developer.</h3></li>
+<li><h4 id="when-writing-tests-with-mocha-we-will-be-using-mochas-dsl-domain-specific-language.-a-domain-specific-language-refers-to-a-computer-language-specialized-for-a-particular-purpose---in-mochas-case-the-dsl-has-been-engineered-for-providing-structure-for-writing-tests.">When writing tests with Mocha we will be using Mocha’s DSL (Domain Specific Language). A Domain Specific Language refers to a computer language specialized for a particular purpose - in Mocha’s case the DSL has been engineered for providing structure for writing tests.</h4></li>
+<li><h4 id="a-dsl-is-its-own-language-that-will-usually-be-familiar-but-syntactically-a-little-different-from-the-languages-you-know.">A DSL is it’s own language that will usually be familiar but syntactically a little different from the languages you know.</h4></li>
+</ul>
+<p><a href="https://kentcdodds.com/blog/how-to-know-what-to-test">what you should be testing</a></p>
+<p><img src="2020-09-17-01-10-39.png" /></p>
+<ul>
+<li>unit tests ensure each piece of your application works in isolation</li>
+<li>if you know each piece works then you can more easily find errors.</li>
+<li>Unit tests are also fast.</li>
+<li>The bigger your application gets the longer your testing suite will take to run</li>
+<li>if all your tests are end-to-end tests your tests could be running for hours.</li>
+</ul>
+<p><a href="https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html">testing pyramid</a></p>
+<h2 id="the-most-important-thing-about-a-test-is-that-it-is-readable-and-understandable.">the most important thing about a test is that it is readable and understandable.</h2>
+<h3 id="good-tests-use-descriptive-strings-to-enumerate-what-they-are-testing-as-well-as-how-they-are-testing-it.">Good tests use descriptive strings to enumerate what they are testing as well as how they are testing it.</h3>
+<p><img src="2020-09-17-01-15-36.png" /></p>
+<ul>
+<li>the outer function has a string with the name of a function avgValue() which is most likely the function we will be testing.</li>
+<li>Next we see a description string should return the average of an array of numbers.</li>
+</ul>
+<h4 id="so-even-without-understanding-the-syntax-for-the-test-above-we-can-tell-what-we-are-testing">So even without understanding the syntax for the test above we can tell what we are testing:</h4>
+<ul>
+<li>the avgValue function, and how we are testing it</li>
+<li>should return the average of an array of numbers.</li>
+</ul>
+<p><img src="2020-09-17-01-18-06.png" /></p>
+<ul>
+<li>The outer block mentions avg_value which is probably the method or function being tested</li>
+<li>the inner block says how things are being tested -</li>
+<li><strong>“should return the average of an array of numbers”</strong></li>
+</ul>
+<h1 id="test-driven-development">Test-Driven Development</h1>
+<p>In software engineering a collection of automated tests, <em>also known as <strong>test suite</strong>s</em>, are a common way to ensure that when a piece of code is run it will perform the minimum of a specified set of behaviors.</p>
+<h2 id="test-driven-development-or-tdd">Test-driven development or TDD</h2>
+<h3 id="tdd-is-a-quick-repetitive-cycle-that-revolves-around-first-determining-what-a-piece-of-code-should-do-and-writing-tests-for-that-behavior-before-actually-writing-any-code">TDD is a quick repetitive cycle that revolves around first determining what a piece of code should do and writing tests for that behavior before actually writing any code</h3>
+<h4 id="test-driven-development-dictates-that-tests-not-application-code-should-be-written-first-and-then-application-code-should-only-be-written-to-pass-the-already-written-tests.">Test-driven development dictates that tests, not application code, should be written first, and then application code should only be written to pass the already written tests.</h4>
+<ul>
+<li>Imagine being handed a file of 10 functions that all invoke each other and being told to add a new function to the mix and ensure all the previous functions work properly.
+<ul>
+<li>First you’d have to figure out what each function actually did, then determine if they did what they were supposed to do.</li>
+</ul></li>
+</ul>
+<h3 id="using-tdd-is-one-way-for-developers-to-ensure-that-the-code-written-by-every-member-of-their-team-is-testable-and-modular.">Using TDD is one way for developers to ensure that the code written by every member of their team is testable and modular.</h3>
+<ul>
+<li><h2 id="here-are-some-of-the-biggest-motivations-for-why-developers-use-test-driven-development">Here are some of the biggest motivations for why developers use test-driven development:</h2>
+<ol type="1">
+<li>Writing tests before code ensures that the code written works.</li>
+</ol>
+<ul>
+<li>Code written to pass specs is guaranteed to be testable.</li>
+<li>Code with pre-written tests easily allows other developers to add and test new code while ensuring nothing else breaks along the way.</li>
+</ul>
+<ol start="2" type="1">
+<li>Only required code is written.</li>
+</ol>
+<ul>
+<li>In the face of having to write tests for every piece of added functionality TDD can help reduce bloated un-needed functionality.</li>
+</ul></li>
+</ul>
+<ol start="3" type="1">
+<li>TDD helps enforce code modularity.</li>
+</ol>
+<ul>
+<li>A TDD developer is forced to think about their application in small, testable chunks -</li>
+<li>this ensures the developer will write each chunk to be modular and capable of individual testing.</li>
+</ul>
+<ol start="4" type="1">
+<li>Better understanding of what the code should be doing.</li>
+</ol>
+<ul>
+<li>Writing tests for a piece of code ensures that the developer writing that code knows what the piece of code is trying to achieve.</li>
+</ul>
+<p><img src="2020-09-17-01-30-49.png" /></p>
+<h1 id="js-error-types-use-open-file-extension-my-notes.js">JS Error Types: (use <code>open file</code> extension) (– my-notes.js –)</h1>
+<h2 id="javascript-errors">JavaScript Errors</h2>
+<ul>
+<li><h3 id="in-javascript-the-error-constructor-function-is-responsible-for-creating-different-instances-of-error-objects.">In JavaScript the Error constructor function is responsible for creating different instances of Error objects.</h3></li>
+<li><h3 id="the-error-object-is-how-javascript-deals-with-runtime-errors-and-the-type-of-error-created-and-thrown-will-attempt-to-communicate-why-that-error-occurred.">The Error object is how JavaScript deals with runtime errors and the type of error created and thrown will attempt to communicate why that error occurred.</h3></li>
+</ul>
+<h2 id="creating-your-own-errors">Creating your own errors</h2>
+<ul>
+<li><h3 id="since-the-error-constructor-is-just-a-constructor-function-we-can-use-it-to-create-new-error-object-instances-with-the-following-syntax">Since the Error constructor is just a constructor function we can use it to create new Error object instances with the following syntax:</h3></li>
+</ul>
+<p><img src="2020-09-17-01-34-44.png" /></p>
+<h3 id="throwing-your-own-errors">Throwing your own errors:</h3>
+<ul>
+<li><h4 id="using-the-keyword-throw-you-can-throw-your-own-runtime-errors-that-will-stop-program-execution.">Using the keyword throw you can throw your own runtime errors that will stop program execution.</h4></li>
+</ul>
+<p><img src="2020-09-17-01-41-42.png" /></p>
+<p><img src="2020-09-17-01-46-35.png" /></p>
+<h3 id="you-can-throw-your-newly-created-error-to-stop-program-execution-or-use-a-trycatch-block-to-catch-your-error-and-continue-running-your-code.">You can throw your newly created Error to stop program execution or use a try…catch block to catch your error and continue running your code.</h3>
+<p><img src="2020-09-17-01-48-31.png" /></p>
+<h2 id="types-of-javascript-errors">Types of JavaScript errors</h2>
+<p><img src="2020-09-17-01-49-03.png" /></p>
+<ol type="1">
+<li><code>SyntaxError</code> - represents an error in the syntax of the code.</li>
+<li><code>ReferenceError</code> - represents an error thrown when an invalid reference is made.</li>
+<li><code>TypeError</code> - represents an error when a variable or parameter is not of a valid type.</li>
+<li><code>RangeError</code> - representing an error for when a numeric variable or parameter is outside of its valid range.</li>
+<li><code>InternalError</code> - represents an error in the internal JavaScript engine.</li>
+<li><code>EvalError</code> - represents an error with the global <code>eval</code> function.</li>
+<li><code>URIError</code> - represents an error that occurs when <code>encodeURI()</code> or <code>decodeURI()</code> are passed invalid parameters.</li>
+</ol>
+<h2 id="the-three-most-common-errors-you-have-encountered-so-far">the three most common errors you have encountered so far:</h2>
+<ul>
+<li><h3 id="syntaxerror">SyntaxError,</h3></li>
+<li><h3 id="referenceerror-and">ReferenceError, and</h3></li>
+<li><h3 id="typeerror.">TypeError.</h3></li>
+</ul>
+<p><img src="2020-09-17-01-56-39.png" /></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError">compile time errors can’t be caught using try catch</a></p>
+<h2 id="reference-error">Reference Error:</h2>
+<ul>
+<li><h3 id="the-referenceerror-object-represents-an-error-when-a-non-existent-variable-is-referenced">The ReferenceError object represents an error when a non-existent variable is referenced</h3></li>
+<li><h3 id="this-is-the-error-that-youll-encounter-when-attempting-to-reference-a-variable-that-does-not-exist-either-within-your-current-scope-or-at-all.">This is the error that you’ll encounter when attempting to reference a variable that does not exist (either within your current scope or at all).</h3></li>
+</ul>
+<h2 id="another-common-cause-for-a-thrown-referenceerror-is-attempting-to-access-a-variable-that-is-not-in-scope">Another common cause for a thrown ReferenceError is attempting to access a variable that is not in scope:</h2>
+<p><img src="2020-09-17-02-03-27.png" /> <img src="2020-09-17-02-05-49.png" /></p>
+<h2 id="typeerror">TypeError:</h2>
+<h3 id="often-if-a-function-gets-a-type-error-we-forgot-to-export-it">(often if a function gets a type error we forgot to export it)</h3>
+<h3 id="attempt-to-invoke-a-declared-but-not-assigned-variable-which-will-evaluate-to-undefined.">attempt to invoke a declared but not assigned variable (which will evaluate to undefined).</h3>
+<p><img src="2020-09-17-02-11-21.png" /></p>
+<h3 id="next-lets-look-at-a-example-of-attempting-to-change-a-value-that-cannot-be-changed">Next let’s look at a example of attempting to change a value that cannot be changed:</h3>
+<p><img src="2020-09-17-02-17-24.png" /></p>
+<h2 id="catching-known-errors">Catching known errors:</h2>
+<h4 id="how-to-use-a-trycatch-block-we-can-combine-these-two-ideas-to-catch-specific-types-of-errors-using-instanceof">- how to use a try…catch block we can combine these two ideas to catch specific types of errors using instanceof:</h4>
+<p><img src="2020-09-17-02-20-50.png" /></p>
+<h1 id="writing-tests-wt-part-one-mocha-and-assert">Writing Tests (WT) Part One: Mocha and Assert</h1>
+<ul>
+<li>properly format and denote your mocha tests using <code>describe</code>, <code>context</code> and <code>it</code> blocks</li>
+<li>write tests for individual functions as well as writing tests for class instance and static methods</li>
+<li>test that functions will throw certain errors</li>
+<li>use <code>chai-spies</code> to test how many times a function has been called</li>
+<li><p>recognize and utilize the Mocha hooks: <code>before</code> , <code>beforeEach</code> , <code>after</code> , and <code>afterEach</code></p></li>
+<li>the file structure of testing with <code>Mocha</code></li>
+<li><p>testing with <code>Mocha</code> and Node’s built-in <code>Assert</code> module</p></li>
+</ul>
+<h2 id="part-zero-testing-file-structure">Part Zero: Testing file structure</h2>
+<p>We find that reading about testing is best understood when you can play around within the functions being tested .</p>
+<p>We started this reading by created a directory called <code>testing-demo</code> where all the code within this reading will be written.</p>
+<p>Let’s start off with how to write tests for a basic function. Say we’ve been handed a directory with a function to test <code>problems/reverse-string.js</code> . Below is the named function we’ll be testing, <code>reverseString</code> , which will intake a string argument and then reverse it:</p>
+<ul>
+<li>##The created test directory’s file structure should mirror that of the files you intend to test
+<ul>
+<li>with each test file appending the word “spec” to the end of the file name.</li>
+</ul></li>
+</ul>
+<p><img src="2020-09-17-02-34-34.png" /> <img src="2020-09-17-02-34-55.png" /></p>
+<h2 id="part-one-writing-tests-with-mocha-and-assert">Part One: Writing tests with Mocha and Assert:</h2>
+<p><img src="2020-09-17-11-29-03.png" /></p>
+<p>-concentrate on one spec at a time!!!</p>
+<h3 id="the-first-step-in-any-testing-workflow-is-initializing-our-test-file.">The first step in any testing workflow is initializing our test file.</h3>
+<h3 id="mocha-is-a-test-framework-that-specializes-in-running-tests-and-presenting-them-in-an-organized-user-friendly-way">Mocha is a test framework that specializes in running tests and presenting them in an organized user friendly way</h3>
+<h3 id="the-code-responsible-for-actually-verifying-things-for-us-will-come-from-using-an-assertion-library.">The code responsible for actually verifying things for us will come from using an <strong>Assertion Library</strong>.</h3>
+<ul>
+<li><h4 id="assertion-libraries-will-do-the-heavy-lifting-of-comparing-and-verifying-code-while-mocha-will-run-those-tests-and-then-present-them-to-us.">Assertion Libraries will do the heavy lifting of comparing and verifying code while Mocha will run those tests and then present them to us.</h4></li>
+</ul>
+<h5 id="the-tests-well-be-writing-for-this-next-section-will-use-nodes-built-in-assert-module-as-our-assertion-library.">The tests we’ll be writing for this next section will use Node’s built-in Assert module as our Assertion Library.</h5>
+<ul>
+<li>So inside of test/reverse-string-spec.js at the top of the file we will require the assert module and the function we intend to test:</li>
+</ul>
+<p><img src="2020-09-17-02-38-55.png" /></p>
+<p><a href="https://mochajs.org/#getting-started">mocha doccumentation</a></p>
+<ul>
+<li><h5 id="dsl-stands-for-dsl-domain-specific-language">DSL stands for DSL (Domain Specific Language)</h5></li>
+<li><h5 id="we-will-be-using-the-bbd-interface-for-mocha">we will be using the BBD interface for Mocha:</h5></li>
+<li><a href="https://mochajs.org/#bdd">BBD interface</a></li>
+</ul>
+<h4 id="interfaces">INTERFACES</h4>
+<ul>
+<li>Mocha’s “interface” system allows developers to choose their style of DSL. Mocha has BDD, TDD, Exports, QUnit and Require-style interfaces.</li>
+</ul>
+<p>#BDD</p>
+<ul>
+<li><p>The BDD interface provides describe(), context(), it(), specify(), before(), after(), beforeEach(), and afterEach().</p>
+<ul>
+<li>context() is just an alias for describe(), and behaves the same way; it provides a way to keep tests easier to read and organized. Similarly, specify() is an alias for it().</li>
+</ul></li>
+<li>The <strong>describe function</strong> is an organizational function that accepts <em><code>a descriptive string and a callback</code></em>.</li>
+<li>We’ll use the describe function to describe what we will be testing -</li>
+<li><h4 id="in-this-case-the-reversestring-function"><code>in this case the reverseString function:</code></h4></li>
+</ul>
+<p><img src="2020-09-17-03-31-11.png" /></p>
+<h3 id="now-if-we-run-mocha-in-the-upper-most-testing-demo-directory-we-will-see">Now if we run mocha in the upper most testing-demo directory we will see:</h3>
+<p><img src="2020-09-17-03-32-35.png" /></p>
+<pre><code>Take notice of how Mocha structures its response in exactly the way we nested our test.
+The outer describe function&#39;s message of reverseString() is on the upper level
+and the inner it function&#39;s message of should reverse the input string is nested within.
+Strictly speaking we aren&#39;t required to nest our it functions within describe functions but it is best practice to do so.</code></pre>
+<h5 id="lets-add-one-more-spec-for-reversestring">Let’s add one more spec for reverseString,</h5>
+<ul>
+<li><h5 id="well-do-this-by-adding-another-it-function-within-the-describe-callback">we’ll do this by adding another it function within the describe callback:</h5>
+<img src="2020-09-17-04-08-03.png" /> <img src="2020-09-17-04-09-06.png" /> <img src="2020-09-17-05-24-00.png" /></li>
+</ul>
+</body>
+</html>

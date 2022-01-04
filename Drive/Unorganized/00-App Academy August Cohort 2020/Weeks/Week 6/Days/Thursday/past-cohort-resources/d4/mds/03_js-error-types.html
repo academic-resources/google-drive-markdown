@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>03_js-error-types</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="a-comedy-of-errors-in-javascript">A Comedy of Errors in JavaScript</h1>
+<p>You know that feeling when you’ve just finished your perfect function then you go to run your code and: BAM! A big error is thrown? We all have felt that pain from the starting student to the experienced engineer. Runtime errors are a part of daily life when writing code. It is now time to dive into what each type of error you encounter means in order to more quickly and efficiently fix the problem that created that error.</p>
+<p>When you finish this reading you should be able to: identify the difference between <code>SyntaxError</code>, <code>ReferenceError</code>, and <code>TypeError</code>s as well as create and <code>throw</code> new errors.</p>
+<h2 id="javascript-errors">JavaScript Errors</h2>
+<p>In JavaScript the <code>Error</code> constructor function is responsible for creating different instances of <code>Error</code> objects. The <code>Error</code> object is how JavaScript deals with runtime errors and the <em>type</em> of error created and thrown will attempt to communicate <em>why</em> that error occurred.</p>
+<h3 id="creating-your-own-errors">Creating your own errors</h3>
+<p>Since the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error"><code>Error</code></a> constructor is just a constructor function we can use it to create new <code>Error</code> object instances with the following syntax:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">new</span> <span class="at">Error</span>([message[<span class="op">,</span> fileName[<span class="op">,</span> lineNumber]]])</a></code></pre></div>
+<p>As seen above you can optionally supply a <code>message</code>, <code>fileName</code> and <code>lineNumber</code> where the error occurred. The <code>Error</code> constructor is also somewhat unique in that you can call it with or without the <code>new</code> keyword and it will return a new <code>Error</code> object:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">const</span> first <span class="op">=</span> <span class="at">Error</span>(<span class="st">&quot;I am an error object!&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">const</span> second <span class="op">=</span> <span class="kw">new</span> <span class="at">Error</span>(<span class="st">&quot;I am too an error object!&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="va">console</span>.<span class="at">log</span>(first)<span class="op">;</span> <span class="co">// Error: I am an error object!</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="va">console</span>.<span class="at">log</span>(second)<span class="op">;</span> <span class="co">// Error: I am too an error object!</span></a></code></pre></div>
+<p>Let’s take a look at what we can do with our newly created <code>Error</code> objects.</p>
+<h3 id="throwing-your-own-errors">Throwing your own errors</h3>
+<p>Tired of JavaScript being the only one to throw errors? Well you can too! Using the keyword <code>throw</code> you can throw your own runtime errors that will stop program execution.</p>
+<p>Let’s take a look at the syntax for <code>throw</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">function</span> <span class="at">giveMeNumber</span>(num) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-2" title="2">  <span class="cf">if</span> (<span class="kw">typeof</span> num <span class="op">!==</span> <span class="st">&quot;number&quot;</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-3" title="3">    <span class="cf">throw</span> <span class="kw">new</span> <span class="at">Error</span>(<span class="st">&quot;Give me a number!&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-4" title="4">  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-5" title="5">    <span class="cf">return</span> <span class="st">&quot;yay number!&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb3-6" title="6">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="op">}</span></a>
+<a class="sourceLine" id="cb3-8" title="8"></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="va">console</span>.<span class="at">log</span>(<span class="at">giveMeNumber</span>(<span class="dv">1</span>))<span class="op">;</span> <span class="co">// prints &quot;yay number!&quot;;</span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="va">console</span>.<span class="at">log</span>(<span class="at">giveMeNumber</span>(<span class="st">&quot;apple&quot;</span>))<span class="op">;</span> <span class="co">// Uncaught Error: Give me a number!</span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="va">console</span>.<span class="at">log</span>(<span class="at">giveMeNumber</span>(<span class="dv">1</span>))<span class="op">;</span> <span class="co">// doesn&#39;t get run</span></a></code></pre></div>
+<p>Now as we can see in the above example throwing an error is a powerful tool that stops program execution. If we wanted to throw an error <em>without</em> stopping program execution we can use a <code>try...catch</code> block.</p>
+<p>Let’s look at the syntax for using the <code>try...catch</code> block syntax:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="cf">try</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-2" title="2">  <span class="co">// statements that will be attempted to here</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="op">}</span> <span class="cf">catch</span> (error) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-4" title="4">  <span class="co">// if an error is thrown it will be &quot;caught&quot;</span></a>
+<a class="sourceLine" id="cb4-5" title="5">  <span class="co">// allowing the program to continue execution</span></a>
+<a class="sourceLine" id="cb4-6" title="6">  <span class="co">// these statements will be run and the program will continue!</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="op">}</span></a></code></pre></div>
+<p>We normally use <code>try...catch</code> blocks with functions that might throw an error. Let’s look at an example where an error <em>will not</em> be thrown:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">function</span> <span class="at">safeDivide</span>(a<span class="op">,</span> b) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">  <span class="cf">if</span> (b <span class="op">===</span> <span class="dv">0</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-3" title="3">    <span class="cf">throw</span> <span class="kw">new</span> <span class="at">Error</span>(<span class="st">&quot;cannot divide by zero&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-4" title="4">  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-5" title="5">    <span class="cf">return</span> a / b<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-6" title="6">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="op">}</span></a>
+<a class="sourceLine" id="cb5-8" title="8"></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="cf">try</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-10" title="10">  <span class="va">console</span>.<span class="at">log</span>(<span class="at">safeDivide</span>(<span class="dv">30</span><span class="op">,</span> <span class="dv">5</span>))<span class="op">;</span> <span class="co">// prints 6</span></a>
+<a class="sourceLine" id="cb5-11" title="11"><span class="op">}</span> <span class="cf">catch</span> (error) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-12" title="12">  <span class="va">console</span>.<span class="at">error</span>(<span class="va">error</span>.<span class="at">name</span> <span class="op">+</span> <span class="st">&quot;: &quot;</span> <span class="op">+</span> <span class="va">error</span>.<span class="at">message</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-13" title="13"><span class="op">}</span></a>
+<a class="sourceLine" id="cb5-14" title="14"></a>
+<a class="sourceLine" id="cb5-15" title="15"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span> <span class="co">// prints hello</span></a></code></pre></div>
+<p><strong>Note</strong>: We can use <code>console.error</code> instead of <code>console.log</code> to make logged errors more noticeable.</p>
+<p>Above you can see our <code>safeDivide</code> function ran as expected. Now let’s see what happens when an error will be thrown and <strong>caught</strong> inside a <code>try...catch</code> block:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">function</span> <span class="at">safeDivide</span>(a<span class="op">,</span> b) <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-2" title="2">  <span class="cf">if</span> (b <span class="op">===</span> <span class="dv">0</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-3" title="3">    <span class="cf">throw</span> <span class="kw">new</span> <span class="at">Error</span>(<span class="st">&quot;cannot divide by zero&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-4" title="4">  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-5" title="5">    <span class="cf">return</span> a / b<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-6" title="6">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="op">}</span></a>
+<a class="sourceLine" id="cb6-8" title="8"></a>
+<a class="sourceLine" id="cb6-9" title="9"><span class="cf">try</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-10" title="10">  <span class="va">console</span>.<span class="at">log</span>(<span class="at">safeDivide</span>(<span class="dv">30</span><span class="op">,</span> <span class="dv">0</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="op">}</span> <span class="cf">catch</span> (error) <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-12" title="12">  <span class="va">console</span>.<span class="at">error</span>(<span class="va">error</span>.<span class="at">name</span> <span class="op">+</span> <span class="st">&quot;: &quot;</span> <span class="op">+</span> <span class="va">error</span>.<span class="at">message</span>)<span class="op">;</span> <span class="co">// Error: cannot divide by zero</span></a>
+<a class="sourceLine" id="cb6-13" title="13"><span class="op">}</span></a>
+<a class="sourceLine" id="cb6-14" title="14"><span class="co">// the above error will be caught allowing our program to continue!</span></a>
+<a class="sourceLine" id="cb6-15" title="15"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span> <span class="co">// prints  &quot;hello&quot;</span></a></code></pre></div>
+<p>Those are the basics of creating and throwing your own errors. You can <code>throw</code> your newly created <code>Error</code> to stop program execution or use a <code>try...catch</code> block to catch your error and continue running your code. Now that we’ve learned how to create new errors let’s go over the core errors built into JavaScript and what they signify.</p>
+<h2 id="types-of-javascript-errors">Types of JavaScript errors</h2>
+<p>There are seven core errors you’ll encounter in JavaScript and each type of error will try to communicate why that error occurred:</p>
+<ol type="1">
+<li><code>SyntaxError</code> - represents an error in the syntax of the code.</li>
+<li><code>ReferenceError</code> - represents an error thrown when an invalid reference is made.</li>
+<li><code>TypeError</code> - represents an error when a variable or parameter is not of a valid type.</li>
+<li><code>RangeError</code> - representing an error for when a numeric variable or parameter is outside of its valid range.</li>
+<li><code>InternalError</code> - represents an error in the internal JavaScript engine.</li>
+<li><code>EvalError</code> - represents an error with the global <code>eval</code> function.</li>
+<li><code>URIError</code> - represents an error that occurs when <code>encodeURI()</code> or <code>decodeURI()</code> are passed invalid parameters.</li>
+</ol>
+<p>For this reading we’ll be going in depth of the three most common errors you have encountered so far: <code>SyntaxError</code>, <code>ReferenceError</code>, and <code>TypeError</code>.</p>
+<h3 id="syntaxerror">SyntaxError</h3>
+<p>A SyntaxError is thrown when the JavaScript engine attempts to parse code that does not conform to the syntax of the JavaScript language. When learning the JavaScript language this error is a constant companion for any missing <code>}</code> or misspelled <code>function</code> keywords.</p>
+<p>Let’s look at a piece of code that would throw a syntax error:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1">funtion <span class="at">broken</span> () <span class="op">{</span> <span class="co">// Uncaught SyntaxError: Unexpected identifier</span></a>
+<a class="sourceLine" id="cb7-2" title="2">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;I&#39;m broke&quot;</span>)</a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="op">}</span></a></code></pre></div>
+<p>Another example with an extra curly brace <code>}</code>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">function</span> <span class="at">broken</span> () <span class="op">{</span> <span class="co">// Uncaught SyntaxError: Unexpected identifier</span></a>
+<a class="sourceLine" id="cb8-2" title="2">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;I&#39;m broke&quot;</span>)</a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="op">}</span>} <span class="co">// Uncaught SyntaxError: Unexpected token &#39;}&#39;</span></a></code></pre></div>
+<p>The examples go on and on - you can count on a <code>SyntaxError</code> to be thrown whenever you attempt to run code that is not syntactically correct JavaScript.</p>
+<p><strong>Important!</strong> One thing to note about Syntax Errors is that many of them can’t be caught using <code>try</code> <code>catch</code> blocks.</p>
+<p>For instance, the following code will throw a <code>SyntaxError</code> and no matter how hard you try, you can’t catch it.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="cf">try</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-2" title="2">    <span class="cf">if</span> (<span class="kw">true</span> <span class="op">{</span> <span class="co">// throws &quot;SyntaxError: Unexpected token &#39;{&#39;&quot;</span></a>
+<a class="sourceLine" id="cb9-3" title="3">        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;SyntaxErrors are the worst!&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-4" title="4">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="op">}</span> <span class="cf">catch</span> (e) <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-6" title="6">    <span class="va">console</span>.<span class="at">log</span>(e)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="op">}</span></a></code></pre></div>
+<p>The missing parenthesis after <code>true</code> will throw a <code>SyntaxError</code> but can’t be caught by the <code>catch</code> block.</p>
+<p>This is because this kind of <code>SyntaxError</code> happens at <em>compile time</em> not <em>run time</em>. Any errors that happen at <em>compile time</em> can’t be caught using <code>try</code> <code>catch</code> blocks.</p>
+<h3 id="referenceerror">ReferenceError</h3>
+<p>Straight from the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError">MDN docs</a>: “The <code>ReferenceError</code> object represents an error when a non-existent variable is referenced.” This is the error that you’ll encounter when attempting to reference a variable that does not exist (either within your current scope or at all).</p>
+<p>Let’s take a took at some examples for the causes of this error. One common cause for this error is misspelling a variable name:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">function</span> <span class="at">callPuppy</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-2" title="2">  <span class="kw">const</span> puppy <span class="op">=</span> <span class="st">&quot;puppy&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb10-3" title="3">  <span class="va">console</span>.<span class="at">log</span>(pupy)<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="op">}</span></a>
+<a class="sourceLine" id="cb10-5" title="5"></a>
+<a class="sourceLine" id="cb10-6" title="6"><span class="at">callPuppy</span>()<span class="op">;</span> <span class="co">// ReferenceError: pupy is not defined</span></a></code></pre></div>
+<p>Another common cause for a thrown <code>ReferenceError</code> is attempting to access a variable that is not in scope:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">function</span> <span class="at">callPuppy</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb11-2" title="2">  <span class="kw">const</span> puppy <span class="op">=</span> <span class="st">&quot;puppy&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb11-3" title="3"><span class="op">}</span></a>
+<a class="sourceLine" id="cb11-4" title="4"></a>
+<a class="sourceLine" id="cb11-5" title="5"><span class="va">console</span>.<span class="at">log</span>(puppy)<span class="op">;</span> <span class="co">// ReferenceError: puppy is not defined</span></a></code></pre></div>
+<p>The aptly named <code>ReferenceError</code> will be thrown whenever you attempt to <em>reference</em> a variable that doesn’t exist.</p>
+<h3 id="typeerror">TypeError</h3>
+<p>A <code>TypeError</code> is commonly thrown for a couple of reasons:</p>
+<ol type="1">
+<li>When an operation cannot be performed because the operand is a value of the wrong type.</li>
+<li>When you are attempting to modify a value that cannot be changed.</li>
+</ol>
+<p>Let’s look at a couple of examples that will each throw a <code>TypeError</code> for a different reason. Below we are attempting an operation (in this case a function call) on a value of the wrong type:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">let</span> dog<span class="op">;</span> <span class="co">// Remember unassigned variables are undefined!</span></a>
+<a class="sourceLine" id="cb12-2" title="2"></a>
+<a class="sourceLine" id="cb12-3" title="3"><span class="at">dog</span>()<span class="op">;</span> <span class="co">// TypeError: dog is not a function</span></a></code></pre></div>
+<p>In the above example we attempt to invoke a declared but not assigned variable (which will evaluate to <code>undefined</code>). This will cause a <code>TypeError</code> because <code>undefined</code> cannot be invoked - it is the wrong type.</p>
+<p>Next let’s look at a example of attempting to change a value that cannot be changed:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">const</span> puppy <span class="op">=</span> <span class="st">&quot;puppy&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb13-2" title="2"></a>
+<a class="sourceLine" id="cb13-3" title="3">puppy <span class="op">=</span> <span class="st">&quot;apple&quot;</span><span class="op">;</span> <span class="co">// TypeError: Assignment to constant variable.</span></a></code></pre></div>
+<p>Attempting te reassign a <code>const</code> declared variable will result in a <code>TypeError</code>. You’ve probably run into many other examples of <code>TypeError</code> yourself but, the most important thing to know is that a <code>TypeError</code> is thrown when you attempting to perform an operation on the wrong type of value.</p>
+<h3 id="catching-known-errors">Catching known errors</h3>
+<p>Now that we’ve covered the the names of common JavaScript errors as well as how to use a <code>try...catch</code> block we can combine these two ideas to catch specific types of errors using <code>instanceof</code>:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">function</span> <span class="at">callThatArg</span>(arg) <span class="op">{</span></a>
+<a class="sourceLine" id="cb14-2" title="2">  <span class="at">arg</span>()<span class="op">;</span> <span class="co">// this will cause a TypeError because callThatArg is being passed a number</span></a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="op">}</span></a>
+<a class="sourceLine" id="cb14-4" title="4"></a>
+<a class="sourceLine" id="cb14-5" title="5"><span class="cf">try</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb14-6" title="6">  <span class="at">callThatArg</span>(<span class="dv">42</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-7" title="7">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;call successful&quot;</span>)<span class="op">;</span> <span class="co">// this line never executes</span></a>
+<a class="sourceLine" id="cb14-8" title="8"><span class="op">}</span> <span class="cf">catch</span> (error) <span class="op">{</span></a>
+<a class="sourceLine" id="cb14-9" title="9">  <span class="cf">if</span> (error <span class="kw">instanceof</span> TypeError) <span class="op">{</span></a>
+<a class="sourceLine" id="cb14-10" title="10">    <span class="va">console</span>.<span class="at">error</span>(<span class="vs">`Wrong Type: </span><span class="sc">${</span><span class="va">error</span>.<span class="at">message</span><span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span> <span class="co">// prints: Wrong Type: arg is not a function</span></a>
+<a class="sourceLine" id="cb14-11" title="11">  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb14-12" title="12">    <span class="va">console</span>.<span class="at">error</span>(<span class="va">error</span>.<span class="at">message</span>)<span class="op">;</span> <span class="co">// prints out any errors that aren&#39;t TypeErrors;</span></a>
+<a class="sourceLine" id="cb14-13" title="13">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb14-14" title="14"><span class="op">}</span></a>
+<a class="sourceLine" id="cb14-15" title="15"></a>
+<a class="sourceLine" id="cb14-16" title="16"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;done&quot;</span>)<span class="op">;</span> <span class="co">// prints: done</span></a></code></pre></div>
+<h2 id="what-you-learned">What you learned</h2>
+<p>If you read an error and know <em>why</em> that error is being thrown it’ll be much easier to find the cause of the problem! In this reading we went over how to create and throw new <code>Error</code> objects as well as the definitions for some of the most common types of errors: <code>SyntaxError</code>, <code>ReferenceError</code>, and <code>TypeError</code>s.</p>
+</body>
+</html>

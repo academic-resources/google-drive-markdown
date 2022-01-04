@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>All about Testing</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<p>**</p>
+<h1 id="all-about-testing">All About Testing!</h1>
+<p>Let’s talk about <em>automated testing</em> - the how, the what, and most importantly the <strong>why</strong>. The general idea across all testing frameworks is to allow developers to write code that would specify the behavior of a function or module or class. We’ve reached a point in software development where developers can now run test code against their application code and have confidence that their code will work as intended.</p>
+<h2 id="why-do-we-test">Why do we test?</h2>
+<p>With tests, you can aggressively refactor with confidence. If anything breaks, you’ll know. And you’ll know exactly what the expectations are for the module you’re refactoring, so as long as it meets the specs, you’re good.</p>
+<blockquote>
+<p>When you are writing automated tests for an application you are writing the <em>specfications</em> of how that application should behave. In the software industry <strong>automated tests are often called “specs”</strong></p>
+</blockquote>
+<ul>
+<li><p><em>Make collaboration easier</em></p>
+<p>Complex applications are built by teams of developers. It may be that not all those developers will actually get the chance to talk to one another</p>
+<p>Specs allow teams to have confidence that each module performs a specific task and reduces the need for expensive coordination. The specs themselves become an effective form of communication.</p></li>
+<li><p><em>Produce documentation</em></p>
+<p>If the tests are written well, the tests can serve as documentation for the codebase.</p></li>
+</ul>
+<h2 id="how-we-test">How we Test</h2>
+<h3 id="testing-frameworks-vs-assertion-libraries">Testing frameworks vs Assertion libraries</h3>
+<p>An important distinction to understand is the difference between a <strong><em>testing framework</em></strong> and an <strong><em>assertion library</em></strong></p>
+<ul>
+<li><p>The job of a testing framework is to <strong>run</strong> tests and present them to a user.</p></li>
+<li><p>An assertion library is the backbone of any written test</p>
+<ul>
+<li>it is the code that we use to <strong>write</strong> our tests.</li>
+<li>Assertion libraries will do the heavy lifting of comparing and verifying our code.</li>
+<li>Some testing frameworks will have built in assertion libraries, others will need you to import an assertion library to use.</li>
+</ul></li>
+</ul>
+<h3 id="mocha">Mocha</h3>
+<p><a href="https://mochajs.org/#getting-started"><code>Mocha</code></a> is a JavaScript <em>testing framework</em> that specializes in <em>running</em> tests and presenting them in an organized user friendly way.</p>
+<p>The <code>Mocha</code> testing framework is widely used because of it’s flexibility.</p>
+<p><code>Mocha</code> supports a whole variety of different assertion libraries and DSL interfaces for writing tests in the way the best suites the developer.</p>
+<p>When writing tests with Mocha we will be using <code>Mocha</code>’s <a href="https://en.wikipedia.org/wiki/Domain-specific_language">DSL</a> (Domain Specific Language). A Domain Specific Language refers to a computer language specialized for a particular purpose - in <code>Mocha</code> ’s case the DSL has been engineered for providing structure for writing tests. A DSL is it’s own language that will usually be familiar but syntactically a little different from the languages you know. That being said you don’t have to worry about memorizing every single piece of syntax for writing tests - just get a good grasp of the basics of testing and use the documentation to fill in any knowledge gaps.</p>
+<p>You’ve seen what <code>Mocha</code> looks like already because all the specs for your assessments and projects so far have been written utilizing <code>Mocha</code> as the testing framework.</p>
+<p>We’ll be talking more about different assertion libraries a little later when we talk about <em>writing</em> tests.</p>
+<h2 id="what-do-we-test">What do we test?</h2>
+<p>So now that we talked about why we test and what we use to test…what exactly do we test?</p>
+<h3 id="test-the-public-interface">Test the public interface</h3>
+<p>When you’re trying to figure out what you should be testing, ask yourself, “What is (or will be) the public interface of the module or class I’m writing?” That is, what are the functions that the outside world will have access to and rely on?</p>
+<p>Ideally, you’d have thorough test coverage on the entire public interface. When that’s not possible, ensure that your tests cover the most important and/or complex parts of that interface - that is, the pieces that you need to make sure work as intended (and expected).</p>
+<p>Kent Dodds has a <a href="https://kentcdodds.com/blog/how-to-know-what-to-test">great article</a> on how to identify what you should be testing.</p>
+<h3 id="the-testing-pyramid">The testing pyramid</h3>
+<p>A common metaphor used to group software tests into separate levels of testing is the testing pyramid.</p>
+<figure>
+<img src="./All%20about%20Testing_files/image02.png" alt="test-pry" /><figcaption>test-pry</figcaption>
+</figure>
+<p>Let’s quickly go over each level before talking about the pyramid as a whole:</p>
+<ul>
+<li><strong>Unit Tests</strong>: The smallest unit of testing - used to test the smallest pieces of your application in isolation to ensure each piece works before you attempt to put those pieces together. Each unit test should focus on testing <strong>one</strong> thing. These are generally the fastest tests to write and run.</li>
+<li><strong>Integration Tests</strong>: Once you have your unit tests in place you know each piece works in isolation - but what about when those pieces interact with each other? Integration tests are the next level up, they will test the interactions between two pieces of your application. Integration tests will ensure the units you’ve written work coherently together.</li>
+<li><strong>End-to-End (E2E) Tests</strong>: End-to-end tests are the highest level of testing - these will test the whole of your application. End-to-end tests are the closest automated tests come to testing the an actual user experience of your application. These are generally the slowest tests to write and run.</li>
+</ul>
+<p>For a real life example of how you’d utilize each of these tests imagine coding a Chess game and wanting to test it. Unit tests would be best for testing each class your wrote in isolation - like ensuring each piece’s instance methods work as you expect them to before involving them with any other pieces. Next you’d write integration tests - so you’d want to ensure that each piece instance interacted correctly with the <code>Board</code> class. The final level would be End-to-End tests which would be like testing a round of chess - testing the <code>Board</code> , <code>Game</code> , and <code>Piece</code> classes all working together.</p>
+<p>According to the testing pyramid - you want to have a solid base of a lot of Unit tests, then a medium amount of integration tests built upon that base, then finally a smaller amount of End-to-End tests. Writing tests in this way is practical for a couple of reasons. As we said before, unit tests ensure each piece of your application works in isolation - if you know each piece works then you can more easily find errors. Unit tests are also <em>fast</em>. The bigger your application gets the longer your testing suite will take to run - if all your tests are end-to-end tests your tests could be running for <strong>hours</strong>.</p>
+<p>Here is a great blog from google about why they use the <a href="https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html">testing pyramid</a>.</p>
+<h2 id="reading-tests">Reading Tests</h2>
+<p>No matter what kind of test you are encountering the most important thing about a test is that it is <strong>readable</strong> and <strong>understandable</strong>. Good tests use descriptive strings to enumerate what they are testing as well as how they are testing it.</p>
+<p>We’ll be diving more into the actual syntax of writing tests soon but for right now let’s see what you can glean without knowing the syntax:</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} describe("avgValue()", function() {   it("should return the average of an array of numbers", function() {     assert.equal(avgValue([10, 20]), 15);   }); });</code></p>
+<p>So without knowing the specfic syntax we can tell a few things from the outset - the outer function has a string with the name of a function <code>avgValue()</code> which is most likely the function we will be testing. Next we see a description string <code>should return the average of an array of numbers</code> .</p>
+<p>So even without understanding the syntax for the test above we can tell <em>what</em> we are testing - the <code>avgValue</code> function, and how we are testing it - <code>should return the average of an array of numbers</code> .</p>
+<p>Being able to read tests is an important skill. You’ll sometimes find yourself working with unfamiliar testing libraries, but if the test is well written you should be able to determine what the test is doing regardless of the syntax it uses.</p>
+<p>Below we’ve re-written the above example using the Ruby language testing library RSpec:</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} describe "avg_value" do   it "should return the average of an array of numbers" do     expect(avg_value([10, 20])).to eq(15)   end end</code></p>
+<p>Now you probably don’t know Ruby - but using the same methods of deduction as we used above we can figure out what is being testing in the above snippet. The outer block mentions <code>avg_value</code> which is probably the method or function being tested and the inner block says how things are being tested - <code>"should return the average of an array of numbers"</code> . Without knowing the language, or the testing library, we can still figure out generally what what is being tested. That is the important thing about reading tests - having the patience to parse the information before you.</p>
+<h2 id="what-you-learned">What you learned</h2>
+<p>We covered a high level overview of testing - the <em>why</em>, the <em>what</em> and the <em>how</em> of testing as well as the basics of how to read a test regardless of the syntax used in writing that test.</p>
+<p>Did you find this lesson helpful?</p>
+<p>No</p>
+<p>Yes</p>
+<p>✔︎ Mark As Complete</p>
+<p>Finished with this task? Click <strong>Mark as Complete</strong> to continue to the next page!</p>
+</body>
+</html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>WT Part Four Mocha Hooks and Chai Spies</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<p>**</p>
+<h3 id="week-6-aug-2020-online" class="sc-cSHVUG VLQzD">Week 6 Aug 2020 Online</h3>
+<h5 id="tasks" class="sc-chPdSV iuEout">Tasks</h5>
+<ul>
+<li><h3 id="weekly-assessment" class="sc-dnqmqq kcAQXs">Weekly Assessment</h3>
+<p>01:40:004/4**</p>
+<ul>
+<li>Quiz
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/multiple-choice-quiz"><em>✔︎</em>Multiple Choice Quiz00:20:00</a></li>
+</ul></li>
+<li>Coding Problems
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/define-a-class"><em>✔︎</em>Define a Class00:10:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/create-a-parent-class"><em>✔︎</em>Create a Parent Class00:10:00</a></li>
+</ul></li>
+<li>Projects
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/test-driven-problems"><em>✔︎</em>Test-Driven Problems01:00:00</a></li>
+</ul></li>
+</ul></li>
+<li><h3 id="monday---http" class="sc-dnqmqq kcAQXs">Monday - HTTP</h3>
+<p>02:49:142/7**</p>
+<ul>
+<li>Learning Objectives
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/http-learning-objectives"><em>●</em>HTTP Learning Objectives00:05:00</a></li>
+</ul></li>
+<li>Lecture
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/http-basics"><em>✔︎</em>HTTP Basics00:07:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/http-requests"><em>✔︎</em>HTTP Requests00:08:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/http-responses"><em>●</em>HTTP Responses00:10:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/request-response-in-the-browser"><em>►</em>Request-Response in the Browser00:10:12</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/your-first-server"><em>►</em>Your First Server00:09:02</a></li>
+</ul></li>
+<li>Practices
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/build-your-own-http-server"><em>⬆︎</em>Build Your Own HTTP Server02:00:00</a></li>
+</ul></li>
+</ul></li>
+<li><h3 id="homework-for-tuesday" class="sc-dnqmqq kcAQXs">Homework for Tuesday</h3>
+<p>00:35:000/3**</p>
+<ul>
+<li>Learning Objectives
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/promises-learning-objectives-day-1"><em>●</em>Promises Learning Objectives Day 100:05:00</a></li>
+</ul></li>
+<li>Homework
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/a-mostly-complete-guide-to-promises-i"><em>●</em>A Mostly Complete Guide to Promises I00:15:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/a-mostly-complete-guide-to-promises-ii"><em>●</em>A Mostly Complete Guide to Promises II00:15:00</a></li>
+</ul></li>
+</ul></li>
+<li><h3 id="tuesday---promises" class="sc-dnqmqq kcAQXs">Tuesday - Promises</h3>
+<p>04:44:082/5**</p>
+<ul>
+<li>Learning Objectives
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/promises-learning-objectives-day-1--recall-"><em>●</em>Promises Learning Objectives Day 1 (Recall)00:05:00</a></li>
+</ul></li>
+<li>Lecture
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/promises--part-1"><em>✔︎</em>Promises, Part 100:15:02</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/promises--part-2"><em>✔︎</em>Promises, Part 200:10:12</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/fetch-api-using-node-fetch"><em>►</em>Fetch API Using node-fetch00:13:54</a></li>
+</ul></li>
+<li>Practices
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/promise-project"><em>⬆︎</em>Promise Project04:00:00</a></li>
+</ul></li>
+</ul></li>
+<li><h3 id="homework-for-wednesday" class="sc-dnqmqq kcAQXs">Homework for Wednesday</h3>
+<p>01:33:002/5**</p>
+<ul>
+<li>Learning Objectives
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/promises-learning-objectives-day-2"><em>●</em>Promises Learning Objectives Day 200:05:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/html-learning-objectives"><em>●</em>HTML Learning Objectives00:05:00</a></li>
+</ul></li>
+<li>Homework
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/modern-promises-with-async-and-await"><em>✔︎</em>Modern Promises With async And await00:15:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/revisiting-the-basics-of-html"><em>✔︎</em>Revisiting the Basics of HTML00:08:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/brushing-up-on-your-html"><em>●</em>Brushing Up On Your HTML01:00:00</a></li>
+</ul></li>
+</ul></li>
+<li><h3 id="wednesday---async-and-await" class="sc-dnqmqq kcAQXs">Wednesday - async and await</h3>
+<p>05:10:000/5**</p>
+<ul>
+<li>Learning Objectives
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/promises-learning-objectives-day-2--recall-"><em>●</em>Promises Learning Objectives Day 2 (Recall)00:05:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/html-learning-objectives--recall-"><em>●</em>HTML Learning Objectives (Recall)00:05:00</a></li>
+</ul></li>
+<li>Lecture
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/async-and-await"><em>►</em>Async and Await</a></li>
+</ul></li>
+<li>Practices
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/exploring-promises"><em>⬆︎</em>Exploring Promises01:00:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/trivia-game-three-ways"><em>⬆︎</em>Trivia Game Three Ways04:00:00</a></li>
+</ul></li>
+</ul></li>
+<li><h3 id="homework-for-thursday" class="sc-dnqmqq jLQnpZ">Homework for Thursday</h3>
+<p>01:22:000/8**</p>
+<ul>
+<li>Learning Objectives
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/testing-objectives"><em>●</em>Testing Objectives00:05:00</a></li>
+</ul></li>
+<li>Homework
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/all-about-testing"><em>●</em>All about Testing00:15:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/test-driven-development"><em>●</em>Test-Driven Development00:05:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/js-error-types"><em>●</em>JS Error Types00:07:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/writing-tests--wt--part-one--mocha-and-assert"><em>●</em>Writing Tests (WT) Part One: Mocha and Assert00:15:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/wt-part-two--testing-errors"><em>●</em>WT Part Two: Testing Errors00:10:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/wt-part-three--testing-classes-with-chai"><em>●</em>WT Part Three: Testing Classes with Chai00:10:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/wt-part-four--mocha-hooks-and-chai-spies"><em>●</em>WT Part Four: Mocha Hooks and Chai Spies00:15:00</a></li>
+</ul></li>
+</ul></li>
+<li><h3 id="thursday---unit-testing---day-1" class="sc-dnqmqq kcAQXs">Thursday - Unit Testing - Day 1</h3>
+<p>04:31:310/11**</p>
+<ul>
+<li>Learning Objectives
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/testing-objectives--recall-"><em>●</em>Testing Objectives (Recall)00:05:00</a></li>
+</ul></li>
+<li>Lecture
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/automated-testing-introduction"><em>►</em>Automated Testing Introduction00:07:53</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/reading-tests-code-demo"><em>►</em>Reading Tests Code Demo00:19:37</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/writing-tests-code-demo-part-one"><em>►</em>Writing Tests Code Demo Part One00:22:49</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/writing-tests-code-demo-part-two"><em>►</em>Writing Tests Code Demo Part Two00:20:12</a></li>
+</ul></li>
+<li>Practices
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/flash-cards--js-errors"><em>●</em>Flash Cards: JS Errors00:05:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/flash-cards--tdd"><em>●</em>Flash Cards: TDD00:05:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/tdd-workflow-quiz"><em>★</em>TDD Workflow Quiz00:03:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/writing-tests-quiz"><em>★</em>Writing Tests Quiz00:03:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/reading-tests--hanoi-game"><em>⬆︎</em>Reading Tests: Hanoi Game01:00:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/writing-tests--tdd-project"><em>⬆︎</em>Writing Tests: TDD Project02:00:00</a></li>
+</ul></li>
+</ul></li>
+<li><h3 id="homework-for-friday" class="sc-dnqmqq kcAQXs">Homework for Friday</h3>
+<p>00:05:000/1**</p>
+<ul>
+<li>Homework
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/browser-basics-quiz"><em>★</em>Browser Basics Quiz00:05:00</a></li>
+</ul></li>
+</ul></li>
+<li><h3 id="friday---unit-testing---day-2" class="sc-dnqmqq kcAQXs">Friday - Unit Testing - Day 2</h3>
+<p>05:10:000/9**</p>
+<ul>
+<li>Practices
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/project-overview"><em>●</em>Project Overview00:10:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/building-the-full-stack-to-do-list"><em>►</em>Building the Full-Stack To-Do List00:30:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/create-and-serve-the-category-screen"><em>●</em>Create and Serve the Category Screen00:30:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/save-submitted-category-information"><em>●</em>Save Submitted Category Information00:30:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/entering-to-do-items"><em>●</em>Entering To-Do Items00:45:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/save-and-show-submitted-to-do-items"><em>●</em>Save and Show Submitted To-Do Items00:30:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/completing-a-to-do-item"><em>●</em>Completing a To-Do Item00:30:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/search-for-to-do-items"><em>●</em>Search For To-Do Items00:45:00</a></li>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/refactor-to-use-a-template-engine"><em>●</em>Refactor To Use a Template Engine01:00:00</a></li>
+</ul></li>
+</ul></li>
+<li><h3 id="homework-for-next-monday" class="sc-dnqmqq kcAQXs">Homework for Next Monday</h3>
+<p>0/1**</p>
+<ul>
+<li>Homework
+<ul>
+<li><a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/study-for-your-assessment-"><em>●</em>Study for your assessment!</a></li>
+</ul></li>
+</ul></li>
+<li><p>**</p></li>
+</ul>
+<h2 id="wt-part-four-mocha-hooks-and-chai-spies" class="sc-kPVwWT bRXTmH">WT Part Four: Mocha Hooks and Chai Spies</h2>
+<ul>
+<li>Profile</li>
+<li><a href="https://launchpass.com/p/app-academy-mentor">**</a></li>
+<li>**</li>
+<li><a href="https://forum.appacademy.io/">**</a></li>
+</ul>
+<h1 id="wt-part-four-mocha-hooks-and-chai-spies-1" class="sc-kIPQKe erIitW">WT Part Four: Mocha Hooks and Chai Spies</h1>
+<ul>
+<li><p>⏱ 15 minutes</p></li>
+<li>Catalog**</li>
+<li>Js Py Aug 2020 Online**</li>
+<li>Week 6 Aug 2020 Online**</li>
+<li><p>Wt Part Four Mocha Hooks And Chai Spies</p></li>
+</ul>
+<h2 id="writing-tests">Writing Tests</h2>
+<p>This will be the final demo in our writing tests series! In this reading we’ll be covering:</p>
+<ul>
+<li>Using <code class="sc-cMljjf hbDMZX">Mocha</code> Hooks to DRY up testing</li>
+<li>Using <code class="sc-cMljjf hbDMZX">Chai Spies</code> to “spy” on functions to see how many times they’ve been invoked</li>
+</ul>
+<h2 id="part-four-mocha-hooks-and-chai-spies">Part Four: Mocha Hooks and Chai Spies</h2>
+<p>Let’s jump right back in. We’ve written some nice unit tests up to this point:</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} describe(“Dog Constructor Function”, function() { it(‘should have a “name” property’, function() { const layla = new Dog(“Layla”); expect(layla).to.have.property(“name”); });</p>
+<p>it(‘should set the “name” property when a new dog is created’, function() { const layla = new Dog(“Layla”); // we are using the eql function to compare the value of layla.name // with the provided string expect(layla.name).to.eql(“Layla”); }); }); ```</p>
+<p>This is how unit tests are supposed to work, buuuut it will be annoying over time if we have to define a new <code class="sc-cMljjf hbDMZX">Dog</code> instance in <em>every single spec</em>. <code class="sc-cMljjf hbDMZX">Mocha</code> has some built in functionality to help us with this problem though: Mocha Hooks!</p>
+<h3 id="introducing-mocha-hooks">Introducing Mocha Hooks</h3>
+<p><a href="https://mochajs.org/#hooks">Mocha Hooks</a> give you a convenient way to do set up prior to running a related group of specs or to do some clean up after running those specs. Using hooks helps to keep your testing code DRY so you don’t unnecessarily repeat set up and clean up code within each test.</p>
+<p>Mocha Hooks have very descriptive function names and two levels of granularity - before/after each block of tests <em>or</em> before/after each test:</p>
+<ol type="1">
+<li>the hooks <code class="sc-cMljjf hbDMZX">before</code> and <code class="sc-cMljjf hbDMZX">after</code> will be invoked either before or after the block of tests is run (depending on which function is used)</li>
+<li>the hooks <code class="sc-cMljjf hbDMZX">beforeEach</code> and <code class="sc-cMljjf hbDMZX">afterEach</code> will be invoked either before or after <strong>each</strong> test (depending on which function is used)</li>
+</ol>
+<p>Let’s look at a simple example that uses each of the available hooks to log a message to the console. Two placeholder tests are also defined to help demonstrate the differences between the available hooks:</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} const assert = require(‘assert’);</p>
+<p>describe(‘Hooks demo’, () =&gt; { before(() =&gt; { console.log(‘Before hook…’); });</p>
+<p>beforeEach(() =&gt; { console.log(‘Before each hook…’); });</p>
+<p>afterEach(() =&gt; { console.log(‘After each hook…’); });</p>
+<p>after(() =&gt; { console.log(‘After hook…’); });</p>
+<p>it(‘Placeholder one’, () =&gt; { assert.equal(true, true); });</p>
+<p>it(‘Placeholder two’, () =&gt; { assert.equal(true, true); }); }); ```</p>
+<p>Running the above spec produces the following output:</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} Hooks demo Before hook… Before each hook… ✓ Placeholder one After each hook… Before each hook… ✓ Placeholder two After each hook… After hook…</p>
+<p>2 passing (5ms) ```</p>
+<p>Notice that the <code class="sc-cMljjf hbDMZX">before</code> and <code class="sc-cMljjf hbDMZX">after</code> hooks only ran once while the <code class="sc-cMljjf hbDMZX">beforeEach</code> and <code class="sc-cMljjf hbDMZX">afterEach</code> hooks each ran once per test.</p>
+<p>Hooks are defined within a <code class="sc-cMljjf hbDMZX">describe</code> or <code class="sc-cMljjf hbDMZX">context</code> function. While hooks can be defined before, after, or interspersed with your tests, keeping all of your hooks together (before or after your tests) will help others to read and understand your code.</p>
+<p>Defining hooks out of their logical order has no effect on when they’re ran. Consider the following example that defines an <code class="sc-cMljjf hbDMZX">afterHook</code> before a <code class="sc-cMljjf hbDMZX">beforeEach</code> hook:</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} const assert = require(‘assert’);</p>
+<p>describe(‘Hooks demo’, () =&gt; { afterEach(() =&gt; { console.log(‘After each hook…’); });</p>
+<p>beforeEach(() =&gt; { console.log(‘Before each hook…’); });</p>
+<p>it(‘Placeholder one’, () =&gt; { assert.equal(true, true); });</p>
+<p>it(‘Placeholder two’, () =&gt; { assert.equal(true, true); }); }); ```</p>
+<p>Running the above spec produces the following output:</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} Hooks demo Before each hook… ✓ Placeholder one After each hook… Before each hook… ✓ Placeholder two After each hook…</p>
+<p>2 passing (6ms) ```</p>
+<p>The order of your hooks only matters when you define multiple hooks of the same type. When a hook type is defined more than once, they’ll be ran in the order that they’re defined in:</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} const assert = require(‘assert’);</p>
+<p>describe(‘Hooks demo’, () =&gt; { beforeEach(() =&gt; { console.log(‘Before each hook #1…’); });</p>
+<p>beforeEach(() =&gt; { console.log(‘Before each hook #2…’); });</p>
+<p>it(‘Placeholder one’, () =&gt; { assert.equal(true, true); });</p>
+<p>it(‘Placeholder two’, () =&gt; { assert.equal(true, true); }); }); ```</p>
+<p>Running the above spec produces the following output:</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} Hooks demo Before each hook #1… Before each hook #2… ✓ Placeholder one Before each hook #1… Before each hook #2… ✓ Placeholder two</p>
+<p>2 passing (5ms) ```</p>
+<p>You can also define hooks within nested <code class="sc-cMljjf hbDMZX">describe</code> or <code class="sc-cMljjf hbDMZX">context</code> functions:</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} const assert = require(‘assert’);</p>
+<p>describe(‘Hooks demo’, () =&gt; { before(() =&gt; { console.log(‘Before hook…’); });</p>
+<p>beforeEach(() =&gt; { console.log(‘Before each hook…’); });</p>
+<p>afterEach(() =&gt; { console.log(‘After each hook…’); });</p>
+<p>after(() =&gt; { console.log(‘After hook…’); });</p>
+<p>it(‘Placeholder one’, () =&gt; { assert.equal(true, true); });</p>
+<p>it(‘Placeholder two’, () =&gt; { assert.equal(true, true); });</p>
+<p>describe(‘nested tests’, () =&gt; { before(() =&gt; { console.log(‘Nested before hook…’); });</p>
+<pre><code>beforeEach(() =&gt; {
+  console.log(&#39;Nested before each hook...&#39;);
+});
+
+afterEach(() =&gt; {
+  console.log(&#39;Nested after each hook...&#39;);
+});
+
+after(() =&gt; {
+  console.log(&#39;Nested after hook...&#39;);
+});
+
+it(&#39;Placeholder one&#39;, () =&gt; {
+  assert.equal(true, true);
+});
+
+it(&#39;Placeholder two&#39;, () =&gt; {
+  assert.equal(true, true);
+});  </code></pre>
+<p>}); }); ```</p>
+<p>Running the above spec produces the following output:</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} Hooks demo Before hook… Before each hook… ✓ Placeholder one After each hook… Before each hook… ✓ Placeholder two After each hook… nested tests Nested before hook… Before each hook… Nested before each hook… ✓ Placeholder one Nested after each hook… After each hook… Before each hook… Nested before each hook… ✓ Placeholder two Nested after each hook… After each hook… Nested after hook… After hook…</p>
+<p>4 passing (7ms) ```</p>
+<p>Notice that the <code class="sc-cMljjf hbDMZX">before</code> and <code class="sc-cMljjf hbDMZX">after</code> hooks defined in the top-level <code class="sc-cMljjf hbDMZX">describe</code> function run only once while the <code class="sc-cMljjf hbDMZX">beforeEach</code> and <code class="sc-cMljjf hbDMZX">afterEach</code> hooks run before and after (respectively) for each of the tests defined in the top-level <code class="sc-cMljjf hbDMZX">describe</code> function <em>and</em> for each of the tests defined in the nested <code class="sc-cMljjf hbDMZX">describe</code> function.</p>
+<blockquote>
+<p>While the need to define nested hooks won’t come up very often (especially when you’re just starting out with unit testing), it is very helpful to be able to define a <code class="sc-cMljjf hbDMZX">beforeEach</code> hook in a top-level <code class="sc-cMljjf hbDMZX">describe</code> function that will run before every test in that block <em>and</em> before every test within nested <code class="sc-cMljjf hbDMZX">describe</code> or <code class="sc-cMljjf hbDMZX">context</code> functions (you’ll do exactly that in just a bit).</p>
+</blockquote>
+<p>You can also optionally pass a description for a hook or a named function:</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} beforeEach(‘My hook description’, () =&gt; { console.log(‘Before each hook…’); });</p>
+<p>beforeEach(function myHookName() { console.log(‘Before each hook…’); }); ```</p>
+<p>If an error occurs with executing the hook, the hook description or function name will display in the console along with the error information to assist with debugging.</p>
+<h3 id="using-the-beforeeach-mocha-hook">Using the <code class="sc-cMljjf hbDMZX">beforeEach</code> Mocha Hook</h3>
+<p>Let’s go back to our spec and see how we can use hooks to DRY up our code. Here’s where we left off:</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} describe(“Dog Constructor Function”, function() { it(‘should have a “name” property’, function() { const layla = new Dog(“Layla”); expect(layla).to.have.property(“name”); });</p>
+<p>it(‘should set the “name” property when a new dog is created’, function() { const layla = new Dog(“Layla”); // we are using the eql function to compare the value of layla.name // with the provided string expect(layla.name).to.eql(“Layla”); }); }); ```</p>
+<p>Let’s refactor our code to use a <code class="sc-cMljjf hbDMZX">beforeEach</code> hook to assign the value of our new dog instance:</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} describe(“Dog”, function() { // we’ll declare our variable here to ensure it’s available within the scope // of all the specs below let layla;</p>
+<p>// now for each test below we’ll create a new instance to ensure each of our // dog instances is exactly the same beforeEach(“set up a dog instance”, function() { layla = new Dog(“Layla”); });</p>
+<p>describe(“Dog Constructor Function”, function() { it(‘should have a “name” property’, function() { expect(layla).to.have.property(“name”); });</p>
+<pre><code>it(&#39;should set the &quot;name&quot; property when a new dog is created&#39;, function() {
+  expect(layla.name).to.eql(&quot;Layla&quot;);
+});</code></pre>
+<p>}); }); ```</p>
+<p>Now let’s write a test from the next method on the <code class="sc-cMljjf hbDMZX">Dog</code> class: <code class="sc-cMljjf hbDMZX">Dog.prototype.bark()</code>. For testing classes we’ll create a new <code class="sc-cMljjf hbDMZX">describe</code> function to test each individual method. We’ll now write our unit test inside taking advantage of our <code class="sc-cMljjf hbDMZX">beforeEach</code> hook:</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} describe(“Dog”, function() { let layla;</p>
+<p>beforeEach(“set up a dog instance”, function() { layla = new Dog(“Layla”); });</p>
+<p>// etc, etc.</p>
+<p>describe(“prototype.bark()”, function() { it(“should return a string with the name of the dog barking”, function() { expect(layla.bark()).to.eql(“Layla is barking”); }); }); }); ```</p>
+<p>Not only are we avoiding repeating our setup code within each test but we’ve improved the readability of our code by making it more self-descriptive. The code that runs before each test is literally contained with a hook named <code class="sc-cMljjf hbDMZX">beforeEach</code>!</p>
+<p>The <code class="sc-cMljjf hbDMZX">after</code> and <code class="sc-cMljjf hbDMZX">afterEach</code> hooks are generally used less often than the <code class="sc-cMljjf hbDMZX">before</code> and <code class="sc-cMljjf hbDMZX">beforeEach</code> hooks. Most of the time, it’s preferable to avoid using the <code class="sc-cMljjf hbDMZX">after</code> and <code class="sc-cMljjf hbDMZX">afterEach</code> hooks to perform clean up tasks after your tests. Instead, simply use the <code class="sc-cMljjf hbDMZX">before</code> and <code class="sc-cMljjf hbDMZX">beforeEach</code> hooks to create a clean starting point for each of your tests. Doing this will ensure that your tests run in a consistent, predictable manner.</p>
+<h3 id="using-chai-spies">Using Chai Spies</h3>
+<p>Sweet - let’s now look to the next method on the <code class="sc-cMljjf hbDMZX">Dog.prototype</code> - <code class="sc-cMljjf hbDMZX">Dog.prototype.chainChaseTail</code>. This instance method intakes a number (num) and will then invoke the <code class="sc-cMljjf hbDMZX">Dog.prototype.chaseTail</code> function <code class="sc-cMljjf hbDMZX">num</code> number of times. The <code class="sc-cMljjf hbDMZX">chaseTail</code> function will just <code class="sc-cMljjf hbDMZX">console.log</code> a string - meaning that we have no function output to test. The <code class="sc-cMljjf hbDMZX">Dog.prototype.chainChaseTail</code> function will additionally throw a <code class="sc-cMljjf hbDMZX">TypeError</code> if the incoming argument is not a number.</p>
+<p>We’ll start by setting up our outer <code class="sc-cMljjf hbDMZX">describe</code> block for the <code class="sc-cMljjf hbDMZX">prototype.chainChaseTail</code> method. Next we’ll add two <code class="sc-cMljjf hbDMZX">context</code> functions for our two contexts - valid <strong>or</strong> invalid parameters:</p>
+<blockquote>
+<p><code class="sc-cMljjf hbDMZX">context</code> is just an alias for <code class="sc-cMljjf hbDMZX">describe</code> it’s just another way to make your tests more understandable and readable, in this case we are testing our method with different parameters, and thus in different contexts. (not to be confused with “context” in the javascript sense of the value of <code class="sc-cMljjf hbDMZX">this</code>)</p>
+</blockquote>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} describe("prototype.chainChaseTail()", function() {   context("with an invalid parameter", function() {});   context("with a valid number parameter", function() {}); });</code></p>
+<p>We’ll start by writing our test for when the method is invoked with invalid parameters. To do this we’ll use Chai’s <a href="https://www.chaijs.com/api/bdd/#method_throw"><code class="sc-cMljjf hbDMZX">throw</code></a> method ensuring to wrap our error throwing function in another function:</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} context("with an invalid parameter", function() {   it("should throw a TypeError when given an argument that is not a number", function() {     expect(() =&gt; layla.chainChaseTail("3")).to.throw(TypeError);   }); });</code></p>
+<blockquote>
+<p>Note here we are passing the literal string <code class="sc-cMljjf hbDMZX">"3"</code> not the number 3.</p>
+</blockquote>
+<p>Nice, now we can concentrate on our other context with a valid parameter - and how to go about testing this function. In order to test <code class="sc-cMljjf hbDMZX">chainChaseTail</code> properly we’ll need to see <em>how many times</em> the <code class="sc-cMljjf hbDMZX">chaseTail</code> method is invoked. Which means we’ll need to import another library that will add extra functionality to <code class="sc-cMljjf hbDMZX">Chai</code>. We’ll import the <a href="https://www.chaijs.com/plugins/chai-spies/"><code class="sc-cMljjf hbDMZX">Chai Spies</code></a> library using <code class="sc-cMljjf hbDMZX">npm install chai-spies</code> in our top level directory.</p>
+<p>Now we’ll insert a few lines of code to the top of file to set up our shiny new Chai Spies:</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} // top of dog-spec.js const chai = require("chai"); const expect = chai.expect; const spies = require("chai-spies"); chai.use(spies);</code></p>
+<p>We now have access to the <code class="sc-cMljjf hbDMZX">chai-spies</code> module in our tests. The <code class="sc-cMljjf hbDMZX">Chai Spies</code> library provides a lot of added functionality including the ability to determine if a function has been called and how many times that function has been called.</p>
+<p>So let’s get started spying! We’ll setup our <code class="sc-cMljjf hbDMZX">it</code> function with an appropriate string:</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} context("with a valid number parameter", function() {   it("should call the chaseTail method n times", function() {}); });</code></p>
+<p>Now in order to spy on a function we first need to tell Chai which function we’d like to spy on using the <code class="sc-cMljjf hbDMZX">chai.spy.on</code> method. In this case we’d like to spy on the instance of a Dog that will be invoking the <code class="sc-cMljjf hbDMZX">chainChaseTail</code> method to determine how many times the <code class="sc-cMljjf hbDMZX">chaseTail</code> method is then invoked.</p>
+<p>So we will set up our spy on the dog instance in question, as well as tell our chai spy which method to keep track of:</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} context("with a valid number parameter", function() {   it("should call the chaseTail method n times", function() {     // the first argument will be the instance we are spying on     // the second argument will be the method we want to keep track of     const chaseTailSpy = chai.spy.on(layla, "chaseTail");   }); });</code></p>
+<p>Now that our spy is set up we now need make sure our dog instance will actually call the <code class="sc-cMljjf hbDMZX">chainChaseTail</code> function! Otherwise our spy won’t have anything to spy on:</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} context("with a valid number parameter", function() {   it("should call the chaseTail method n times", function() {     const chaseTailSpy = chai.spy.on(layla, "chaseTail");     // we need to invoke chainChaseTail because that is the method that     // will invoke chaseTail which is the method we are spying on     layla.chainChaseTail(3);   }); });</code></p>
+<p>Finally, we need to add our actual test - otherwise this is all for naught! Chai has some really nice chaining methods when it comes to checking how many times a function has been invoked. Here we’ll use the method chain of <code class="sc-cMljjf hbDMZX">expect(func).to.have.been.called.exactly(n)</code> to test that the method we are spying on - <code class="sc-cMljjf hbDMZX">chaseTail</code> was invoked a certain number of times:</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} context("with a valid number parameter", function() {   it("should call the chaseTail method n times", function() {     const chaseTailSpy = chai.spy.on(layla, "chaseTail");     layla.chainChaseTail(3);     // below is our actual test to see how many times our spy was invoked     expect(chaseTailSpy).to.have.been.called.exactly(3);   }); });</code></p>
+<h3 id="testing-static-methods-on-classes">Testing static methods on classes</h3>
+<p>Sweet! We are almost done testing this class - just one more method to go. We’ll now work on testing the class method <code class="sc-cMljjf hbDMZX">Dog.cleanDogs</code>. To denote that this is a class method, not an instance method, our <code class="sc-cMljjf hbDMZX">describe</code> string will not use the word <code class="sc-cMljjf hbDMZX">prototype</code>:</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} describe("cleanDogs()", function() {   it("should return an array of each cleaned dog string", function() {}); });</code></p>
+<p>Now the <code class="sc-cMljjf hbDMZX">Dog.cleanDogs</code> class method will intake an array of dogs and output an array where each element is a string noting that the passed in dog instance’s paws are now clean. In order to properly test this function we’ll probably want an array of more than one dog instance. Let’s create a new dog and pass an array of two dog instances to the <code class="sc-cMljjf hbDMZX">Dog.cleanDogs</code> method:</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} describe("cleanDogs()", function() {   it("should return an array of each cleaned dog string", function() {     const zoey = new Dog("Zoey");     let cleanDogsArray = Dog.cleanDogs([layla, zoey]);   }); });</code></p>
+<p>Then we’ll create a variable for our expected output and compare the output we received from <code class="sc-cMljjf hbDMZX">Dog.cleanDogs</code>:</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} describe("cleanDogs()", function() {   it("should return an array of each cleaned dog string", function() {     const zoey = new Dog("Zoey");     let cleanDogsArray = Dog.cleanDogs([layla, zoey]);     let result = ["I cleaned Layla's paws.", "I cleaned Zoey's paws."];     expect(cleanDogsArray).to.eql(result);   }); });</code></p>
+<p>Awesome! We have fully testing the <code class="sc-cMljjf hbDMZX">Dog</code> class’s methods and learned a lot about testing along the way.</p>
+<p>Here is our full testing file so you can ensure you got everything:</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} const chai = require(“chai”); const expect = chai.expect; const spies = require(“chai-spies”); chai.use(spies);</p>
+<p>// this is a relative path to the function location const Dog = require(“../problems/dog.js”);</p>
+<p>describe(“Dog”, function() { let layla;</p>
+<p>beforeEach(“set up a dog instance”, function() { layla = new Dog(“Layla”); });</p>
+<p>describe(“Dog Constructor Function”, function() { it(‘should have a “name” property’, () =&gt; { expect(layla).to.have.property(“name”); });</p>
+<pre><code>it(&#39;should set the &quot;name&quot; property when a new dog is created&#39;, () =&gt; {
+  expect(layla.name).to.eql(&quot;Layla&quot;);
+});</code></pre>
+<p>});</p>
+<p>describe(“prototype.bark()”, function() { it(“should return a string with the name of the dog barking”, () =&gt; { expect(layla.bark()).to.eql(“Layla is barking”); }); });</p>
+<p>describe(“prototype.chainChaseTail()”, function() { context(“with a valid number parameter”, function() { it(“should call the chaseTail method n times”, function() { const chaseTailSpy = chai.spy.on(layla, “chaseTail”); layla.chainChaseTail(3);</p>
+<pre><code>    expect(chaseTailSpy).to.have.been.called.exactly(3);
+  });
+});
+
+context(&quot;with an invalid parameter&quot;, function() {
+  it(&quot;should throw a TypeError when given an argument that is not a number&quot;, function() {
+    expect(() =&gt; layla.chainChaseTail(&quot;3&quot;)).to.throw(TypeError);
+  });
+});</code></pre>
+<p>});</p>
+<p>describe(“cleanDogs()”, function() { it(“should return an array of each cleaned dog string”, function() { const zoey = new Dog(“Zoey”); let cleanDogsArray = Dog.cleanDogs([layla, zoey]); let result = [“I cleaned Layla’s paws.”, “I cleaned Zoey’s paws.”]; expect(cleanDogsArray).to.eql(result); }); }); }); ```</p>
+<h2 id="what-you-learned">What you learned</h2>
+<p>In the upcoming project we’ll be covering a lot more Chai syntax - but don’t worry about memorizing this syntax! The point we are trying to make is that in the future you’ll be using a variety of software testing frameworks and assertion libraries - the most important things are to know the basics of how to structure tests as well as being able to read and parse documentation to write tests.</p>
+<p>In this series of readings we covered the basics of how to:</p>
+<ul>
+<li>properly format and denote your mocha tests using <code class="sc-cMljjf hbDMZX">describe</code>, <code class="sc-cMljjf hbDMZX">context</code> and <code class="sc-cMljjf hbDMZX">it</code> blocks</li>
+<li>write tests for individual functions as well as writing tests for classes</li>
+<li>use <code class="sc-cMljjf hbDMZX">chai-spies</code> to test how many times a function has been called</li>
+<li>test that functions will throw certain errors</li>
+<li>recognize and utilize the Mocha hooks: <code class="sc-cMljjf hbDMZX">before</code>, <code class="sc-cMljjf hbDMZX">beforeEach</code>, <code class="sc-cMljjf hbDMZX">after</code>, and <code class="sc-cMljjf hbDMZX">afterEach</code></li>
+</ul>
+<p>Did you find this lesson helpful?</p>
+<p>No</p>
+<p>Yes</p>
+<p>✔︎ Mark As Complete</p>
+<p>Finished with this task? Click <strong>Mark as Complete</strong> to continue to the next page!</p>
+</body>
+</html>

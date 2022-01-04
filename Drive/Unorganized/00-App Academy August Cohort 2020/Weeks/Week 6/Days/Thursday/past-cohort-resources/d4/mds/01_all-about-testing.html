@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>01_all-about-testing</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="all-about-testing">All About Testing!</h1>
+<p>In your daily life you have encountered tests before - though school, work, or even through trivia, a test is a way to ensure something is correct. In your programming careers so far you’ve tested most of your work by hand. Testing one function at a time can be tedious, repetitive, and worst of all, it is a method vulnerable to both false positives and false negatives.</p>
+<p>Let’s talk about <em>automated testing</em> - the how, the what, and most importantly the <strong>why</strong>. The general idea across all testing frameworks is to allow developers to write code that would specify the behavior of a function or module or class. We’ve reached a point in software development where developers can now run test code against their application code and have confidence that their code will work as intended.</p>
+<p>When you finish this reading you should be able to paraphrase the how and why we test as well as how to read automated tests without necessarily knowing the syntax.</p>
+<h2 id="why-do-we-test">Why do we test?</h2>
+<p>Yes, making sure the dang thing actually works is important. But beyond the obvious, why take the time to write tests?</p>
+<ul>
+<li><p><em>To make sure the dang thing works</em></p>
+<p>Yes, that’s obvious, but dagnabit, it’s important!</p></li>
+<li><p><em>Increase flexibility &amp; reduce fear (of code)</em></p>
+<p>You’ve written a whole bunch of functionality, multiple other developers have worked on the code, you’re deep into the project… And then you realize you have to refactor big chunks of it. Without automated tests, you’ll be walking on eggshells, frightened of the codebase and the various landmines that are surely lying in wait.</p>
+<p>With tests, you can aggressively refactor with confidence. If anything breaks, you’ll know. And you’ll know exactly what the expectations are for the module you’re refactoring, so as long as it meets the specs, you’re good.</p></li>
+</ul>
+<blockquote>
+<p>When you are writing automated tests for an application you are writing the <em>specfications</em> of how that application should behave. In the software industry automated tests are often called “specs”, which is short for the word “specification”.</p>
+</blockquote>
+<ul>
+<li><p><em>Make collaboration easier</em></p>
+<p>Complex applications are built by teams of developers. It may be that not all those developers will actually get the chance to talk to one another (they’re busy, they may live in different places, some of them may have left the company, new people just joined, it’s a huge project, etc.).</p>
+<p>Specs allow teams to have confidence that each module performs a specific task and reduces the need for expensive coordination. The specs themselves become an effective form of communication.</p></li>
+<li><p><em>Produce documentation</em></p>
+<p>If the tests are written well, the tests can serve as documentation for the codebase. Need to know what such and such module does? Check out the specs. This is related to easing collaboration.</p></li>
+</ul>
+<h2 id="how-we-test">How we Test</h2>
+<h3 id="testing-frameworks-vs-assertion-libraries">Testing frameworks vs Assertion libraries</h3>
+<p>An important distinction to understand is the difference between a <em>testing framework</em> and an <em>assertion library</em>. The job of a testing framework is to <strong>run</strong> tests and present them to a user. An assertion library is the backbone of any written test - it is the code that we use to <strong>write</strong> our tests. Assertion libraries will do the heavy lifting of comparing and verifying our code. Some testing frameworks will have built in assertion libraries, others will need you to import an assertion library to use.</p>
+<h3 id="mocha">Mocha</h3>
+<p><a href="https://mochajs.org/#getting-started"><code>Mocha</code></a> is a JavaScript <em>testing framework</em> that specializes in <em>running</em> tests and presenting them in an organized user friendly way. The <code>Mocha</code> testing framework is widely used because of it’s flexibility. <code>Mocha</code> supports a whole variety of different assertion libraries and DSL interfaces for writing tests in the way the best suites the developer.</p>
+<p>When writing tests with Mocha we will be using <code>Mocha</code>’s <a href="https://en.wikipedia.org/wiki/Domain-specific_language">DSL</a> (Domain Specific Language). A Domain Specific Language refers to a computer language specialized for a particular purpose - in <code>Mocha</code>’s case the DSL has been engineered for providing structure for writing tests. A DSL is it’s own language that will usually be familiar but syntactically a little different from the languages you know. That being said you don’t have to worry about memorizing every single piece of syntax for writing tests - just get a good grasp of the basics of testing and use the documentation to fill in any knowledge gaps.</p>
+<p>You’ve seen what <code>Mocha</code> looks like already because all the specs for your assessments and projects so far have been written utilizing <code>Mocha</code> as the testing framework.</p>
+<p>We’ll be talking more about different assertion libraries a little later when we talk about <em>writing</em> tests.</p>
+<h2 id="what-do-we-test">What do we test?</h2>
+<p>So now that we talked about why we test and what we use to test…what exactly do we test?</p>
+<h3 id="test-the-public-interface">Test the public interface</h3>
+<p>When you’re trying to figure out what you should be testing, ask yourself, “What is (or will be) the public interface of the module or class I’m writing?” That is, what are the functions that the outside world will have access to and rely on?</p>
+<p>Ideally, you’d have thorough test coverage on the entire public interface. When that’s not possible, ensure that your tests cover the most important and/or complex parts of that interface - that is, the pieces that you need to make sure work as intended (and expected).</p>
+<p>Kent Dodds has a <a href="https://kentcdodds.com/blog/how-to-know-what-to-test">great article</a> on how to identify what you should be testing.</p>
+<h3 id="the-testing-pyramid">The testing pyramid</h3>
+<p>A common metaphor used to group software tests into separate levels of testing is the testing pyramid.</p>
+<figure>
+<img src="https://2.bp.blogspot.com/-YTzv_O4TnkA/VTgexlumP1I/AAAAAAAAAJ8/57-rnwyvP6g/s1600/image02.png" alt="test-pry" /><figcaption>test-pry</figcaption>
+</figure>
+<p>Let’s quickly go over each level before talking about the pyramid as a whole:</p>
+<ul>
+<li><strong>Unit Tests</strong>: The smallest unit of testing - used to test the smallest pieces of your application in isolation to ensure each piece works before you attempt to put those pieces together. Each unit test should focus on testing <strong>one</strong> thing. These are generally the fastest tests to write and run.</li>
+<li><strong>Integration Tests</strong>: Once you have your unit tests in place you know each piece works in isolation - but what about when those pieces interact with each other? Integration tests are the next level up, they will test the interactions between two pieces of your application. Integration tests will ensure the units you’ve written work coherently together.</li>
+<li><strong>End-to-End (E2E) Tests</strong>: End-to-end tests are the highest level of testing - these will test the whole of your application. End-to-end tests are the closest automated tests come to testing the an actual user experience of your application. These are generally the slowest tests to write and run.</li>
+</ul>
+<p>For a real life example of how you’d utilize each of these tests imagine coding a Chess game and wanting to test it. Unit tests would be best for testing each class your wrote in isolation - like ensuring each piece’s instance methods work as you expect them to before involving them with any other pieces. Next you’d write integration tests - so you’d want to ensure that each piece instance interacted correctly with the <code>Board</code> class. The final level would be End-to-End tests which would be like testing a round of chess - testing the <code>Board</code>, <code>Game</code>, and <code>Piece</code> classes all working together.</p>
+<p>According to the testing pyramid - you want to have a solid base of a lot of Unit tests, then a medium amount of integration tests built upon that base, then finally a smaller amount of End-to-End tests. Writing tests in this way is practical for a couple of reasons. As we said before, unit tests ensure each piece of your application works in isolation - if you know each piece works then you can more easily find errors. Unit tests are also <em>fast</em>. The bigger your application gets the longer your testing suite will take to run - if all your tests are end-to-end tests your tests could be running for <strong>hours</strong>.</p>
+<p>Here is a great blog from google about why they use the <a href="https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html">testing pyramid</a>.</p>
+<h2 id="reading-tests">Reading Tests</h2>
+<p>No matter what kind of test you are encountering the most important thing about a test is that it is <strong>readable</strong> and <strong>understandable</strong>. Good tests use descriptive strings to enumerate what they are testing as well as how they are testing it.</p>
+<p>We’ll be diving more into the actual syntax of writing tests soon but for right now let’s see what you can glean without knowing the syntax:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="at">describe</span>(<span class="st">&quot;avgValue()&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-2" title="2">  <span class="at">it</span>(<span class="st">&quot;should return the average of an array of numbers&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-3" title="3">    <span class="va">assert</span>.<span class="at">equal</span>(<span class="at">avgValue</span>([<span class="dv">10</span><span class="op">,</span> <span class="dv">20</span>])<span class="op">,</span> <span class="dv">15</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-4" title="4">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>So without knowing the specfic syntax we can tell a few things from the outset - the outer function has a string with the name of a function <code>avgValue()</code> which is most likely the function we will be testing. Next we see a description string <code>should return the average of an array of numbers</code>.</p>
+<p>So even without understanding the syntax for the test above we can tell <em>what</em> we are testing - the <code>avgValue</code> function, and how we are testing it - <code>should return the average of an array of numbers</code>.</p>
+<p>Being able to read tests is an important skill. You’ll sometimes find yourself working with unfamiliar testing libraries, but if the test is well written you should be able to determine what the test is doing regardless of the syntax it uses.</p>
+<p>Below we’ve re-written the above example using the Ruby language testing library RSpec:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode ruby"><code class="sourceCode ruby"><a class="sourceLine" id="cb2-1" title="1">describe <span class="st">&quot;avg_value&quot;</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb2-2" title="2">  it <span class="st">&quot;should return the average of an array of numbers&quot;</span> <span class="kw">do</span></a>
+<a class="sourceLine" id="cb2-3" title="3">    expect(avg_value([<span class="dv">10</span>, <span class="dv">20</span>])).to eq(<span class="dv">15</span>)</a>
+<a class="sourceLine" id="cb2-4" title="4">  <span class="kw">end</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="kw">end</span></a></code></pre></div>
+<p>Now you probably don’t know Ruby - but using the same methods of deduction as we used above we can figure out what is being testing in the above snippet. The outer block mentions <code>avg_value</code> which is probably the method or function being tested and the inner block says how things are being tested - <code>"should return the average of an array of numbers"</code>. Without knowing the language, or the testing library, we can still figure out generally what what is being tested. That is the important thing about reading tests - having the patience to parse the information before you.</p>
+<h2 id="what-you-learned">What you learned</h2>
+<p>We covered a high level overview of testing - the <em>why</em>, the <em>what</em> and the <em>how</em> of testing as well as the basics of how to read a test regardless of the syntax used in writing that test.</p>
+</body>
+</html>

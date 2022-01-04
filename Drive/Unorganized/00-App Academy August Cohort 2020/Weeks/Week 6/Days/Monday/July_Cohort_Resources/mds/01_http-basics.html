@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>01_http-basics</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<h1 id="http-basics">HTTP Basics</h1>
+<p>In the late 1980s, a computer scientist named Tim Berners-Lee proposed the concept of the “WorldWideWeb”, laying the foundation for our modern Internet. A critical part of this concept was <em>HTTP</em>, the <em>Hypertext Transfer Protocol</em>.</p>
+<p>We’re going to to dive into what makes HTTP such an important part of Web browsing and learn how to leverage it in our applications.</p>
+<p>We’ll cover:</p>
+<ul>
+<li>the vocabulary of the Web,</li>
+<li>how stateless connections work,</li>
+<li>and HTTP request &amp; response types.</li>
+</ul>
+<h2 id="first-some-context">First, some context</h2>
+<blockquote>
+<p>“If you want to build a ship, don’t drum up the men and women to gather wood, divide the work, and give orders. Instead, teach them to yearn for the vast and endless sea.”</p>
+<p>– <em>Antoine de Saint-Exupéry (paraphrased)</em></p>
+</blockquote>
+<p>So far, you’ve written code that runs in isolation on your own system. Now it’s time to set sail into the “vast and endless” Internet! Before we can do so, we need to review the fundamentals: what makes the Web a “web”?</p>
+<p>We’re going to share a lot of vocabulary here, and it may be a little dry at times, but remember that these are the principles upon which the rest of your journey will be built! You’ll find these concepts missing from most programming tutorials, so you’ll be ahead of the game if you lay a strong foundation now.</p>
+<h2 id="breaking-it-down">Breaking it down…</h2>
+<p>Like many disciplines, computer science is built around a shared vocabulary. Let’s demystify the acronym “HTTP” to understand it better.</p>
+<h3 id="ht--hypertext"><strong>HT-</strong>: HyperText</h3>
+<p><em>Hypertext</em> is simply “content with references to other content”. This term is used specifically to refer to content in computing, and may include text, images, video, or any other digital content. If “hypertext” sounds familiar, that’s because you’ve heard it before: <em>HTML</em> stands for “<strong>H</strong>yper<strong>T</strong>ext <strong>M</strong>arkup <strong>L</strong>anguage”.</p>
+<p>Hypertext is what makes the Web a “web”, and it’s the most fundamental part of how we interact online. We refer to references between hypertext resources as <em>hyperlinks</em>, though you’re probably used to hearing them referred to as <em>links</em>. Without links, the Internet would resemble a massive collection of separate books: each blog, news report, and social media site would exist in total isolation from each other. The ability to link these pages is what makes the kind of interactivity you’re learning to build possible, and it was a revolutionary concept when it was introduced!</p>
+<h3 id="tp-transfer-protocol"><strong>-TP</strong>: Transfer Protocol</h3>
+<p>A <em>protocol</em> in computer science is a set of guidelines surrounding the transmission of data. Protocols define the process of exchanging data, but don’t define exactly what that data must be. Think of it like a multi-course meal: we expect the appetizer, then the entree, then the dessert, but we could have any type of food for each of those courses! As long as the plates arrive in the particular order we expect, protocol is being followed.</p>
+<p>HTTP acts as a <em>transfer protocol</em>. It defines the expectations for both ends of the transfer, and it defines some ways the transfer might fail. More specifically, HTTP is defined as a <em>request/response</em> protocol. An HTTP exchange is more like a series of distinct questions &amp; answers than a conversation between two systems.</p>
+<h2 id="and-bringing-it-back-together">…and bringing it back together</h2>
+<p>HTTP defines the process of exchanging hypertext between systems. Specifically, HTTP works between <em>clients</em> and <em>servers</em>. A <em>client</em> (sometimes called the <em>user agent</em>) is the data consumer. This is usually your web browser. A <em>server</em> (sometimes referred to as the <em>origin</em>) is the data provider, often where an application is running. In a typical HTTP exchange, the client sends a <em>request</em> to the server for a particular <em>resource</em>: a webpage, image, or application data. The server provides a <em>response</em> containing either the resource that the client requested or an explanation of why it can’t provide the resource.</p>
+<p>Here’s a high-level overview of the exchange:</p>
+<figure>
+<img src="https://assets.aaonline.io/Module-Web/http/image-http-exchange.svg" alt="HTTP Exchange" /><figcaption>HTTP Exchange</figcaption>
+</figure>
+<p>We’ll look more closely at the <em>request</em> and <em>response</em> in separate lessons.</p>
+<h2 id="properties-of-http">Properties of HTTP</h2>
+<p>There are a few important properties of HTTP that we need to understand in order to use it effectively.</p>
+<h3 id="reliable-connections">Reliable connections</h3>
+<p>Let’s consider the example of two friends passing a note. If the note contains important information, the sender will want to make sure that it gets to its destination. They’ll likely take a little extra time to deliver it carefully, and they’ll expect confirmation once it’s been received. In computing, we’d refer to this as a <em>reliable connection</em>: messages passed between a client &amp; server sacrifice a little speed for the sake of trust, and we can rest assured that each message will be confirmed.</p>
+<p>HTTP doesn’t work well if messages aren’t received in the correct order, so it’s critical that the connection your hypertext is crossing is reliable! Tim Berners-Lee chose <em>TCP</em>, another transmission protocol, as HTTP’s preferred connection type. We’ll discuss TCP in greater detail when we get into network models in a future lesson.</p>
+<h3 id="stateless-transfer">Stateless transfer</h3>
+<p>HTTP is considered a <em>stateless</em> protocol, meaning it doesn’t store any information. Each request you send across an HTTP connection should contain all its own context. This is unlike a <em>stateful</em> protocol, that might include specifications for storing data between requests.</p>
+<p>This can be nice because we only ever need to read a single HTTP request to understand its intent, but it can cause headaches when it comes to things like maintaining your login status or the contents of your shopping cart!</p>
+<p>To help us with this, HTTP supports <em>cookies</em>, bits of data that a client sends in with their request. The server can examine this data and look up a <em>session</em> for your account, or it can act on the info in the cookie directly. Note that neither the cookie nor the session are part of HTTP. They’re just workarounds we’ve created due to the protocol’s stateless nature.</p>
+<h3 id="intermediaries">Intermediaries</h3>
+<p>The Web is a big place, and it’s unlikely that your request will go directly to its destination! Instead, it will pass through a series of <em>intermediaries</em>: other servers or devices that pass your request along. These intermediaries come in three types:</p>
+<ul>
+<li><em>proxies</em>, which may modify your request so it appears to come from a different source,</li>
+<li><em>gateways</em>, which pretend to be the resource server you requested,</li>
+<li>and <em>tunnels</em>, which simply pass your request along.</li>
+</ul>
+<p>Here’s an idea of how these intermediaries might be laid out:</p>
+<p>
+<img src="https://assets.aaonline.io/Module-Web/http/image-http-proxy-tunnel-gateway.svg" style="width: 100%; height: auto;">
+</p>
+<p>Notice that these are interchangeable depending on the flow of data. When the response is sent back, “Their Router” is acting as a proxy and “Your Router” is acting as a gateway! This is an important part of HTTP: a single server may act as any of the intermediary types, depending on the needs of the HTTP message it’s transmitting.</p>
+<p>We’ll discuss some of these intermediaries more in later lessons. For now, the takeaway is that HTTP isn’t limited to your browser &amp; application server. Lots of devices support HTTP in their own special way.</p>
+<h2 id="digging-deeper-with-the-http-spec">Digging deeper with the HTTP spec</h2>
+<p>We’re just scratching the surface of how HTTP works. If you’re interested in learning more, you can go straight to the source: <a href="https://tools.ietf.org/html/rfc2616#section-1.4">the HTTP spec</a>. A <em>spec</em> (short for <em>specification</em>) describes a protocol in great detail. It’s the document generated by an idea’s founders, and it’s reviewed and carefully edited before being adopted by the <a href="https://www.ietf.org/">IETF</a> (<em>Internet Engineering Task Force</em>).</p>
+<p>Specs are intended to be exhaustive, so they can be overwhelming at first! This is definitely not light reading but any question you have about a particular protocol can likely be answered from its spec.</p>
+<h2 id="what-weve-learned">What we’ve learned</h2>
+<p>Whew, that’s a lot of jargon! Hopefully the fundamental aspects of HTTP are clearer to you now. Next up, we’ll look at an HTTP request &amp; response, and we’ll cover how to generate each.</p>
+<p>After completing this lesson, you should have a clear understanding of:</p>
+<ul>
+<li>HTTP’s origin &amp; purpose,</li>
+<li>special properties of HTTP,</li>
+<li>and how to learn more from the HTTP spec.</li>
+</ul>
+</body>
+</html>

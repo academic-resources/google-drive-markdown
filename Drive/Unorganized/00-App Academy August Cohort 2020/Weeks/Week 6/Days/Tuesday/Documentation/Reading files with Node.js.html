@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Reading files with Node.js</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<p><a href="https://nodejs.dev/"></a></p>
+<p><img src="./Reading%20files%20with%20Node.js_files/nodejs-logo-light-mode-d8cbf6c670c6befc286bc5c456b20f39.svg" alt="Node.js" /><img src="./Reading%20files%20with%20Node.js_files/nodejs-logo-dark-mode-ba22af1048345de03fc5ad42f273d6e8.svg" alt="Node.js" /></p>
+<ul>
+<li><a href="https://nodejs.dev/learn">Learn</a></li>
+<li><a href="https://nodejs.org/en/docs/">Documentation</a></li>
+<li><p><a href="https://nodejs.org/en/download/">Download</a></p></li>
+<li>Toggle Dark Mode*nights_stay**wb_sunny*</li>
+<li><p><a href="https://github.com/nodejs/nodejs.dev">GitHub</a></p></li>
+</ul>
+<p>Menu</p>
+<h1 id="reading-files-with-node.js" class="article-reader__headline">Reading files with Node.js</h1>
+<p>The simplest way to read a file in Node.js is to use the <code class="language-text">fs.readFile()</code> method, passing it the file path, encoding and a callback function that will be called with the file data (and the error):</p>
+<pre class="language-javascript"><code>const fs = require(&#39;fs&#39;)
+
+fs.readFile(&#39;/Users/joe/test.txt&#39;, &#39;utf8&#39; , (err, data) =&gt; {
+  if (err) {
+    console.error(err)
+    return
+  }
+  console.log(data)
+})</code></pre>
+<p>Alternatively, you can use the synchronous version <code class="language-text">fs.readFileSync()</code>:</p>
+<pre class="language-javascript"><code>const fs = require(&#39;fs&#39;)
+
+try {
+  const data = fs.readFileSync(&#39;/Users/joe/test.txt&#39;, &#39;utf8&#39;)
+  console.log(data)
+} catch (err) {
+  console.error(err)
+}</code></pre>
+<p>Both <code class="language-text">fs.readFile()</code> and <code class="language-text">fs.readFileSync()</code> read the full content of the file in memory before returning the data.</p>
+<p>This means that big files are going to have a major impact on your memory consumption and speed of execution of the program.</p>
+<p>In this case, a better option is to read the file content using streams.</p>
+<ul>
+<li><a href="https://github.com/flaviocopes" title="flaviocopes"><img src="./Reading%20files%20with%20Node.js_files/flaviocopes.png" alt="flaviocopes" /></a></li>
+<li>[<img src="./Reading%20files%20with%20Node.js_files/MylesBorins.png" alt="MylesBorins" />](https://github.com/MylesBorins " MylesBorins")</li>
+<li>[<img src="./Reading%20files%20with%20Node.js_files/fhemberger.png" alt="fhemberger" />](https://github.com/fhemberger " fhemberger")</li>
+<li>[<img src="./Reading%20files%20with%20Node.js_files/LaRuaNa.png" alt="LaRuaNa" />](https://github.com/LaRuaNa " LaRuaNa")</li>
+<li>[<img src="./Reading%20files%20with%20Node.js_files/ahmadawais.png" alt="ahmadawais" />](https://github.com/ahmadawais " ahmadawais")</li>
+</ul>
+<p><a href="https://github.com/nodejs/nodejs.dev/edit/master/src/documentation/0043-node-reading-files/index.md">Edit this page on GitHub</a></p>
+<ul>
+<li><a href="https://nodejs.dev/learn/nodejs-file-paths">←   Prev</a></li>
+<li><p><a href="https://nodejs.dev/learn/writing-files-with-nodejs">Next   →</a></p></li>
+<li><a href="https://nodejs.org/en/about/trademark/">Trademark Policy</a></li>
+<li><a href="https://nodejs.org/en/about/privacy/">Privacy Policy</a></li>
+<li><a href="https://github.com/openjs-foundation/cross-project-council/blob/master/CODE_OF_CONDUCT.md#contributor-covenant-code-of-conduct">Code of Conduct</a></li>
+<li><a href="https://nodejs.org/en/security/">Security Reporting</a></li>
+<li><a href="https://nodejs.org/en/about/">About</a></li>
+<li><p><a href="https://nodejs.org/en/blog/">Blog</a></p></li>
+<li>© OpenJS Foundation</li>
+<li><a href="https://github.com/nodejs/node">GitHub</a></li>
+<li><a href="https://twitter.com/nodejs"></a></li>
+<li><p><a href="https://slack.openjsf.org/"></a></p></li>
+</ul>
+</body>
+</html>

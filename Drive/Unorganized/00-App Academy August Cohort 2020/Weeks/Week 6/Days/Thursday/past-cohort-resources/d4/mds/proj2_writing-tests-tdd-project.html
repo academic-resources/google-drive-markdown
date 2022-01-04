@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>proj2_writing-tests-tdd-project</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="test-driven-development-project">Test-Driven Development Project</h1>
+<p>So now it is finally time to flex your fingers and start writing some tests! For this next project we’ll be using test-driven development (TDD). A TDD approach dictates that we’ll follow the TDD workflow, meaning that you’ll need to follow the TDD workflow of <strong>Red</strong>, <strong>Green</strong>, <strong>Refactor</strong>.</p>
+<figure>
+<img src="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-JavaScript/testing/assets/rgr.png" alt="tdd-cycle" /><figcaption>tdd-cycle</figcaption>
+</figure>
+<p>So the three steps for approaching all of the below problems will be to:</p>
+<ol type="1">
+<li><strong>Red</strong>: Write the tests and watch them fail (a failing test is red).</li>
+<li><strong>Green</strong>: Write the minimum amount of code to ensure the test passes.</li>
+<li><strong>Refactor</strong>: Refactor the code you just wrote to make it readable and maintainable.</li>
+</ol>
+<p>You can assume for the rest of the project that you will be using Mocha as your testing framework, and you can use either Node’s built in <code>assert</code> module or the Chai library unless otherwise specified.</p>
+<p>Before beginning to write tests we’ll start by installing the dependencies we’ll need for <code>chai</code> and <code>chai-spies</code>. Start by creating a directory for this project on your computer named <code>tdd-project</code>. Navigate into the directory in your terminal, then run <code>npm init --y</code> to create a <code>package.json</code>. Once that has been created you can install <code>chai</code> and <code>chai-spies</code> by running <code>npm install chai chai-spies</code>. Once the dependencies have been installed you are ready to start writing tests!</p>
+<h2 id="phase-0-testing-the-reversestring-function">Phase 0: Testing the reverseString function</h2>
+<p>We’ll begin by writing tests for a function named <code>reverseString</code>. Create two directories in your <code>tdd-project</code> directory - one named <code>problems</code> and one named <code>test</code>. In the <code>problems</code> directory create a new file named <code>reverse-string.js</code>, then within the <code>test</code> folder create a corresponding <code>reverse-string-spec.js</code> file.</p>
+<p>This would be a good time to open up the documentation for <a href="https://mochajs.org/#bdd">Mocha</a>, <a href="https://nodejs.org/api/assert.html">Assert</a>, <a href="https://www.chaijs.com/api/bdd/">Chai</a>, and <a href="https://www.chaijs.com/plugins/chai-spies/">Chai Spies</a>. The tests you are writing today will be good practice for the <em>rest of your programming career</em> so take your time and ensure you are writing the best tests you can!</p>
+<p>For this first phase feel free to use either <code>assert</code> or <code>chai</code> as your assertion library. Whichever you choose make sure you require it into <code>reverse-string-spec.js</code>.</p>
+<blockquote>
+<p>Hint: You can look back at the Tower of Hanoi project if you can’t remember the proper require lines for this.</p>
+</blockquote>
+<p>Also make sure you require your <code>reverseString</code> function so you will have it available to test.</p>
+<blockquote>
+<p>Hint: Since the file lives in the <code>problems</code> folder you might need to use our old friend <code>..</code> in the path.</p>
+</blockquote>
+<p>Now it’s your time to shine - write a test that will ensure that when given the input <code>"fun"</code> the <code>reverseString</code> function will return the reversed output (<code>nuf</code>). Now run your spec and watch it fail. If you did this correctly you should have mocha telling you <code>TypeError: reverseString is not a function</code>.</p>
+<p>Remember! This is expected because we are doing test-driven development and we have written the test before we have written the <code>reverseString</code> function.</p>
+<p>Now that the <em>red</em> step is complete, time to move onto the <em>green</em> step. Write the minimum amount of code to pass the spec you just wrote - make sure you remember to properly import and export your function!</p>
+<blockquote>
+<p>Reminder: You can run all the tests in the <code>test</code> directory by running the <code>mocha</code> command in the top level directory that the <code>test</code> directory is located within. You can also run a single test file with Mocha by specifying the file path like so: <code>mocha test/reverse-string-spec.js</code>.</p>
+</blockquote>
+<p>Once you’ve passed the spec you wrote it’s time to <em>refactor</em>. Take a look at your <code>reverseString</code> function and see how it could be improved to be more readable. For example: could it be more DRY?</p>
+<p>Okay, let’s add another spec to this function to test how it handles errors. Use <code>chai</code> or <code>assert</code>’s <code>throws</code> function to ensure that when the <code>reverseString</code> function is invoked with an argument that is not a string it will throw a <code>TypeError</code>.</p>
+<p>Nice! As you are writing these tests make sure you are following the TDD workflow and writing <em>readable</em> tests. Each of your <code>describe</code>, <code>context</code>, and <code>it</code> functions should always be passed a string that clearly indicates what is being testing.</p>
+<h2 id="phase-1-testing-multiple-functions">Phase 1: Testing multiple functions</h2>
+<p>Create a new file within the <code>problems</code> directory named <code>number-fun.js</code>. Make sure your create the corresponding testing file within the <code>test</code> directory. We’ll be using Node’s <code>Assert</code> for this one so be sure you import it at the top of your testing file. You’ll be testing two functions in this file so you’ll want to make sure you set up two outer <code>describe</code> blocks - one for each function.</p>
+<p>We’ll start off easy by writing a spec for a function called <code>returnsThree</code>. Test that this function returns the number <code>3</code>. Now write the code to pass that spec.</p>
+<p>Cool, let’s step it up a notch - in the second <code>describe</code> function you’ll be writing the tests for a function called <code>reciprocal(num)</code>. This function should intake a number and then return the <a href="https://www.mathopenref.com/reciprocal.html">reciprocal</a> of that number. Start by writing a spec to ensure that your <code>reciprocal</code> function will return the reciprocal of the given argument. For this test include more than one assertion line (<code>assert.strictEqual(value, value)</code>) within your <code>it</code> callback function to make sure your function will behave as expected with multiple inputs.</p>
+<p>Now write the code to pass those tests, then refactor that code. Once you’ve finished we’ll be adding some different <strong>contexts</strong> for your <code>reciprocal</code> function. Your <code>reciprocal</code> function will now only intake arguments between 1 and 1000000. If the given argument is less than 1 or greater than 1,000,000 then a <code>TypeError</code> will be thrown with a descriptive string message.</p>
+<p>In order to properly test the <code>reciprocal</code> function you’ll need to create two <code>context</code> blocks within the <code>reciprocal</code> <code>describe</code> function callback - one for invalid arguments and one for valid arguments. Move the the spec you wrote previously into the <code>context</code> callback for valid arguments. You’ll want to write at least two new specs within your invalid argument <code>context</code> block to ensure your <code>reciprocal</code> is being fully tested.</p>
+<p>Once you’ve passed all your written specs and refactored move on!</p>
+<h2 id="phase-2-testing-the-mymap-function">Phase 2: Testing the myMap Function</h2>
+<p>Next let’s write a spec for a function you’ve all undoubtedly grown to love, good old <code>myMap</code>. Create a new file in your <code>problems</code> directory, with a corresponding file in your <code>test</code> directory for testing this function. This version of <code>myMap(array, callback)</code> will intake an array and a callback, and then return a new array where the callback has been called upon each element in the original array. The <code>myMap</code> should not mutate the original argument array.</p>
+<p>We’ll be using <code>chai</code> and <code>chai-spies</code> for this series of tests.</p>
+<p>Here is a quick example of how we expect this to work:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">const</span> arr <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">const</span> callback <span class="op">=</span> el <span class="kw">=&gt;</span> el <span class="op">*</span> <span class="dv">2</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="va">console</span>.<span class="at">log</span>(<span class="at">myMap</span>(arr<span class="op">,</span> callback))<span class="op">;</span> <span class="co">// prints [2,4,6]</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="va">console</span>.<span class="at">log</span>(arr)<span class="op">;</span> <span class="co">// prints [1,2,3]</span></a></code></pre></div>
+<p>Start off by writing your tests. You want to ensure that your <code>myMap</code> works like the built-in <code>Array#Map</code> method. Once you’ve written the test, write the code that will pass the test, then refactor.</p>
+<p>Nice! Now let’s really thoroughly test the <code>myMap</code> function. However, before we do that we’ll want to make sure that any specs we write after this first spec will be working with a fresh array to ensure each unit test is done in <em>isolation</em>. The DRYest way to do this is by setting up a Mocha hook! Use the <code>beforeEach</code> Mocha hook to reassign a new instance of an <code>Array</code> each time a spec is run.</p>
+<p>Now that our hook is in place we’ll write two tests:</p>
+<ol type="1">
+<li>Ensure that <code>myMap</code> does not mutate the passed-in array argument</li>
+<li>Ensure that <code>myMap</code> does not call the built-in <code>Array#map</code></li>
+<li>Ensure that the passed-in callback is invoked once for each element in the passed-in array argument.</li>
+</ol>
+<p>Write the first of these specs now before moving on below.</p>
+<p>For the described specs for 2-3 in the above list you will be required to use <code>chai-spies</code> so make sure you have the documentation up! Approach these specs one at a time - we recommend using the <code>chai.spy.on</code> function for both of the above specs.</p>
+<blockquote>
+<p>Hint: In order to use <code>chai.spy.on</code> you’ll want to think carefully about <strong>what object</strong> you are spying on the methods for. For spec 3 described above you’ll need to make sure you have an object to spy on so don’t be afraid to make an object just for testing purposes.</p>
+<p>Also in order to spy on a plain function instead of a property of an object you use <code>chai.spy</code> instead of <code>chai.spy.on</code> and then use the resulting spied function directly.</p>
+</blockquote>
+<p>Once you’ve finished the above specs and written the code to pass them make sure you refactor your code before moving on!</p>
+<h2 id="phase-3-testing-classes">Phase 3: Testing Classes</h2>
+<p>For this next phase you will be utilizing Chai to test a <code>Person</code> class. Create the necessary files within your <code>test</code> and <code>problems</code> directories. Work one spec at a time through the list below using Red, Green, Refactor as you go and don’t forget to use Mocha Hooks to make your specs super DRY!</p>
+<p>Write specs for each of the described <code>Person</code> class methods below:</p>
+<ul>
+<li>The <code>Person</code> Constructor - will intake a name and age and set them as properties on the instance. Make sure you test that these properties exist on an instance, as well as ensuring they are set properly.</li>
+<li><code>prototype.sayHello</code> - will return a string of the person instance’s name and a greeting message</li>
+<li><code>prototype.visit(otherPerson)</code> - will return a string stating that this instance visited the passed-in person instance (i.e. <code>person1.visit(person2)</code> returns <code>Mai visited Erin</code>).</li>
+<li><code>prototype.switchVisit(otherPerson)</code> - will invoke the <code>visit</code> function of the parameter (<code>otherPerson</code>), passing in the current instance as the argument.</li>
+<li><code>prototype.update(obj)</code> - this method will have two contexts if the incoming argument <em>is</em> or <em>is not</em> a valid object.
+<ul>
+<li>A: If the incoming argument is not an object throw a new TypeError with a clear message</li>
+<li>B: If the incoming argument is an object then the instance’s properties should be updated to match the passed-in object’s values as shown below.</li>
+<li>C: If the incoming object does not have a name and an age property, throw a TypeError with an appropriate message</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">let</span> coolPerson <span class="op">=</span> <span class="kw">new</span> <span class="at">Person</span>(<span class="st">&quot;mai&quot;</span><span class="op">,</span> <span class="dv">32</span>)<span class="op">;</span> <span class="co">// Person { name: &#39;mai&#39;, age: 32 }</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="va">coolPerson</span>.<span class="at">update</span>(<span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;lulu&quot;</span><span class="op">,</span> <span class="dt">age</span><span class="op">:</span> <span class="dv">57</span> <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="va">console</span>.<span class="at">log</span>(coolPerson)<span class="op">;</span> <span class="co">// Person { name: &#39;lulu&#39;, age: 57 }</span></a></code></pre></div>
+<ul>
+<li><p><code>prototype.tryUpdate(obj)</code> - this method will call the <code>prototype.update</code> method with the incoming argument, and it will have two contexts if the invocation of <code>prototype.update</code> was or was not successful:</p>
+<ul>
+<li>A: If <code>prototype.update</code> is successfully invoked (it does not throw an error) then a <code>true</code> is returned indicating the update was successful (make sure that the instance was updated as well)</li>
+<li>B: If <code>prototype.update</code> is not successfully invoked it should <strong>not</strong> throw an error, instead it should return <code>false</code>.</li>
+</ul></li>
+<li><p><code>greetAll(obj)</code> - this static method will intake an array of <code>Person</code> instances. The <code>greetAll</code> method will then call the <code>sayHello</code> method on each <code>Person</code> instance and store each returned string in an array, before finally returning an array of the stored strings.</p></li>
+</ul>
+<p>Once you’ve finished and you’ve refactored all your code feel free to run <code>mocha</code> and look at all those passed specs! Give yourself a pat on the back for starting your journey into TDD development.</p>
+</body>
+</html>
