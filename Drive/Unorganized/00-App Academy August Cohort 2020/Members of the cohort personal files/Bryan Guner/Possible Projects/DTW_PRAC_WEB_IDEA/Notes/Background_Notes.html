@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Background_Notes</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<p><strong>Transcription:</strong></p>
+<ol type="1">
+<li>A musical signal can be broken into different musical feature representations.</li>
+<li>To simplify, one can assume there are only four features contained in any signal.</li>
+<li>The guitar signal will contain dynamic features, that is, the volume of different notes and by extension the relative amplitude of varying sections of the music.</li>
+<li>It will also contain pitch information, which reveals the frequency or the notes being played at any given time.</li>
+<li>Further, one may examine the timbre, which relates to the variation from ideal integer multiples of the fundamental frequency that the harmonics of the note occupy, as well as the respective energies contained within each harmonic frequency band.</li>
+<li>Finally, one may record the tempo or speed that the performance and subsections of it were played at.</li>
+<li>In terms of dynamics, one may take the mean squared amplitude of segments of a sound file.</li>
+<li>Alternatively, one may try to remove the issue of variable note amplitude entirely by classifying chords in order to mask out the notes hypothesized to be in a given sound segment by a chord template bit mask.</li>
+<li>In terms of pitch, there are nearly countless algorithms because this is the most important feature to accurately transcribe music.</li>
+<li>Almost all of these approaches fall into either time domain analysis (which are usually some variation of autocorrelation) or frequency domain analysis (which is often performed on the results of a FFT (Fast Fourier Transform)).</li>
+<li>Timbre has analysis techniques similar to Spectral Centroid, however, it does not matter much in the context of transcription because the only information it may extrapolate is what instrument the piece was played on. (fairly irrelevant if instrument is user declared upon login)</li>
+<li>In terms of tempo, the most promising approach to accurate transcription is the separation of the signal into transient and steady state sections.</li>
+<li>The transient sections would then signify note onset and therefore yield tempo.</li>
+<li>Dilation and contraction in the time domain from one performance to the next presents the greatest challenge to accurate mapping of the similarities of two sampled instances of a song’s performance.</li>
+</ol>
+<p><strong>Transcription Indifferent Comparison:</strong></p>
+<ol type="1">
+<li>Focusing on a comparison technique allows for much more variance in the timing of the performances of a given song.</li>
+<li>If transcription-centric comparison was the pillar of such a technology, a comparison technique would still be necessary upon generation of each transcript.</li>
+<li>Limiting factor now hinges upon the assumption that the tradeoff in foregoing precise transcription is the absence of a sacrifice in choosing less precise transcription techniques that are ostensibly consistently misrepresenting the information in the audio signal in a consistent manner and thus still produce a measure of accuracy rather than precision. This fit’s naturally into the paradigm in which a music student compares against their past progress rather than using other peers to gauge their personal improvement.</li>
+</ol>
+</body>
+</html>
