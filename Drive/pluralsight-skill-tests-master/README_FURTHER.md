@@ -1,6 +1,5 @@
 ## Pluralsight-quiz-questions
 
-
 ## Getting Started
 
 - Create a free **Pluralsight Account** and do a test

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>proj_element-selection</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="dom-project-create-a-profile-page-with-javascript">DOM Project: Create a profile page with Javascript</h1>
+<p>Now that you’ve learned about the DOM and how to access and manipulate it, put skills to use by building your own basic profile page! In this project, you will:</p>
+<ul>
+<li>Create an HTML file and link to a Javascript file</li>
+<li>Use Javascript to create and update page elements</li>
+<li>Add CSS classes with Javascript</li>
+<li>Create a clock using the Date object</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>The best way to learn is to create something that is meaningful or relevant to you, so why not start by making a page all about yourself?</p>
+<p>In this project, you’ll create a simple profile page that displays details about you, such as who you are, what you like to do, and where you are located.</p>
+<p>Put as many or as few details as you like. Don’t worry, the government already knows where you live. It’s your page, so feel free to give it your own flair!</p>
+<h2 id="project-overview">Project Overview</h2>
+<p>You’ve learned about the DOM, and now it’s time to put that knowledge into practice.</p>
+<p>In this project, you’ll create a simple profile page and fill it with details about yourself.</p>
+<p>You could hard-code your content into your HTML file, but where’s the fun in that? We’ll practice using Javascript to access DOM elements and insert content into your page dynamically.</p>
+<p>We’ll also go over how to add CSS class attributes to elements dynamically, so you can add a bit of styling to your profile.</p>
+<h2 id="phase-1-setting-up-your-html-and-javascript-files">Phase 1: Setting up your HTML and Javascript files</h2>
+<p>Create an HTML file in a new project folder called <code>myProfile.html</code>. Set up your html file with a <code>head</code> and <code>body</code> section. Other than the appropriate HTML tags, leave the file empty of content, ids and classes.</p>
+<p>In your HTML file, add a link to an external Javascript file in your project directory called <code>myProfile.js</code>. Test that your Javascript file is linked correctly by printing something you can read in the browser console. Example:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="va">console</span>.<span class="at">log</span>(“This is my profile page<span class="op">!</span>”)</a></code></pre></div>
+<h2 id="phase-2-populating-your-profile">Phase 2: Populating your profile</h2>
+<p>Again, don’t hard-code any content in your HTML file. Instead, construct the page content using your Javascript file.</p>
+<p>First, you should make sure all the DOM objects you need are loaded before you add new things to the page. Add a <code>DOMContentLoaded</code> event listener in your Javascript file.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="va">window</span>.<span class="at">addEventListener</span>(<span class="st">&quot;DOMContentLoaded&quot;</span><span class="op">,</span> event <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-2" title="2">  <span class="co">// Your Javascript goes here</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h3 id="phase-2a-creating-and-appending-new-elements">Phase 2A: Creating and appending new elements</h3>
+<p>It’s time to add some content to your profile page! Insert your name as an <code>h1</code> into the page using Javascript, and give it an <code>id</code>. <em>Hint: You may want to use the following:</em></p>
+<ul>
+<li><code>document.createElement()</code></li>
+<li><code>Element.setAttribute()</code></li>
+<li><code>document.createTextNode()</code></li>
+<li><code>Node.appendChild()</code></li>
+</ul>
+<p>After you’ve inserted the <code>h1</code>, open your HTML page in your browser and make sure the <code>h1</code> with your name appears on the page.</p>
+<p>You’ve added your name to the page, but it still looks sparse. Fill out your page with some details about yourself by creating and appending new elements. Use what you’ve learned about manipulating the DOM to add to your Javascript file.</p>
+<ul>
+<li>Create a new unordered list element.</li>
+<li>Append at least <strong>four list items</strong> of details about yourself to your list.</li>
+<li>Append your list to the body of your page.</li>
+</ul>
+<p>Below is an example list item:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">const</span> listItem1 <span class="op">=</span> <span class="va">document</span>.<span class="at">createElement</span>(<span class="st">&quot;li&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">const</span> listItem1Content <span class="op">=</span> <span class="va">document</span>.<span class="at">createTextNode</span>(</a>
+<a class="sourceLine" id="cb3-3" title="3">  <span class="st">&quot;I like to drink iced lattes.&quot;</span></a>
+<a class="sourceLine" id="cb3-4" title="4">)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="va">listItem1</span>.<span class="at">appendChild</span>(listItem1Content)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">// Append listItem1 to your unordered list here</span></a></code></pre></div>
+<h3 id="phase-2b-refactoring-to-make-it-programmatic">Phase 2B: Refactoring to make it programmatic</h3>
+<p>The code we wrote above works, but it is lengthy and leads to needless repetition. Imagine we want to display 20 hobbies. Following the pattern above means we would have to create an element, create a text node, and append a child node to the details list 20 times for each hobby. That’s 80 extra lines of code!</p>
+<p>Let’s approach this differently and make the work easier for ourselves. Can we refactor it to make inserting the <code>li</code> elements more programmatic and easily repeatable? Yes, we can! First, let’s create the <code>ul</code> and append it to the body of our page, as we did in the last section.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// Create the element with document.createElement()</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="co">// Set the attribute with Element.setAttribute()</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">// Append the element to the page with Node.appendChild()</span></a></code></pre></div>
+<p>Now, let’s add the list items. We can shorten the code up by creating an array that stores all of the list items as string values, join all the string values into a single string, and insert that string into the DOM.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">const</span> detailsArr <span class="op">=</span> [</a>
+<a class="sourceLine" id="cb5-2" title="2">  <span class="st">&quot;&lt;li&gt;I like to drink iced lattes.&lt;/li&gt;&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-3" title="3">  <span class="st">&quot;&lt;li&gt;I have two cats and eight kittens.&lt;/li&gt;&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-4" title="4">  <span class="st">&quot;&lt;li&gt;My favorite place to get lunch is Chipotle.&lt;/li&gt;&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb5-5" title="5">  <span class="st">&quot;&lt;li&gt;On the weekends, I play flag football.&lt;/li&gt;&quot;</span></a>
+<a class="sourceLine" id="cb5-6" title="6">]<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="kw">const</span> liString <span class="op">=</span> <span class="va">detailsArr</span>.<span class="at">join</span>(<span class="st">&quot; &quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="kw">const</span> listElement <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;details&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="va">listElement</span>.<span class="at">innerHTML</span> <span class="op">=</span> liString<span class="op">;</span></a></code></pre></div>
+<p>Notice that we used <code>innerHTML</code> here rather than <code>appendChild</code>. If we tried to insert the string using <code>appendChild</code>, what would happen? Why? Refer to the MDN documentation on <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML">Element.innerHTML</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild">Node.appendChild</a> for the answers.</p>
+<p>You’ve cut down on the lines of code as well as made your code more readable! You can easily add new list items inside your array and they’ll be automatically added to your <code>ul</code> element. Now that you’ve refactored your code, can you add new sections to your page?</p>
+<h2 id="phase-3-adding-css-classes-and-styles">Phase 3: Adding CSS classes and styles</h2>
+<p>You’ve added the details, but now they need some pizazz! Let’s add some CSS classes to your elements that you can use to style the page. In your Javascript, add a class named <code>my-details</code> to the unordered list you added in the last section. You can use <code>Element.setAttribute</code> to set the class name to your <code>ul</code>. Here’s an example:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">const</span> myDetails <span class="op">=</span> <span class="va">document</span>.<span class="at">createElement</span>(<span class="st">&quot;ul&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="va">myDetails</span>.<span class="at">setAttribute</span>(“class”<span class="op">,</span> “my<span class="op">-</span>details”)<span class="op">;</span></a></code></pre></div>
+<p>Now that you know how to set an element’s class name, practice setting attributes by adding class names to the other elements you created.</p>
+<ul>
+<li>Add a class name of <code>name</code> to the <code>h1</code> containing your name.</li>
+<li>Add a class name of <code>detail</code> to each <code>li</code> element you created inside your list.</li>
+<li>Use <code>document.querySelectorAll</code> to access each <code>li</code>.</li>
+<li>Use <code>forEach()</code> to iterate over the <code>li</code> list and add a class using <code>Element.className</code>.</li>
+</ul>
+<p>Create a CSS file and remember to link to it in your HTML file. In your CSS file, add some styles using the classes we added to the <code>ul</code> and the <code>li</code> elements: <code>details</code> and <code>detail</code>. Update your CSS to:</p>
+<ul>
+<li>Change the color of your <code>h1</code></li>
+<li>Add a border around your <code>ul</code></li>
+<li>Add padding to your list items</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb7-1" title="1">h1<span class="fu">.my-name</span> {</a>
+<a class="sourceLine" id="cb7-2" title="2">  <span class="kw">color</span>: <span class="cn">green</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-3" title="3">  <span class="kw">padding</span>: <span class="dv">40</span><span class="dt">px</span> <span class="dv">20</span><span class="dt">px</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-4" title="4">}</a>
+<a class="sourceLine" id="cb7-5" title="5"></a>
+<a class="sourceLine" id="cb7-6" title="6">ul<span class="fu">.my-details</span> {</a>
+<a class="sourceLine" id="cb7-7" title="7">  <span class="kw">border</span>: <span class="dv">1</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">gray</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-8" title="8">  <span class="kw">padding</span>: <span class="dv">40</span><span class="dt">px</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-9" title="9">}</a>
+<a class="sourceLine" id="cb7-10" title="10"></a>
+<a class="sourceLine" id="cb7-11" title="11">li<span class="fu">.detail</span> {</a>
+<a class="sourceLine" id="cb7-12" title="12">  <span class="kw">list-style-type</span>: <span class="dv">square</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-13" title="13">  <span class="kw">padding</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-14" title="14">}</a></code></pre></div>
+<p>Feel free to add more CSS styles beyond the ones above to your page to personalize it!</p>
+<h2 id="phase-4-adding-a-clock-with-the-date-object">Phase 4: Adding a clock with the Date object</h2>
+<p>By now, you should know how to add new elements to your page programmatically. Let’s kick it up a notch by adding a clock that keeps the current time onto your profile page.</p>
+<p>Objectives:</p>
+<ul>
+<li>Create a new element and add it to the body of your page</li>
+<li>Use the Javascript Date object to get the current time</li>
+<li>Insert the current time into a DOM element</li>
+</ul>
+<p>You just created a live clock, and it’s <em>time</em> for congratulations! (Har har.) Can you go the extra mile? Figure out how to insert your clock into a new list item under your personal details that says “I live in City, State, and it’s currently <code>[CLOCK]</code> here.</p>
+<h2 id="bonus-youre-so-extra">Bonus: You’re so extra!</h2>
+<p>Congratulations! You’ve created a basic profile page by manipulating the DOM and inserting elements dynamically with Javascript. But, why be <em>basic</em> when you can be a little <em>extra</em>? Make your profile extra shiny by adding more to your page.</p>
+<h3 id="bonus-a-add-more-sections-to-your-page">Bonus A: Add more sections to your page</h3>
+<p>Using Javascript, create new elements and:</p>
+<ul>
+<li>Insert an image into your profile under your name. <em>Hint:</em> You could insert a new <code>img</code>, or you could add a <code>div</code> and set the background image using a CSS class.</li>
+<li>Insert more sections to your profile. Examples: “Likes” list and “Dislikes” list, “Favorite Restaurants”, “My Activities”, etc.</li>
+</ul>
+<h3 id="bonus-b-use-other-element-methods">Bonus B: Use other Element methods</h3>
+<p>Check the MDN documentation for more <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">Element methods</a> you can use to manipulate the DOM. Try doing the following:</p>
+<ul>
+<li>Use <code>.outerHTML</code> to replace an element.</li>
+<li>Use the <code>classList</code> API to add/remove classes.</li>
+<li>Try using : <code>Element.closest</code>, <code>getElementsByClassName</code>, <code>getElementsByTagName</code> to select elements on your page.</li>
+</ul>
+<h3 id="bonus-c-fire-js-on-different-dom-events">Bonus C: Fire JS on different DOM events</h3>
+<p>You have used <code>DOMContentLoaded</code> to run Javascript on a DOM event. It is one of many different DOM events that developers can use to trigger functionality.</p>
+<p>Check out MDN`’s <a href="https://developer.mozilla.org/en-US/docs/Web/Events">Event Reference</a> documentation to see how many different DOM events there are. Trying using a few of them in your code. Some relevant methods to use would be under:</p>
+<ul>
+<li>Keyboard events</li>
+<li>Mouse events</li>
+<li>DOM mutation events</li>
+</ul>
+<h3 id="bonus-d-make-a-countdown-clock">Bonus D: Make a countdown clock</h3>
+<p>Instead of keeping the current time on your profile page, make a countdown clock to your birthday.</p>
+<p>Refer to the MDN documentation on the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">Date object</a> for help with this task. Review how to calculate the elapsed time between two dates.</p>
+</body>
+</html>

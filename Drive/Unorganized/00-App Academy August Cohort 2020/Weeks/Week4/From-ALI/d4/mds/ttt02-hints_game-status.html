@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>ttt02-hints_game-status</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="hints-3-determining-game-status">Hints 3: Determining Game Status</h1>
+<p>To do this, you can write a function that checks the values of each of the squares that have been played in. If any three in a row have the same value, then the player associated with that symbol is the winner. If there is no winner and all of the spaces have a symbol, then it is a tie. That’s the general idea.</p>
+<p>Please go back and read the Hints for Requirement 2 to understand the following variables that have been declared in the game.</p>
+<ul>
+<li><code>currentPlayerSymbol</code>: the symbol of the player that has the next click</li>
+<li><code>squareValues</code>: an array that contains the symbols for each of the squares</li>
+</ul>
+<p>With those variables declared (or ones like them), add code that will perform the following functionality.</p>
+<p>In the JavaScript file:</p>
+<ul>
+<li>Create a top-level variable named <code>gameStatus</code> and set it to the empty string.</li>
+<li>Create a top-level function named <code>checkGameStatus</code> that will loop through all of the rows and columns, and check the diagonals to determine if there is a winner. In it, perform these checks
+<ul>
+<li>If there is a winner, set the <code>gameStatus</code> value to the uppercase value of the value that is winning symbol.</li>
+<li>If there is no winner, then check if all of the squares are full. If they are, then set the <code>gameStatus</code> equal to “None”.</li>
+<li>If the <code>gameStatus</code> is not an empty string, set <code>document.getElementById('game-status').innerHTML</code> to the concatenated value of “Winner:” and the value of <code>gameStatus</code>. Use the <code>id</code> value of <code>game-status</code> to get a reference to that element.</li>
+</ul></li>
+<li><p>Add a check at the beginning of the click handler for the grid that prevents the rest of the event handler from running if the <code>gameStatus</code> value is not an empty string. (This is as simple as adding an <code>if</code> statement that tests for it and has a <code>return</code> statement inside the curly braces.)</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="cf">if</span> (gameStatus <span class="op">!==</span> <span class="st">&#39;&#39;</span>) <span class="cf">return</span><span class="op">;</span> <span class="co">// This just stops</span></a>
+<a class="sourceLine" id="cb1-2" title="2">                               <span class="co">// the rest of the function</span></a>
+<a class="sourceLine" id="cb1-3" title="3">                               <span class="co">// from running.</span></a></code></pre></div></li>
+<li><p>At the end of the of the click handler for the grid to call the <code>checkGameStatus</code> function.</p></li>
+</ul>
+<figure>
+<img src="https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/requirement-3.gif" alt="game status tracking" /><figcaption>game status tracking</figcaption>
+</figure>
+<h2 id="how-to-find-a-winning-game">How to find a winning game</h2>
+<p>Consider using a one-dimensional array with nine entries to store your representation of the board. Then, you can map each of the nine entries to a square on the board kind of like what you see in the following picture where the 0-index entry in the array is the top-left square of the board, the 1-index entry in the array is the top-middle square, the 2-index entry is the top-righ, the 3-index entry is the middle-left, and so on.</p>
+<figure>
+<img src="https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/array-to-board.png" alt="mapping an array to a board" /><figcaption>mapping an array to a board</figcaption>
+</figure>
+<p>If that’s the model that you have, then you can check the rows of the board for a win by comparing the first three entries of the array with one another, the second three entries with one another, and the third three entries with one another. Here’s the breakdown of the rows of the tic-tac-toe-board mapped to the entries in the array.</p>
+<figure>
+<img src="https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/rows-in-the-array.png" alt="mapping rows in the array" /><figcaption>mapping rows in the array</figcaption>
+</figure>
+<p>Assume the name of your array that holds the board values is named <code>board</code>. You can determine if the first row has a winning combination of entries by doing the following comparison:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="cf">if</span> (board[<span class="dv">0</span>] <span class="op">===</span> board[<span class="dv">1</span>] <span class="op">&amp;&amp;</span> board[<span class="dv">1</span>] <span class="op">===</span> board[<span class="dv">2</span>] <span class="op">&amp;&amp;</span> board[<span class="dv">2</span>] <span class="op">!==</span> <span class="st">&#39;&#39;</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-2" title="2">  <span class="co">// do something because a player won on the first row!</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="op">}</span></a></code></pre></div>
+<p>You can just do the same for the other two rows, too.</p>
+<p>To find the columns in the array, you can refer to the following image.</p>
+<figure>
+<img src="https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/columns-in-the-array.png" alt="mapping columns in the array" /><figcaption>mapping columns in the array</figcaption>
+</figure>
+<p>Finally, to find the diagonals, you need to map squares 0, 4, and 9 for the top-left to bottom right and the 2, 4, 6 squares for the top-right to the bottom-left like in the following picture.</p>
+<figure>
+<img src="https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/diagonals-in-the-array.png" alt="mapping diagonals in the array" /><figcaption>mapping diagonals in the array</figcaption>
+</figure>
+</body>
+</html>

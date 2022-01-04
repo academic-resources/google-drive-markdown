@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>03_closures</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="calculating-closures">Calculating Closures</h1>
+<hr />
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+<ul>
+<li><a href="#closures-and-scope">Closures and scope</a></li>
+<li><a href="#applications-of-closures">Applications of closures</a>
+<ul>
+<li><a href="#private-state">Private State</a></li>
+<li><a href="#passing-arguments-implicitly">Passing Arguments Implicitly</a></li>
+</ul></li>
+<li><a href="#what-you-learned">What you learned</a></li>
+</ul>
+<!-- /code_chunk_output -->
+<hr />
+<p>What is a <em>closure</em>? This question is one of the <em>most frequent interview questions</em> where JavaScript is involved. If you answer this question quickly and knowledgeably you’ll look like a great candidate. We know you want to know it all so let’s dive right in!</p>
+<p>The official definition of a closure from MDN is, “A closure is the combination of a function and the lexical environment within which that function was declared.” The practicality of how a <em>closure</em> is used it simple: a <em>closure</em> is when an inner function uses, or changes, variables in an outer function. Closures in JavaScript are incredibly important in terms of the creativity, flexibility and security of your code.</p>
+<p>When you finish this reading you should be able to implement a closure and explain how that closure effects scope.</p>
+<h2 id="closures-and-scope">Closures and scope</h2>
+<p>Let’s look at an example of a simple closure below:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">function</span> <span class="at">climbTree</span>(treeType) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-2" title="2">  <span class="kw">let</span> treeString <span class="op">=</span> <span class="st">&quot;You climbed a &quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4">  <span class="kw">function</span> <span class="at">sayClimbTree</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-5" title="5">    <span class="co">// this inner function has access to the variables in the outer scope</span></a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="co">// in which is was defined - including any defined parameters</span></a>
+<a class="sourceLine" id="cb1-7" title="7">    <span class="cf">return</span> treeString <span class="op">+</span> treeType<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-8" title="8">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-9" title="9"></a>
+<a class="sourceLine" id="cb1-10" title="10">  <span class="cf">return</span> <span class="at">sayClimbTree</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="op">}</span></a>
+<a class="sourceLine" id="cb1-12" title="12"></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">// We assign the result to a variable</span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="kw">const</span> sayFunction <span class="op">=</span> <span class="at">climbTree</span>(<span class="st">&quot;Pine&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-15" title="15"></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="co">// So we can call it, and indeed the variables have been saved in the closure</span></a>
+<a class="sourceLine" id="cb1-17" title="17"><span class="co">// and the sayFunction prints out their values.</span></a>
+<a class="sourceLine" id="cb1-18" title="18"><span class="va">console</span>.<span class="at">log</span>(sayFunction)<span class="op">;</span> <span class="co">// You climbed a Pine</span></a></code></pre></div>
+<p>In the above snippet the <code>sayClimbTree</code> function captures and uses the <code>treeString</code> and <code>treeType</code> variables within its own inner scope.</p>
+<p>Let’s go over some basic closure rules:</p>
+<ol type="1">
+<li>Closures have access to any variables within its own, as well as any outer function’s, scope when they are declared. This is where the <em>lexical environment</em> comes in - the <em>lexical environment</em> consists of any variables available within the scope in which the closure was declared (which are the local inner scope, outer function’s scope, and global scope).</li>
+<li>A closure will keep reference to all the variables when it was defined <strong>even if the outer function has returned</strong>.</li>
+</ol>
+<p>Notice above that even though the above <code>climbTree</code> had run its <code>return</code> statement the inner function of <code>sayClimbTree</code> <strong>still has access</strong> to the variables(<code>treeString</code> and <code>treeType</code>) from the outer scope where it was declared. So, even after an outer function has returned, an inner function will still have access to the outer function’s variables.</p>
+<p>Let’s look at another example of a closure:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">function</span> <span class="at">makeAdder</span>(x) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-2" title="2">  <span class="cf">return</span> <span class="kw">function</span>(y) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-3" title="3">    <span class="cf">return</span> x <span class="op">+</span> y<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-4" title="4">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-6" title="6"></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="kw">const</span> add5 <span class="op">=</span> <span class="at">makeAdder</span>(<span class="dv">5</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-8" title="8"></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="va">console</span>.<span class="at">log</span>(<span class="at">add5</span>(<span class="dv">2</span>))<span class="op">;</span> <span class="co">// prints 7</span></a></code></pre></div>
+<p>In the above example the function the anonymous function within the <code>makeAdder</code> function <strong>closes over</strong> the <code>x</code> variable and utilizes it within the inner anonymous function. This allows us to do some pretty cool stuff like creating the <code>add5</code> function above. Closures are your friend ❤️.</p>
+<h2 id="applications-of-closures">Applications of closures</h2>
+<p>Let’s take a look at some of the common and practical applications of closures in JavaScript.</p>
+<h3 id="private-state">Private State</h3>
+<p>Information hiding is incredibly important in the world of software engineering. JavaScript as a language does not have a way of declaring a function as exclusively private, as can be done in other programming languages. We can however, use <em>closures</em> to create private state within a function.</p>
+<p>The following code illustrates how to use <em>closures</em> to define functions that can emulate private functions and variables:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">function</span> <span class="at">createCounter</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-2" title="2">  <span class="kw">let</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4">  <span class="cf">return</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-5" title="5">    count<span class="op">++;</span></a>
+<a class="sourceLine" id="cb3-6" title="6">    <span class="cf">return</span> count<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-7" title="7">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="op">}</span></a>
+<a class="sourceLine" id="cb3-9" title="9"></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="kw">let</span> counter <span class="op">=</span> <span class="at">createCounter</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="va">console</span>.<span class="at">log</span>(<span class="at">counter</span>())<span class="op">;</span> <span class="co">// =&gt; 1</span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="va">console</span>.<span class="at">log</span>(<span class="at">counter</span>())<span class="op">;</span> <span class="co">// =&gt; 2</span></a>
+<a class="sourceLine" id="cb3-13" title="13"></a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="co">//we cannot reach the count variable!</span></a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="va">counter</span>.<span class="at">count</span><span class="op">;</span> <span class="co">// undefined</span></a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="kw">let</span> counter2 <span class="op">=</span> <span class="at">createCounter</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-17" title="17"><span class="va">console</span>.<span class="at">log</span>(<span class="at">counter2</span>())<span class="op">;</span> <span class="co">// =&gt; 1</span></a></code></pre></div>
+<p>In the above code we are storing the anonymous inner function inside the <code>createCounter</code> function onto the variable <code>counter</code>. The <code>counter</code> variable is now a <em>closure</em>. The <code>counter</code> variable <strong>closes over</strong> the inner <code>count</code> value inside <code>createCounter</code> even after <code>createCounter</code> has returned.</p>
+<p>By <strong>closing over</strong> (or <strong>capturing</strong>) the <code>count</code> variable, each function that is return from <code>createCounter</code> has a <strong>private</strong>, mutable state that cannot be accessed externally. There is no way any outside function beside the closure itself can access the <code>count</code> state.</p>
+<h3 id="passing-arguments-implicitly">Passing Arguments Implicitly</h3>
+<p>We can use closures to pass down arguments to helper functions without explicitly passing them into that helper function.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">function</span> <span class="at">isPalindrome</span>(string) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-2" title="2">  <span class="kw">function</span> <span class="at">reverse</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-3" title="3">    <span class="cf">return</span> string</a>
+<a class="sourceLine" id="cb4-4" title="4">      .<span class="at">split</span>(<span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb4-5" title="5">      .<span class="at">reverse</span>()</a>
+<a class="sourceLine" id="cb4-6" title="6">      .<span class="at">join</span>(<span class="st">&quot;&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-7" title="7">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb4-8" title="8"></a>
+<a class="sourceLine" id="cb4-9" title="9">  <span class="cf">return</span> string <span class="op">===</span> <span class="at">reverse</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="op">}</span></a></code></pre></div>
+<h2 id="what-you-learned">What you learned</h2>
+<p>How to implement a closure and explain how that closure effects scope.</p>
+</body>
+</html>

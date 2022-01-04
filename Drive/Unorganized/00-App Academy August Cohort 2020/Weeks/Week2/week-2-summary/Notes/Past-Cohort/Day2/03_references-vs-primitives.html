@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>03_references-vs-primitives</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="reference-vs.-primitive-types">Reference vs. Primitive Types</h1>
+<hr />
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+<ul>
+<li><a href="#primitives-vs-objects">Primitives vs. Objects</a></li>
+<li><a href="#immutability">Immutability</a></li>
+<li><a href="#mutability">Mutability</a></li>
+<li><a href="#what-you-learned">What you learned</a></li>
+</ul>
+<!-- /code_chunk_output -->
+<hr />
+<p>At this point you’ve worked with many different data types - booleans, numbers, strings, arrays, objects, etc. It’s now time to to go a little more in depth into the differences between these data types.</p>
+<p>When you finish this reading, you should be able to:</p>
+<ul>
+<li>Identify whether a data type is a Primitive type or a Reference type.</li>
+</ul>
+<h2 id="primitives-vs.-objects">Primitives vs. Objects</h2>
+<p>JavaScript has many data types, six of which you’ve encountered so far:</p>
+<p><strong>Five Primitive Types</strong>:</p>
+<ol type="1">
+<li><code>Boolean</code> - <code>true</code> and <code>false</code></li>
+<li><code>Null</code> - represents the intentional absence of value.</li>
+<li><code>Undefined</code> - default return value for many things in JavaScript.</li>
+<li><code>Number</code> - like the numbers we usually use (<code>15</code>, <code>4</code>, <code>42</code>)</li>
+<li><code>String</code> - ordered collection of characters (‘apple’)</li>
+</ol>
+<p><strong>One Reference Type</strong>:</p>
+<ol type="1">
+<li><code>Object</code> - (an array is also a kind of object)!</li>
+</ol>
+<p>You might be wondering about why we separated these data types into two categories - Reference &amp; Primitive. Let’s talk about the one of the main ways <em>Reference Types</em> and <em>Primitive Types</em> differ:</p>
+<ul>
+<li><em>Primitive types</em> are <strong>immutable</strong>. Meaning they cannot change.</li>
+</ul>
+<h2 id="immutability">Immutability</h2>
+<p>When we talk about primitive types the first thing we mentioned was <em>mutability</em>. Primitives are <strong>immutable</strong> meaning they can not be directly changed. Let’s look at an example:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">let</span> num1 <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">// here we assign num2 to point at the value of the number variable</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">let</span> num2 <span class="op">=</span> num1<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co">// here we *reassign* the num1 variable</span></a>
+<a class="sourceLine" id="cb1-6" title="6">num1 <span class="op">=</span> num1 <span class="op">+</span> <span class="dv">3</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-7" title="7"></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="va">console</span>.<span class="at">log</span>(num1)<span class="op">;</span> <span class="co">// 8</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="va">console</span>.<span class="at">log</span>(num2)<span class="op">;</span> <span class="co">// 5</span></a></code></pre></div>
+<p>Whoa wait whaaaat? Let’s break this down was just happened with some visuals. We start by assigning <code>num1</code>. JavaScript already knows that the number <code>5</code> is a primitive number value. So when we are assigning <code>num1</code> to the value of 5 we are actually telling the <code>num1</code> variable to point to the place the number 5 takes up in our computer’s memory:</p>
+<figure>
+<img src="images/assignment-num1.png" alt="num-one" /><figcaption>num-one</figcaption>
+</figure>
+<p>Next we assign <code>num2</code> to the <strong>value</strong> of <code>num1</code>. What effectively happens when we do this is we are <em>copying</em> the value of <code>num1</code> and then pointing <code>num2</code> at that copy:</p>
+<figure>
+<img src="images/assignment-num2.png" alt="num-two" /><figcaption>num-two</figcaption>
+</figure>
+<p>Now here is where it gets really <em>interesting</em>. We cannot change the 5 our computer has in memory - because it is a <strong>primitive</strong> data type. Meaning if we want <code>num1</code> to equal 8 we need to <strong>reassign</strong> the value of the <code>num1</code> variable. When we are talking about <em>primitives</em> reassignment breaks down into simply having your variable point somewhere else in memory:</p>
+<figure>
+<img src="images/assignment-num3.png" alt="num-three" /><figcaption>num-three</figcaption>
+</figure>
+<p>All this comes together in <code>num1</code> now pointing at a new value in our computer’s memory. Where does this leave <code>num2</code>? Well because we never reassigned <code>num2</code> it is still pointing at the value it originally copied from <code>num1</code> and pointing to 5 in memory.</p>
+<p>So that in essence is <strong>immutability</strong>, you can not change the values in memory only reassign where your variables are pointing.</p>
+<p>Let’s do another quick example using booleans:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">let</span> first <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">let</span> second <span class="op">=</span> first<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4">first <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-5" title="5"></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="co">// first and second point to different places in memory</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="va">console</span>.<span class="at">log</span>(first)<span class="op">;</span> <span class="co">// false</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="va">console</span>.<span class="at">log</span>(second)<span class="op">;</span> <span class="co">// true</span></a></code></pre></div>
+<h2 id="mutability">Mutability</h2>
+<p>Let’s now talk about the inverse of immutability: mutability.</p>
+<p>Let’s take a look at what we call <strong>reference</strong> values which <strong>are</strong> mutable. When you assign a reference value from one variable to a second variable, the value stored in the first variable is also copied into the location of the second variable.</p>
+<p>Let’s look at an example using objects:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">let</span> cat1 <span class="op">=</span> <span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;apples&quot;</span><span class="op">,</span> <span class="dt">breed</span><span class="op">:</span> <span class="st">&quot;tabby&quot;</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">let</span> cat2 <span class="op">=</span> cat1<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="va">cat1</span>.<span class="at">name</span> <span class="op">=</span> <span class="st">&quot;Lucy&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb3-5" title="5"></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="va">console</span>.<span class="at">log</span>(cat1)<span class="op">;</span> <span class="co">// =&gt; {name: &quot;Lucy&quot;, breed: &quot;tabby&quot;}</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="va">console</span>.<span class="at">log</span>(cat2)<span class="op">;</span> <span class="co">// =&gt; {name: &quot;Lucy&quot;, breed: &quot;tabby&quot;}</span></a></code></pre></div>
+<p>Here is a visualization of what happened above. First we create <code>cat1</code> then assign <code>cat2</code> to the value of <code>cat1</code>. This means that both <code>cat1</code> and <code>cat2</code> are pointing to the <strong>same object</strong> in our computer’s memory:</p>
+<figure>
+<img src="images/assignment-num5.png" alt="num-five" /><figcaption>num-five</figcaption>
+</figure>
+<p>Now looking at the code above we can see what when we change <strong>either</strong> <code>cat1</code> or <code>cat2</code>, since they are both pointing to the same place in memory, <strong>both</strong> will change:</p>
+<figure>
+<img src="images/assignment-num4.png" alt="num-four" /><figcaption>num-four</figcaption>
+</figure>
+<p>This holds true of arrays as well. Arrays are a kind of object - though obviously different. We’ll go a lot deeper into this when we start talking about classes - but for now concentrate on the fact that arrays are also a <em>Reference Type</em>.</p>
+<p>See below for an example:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">let</span> array1 <span class="op">=</span> [<span class="dv">14</span><span class="op">,</span> <span class="st">&quot;potato&quot;</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw">let</span> array2 <span class="op">=</span> array1<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-3" title="3"></a>
+<a class="sourceLine" id="cb4-4" title="4">array1[<span class="dv">0</span>] <span class="op">=</span> <span class="st">&quot;banana&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb4-5" title="5"></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="va">console</span>.<span class="at">log</span>(array1)<span class="op">;</span> <span class="co">// =&gt; [&quot;banana&quot;, &quot;potato&quot;]</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="va">console</span>.<span class="at">log</span>(array2)<span class="op">;</span> <span class="co">// =&gt; [&quot;banana&quot;, &quot;potato&quot;]</span></a></code></pre></div>
+<p>If we change <code>array1</code> we also change <code>array2</code> because both are pointing to the same <em>reference</em> in the computer’s memory.</p>
+<h2 id="what-you-learned">What you learned</h2>
+<ul>
+<li>How to work with variables that are both Primitive types and Reference types.</li>
+</ul>
+</body>
+</html>

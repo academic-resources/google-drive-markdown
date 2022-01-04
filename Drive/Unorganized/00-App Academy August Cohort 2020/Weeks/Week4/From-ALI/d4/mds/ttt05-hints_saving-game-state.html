@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>ttt05-hints_saving-game-state</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<h1 id="hints-6-saving-game-state">Hints 6: Saving Game State</h1>
+<p>A way to tackle this is to use local storage and JSON serialization to save the state of the game with each change.</p>
+<p>You can do that by creating a function that saves the game state to local storage. You should call that function everywhere that the state of the game changes.</p>
+<p>You can then create a function that loads the state from the local storage (if it exists) and restores the state of the game and the UI. You can call that function after the DOM content loads.</p>
+<p>You should probably create top-level constant variable(s) that hold the key(s) that you will use for local storage so that you declare once and use often. Make sure that the keys that you use are “unique” in that, if another developer comes along and wants to store something for the same domain, that they won’t accidentally overwrite your game status. Maybe prefix your key name(s) with ‘tic-tac-toe-’ or something similar.</p>
+<p>When you get done, it should look something like this. The “flashing” in the screen recording is the page refreshing.</p>
+<figure>
+<img src="https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/requirement-6.gif" alt="state saved between refreshes" /><figcaption>state saved between refreshes</figcaption>
+</figure>
+</body>
+</html>

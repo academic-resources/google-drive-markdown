@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>02_the-request-response-cycle</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<h1 id="the-request-response-cycle">The Request-Response Cycle</h1>
+<p>Browsing the Web might seem like magic, but it’s really just a series of <strong>requests</strong> and <strong>responses</strong>. When we search for information or navigate to a Web page, we are requesting something, and we expect to get a response back.</p>
+<p>We can think about the request-response cycle as the communication pattern between a client, or browser, and a server. Whenever we type a URL into the address bar of a browser, we are making a <em>request</em> to a server for information back. The most common of these is an <code>http request</code>.</p>
+<h2 id="the-request-response-cycle-diagram">The request-response cycle diagram</h2>
+<p>Let’s take a look at this diagram of the request-response cycle from <a href="https://www.oreilly.com/library/view/using-google-app/9780596802462/">O’Reily</a>:</p>
+<p>
+<img src="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-DOM-API/browser-basics/assets/request-response-cycle.png" style="width: 100%; height: auto;">
+</p>
+<p>On the left is the <strong>client</strong> side, or the browser. On the right is the <strong>server</strong> side, with a database where data is stored. The internet, in the middle, is a series of these client requests and server responses. We’ll be going into more depth with servers soon, but for right now we are focusing on the client side.</p>
+<h2 id="the-browsers-role-in-the-request-response-cycle">The browser’s role in the request-response cycle</h2>
+<p>As depicted in the diagram, the browser plays a key role in the request-response cycle. Besides letting the user make the request to the server, the browser also:</p>
+<ol type="1">
+<li>Parses HTML, CSS, and JS</li>
+<li>Renders that information to the user by constructing and rendering a DOM tree</li>
+</ol>
+<p>When we make a successful request to the server, we are able to view a Web page with content and functionality. Unsuccessful requests prevent the page from loading and displaying information. You’ve probably seen a 404 page before!</p>
+<p>Understanding the request-response cycle is fundamental to developing for the Web. If a server is down, or something is wrong with the request, you’ll most likely see an error on the client side. Learning how to debug these errors and set up error handling is a common task for Web developers.</p>
+<p>You can go to the <strong>Network tab</strong> of your browser’s <strong>Developer Tools</strong> to view these requests and responses. Open a new tab, open up the Developer Tools in your browser, and then navigate to <code>google.com</code>. Watch the request go through in your Network tab!</p>
+<h2 id="what-we-learned">What we learned:</h2>
+<ul>
+<li>Reviewed diagram of request-response cycle</li>
+<li>The client side vs. the server side</li>
+<li>The role of the browser</li>
+<li>Where to view Network requests in the browser</li>
+</ul>
+</body>
+</html>

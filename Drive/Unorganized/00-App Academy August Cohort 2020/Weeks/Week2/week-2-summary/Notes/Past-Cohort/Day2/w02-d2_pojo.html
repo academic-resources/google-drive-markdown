@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>w02-d2_pojo</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="week-02-day-2-pojo" data-ignore="true">WEEK-02 DAY-2<br><em>POJO</em></h1>
+<hr />
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=2 orderedList=false} -->
+<!-- code_chunk_output -->
+<ul>
+<li><a href="#plain-old-js-object-lesson-learning-objectives">Plain Old JS Object Lesson Learning Objectives</a></li>
+<li><a href="#pair-programming-lesson-learning-objectives">Pair Programming Lesson Learning Objectives</a></li>
+<li><a href="#the-object-type">The Object Type</a>
+<ul>
+<li><a href="#the-object-of-my-affections">The object of my affections</a></li>
+<li><a href="#setting-keys-and-values">Setting keys and values</a></li>
+<li><a href="#using-different-notations">Using different notations</a></li>
+<li><a href="#what-you-learned">What you learned</a></li>
+</ul></li>
+<li><a href="#iterating-through-objects">Iterating Through Objects</a>
+<ul>
+<li><a href="#a-new-kind-of-for-loop">A new Kind of <code>for</code> Loop</a></li>
+<li><a href="#methods-vs-functions">Methods vs Functions</a></li>
+<li><a href="#useful-object-methods">Useful Object Methods</a></li>
+<li><a href="#what-you-learned-1">What you learned</a></li>
+</ul></li>
+<li><a href="#reference-vs-primitive-types">Reference vs. Primitive Types</a>
+<ul>
+<li><a href="#primitives-vs-objects">Primitives vs. Objects</a></li>
+<li><a href="#immutability">Immutability</a></li>
+<li><a href="#what-you-learned-2">What you learned</a></li>
+</ul></li>
+<li><a href="#using-the-spread-operator-and-rest-parameter-syntax">Using the Spread Operator and Rest Parameter Syntax</a>
+<ul>
+<li><a href="#accepting-arguments">Accepting arguments</a></li>
+<li><a href="#utilizing-rest-parameters">Utilizing Rest Parameters</a></li>
+<li><a href="#utilizing-spread-syntax">Utilizing Spread Syntax</a></li>
+<li><a href="#what-you-learned-3">What you learned</a></li>
+</ul></li>
+<li><a href="#destructuring">Destructuring</a>
+<ul>
+<li><a href="#destructuring-data-into-variables">Destructuring data into variables</a></li>
+<li><a href="#destructuring-parameters">Destructuring parameters</a></li>
+<li><a href="#what-you-learned-4">What you learned</a></li>
+</ul></li>
+<li><a href="#were-better-together-pair-programming">We’re Better Together: Pair Programming</a>
+<ul>
+<li><a href="#team-mentality">Team mentality</a></li>
+<li><a href="#pair-programming-roles">Pair Programming Roles</a></li>
+<li><a href="#why-pair-up">Why pair up?</a></li>
+<li><a href="#what-weve-learned">What we’ve learned</a></li>
+</ul></li>
+<li><a href="#the-app-academy-pair-programming-approach">The App Academy Pair Programming Approach</a>
+<ul>
+<li><a href="#why-this-way">Why this way?</a></li>
+<li><a href="#the-rules">The rules</a></li>
+<li><a href="#modifying-the-routine">Modifying the routine</a></li>
+<li><a href="#what-weve-learned-1">What we’ve learned</a></li>
+</ul></li>
+<li><a href="#you-are-not-your-code-empathetic-communication-in-engineering">You Are Not Your Code: Empathetic Communication In Engineering</a>
+<ul>
+<li><a href="#understanding-code-centric-vs-human-centric-language">Understanding code-centric vs. human-centric language</a></li>
+<li><a href="#why-communication-matters">Why communication matters</a></li>
+<li><a href="#what-weve-learned-2">What we’ve learned</a></li>
+</ul></li>
+<li><a href="#object-problems">Object Problems</a></li>
+</ul>
+<!-- /code_chunk_output -->
+<hr />
+<hr />
+<h1 id="plain-old-js-object-lesson-learning-objectives">Plain Old JS Object Lesson Learning Objectives</h1>
+<p>Below is a complete list of the terminal learning objectives for this lesson. When you complete this lesson, you should be able to perform each of the following objectives. These objectives capture how you may be evaluated on the assessment for this lesson.</p>
+<ol type="1">
+<li>Label variables as either Primitive vs. Reference</li>
+<li>Identify when to use . vs [] when accessing values of an object</li>
+<li>Use the <code>obj[key] !== undefined</code> pattern to check if a given variable that contains a key exists in an object</li>
+<li>Utilize Object.keys and Object.values in a function</li>
+<li>Iterate through an object using a <code>for in</code> loop</li>
+<li>Define a function that utilizes …rest syntax to accept an arbitrary number of arguments</li>
+<li>Use …spread syntax for Object literals and Array literals</li>
+<li>Destructure an array to reference specific elements</li>
+<li>Destructure an object to reference specific values</li>
+<li><p>Write a function that accepts a array as an argument and returns an object representing the count of each character in the arraye terminal learning objectives for this lesson. When you complete this lesson, you should be able to perform each of the following objectives. These objectives capture how you may be evaluated on the assessment for this lesson.</p></li>
+<li>Label variables as either Primitive vs. Reference</li>
+<li>Identify when to use . vs [] when accessing values of an object</li>
+<li>Use the <code>obj[key] !== undefined</code> pattern to check if a given variable that contains a key exists in an object</li>
+<li>Utilize Object.keys and Object.values in a function</li>
+<li>Iterate through an object using a <code>for in</code> loop</li>
+<li>Define a function that utilizes …rest syntax to accept an arbitrary number of arguments</li>
+<li>Use …spread syntax for Object literals and Array literals</li>
+<li>Destructure an array to reference specific elements</li>
+<li>Destructure an object to reference specific values</li>
+<li><p>Write a function that accepts a array as an argument and returns an object representing the count of each character in the array</p></li>
+</ol>
+<hr />
+<h1 id="pair-programming-lesson-learning-objectives">Pair Programming Lesson Learning Objectives</h1>
+<p>Below is a complete list of the terminal learning objectives for this lesson. When you complete this lesson, you should be able to perform each of the following objectives. These objectives capture how you may be evaluated on the assessment for this lesson.</p>
+<ol type="1">
+<li>Differentiate between the “Driver” and “Navigator” roles in a pair programming session.</li>
+<li>Describe at least three benefits of effective pair programming.</li>
+<li>Demonstrate empathetic communication and be able to explain the meaning of “You are not your code”.</li>
+<li>Identify negative interactions during a pair programming session.</li>
+<li>Identify the exact steps of a/A’s pair programming process.</li>
+<li><p>Describe the importance of pair programming competency while interviewing for jobs.erminal learning objectives for this lesson. When you complete this lesson, you should be able to perform each of the following objectives. These objectives capture how you may be evaluated on the assessment for this lesson.</p></li>
+<li>Differentiate between the “Driver” and “Navigator” roles in a pair programming session.</li>
+<li>Describe at least three benefits of effective pair programming.</li>
+<li>Demonstrate empathetic communication and be able to explain the meaning of “You are not your code”.</li>
+<li>Identify negative interactions during a pair programming session.</li>
+<li>Identify the exact steps of a/A’s pair programming process.</li>
+<li><p>Describe the importance of pair programming competency while interviewing for jobs.</p></li>
+</ol>
+<hr />
+<h1 id="the-object-type">The Object Type</h1>
+<p>Up to this point you’ve interacted with a lot of different data types in JavaScript. Now it’s time to introduce one of the most diverse and widely used data types of all: <strong><code>Objects</code></strong>.</p>
+<p>An object is a data structure that stores other data, similar to how an array stores elements. An object differs in that each <code>value</code> stored in an object is associated with a <code>key</code>. <code>Keys</code> are almost always strings while <code>values</code> can be any data type: numbers, strings, functions, arrays, other objects, anything at all!</p>
+<p>When you finish this reading, you should be able to:</p>
+<ol type="1">
+<li>Create objects using correct syntax with a variety of values.</li>
+<li>Identify that an object is an unordered collection of values.</li>
+<li>Key into an object to receive a single value using both Bracket and Dot notation</li>
+<li>Use Bracket notation to set a variable as a key in a Object.</li>
+<li>Implement a check to see if a key already exists within an Object.</li>
+<li>Understand how object precedence fits in with dot notation for objects.</li>
+</ol>
+<h2 id="the-object-of-my-affections">The object of my affections</h2>
+<p>To reiterate, an object is a data structure that stores other data. In other programming languages similar data structures to the Object type are referred to as ‘dictionaries’, ‘maps’, or ‘associative arrays’. Objects are different from the previous data structures we’ve talked about (i.e. arrays) in two important ways:</p>
+<ol type="1">
+<li><p>Instead of accessing values within an object through an index with numbers, objects are indexed using <code>keys</code>.</p>
+<ul>
+<li>This allows us to access values quickly and efficiently. We’ll be talking a more more about this point later on in the course.</li>
+</ul></li>
+<li><p>Order is <strong>not</strong> guaranteed within an Object. When you iterate through the values in an object, they may not be in the same order as when they were entered.</p></li>
+</ol>
+<p>Objects are defined by using curly braces: <code>{}</code>. See below for an example:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="op">&gt;</span> <span class="kw">let</span> car <span class="op">=</span> <span class="op">{};</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co">// here is our new empty object!</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="op">&gt;</span> car</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="op">{}</span></a></code></pre></div>
+<p><strong>Fun Fact</strong>: Objects are known by the affectionate industry jargon: Plain Old JavaScript Objects (or POJO for short). Expect to see that short-hand often!</p>
+<h2 id="setting-keys-and-values">Setting keys and values</h2>
+<p>When learning about objects it can be helpful to think about real life objects. For instance think about a car. A real life car can have a color, a number of wheels, a number of seats, a weight, etc. So a real life car has a number of different properties that you wouldn’t list in any particular order, though all those properties define the characteristics of that car.</p>
+<p>Thinking of a car - let’s create a <code>car</code> object to represent that collection of properties. We can create new <code>key</code>-<code>value</code> pairs using bracket notation <code>[]</code> and assignment <code>=</code>. Notice that the key inside the brackets is represented with a string:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="co">// here &quot;color&quot; is the key!</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="op">&gt;</span> car[<span class="st">&quot;color&quot;</span>] <span class="op">=</span> <span class="st">&quot;Blue&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="st">&quot;Blue&quot;</span></a>
+<a class="sourceLine" id="cb2-4" title="4"></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="op">&gt;</span> car[<span class="st">&quot;seats&quot;</span>] <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="dv">2</span></a>
+<a class="sourceLine" id="cb2-7" title="7"></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="co">// accessing our object at the key of color</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="op">&gt;</span> car[<span class="st">&quot;color&quot;</span>]</a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="st">&quot;Blue&quot;</span></a>
+<a class="sourceLine" id="cb2-11" title="11"></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="op">&gt;</span> car[<span class="st">&quot;seats&quot;</span>]</a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="dv">2</span></a>
+<a class="sourceLine" id="cb2-14" title="14"></a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="op">&gt;</span> car</a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Blue&quot;</span><span class="op">,</span> <span class="dt">seats</span><span class="op">:</span> <span class="dv">2</span><span class="op">}</span></a></code></pre></div>
+<p>When we enter <code>car["color"]</code>, we are using <code>"color"</code> as our <code>key</code>. You can think of <code>keys</code> and <code>values</code> in an object just like a lock and key in real life. The <code>"color"</code> key “unlocks” the corresponding value to give us our <code>car</code>’s color, <code>"Blue"</code>!</p>
+<h3 id="keys-without-values">Keys without values</h3>
+<p>What happens if we try to access a key that we have not yet assigned within an object?</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="op">&gt;</span> car</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Blue&quot;</span><span class="op">,</span> <span class="dt">seats</span><span class="op">:</span> <span class="dv">2</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="op">&gt;</span> car[<span class="st">&quot;weight&quot;</span>]</a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="kw">undefined</span></a></code></pre></div>
+<p><strong>If we try to access a key that is not inside an object we get <code>undefined</code></strong>. This falls right into place with our understanding of where <code>undefined</code> shows up in JavaScript. It’s the common default value of a lot of things. The <code>undefined</code> type is the default for unassigned variables, functions without a <code>return</code>, out-of-array elements, and non-existent object values.</p>
+<p>Using this knowledge, we can check if a key exists in an object:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="op">&gt;</span> car</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Blue&quot;</span><span class="op">,</span> <span class="dt">seats</span><span class="op">:</span> <span class="dv">2</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb4-3" title="3"></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="op">&gt;</span> car[<span class="st">&quot;color&quot;</span>]</a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="st">&quot;Blue&quot;</span></a>
+<a class="sourceLine" id="cb4-6" title="6"></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="op">&gt;</span> car[<span class="st">&quot;color&quot;</span>] <span class="op">===</span> <span class="kw">undefined</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="kw">false</span></a>
+<a class="sourceLine" id="cb4-9" title="9"></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="op">&gt;</span> car[<span class="st">&quot;weight&quot;</span>] <span class="op">===</span> <span class="kw">undefined</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="kw">true</span></a></code></pre></div>
+<p>While this is a common pattern, in modern JS the preferred method to check if an object exists in a key is to use the <code>in</code> operator:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="op">&gt;</span> car</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Blue&quot;</span><span class="op">,</span> <span class="dt">seats</span><span class="op">:</span> <span class="dv">2</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb5-3" title="3"></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="op">&gt;</span> <span class="st">&quot;color&quot;</span> <span class="kw">in</span> car<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="kw">true</span></a>
+<a class="sourceLine" id="cb5-6" title="6"></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="op">&gt;</span> <span class="st">&quot;model&quot;</span> <span class="kw">in</span> car<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="kw">false</span></a></code></pre></div>
+<h3 id="using-variables-as-keys">Using variables as keys</h3>
+<p>So we’ve talked about assigning string keys within Objects. Additionally, we know how to create variables that have strings as values. Sooo… you might be thinking: what happens if we assign a variable with a string value as a <code>key</code> within an <code>Object</code>? Glad you asked! Let’s look at an example below for setting keys within <code>Objects</code> using <code>variables</code>.</p>
+<p>Let’s keep playing with the <code>car</code> we made previously:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="op">&gt;</span> car</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Blue&quot;</span><span class="op">,</span> <span class="dt">seats</span><span class="op">:</span> <span class="dv">2</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb6-3" title="3"></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="op">&gt;</span> <span class="kw">let</span> newVariable <span class="op">=</span> <span class="st">&quot;color&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb6-6" title="6"></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="op">&gt;</span> newVariable</a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="st">&quot;color&quot;</span></a>
+<a class="sourceLine" id="cb6-9" title="9"></a>
+<a class="sourceLine" id="cb6-10" title="10"><span class="op">&gt;</span> car[newVariable]</a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="st">&quot;Blue&quot;</span></a>
+<a class="sourceLine" id="cb6-12" title="12"></a>
+<a class="sourceLine" id="cb6-13" title="13"><span class="op">&gt;</span> car[<span class="st">&quot;color&quot;</span>]</a>
+<a class="sourceLine" id="cb6-14" title="14"><span class="st">&quot;Blue&quot;</span></a></code></pre></div>
+<p>Aha! Of course we can use a variable as our key! A variable <em>always</em> evaluates to the value we assigned it. So <code>car[newVariable]</code> and <code>car["color"]</code> are equivalent! Why is this useful? We know that variables can change; so now the keys we use for objects can change!</p>
+<p>Let’s take a look at what happens when we change the variable above:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="op">&gt;</span> car</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Blue&quot;</span><span class="op">,</span> <span class="dt">seats</span><span class="op">:</span> <span class="dv">2</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb7-3" title="3"></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="op">&gt;</span> newVariable</a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="st">&quot;color&quot;</span></a>
+<a class="sourceLine" id="cb7-6" title="6"></a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="op">&gt;</span> newVariable <span class="op">=</span> <span class="st">&quot;weight&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-8" title="8"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb7-9" title="9"></a>
+<a class="sourceLine" id="cb7-10" title="10"><span class="op">&gt;</span> car[newVariable]</a>
+<a class="sourceLine" id="cb7-11" title="11"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb7-12" title="12"></a>
+<a class="sourceLine" id="cb7-13" title="13"><span class="co">// car doesn&#39;t change because we didn&#39;t *assign* the new variable key in our object</span></a>
+<a class="sourceLine" id="cb7-14" title="14"><span class="op">&gt;</span> car</a>
+<a class="sourceLine" id="cb7-15" title="15"><span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Blue&quot;</span><span class="op">,</span> <span class="dt">seats</span><span class="op">:</span> <span class="dv">2</span><span class="op">}</span></a></code></pre></div>
+<p>We can now use our newly assigned variable to set a <em>new key</em> in our object:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="op">&gt;</span> car</a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Blue&quot;</span><span class="op">,</span> <span class="dt">seats</span><span class="op">:</span> <span class="dv">2</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb8-4" title="4"></a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="op">&gt;</span> newVariable</a>
+<a class="sourceLine" id="cb8-6" title="6"><span class="st">&quot;weight&quot;</span></a>
+<a class="sourceLine" id="cb8-7" title="7"></a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="co">// assigning a key value pair using a variable!</span></a>
+<a class="sourceLine" id="cb8-9" title="9"><span class="op">&gt;</span> car[newVariable] <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb8-10" title="10"><span class="dv">1000</span></a>
+<a class="sourceLine" id="cb8-11" title="11"></a>
+<a class="sourceLine" id="cb8-12" title="12"><span class="op">&gt;</span> car</a>
+<a class="sourceLine" id="cb8-13" title="13"><span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Blue&quot;</span><span class="op">,</span> <span class="dt">seats</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">weight</span><span class="op">:</span> <span class="dv">1000</span><span class="op">}</span></a></code></pre></div>
+<h2 id="using-different-notations">Using different notations</h2>
+<p>So far we’ve shown how to access and set values in objects using <code>object[key]</code> - also known as <em>Bracket Notation</em>. However, this is only one of two ways to access values within an object. The second way we can access values within an object is called <em>Dot Notation</em>. We can use <code>.</code> to assign and access our key-value pairs. The easiest to notice difference is when we use <em>dot notation</em>, we don’t need to use string quotes as the key:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="op">&gt;</span> <span class="kw">let</span> dog <span class="op">=</span> <span class="op">{};</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb9-3" title="3"></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="op">&gt;</span> <span class="va">dog</span>.<span class="at">bark</span> <span class="op">=</span> <span class="st">&quot;Bowowowo&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="st">&quot;Bowowowowo&quot;</span></a>
+<a class="sourceLine" id="cb9-6" title="6"></a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="op">&gt;</span> <span class="va">dog</span>.<span class="at">bark</span></a>
+<a class="sourceLine" id="cb9-8" title="8"><span class="st">&quot;Bowowowo&quot;</span></a>
+<a class="sourceLine" id="cb9-9" title="9"></a>
+<a class="sourceLine" id="cb9-10" title="10"><span class="op">&gt;</span> dog</a>
+<a class="sourceLine" id="cb9-11" title="11"><span class="op">{</span> <span class="dt">bark</span><span class="op">:</span> <span class="st">&quot;Bowowowowo&quot;</span> <span class="op">}</span></a></code></pre></div>
+<h3 id="bracket-notation-vs-dot-notation">Bracket notation vs Dot notation</h3>
+<p>Now that we know two ways to access values of an object, you are probably asking yourself: which one should you use? Here is a quick list of pros for each.</p>
+<p><strong>Dot notation:</strong></p>
+<ul>
+<li>easier to read</li>
+<li>easier to write because we don’t have to deal with using quotation marks</li>
+<li><strong>cannot</strong> use variables as keys</li>
+<li>keys can’t contain numbers as their first character (<code>object.1key</code> doesn’t work!)</li>
+</ul>
+<p><strong>Bracket notation Pros:</strong></p>
+<ul>
+<li>you can use variables (assigned to string values) as keys!</li>
+<li>It is okay to use variables and Strings that start with numbers as keys (use <code>object['1key']</code> does work, while <code>object.1key</code> does not)</li>
+</ul>
+<p>There are tradeoffs and advantages for either notation, so practice using both! You will learn quickly that there are <strong>a ton</strong> of different ways to write the same thing in JavaScript. Having both of these options available to you will allow you to use different tools to solve different problems.</p>
+<p>One of the most fun parts of being a programmer is the ability to come up with different solutions to the same problem. So you should have both types of notation in your tool-belt to be a versatile programmer!</p>
+<p>Let’s look at the difference:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">let</span> myDog <span class="op">=</span> <span class="op">{};</span></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="va">myDog</span>.<span class="at">name</span> <span class="op">=</span> <span class="st">&quot;Fido&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb10-3" title="3"></a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="co">// let&#39;s use a variable as our key and some bracket notation:</span></a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="kw">let</span> myKey <span class="op">=</span> <span class="st">&quot;name&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb10-6" title="6"><span class="va">console</span>.<span class="at">log</span>(myDog)<span class="op">;</span> <span class="co">// prints `{name: &quot;Fido&quot;}`</span></a>
+<a class="sourceLine" id="cb10-7" title="7"><span class="va">console</span>.<span class="at">log</span>(myDog[myKey])<span class="op">;</span> <span class="co">// prints `Fido`</span></a>
+<a class="sourceLine" id="cb10-8" title="8"></a>
+<a class="sourceLine" id="cb10-9" title="9"><span class="co">// what if we try to use the variable in dot notation:</span></a>
+<a class="sourceLine" id="cb10-10" title="10"><span class="co">// the below is interpreted as myDog[&#39;myKey&#39;]</span></a>
+<a class="sourceLine" id="cb10-11" title="11"><span class="va">console</span>.<span class="at">log</span>(<span class="va">myDog</span>.<span class="at">myKey</span>)<span class="op">;</span> <span class="co">// prints: undefined</span></a></code></pre></div>
+<p>When we use dot notation to write <code>myDog.myKey</code>, <code>myKey</code> will <strong>not be interpreted by JavaScript as a variable</strong>. The text we write after the <code>.</code> will be used as the <strong>literal</strong> key. Remember that if we try to use a key that does not exist in an object, we get back the default value of <code>undefined</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="co">// continued from above</span></a>
+<a class="sourceLine" id="cb11-2" title="2"></a>
+<a class="sourceLine" id="cb11-3" title="3"><span class="va">console</span>.<span class="at">log</span>(<span class="va">myDog</span>.<span class="at">myKey</span>)<span class="op">;</span> <span class="co">// prints `undefined`</span></a>
+<a class="sourceLine" id="cb11-4" title="4"><span class="va">myDog</span>.<span class="at">myKey</span> <span class="op">=</span> <span class="st">&quot;???&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb11-5" title="5"><span class="va">console</span>.<span class="at">log</span>(myDog)<span class="op">;</span> <span class="co">// prints `{name: &quot;Fido&quot;, myKey: &quot;???&quot;}`</span></a>
+<a class="sourceLine" id="cb11-6" title="6"><span class="va">console</span>.<span class="at">log</span>(<span class="va">myDog</span>.<span class="at">myKey</span>)<span class="op">;</span> <span class="co">// prints `???`</span></a>
+<a class="sourceLine" id="cb11-7" title="7"><span class="co">// mind === &quot;blown&quot;</span></a></code></pre></div>
+<h3 id="putting-it-all-together">Putting it all together</h3>
+<p>We can also create an entire object in a single statement:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">let</span> myDog <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-2" title="2">  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Fido&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-3" title="3">  <span class="dt">type</span><span class="op">:</span> <span class="st">&quot;Doge&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-4" title="4">  <span class="dt">age</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-5" title="5">  <span class="dt">favoriteToys</span><span class="op">:</span> [<span class="st">&quot;bone&quot;</span><span class="op">,</span> <span class="st">&quot;ball&quot;</span>]</a>
+<a class="sourceLine" id="cb12-6" title="6"><span class="op">};</span></a>
+<a class="sourceLine" id="cb12-7" title="7"></a>
+<a class="sourceLine" id="cb12-8" title="8"><span class="va">console</span>.<span class="at">log</span>(<span class="va">myDog</span>.<span class="at">age</span>)<span class="op">;</span> <span class="co">// prints 2</span></a>
+<a class="sourceLine" id="cb12-9" title="9"><span class="va">console</span>.<span class="at">log</span>(myDog[<span class="st">&quot;favoriteToys&quot;</span>])<span class="op">;</span> <span class="co">// prints [&quot;bone&quot;, &quot;ball&quot;]</span></a></code></pre></div>
+<h3 id="operator-precedence-revisited">Operator precedence revisited</h3>
+<p>Just like with math and logical operators, the concepts of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence">operator precedence</a> also pertain to objects. Associativity determines the order of operation, along with precedence. There are two types of associativity: right-associativity and left-associativity.</p>
+<p><strong>Right-associativity</strong> is when code is evaluated right-to-left. Let’s take a closer look at what is happening in the line of code below:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1">a <span class="op">=</span> b <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></a></code></pre></div>
+<ol type="1">
+<li>Variable <code>b</code> is assigned as <code>1</code>.</li>
+<li>Variable <code>a</code> is assigned as <code>b = 1</code>.</li>
+<li><code>b = 1</code> returns the value <code>1</code>, so variable <code>a</code> is now assigned as <code>1</code>.</li>
+</ol>
+<p>The assignment of variables takes lowest precedence, which is why we evaluate the return value of <code>b = 1</code> before completing the assignment of variable <code>a</code>.</p>
+<p>The example below is <strong>left-associativity</strong> is when code is evaluated left-to-right. It evaluates the <code>document.getElementById</code> method before accessing <code>value</code>.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">let</span> id <span class="op">=</span> <span class="st">&quot;header&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="kw">let</span> element <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(id).<span class="at">value</span><span class="op">;</span></a></code></pre></div>
+<ol type="1">
+<li>We resolve the <code>document</code> variable to be the <em>document object</em>.</li>
+<li>We use dot notation to retrieve the <code>getElementById</code> function. (The function is a property of the <em>document object</em>).</li>
+<li>We attempt to call it, but before the call can proceed we must first evaluate the function’s arguments.</li>
+<li>We resolve the <code>id</code> variable to be the string <code>"header"</code>.</li>
+<li>The <code>getELementById</code> function returns an <em>HTMLElement object</em> and then uses dot notation to access <code>value</code>.</li>
+<li>Finally we do assignment which is the LOWEST precedence (that’s why assignment happens last). Its associativity is right to left, so we take the value on the right and assign it to the left.</li>
+</ol>
+<p>Now let’s dive into the example below. Resolving the variables to their values happens before the operators.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb15-1" title="1"><span class="at">add</span>(number1<span class="op">,</span> number2) <span class="op">+</span> number3<span class="op">;</span></a></code></pre></div>
+<ol type="1">
+<li><code>number3</code> is resolved to its value.</li>
+<li>The function is invoked, but its variables need to be resolved.</li>
+<li><code>number1</code> and <code>number2</code> are resolved to their values.</li>
+<li>The function is invoked so <code>number1</code>, <code>number2</code>, and <code>number3</code> are finally added together!</li>
+</ol>
+<h2 id="what-you-learned">What you learned</h2>
+<p>In this reading we covered:</p>
+<ul>
+<li>Objects are un-ordered data structures consisting of key and value pairs.</li>
+<li>Object <code>keys</code> are strings, but their <code>values</code> can be anything (arrays, numbers, strings, functions, etc.)</li>
+<li>Setting key and value pairs using both Bracket and Dot notation
+<ul>
+<li>Using Bracket notation to set variables as <code>keys</code> in Objects</li>
+</ul></li>
+<li>The default value when accessing a key <strong>not</strong> in an object is <code>undefined</code>
+<ul>
+<li>How to check if a key is already within an object using the <code>object[key] === undefined</code> pattern</li>
+</ul></li>
+</ul>
+<hr />
+<h1 id="iterating-through-objects">Iterating Through Objects</h1>
+<p>In the previous reading we mentioned that Objects store <em>unordered</em> <code>key</code>-<code>value</code> pairs. With Objects we can not rely on indices to access values. Meaning - we’ll have to iterate through objects in new ways to access the keys and values within.</p>
+<p>When you finish this reading, you should be able to:</p>
+<ol type="1">
+<li>Iterate through Object <code>keys</code> and <code>values</code> using a <code>for...in</code> loop</li>
+<li>Use the <code>Object.keys</code> and the <code>Object.values</code> methods to iterate through an Object</li>
+</ol>
+<h2 id="a-new-kind-of-for-loop">A new Kind of <code>for</code> Loop</h2>
+<p>We can use special syntax to iterate through each <code>key</code> of an object (in arbitrary order). This is super useful for looping through <strong>both</strong> the keys and values of an object.</p>
+<p>The general syntax looks like this:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb16-1" title="1"><span class="co">// The current key is assigned to *variable* on each iteration.</span></a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="cf">for</span> (<span class="kw">let</span> variable <span class="kw">in</span> object) <span class="op">{</span></a>
+<a class="sourceLine" id="cb16-3" title="3">  statement<span class="op">;</span></a>
+<a class="sourceLine" id="cb16-4" title="4"><span class="op">}</span></a></code></pre></div>
+<p>This syntax is best shown by example:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">let</span> obj <span class="op">=</span> <span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Rose&quot;</span><span class="op">,</span> <span class="dt">cats</span><span class="op">:</span> <span class="dv">2</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb17-2" title="2"></a>
+<a class="sourceLine" id="cb17-3" title="3"><span class="co">// The key we are accessing is assigned to the `currentKey`</span></a>
+<a class="sourceLine" id="cb17-4" title="4"><span class="co">// *variable* on each iteration.</span></a>
+<a class="sourceLine" id="cb17-5" title="5"><span class="cf">for</span> (<span class="kw">let</span> currentKey <span class="kw">in</span> obj) <span class="op">{</span></a>
+<a class="sourceLine" id="cb17-6" title="6">  <span class="va">console</span>.<span class="at">log</span>(currentKey)<span class="op">;</span></a>
+<a class="sourceLine" id="cb17-7" title="7"><span class="op">}</span></a>
+<a class="sourceLine" id="cb17-8" title="8"></a>
+<a class="sourceLine" id="cb17-9" title="9"><span class="co">// prints out:</span></a>
+<a class="sourceLine" id="cb17-10" title="10"><span class="co">// name</span></a>
+<a class="sourceLine" id="cb17-11" title="11"><span class="co">// cats</span></a></code></pre></div>
+<p>The example above prints all the keys found in <code>obj</code> to the screen. On each iteration of the loop, the <code>key</code> we are currently accessing is assigned to the <code>currentKey</code> variable. Now, keys are nice but what about <em>values</em>?</p>
+<p>If we want to access values in an object, we would throw some bracket notation into the mix:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">let</span> obj <span class="op">=</span> <span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Rose&quot;</span><span class="op">,</span> <span class="dt">cats</span><span class="op">:</span> <span class="dv">2</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb18-2" title="2"></a>
+<a class="sourceLine" id="cb18-3" title="3"><span class="cf">for</span> (<span class="kw">let</span> key <span class="kw">in</span> obj) <span class="op">{</span></a>
+<a class="sourceLine" id="cb18-4" title="4">  <span class="kw">let</span> value <span class="op">=</span> obj[key]<span class="op">;</span></a>
+<a class="sourceLine" id="cb18-5" title="5">  <span class="va">console</span>.<span class="at">log</span>(value)<span class="op">;</span></a>
+<a class="sourceLine" id="cb18-6" title="6"><span class="op">}</span></a>
+<a class="sourceLine" id="cb18-7" title="7"></a>
+<a class="sourceLine" id="cb18-8" title="8"><span class="co">// prints out:</span></a>
+<a class="sourceLine" id="cb18-9" title="9"><span class="co">// Rose</span></a>
+<a class="sourceLine" id="cb18-10" title="10"><span class="co">// 2</span></a></code></pre></div>
+<p>Here’s some food for thought: Why can’t we use dot notation to iterate through an object’s values? For example, what if we replaced <code>obj[key]</code> with <code>obj.key</code> in the above code snippet? Try it for yourself. As we previously covered - you can only use variable keys when using bracket notation (<code>obj[key]</code>)!</p>
+<p>Like all variables, you can name the current key variable whatever you like - just be descriptive! Here is an example of using a descriptive name for a key variable:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">let</span> employees <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb19-2" title="2">  <span class="dt">manager</span><span class="op">:</span> <span class="st">&quot;Angela&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb19-3" title="3">  <span class="dt">sales</span><span class="op">:</span> <span class="st">&quot;Gracie&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb19-4" title="4">  <span class="dt">service</span><span class="op">:</span> <span class="st">&quot;Paul&quot;</span></a>
+<a class="sourceLine" id="cb19-5" title="5"><span class="op">};</span></a>
+<a class="sourceLine" id="cb19-6" title="6"></a>
+<a class="sourceLine" id="cb19-7" title="7"><span class="cf">for</span> (<span class="kw">let</span> title <span class="kw">in</span> employees) <span class="op">{</span></a>
+<a class="sourceLine" id="cb19-8" title="8">  <span class="kw">let</span> person <span class="op">=</span> employees[title]<span class="op">;</span></a>
+<a class="sourceLine" id="cb19-9" title="9">  <span class="va">console</span>.<span class="at">log</span>(person)<span class="op">;</span></a>
+<a class="sourceLine" id="cb19-10" title="10"><span class="op">}</span></a>
+<a class="sourceLine" id="cb19-11" title="11"></a>
+<a class="sourceLine" id="cb19-12" title="12"><span class="co">// prints out:</span></a>
+<a class="sourceLine" id="cb19-13" title="13"><span class="co">// Angela</span></a>
+<a class="sourceLine" id="cb19-14" title="14"><span class="co">// Gracie</span></a>
+<a class="sourceLine" id="cb19-15" title="15"><span class="co">// Paul</span></a></code></pre></div>
+<h2 id="methods-vs-functions">Methods vs Functions</h2>
+<p>Before we dive further into iterating with Objects we’ll take a moment to talk about <em>methods</em>. A <strong>method</strong> is essentially a function that <em>belongs to</em> an object. That means that every <em>method is a function</em>, but <strong>not</strong> every function is a method.</p>
+<ul>
+<li><code>myFunc</code> is a function</li>
+<li><code>myObject.myFunc</code> is a <em>method</em> of the object <code>myObject</code></li>
+<li><code>myObject["myFunc"]</code> is a <em>method</em> of the object <code>myObject</code></li>
+</ul>
+<p>A method is just a key-value pair where the <strong>key is the function name and the value is the function definition</strong>! Let’s use what we learned earlier to teach our dog some new tricks:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb20-1" title="1"><span class="kw">let</span> dog <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb20-2" title="2">  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Fido&quot;</span></a>
+<a class="sourceLine" id="cb20-3" title="3"><span class="op">};</span></a>
+<a class="sourceLine" id="cb20-4" title="4"></a>
+<a class="sourceLine" id="cb20-5" title="5"><span class="co">// defining a new key-value pair where the *function name* is the key</span></a>
+<a class="sourceLine" id="cb20-6" title="6"><span class="co">// the function itself is the value!</span></a>
+<a class="sourceLine" id="cb20-7" title="7"><span class="va">dog</span>.<span class="at">bark</span> <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb20-8" title="8">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;bark bark!&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb20-9" title="9"><span class="op">};</span></a>
+<a class="sourceLine" id="cb20-10" title="10"></a>
+<a class="sourceLine" id="cb20-11" title="11"><span class="co">// this is the same thing as above just using Bracket Notation</span></a>
+<a class="sourceLine" id="cb20-12" title="12">dog[<span class="st">&quot;speak&quot;</span>] <span class="op">=</span> <span class="kw">function</span>(string) <span class="op">{</span></a>
+<a class="sourceLine" id="cb20-13" title="13">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;WOOF &quot;</span> <span class="op">+</span> string <span class="op">+</span> <span class="st">&quot; WOOF!!!&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb20-14" title="14"><span class="op">};</span></a>
+<a class="sourceLine" id="cb20-15" title="15"></a>
+<a class="sourceLine" id="cb20-16" title="16"><span class="va">dog</span>.<span class="at">bark</span>()<span class="op">;</span> <span class="co">// prints `bark bark!`</span></a>
+<a class="sourceLine" id="cb20-17" title="17"><span class="va">dog</span>.<span class="at">speak</span>(<span class="st">&quot;pizza&quot;</span>)<span class="op">;</span> <span class="co">// prints `WOOF pizza WOOF!!!`</span></a></code></pre></div>
+<p>Additionally, we can give objects methods when we initialize them:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb21-1" title="1"><span class="kw">let</span> dog2 <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb21-2" title="2">  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Rover&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb21-3" title="3"></a>
+<a class="sourceLine" id="cb21-4" title="4">  <span class="dt">bark</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb21-5" title="5">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;bork bork!&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb21-6" title="6">  <span class="op">},</span></a>
+<a class="sourceLine" id="cb21-7" title="7"></a>
+<a class="sourceLine" id="cb21-8" title="8">  <span class="dt">speak</span><span class="op">:</span> <span class="kw">function</span>(string) <span class="op">{</span></a>
+<a class="sourceLine" id="cb21-9" title="9">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;BORK &quot;</span> <span class="op">+</span> string <span class="op">+</span> <span class="st">&quot; BORK!!!&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb21-10" title="10">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb21-11" title="11"><span class="op">};</span></a>
+<a class="sourceLine" id="cb21-12" title="12"><span class="co">// Notice that in the object above, we still separate the key-value pairs with commas.</span></a>
+<a class="sourceLine" id="cb21-13" title="13"><span class="co">// `bark` and `speak` are just keys with functions as values.</span></a>
+<a class="sourceLine" id="cb21-14" title="14"></a>
+<a class="sourceLine" id="cb21-15" title="15"><span class="va">dog2</span>.<span class="at">bark</span>()<span class="op">;</span> <span class="co">// prints `bork bork!`</span></a>
+<a class="sourceLine" id="cb21-16" title="16"><span class="va">dog2</span>.<span class="at">speak</span>(<span class="st">&quot;burrito&quot;</span>)<span class="op">;</span> <span class="co">// prints `BORK burrito BORK!!!`</span></a></code></pre></div>
+<p>Methods are just plain old functions at heart. They act like the functions we know and love - define parameters, accept arguments, return data, etc. A method is just a function that belongs to an object. To invoke, or call, a method we need to specify <strong>which</strong> object is calling that method. In the code snippet above the <code>dog2</code> object had the <code>bark</code> method so to invoke <code>bark</code> we had to specify it was <code>dog2</code>’s method: <code>dog2.bark()</code>. More generally the pattern goes: <code>myObject.methodName()</code>.</p>
+<h2 id="useful-object-methods">Useful Object Methods</h2>
+<h3 id="iterating-through-keys-using-object.keys">Iterating through keys using <strong><code>Object.keys</code></strong></h3>
+<p>The <code>Object.keys</code> method accepts an object as the argument and returns an array of the <em>keys</em> within that Object.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb22-1" title="1"><span class="op">&gt;</span> <span class="kw">let</span> dog <span class="op">=</span> <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Fido&quot;</span><span class="op">,</span> <span class="dt">age</span><span class="op">:</span> <span class="st">&quot;2&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb22-2" title="2"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb22-3" title="3"></a>
+<a class="sourceLine" id="cb22-4" title="4"><span class="op">&gt;</span> <span class="va">Object</span>.<span class="at">keys</span>(dog)</a>
+<a class="sourceLine" id="cb22-5" title="5">[<span class="st">&#39;name&#39;</span><span class="op">,</span> <span class="st">&#39;age&#39;</span>]</a>
+<a class="sourceLine" id="cb22-6" title="6"></a>
+<a class="sourceLine" id="cb22-7" title="7"><span class="op">&gt;</span> <span class="kw">let</span> cup <span class="op">=</span> <span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Red&quot;</span><span class="op">,</span> <span class="dt">contents</span><span class="op">:</span> <span class="st">&quot;coffee&quot;</span><span class="op">,</span> <span class="dt">weight</span><span class="op">:</span> <span class="dv">5</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb22-8" title="8"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb22-9" title="9"></a>
+<a class="sourceLine" id="cb22-10" title="10"><span class="op">&gt;</span> <span class="va">Object</span>.<span class="at">keys</span>(cup)</a>
+<a class="sourceLine" id="cb22-11" title="11">[<span class="st">&#39;color&#39;</span><span class="op">,</span> <span class="st">&#39;contents&#39;</span><span class="op">,</span> <span class="st">&#39;weight&#39;</span>]</a></code></pre></div>
+<p>The return value of <code>Object.keys</code> method is an array of keys - which is useful for iterating!</p>
+<h3 id="iterating-through-keys-using-object.values">Iterating through keys using <strong><code>Object.values</code></strong></h3>
+<p>The <code>Object.values</code> method accepts an object as the argument and returns an array of the <em>values</em> within that Object.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb23-1" title="1"><span class="op">&gt;</span> <span class="kw">let</span> dog <span class="op">=</span> <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Fido&quot;</span><span class="op">,</span> <span class="dt">age</span><span class="op">:</span> <span class="st">&quot;2&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb23-3" title="3"></a>
+<a class="sourceLine" id="cb23-4" title="4"><span class="op">&gt;</span> <span class="va">Object</span>.<span class="at">values</span>(dog)</a>
+<a class="sourceLine" id="cb23-5" title="5">[<span class="st">&#39;Fido&#39;</span><span class="op">,</span> <span class="st">&#39;2&#39;</span>]</a>
+<a class="sourceLine" id="cb23-6" title="6"></a>
+<a class="sourceLine" id="cb23-7" title="7"><span class="op">&gt;</span> <span class="kw">let</span> cup <span class="op">=</span> <span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Red&quot;</span><span class="op">,</span> <span class="dt">contents</span><span class="op">:</span> <span class="st">&quot;coffee&quot;</span><span class="op">,</span> <span class="dt">weight</span><span class="op">:</span> <span class="dv">5</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb23-8" title="8"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb23-9" title="9"></a>
+<a class="sourceLine" id="cb23-10" title="10"><span class="op">&gt;</span> <span class="va">Object</span>.<span class="at">keys</span>(cup)</a>
+<a class="sourceLine" id="cb23-11" title="11">[<span class="st">&#39;Red&#39;</span><span class="op">,</span> <span class="st">&#39;coffee&#39;</span><span class="op">,</span> <span class="dv">5</span>]</a></code></pre></div>
+<p>The return value of <code>Object.values</code> method is an array of values - which is useful for iterating!</p>
+<h4 id="iterating-through-an-objects-keys-values">Iterating through an Object’s keys &amp; values</h4>
+<p>So we have gone over how <code>Object.keys</code> gives you the keys on an object and <code>Object.values</code> gives you the values, but what if you want both the <em>keys</em> and the <em>values</em> corresponding to each other in an array?</p>
+<p>The <code>Object.entries</code> method accepts an object as the argument and returns an array of the <code>[key, value]</code> pairs within that Object.</p>
+<p>Let’s look at a quick demo:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb24-1" title="1"><span class="op">&gt;</span> <span class="kw">let</span> cat <span class="op">=</span> <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Freyja&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;orange&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb24-2" title="2"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb24-3" title="3"></a>
+<a class="sourceLine" id="cb24-4" title="4"><span class="op">&gt;</span> <span class="va">Object</span>.<span class="at">entries</span>(cat)</a>
+<a class="sourceLine" id="cb24-5" title="5">[ [ <span class="st">&#39;name&#39;</span><span class="op">,</span> <span class="st">&#39;Freyja&#39;</span> ]<span class="op">,</span> [ <span class="st">&#39;color&#39;</span><span class="op">,</span> <span class="st">&#39;orange&#39;</span> ] ]</a></code></pre></div>
+<h2 id="what-you-learned-1">What you learned</h2>
+<p>Objects may be an unordered collection of <code>key</code>-<code>value</code> pairs but that doesn’t mean you can’t iterate through them!</p>
+<p>In his reading we covered:</p>
+<ul>
+<li>How to define and invoke methods on Objects</li>
+<li>The <code>Object.keys</code> and <code>Object.values</code> functions</li>
+<li>How to iterate through a Object using a <code>for...in</code> loop</li>
+</ul>
+<hr />
+<h1 id="reference-vs.-primitive-types">Reference vs. Primitive Types</h1>
+<p>At this point you’ve worked with many different data types - booleans, numbers, strings, arrays, objects, etc. It’s now time to to go a little more in depth into the differences between these data types.</p>
+<p>When you finish this reading, you should be able to:</p>
+<ul>
+<li>Identify whether a data type is a Primitive type or a Reference type.</li>
+</ul>
+<h2 id="primitives-vs.-objects">Primitives vs. Objects</h2>
+<p>JavaScript has many data types, six of which you’ve encountered so far:</p>
+<p><strong>Five Primitive Types</strong>:</p>
+<ol type="1">
+<li><code>Boolean</code> - <code>true</code> and <code>false</code></li>
+<li><code>Null</code> - represents the intentional absence of value.</li>
+<li><code>Undefined</code> - default return value for many things in JavaScript.</li>
+<li><code>Number</code> - like the numbers we usually use (<code>15</code>, <code>4</code>, <code>42</code>)</li>
+<li><code>String</code> - ordered collection of characters (‘apple’)</li>
+</ol>
+<p><strong>One Reference Type</strong>:</p>
+<ol type="1">
+<li><code>Object</code> - (an array is also a kind of object)!</li>
+</ol>
+<p>You might be wondering about why we separated these data types into two categories - Reference &amp; Primitive. Let’s talk about the one of the main ways <em>Reference Types</em> and <em>Primitive Types</em> differ:</p>
+<ul>
+<li><em>Primitive types</em> are <strong>immutable</strong>. Meaning they cannot change.</li>
+</ul>
+<h2 id="immutability">Immutability</h2>
+<p>When we talk about primitive types the first thing we mentioned was <em>mutability</em>. Primitives are <strong>immutable</strong> meaning they can not be directly changed. Let’s look at an example:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">let</span> num1 <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb25-2" title="2"><span class="co">// here we assign num2 to point at the value of the number variable</span></a>
+<a class="sourceLine" id="cb25-3" title="3"><span class="kw">let</span> num2 <span class="op">=</span> num1<span class="op">;</span></a>
+<a class="sourceLine" id="cb25-4" title="4"></a>
+<a class="sourceLine" id="cb25-5" title="5"><span class="co">// here we *reassign* the num1 variable</span></a>
+<a class="sourceLine" id="cb25-6" title="6">num1 <span class="op">=</span> num1 <span class="op">+</span> <span class="dv">3</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb25-7" title="7"></a>
+<a class="sourceLine" id="cb25-8" title="8"><span class="va">console</span>.<span class="at">log</span>(num1)<span class="op">;</span> <span class="co">// 8</span></a>
+<a class="sourceLine" id="cb25-9" title="9"><span class="va">console</span>.<span class="at">log</span>(num2)<span class="op">;</span> <span class="co">// 5</span></a></code></pre></div>
+<p>Whoa wait whaaaat? Let’s break this down was just happened with some visuals. We start by assigning <code>num1</code>. JavaScript already knows that the number <code>5</code> is a primitive number value. So when we are assigning <code>num1</code> to the value of 5 we are actually telling the <code>num1</code> variable to point to the place the number 5 takes up in our computer’s memory:</p>
+<figure>
+<img src="images/assignment-num1.png" alt="num-one" /><figcaption>num-one</figcaption>
+</figure>
+<p>Next we assign <code>num2</code> to the <strong>value</strong> of <code>num1</code>. What effectively happens when we do this is we are <em>copying</em> the value of <code>num1</code> and then pointing <code>num2</code> at that copy:</p>
+<figure>
+<img src="images/assignment-num2.png" alt="num-two" /><figcaption>num-two</figcaption>
+</figure>
+<p>Now here is where it gets really <em>interesting</em>. We cannot change the 5 our computer has in memory - because it is a <strong>primitive</strong> data type. Meaning if we want <code>num1</code> to equal 8 we need to <strong>reassign</strong> the value of the <code>num1</code> variable. When we are talking about <em>primitives</em> reassignment breaks down into simply having your variable point somewhere else in memory:</p>
+<figure>
+<img src="images/assignment-num3.png" alt="num-three" /><figcaption>num-three</figcaption>
+</figure>
+<p>All this comes together in <code>num1</code> now pointing at a new value in our computer’s memory. Where does this leave <code>num2</code>? Well because we never reassigned <code>num2</code> it is still pointing at the value it originally copied from <code>num1</code> and pointing to 5 in memory.</p>
+<p>So that in essence is <strong>immutability</strong>, you can not change the values in memory only reassign where your variables are pointing.</p>
+<p>Let’s do another quick example using booleans:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb26-1" title="1"><span class="kw">let</span> first <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb26-2" title="2"><span class="kw">let</span> second <span class="op">=</span> first<span class="op">;</span></a>
+<a class="sourceLine" id="cb26-3" title="3"></a>
+<a class="sourceLine" id="cb26-4" title="4">first <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb26-5" title="5"></a>
+<a class="sourceLine" id="cb26-6" title="6"><span class="co">// first and second point to different places in memory</span></a>
+<a class="sourceLine" id="cb26-7" title="7"><span class="va">console</span>.<span class="at">log</span>(first)<span class="op">;</span> <span class="co">// false</span></a>
+<a class="sourceLine" id="cb26-8" title="8"><span class="va">console</span>.<span class="at">log</span>(second)<span class="op">;</span> <span class="co">// true</span></a></code></pre></div>
+<h3 id="mutability">Mutability</h3>
+<p>Let’s now talk about the inverse of immutability: mutability.</p>
+<p>Let’s take a look at what we call <strong>reference</strong> values which <strong>are</strong> mutable. When you assign a reference value from one variable to a second variable, the value stored in the first variable is also copied into the location of the second variable.</p>
+<p>Let’s look at an example using objects:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">let</span> cat1 <span class="op">=</span> <span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;apples&quot;</span><span class="op">,</span> <span class="dt">breed</span><span class="op">:</span> <span class="st">&quot;tabby&quot;</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="kw">let</span> cat2 <span class="op">=</span> cat1<span class="op">;</span></a>
+<a class="sourceLine" id="cb27-3" title="3"></a>
+<a class="sourceLine" id="cb27-4" title="4"><span class="va">cat1</span>.<span class="at">name</span> <span class="op">=</span> <span class="st">&quot;Lucy&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb27-5" title="5"></a>
+<a class="sourceLine" id="cb27-6" title="6"><span class="va">console</span>.<span class="at">log</span>(cat1)<span class="op">;</span> <span class="co">// =&gt; {name: &quot;Lucy&quot;, breed: &quot;tabby&quot;}</span></a>
+<a class="sourceLine" id="cb27-7" title="7"><span class="va">console</span>.<span class="at">log</span>(cat2)<span class="op">;</span> <span class="co">// =&gt; {name: &quot;Lucy&quot;, breed: &quot;tabby&quot;}</span></a></code></pre></div>
+<p>Here is a visualization of what happened above. First we create <code>cat1</code> then assign <code>cat2</code> to the value of <code>cat1</code>. This means that both <code>cat1</code> and <code>cat2</code> are pointing to the <strong>same object</strong> in our computer’s memory:</p>
+<figure>
+<img src="images/assignment-num5.png" alt="num-five" /><figcaption>num-five</figcaption>
+</figure>
+<p>Now looking at the code above we can see what when we change <strong>either</strong> <code>cat1</code> or <code>cat2</code>, since they are both pointing to the same place in memory, <strong>both</strong> will change:</p>
+<figure>
+<img src="images/assignment-num4.png" alt="num-four" /><figcaption>num-four</figcaption>
+</figure>
+<p>This holds true of arrays as well. Arrays are a kind of object - though obviously different. We’ll go a lot deeper into this when we start talking about classes - but for now concentrate on the fact that arrays are also a <em>Reference Type</em>.</p>
+<p>See below for an example:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">let</span> array1 <span class="op">=</span> [<span class="dv">14</span><span class="op">,</span> <span class="st">&quot;potato&quot;</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb28-2" title="2"><span class="kw">let</span> array2 <span class="op">=</span> array1<span class="op">;</span></a>
+<a class="sourceLine" id="cb28-3" title="3"></a>
+<a class="sourceLine" id="cb28-4" title="4">array1[<span class="dv">0</span>] <span class="op">=</span> <span class="st">&quot;banana&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb28-5" title="5"></a>
+<a class="sourceLine" id="cb28-6" title="6"><span class="va">console</span>.<span class="at">log</span>(array1)<span class="op">;</span> <span class="co">// =&gt; [&quot;banana&quot;, &quot;potato&quot;]</span></a>
+<a class="sourceLine" id="cb28-7" title="7"><span class="va">console</span>.<span class="at">log</span>(array2)<span class="op">;</span> <span class="co">// =&gt; [&quot;banana&quot;, &quot;potato&quot;]</span></a></code></pre></div>
+<p>If we change <code>array1</code> we also change <code>array2</code> because both are pointing to the same <em>reference</em> in the computer’s memory.</p>
+<h2 id="what-you-learned-2">What you learned</h2>
+<ul>
+<li>How to work with variables that are both Primitive types and Reference types.</li>
+</ul>
+<hr />
+<h1 id="using-the-spread-operator-and-rest-parameter-syntax">Using the Spread Operator and Rest Parameter Syntax</h1>
+<p>When writing functions in JavaScript you gain a certain flexibility that other programming languages don’t allow. As we have previously covered, JavaScript functions will happily take fewer arguments than specified, or more arguments than specified. This flexibility can be taken advantage of by using the <em>spread operator</em> and <em>rest parameter</em> syntax.</p>
+<p>When you finish this reading, you should be able to:</p>
+<ol type="1">
+<li>Use rest parameter syntax to accept an arbitrary number of arguments inside a function.</li>
+<li>Use spread operator syntax with both Objects and Arrays.</li>
+</ol>
+<h2 id="accepting-arguments">Accepting arguments</h2>
+<p>Before we jump into talking about using new syntax let’s quickly recap on what we already know about functions.</p>
+<h3 id="functions-with-fewer-arguments-than-specified">Functions with fewer arguments than specified</h3>
+<p>As we’ve previously covered, JavaScript functions can take fewer arguments than expected. If a parameter has been declared when the function itself was defined, then the default value of that parameter is <code>undefined</code>.</p>
+<p>Below is an example of a function with a defined parameter both with and without an argument being passed in:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">function</span> <span class="at">tester</span>(arg) <span class="op">{</span></a>
+<a class="sourceLine" id="cb29-2" title="2">  <span class="cf">return</span> arg<span class="op">;</span></a>
+<a class="sourceLine" id="cb29-3" title="3"><span class="op">}</span></a>
+<a class="sourceLine" id="cb29-4" title="4"></a>
+<a class="sourceLine" id="cb29-5" title="5"><span class="va">console</span>.<span class="at">log</span>(<span class="at">tester</span>(<span class="dv">5</span>))<span class="op">;</span> <span class="co">// =&gt; prints: 5</span></a>
+<a class="sourceLine" id="cb29-6" title="6"><span class="va">console</span>.<span class="at">log</span>(<span class="at">tester</span>())<span class="op">;</span> <span class="co">// =&gt; prints: undefined</span></a></code></pre></div>
+<p>Always keep in mind that a function will still run even if it has been passed no arguments at all.</p>
+<h3 id="more-arguments-than-specified">More arguments than specified</h3>
+<p>JavaScript functions will also accept more arguments than were previously defined by parameters.</p>
+<p>Below is an example of a function with extra arguments being passed in:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb30-1" title="1"><span class="kw">function</span> <span class="at">adder</span>(num1<span class="op">,</span> num2) <span class="op">{</span></a>
+<a class="sourceLine" id="cb30-2" title="2">  <span class="kw">let</span> sum <span class="op">=</span> num1 <span class="op">+</span> num2<span class="op">;</span></a>
+<a class="sourceLine" id="cb30-3" title="3">  <span class="cf">return</span> sum<span class="op">;</span></a>
+<a class="sourceLine" id="cb30-4" title="4"><span class="op">}</span></a>
+<a class="sourceLine" id="cb30-5" title="5"></a>
+<a class="sourceLine" id="cb30-6" title="6"><span class="co">// adder will assign the first two parameters to the passed in arguments</span></a>
+<a class="sourceLine" id="cb30-7" title="7"><span class="co">// and ignore the rest</span></a>
+<a class="sourceLine" id="cb30-8" title="8"><span class="va">console</span>.<span class="at">log</span>(<span class="at">adder</span>(<span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span>))<span class="op">;</span> <span class="co">// =&gt; 5</span></a>
+<a class="sourceLine" id="cb30-9" title="9"><span class="va">console</span>.<span class="at">log</span>(<span class="at">adder</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">19</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">13</span>))<span class="op">;</span> <span class="co">// =&gt; 6</span></a></code></pre></div>
+<h2 id="utilizing-rest-parameters">Utilizing Rest Parameters</h2>
+<p>We know that JavaScript functions can take in extra arguments - but how do we access those extra arguments? For the above example of the <code>adder</code> function: how could we add all incoming arguments - even the ones we didn’t define as parameters?</p>
+<p><strong>Rest parameter</strong> syntax allows us to capture all of a function’s incoming arguments into an array. Let’s take a look at the syntax:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb31-1" title="1"><span class="co">// to use the rest parameter you use ... then the name of the array</span></a>
+<a class="sourceLine" id="cb31-2" title="2"><span class="co">// the arguments will be contained within</span></a>
+<a class="sourceLine" id="cb31-3" title="3"><span class="kw">function</span> <span class="at">tester</span>(...<span class="at">restOfArgs</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb31-4" title="4">  <span class="co">// ...</span></a>
+<a class="sourceLine" id="cb31-5" title="5"><span class="op">}</span></a></code></pre></div>
+<p>In order to use <em>rest parameter</em> syntax a function’s last parameter can be prefixed with <code>...</code> which will then cause all remaining arguments to be placed within an array. Only the <strong>last parameter</strong> can be a <em>rest parameter</em>.</p>
+<p>Here is a simple example using <em>rest parameter</em> syntax to capture all incoming arguments into an array:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb32-1" title="1"><span class="kw">function</span> <span class="at">logArguments</span>(...<span class="at">allArguments</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb32-2" title="2">  <span class="va">console</span>.<span class="at">log</span>(allArguments)<span class="op">;</span></a>
+<a class="sourceLine" id="cb32-3" title="3"><span class="op">}</span></a>
+<a class="sourceLine" id="cb32-4" title="4"></a>
+<a class="sourceLine" id="cb32-5" title="5"><span class="at">logArguments</span>(<span class="st">&quot;apple&quot;</span><span class="op">,</span> <span class="dv">15</span><span class="op">,</span> <span class="dv">3</span>)<span class="op">;</span> <span class="co">// prints: [&quot;apple&quot;, 15, 3]</span></a></code></pre></div>
+<p>For a more practical example let’s expand on our <code>adder</code> function from before using <em>rest parameter syntax</em>:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb33-1" title="1"><span class="kw">function</span> <span class="at">adder</span>(num1<span class="op">,</span> ...<span class="at">otherNums</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb33-2" title="2">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;The first number is: &quot;</span> <span class="op">+</span> num1)<span class="op">;</span></a>
+<a class="sourceLine" id="cb33-3" title="3">  <span class="kw">let</span> sum <span class="op">=</span> num1<span class="op">;</span></a>
+<a class="sourceLine" id="cb33-4" title="4"></a>
+<a class="sourceLine" id="cb33-5" title="5">  <span class="co">// captures all other arguments into an array and adds them to our sum</span></a>
+<a class="sourceLine" id="cb33-6" title="6">  <span class="va">otherNums</span>.<span class="at">forEach</span>(<span class="kw">function</span>(num) <span class="op">{</span></a>
+<a class="sourceLine" id="cb33-7" title="7">    sum <span class="op">+=</span> num<span class="op">;</span></a>
+<a class="sourceLine" id="cb33-8" title="8">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb33-9" title="9"></a>
+<a class="sourceLine" id="cb33-10" title="10">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;The sum is: &quot;</span> <span class="op">+</span> sum)<span class="op">;</span></a>
+<a class="sourceLine" id="cb33-11" title="11"><span class="op">}</span></a>
+<a class="sourceLine" id="cb33-12" title="12"></a>
+<a class="sourceLine" id="cb33-13" title="13"><span class="at">adder</span>(<span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb33-14" title="14"><span class="co">// prints out:</span></a>
+<a class="sourceLine" id="cb33-15" title="15"><span class="co">// The first number is: 2</span></a>
+<a class="sourceLine" id="cb33-16" title="16"><span class="co">// The sum is: 9</span></a></code></pre></div>
+<p>To recap - we can use the <em>rest parameter</em> to capture a function’s incoming arguments into an array.</p>
+<h2 id="utilizing-spread-syntax">Utilizing Spread Syntax</h2>
+<p>Let’s now talk about a very interesting and useful operator in JavaScript. In essence, the <em>spread operator</em> allows you to break down a data type into the elements that make it up.</p>
+<p>The <em>spread operator</em> has two basic behaviors:</p>
+<ol type="1">
+<li>Take a data type (i.e. an array, an object) and <em>spread</em> the values of that type where <strong>elements</strong> are expected</li>
+<li>Take an iterable data type (an array or a string) and <em>spread</em> the elements of that type where <strong>arguments</strong> are expected.</li>
+</ol>
+<h3 id="spreading-elements">Spreading elements</h3>
+<p>The spread operator is very useful for <em>spreading</em> the values of an array or object where comma-separated elements are expected.</p>
+<p><strong>Spread operator</strong> syntax is very similar to rest parameter syntax but they do very different things:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">let</span> numArray <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb34-2" title="2"></a>
+<a class="sourceLine" id="cb34-3" title="3"><span class="co">// here we are taking `numArray` and *spreading* it into a new array where</span></a>
+<a class="sourceLine" id="cb34-4" title="4"><span class="co">// comma separated elements are expected to be</span></a>
+<a class="sourceLine" id="cb34-5" title="5"><span class="kw">let</span> moreNums <span class="op">=</span> [...<span class="at">numArray</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">6</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb34-6" title="6"></a>
+<a class="sourceLine" id="cb34-7" title="7"><span class="op">&gt;</span> moreNums</a>
+<a class="sourceLine" id="cb34-8" title="8"><span class="co">// =&gt; [1, 2, 3, 4, 5, 6]</span></a></code></pre></div>
+<p>In the above example you can see we used the spread operator to <em>spread</em> the values of <code>numArray</code> into a new array. Previously we used the <code>concat</code> method for this purpose, but we can now accomplish the same behavior using the <em>spread operator</em>.</p>
+<p>We can also <em>spread</em> Objects! Using the spread operator you can <em>spread</em> the <code>key</code>-<code>value</code> pairs from one object and into another new object.</p>
+<p>Here is an example:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb35-1" title="1"><span class="kw">let</span> colors <span class="op">=</span> <span class="op">{</span> <span class="dt">red</span><span class="op">:</span> <span class="st">&quot;scarlet&quot;</span><span class="op">,</span> <span class="dt">blue</span><span class="op">:</span> <span class="st">&quot;aquamarine&quot;</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb35-2" title="2"><span class="kw">let</span> newColors <span class="op">=</span> <span class="op">{</span> ...<span class="at">colors</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb35-3" title="3"></a>
+<a class="sourceLine" id="cb35-4" title="4"><span class="op">&gt;</span> newColors</a>
+<a class="sourceLine" id="cb35-5" title="5"><span class="co">// { red: &quot;scarlet&quot;, blue: &quot;aquamarine&quot; };</span></a></code></pre></div>
+<p>Just like we previously showed with arrays, we can use this spread behavior to <em>merge</em> objects together:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb36-1" title="1"><span class="kw">let</span> colors <span class="op">=</span> <span class="op">{</span> <span class="dt">red</span><span class="op">:</span> <span class="st">&quot;scarlet&quot;</span><span class="op">,</span> <span class="dt">blue</span><span class="op">:</span> <span class="st">&quot;aquamarine&quot;</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb36-2" title="2"><span class="kw">let</span> colors2 <span class="op">=</span> <span class="op">{</span> <span class="dt">green</span><span class="op">:</span> <span class="st">&quot;forest&quot;</span><span class="op">,</span> <span class="dt">yellow</span><span class="op">:</span> <span class="st">&quot;sunflower&quot;</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb36-3" title="3"></a>
+<a class="sourceLine" id="cb36-4" title="4"><span class="kw">let</span> moreColors <span class="op">=</span> <span class="op">{</span> ...<span class="at">colors</span><span class="op">,</span> ...<span class="at">colors2</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb36-5" title="5"></a>
+<a class="sourceLine" id="cb36-6" title="6"><span class="op">&gt;</span> moreColors</a>
+<a class="sourceLine" id="cb36-7" title="7"><span class="co">// {red: &quot;scarlet&quot;, blue: &quot;aquamarine&quot;, green: &quot;forest&quot;, yellow: &quot;sunflower&quot;}</span></a></code></pre></div>
+<h3 id="spreading-arguments">Spreading arguments</h3>
+<p>The other scenario in which <em>spread</em> proves useful is <em>spreading</em> an iterable data type into the passed in arguments of a function. To clarify, when we say <em>iterable</em> data types we mean arrays and string, <strong>not Objects</strong>.</p>
+<p>Here is a common example of spreading an array into a function’s arguments:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb37-1" title="1"><span class="kw">function</span> <span class="at">speak</span>(verb<span class="op">,</span> noun) <span class="op">{</span></a>
+<a class="sourceLine" id="cb37-2" title="2">  <span class="cf">return</span> <span class="st">&quot;I like to go &quot;</span> <span class="op">+</span> verb <span class="op">+</span> <span class="st">&quot; with &quot;</span> <span class="op">+</span> noun <span class="op">+</span> <span class="st">&quot;.&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb37-3" title="3"><span class="op">}</span></a>
+<a class="sourceLine" id="cb37-4" title="4"></a>
+<a class="sourceLine" id="cb37-5" title="5"><span class="kw">const</span> words <span class="op">=</span> [<span class="st">&quot;running&quot;</span><span class="op">,</span> <span class="st">&quot;Jet&quot;</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb37-6" title="6"></a>
+<a class="sourceLine" id="cb37-7" title="7"><span class="va">console</span>.<span class="at">log</span>(<span class="at">speak</span>(<span class="st">&quot;running&quot;</span><span class="op">,</span> <span class="st">&quot;Jet&quot;</span>))<span class="op">;</span> <span class="co">// =&gt; I like to go running with Jet.</span></a>
+<a class="sourceLine" id="cb37-8" title="8"><span class="va">console</span>.<span class="at">log</span>(<span class="at">speak</span>(...<span class="at">words</span>))<span class="op">;</span> <span class="co">// =&gt; I like to go running with Jet.</span></a></code></pre></div>
+<p>Using <em>spread</em> allowed us to pass in the <code>words</code> array, which was then broken down into the separate parameters of the <code>speak</code> function. The spread operator allows you to pass an array as an argument to a function and the values of that array be will be <em>spread</em> to fill in the separate parameters.</p>
+<h2 id="what-you-learned-3">What you learned</h2>
+<p><em>Rest parameter</em> syntax may look like <em>spread operator</em> syntax but they are pretty much opposites<sup><a href="https://about.gitlab.com/blog/2017/02/10/postmortem-of-database-outage-of-january-31/">1</a></sup>:</p>
+<ol type="1">
+<li>Spread ‘expands’ a data type into its elements</li>
+<li>Rest collects multiple elements and ‘condenses’ them into a single data type.</li>
+</ol>
+<p>What this reading covered:</p>
+<ul>
+<li>JavaScript functions can accept any number of arguments</li>
+<li>Using rest parameter syntax we can capture the arguments of a JavaScript function in an array</li>
+<li>Using <em>spread operator</em> syntax to spread iterable data types where arguments or values are expected
+<ul>
+<li>Using the spread operator to spread an array and object into their separate elements</li>
+</ul></li>
+</ul>
+<hr />
+<h1 id="destructuring">Destructuring</h1>
+<p>Up to this point we’ve learned how to collect related values and elements and store them in lovely data structures. Now it’s time to tear those data structures down to the ground! Just kidding. In this reading we will be talking about the concept of <strong>destructuring</strong> an array or object in order to more easily access their individual elements.</p>
+<p>When you finish this reading, you should be able to:</p>
+<ol type="1">
+<li>Destructure an array to reference specific elements</li>
+<li>Destructure an object to reference specific values</li>
+<li>Destructure incoming parameters into a function</li>
+</ol>
+<h2 id="destructuring-data-into-variables">Destructuring data into variables</h2>
+<p>The <em>destructuring assignment</em> syntax allows you to extract parts of an array or object into distinct variables.</p>
+<p>Let’s see an example:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb38-1" title="1"><span class="kw">let</span> numArray <span class="op">=</span> [<span class="dv">10</span><span class="op">,</span> <span class="dv">20</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb38-2" title="2"></a>
+<a class="sourceLine" id="cb38-3" title="3"><span class="co">// here we are &quot;unpacking&quot; the array values into two separate variables</span></a>
+<a class="sourceLine" id="cb38-4" title="4"><span class="kw">let</span> [firstEl<span class="op">,</span> secondEl] <span class="op">=</span> numArray<span class="op">;</span></a>
+<a class="sourceLine" id="cb38-5" title="5"></a>
+<a class="sourceLine" id="cb38-6" title="6"><span class="va">console</span>.<span class="at">log</span>(firstEl)<span class="op">;</span> <span class="co">//=&gt; 10</span></a>
+<a class="sourceLine" id="cb38-7" title="7"><span class="va">console</span>.<span class="at">log</span>(secondEl)<span class="op">;</span> <span class="co">//=&gt; 20</span></a></code></pre></div>
+<p>As with normal variable assignment you put the name of the variable you are assigning on the left, and the values you are assigning on the right. The above code assigns <code>firstEl</code> to the value in the first position in <code>numArray</code>, and <code>secondEl</code> to the second position in <code>numArray</code>.</p>
+<p>We can alternatively declare our variables before destructuring as well:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb39-1" title="1"><span class="kw">let</span> animalArray <span class="op">=</span> [<span class="st">&quot;tiger&quot;</span><span class="op">,</span> <span class="st">&quot;hippo&quot;</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb39-2" title="2"></a>
+<a class="sourceLine" id="cb39-3" title="3"><span class="kw">let</span> animal1<span class="op">,</span> animal2<span class="op">;</span></a>
+<a class="sourceLine" id="cb39-4" title="4"></a>
+<a class="sourceLine" id="cb39-5" title="5"><span class="co">// here we are &quot;unpacking&quot; the array values into two separate variables</span></a>
+<a class="sourceLine" id="cb39-6" title="6">[animal1<span class="op">,</span> animal2] <span class="op">=</span> animalArray<span class="op">;</span></a>
+<a class="sourceLine" id="cb39-7" title="7"></a>
+<a class="sourceLine" id="cb39-8" title="8"><span class="va">console</span>.<span class="at">log</span>(animal1)<span class="op">;</span> <span class="co">//=&gt; &quot;tiger&quot;</span></a>
+<a class="sourceLine" id="cb39-9" title="9"><span class="va">console</span>.<span class="at">log</span>(animal2)<span class="op">;</span> <span class="co">//=&gt; &quot;hippo&quot;</span></a></code></pre></div>
+<h3 id="swapping-variables-using-destructuring">Swapping variables using destructuring</h3>
+<p>One of the really cool things you can do with destructuring is swapping the values of two variables:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb40-1" title="1"><span class="kw">let</span> num1 <span class="op">=</span> <span class="dv">17</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb40-2" title="2"><span class="kw">let</span> num2 <span class="op">=</span> <span class="dv">3</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb40-3" title="3"></a>
+<a class="sourceLine" id="cb40-4" title="4"><span class="co">// this syntax will swap the values of the two variables</span></a>
+<a class="sourceLine" id="cb40-5" title="5">[num1<span class="op">,</span> num2] <span class="op">=</span> [num2<span class="op">,</span> num1]<span class="op">;</span></a>
+<a class="sourceLine" id="cb40-6" title="6"></a>
+<a class="sourceLine" id="cb40-7" title="7"><span class="va">console</span>.<span class="at">log</span>(num1)<span class="op">;</span> <span class="co">// 3</span></a>
+<a class="sourceLine" id="cb40-8" title="8"><span class="va">console</span>.<span class="at">log</span>(num2)<span class="op">;</span> <span class="co">// 17</span></a></code></pre></div>
+<p>Neat, right? This little syntactic trick can save you a few lines of code.</p>
+<h3 id="destructuring-objects-into-variables">Destructuring objects into variables</h3>
+<p>As you’ve previously read - objects can contain a lot of varied information including arrays, functions, and other objects. One of the most useful applications for destructuring is the ability to take apart and assign little slices of large objects to variables.</p>
+<p>Let’s take a look at the basic syntax for destructuring objects when the extracted variables have the same name as their associated keys:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb41-1" title="1"><span class="kw">let</span> obj <span class="op">=</span> <span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Apples&quot;</span><span class="op">,</span> <span class="dt">breed</span><span class="op">:</span> [<span class="st">&quot;tabby&quot;</span><span class="op">,</span> <span class="st">&quot;short hair&quot;</span>] <span class="op">};</span></a>
+<a class="sourceLine" id="cb41-2" title="2"><span class="kw">let</span> <span class="op">{</span> name<span class="op">,</span> breed <span class="op">}</span> <span class="op">=</span> obj<span class="op">;</span></a>
+<a class="sourceLine" id="cb41-3" title="3"></a>
+<a class="sourceLine" id="cb41-4" title="4"><span class="va">console</span>.<span class="at">log</span>(name)<span class="op">;</span> <span class="co">// &quot;Apples&quot;</span></a>
+<a class="sourceLine" id="cb41-5" title="5"><span class="va">console</span>.<span class="at">log</span>(breed)<span class="op">;</span> <span class="co">// [&quot;tabby&quot;, &quot;short hair&quot;]</span></a></code></pre></div>
+<p>Now this syntax works by matching object <code>properties</code>, so we can choose exactly which keys we want. If we only wanted to save certain properties, we could do something like this:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb42-1" title="1"><span class="kw">let</span> <span class="op">{</span> a<span class="op">,</span> c <span class="op">}</span> <span class="op">=</span> <span class="op">{</span> <span class="dt">a</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">b</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="dv">3</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb42-2" title="2">a<span class="op">;</span> <span class="co">//=&gt; 1</span></a>
+<a class="sourceLine" id="cb42-3" title="3">c<span class="op">;</span> <span class="co">//=&gt; 3</span></a></code></pre></div>
+<p>Now in all the previous examples we previously examined our variable names shared the same name as our object’s keys. Let’s take a quick look at the syntax we would need to use if the variable we are creating <em>does not</em> have the same name as our object’s keys. This is referred to as <em>aliased</em> object destructuring:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb43-1" title="1"><span class="kw">let</span> obj <span class="op">=</span> <span class="op">{</span> <span class="dt">apple</span><span class="op">:</span> <span class="st">&quot;red&quot;</span><span class="op">,</span> <span class="dt">banana</span><span class="op">:</span> <span class="st">&quot;yellow&quot;</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb43-2" title="2"><span class="kw">let</span> <span class="op">{</span> <span class="dt">apple</span><span class="op">:</span> newApple<span class="op">,</span> <span class="dt">banana</span><span class="op">:</span> newBanana <span class="op">}</span> <span class="op">=</span> obj<span class="op">;</span></a>
+<a class="sourceLine" id="cb43-3" title="3"></a>
+<a class="sourceLine" id="cb43-4" title="4"><span class="va">console</span>.<span class="at">log</span>(newApple)<span class="op">;</span> <span class="co">// &quot;red&quot;</span></a>
+<a class="sourceLine" id="cb43-5" title="5"><span class="va">console</span>.<span class="at">log</span>(newBanana)<span class="op">;</span> <span class="co">// &quot;yellow&quot;</span></a></code></pre></div>
+<p>Object deconstructing really becomes useful as you start working with larger and nested objects. Let’s take a look at destructuring with nested objects. In the below example our goal is to capture the value of the <code>species</code> key into a variable named <code>species</code>:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb44-1" title="1"><span class="kw">let</span> object <span class="op">=</span> <span class="op">{</span> <span class="dt">animal</span><span class="op">:</span> <span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Fiona&quot;</span><span class="op">,</span> <span class="dt">species</span><span class="op">:</span> <span class="st">&quot;Hippo&quot;</span> <span class="op">}</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb44-2" title="2"></a>
+<a class="sourceLine" id="cb44-3" title="3"><span class="co">// here we are specifying that within the animal object we want to assign the</span></a>
+<a class="sourceLine" id="cb44-4" title="4"><span class="co">// *species* variable to the value held by the *species* key</span></a>
+<a class="sourceLine" id="cb44-5" title="5"><span class="kw">let</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb44-6" title="6">  <span class="dt">animal</span><span class="op">:</span> <span class="op">{</span> species <span class="op">}</span></a>
+<a class="sourceLine" id="cb44-7" title="7"><span class="op">}</span> <span class="op">=</span> object<span class="op">;</span></a>
+<a class="sourceLine" id="cb44-8" title="8"></a>
+<a class="sourceLine" id="cb44-9" title="9"><span class="va">console</span>.<span class="at">log</span>(species)<span class="op">;</span> <span class="co">// =&gt; &#39;Hippo&#39;</span></a></code></pre></div>
+<p>Take a look at the example below to see how object destructuring can make your code more readable in more complex situations. For this example we are trying to get the <code>fname</code> value into a variable:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb45-1" title="1"><span class="kw">let</span> user <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb45-2" title="2">  <span class="dt">userId</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb45-3" title="3">  <span class="dt">favoriteAnimal</span><span class="op">:</span> <span class="st">&quot;hippo&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb45-4" title="4">  <span class="dt">fullName</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb45-5" title="5">    <span class="dt">fname</span><span class="op">:</span> <span class="st">&quot;Rose&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb45-6" title="6">    <span class="dt">lname</span><span class="op">:</span> <span class="st">&quot;K&quot;</span></a>
+<a class="sourceLine" id="cb45-7" title="7">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb45-8" title="8"><span class="op">};</span></a>
+<a class="sourceLine" id="cb45-9" title="9"></a>
+<a class="sourceLine" id="cb45-10" title="10"><span class="co">// accessing values *with* destructuring</span></a>
+<a class="sourceLine" id="cb45-11" title="11"><span class="kw">let</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb45-12" title="12">  userId<span class="op">,</span></a>
+<a class="sourceLine" id="cb45-13" title="13">  <span class="dt">fullName</span><span class="op">:</span> <span class="op">{</span> fname<span class="op">,</span> lname <span class="op">}</span></a>
+<a class="sourceLine" id="cb45-14" title="14"><span class="op">}</span> <span class="op">=</span> user<span class="op">;</span></a>
+<a class="sourceLine" id="cb45-15" title="15"></a>
+<a class="sourceLine" id="cb45-16" title="16"><span class="va">console</span>.<span class="at">log</span>(userId<span class="op">,</span> fname<span class="op">,</span> lname)<span class="op">;</span> <span class="co">// prints out:</span></a>
+<a class="sourceLine" id="cb45-17" title="17"><span class="co">// 1 &quot;Rose&quot; &quot;K&quot;</span></a></code></pre></div>
+<p>Destructuring allowed us to assign multiple variables to multiple values in our <code>user</code> object all in one line of code!</p>
+<p>The whole point of destructuring is to make writing code easier to write and read. However, destructuring can become harder to read with super nested objects. A good rule of thumb to keep clarity in your code is to only destructure values from objects that are two levels deep.</p>
+<p>Let’s look at a quick example:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb46-1" title="1"><span class="co">// the fname key is nested more than two levels deep</span></a>
+<a class="sourceLine" id="cb46-2" title="2"><span class="co">// (within bootcamp.instructor.fullName)</span></a>
+<a class="sourceLine" id="cb46-3" title="3"><span class="kw">let</span> bootcamp <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb46-4" title="4">  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;App Academy&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb46-5" title="5">  <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;red&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb46-6" title="6">  <span class="dt">instructor</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb46-7" title="7">    <span class="dt">fullName</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb46-8" title="8">      <span class="dt">fname</span><span class="op">:</span> <span class="st">&quot;Rose&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb46-9" title="9">      <span class="dt">lname</span><span class="op">:</span> <span class="st">&quot;K&quot;</span></a>
+<a class="sourceLine" id="cb46-10" title="10">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb46-11" title="11">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb46-12" title="12"><span class="op">};</span></a>
+<a class="sourceLine" id="cb46-13" title="13"></a>
+<a class="sourceLine" id="cb46-14" title="14"><span class="co">// this is hard to follow:</span></a>
+<a class="sourceLine" id="cb46-15" title="15"><span class="kw">let</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb46-16" title="16">  <span class="dt">instructor</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb46-17" title="17">    <span class="dt">fullName</span><span class="op">:</span> <span class="op">{</span> fname<span class="op">,</span> lname <span class="op">}</span></a>
+<a class="sourceLine" id="cb46-18" title="18">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb46-19" title="19"><span class="op">}</span> <span class="op">=</span> bootcamp<span class="op">;</span></a>
+<a class="sourceLine" id="cb46-20" title="20"><span class="va">console</span>.<span class="at">log</span>(fname<span class="op">,</span> lname)<span class="op">;</span></a>
+<a class="sourceLine" id="cb46-21" title="21"></a>
+<a class="sourceLine" id="cb46-22" title="22"><span class="co">// this is much easier to read:</span></a>
+<a class="sourceLine" id="cb46-23" title="23"><span class="kw">let</span> <span class="op">{</span> fname<span class="op">,</span> lname <span class="op">}</span> <span class="op">=</span> <span class="va">bootcamp</span>.<span class="va">instructor</span>.<span class="at">fullName</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb46-24" title="24"><span class="va">console</span>.<span class="at">log</span>(fname<span class="op">,</span> lname)<span class="op">;</span></a></code></pre></div>
+<h3 id="destructuring-and-the-rest-pattern">Destructuring and the rest pattern</h3>
+<p>Earlier you saw how the rest parameter syntax allows us to prefix a function’s last parameter with <code>...</code> to capture all remaining arguments into an array:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb47-1" title="1"><span class="kw">function</span> <span class="at">logArguments</span>(firstArgument<span class="op">,</span> ...<span class="at">restOfArguments</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb47-2" title="2">  <span class="va">console</span>.<span class="at">log</span>(firstArgument)<span class="op">;</span></a>
+<a class="sourceLine" id="cb47-3" title="3">  <span class="va">console</span>.<span class="at">log</span>(restOfArguments)<span class="op">;</span></a>
+<a class="sourceLine" id="cb47-4" title="4"><span class="op">}</span></a>
+<a class="sourceLine" id="cb47-5" title="5"></a>
+<a class="sourceLine" id="cb47-6" title="6"><span class="at">logArguments</span>(<span class="st">&quot;apple&quot;</span><span class="op">,</span> <span class="dv">15</span><span class="op">,</span> <span class="dv">3</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb47-7" title="7"><span class="co">// prints out:</span></a>
+<a class="sourceLine" id="cb47-8" title="8"><span class="co">// &quot;apple&quot;</span></a>
+<a class="sourceLine" id="cb47-9" title="9"><span class="co">// [15, 3]</span></a></code></pre></div>
+<p>This coding pattern of saying “give me the <em>rest</em> of” can also be used when destructuring an array by prefixing the last variable with <code>...</code>. In this example, the <code>otherFoods</code> variable is prefixed with <code>...</code> to initialize the variable to an array containing the remaining array elements that weren’t explicitly destructured:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb48-1" title="1"><span class="kw">let</span> foods <span class="op">=</span> [<span class="st">&quot;pizza&quot;</span><span class="op">,</span> <span class="st">&quot;ramen&quot;</span><span class="op">,</span> <span class="st">&quot;sushi&quot;</span><span class="op">,</span> <span class="st">&quot;kale&quot;</span><span class="op">,</span> <span class="st">&quot;tacos&quot;</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb48-2" title="2"></a>
+<a class="sourceLine" id="cb48-3" title="3"><span class="kw">let</span> [firstFood<span class="op">,</span> secondFood<span class="op">,</span> ...<span class="at">otherFoods</span>] <span class="op">=</span> foods<span class="op">;</span></a>
+<a class="sourceLine" id="cb48-4" title="4"><span class="va">console</span>.<span class="at">log</span>(firstFood)<span class="op">;</span> <span class="co">// =&gt; &quot;pizza&quot;</span></a>
+<a class="sourceLine" id="cb48-5" title="5"><span class="va">console</span>.<span class="at">log</span>(secondFood)<span class="op">;</span> <span class="co">// =&gt; &quot;ramen&quot;</span></a>
+<a class="sourceLine" id="cb48-6" title="6"><span class="va">console</span>.<span class="at">log</span>(otherFoods)<span class="op">;</span> <span class="co">// =&gt; [&quot;sushi&quot;, &quot;kale&quot;, &quot;tacos&quot;]</span></a></code></pre></div>
+<p>At the time of this writing, the rest pattern is only officially supported by JavaScript when destructuring arrays, though an <a href="https://about.gitlab.com/blog/2017/02/10/postmortem-of-database-outage-of-january-31/">ECMAScript proposal</a> adds support when destructuring objects. Recent versions of Chrome and Firefox support this proposed addition to the JavaScript language.</p>
+<p>Similar to when using the rest pattern with array destructuring, the last variable <code>obj</code> is prefixed with <code>...</code> to initialize it to an object containing the remaining own enumerable property keys (and their values) that weren’t explicitly destructured:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb49-1" title="1"><span class="kw">let</span> <span class="op">{</span> a<span class="op">,</span> c<span class="op">,</span> ...<span class="at">obj</span> <span class="op">}</span> <span class="op">=</span> <span class="op">{</span> <span class="dt">a</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">b</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">d</span><span class="op">:</span> <span class="dv">4</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb49-2" title="2"><span class="va">console</span>.<span class="at">log</span>(a)<span class="op">;</span> <span class="co">// =&gt; 1</span></a>
+<a class="sourceLine" id="cb49-3" title="3"><span class="va">console</span>.<span class="at">log</span>(c)<span class="op">;</span> <span class="co">// =&gt; 3</span></a>
+<a class="sourceLine" id="cb49-4" title="4"><span class="va">console</span>.<span class="at">log</span>(obj)<span class="op">;</span> <span class="co">// =&gt; { b: 2, d: 4 }</span></a></code></pre></div>
+<h2 id="destructuring-parameters">Destructuring parameters</h2>
+<p>So far we’ve talked about destructuring things into variables - but the other main use for destructuring is destructuring <strong>incoming parameters</strong> into a function. This gets to be really useful when we’re passing objects around to different functions. Each function can the be responsible for pulling the parameters it needs from an incoming object - making it that much easier to work with.</p>
+<p>Let’s look at a simple example of destructuring an object in a function’s parameters:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb50-1" title="1"><span class="kw">let</span> cat <span class="op">=</span> <span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Rupert&quot;</span><span class="op">,</span> <span class="dt">owner</span><span class="op">:</span> <span class="st">&quot;Curtis&quot;</span><span class="op">,</span> <span class="dt">weight</span><span class="op">:</span> <span class="dv">10</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb50-2" title="2"></a>
+<a class="sourceLine" id="cb50-3" title="3"><span class="co">// This unpacks the *owner* key out of any incoming object argument and</span></a>
+<a class="sourceLine" id="cb50-4" title="4"><span class="co">// assigns it to a owner parameter(variable)</span></a>
+<a class="sourceLine" id="cb50-5" title="5"><span class="kw">function</span> <span class="at">ownerName</span>(<span class="op">{</span> owner <span class="op">}</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb50-6" title="6">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;This cat is owned by &quot;</span> <span class="op">+</span> owner)<span class="op">;</span></a>
+<a class="sourceLine" id="cb50-7" title="7"><span class="op">}</span></a>
+<a class="sourceLine" id="cb50-8" title="8"></a>
+<a class="sourceLine" id="cb50-9" title="9"><span class="at">ownerName</span>(cat)<span class="op">;</span></a></code></pre></div>
+<p>In the above example we destructured any incoming arguments to the <code>ownerName</code> function to assign the value at the key <code>owner</code> to the parameter name of <code>owner</code>. This syntax might seem a little much just for getting one parameter but this syntax can become <em>invaluable</em> with nested objects.</p>
+<p>Let’s look at one more slightly more complex example to see the power of destructuring parameters. In the below example we want to find and return an array of the toys that belong to all cats:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb51-1" title="1"><span class="kw">let</span> bigCat <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb51-2" title="2">  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Jet&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb51-3" title="3">  <span class="dt">owner</span><span class="op">:</span> <span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Rose&quot;</span> <span class="op">},</span></a>
+<a class="sourceLine" id="cb51-4" title="4">  <span class="dt">toys</span><span class="op">:</span> [<span class="st">&quot;ribbon&quot;</span>]<span class="op">,</span></a>
+<a class="sourceLine" id="cb51-5" title="5">  <span class="dt">siblings</span><span class="op">:</span> <span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Freyja&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;orange&quot;</span><span class="op">,</span> <span class="dt">toys</span><span class="op">:</span> [<span class="st">&quot;mouse&quot;</span><span class="op">,</span> <span class="st">&quot;string&quot;</span>] <span class="op">}</span></a>
+<a class="sourceLine" id="cb51-6" title="6"><span class="op">};</span></a>
+<a class="sourceLine" id="cb51-7" title="7"></a>
+<a class="sourceLine" id="cb51-8" title="8"><span class="co">// here we use *aliased* object destructuring to create a siblingToys variable</span></a>
+<a class="sourceLine" id="cb51-9" title="9"><span class="kw">function</span> <span class="at">toyFinder</span>(<span class="op">{</span> toys<span class="op">,</span> <span class="dt">siblings</span><span class="op">:</span> <span class="op">{</span> <span class="dt">toys</span><span class="op">:</span> siblingToys <span class="op">}</span> <span class="op">}</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb51-10" title="10">  <span class="kw">let</span> allToys <span class="op">=</span> <span class="va">toys</span>.<span class="at">concat</span>(siblingToys)<span class="op">;</span></a>
+<a class="sourceLine" id="cb51-11" title="11">  <span class="cf">return</span> allToys<span class="op">;</span></a>
+<a class="sourceLine" id="cb51-12" title="12"><span class="op">}</span></a>
+<a class="sourceLine" id="cb51-13" title="13"></a>
+<a class="sourceLine" id="cb51-14" title="14"><span class="va">console</span>.<span class="at">log</span>(<span class="at">toyFinder</span>(bigCat))<span class="op">;</span> <span class="co">// =&gt; [&quot;ribbon&quot;, &quot;mouse&quot;, &quot;string&quot;]</span></a></code></pre></div>
+<p>One thing we’d like to draw your attention to is the parameters of the <code>toyFinder</code> function. As you are all aware, we can’t declare the same variable twice - so in the above <code>toyFinder</code> we ran into a situation where two objects had the same key name: <code>toy</code>. We solved this using <em>aliased</em> object destructuring - we alias the <code>toys</code> key within the <code>siblings</code> object as <code>siblingToys</code>.</p>
+<p>Thanks to object destructuring in parameters, all we had to do when we invoked <code>toyFinder</code> was pass in the whole object! Making our code easier to write and our object easier to work with.</p>
+<h2 id="what-you-learned-4">What you learned</h2>
+<p>What this reading covered:</p>
+<ul>
+<li>How to destructure an array to reference specific elements</li>
+<li>How to destructure an object to reference specific elements</li>
+<li>How to destructure incoming parameters into a function</li>
+</ul>
+<hr />
+<h1 id="were-better-together-pair-programming">We’re Better Together: Pair Programming</h1>
+<p>So far, you’ve been solving problems and writing code on your own. You’ll certainly spend a lot of time doing this in your future, but why not try a better way? Let’s discuss <em>pair programming</em>: an alternative approach that can boost your output, reduce errors, and improve your mood all at the same time!</p>
+<p>We’ll cover:</p>
+<ul>
+<li>a brief history of team/pair programming,</li>
+<li>typical roles when pairing up,</li>
+<li>and benefits of learning this useful skill!</li>
+</ul>
+<h2 id="team-mentality">Team mentality</h2>
+<p>Despite what “hacker” personalities in movies might have you think, software development has never been a single-player game. Tracing back to the earliest days of computing, computer scientists have worked in pairs or teams to solve the biggest problems. Fred Brooks, in his popular software/project management guide “The Mythical Man Month” (published in 1975) even advocated for small <a href="https://about.gitlab.com/blog/2017/02/10/postmortem-of-database-outage-of-january-31/">“surgical teams”</a> to approach software development!</p>
+<p>Even so, it’s easy to get focused on a problem and stop communicating with your teammates. To prevent this behavior, many teams practice <em>pair programming</em>, an approach in which two developers work together on a single computer. Pairing up ensures that both developers are engaged with each other and with the problem at hand, and it helps us share knowledge faster!</p>
+<p>Pair programming is by far the most popular approach, but there are other ways for small groups to collaborate! You may also hear about <em>mob programming</em>, where a group of 3+ individuals gather around a single screen to work through an issue, or <em>extreme programming (XP)</em>, a highly-structured approach to pair programming where the whole team rotates through projects. We’ll refer to all of these multi-developer approaches as <em>collaborative programming</em>.</p>
+<p>There are a few common concepts in all these approaches:</p>
+<ul>
+<li><p><strong>One shared device for coding:</strong> Keeping your code in sync with someone else is a bigger challenge than it’s worth, so collaborative programmers have found that coding only on one device keeps it simple. You can always share your code with each other once you’re done working on it.</p></li>
+<li><p><strong>Everyone has a job:</strong> Regardless of how many people you’re collaborating with, it’s important that each person has a role to play. This increases engagement and ensures that no one gets bored! If you find yourself in a group but without a clearly-defined role, there may be a better use of your time.</p></li>
+<li><p><strong>Everyone gets a turn:</strong> The best way to learn is by doing, so everyone should be able to work in all the roles on a collaborative programming team. This means developers may rotate into different roles on a timer, or change roles with each new session.</p></li>
+<li><p><strong>No one is “too good to pair”:</strong> It’s important to note that pairing should be a <strong>whole team</strong> process. One of the benefits of pair programming is that a more senior engineer can share knowledge with a junior engineer, skilling them up faster. No truly collaborative programming session excludes certain people because they’re outliers. It’s never too early (or too late!) to start pairing up.</p></li>
+</ul>
+<h2 id="pair-programming-roles">Pair Programming Roles</h2>
+<p>When we talk about pair programming specifically, there are two well-known roles: that of the <em>Driver</em> and that of the <em>Navigator</em>. Let’s break down their individual responsibilities.</p>
+<h3 id="the-driver">The Driver</h3>
+<p>The <em>Driver</em> takes ownership of the keyboard. They’ll be in charge of typing code and asking questions. The driver should focus on the current task and can let go of the bigger picture for a little while. The Driver might also suggest ways to improve/refactor the code, as the project continues.</p>
+<h3 id="the-navigator">The Navigator</h3>
+<p>The <em>Navigator</em> is in charge of what’s being typed and maintaining the project’s momentum. They should lead the discussion and direct the driver about what to type. The navigator won’t do any typing themselves. Instead, their goal is to make it as easy as possible for the driver to create code. While the driver types, the navigator should be double-checking the code for errors.</p>
+<h3 id="both-roles">Both roles</h3>
+<p>If these roles sound limiting to you, good; that’s the point! Having a clearly defined role means you never have to wonder what you should be doing at any given time. If you’re driving, you should be writing code. If you’re navigating, you should be designing what comes next and sharing that with the driver.</p>
+<p>These roles provide some structure, but they’re not excuses for poor communication. It’s up to <strong>both</strong> programmers to discuss the plan early and often. As the navigator leads the way, the driver should be constantly second-guessing the plan. If there’s a potential problem, it’s okay for the driver to bring this up! This is one of the strengths of pair programming: both developers have a voice in service of the final product.</p>
+<p>Both the driver and navigator should help keep each other on task as well. If you find yourself getting quiet or distracted, switch roles! The change of context should help you get your head back in the game.</p>
+<h2 id="why-pair-up">Why pair up?</h2>
+<p>This all sounds like a lot of work! If you’re already capable of coding alone, why might you want to pair up at all? Let’s look at some of the benefits.</p>
+<p>First, some statistics. A <a href="http://blogs.edweek.org/edweek/high_school_and_beyond/2018/08/good_speaking_tops_list_of_skills_employers_want_most.html">study from 2000</a> found that pair programming results in 15% slower development time. Yikes! That sounds a lot less scary when you recognize that we would theoretically expect it to result in 50% slower time, though. After all, we’re taking two people who could be working at “full speed” and assigning them to one task. Somehow, this process only causes them to move 15% slower - wow!</p>
+<p>The same study notes the payback for that loss of velocity: the resulting code contains 15% fewer errors. If this sounds like an even trade, consider this: debugging, correcting, and redeploying that erroneous code could take from 15 to 60 times as long as the paltry 15% slowdown caused by pairing up! Spending a little extra time up front can make a world of difference later on.</p>
+<p>Pair programming is also a great way to fulfill your social needs. Coding alone can be a lonely endeavor, especially when you face new challenges and aren’t sure how to proceed. Instead of getting lost in a search engine, pairing partners can help each other navigate these challenges and celebrate each others’ successes.</p>
+<p>Lastly, a big motivator for being a practiced pair programmer is the job search. Many companies include pair programming in their interview process. You may be asked to code while some of the company’s engineers observe, or you might get to work directly with another engineer on a collaborative project! Practicing this skill now means you’ll be comfortable when the stakes are higher, and more likely to make a good impression on the interviewing team.</p>
+<h2 id="what-weve-learned">What we’ve learned</h2>
+<p>When it comes to writing code, we are truly better together! Pair programming is an effective process for writing more code, writing better code, and improving your development skills at a dramatically increased rate. Starting now, we’ll be encouraging you to pair with other students on App Academy projects.</p>
+<p>After reading this lesson, you should feel comfortable: - defining collaborative programming, - describing the roles of the Driver and Navigator, - and naming a few benefits of pair programming.</p>
+<hr />
+<h1 id="the-app-academy-pair-programming-approach">The App Academy Pair Programming Approach</h1>
+<p>When it comes to pair programming, every team has their own process. Let’s explore App Academy’s specific approach to pairing up!</p>
+<p>We’ll cover:</p>
+<ul>
+<li>the App Academy path to pair programming success,</li>
+<li>a quick routine for improving your pairing outcomes,</li>
+<li>and modifications you can make for specific situations.</li>
+</ul>
+<h2 id="why-this-way">Why this way?</h2>
+<p>It might feel unnecessary to have strict rules about working together. After all, you’ve been working with other people your whole life, right? Get ready - software engineering will be different!</p>
+<p>Working as a programmer means being faced with frequent distractions. Strict rules help prevent those distractions so you can focus on what matters most. Additionally: when problems arise (as they inevitably will), people tend to fall back on old habits to cope with the stress. A rigid approach should provide us with at-the-ready coping strategies we can fall back on. When your team shares the same strategies, it makes it even easier to support each other through challenges!</p>
+<p>Ultimately, we’re creating a shared language between teammates. When you move into your new career, you’ll have to adjust to the collaborative process of your new team. Think of this as an opportunity to build a foundation for that transition.</p>
+<h2 id="the-rules">The rules</h2>
+<p>Let’s lay out the steps to a successful pair programming session. This process will be the same whether you’re working together in-person or remotely.</p>
+<h3 id="partner-up">Partner up</h3>
+<p>You can’t pair program without a pair of programmers! Your first step should be partnering up with another student. While it might be more comfortable to have the same partner each time, try challenging yourself to select a new partner for every session. This will broaden your perspective and let you share your unique approaches to software with each other.</p>
+<h3 id="check-in">Check-in</h3>
+<p>Before beginning, it’s a good idea to check in with each other. Take a quick “lay of the land”: what will you be pairing on? How long do you expect this session to last? Do you need to plan breaks for lunch or does one of you have obligations that will cut the session short? Get these details scheduled with each other ahead of time to reduce surprises &amp; distractions later on.</p>
+<p>This is a great time to assign roles as well. We encourage you to stick with the <em>Driver</em> and <em>Navigator</em> roles discussed previously. Over time, we’ve found that students who are more comfortable with the project being worked on prefer to act as Navigator first. This lets them establish the direction for the session and helps support the Driver. Of course, discuss this together before making a decision: your partner may have a different opinion!</p>
+<h3 id="get-coding">Get coding!</h3>
+<p>Once you’ve chosen initial roles, it’s time to dive in! Remember that you &amp; your partner should be working in a single editor, not two different ones. If you’re together in-person, this means one keyboard, one monitor, and two chairs. If you’re working remotely, this means one person is sharing their editor and the other is watching &amp; talking only.</p>
+<p>To start, let the initial driver set up the development environment and set a timer for 15 minutes. The navigator should start mapping out the course of the project, letting the driver type out code and watching out for errors. Both driver &amp; navigator should be in <em>constant</em> communication: ask each other lots of questions and double-check each other’s ideas as you go! It’s okay to use your time together to search for documentation or help online as well.</p>
+<p>If a question comes up that requires a lot of discussion or further research, pause your timer and talk it out. As you pair program more, you’ll find that these extended discussions become less frequent. It’s not that you’re talking less, but that you’re comfortable enough with the process to continue coding while working through bigger problems.</p>
+<h3 id="hand-off">Hand off</h3>
+<p>We follow a 15 minute rule at App Academy. This means you should change roles after every 15 minutes of progress - no exceptions! Frequent role reversal ensures you’re both getting equal exposure to the whole workflow, and it forces you to stay engaged and communicate through the transition.</p>
+<p>When the timer is up, the driver should pass control to the navigator and begin navigating themselves. This will feel awkward at first, but remember that you’re building a new skill here: context switching while maintaining communication is <strong>crucial</strong> for being an effective developer.</p>
+<p>Stick to the timer as closely as possible. It can be tempting to finish your current line of code/task before handing off, but that “last piece” might drag on for another 15 minutes by itself! If you’re communicating effectively, you should be able to the hand off mid-sentence and have your pair pick up right where you left off.</p>
+<h3 id="follow-up">Follow-up</h3>
+<p>It has been a long, productive day. How should you wrap up your programming session? Take a little time to reflect! Before officially ending your session, take a couple minutes to recap. Discuss what you accomplished. Did you meet your goals? Take a moment to celebrate! Are there tasks left incomplete? Make a few notes so you can pick these up with someone else next time.</p>
+<p>The follow-up, like the check-in, helps commit your progress to memory. It’s also the perfect time to answer any lingering questions and provide/receive feedback on how the session went. Don’t skip this step because it feels superfluous; it’s just as important as the code you’ve written together!</p>
+<h2 id="modifying-the-routine">Modifying the routine</h2>
+<p>As you pair up more often, you’ll encounter days where the routine just isn’t working. Maybe your partner’s having a bad day - or maybe you’re having a bad day yourself! Maybe the day’s material hasn’t “clicked” for you yet, and you feel like your partner is speaking a totally different language. Yikes!</p>
+<p>The most important thing to remember is that this is <strong>totally normal</strong>. We provide a strict pair programming routine to keep you on track, but we can’t plan for everything! Here are some things you can do to keep the routine fresh.</p>
+<ul>
+<li><p><strong>Step back &amp; discuss:</strong> If you’re feeling stuck, or having trouble keeping up with your partner, pause your timer and step away from the keyboard. This is a good signal that you need to discuss progress so far and make a plan for moving forward. You should always feel comfortable doing this if you’re unsure of something. Don’t worry about slowing your partner down; the goal of pair programming is that you both progress <strong>together</strong>.</p></li>
+<li><p><strong>Focus on the process during your follow-up:</strong> Understanding and mastering the pair programming process is as much a part of our program as JavaScript and data structures. If you’re struggling with this process, discuss it! During your follow-up, take a moment to ask each other how you felt your communication went. You should discuss how you’re working to improve your own performance as both a driver &amp; navigator. By focusing on the process, you’re taking some of the awkwardness out of the relationship, and helping each other feel more comfortable.</p></li>
+<li><p><strong>Remember to reflect regularly:</strong> You may not do it daily, but it is important to reflect on your pair programming experiences at regular intervals throughout your course. At least once every few weeks, schedule some time to chat with a partner about how pair programming is working for you. Share your personal experiences and suggest a few things you’d like to do for yourself to improve the process. If you’ve paired with your partner before, this may also be an appropriate time to offer compliments and kind criticism.</p></li>
+</ul>
+<h2 id="what-weve-learned-1">What we’ve learned</h2>
+<p>We know what pair programming <em>is</em>, and now we know <em>how</em> to do it! Practice following the App Academy process in your own pairing, and don’t forget to discuss your experiences as often as you can. You can’t be <strong>too</strong> good at pair programming; you’ll be pairing up for the rest of your new career.</p>
+<p>You should now be able to:</p>
+<ul>
+<li>describe each step of App Academy’s pair programming process,</li>
+<li>explain why the process is important,</li>
+<li>and suggest some ways to modify/improve the process as necessary.</li>
+</ul>
+<hr />
+<h1 id="you-are-not-your-code-empathetic-communication-in-engineering">You Are Not Your Code: Empathetic Communication In Engineering</h1>
+<p>We’ve presented a rigid process for pair programming, but we left out a big part: <strong>communication</strong>! While we’ve mentioned that communication is important, we haven’t really dug into the value of this skill. Let’s discuss some communication approaches that help you maximize your time when pair programming - and collaborating in general!</p>
+<p>We’ll discuss: - empathetic communication when working on code, - how to appropriately critique the work of others, - and how to receive &amp; respond to criticism of your own work.</p>
+<h2 id="understanding-code-centric-vs.-human-centric-language">Understanding code-centric vs. human-centric language</h2>
+<p>The code you write can feel deeply personal. You’ve put time into it, refactor after refactor, honing it to be both highly efficient and easily understood. It’s no wonder, then, that criticism of that code can feel personal as well! A common problem on software teams is the struggle between improving code quality without offending the programmers who wrote it.</p>
+<p>When communicating about software, it can be helpful to use <em>code-centric</em> language. Here’s an example:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb52-1" title="1"><span class="co">// Human-centric</span></a>
+<a class="sourceLine" id="cb52-2" title="2"><span class="st">&quot;You wrote an infinite loop. </span></a>
+<a class="sourceLine" id="cb52-3" title="3">If you <span class="cf">do</span> that again<span class="op">,</span> you will crash the <span class="va">server</span>.<span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb52-4" title="4"></a>
+<a class="sourceLine" id="cb52-5" title="5"><span class="co">// Code-centric</span></a>
+<a class="sourceLine" id="cb52-6" title="6"><span class="st">&quot;The code submitted for issue #3 resulted in an infinite loop. </span></a>
+<a class="sourceLine" id="cb52-7" title="7">This behavior could crash the <span class="va">server</span>. </a>
+<a class="sourceLine" id="cb52-8" title="8">What can we <span class="cf">do</span> to prevent that <span class="kw">in</span> the future<span class="op">?</span><span class="st">&quot;</span></a></code></pre></div>
+<p>Notice how the code-centric example focuses on outcomes and looks towards improvement, instead of focusing on assigning blame and enumerating negative consequences. It can feel like a nitpick, but depersonalizing discussions of code quality in this way helps you focus on the bigger picture: your team and the product you’re working on together.</p>
+<p>It’s important to remember that what we’re <strong>not</strong> doing with code-centric communication is removing responsibility. As a developer, you may write code for use in critical industries like healthcare, finance, or defense. It’s your responsibility to be constantly learning and growing to ensure that what you create is safe and correct.</p>
+<p>However, unless you are a solo freelance developer working on a solo project, your team will share your goals and should be focused on uplifting each other. Having a positive outlook, even in the face of human error, can be the difference between a successful team and a team destined for failure.</p>
+<p>A great practical example of code-centric language in action is <a href="https://about.gitlab.com/blog/2017/02/10/postmortem-of-database-outage-of-january-31/">this report by GitLab</a> after an accidental deletion of data. The company used this as a learning opportunity, improved their release tooling to prevent accidents in the future, and shared everything they learned with the community.</p>
+<h3 id="applying-empathy-to-pair-programming">Applying empathy to pair programming</h3>
+<p>When working directly with a partner, the relationship is close so the stakes are high. It’s important to maintain that relationship, but it’s also important to hold each other to a high standard! We can do both these things with <em>empathetic communication</em>.</p>
+<p>Being <em>empathetic</em> means being considerate of the feelings of others. It’s not just about recognizing challenges - it’s important to relate those challenges to your own experiences and respond in a way that acknowledges them appropriately.</p>
+<p>A common phrase you’ll hear when discussing communication in software development is <strong>“You are not your code”</strong>. This is a simplification of the human- vs. code-centric communication styles we discussed. Keeping this separation between your partner (or yourself!) and the code you’re producing together can help you communicate in a way that improves outcomes for everyone.</p>
+<p>Let’s look at another example. Imagine you’re acting as navigator during a pairing session and reviewing the code your partner has typed.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb53-1" title="1"><span class="co">// Human-centric</span></a>
+<a class="sourceLine" id="cb53-2" title="2"><span class="st">&quot;Why did you you write the function the wrong way?&quot;</span></a>
+<a class="sourceLine" id="cb53-3" title="3"></a>
+<a class="sourceLine" id="cb53-4" title="4"><span class="co">// Code-centric</span></a>
+<a class="sourceLine" id="cb53-5" title="5"><span class="st">&quot;Is this an alternative syntax for a function?&quot;</span></a></code></pre></div>
+<p>We’re not ignoring what might be a problem, but we are remaining open to a potential learning opportunity and drawing attention to it if needed. This difference in approach embodies the spirit of the “You are not your code” motto.</p>
+<p>The context of “You are not your code” is helpful when receiving criticism as well. Remember during pair programming or code review that we’re all on the same team: making better software! It can be tough to have your work critiqued, but it’s the best way to improve. If you find a particular note affects you personally, try rewriting it for yourself using code-centric language.</p>
+<h3 id="when-empathy-goes-awry">When empathy goes awry</h3>
+<p>You may sometimes encounter other engineers who use “you are not your code” as a license to insult. The goal of this phrase is to encourage programmers to act with empathy. It’s <strong>never</strong> an excuse to belittle someone with the caveat of “You can’t be offended - I’m just talking about your code!”. Notice that even that defense uses human-centric, personally challenging language.</p>
+<p>Practice using “you are not your code” in a positive context whenever you can, and encourage others to do the same. Strive to treat the people around you in the same way you’d like to be treated. Remember that you’re working with humans from many different backgrounds and with unique experiences, and that you should place respect for those human experiences over code quality, words-per-minute, or browser preference. That’s true empathy.</p>
+<h3 id="applying-empathy-to-your-code">Applying empathy to your code</h3>
+<p>Finally, remember that the code you’re writing will likely be read and used by other developers in the future. Just like practicing empathetic communication in-person helps build relationships, practicing empathetic coding helps build good software.</p>
+<p>Empathetic coding means thinking of those who will read or improve your code once you’ve moved on to other projects. Leaving clear comments and taking time to keep your code organized is one way to code with empathy. Another is working to use inclusive language in your test cases, or avoiding hard-to-understand single letter variable names.</p>
+<p>Anything you can do to make the next developer’s life easier is worth the time. Who knows - it might be <strong>you</strong> coming back to this project many months from now!</p>
+<h2 id="why-communication-matters">Why communication matters</h2>
+<p>So why does this all matter? App Academy is a software development program, not a public speaking course! Look a little deeper, though, and you’ll see a wealth of benefits from improving your communication.</p>
+<p>Selfishly, good communication helps you succeed. Lots of programmers with strong technical skills will apply, but those who can communicate clearly and efficiently <a href="http://blogs.edweek.org/edweek/high_school_and_beyond/2018/08/good_speaking_tops_list_of_skills_employers_want_most.html">will get the job</a>. The relationships you build by being empathetic with your coworkers will also help you with positive references and opportunities for promotion!</p>
+<p>Thinking more globally, it’s important to remember that the tech industry is growing at a rapid pace. Accusatory communication is just one of many ways of <em>gate-keeping</em>, or making our industry harder to get involved with. This isn’t always intentional, so improving your own communication skills is a great way to become more aware and ensure you’re part of the solution, not part of the problem.</p>
+<h2 id="what-weve-learned-2">What we’ve learned</h2>
+<p>When programming, you’re not just communicating with your computer! Practicing empathy in <strong>all</strong> your communication will result in a great return for you, your co-workers, and the tech community at large.</p>
+<p>We hope you’re now able to:</p>
+<ul>
+<li>differentiate between human-centric and code-centric language,</li>
+<li>articulate the meaning of “You are not your code”,</li>
+<li>and list the benefits of practicing empathetic communication.</li>
+</ul>
+<hr />
+<h1 id="object-problems">Object Problems</h1>
+<p>It’s time to get some practice using Objects! Below we’ve included a link to download a <code>zip</code> file for a number of problems.</p>
+<p>Complete the problems in the order specified. You should have <code>mocha</code> installed and will need to pass all the tests in order to move on.</p>
+<p>To run the tests for the above problems you will need to unzip the file you downloaded and then navigate into the directory for that file. Once there you can run the command:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb54-1" title="1"><span class="ex">~</span> <span class="ex">mocha</span></a></code></pre></div>
+<p>The <code>mocha</code> command will run all the tests. If you have any trouble with this don’t hesitate to ask a TA for help!</p>
+</body>
+</html>

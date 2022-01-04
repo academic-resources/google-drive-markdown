@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>02_iterating-through-objects</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="iterating-through-objects">Iterating Through Objects</h1>
+<hr />
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+<ul>
+<li><a href="#a-new-kind-of-for-loop">A new Kind of <code>for</code> Loop</a></li>
+<li><a href="#methods-vs-functions">Methods vs Functions</a></li>
+<li><a href="#useful-object-methods">Useful Object Methods</a>
+<ul>
+<li><a href="#iterating-through-keys-using-objectkeys">Iterating through keys using <strong><code>Object.keys</code></strong></a></li>
+<li><a href="#iterating-through-keys-using-objectvalues">Iterating through keys using <strong><code>Object.values</code></strong></a></li>
+<li><a href="#iterating-through-an-objects-keys-values">Iterating through an Object’s keys &amp; values</a></li>
+</ul></li>
+<li><a href="#what-you-learned">What you learned</a></li>
+</ul>
+<!-- /code_chunk_output -->
+<hr />
+<p>In the previous reading we mentioned that Objects store <em>unordered</em> <code>key</code>-<code>value</code> pairs. With Objects we can not rely on indices to access values. Meaning - we’ll have to iterate through objects in new ways to access the keys and values within.</p>
+<p>When you finish this reading, you should be able to:</p>
+<ol type="1">
+<li>Iterate through Object <code>keys</code> and <code>values</code> using a <code>for...in</code> loop</li>
+<li>Use the <code>Object.keys</code> and the <code>Object.values</code> methods to iterate through an Object</li>
+</ol>
+<h2 id="a-new-kind-of-for-loop">A new Kind of <code>for</code> Loop</h2>
+<p>We can use special syntax to iterate through each <code>key</code> of an object (in arbitrary order). This is super useful for looping through <strong>both</strong> the keys and values of an object.</p>
+<p>The general syntax looks like this:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="co">// The current key is assigned to *variable* on each iteration.</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="cf">for</span> (<span class="kw">let</span> variable <span class="kw">in</span> object) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-3" title="3">  statement<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="op">}</span></a></code></pre></div>
+<p>This syntax is best shown by example:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">let</span> obj <span class="op">=</span> <span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Rose&quot;</span><span class="op">,</span> <span class="dt">cats</span><span class="op">:</span> <span class="dv">2</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="co">// The key we are accessing is assigned to the `currentKey`</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="co">// *variable* on each iteration.</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="cf">for</span> (<span class="kw">let</span> currentKey <span class="kw">in</span> obj) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-6" title="6">  <span class="va">console</span>.<span class="at">log</span>(currentKey)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-8" title="8"></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="co">// prints out:</span></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="co">// name</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">// cats</span></a></code></pre></div>
+<p>The example above prints all the keys found in <code>obj</code> to the screen. On each iteration of the loop, the <code>key</code> we are currently accessing is assigned to the <code>currentKey</code> variable. Now, keys are nice but what about <em>values</em>?</p>
+<p>If we want to access values in an object, we would throw some bracket notation into the mix:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">let</span> obj <span class="op">=</span> <span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Rose&quot;</span><span class="op">,</span> <span class="dt">cats</span><span class="op">:</span> <span class="dv">2</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb3-2" title="2"></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="cf">for</span> (<span class="kw">let</span> key <span class="kw">in</span> obj) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-4" title="4">  <span class="kw">let</span> value <span class="op">=</span> obj[key]<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-5" title="5">  <span class="va">console</span>.<span class="at">log</span>(value)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="op">}</span></a>
+<a class="sourceLine" id="cb3-7" title="7"></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="co">// prints out:</span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="co">// Rose</span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="co">// 2</span></a></code></pre></div>
+<p>Here’s some food for thought: Why can’t we use dot notation to iterate through an object’s values? For example, what if we replaced <code>obj[key]</code> with <code>obj.key</code> in the above code snippet? Try it for yourself. As we previously covered - you can only use variable keys when using bracket notation (<code>obj[key]</code>)!</p>
+<p>Like all variables, you can name the current key variable whatever you like - just be descriptive! Here is an example of using a descriptive name for a key variable:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">let</span> employees <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-2" title="2">  <span class="dt">manager</span><span class="op">:</span> <span class="st">&quot;Angela&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-3" title="3">  <span class="dt">sales</span><span class="op">:</span> <span class="st">&quot;Gracie&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb4-4" title="4">  <span class="dt">service</span><span class="op">:</span> <span class="st">&quot;Paul&quot;</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="op">};</span></a>
+<a class="sourceLine" id="cb4-6" title="6"></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="cf">for</span> (<span class="kw">let</span> title <span class="kw">in</span> employees) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-8" title="8">  <span class="kw">let</span> person <span class="op">=</span> employees[title]<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-9" title="9">  <span class="va">console</span>.<span class="at">log</span>(person)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="op">}</span></a>
+<a class="sourceLine" id="cb4-11" title="11"></a>
+<a class="sourceLine" id="cb4-12" title="12"><span class="co">// prints out:</span></a>
+<a class="sourceLine" id="cb4-13" title="13"><span class="co">// Angela</span></a>
+<a class="sourceLine" id="cb4-14" title="14"><span class="co">// Gracie</span></a>
+<a class="sourceLine" id="cb4-15" title="15"><span class="co">// Paul</span></a></code></pre></div>
+<h2 id="methods-vs-functions">Methods vs Functions</h2>
+<p>Before we dive further into iterating with Objects we’ll take a moment to talk about <em>methods</em>. A <strong>method</strong> is essentially a function that <em>belongs to</em> an object. That means that every <em>method is a function</em>, but <strong>not</strong> every function is a method.</p>
+<ul>
+<li><code>myFunc</code> is a function</li>
+<li><code>myObject.myFunc</code> is a <em>method</em> of the object <code>myObject</code></li>
+<li><code>myObject["myFunc"]</code> is a <em>method</em> of the object <code>myObject</code></li>
+</ul>
+<p>A method is just a key-value pair where the <strong>key is the function name and the value is the function definition</strong>! Let’s use what we learned earlier to teach our dog some new tricks:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">let</span> dog <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Fido&quot;</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="op">};</span></a>
+<a class="sourceLine" id="cb5-4" title="4"></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="co">// defining a new key-value pair where the *function name* is the key</span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="co">// the function itself is the value!</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="va">dog</span>.<span class="at">bark</span> <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-8" title="8">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;bark bark!&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="op">};</span></a>
+<a class="sourceLine" id="cb5-10" title="10"></a>
+<a class="sourceLine" id="cb5-11" title="11"><span class="co">// this is the same thing as above just using Bracket Notation</span></a>
+<a class="sourceLine" id="cb5-12" title="12">dog[<span class="st">&quot;speak&quot;</span>] <span class="op">=</span> <span class="kw">function</span>(string) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-13" title="13">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;WOOF &quot;</span> <span class="op">+</span> string <span class="op">+</span> <span class="st">&quot; WOOF!!!&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-14" title="14"><span class="op">};</span></a>
+<a class="sourceLine" id="cb5-15" title="15"></a>
+<a class="sourceLine" id="cb5-16" title="16"><span class="va">dog</span>.<span class="at">bark</span>()<span class="op">;</span> <span class="co">// prints `bark bark!`</span></a>
+<a class="sourceLine" id="cb5-17" title="17"><span class="va">dog</span>.<span class="at">speak</span>(<span class="st">&quot;pizza&quot;</span>)<span class="op">;</span> <span class="co">// prints `WOOF pizza WOOF!!!`</span></a></code></pre></div>
+<p>Additionally, we can give objects methods when we initialize them:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">let</span> dog2 <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-2" title="2">  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Rover&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb6-3" title="3"></a>
+<a class="sourceLine" id="cb6-4" title="4">  <span class="dt">bark</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-5" title="5">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;bork bork!&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-6" title="6">  <span class="op">},</span></a>
+<a class="sourceLine" id="cb6-7" title="7"></a>
+<a class="sourceLine" id="cb6-8" title="8">  <span class="dt">speak</span><span class="op">:</span> <span class="kw">function</span>(string) <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-9" title="9">    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;BORK &quot;</span> <span class="op">+</span> string <span class="op">+</span> <span class="st">&quot; BORK!!!&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-10" title="10">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="op">};</span></a>
+<a class="sourceLine" id="cb6-12" title="12"><span class="co">// Notice that in the object above, we still separate the key-value pairs with commas.</span></a>
+<a class="sourceLine" id="cb6-13" title="13"><span class="co">// `bark` and `speak` are just keys with functions as values.</span></a>
+<a class="sourceLine" id="cb6-14" title="14"></a>
+<a class="sourceLine" id="cb6-15" title="15"><span class="va">dog2</span>.<span class="at">bark</span>()<span class="op">;</span> <span class="co">// prints `bork bork!`</span></a>
+<a class="sourceLine" id="cb6-16" title="16"><span class="va">dog2</span>.<span class="at">speak</span>(<span class="st">&quot;burrito&quot;</span>)<span class="op">;</span> <span class="co">// prints `BORK burrito BORK!!!`</span></a></code></pre></div>
+<p>Methods are just plain old functions at heart. They act like the functions we know and love - define parameters, accept arguments, return data, etc. A method is just a function that belongs to an object. To invoke, or call, a method we need to specify <strong>which</strong> object is calling that method. In the code snippet above the <code>dog2</code> object had the <code>bark</code> method so to invoke <code>bark</code> we had to specify it was <code>dog2</code>’s method: <code>dog2.bark()</code>. More generally the pattern goes: <code>myObject.methodName()</code>.</p>
+<h2 id="useful-object-methods">Useful Object Methods</h2>
+<h3 id="iterating-through-keys-using-object.keys">Iterating through keys using <strong><code>Object.keys</code></strong></h3>
+<p>The <code>Object.keys</code> method accepts an object as the argument and returns an array of the <em>keys</em> within that Object.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="op">&gt;</span> <span class="kw">let</span> dog <span class="op">=</span> <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Fido&quot;</span><span class="op">,</span> <span class="dt">age</span><span class="op">:</span> <span class="st">&quot;2&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb7-3" title="3"></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="op">&gt;</span> <span class="va">Object</span>.<span class="at">keys</span>(dog)</a>
+<a class="sourceLine" id="cb7-5" title="5">[<span class="st">&#39;name&#39;</span><span class="op">,</span> <span class="st">&#39;age&#39;</span>]</a>
+<a class="sourceLine" id="cb7-6" title="6"></a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="op">&gt;</span> <span class="kw">let</span> cup <span class="op">=</span> <span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Red&quot;</span><span class="op">,</span> <span class="dt">contents</span><span class="op">:</span> <span class="st">&quot;coffee&quot;</span><span class="op">,</span> <span class="dt">weight</span><span class="op">:</span> <span class="dv">5</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb7-8" title="8"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb7-9" title="9"></a>
+<a class="sourceLine" id="cb7-10" title="10"><span class="op">&gt;</span> <span class="va">Object</span>.<span class="at">keys</span>(cup)</a>
+<a class="sourceLine" id="cb7-11" title="11">[<span class="st">&#39;color&#39;</span><span class="op">,</span> <span class="st">&#39;contents&#39;</span><span class="op">,</span> <span class="st">&#39;weight&#39;</span>]</a></code></pre></div>
+<p>The return value of <code>Object.keys</code> method is an array of keys - which is useful for iterating!</p>
+<h3 id="iterating-through-keys-using-object.values">Iterating through keys using <strong><code>Object.values</code></strong></h3>
+<p>The <code>Object.values</code> method accepts an object as the argument and returns an array of the <em>values</em> within that Object.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="op">&gt;</span> <span class="kw">let</span> dog <span class="op">=</span> <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Fido&quot;</span><span class="op">,</span> <span class="dt">age</span><span class="op">:</span> <span class="st">&quot;2&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb8-3" title="3"></a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="op">&gt;</span> <span class="va">Object</span>.<span class="at">values</span>(dog)</a>
+<a class="sourceLine" id="cb8-5" title="5">[<span class="st">&#39;Fido&#39;</span><span class="op">,</span> <span class="st">&#39;2&#39;</span>]</a>
+<a class="sourceLine" id="cb8-6" title="6"></a>
+<a class="sourceLine" id="cb8-7" title="7"><span class="op">&gt;</span> <span class="kw">let</span> cup <span class="op">=</span> <span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Red&quot;</span><span class="op">,</span> <span class="dt">contents</span><span class="op">:</span> <span class="st">&quot;coffee&quot;</span><span class="op">,</span> <span class="dt">weight</span><span class="op">:</span> <span class="dv">5</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb8-9" title="9"></a>
+<a class="sourceLine" id="cb8-10" title="10"><span class="op">&gt;</span> <span class="va">Object</span>.<span class="at">keys</span>(cup)</a>
+<a class="sourceLine" id="cb8-11" title="11">[<span class="st">&#39;Red&#39;</span><span class="op">,</span> <span class="st">&#39;coffee&#39;</span><span class="op">,</span> <span class="dv">5</span>]</a></code></pre></div>
+<p>The return value of <code>Object.values</code> method is an array of values - which is useful for iterating!</p>
+<h3 id="iterating-through-an-objects-keys-values">Iterating through an Object’s keys &amp; values</h3>
+<p>So we have gone over how <code>Object.keys</code> gives you the keys on an object and <code>Object.values</code> gives you the values, but what if you want both the <em>keys</em> and the <em>values</em> corresponding to each other in an array?</p>
+<p>The <code>Object.entries</code> method accepts an object as the argument and returns an array of the <code>[key, value]</code> pairs within that Object.</p>
+<p>Let’s look at a quick demo:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="op">&gt;</span> <span class="kw">let</span> cat <span class="op">=</span> <span class="op">{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Freyja&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;orange&quot;</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb9-3" title="3"></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="op">&gt;</span> <span class="va">Object</span>.<span class="at">entries</span>(cat)</a>
+<a class="sourceLine" id="cb9-5" title="5">[ [ <span class="st">&#39;name&#39;</span><span class="op">,</span> <span class="st">&#39;Freyja&#39;</span> ]<span class="op">,</span> [ <span class="st">&#39;color&#39;</span><span class="op">,</span> <span class="st">&#39;orange&#39;</span> ] ]</a></code></pre></div>
+<h2 id="what-you-learned">What you learned</h2>
+<p>Objects may be an unordered collection of <code>key</code>-<code>value</code> pairs but that doesn’t mean you can’t iterate through them!</p>
+<p>In his reading we covered:</p>
+<ul>
+<li>How to define and invoke methods on Objects</li>
+<li>The <code>Object.keys</code> and <code>Object.values</code> functions</li>
+<li>How to iterate through a Object using a <code>for...in</code> loop</li>
+</ul>
+</body>
+</html>

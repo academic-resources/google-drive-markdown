@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>proj_cookies</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="project-fresh-cookies-in-the-window-come-and-get-em">Project: Fresh Cookies In The Window: Come And Get ‘Em!</h1>
+<p>Now that you know all about the browser, the BOM, and the window, let’s get cooking! In this project, you will:</p>
+<ul>
+<li>Set up a server and run files locally</li>
+<li>Practice running a script when the page has loaded</li>
+<li>Set, Get, and Delete cookies using JavaScript</li>
+<li>Open and resize a window using JavaScript</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>Picture yourself baking some fresh cookies (chocolate chip? snickerdoodle? peanut butter?) on a crisp autumn day.</p>
+<p>The timer’s gone off, and as you take the piping hot tray out of the oven, you salivate in anticipation of a tasty treat. But, the cookies are way too hot and need to cool down. You crack open the nearest window just enough, and set the tray down next to it, letting a cool breeze waft over the cookies. You’re looking forward to the first bite!</p>
+<p>Let the imagery above be your inspiration while completing this coding project. We can think of the browser’s <code>window</code> object as a physical window, and browser cookies as actual doughy desserts, if for no other reason that it’s a fun mnemonic device.</p>
+<h2 id="project-overview">Project overview</h2>
+<p>Let’s practice running a script when the page has loaded. We’ll also manipulate the <code>window</code> object by changing its height. Finally, we’ll bake some byte-sized cookies and set them in the window.</p>
+<h2 id="phase-1-using-a-local-nodeexpress-server-whoa">Phase 1: Using a local Node/Express server (<em>Whoa!</em>)</h2>
+<p>Express is a Node framework that you’ll be using to set up a local server on your machine. This will come in handy when we’re practicing how to set a cookie.</p>
+<p>We’ve set up an Express app for you to use. Open the <code>cookies-project</code> folder inside of this Module. Then go through the following:</p>
+<ol type="1">
+<li>Make sure Node is installed on your machine.</li>
+<li>Run <code>npm install</code>.</li>
+<li>Run <code>npm start</code>, you should see “Example app listening on port 3000!” in your terminal.</li>
+<li>Open up <code>localhost:3000</code> in your browser and make sure you see ‘Cookies!!!’</li>
+</ol>
+<p><em>You’ll be using the <strong>public/index.html</strong> file to write your HTML and <strong>public/js/cookies.js</strong> file to write your JavaScript.</em></p>
+<h2 id="phase-2-add-a-script-on-dompage-load-practice-makes-perfect.">Phase 2: Add a script on DOM/page load (<em>Practice makes perfect.</em>)</h2>
+<p>Inside of your <code>cookies.js</code> file:</p>
+<ul>
+<li>Practice running your script after the page has loaded. You can use <code>DOMContentLoaded</code> or <code>window.onload</code>. If you’re linking to an external JS file, practice using the <code>async</code> or <code>defer</code> methods.</li>
+</ul>
+<h2 id="phase-3-set-a-cookie-in-the-window-freshly-baked">Phase 3: Set a cookie in the window (<em>Freshly baked!</em>)</h2>
+<p>Inside of your <code>cookies.js</code> file, practice setting a cookie. Here are a couple of examples:</p>
+<ul>
+<li><code>document.cookie = "monster_name=cookie";</code></li>
+<li><code>document.cookie = "favorite_cookie=snickerdoodle";</code></li>
+</ul>
+<p>Now looking at your Developer Tools, did the cookies you set appear in the correct place? Try defining one more cookie in your <code>cookies.js</code> and refresh your page. Do you see it in the Developer Tools? Now delete your most recent cookie and refresh your page. If you delete a cookie, what happens in the browser tab when you refresh?</p>
+<p>Let’s show our new cookies to our user! Try using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/alert"><code>window.alert()</code></a> method to let our user know the information of all the cookies stored in the browser.</p>
+<h2 id="phase-4-no-such-thing-as-just-one-more-cookie">Phase 4: No such thing as just one more cookie</h2>
+<p>Setting cookies one at a time by hand is probably getting old by now. Let’s write a new function called <code>setCookie(name, value)</code>. The <code>setCookie</code> function will accept two arguments, a name and a value, and will create a new cookie using those arguments.</p>
+<p>Nice! Try testing out your new function by creating a few cookies. Now that we have a way to set cookies it’d sure be nice to have a way to return all the cookies. So… let’s hop to it!</p>
+<h2 id="phase-5-gimme-all-the-cookies">Phase 5: Gimme all the cookies</h2>
+<p>Write a function named <code>getCookies()</code> that will return an array of the key value pairs of each set cookie. This is easy to do when you remember that <code>document.cookie</code> returns a string!</p>
+<p>Look below for an example of how <code>getCookies</code> is used:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="at">setCookie</span>(<span class="st">&quot;dog&quot;</span><span class="op">,</span> <span class="st">&quot;Fido&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="at">setCookie</span>(<span class="st">&quot;cat&quot;</span><span class="op">,</span> <span class="st">&quot;Jet&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="va">console</span>.<span class="at">log</span>(<span class="at">getCookies</span>())<span class="op">;</span> <span class="co">// prints [&quot;dog=Fido&quot;, &quot;cat=Jet&quot;]</span></a></code></pre></div>
+<p>Let’s take this one step further - what if we wanted to get the value for one particular cookie?</p>
+<p>Write a new function <code>getCookieValue(name)</code> that intakes that name of a cookie as an argument. If the given cookie name exists <code>getCookieValue</code> will return the value of that cookie. If a cookie with the given name doesn’t exist the <code>getCookieValue</code> function should return <code>null</code>.</p>
+<p>Here is an example of <code>getCookieValue</code> in action:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="at">setCookie</span>(<span class="st">&quot;cat&quot;</span><span class="op">,</span> <span class="st">&quot;Jet&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="va">console</span>.<span class="at">log</span>(<span class="at">getCookies</span>())<span class="op">;</span> <span class="co">// prints [&quot;cat=Jet&quot;]</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="va">console</span>.<span class="at">log</span>(<span class="at">getCookieValue</span>(<span class="st">&quot;cat&quot;</span>))<span class="op">;</span> <span class="co">// &quot;Jet&quot;</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="va">console</span>.<span class="at">log</span>(<span class="at">getCookieValue</span>(<span class="st">&quot;rabbit&quot;</span>))<span class="op">;</span> <span class="co">// null</span></a></code></pre></div>
+<h2 id="phase-6-removing-a-cookie">Phase 6: Removing a cookie</h2>
+<p>Now that we have a couple of functions in place to set and get cookies lets write a function called <code>deleteCookie(name)</code>. The <code>deleteCookie</code> function will accept the name of a cookie to be deleted and will delete that cookie, if it exists. If <code>deleteCookie</code> is given the name of a cookie that doesn’t exist it should print a message to the user saying the cookie wasn’t found.</p>
+<p>Here is an example of <code>deleteCookie</code> in action:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="at">setCookie</span>(<span class="st">&quot;cat&quot;</span><span class="op">,</span> <span class="st">&quot;Jet&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="at">setCookie</span>(<span class="st">&quot;dog&quot;</span><span class="op">,</span> <span class="st">&quot;Fido&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="va">console</span>.<span class="at">log</span>(<span class="at">getCookies</span>())<span class="op">;</span> <span class="co">// prints [&quot;cat=Jet&quot;, &quot;dog=Fido&quot;]</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="at">deleteCookie</span>(<span class="st">&quot;cat&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="va">console</span>.<span class="at">log</span>(<span class="at">getCookies</span>())<span class="op">;</span> <span class="co">// prints [&quot;dog=Fido&quot;]</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="at">deleteCookie</span>(<span class="st">&quot;rabbit&quot;</span>)<span class="op">;</span> <span class="co">// prints &quot;cookie not found!&quot;</span></a></code></pre></div>
+<p>We now have set up some nice utility function to get, set, and delete cookies! Pretty yummy if you ask me! 🍪</p>
+<h2 id="bonuses-more-fun-with-cookies">Bonuses: More fun with cookies!</h2>
+<p>Check out the MDN documentation on <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie">Document.cookie</a> to help you complete the tasks below.</p>
+<h2 id="bonus-a-open-a-new-window-and-resize-it-based-on-cookie-value-smells-great">Bonus A: Open a new window and resize it based on cookie value (<em>Smells great!</em>)</h2>
+<p>Let’s trying doing something fun will all our new cookie functions. Let’s write some code to do the following:</p>
+<ol type="1">
+<li>generate a random number</li>
+<li>store that number in a cookie</li>
+<li>open a new window and set the new window’s height and width to the cookie value we stored in step 2.</li>
+</ol>
+<ul>
+<li><em>Hint: Recall that we can use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random">Math.random()</a> to generate a random number.</em></li>
+<li><em>Hint: Use <code>window.open()</code> AND <code>window.resizeTo()</code> OR <code>window.resizeBy()</code></em></li>
+</ul>
+<p>When you run the script, you should see a new window open with the width and height set to the value that was stored in the cookie. Baked and cooled!</p>
+<h3 id="bonus-b-create-new-cookies-at-the-click-of-a-button">Bonus B: Create new cookies at the click of a button</h3>
+<p>Are you a master baker? Create the necessary html elements and JavaScript so that a user can input a cookie name and value and click a button to create a cookie with the name and value they specified.</p>
+<p>The sequence of events will be:</p>
+<ol type="1">
+<li>A user inputs the name and value they want for their cookie</li>
+<li>The user clicks the button to create their new cookie</li>
+<li>The new cookie is created</li>
+<li>To ensure the best user experience, empty the two inputs for the cookie name and value (so a user can easily create another cookie)</li>
+<li>Log all the cookies to the console so the user can see their new cookie!</li>
+</ol>
+<p>Congratulations! Hang up your your apron for now knowing you are a cookie master.</p>
+</body>
+</html>

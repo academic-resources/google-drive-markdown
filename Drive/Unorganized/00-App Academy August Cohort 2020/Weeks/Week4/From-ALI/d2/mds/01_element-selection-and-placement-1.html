@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>01_element-selection-and-placement-1</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="hello-world-domination-element-selection-and-placement">Hello, World DOMination: Element Selection And Placement</h1>
+<p>The objective of this lesson is to familiarize yourself with the usage and inner workings of the DOM API. When you finish this lesson, you should be able to:</p>
+<ul>
+<li>Reference and manipulate the DOM via Javascript</li>
+<li>Update and create new DOM elements via Javascript</li>
+<li>Change CSS based on a DOM event</li>
+<li>Familiarize yourself with the console</li>
+</ul>
+<h2 id="what-is-the-dom">What is the DOM?</h2>
+<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction">Document Object Model</a>, or DOM, is an object-oriented representation of an HTML document or Web page, meaning that the document is represented as objects, or nodes. It allows developers to access the document via a programming language, like Javascript.</p>
+<p>The DOM is typically depicted as a tree with a specific hierarchy. (See the image below.) Higher branches represent parent nodes, while lower branches represent child nodes, or children. More on that later.</p>
+<p>
+<img src="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-DOM-API/element-selection/assets/DOM_tree.png" style="max-width: 50%; height: auto;">
+</p>
+<h2 id="referencing-the-dom">Referencing the DOM</h2>
+<p>The DOM API is one of the most powerful tools frontend developers have at their disposal. Learning how to reference, create, and update DOM elements is an integral part of working with Javascript. We’ll start this lesson by learning how to reference a DOM element in Javascript.</p>
+<p>Let’s assume we have an HTML file that includes the following <code>div</code>:</p>
+<p><strong>HTML</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;”catch-me-if-you-can”&quot;</span><span class="kw">&gt;</span>HI!<span class="kw">&lt;/div&gt;</span></a></code></pre></div>
+<p>Because we’ve added the element to our HTML file, that element is available in the DOM for us to reference and manipulate. Using JavaScript, we can reference this element by scanning the document and finding the element by its id with the method document.getElementById(). We then assign the reference to a variable.</p>
+<p><strong>Javascript</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">const</span> divOfInterest <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(“catch<span class="op">-</span>me<span class="op">-</span><span class="cf">if</span><span class="op">-</span>you<span class="op">-</span>can”)</a></code></pre></div>
+<p>Now let’s say that our HTML file contains seven <code>span</code> elements that share a class name of <code>cloudy</code>, like below:</p>
+<p><strong>HTML</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;“cloudy”&quot;</span><span class="kw">&gt;&lt;/span&gt;</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;“cloudy”&quot;</span><span class="kw">&gt;&lt;/span&gt;</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;“cloudy”&quot;</span><span class="kw">&gt;&lt;/span&gt;</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;“cloudy”&quot;</span><span class="kw">&gt;&lt;/span&gt;</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;“cloudy”&quot;</span><span class="kw">&gt;&lt;/span&gt;</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;“cloudy”&quot;</span><span class="kw">&gt;&lt;/span&gt;</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;“cloudy”&quot;</span><span class="kw">&gt;&lt;/span&gt;</span></a></code></pre></div>
+<p>In Javascript, we can reference all seven of these elements and store them in a single variable.</p>
+<p><strong>Javascript</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">const</span> cloudySpans <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelectorAll</span>(<span class="st">&quot;span.cloudy&quot;</span>)<span class="op">;</span></a></code></pre></div>
+<p>While <code>getElementById</code> allows us to reference a single element, <code>querySelectorAll</code> references all elements with the class name “cloudy” as a static <code>NodeList</code> (<em>static</em> meaning that any changes in the DOM do not affect the content of the collection). Note that a NodeList is different from an array, but it is possible to iterate over a NodeList as with an array using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">forEach()</a>. Refer to the MDN doc on <a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList">NodeList</a> for more information.</p>
+<p>Using <code>forEach()</code> on a NodeList:</p>
+<p><strong>Javascript</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">const</span> cloudySpans <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelectorAll</span>(<span class="st">&quot;span.cloudy&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-2" title="2"></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="va">cloudySpans</span>.<span class="at">forEach</span>(span <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-4" title="4">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Cloudy!&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h2 id="creating-new-dom-elements">Creating New DOM Elements</h2>
+<p>Now that we know how to reference DOM elements, let’s try creating new elements. First we’ll set up a basic HTML file with the appropriate structure and include a reference to a Javascript file that exists in the same directory in the <code>head</code>.</p>
+<p><strong>HTML</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb6-1" title="1"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="kw">&lt;html&gt;</span></a>
+<a class="sourceLine" id="cb6-3" title="3">  <span class="kw">&lt;head&gt;</span></a>
+<a class="sourceLine" id="cb6-4" title="4">    <span class="kw">&lt;title&gt;&lt;/title&gt;</span></a>
+<a class="sourceLine" id="cb6-5" title="5">    <span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="ot"> src=</span><span class="st">&quot;example.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a>
+<a class="sourceLine" id="cb6-6" title="6">  <span class="kw">&lt;/head&gt;</span></a>
+<a class="sourceLine" id="cb6-7" title="7">  <span class="kw">&lt;body&gt;&lt;/body&gt;</span></a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="kw">&lt;/html&gt;</span></a></code></pre></div>
+<p>In our example.js file, we’ll write a function to create a new <code>h1</code> element, assign it an id, give it content, and attach it to the body of our HTML document.</p>
+<p><strong>Javascript</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">const</span> addElement <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-2" title="2">  <span class="co">// create a new div element</span></a>
+<a class="sourceLine" id="cb7-3" title="3">  <span class="kw">const</span> newElement <span class="op">=</span> <span class="va">document</span>.<span class="at">createElement</span>(<span class="st">&quot;h1&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-4" title="4"></a>
+<a class="sourceLine" id="cb7-5" title="5">  <span class="co">// set the h1&#39;s id</span></a>
+<a class="sourceLine" id="cb7-6" title="6">  <span class="va">newElement</span>.<span class="at">setAttribute</span>(<span class="st">&quot;id&quot;</span><span class="op">,</span> <span class="st">&quot;sleeping-giant&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-7" title="7"></a>
+<a class="sourceLine" id="cb7-8" title="8">  <span class="co">// and give it some content</span></a>
+<a class="sourceLine" id="cb7-9" title="9">  <span class="kw">const</span> newContent <span class="op">=</span> <span class="va">document</span>.<span class="at">createTextNode</span>(<span class="st">&quot;Jell-O, Burled!&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-10" title="10"></a>
+<a class="sourceLine" id="cb7-11" title="11">  <span class="co">// add the text node to the newly created div</span></a>
+<a class="sourceLine" id="cb7-12" title="12">  <span class="va">newElement</span>.<span class="at">appendChild</span>(newContent)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-13" title="13"></a>
+<a class="sourceLine" id="cb7-14" title="14">  <span class="co">// add the newly created element and its content into the DOM</span></a>
+<a class="sourceLine" id="cb7-15" title="15">  <span class="va">document</span>.<span class="va">body</span>.<span class="at">appendChild</span>(newElement)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-16" title="16"><span class="op">};</span></a>
+<a class="sourceLine" id="cb7-17" title="17"><span class="co">// run script when page is loaded</span></a>
+<a class="sourceLine" id="cb7-18" title="18"><span class="va">window</span>.<span class="at">onload</span> <span class="op">=</span> addElement<span class="op">;</span></a></code></pre></div>
+<p>If we open up our HTML file in a browser, we should now see the words <code>Jell-O Burled!</code> on our page. If we use the browser tools to inspect the page (right-click on the page and select “inspect”, or hotkeys fn + f12), we notice the new <code>h1</code> with the id we gave it.</p>
+</body>
+</html>

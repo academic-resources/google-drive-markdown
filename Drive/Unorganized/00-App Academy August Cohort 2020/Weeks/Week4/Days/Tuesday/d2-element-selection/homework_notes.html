@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>homework_notes</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="element-selection-1">ELEMENT SELECTION 1</h1>
+<p>Document Object Modal (DOM) - object oriented representation of HTML doc or web page - doc represented as objects or nodes - allows us to access doc using javascript - depicted as tree with speceific hierarchy</p>
+<p>DOM API - used to reference, create, update DOM elements - methods: 1. <code>document.getElementById("&lt;id&gt;")</code> - returns single element 2. <code>document.querySelectorAll("&lt;query&gt;")</code> - returns NodeList (static) 3. <code>document.getElementsByClassName("&lt;class-name&gt;")</code> - returns HTMLCollection (live) 3. <code>document.getElementsByTagName("&lt;tag-name&gt;")</code> - returns HTMLCollection (live)</p>
+<p>NodeList vs HTML Collection - collections of nodes - NodeList: * similar to array but cant use most array methods * can use forEach, check length * can convert to array using <code>Array.from()</code> - HTMLCollection: * two methods: <code>item</code> &amp;&amp; <code>namedItem</code> * cannot call forEach</p>
+<p>Creating New DOM Elements</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">const</span> addElement <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-3" title="3">  <span class="co">// create a new div element</span></a>
+<a class="sourceLine" id="cb1-4" title="4">  <span class="kw">const</span> newElement <span class="op">=</span> <span class="va">document</span>.<span class="at">createElement</span>(<span class="st">&quot;h1&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-5" title="5"></a>
+<a class="sourceLine" id="cb1-6" title="6">  <span class="co">// set the h1&#39;s id</span></a>
+<a class="sourceLine" id="cb1-7" title="7">  <span class="va">newElement</span>.<span class="at">setAttribute</span>(<span class="st">&quot;id&quot;</span><span class="op">,</span> <span class="st">&quot;sleeping-giant&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-8" title="8"></a>
+<a class="sourceLine" id="cb1-9" title="9">  <span class="co">// and give it some content</span></a>
+<a class="sourceLine" id="cb1-10" title="10">  <span class="kw">const</span> newContent <span class="op">=</span> <span class="va">document</span>.<span class="at">createTextNode</span>(<span class="st">&quot;Jell-O, Burled!&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-11" title="11">  <span class="co">// add the text node to the newly created div</span></a>
+<a class="sourceLine" id="cb1-12" title="12">    <span class="va">newElement</span>.<span class="at">appendChild</span>(newContent)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-13" title="13">    </a>
+<a class="sourceLine" id="cb1-14" title="14"></a>
+<a class="sourceLine" id="cb1-15" title="15">    <span class="va">newElement</span>.<span class="at">innerText</span> <span class="op">=</span> <span class="st">&quot;Jell-O, Burled!&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-16" title="16"></a>
+<a class="sourceLine" id="cb1-17" title="17"></a>
+<a class="sourceLine" id="cb1-18" title="18"></a>
+<a class="sourceLine" id="cb1-19" title="19"></a>
+<a class="sourceLine" id="cb1-20" title="20">  <span class="co">// add the newly created element and its content into the DOM</span></a>
+<a class="sourceLine" id="cb1-21" title="21">  <span class="va">document</span>.<span class="va">body</span>.<span class="at">appendChild</span>(newElement)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-22" title="22"><span class="op">};</span></a>
+<a class="sourceLine" id="cb1-23" title="23"><span class="co">// run script when page is loaded</span></a>
+<a class="sourceLine" id="cb1-24" title="24"><span class="va">window</span>.<span class="at">onload</span> <span class="op">=</span> addElement<span class="op">;</span></a></code></pre></div>
+<h1 id="element-selection-3">ELEMENT SELECTION 3</h1>
+<p>window.onload - waits for page to load - waits for stylesheets, images, scripts, links, etc - dont need to wait for stylesheets, images bc JS isnt dependent on them * could take a long time for big images</p>
+<p>DOMContentLoaded - event fires when html doc has loaded and parsed - doesnt wait for stylesheets, images, subframes</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="co">// add CSS after elements are loaded</span></a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="va">window</span>.<span class="at">addEventListener</span>(<span class="st">&#39;DOMContentLoaded&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-5" title="5">    <span class="va">document</span>.<span class="va">body</span>.<span class="at">className</span> <span class="op">=</span> <span class="st">&#39;i-got-loaded&#39;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="op">}</span>)</a></code></pre></div>
+<h1 id="element-selection-4">ELEMENT SELECTION 4</h1>
+<p>Element.innerHTML - used to get/set HTML contained within an element</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="co">// generate a random number for each list item</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">const</span> getRandomInt <span class="op">=</span> max <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-3" title="3">  <span class="cf">return</span> <span class="va">Math</span>.<span class="at">floor</span>(<span class="va">Math</span>.<span class="at">random</span>() <span class="op">*</span> <span class="va">Math</span>.<span class="at">floor</span>(max))<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="op">};</span></a>
+<a class="sourceLine" id="cb3-5" title="5"></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">// listen for DOM ready event</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="va">window</span>.<span class="at">addEventListener</span>(<span class="st">&quot;DOMContentLoaded&quot;</span><span class="op">,</span> event <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-8" title="8">  <span class="co">// push 6 LI elements into an array and join</span></a>
+<a class="sourceLine" id="cb3-9" title="9">  <span class="kw">const</span> liArr <span class="op">=</span> []<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-10" title="10">  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">6</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-11" title="11">    <span class="va">liArr</span>.<span class="at">push</span>(<span class="st">&quot;&lt;li&gt;&quot;</span> <span class="op">+</span> <span class="at">getRandomInt</span>(<span class="dv">10</span>) <span class="op">+</span> <span class="st">&quot;&lt;/li&gt;&quot;</span>)<span class="op">;</span> <span class="co">// &lt;li&gt;5&lt;/li&gt;</span></a>
+<a class="sourceLine" id="cb3-12" title="12">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-13" title="13">    <span class="kw">const</span> liString <span class="op">=</span> <span class="va">liArr</span>.<span class="at">join</span>(<span class="st">&quot; &quot;</span>)<span class="op">;</span> <span class="co">// &quot;&lt;li&gt;5&lt;/li&gt; &lt;li&gt;5&lt;/li&gt; &lt;li&gt;5&lt;/li&gt; &lt;li&gt;5&lt;/li&gt;&quot;</span></a>
+<a class="sourceLine" id="cb3-14" title="14"></a>
+<a class="sourceLine" id="cb3-15" title="15">  <span class="co">// insert string into the DOM using innerHTML</span></a>
+<a class="sourceLine" id="cb3-16" title="16">  <span class="kw">const</span> listElement <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;your-worst-enemy&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-17" title="17">  <span class="va">listElement</span>.<span class="at">innerHTML</span> <span class="op">=</span> liString<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-18" title="18"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Inserting Date Object</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="va">window</span>.<span class="at">addEventListener</span>(<span class="st">&quot;DOMContentLoaded&quot;</span><span class="op">,</span> event <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-3" title="3">  <span class="kw">const</span> title <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;title&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-4" title="4">  <span class="kw">const</span> time <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-5" title="5">    <span class="kw">const</span> date <span class="op">=</span> <span class="kw">new</span> <span class="at">Date</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-6" title="6">    <span class="kw">const</span> seconds <span class="op">=</span> <span class="va">date</span>.<span class="at">getSeconds</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-7" title="7">    <span class="kw">const</span> minutes <span class="op">=</span> <span class="va">date</span>.<span class="at">getMinutes</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-8" title="8">    <span class="kw">const</span> hours <span class="op">=</span> <span class="va">date</span>.<span class="at">getHours</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-9" title="9"></a>
+<a class="sourceLine" id="cb4-10" title="10">    <span class="va">title</span>.<span class="at">innerHTML</span> <span class="op">=</span> hours <span class="op">+</span> <span class="st">&quot;:&quot;</span> <span class="op">+</span> minutes <span class="op">+</span> <span class="st">&quot;:&quot;</span> <span class="op">+</span> seconds<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-11" title="11">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb4-12" title="12">  <span class="at">setInterval</span>(time<span class="op">,</span> <span class="dv">1000</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-13" title="13"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+</body>
+</html>

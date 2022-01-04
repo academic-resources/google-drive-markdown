@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>W04D1-LOs-explained</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h2 id="browser-basics">Browser Basics</h2>
+<ol type="1">
+<li>Explain the difference between the BOM (browser object model) and the DOM(document object model).</li>
+</ol>
+<ul>
+<li>The DOM is the collection of nodes that represent the hierarchy of HTML elements that are rendered on the page. The BOM is the hierarchy of the browser objects, such as the window and the navigator of the browser. The DOM is thus a smaller part of the BOM.</li>
+</ul>
+<ol start="2" type="1">
+<li><p>Given a diagram of all the different parts of the Browser identify each part. <img src="browser.png" alt="Browser Parts" /></p></li>
+<li>Use the Window API to change the innerHeight of a user’s window.</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1">newWindow <span class="op">=</span> <span class="va">window</span>.<span class="at">open</span>(<span class="st">&quot;https://www.google.com&quot;</span><span class="op">,</span> <span class="st">&quot;Google Homepage&quot;</span><span class="op">,</span> <span class="st">&quot;width=100, height=100&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="va">newWindow</span>.<span class="at">resizeTo</span>(<span class="dv">400</span><span class="op">,</span> <span class="dv">200</span>)</a></code></pre></div>
+<ol start="4" type="1">
+<li>Identify the context of an anonymous function running in the Browser (the window).</li>
+</ol>
+<ul>
+<li>We can double check by console logging <code>this</code> in the browser</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">let</span> func <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-2" title="2">  <span class="va">console</span>.<span class="at">log</span>(<span class="kw">this</span>)</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="at">func</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-5" title="5"></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="co">// OR we can use an IIFE (Immediately Invoked Function Expression)</span></a>
+<a class="sourceLine" id="cb2-7" title="7"></a>
+<a class="sourceLine" id="cb2-8" title="8">(() <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-9" title="9">  <span class="va">console</span>.<span class="at">log</span>(<span class="kw">this</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="op">}</span>)()</a></code></pre></div>
+<ol start="5" type="1">
+<li>Given a JS file and an HTML file, use a script tag to import the JS file and execute the code therein when all the elements on the page load (using <code>DOMContentLoaded</code>)</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">&lt;head&gt;</span></a>
+<a class="sourceLine" id="cb3-2" title="2">  <span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">&#39;text/javascript&#39;</span><span class="ot"> src=</span><span class="st">&#39;exampleScript.js&#39;</span><span class="kw">&gt;&lt;/script&gt;</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="kw">&lt;/head&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="va">window</span>.<span class="at">addEventListener</span>(<span class="st">&#39;DOMContentLoaded&#39;</span><span class="op">,</span> () <span class="kw">=&gt;</span> <span class="op">{</span> ...<span class="at">code</span> <span class="op">}</span> )</a></code></pre></div>
+<ol start="6" type="1">
+<li>Given a JS file and an HTML file, use a script tag to import the JS file and execute the code therein when the page loads</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">&lt;head&gt;</span></a>
+<a class="sourceLine" id="cb5-2" title="2">  <span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">&#39;text/javascript&#39;</span><span class="ot"> src=</span><span class="st">&#39;exampleScript.js&#39;</span><span class="kw">&gt;&lt;/script&gt;</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="kw">&lt;/head&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="va">window</span>.<span class="at">onload</span> <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span> ...<span class="at">code</span> <span class="op">}</span></a></code></pre></div>
+<ol start="7" type="1">
+<li>Identify three ways to prevent JS code from executing until an entire HTML page is loaded</li>
+</ol>
+<ul>
+<li>An event listener in the JavaScript file (<code>window.addEventListener('DOMContentLoaded', callback)</code> or <code>window.onload = callback</code>) &lt;===&gt; This method is most common</li>
+<li>Have the script tag at the end of the HTML file</li>
+<li>Use the keywords <code>async</code> and/or <code>defer</code> in the script tag</li>
+</ul>
+<ol start="8" type="1">
+<li><p>Label a diagram on the Request/Response cycle. <img src="request-response-cycle.png" alt="Request Response Cycle" /></p></li>
+<li>Explain the Browser’s main role in the request/response cycle.</li>
+</ol>
+<ul>
+<li>Parsing HTML,CSS, JS</li>
+<li>Rendering that information to the user by constructing a DOM tree and rendering it</li>
+</ul>
+<ol start="10" type="1">
+<li>Given several detractors - identify which real-world situations could be implemented with the Web Storage API</li>
+</ol>
+<ul>
+<li>Shopping cart, form data, user preferences like a night mode</li>
+</ul>
+<ol start="11" type="1">
+<li>Given a website to visit that depends on cookies (like Amazon), students should be able to go to that site add something to their cart and then delete that cookie using the Chrome Developer tools in order to empty their cart.</li>
+</ol>
+<ul>
+<li>Open Developer tools</li>
+<li>Go to the Application tab</li>
+<li>Open the Cookies section and either delete individual cookies or clear all</li>
+</ul>
+<ol start="12" type="1">
+<li>How Browsers work:</li>
+</ol>
+<ul>
+<li>Request over the network to the server</li>
+<li>Responds with a collection of content (HTML, CSS, images, etc.)</li>
+<li>Broswer interprets the response and renders the content on the page</li>
+<li>User Interface what’s presented to the user to interact with (sometimes called the presentation layer)
+<ul>
+<li>Displays the address bar, back/forward buttons, any other static and dynamic elements that can be interacted with</li>
+</ul></li>
+<li>Rendering Engine is responsible for displaying the visual representation of the webpage using computer graphics principles</li>
+<li>Like a painter working on a blank canvas</li>
+<li>Takes in HTML and CSS and displays it’s interpretation of both</li>
+<li>Browser Engine acts as a marshal between the rendering engine and the UI, as well as network traffic</li>
+<li>Browser has to communicate over the network, asking for the necessary assets (fetch)</li>
+<li>We rely on JavaScript to give our pages interactivity</li>
+<li>Browser doesn’t understand JavaScript so it is translated by the JavaScript Interpreter (Chakra - Microsoft, SpiderMonkey - Firefox, v8 - Chrome) -Data Storage – cookies, localstorage help retain state even when refreshing page -Inconsistencies between browswer are due to differences in rendering engines</li>
+</ul>
+</body>
+</html>

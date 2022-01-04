@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>03_web-storage</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="using-web-storage-to-store-data-in-the-browser">Using Web Storage To Store Data In The Browser</h1>
+<p>Like cookies, the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API">Web Storage API</a> allows browsers to store data in the form of key-value pairs. Web Storage has a much larger storage limit than cookies, making it a useful place to store data on the client side.</p>
+<p>In the cookies reading, we reviewed the two main mechanisms of Web Storage: <code>sessionStorage</code> and <code>localStorage</code>. While <code>sessionStorage</code> persists for the duration of the session and ends when a user closes the browser, <code>localStorage</code> persists past the current session and has no expiration date.</p>
+<p>One typical use case for local storage is caching data fetched from a server on the client side. Instead of making multiple network requests to the server to retrieve data, which takes time and might slow page load, we can fetch the data once and store that data in local storage. Then, our website could read the persisting data stored in localStorage, meaning our website wouldn’t have to depend on our server’s response - even if the user closes their browser!</p>
+<p>In this reading, we’ll go over how to store and read a key-value pair in local storage.</p>
+<h2 id="storing-data-in-local-storage">Storing data in local storage</h2>
+<p>Web Storage exists in the window as an object, and we can access it by using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">Window.localStorage</a>. As we previously reviewed, with window properties we can omit the <em>”window”</em> part and simply use the property name, <code>localStorage</code>.</p>
+<p>We can set a key-value pair in local storage with a single line of code. Here are a few examples:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="va">localStorage</span>.<span class="at">setItem</span>(<span class="st">&#39;eatz&#39;</span><span class="op">,</span> <span class="st">&#39;I &lt;3 falafel&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="va">localStorage</span>.<span class="at">setItem</span>(<span class="st">&#39;coffee&#39;</span><span class="op">,</span> <span class="st">&#39;black&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="va">localStorage</span>.<span class="at">setItem</span>(<span class="st">&#39;doughnuts&#39;</span><span class="op">,</span> <span class="st">&#39;[&quot;glazed&quot;, &quot;chocolate&quot;, &quot;blueberry&quot;,</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="st">&quot;cream-filled&quot;</span>]<span class="st">&#39;);</span></a></code></pre></div>
+<p>The code above calls the <code>setItem()</code> method on the Storage object and sets a key-value pair. Examples: <code>eatz</code> (key) and <code>I &lt;3 falafel</code> (value), <code>coffee</code> (key) and <code>black</code> (value), and <code>doughnut</code> (key) and <code>["glazed", "chocolate", "blueberry", "cream-filled"]</code> (value). Both the key and the value must be strings.</p>
+<h2 id="reading-data-in-local-storage">Reading data in local storage</h2>
+<p>If we wanted to retrieve a key-value pair from local storage, we could use <code>getItem()</code> with a key to find the corresponding value. See the example below:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="va">localStorage</span>.<span class="at">setItem</span>(<span class="st">&#39;eatz&#39;</span><span class="op">,</span> <span class="st">&#39;I &lt;3 falafel&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="va">localStorage</span>.<span class="at">setItem</span>(<span class="st">&#39;coffee&#39;</span><span class="op">,</span> <span class="st">&#39;black&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="va">localStorage</span>.<span class="at">setItem</span>(<span class="st">&#39;doughnuts&#39;</span><span class="op">,</span> <span class="st">&#39;[&quot;glazed&quot;, &quot;chocolate&quot;, &quot;blueberry&quot;,</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="st">&quot;cream-filled&quot;</span>]<span class="st">&#39;);</span></a>
+<a class="sourceLine" id="cb2-5" title="5"></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="kw">const</span> eatz <span class="op">=</span> <span class="va">localStorage</span>.<span class="at">getItem</span>(<span class="st">&#39;eatz&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="kw">const</span> coffee <span class="op">=</span> <span class="va">localStorage</span>.<span class="at">getItem</span>(<span class="st">&#39;coffee&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="kw">const</span> doughnuts <span class="op">=</span> <span class="va">localStorage</span>.<span class="at">getItem</span>(<span class="st">&#39;doughnuts&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-9" title="9"></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="va">console</span>.<span class="at">log</span>(eatz)<span class="op">;</span> <span class="co">// &#39;I &lt;3 falafel&#39;</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="va">console</span>.<span class="at">log</span>(coffee)<span class="op">;</span> <span class="co">// &#39;black&#39;</span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="va">console</span>.<span class="at">log</span>(doughnuts)<span class="op">;</span> <span class="co">// &#39;[&quot;glazed&quot;, &quot;chocolate&quot;, &quot;blueberry&quot;, &quot;cream-filled&quot;]&#39;</span></a></code></pre></div>
+<p>The above code reads the item with a key of <code>eatz</code>, the item with a key of <code>doughnut</code>, and the item with a key of <code>coffee</code>. We stored these in variables for handy use in any function we write.</p>
+<p>Check the MDN docs on <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">localStorage</a> for other methods on the Storage object to remove and clear all key-value pairs.</p>
+<h2 id="json-and-local-storage">JSON and local storage</h2>
+<p>When we store and read data in local storage, we’re actually storing <a href="https://json.org/">JSON</a> objects. JSON is text format that is independent from JavaScript but also resembles JavaScript object literal syntax. It’s important to note that JSON exists as a <em>string</em>.</p>
+<p>Websites commonly get JSON back from a server request in the form of a text file with a <code>.json</code> extension and a MIME type of <code>application/json</code>. We can use JavaScript to parse a JSON response in order to work with it as a regular JavaScript object.</p>
+<p>Let’s look at the <code>doughnuts</code> example from above:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="va">localStorage</span>.<span class="at">setItem</span>(<span class="st">&#39;doughnuts&#39;</span><span class="op">,</span> <span class="st">&#39;[&quot;glazed&quot;, &quot;chocolate&quot;, &quot;blueberry&quot;,</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="st">&quot;cream-filled&quot;</span>]<span class="st">&#39;);</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="kw">const</span> doughnuts <span class="op">=</span> <span class="va">localStorage</span>.<span class="at">getItem</span>(<span class="st">&#39;doughnuts&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="va">console</span>.<span class="at">log</span>(doughnuts <span class="op">+</span> <span class="st">&quot; is a &quot;</span> <span class="op">+</span> <span class="kw">typeof</span> doughnuts)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="co">// prints &#39;[&quot;glazed&quot;, &quot;chocolate&quot;, &quot;blueberry&quot;, &quot;cream-filled&quot;] is a string&#39;</span></a></code></pre></div>
+<p>If we ran the code above in the browser console, we’d see that <code>doughnuts</code> is a string value because it’s a JSON value. However, we want to be able to store <code>doughnuts</code> as an <em>array</em>, in order to iterate through it or map it or any other nifty things we can do to arrays.</p>
+<p>We can construct a JavaScript value or object from JSON by parsing it:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">const</span> doughnuts <span class="op">=</span> <span class="va">JSON</span>.<span class="at">parse</span>(<span class="va">localStorage</span>.<span class="at">getItem</span>(<span class="st">&#39;doughnuts&#39;</span>))<span class="op">;</span></a></code></pre></div>
+<p>We used <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">JSON.parse()</a> to parse the string into JavaScript. If we printed the parsed value of <code>doughnuts</code> to the console, we’d see it’s a plain ol’ JavaScript array!</p>
+<p>See the MDN doc on <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON">Working with JSON</a> for more detail about using JSON and JavaScript.</p>
+<h2 id="what-you-learned">What you learned:</h2>
+<ul>
+<li>Why we use local storage</li>
+<li>How to store data in local storage</li>
+<li>How to read data in local storage</li>
+<li>How storage objects are JSON that we need to parse</li>
+</ul>
+</body>
+</html>

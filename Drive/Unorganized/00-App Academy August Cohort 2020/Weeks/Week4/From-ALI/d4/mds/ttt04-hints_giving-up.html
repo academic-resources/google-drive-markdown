@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>ttt04-hints_giving-up</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<h1 id="hints-5-giving-up">Hints 5: Giving Up</h1>
+<p>A way to tackle this is to subscribe to the click event of the “Give Up” button. Then, in that click event handler, end the game for the “other” player according to your game logic.</p>
+<p>If you’ve reviewed the hints for steps 1, 2, 3, and 4, then you can follow these directions to make it work.</p>
+<h2 id="in-the-html-file">In the HTML file</h2>
+<ul>
+<li>Add an <code>id</code> attribute with a value of <code>give-up</code> to the <code>&lt;button&gt;</code> with the text “Give Up”</li>
+</ul>
+<h2 id="in-the-javascript-file">In the JavaScript file</h2>
+<ul>
+<li>In the <code>checkGameStatus</code> function, in the last check to see if <code>gameStatus</code> is not an empty string, add new code in there to set the <code>give-up</code> button’s <code>disabled</code> property to <code>true</code>.</li>
+<li>In the <code>DOMContentLoaded</code> event handler, add a click event handler to the element with the <code>give-up</code> id.</li>
+<li>In the click event handler, set the variable <code>gameStatus</code> to the upper-cased version of the “other” player’s symbol.</li>
+<li>Also, perform the same logic as found in the last steps of <code>checkGameStatus</code> to set the header, enable the “New Game” button, and disable the “Give Up” button.</li>
+<li>In the click event handler for the “new-game” button, add a line in there to set the “give-up” button’s <code>disabled</code> state to <code>false</code>.</li>
+</ul>
+<p>When you get done, it should look something like this.</p>
+<figure>
+<img src="https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/requirement-5.gif" alt="giving up" /><figcaption>giving up</figcaption>
+</figure>
+</body>
+</html>

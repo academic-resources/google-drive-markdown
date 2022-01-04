@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>w02-d3_callbacks</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="week-02-day-3-callbacks" data-ignore="true">WEEK-02 DAY-3<br><em>Callbacks</em></h1>
+<hr />
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=2 orderedList=false} -->
+<!-- code_chunk_output -->
+<ul>
+<li><a href="#callbacks-lesson-learning-objectives">Callbacks Lesson Learning Objectives</a></li>
+<li><a href="#callbacks-using-a-function-as-an-argument">Callbacks: Using a Function as an Argument</a>
+<ul>
+<li><a href="#what-is-a-callback">What is a callback?</a></li>
+<li><a href="#a-more-interesting-example">A more interesting example</a></li>
+<li><a href="#refactoring-for-an-optional-callback">Refactoring for an optional callback</a></li>
+<li><a href="#what-youve-learned">What you’ve learned</a></li>
+</ul></li>
+<li><a href="#callback-problems">Callback Problems</a></li>
+</ul>
+<!-- /code_chunk_output -->
+<hr />
+<hr />
+<h1 id="callbacks-lesson-learning-objectives">Callbacks Lesson Learning Objectives</h1>
+<p>Below is a complete list of the terminal learning objectives for this lesson. When you complete this lesson, you should be able to perform each of the following objectives. These objectives capture how you may be evaluated on the assessment for this lesson.</p>
+<ol type="1">
+<li>Given multiple plausible reasons, identify why functions are called “First Class Objects” in JavaScript.</li>
+<li>Given a code snippet containing an anonymous callback, a named callback, and multiple <code>console.log</code>s, predict what will be printed</li>
+<li>Write a function that takes in a value and two callbacks. The function should return the result of the callback that is greater.</li>
+<li>Write a function, myMap, that takes in an array and a callback as arguments. The function should mimic the behavior of <code>Array#map</code>.</li>
+<li>Write a function, myFilter, that takes in an array and a callback as arguments. The function should mimic the behavior of <code>Array#filter</code>.</li>
+<li><p>Write a function, myEvery, that takes in an array and a callback as arguments. The function should mimic the behavior of <code>Array#every</code> learning objectives for this lesson. When you complete this lesson, you should be able to perform each of the following objectives. These objectives capture how you may be evaluated on the assessment for this lesson.</p></li>
+<li>Given multiple plausible reasons, identify why functions are called “First Class Objects” in JavaScript.</li>
+<li>Given a code snippet containing an anonymous callback, a named callback, and multiple <code>console.log</code>s, predict what will be printed</li>
+<li>Write a function that takes in a value and two callbacks. The function should return the result of the callback that is greater.</li>
+<li>Write a function, myMap, that takes in an array and a callback as arguments. The function should mimic the behavior of <code>Array#map</code>.</li>
+<li>Write a function, myFilter, that takes in an array and a callback as arguments. The function should mimic the behavior of <code>Array#filter</code>.</li>
+<li><p>Write a function, myEvery, that takes in an array and a callback as arguments. The function should mimic the behavior of <code>Array#every</code>. ________________________________________________________________________________ # Callbacks: Using a Function as an Argument</p></li>
+</ol>
+<p>Previously we explored how functions are first class objects, meaning they can be stored in variables just like any other value. In particular, we’ve been using built-in methods like <code>Array#forEach</code> and <code>Array#map</code> which accept (anonymous) functions as arguments. Now it’s time to take a look under the hood and define our <em>own</em> functions that accept other functions as arguments.</p>
+<p>When you finish reading this article, you should be able to define functions that accept callbacks.</p>
+<h2 id="what-is-a-callback">What is a callback?</h2>
+<p>Defining a function that accepts another function as an argument is as simple as specifying a regular parameter. We’ll name our parameter <code>callback</code> but you could very well name it whatever you please:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">let</span> foobar <span class="op">=</span> <span class="kw">function</span>(callback) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-2" title="2">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;foo&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-3" title="3">  <span class="at">callback</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-4" title="4">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;bar&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="op">};</span></a>
+<a class="sourceLine" id="cb1-6" title="6"></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="kw">let</span> sayHello <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-8" title="8">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="op">};</span></a>
+<a class="sourceLine" id="cb1-10" title="10"></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="at">foobar</span>(sayHello)<span class="op">;</span> <span class="co">// prints</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co">// foo</span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">// hello</span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">// bar</span></a></code></pre></div>
+<p>A callback is always a function. In general, the callback is the function that is being <em>passed into</em> the other function. In the example above, <code>sayHello</code> is a callback, but <code>foobar</code> is not a callback. Notice that when we call <code>foobar(sayHello)</code>, we are not yet calling the <code>sayHello</code> function, instead we are passing the <code>sayHello</code> function itself into <code>foobar</code>. When execution enters the <code>foobar</code> function, the <code>callback</code> arg will refer to <code>sayHello</code>. This means that <code>callback()</code> will really evaluate to <code>sayHello()</code>.</p>
+<p>n the example above we used a named callback, but we can also use a function expression directly. This is called an <em>anonymous</em> callback:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">let</span> foobar <span class="op">=</span> <span class="kw">function</span>(callback) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-2" title="2">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;foo&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-3" title="3">  <span class="at">callback</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-4" title="4">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;bar&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="op">};</span></a>
+<a class="sourceLine" id="cb2-6" title="6"></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="at">foobar</span>(<span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-8" title="8">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;hello&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="op">}</span>)<span class="op">;</span> <span class="co">// prints</span></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="co">// foo</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">// hello</span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="co">// bar</span></a></code></pre></div>
+<p>The advantage of using a named callback is that you can reuse the function many times, by referring to its name. Opt for an anonymous callback if you need a single-use.</p>
+<h2 id="a-more-interesting-example">A more interesting example</h2>
+<p>A callback behaves just like any other function, meaning it can accept it’s own arguments and return a value. Let’s define an <code>add</code> function that also accepts a callback:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">let</span> add <span class="op">=</span> <span class="kw">function</span>(num1<span class="op">,</span> num2<span class="op">,</span> cb) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-2" title="2">  <span class="kw">let</span> sum <span class="op">=</span> num1 <span class="op">+</span> num2<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-3" title="3">  <span class="kw">let</span> result <span class="op">=</span> <span class="at">cb</span>(sum)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-4" title="4">  <span class="cf">return</span> result<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="op">};</span></a>
+<a class="sourceLine" id="cb3-6" title="6"></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="kw">let</span> double <span class="op">=</span> <span class="kw">function</span>(num) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-8" title="8">  <span class="cf">return</span> num <span class="op">*</span> <span class="dv">2</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="op">};</span></a>
+<a class="sourceLine" id="cb3-10" title="10"></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="kw">let</span> negate <span class="op">=</span> <span class="kw">function</span>(num) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-12" title="12">  <span class="cf">return</span> num <span class="op">*</span> <span class="dv">-1</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="op">};</span></a>
+<a class="sourceLine" id="cb3-14" title="14"></a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="va">console</span>.<span class="at">log</span>(<span class="at">add</span>(<span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> double))<span class="op">;</span> <span class="co">// 10</span></a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="va">console</span>.<span class="at">log</span>(<span class="at">add</span>(<span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> negate))<span class="op">;</span> <span class="co">// -9</span></a></code></pre></div>
+<p>In the <code>add</code> function above, we pass the sum of <code>num1</code> and <code>num2</code> into the callback (<code>cb</code>) and return the result of the callback. Depending on the callback function we pass in, we can accomplish a wide range of behavior! This will come in handy when reusing code. A callback is just like a helper function, except now we can dynamically pass in <em>any</em> helper function.</p>
+<p>To wrap things up, let’s pass in some built-in functions and use them as callbacks. <code>Math.sqrt</code> is a function that takes in a number and returns its square root:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="va">console</span>.<span class="at">log</span>(<span class="va">Math</span>.<span class="at">sqrt</span>(<span class="dv">9</span>))<span class="op">;</span> <span class="co">// 3</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="va">console</span>.<span class="at">log</span>(<span class="va">Math</span>.<span class="at">sqrt</span>(<span class="dv">25</span>))<span class="op">;</span> <span class="co">// 5</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="va">console</span>.<span class="at">log</span>(<span class="va">Math</span>.<span class="at">sqrt</span>(<span class="dv">64</span>))<span class="op">;</span> <span class="co">// 8</span></a>
+<a class="sourceLine" id="cb4-4" title="4"></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="kw">let</span> add <span class="op">=</span> <span class="kw">function</span>(num1<span class="op">,</span> num2<span class="op">,</span> cb) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-6" title="6">  <span class="kw">let</span> sum <span class="op">=</span> num1 <span class="op">+</span> num2<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-7" title="7">  <span class="kw">let</span> result <span class="op">=</span> <span class="at">cb</span>(sum)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-8" title="8">  <span class="cf">return</span> result<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="op">};</span></a>
+<a class="sourceLine" id="cb4-10" title="10"></a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="va">console</span>.<span class="at">log</span>(<span class="at">add</span>(<span class="dv">60</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="va">Math</span>.<span class="at">sqrt</span>))<span class="op">;</span> <span class="co">// 8</span></a></code></pre></div>
+<h2 id="refactoring-for-an-optional-callback">Refactoring for an optional callback</h2>
+<p>We have been claiming that we can leverage callbacks to write more versatile functions. However, a skeptic may argue that our previous <code>add</code> function is <em>not</em> so versatile because it can’t return the normal sum without a trivial callback:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">let</span> add <span class="op">=</span> <span class="kw">function</span>(num1<span class="op">,</span> num2<span class="op">,</span> cb) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">  <span class="kw">let</span> sum <span class="op">=</span> num1 <span class="op">+</span> num2<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-3" title="3">  <span class="kw">let</span> result <span class="op">=</span> <span class="at">cb</span>(sum)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-4" title="4">  <span class="cf">return</span> result<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="op">};</span></a>
+<a class="sourceLine" id="cb5-6" title="6"></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="co">// we just want the normal sum of 2 and 3</span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="at">add</span>(<span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="kw">function</span>(n) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-9" title="9">  <span class="cf">return</span> n<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-10" title="10"><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-11" title="11"><span class="co">// this correctly returns the normal sum of 5, but the code is pretty gross</span></a></code></pre></div>
+<p>Have no fear! We can remedy this to have the best of both worlds, we just need a quick detour. JavaScript is not strict when it comes to passing too few arguments to a function. Here is an isolated example of this behavior:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">let</span> greet <span class="op">=</span> <span class="kw">function</span>(firstName<span class="op">,</span> lastName) <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-2" title="2">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hey &quot;</span> <span class="op">+</span> firstName <span class="op">+</span> <span class="st">&quot;! Your last name is &quot;</span> <span class="op">+</span> lastName <span class="op">+</span> <span class="st">&quot;.&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="op">};</span></a>
+<a class="sourceLine" id="cb6-4" title="4"></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="at">greet</span>(<span class="st">&quot;Ada&quot;</span><span class="op">,</span> <span class="st">&quot;Lovelace&quot;</span>)<span class="op">;</span> <span class="co">// prints &#39;Hey Ada! Your last name is Lovelace.&#39;</span></a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="at">greet</span>(<span class="st">&quot;Grace&quot;</span>)<span class="op">;</span> <span class="co">// prints &#39;Hey Grace! Your last name is undefined.&#39;</span></a></code></pre></div>
+<p>If we pass too few arguments when calling a function, the parameters that do not have arguments will contain the value <code>undefined</code>. With that in mind, let’s refactor our <code>add</code> function to <em>optionally</em> accept a callback:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">let</span> add <span class="op">=</span> <span class="kw">function</span>(num1<span class="op">,</span> num2<span class="op">,</span> cb) <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-2" title="2">  <span class="cf">if</span> (cb <span class="op">===</span> <span class="kw">undefined</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-3" title="3">    <span class="cf">return</span> num1 <span class="op">+</span> num2<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-4" title="4">  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-5" title="5">    <span class="cf">return</span> <span class="at">cb</span>(num1 <span class="op">+</span> num2)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-6" title="6">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="op">};</span></a>
+<a class="sourceLine" id="cb7-8" title="8"></a>
+<a class="sourceLine" id="cb7-9" title="9"><span class="va">console</span>.<span class="at">log</span>(<span class="at">add</span>(<span class="dv">9</span><span class="op">,</span> <span class="dv">40</span>))<span class="op">;</span> <span class="co">// 49</span></a>
+<a class="sourceLine" id="cb7-10" title="10"><span class="va">console</span>.<span class="at">log</span>(<span class="at">add</span>(<span class="dv">9</span><span class="op">,</span> <span class="dv">40</span><span class="op">,</span> <span class="va">Math</span>.<span class="at">sqrt</span>))<span class="op">;</span> <span class="co">// 7</span></a></code></pre></div>
+<p>Amazing! As its name implies, our <code>add</code> function will return the plain old sum of the two numbers it is given. However, if it also passed a callback function, then it will utilize the callback too. A function that optionally accepts a callback is a fairly common pattern in JavaScript, so we’ll be seeing this crop up on occasion.</p>
+<h2 id="what-youve-learned">What you’ve learned</h2>
+<ul>
+<li>a callback is a function that is passed as an arg into another function</li>
+<li>we can pass named functions, anonymous functions, and even built-in functions as callbacks</li>
+</ul>
+<hr />
+<h1 id="callback-problems">Callback Problems</h1>
+<p>It’s time to get some practice using callbacks! Below we’ve included a link to download a <code>zip</code> file for a number of problems.</p>
+<p>Complete the problems in the order specified. You should have <code>mocha</code> installed and will need to pass all the tests in order to move on.</p>
+<p>To run the tests for the above problems you will need to unzip the file you downloaded.</p>
+<p>To get started, use the following commands:</p>
+<ol type="1">
+<li><code>cd</code> into the project directory</li>
+<li><code>npm install</code> to install any dependencies</li>
+<li><code>mocha</code> to run the test cases</li>
+</ol>
+<p>The <code>mocha</code> command will run all the tests. If you have any trouble with this don’t hesitate to ask a TA for help!</p>
+<p>P.S. You may notice the <code>package.json</code>/<code>package-lock.json</code> files and <code>node_modules</code> directory. You do not need to edit any of those contents. Those files are what we use the package the project and create the test cases.</p>
+</body>
+</html>

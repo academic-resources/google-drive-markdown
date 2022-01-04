@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>cf06-hints</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<h1 id="hints-for-determining-a-tie">Hints For Determining A Tie</h1>
+<p>To determine if all of the columns are full, consider using the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every">“every” method</a> on your array of <code>Column</code> objects. The method will test every element in the array against a callback function that you provide and return <code>true</code> if <em>all</em> elements pass the test function. Otherwise, it will return false. You will just test <code>isFull()</code> on every column.</p>
+</body>
+</html>

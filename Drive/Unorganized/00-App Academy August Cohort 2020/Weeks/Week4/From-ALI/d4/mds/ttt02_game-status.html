@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>ttt02_game-status</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<h1 id="requirement-3-determining-game-status">Requirement 3: Determining Game Status</h1>
+<p>In this requirement, you will now determine if a game is won or in a tie state. To do this, you will need to check the following:</p>
+<ul>
+<li>If a player has any three in a row, then that player wins.</li>
+<li>If a player has any three in a column, then that player wins.</li>
+<li>If a player has either of the diagonals, then that player wins.</li>
+<li>If there is no win <em>and</em> all squares have a player symbol in there, then the game is a tie.</li>
+<li>When the game begins, the header at the top should have no text in it.</li>
+<li>When a player wins the game, then the following happens:
+<ul>
+<li>The header at the top should read “Winner: X” or “Winner: Y” depending on which player won.</li>
+<li>Empty squares in the grid no longer react to clicks.</li>
+</ul></li>
+<li>When the game goes into a tied state, the header at the top should read “Winner: None”.</li>
+</ul>
+<p>During development, you can just refresh the browser to clear the board.</p>
+</body>
+</html>

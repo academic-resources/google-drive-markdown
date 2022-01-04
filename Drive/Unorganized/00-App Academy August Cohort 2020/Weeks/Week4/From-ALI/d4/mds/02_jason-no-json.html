@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>02_jason-no-json</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="jason-no-json">Jason? No, JSON!</h1>
+<p><a href="https://en.wikipedia.org/wiki/Jason">Jason</a> is an ancient Greek mythological hero who went traipsing about the known world looking for “the golden fleece”.</p>
+<p><a href="https://en.wikipedia.org/wiki/JSON">JSON</a> is an open-standard file format that “uses human-readable text to transmit objects consisting of key-values pairs and array data types.”</p>
+<p>We’re going to ignore <a href="https://en.wikipedia.org/wiki/Jason">Jason</a> and focus solely on <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> for this reading so that you can, by the end of it, know what <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> is and how to work with it.</p>
+<h2 id="json-is-a-format">JSON is a format!</h2>
+<p>This is the most important thing that you can get when reading this article. In the same way that HTML is a format for hypertext documents, or DOCX is a format for Microsoft Word documents, JSON is just a format for data. It’s just text. It doesn’t “run” like JavaScript does. It is just text that contains data that both machines and humans can understand. If you ever hear someone say “a JSON object”, then you can rest assured that phrase doesn’t make any sense whatsoever.</p>
+<p>JSON is just a string. It’s just text.</p>
+<p>That’s so important, here it is, again, but in a fancy quote box.</p>
+<blockquote>
+<p>JSON is just a string. It’s just text.</p>
+</blockquote>
+<h2 id="why-all-the-confusion">Why all the confusion?</h2>
+<p>The problem is, JSON <em>looks</em> a lot like JavaScript syntax. Heck, it’s even named <strong>JavaScript Object Notation</strong>. That’s likely because the guy who invented it, <a href="https://www.crockford.com/add.html">Douglas Crockford</a>, is an avid JavaScripter. He’s the author of <a href="https://isbndb.com/book/9780596517748">JavaScript: The Good Parts</a> and was the lead JavaScript Architect at Yahoo! back when Yahoo! was a real company.</p>
+<p>At that time, like in the late 1990s and early 2000s, there were a whole bunch of competing formats for how computers would send data between one another. The big contender at the time is a format called XML, or the <em>eXtensible Markup Language</em>. It looks a lot like HTML, but has far stricter rules than HTML. Douglas didn’t like XML because it took a lot of bytes to send the data (and this was a pre-broadband/pre-3G world). Worse, XML is not a friendly format to read if you’re human. So, he set out to come up with a new format based on the way JavaScript literals work.</p>
+<h2 id="remind-me-about-javascript-literals">“Remind me about JavaScript literals…”</h2>
+<p>Just to refresh your memory, a <em>literal</em> in JavaScript is a <em>value that you literally just type in</em>. If you type <code>7</code> into a JavaScript file, when it runs, the JavaScript interpreter will see that character <code>7</code> and say to itself, “Hey self, the programmer literally typed the number seven so that must mean they want the value 7.”</p>
+<p>Here’s a table of some literals that you may type into a program.</p>
+<table>
+<thead>
+<tr class="header">
+<th>What you want to type</th>
+<th>The JavaScript literal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>The value that means “true”</td>
+<td><code>true</code></td>
+</tr>
+<tr class="even">
+<td>The number of rows in this table</td>
+<td><code>6</code></td>
+</tr>
+<tr class="odd">
+<td>A bad approximation of π</td>
+<td><code>3.14</code></td>
+</tr>
+<tr class="even">
+<td>An array that contains some US state names</td>
+<td><code>["Ohio", "Iowa"]</code></td>
+</tr>
+<tr class="odd">
+<td>An object that represents Roberta</td>
+<td><code>{ person: true, name: "Roberta" }</code></td>
+</tr>
+</tbody>
+</table>
+<p>Back to Douglas Crockford, inventor of <a href="https://en.wikipedia.org/wiki/JSON">JSON</a>. Douglas thought to himself, <em>why can’t I create a format that has that simplicity so that I can write programs that can send data to each other in that format?</em> Turns out, he could, and he did.</p>
+<h2 id="boolean-numeric-and-null-values">Boolean, numeric, and null values</h2>
+<p>The following table shows you what the a JavaScript literal is in the JSON format. Notice that <em>everything</em> in the JSON column is actually a string!</p>
+<table>
+<thead>
+<tr class="header">
+<th>JavaScript literal value</th>
+<th>JSON representation in a string</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>true</code></td>
+<td><code>"true"</code></td>
+</tr>
+<tr class="even">
+<td><code>false</code></td>
+<td><code>"false"</code></td>
+</tr>
+<tr class="odd">
+<td><code>12.34</code></td>
+<td><code>"12.34"</code></td>
+</tr>
+<tr class="even">
+<td><code>null</code></td>
+<td><code>"null"</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="string-literals-in-json">String literals in JSON</h2>
+<p>Say you have the following string in JavaScript.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="st">&#39;this is &quot;text&quot;&#39;</span></a></code></pre></div>
+<p>When that gets converted into the JSON format, you will see this:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><a class="sourceLine" id="cb2-1" title="1"><span class="er">&quot;this</span> <span class="er">is</span> <span class="er">\&quot;text\&quot;&quot;</span></a></code></pre></div>
+<p>First, it’s important to notice one thing: JSON always uses double quotes for strings. Yep, that’s worth repeating.</p>
+<blockquote>
+<p>JSON always uses double-quotes to mark strings.</p>
+</blockquote>
+<p>Notice also that the quotation marks (“) are”escaped“. When you write a string surrounded by quotation-marks like”escaped", everything’s fine. But, what happens when your string needs to include a quotation mark?</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="co">// This is a bad string with quotes in it</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="st">&quot;Bob said, &quot;</span>Well<span class="op">,</span> <span class="kw">this</span> is <span class="va">interesting</span>.<span class="st">&quot;&quot;</span></a></code></pre></div>
+<p>Whatever computer is looking at that string gets really confused because once it reads that first quotation mark it’s looking for another quotation mark to show where the string ends. For computers, the above code looks like this to them.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="st">&quot;Bob said, &quot;</span>                <span class="co">// That&#39;s a good string</span></a>
+<a class="sourceLine" id="cb4-2" title="2">Well<span class="op">,</span> <span class="kw">this</span> is interesting   <span class="co">// What is THIS JUNK????</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="st">&quot;&quot;</span>                          <span class="co">// That&#39;s a good string</span></a></code></pre></div>
+<p>You need a way to indicate that the quotation marks around the phrase that Bob says should belong <em>in</em> the string, not as a way to show where the string starts or stops. The way that language designers originally addressed this was by saying</p>
+<blockquote>
+<p>If your quotation mark delimited string has a quotation mark in it, put a backslash before the interior quotation mark.</p>
+</blockquote>
+<p>Following that rule, you would correctly write the previous string like this.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="st">&quot;Bob said, </span><span class="sc">\&quot;</span><span class="st">Well, this is interesting.</span><span class="sc">\&quot;</span><span class="st">&quot;</span></a></code></pre></div>
+<p>Check out all of the so-called <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#Escape_notation">JavaScript string escape sequences</a> over on MDN.</p>
+<p>What happens if you had text that spanned more than one line? JSON only allows strings to be on one line, just like old JavaScript did. Let’s say you just wrote an American sentence that you want to submit to a contest.</p>
+<pre><code>She woke him up with
+her Ramones ringtone &quot;I Want
+to be Sedated&quot;</code></pre>
+<p>(from American Sentences by Paul E. Nelson)</p>
+<p>If you want to format that in a string in JSON format, you have to escape the quotation marks <em>and</em> the new lines! The above would look like this:</p>
+<pre><code>She woke him up with\nher Ramones ringtone \&quot;I Want\nto be Sedated\&quot;</code></pre>
+<p>The new lines are replaced with “”.</p>
+<h2 id="array-values">Array values</h2>
+<p>The way that JSON represents an array value is using the same literal notation as JavaScript, namely, the square brackets <code>[]</code>. With that in mind, can you answer the following question before continuing?</p>
+<p><em>What is the JSON representation of an array containing the numbers one, two, and three?</em></p>
+<p>Well, in JavaScript, you would type <code>[1, 2, 3]</code>.</p>
+<p>If you were going to type the corresponding JSON-formatted string that contains the representation of the same array, you would type <code>"[1, 2, 3]"</code>. Yep, pretty much the same!</p>
+<h2 id="object-values">Object values</h2>
+<p>Earlier, you saw that example of an object that represents Roberta as</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="op">{</span> <span class="dt">person</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Roberta&quot;</span> <span class="op">}</span></a></code></pre></div>
+<p>The main difference between objects in JavaScript and JSON is that the keys in JSON <em>must</em> be surrounded in quotation marks. That means the above, in a JSON formatted string, would be:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="st">&quot;{ </span><span class="sc">\&quot;</span><span class="st">person</span><span class="sc">\&quot;</span><span class="st">: true, </span><span class="sc">\&quot;</span><span class="st">name</span><span class="sc">\&quot;</span><span class="st">: </span><span class="sc">\&quot;</span><span class="st">Roberta</span><span class="sc">\&quot;</span><span class="st"> }&quot;</span></a></code></pre></div>
+<h2 id="some-terminology">Some terminology</h2>
+<p>When you have some data and you want to turn it into a string (or some other kind of value like “binary”) so your program can send it to another computer, that is the process of <strong>serialization</strong>.</p>
+<p>When you take some text (or something another computer has sent to your program) and turn it into data, that is the process of <strong>deserialization</strong>.</p>
+<h2 id="using-the-built-in-json-object">Using the built-in JSON object</h2>
+<p>In modern JavaScript interpreters, there is a <code>JSON</code> object that has two methods on it that allows you to convert JSON-formatted strings into JavaScript objects and JavaScript object into JSON-formatted strings. They are:</p>
+<ul>
+<li><code>JSON.stringify(value)</code> will turn the value passed into it into a string.</li>
+<li><code>JSON.parse(str)</code> will turn a JSON-formatted string into a JavaScript object.</li>
+</ul>
+<p>So, it shouldn’t come as much of a surprise how the following works.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">const</span> array <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="st">&#39;hello, &quot;world&quot;&#39;</span><span class="op">,</span> <span class="fl">3.14</span><span class="op">,</span> <span class="op">{</span> <span class="dt">id</span><span class="op">:</span> <span class="dv">17</span> <span class="op">}</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="va">console</span>.<span class="at">log</span>(<span class="va">JSON</span>.<span class="at">stringify</span>(array))<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="co">// prints [1, &quot;hello, \&quot;world\&quot;&quot;, 3.14, {&quot;id&quot;:17}]</span></a></code></pre></div>
+<p>It shouldn’t surprise you that it works in the opposite direction, too.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">const</span> str <span class="op">=</span> <span class="st">&#39;[1,&quot;hello, </span><span class="sc">\\</span><span class="st">&quot;world</span><span class="sc">\\</span><span class="st">&quot;&quot;,3.14,{&quot;id&quot;:17}]&#39;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="va">console</span>.<span class="at">log</span>(<span class="va">JSON</span>.<span class="at">parse</span>(str))<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-3" title="3"><span class="co">// prints an array with the following entries:</span></a>
+<a class="sourceLine" id="cb11-4" title="4"><span class="co">//   0: 1</span></a>
+<a class="sourceLine" id="cb11-5" title="5"><span class="co">//   1: &quot;hello, \&quot;world\&quot;&quot;</span></a>
+<a class="sourceLine" id="cb11-6" title="6"><span class="co">//   2: 3.14</span></a>
+<a class="sourceLine" id="cb11-7" title="7"><span class="co">//   3: { id: 17 }</span></a></code></pre></div>
+<p>You may ask yourself, “What’s up with that double backslash thing going on in the JSON representation?”. It has to do with that escaping thing. When JavaScript reads the string the first time to turn it into a <code>String</code> object in memory, it will escape the backslashes. Then, when <code>JSON.parse</code> reads it, it will still need backslashes in the string. This is all really confusing, escaped strings and double backslashes. There’s an easy solution for that.</p>
+<h2 id="you-will-almost-never-write-raw-json">You will almost never write raw JSON</h2>
+<p>Yep. But, you do need to be able to recognize it and read it. What you’ll likely end up doing in your coding is creating values and using <code>JSON.stringify</code> to create JSON-formatted strings that represent those values. Or, you’ll end up calling a data service which will return JSON-formatted content to your code which you will then use <code>JSON.parse</code> on to convert the string into a JavaScript object.</p>
+<h2 id="brain-teaser">Brain teaser</h2>
+<p>Now that you know JSON is a format for data and is just text, what will the following print?</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">const</span> a <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="va">console</span>.<span class="at">log</span>(a[<span class="dv">0</span>])<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-3" title="3"></a>
+<a class="sourceLine" id="cb12-4" title="4"><span class="kw">const</span> s <span class="op">=</span> <span class="va">JSON</span>.<span class="at">stringify</span>(a)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-5" title="5"><span class="va">console</span>.<span class="at">log</span>(s[<span class="dv">0</span>])<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-6" title="6"></a>
+<a class="sourceLine" id="cb12-7" title="7"><span class="kw">const</span> v <span class="op">=</span> <span class="va">JSON</span>.<span class="at">parse</span>(s)<span class="op">;</span></a>
+<a class="sourceLine" id="cb12-8" title="8"><span class="va">console</span>.<span class="at">log</span>(v[<span class="dv">0</span>])<span class="op">;</span></a></code></pre></div>
+<h2 id="what-you-just-learned">What you just learned</h2>
+<p>With some more practiced, of course, you will be able to do all of these really well. However, right now, you should be able to</p>
+<ol type="1">
+<li>Identify and generate valid JSON-formatted strings</li>
+<li>Use <code>JSON.parse</code> to deserialize JSON-formatted strings</li>
+<li>Use <code>JSON.stringify</code> to serialize JavaScript objects</li>
+<li>Correctly identify the definition of “deserialize”</li>
+<li>Correctly identify the definition of “serialize”</li>
+</ol>
+</body>
+</html>

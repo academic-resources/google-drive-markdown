@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>01_cookies-and-web-storage</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="cookies-and-web-storage">Cookies and Web Storage</h1>
+<p>As we’ve learned in previous sections, most data on the Web is stored in a database on a server, and we use the browser to retrieve this data. However, sometimes data is stored locally for the purposes of persisting throughout an entire session or until a specified expiration date.</p>
+<p>In this reading, we’ll go over using <strong>cookies</strong> to store data versus using the <strong>Web Storage API</strong> and the use cases for each storage method.</p>
+<h2 id="cookies">Cookies</h2>
+<p>Cookies have been around forever, and they are still a widely used method to store information about a site’s users.</p>
+<p><strong>What is a cookie?</strong></p>
+<p>A cookie is a small file stored on a user’s computer that holds a bite-sized amount of data, under 4KB. Cookies are included with HTTP requests. The server sends the data to a browser, where it’s typically stored and then sent back to the server on the next request.</p>
+<p><strong>What are cookies used for?</strong></p>
+<p>Cookies are used to store stateful information about a user, such as their personal information, their browser habits or history, or form input information they have filled out. A common use case for cookies is storing a <em>session cookie</em> on user login/validation. Session cookies are lost once the browser window is closed. To make sure the cookie persists beyond the end of the session, you could set up a <em>persistent cookie</em> with a specified expiration date. A use case for a persistent cookie is an e-commerce website that tracks a user’s browsing or buying habits.</p>
+<p><strong>How to create a cookie in Javascript:</strong></p>
+<p>As we’ve previously covered, the <code>document</code> interface represents the web page loaded in a user’s browser. Since cookies are stored on a user’s browser, it makes sense that the <code>document</code> object also allows us to get/set cookies on a user’s browser:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">const</span> firstCookie <span class="op">=</span> <span class="st">&quot;favoriteCat=million&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="va">document</span>.<span class="at">cookie</span> <span class="op">=</span> firstCookie<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">const</span> secondCookie <span class="op">=</span> <span class="st">&quot;favoriteDog=bambi&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="va">document</span>.<span class="at">cookie</span> <span class="op">=</span> secondCookie<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="va">document</span>.<span class="at">cookie</span><span class="op">;</span> <span class="co">// Returns &quot;favoriteCat=million; favoriteDog=bambi&quot;</span></a></code></pre></div>
+<p>Using the following syntax will create a new cookie:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="va">document</span>.<span class="at">cookie</span> <span class="op">=</span> aNewCookieHere<span class="op">;</span></a></code></pre></div>
+<p>If you want to set a second cookie, you would assign a new key value pair using the same syntax a second time. Make sure to set the cookie to a string formatted like a key-value pair:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">const</span> firstCookie <span class="op">=</span> <span class="st">&quot;favoriteCat=million&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="va">document</span>.<span class="at">cookie</span> <span class="op">=</span> firstCookie<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="va">document</span>.<span class="at">cookie</span><span class="op">;</span> <span class="co">// Returns &quot;favoriteCat=million&quot;</span></a></code></pre></div>
+<p>Formatting your string like we do in the <code>firstCookie</code> variable above sets the cookie <code>value</code> with a defined key, known as the cookie’s <code>name</code>, instead of an empty <code>name</code>. Refer to the MDN docs on <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie">Document.cookie</a> for more examples.</p>
+<p>You can view all the cookies a website is storing about you by using the Developer Tools. On <strong>Google Chrome</strong>, see the <strong>Application tab</strong>, and on <strong>Firefox</strong>, see the <strong>Storage tab</strong>.</p>
+<p><strong>Deleting a cookie:</strong></p>
+<p>We can delete our own cookies using JavaScript by setting a cookie’s expiration date to a date in the past, causing them to expire:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">const</span> firstCookie <span class="op">=</span> <span class="st">&quot;favoriteCat=million&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="va">document</span>.<span class="at">cookie</span> <span class="op">=</span> firstCookie<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="va">document</span>.<span class="at">cookie</span><span class="op">;</span> <span class="co">// Returns &quot;favoriteCat=million&quot;</span></a>
+<a class="sourceLine" id="cb4-4" title="4"></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="co">// specify the cookies &quot;name&quot; (the key) with an &quot;=&quot; and set the  expiration</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">// date to the past</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="va">document</span>.<span class="at">cookie</span> <span class="op">=</span> <span class="st">&quot;favoriteCat=; expires = Thu, 01 Jan 1970 00:00:00 GMT&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="va">document</span>.<span class="at">cookie</span><span class="op">;</span> <span class="co">// &quot;&quot;</span></a></code></pre></div>
+<p>We can also delete cookies using the Developer Tools!</p>
+<p>Navigate to a website, such as Amazon, and add an item to your cart. Open up the Developer Tools in your browser and delete all the cookies. In Chrome, you can delete cookies by highlighting a cookie and clicking the delete button. In Firefox, you can right-click and delete a cookie. If you’ve deleted all the cookies in your Amazon cart, and you refresh the page, you should notice your cart is now empty.</p>
+<h2 id="web-storage-api">Web Storage API</h2>
+<p>Cookies used to be the only way to store data in the browser, but with HTML5 developers gained access to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API">Web Storage API</a>, which includes <strong>localStorage</strong> and <strong>Session Storage</strong>. Here are the differences between the two, according to MDN:</p>
+<p><code>sessionStorage</code>:</p>
+<ul>
+<li>Stores data only for a <em>session</em>, or until the browser window or tab is closed</li>
+<li>Never transfers data to the server</li>
+<li>Has a storage limit of 5MB (much larger than a cookie)</li>
+</ul>
+<p>The following <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage">example from MDN</a> shows how we can use sessionStorage to autosave the contents of a text field and restore the contents of that text field if the browser is accidentally refreshed.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="co">// Get the text field that we&#39;re going to track</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw">let</span> field <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;field&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-3" title="3"></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co">// See if we have an autosave value</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="co">// (this will only happen if the page is accidentally refreshed)</span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="cf">if</span> (<span class="va">sessionStorage</span>.<span class="at">getItem</span>(<span class="st">&quot;autosave&quot;</span>)) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-7" title="7">  <span class="co">// Restore the contents of the text field</span></a>
+<a class="sourceLine" id="cb5-8" title="8">  <span class="va">field</span>.<span class="at">value</span> <span class="op">=</span> <span class="va">sessionStorage</span>.<span class="at">getItem</span>(<span class="st">&quot;autosave&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="op">}</span></a>
+<a class="sourceLine" id="cb5-10" title="10"></a>
+<a class="sourceLine" id="cb5-11" title="11"><span class="co">// Listen for changes in the text field</span></a>
+<a class="sourceLine" id="cb5-12" title="12"><span class="va">field</span>.<span class="at">addEventListener</span>(<span class="st">&quot;change&quot;</span><span class="op">,</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-13" title="13">  <span class="co">// And save the results into the session storage object</span></a>
+<a class="sourceLine" id="cb5-14" title="14">  <span class="va">sessionStorage</span>.<span class="at">setItem</span>(<span class="st">&quot;autosave&quot;</span><span class="op">,</span> <span class="va">field</span>.<span class="at">value</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-15" title="15"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p><code>localStorage</code>:</p>
+<ul>
+<li>Stores data with no expiration date and is deleted when clearing the browser cache</li>
+<li>Has the maximum storage limit in the browser (much larger than a cookie)</li>
+</ul>
+<p>Like with <code>sessionStorage</code>, we can use the <code>getItem()</code> and <code>setItem()</code> methods to retrieve and set <code>localStorage</code> data. The following <a href="https://developer.mozilla.org/en-US/docs/Web/API/Storage">example from MDN</a> will:</p>
+<ul>
+<li>Check whether <code>localStorage</code> contains a data item called <code>bgcolor</code> using <code>getItem()</code>.</li>
+<li>If <code>localStorage</code> contains <code>bgcolor</code>, run a function called <code>setStyles()</code> that grabs the data items using <code>Storage.getItem()</code> and use those values to update page styles.</li>
+<li>If it doesn’t, run a function called <code>populateStorage()</code>, which uses <code>Storage.setItem()</code> to set the item values, then run <code>setStyles()</code>.</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="cf">if</span> (<span class="op">!</span><span class="va">localStorage</span>.<span class="at">getItem</span>(<span class="st">&quot;bgcolor&quot;</span>)) <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-2" title="2">  <span class="at">populateStorage</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="op">}</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="at">setStyles</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-5" title="5"></a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="kw">const</span> populateStorage <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-7" title="7">  <span class="va">localStorage</span>.<span class="at">setItem</span>(<span class="st">&quot;bgcolor&quot;</span><span class="op">,</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;bgcolor&quot;</span>).<span class="at">value</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-8" title="8">  <span class="va">localStorage</span>.<span class="at">setItem</span>(<span class="st">&quot;font&quot;</span><span class="op">,</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;font&quot;</span>).<span class="at">value</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-9" title="9">  <span class="va">localStorage</span>.<span class="at">setItem</span>(<span class="st">&quot;image&quot;</span><span class="op">,</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;image&quot;</span>).<span class="at">value</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-10" title="10"><span class="op">};</span></a>
+<a class="sourceLine" id="cb6-11" title="11"></a>
+<a class="sourceLine" id="cb6-12" title="12"><span class="kw">const</span> setStyles <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-13" title="13">  <span class="kw">var</span> currentColor <span class="op">=</span> <span class="va">localStorage</span>.<span class="at">getItem</span>(<span class="st">&quot;bgcolor&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-14" title="14">  <span class="kw">var</span> currentFont <span class="op">=</span> <span class="va">localStorage</span>.<span class="at">getItem</span>(<span class="st">&quot;font&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-15" title="15">  <span class="kw">var</span> currentImage <span class="op">=</span> <span class="va">localStorage</span>.<span class="at">getItem</span>(<span class="st">&quot;image&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-16" title="16"></a>
+<a class="sourceLine" id="cb6-17" title="17">  <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;bgcolor&quot;</span>).<span class="at">value</span> <span class="op">=</span> currentColor<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-18" title="18">  <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;font&quot;</span>).<span class="at">value</span> <span class="op">=</span> currentFont<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-19" title="19">  <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;image&quot;</span>).<span class="at">value</span> <span class="op">=</span> currentImage<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-20" title="20"></a>
+<a class="sourceLine" id="cb6-21" title="21">  <span class="va">htmlElem</span>.<span class="va">style</span>.<span class="at">backgroundColor</span> <span class="op">=</span> <span class="st">&quot;#&quot;</span> <span class="op">+</span> currentColor<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-22" title="22">  <span class="va">pElem</span>.<span class="va">style</span>.<span class="at">fontFamily</span> <span class="op">=</span> currentFont<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-23" title="23">  <span class="va">imgElem</span>.<span class="at">setAttribute</span>(<span class="st">&quot;src&quot;</span><span class="op">,</span> currentImage)<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-24" title="24"><span class="op">};</span></a></code></pre></div>
+<p><strong>When would we use the Web Storage API?</strong></p>
+<p>Since web storage can store more data than cookies, it’s ideal for storing multiple key-value pairs. Like with cookies, this data can be saved only as a string. With localStorage, the data is stored locally on a user’s machine, meaning that it can only be accessed client-side. This differs from cookies which can be read both server-side and client-side.</p>
+<p>There are a few common use cases for Web storage. One is storing information about a shopping cart and the products in a user’s cart. Another is saving input data on forms. You could also use Web storage to store information about the user, such as their preferences or their buying habits. While we would normally use a cookie to store a user’s ID or a session ID after login, we could use localStorage to store extra information about the user.</p>
+<p>You can view what’s in local or session storage by using the Developer Tools. On <strong>Google Chrome</strong>, see the <strong>Application tab</strong>, and on <strong>Firefox</strong>, see the <strong>Storage tab</strong>.</p>
+<h2 id="what-we-learned">What we learned:</h2>
+<ul>
+<li>What cookies are and when to use them</li>
+<li>Differences between cookies and localStorage</li>
+<li>Use cases for cookies and localStorage</li>
+</ul>
+</body>
+</html>

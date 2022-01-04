@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>03_setup-and-installations-macos</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="setup-installations-on-macos-catalina-or-mojave">Setup &amp; Installations on macOS Catalina or Mojave</h1>
+<hr />
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+<ul>
+<li><a href="#preparing-your-machine">Preparing your machine</a>
+<ul>
+<li><a href="#chrome">Chrome</a></li>
+<li><a href="#xcode">Xcode</a></li>
+<li><a href="#homebrew">Homebrew</a></li>
+<li><a href="#nodejs-npm">Node.js &amp; NPM</a></li>
+<li><a href="#vs-code">VS Code</a></li>
+<li><a href="#mocha-testing-framework">Mocha testing framework</a>
+<ul>
+<li><a href="#installing-mocha">Installing Mocha</a></li>
+</ul></li>
+<li><a href="#installing-python3">Installing Python3</a></li>
+</ul></li>
+<li><a href="#what-you-learned">What you learned</a></li>
+</ul>
+<!-- /code_chunk_output -->
+<hr />
+<p>Being a developer isn’t just about hacking away into the wee hours of the morning or debugging a new feature. All craftspeople must have mastery of their tools to be successful in their trade, and programmers are no different. For a developer the most important tools are our CLI, text editor, web browser, compiler, package manager, and Node environment for running JavaScript. Mastery of these tools will be invaluable for the entire duration of our careers.</p>
+<p>This reading will cover the installation of the basic tools you’ll need to run code on your computer.</p>
+<p>When you finish this reading, you should have:</p>
+<ul>
+<li>Installed Visual Studio Code (VS Code)</li>
+<li>Installed Node &amp; NPM (Node Package Manager)</li>
+<li>Installed Google Chrome</li>
+<li>Installed Xcode &amp; Homebrew (Mac)</li>
+<li>Installed Python 3</li>
+</ul>
+<h2 id="preparing-your-machine">Preparing your machine</h2>
+<p>The commands you need to enter are listed below. Here we will install basic developer tools, such as <a href="https://brew.sh/">homebrew</a> (a 3rd party package manager for MacOS), <a href="https://itunes.apple.com/us/app/xcode/id497799835">Xcode</a> (a library of developer tools provided by Apple), VS Code (a full-featured text-editor), and Node (a JavaScript runtime environment).</p>
+<h3 id="chrome">Chrome</h3>
+<p>Here at App Academy, our browser of choice is Google Chrome. This isn’t super important at the beginning of the course, but once we get into frontend development (writing code that runs in a web browser) the Chrome Devtools will be crucial for debugging every manner of issue.</p>
+<p>To install Google Chrome, download the necessary files and follow the instructions on the <a href="https://www.google.com/chrome/browser/desktop/index.html">Google Chrome website</a>.</p>
+<h3 id="xcode">Xcode</h3>
+<p>Let’s start with Xcode. The Xcode command line tools are a requirement for installing the homebrew package manager in the next step.</p>
+<p><strong>NOTE: If you are using a Linux machine you will not be able to install Xcode or homebrew.</strong></p>
+<p>Install the Xcode command line tools by running the following from the console.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="ex">xcode-select</span> --install</a></code></pre></div>
+<p>To conclude the installation you will need to agree to the Xcode license. Start the Xcode app, click “Agree”, and allow the installation to finish. Then you can go ahead and quit the Xcode app.</p>
+<h3 id="homebrew">Homebrew</h3>
+<p>Homebrew is kind of like a low-tech App Store. It allows us access to and the ability to install a wide variety of software and command line tools from the console. These are distinct from those hosted on the App Store and will need to be managed by Homebrew.</p>
+<p>Enter the following in your terminal to download and install Homebrew:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">/usr/bin/ruby</span> -e <span class="st">&quot;</span><span class="va">$(</span><span class="ex">curl</span> -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="va">)</span><span class="st">&quot;</span></a></code></pre></div>
+<p>You will be given a list of dependencies that will be installed and prompted to continue or abort. Press <code>RETURN</code> to continue.</p>
+<p>Let’s break this command down a bit. <code>curl</code>, a command-line tool commonly used for downloading files from the internet, is used to download the Homebrew installation file. The <code>"$(...)"</code> transforms the file content into a string. Finally, the string is passed to a Ruby language executable (<code>/usr/bin/ruby</code> is where the system Ruby executable file is stored on our machine) with the <code>-e</code> flag to tell Ruby to run the argument as code.</p>
+<p>Check out the <a href="https://brew.sh/">Homebrew website</a> to learn the basic commands.</p>
+<h3 id="node.js-npm">Node.js &amp; NPM</h3>
+<p><a href="https://nodejs.org/en/">Node.js</a> is a very powerful runtime environment built on Google Chrome’s JavaScript V8 Engine. It is used to develop I/O intensive applications like video streaming sites, robots, and other general purpose applications. For our purposes Node provides a way for us to run JavaScript outside of the browser.</p>
+<p>We want to use a version manager with Node to help us manage potential conflicts between versions and dependencies. In this case we will be using <a href="https://github.com/creationix/nvm">NVM</a> (Node Version Manager) to install/manage Node.js.</p>
+<p>Open up your console (the Terminal application on Mac) and run the following:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># download and run the official install script</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="ex">curl</span> -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh <span class="kw">|</span> <span class="fu">bash</span></a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co"># update your terminal config (you will now have access to the nvm command)</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="bu">source</span> ~/.bashrc</a>
+<a class="sourceLine" id="cb3-6" title="6"></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="co"># install a stable version of node</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="ex">nvm</span> install 10.16</a>
+<a class="sourceLine" id="cb3-9" title="9"></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="co"># set version 10.16.0 as default version</span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="ex">nvm</span> use 10.16</a>
+<a class="sourceLine" id="cb3-12" title="12"></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="co"># verify install/config</span></a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="fu">which</span> node <span class="co"># =&gt; /Users/username/.nvm/versions/node/v10.16.0/bin/node</span></a></code></pre></div>
+<p>Node comes with a package manager called <a href="https://docs.npmjs.com/">NPM</a>, which provides access to a whole ecosystem of libraries and tools we can use. NPM comes pre-bundled with Node, so there is no additional work for us to do. By default we don’t need any additional libraries, and any additional packages we do need to use will be installed on a project-by-project basis.</p>
+<h3 id="vs-code">VS Code</h3>
+<p>This one is pretty easy. Go to website for <a href="https://code.visualstudio.com/">Visual Studio Code</a>, then download and install VS Code.</p>
+<p>To verify that the shell commands were installed correctly, run <code>which code</code> in your terminal. If <code>code</code> is not a recognized command, open the VS Code editor, open the Command Palette (<code>Cmd+Shift+P</code> on macOS ,<code>Ctrl+Shift+P</code> on Linux) and type <code>shell command</code> to find the <code>Shell Command: Install 'code' command in PATH</code> command. Then restart the terminal. This will now allow you to easily open files in VS Code from the terminal using the <code>code</code> command followed by a file or directory.</p>
+<p>Next, we’ll want to install a few useful VS Code extensions and configure VS Code to play nice with these extensions. Download <a href="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-JavaScript/js-local/setup-vs-code.zip">this zip file</a>, which contains a script that will do the work for you. Unzip the file and open the <code>setup_vscode</code> directory. Navigate into that directory in the terminal (drag and drop the folder over to the terminal icon on macOS or right click in the directory and select <code>Open in Terminal</code> on most Linux distributions).</p>
+<p>To run the script, run the command:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">~</span> <span class="ex">./setup-vs-code.sh</span></a></code></pre></div>
+<p>The script will do the rest. Now restart VS Code and you’ll be good to go.</p>
+<h3 id="mocha-testing-framework">Mocha testing framework</h3>
+<p>The last thing we’ll be installing will be Mocha. Mocha is a JavaScript testing framework that we will be using to test our work in the future. Here are the instructions of how to install <code>mocha</code>!</p>
+<h4 id="installing-mocha">Installing Mocha</h4>
+<ol type="1">
+<li>Open Terminal</li>
+<li>Enter this command: <code>npm install -g mocha</code></li>
+<li>To test your installation, run the command: <code>mocha --version</code>. If it returns a version number, you’ve successfully installed mocha! Otherwise, let your instructor know and they’ll help you fix things.</li>
+</ol>
+<h3 id="installing-python3">Installing Python3</h3>
+<p>You can just use <em>homebrew</em> for this install, too.</p>
+<pre><code>brew install python</code></pre>
+<h2 id="what-you-learned">What you learned</h2>
+<p>How to install the various tools you’ll need to create a development environment.</p>
+<p>After you finished this reading you should have the following installed:</p>
+<ul>
+<li>Virtual Studio Code (VS Code)</li>
+<li>Node &amp; NPM (Node Package Manager)</li>
+<li>Mocha the JavaScript testing framework</li>
+<li>Google Chrome</li>
+<li>Xcode &amp; Homebrew (Mac)</li>
+<li>Python 3</li>
+</ul>
+</body>
+</html>

@@ -32,7 +32,7 @@ The first test reads
 
 ```javascript
 it("should return no <option>s for no categories", () => {
-  expect.fail('please write this test');
+  expect.fail("please write this test");
 });
 ```
 
@@ -52,16 +52,16 @@ In the _assert_ section, assert that each of the following are true in the
 return value that you saved in the _act_ section using the [include] assertion
 provided by Chai:
 
-* To make sure that the method doesn't _remove_ the wrong things
-  * Assert that it contains the string "&lt;div>"
-  * Assert that it contains the string "&lt;/div>"
-  * Assert that it contains the string "&lt;select>"
-  * Assert that it contains the string "&lt;/select>"
-* To make sure that the method doesn't _add_ the wrong things
-  * Assert that it does not contain the string "&lt;option>"
-  * Assert that it does not contain the string "&lt;/option>"
-* To make sure it replaces what you expect it to replace
-  * Assert that it does not contain the string "&lt;!-- Content here -->"
+- To make sure that the method doesn't _remove_ the wrong things
+  - Assert that it contains the string "&lt;div>"
+  - Assert that it contains the string "&lt;/div>"
+  - Assert that it contains the string "&lt;select>"
+  - Assert that it contains the string "&lt;/select>"
+- To make sure that the method doesn't _add_ the wrong things
+  - Assert that it does not contain the string "&lt;option>"
+  - Assert that it does not contain the string "&lt;/option>"
+- To make sure it replaces what you expect it to replace
+  - Assert that it does not contain the string "&lt;!-- Content here -->"
 
 Run the test to make sure it passes.
 
@@ -74,7 +74,7 @@ The second test reads
 
 ```javascript
 it("should return a single <option> for one category", () => {
-  expect.fail('please write this test');
+  expect.fail("please write this test");
 });
 ```
 
@@ -93,17 +93,17 @@ the third argument. Store the return value in a variable.
 In the _assert_ section, assert that each of the following are true using the
 [include] assertion provided by Chai:
 
-* To make sure that the method doesn't _remove_ the wrong things
-  * Assert that it contains the string "&lt;div>"
-  * Assert that it contains the string "&lt;/div>"
-  * Assert that it contains the string "&lt;select>"
-  * Assert that it contains the string "&lt;/select>"
-* To make sure that the method _adds_ the right things
-  * Assert that it does contain the string "&lt;option>your string
+- To make sure that the method doesn't _remove_ the wrong things
+  - Assert that it contains the string "&lt;div>"
+  - Assert that it contains the string "&lt;/div>"
+  - Assert that it contains the string "&lt;select>"
+  - Assert that it contains the string "&lt;/select>"
+- To make sure that the method _adds_ the right things
+  - Assert that it does contain the string "&lt;option>your string
     here&lt;/option>" where "your string here" is the single value that you
     placed in the array
-* To make sure it replaces what you expect it to replace
-  * Assert that it does not contain the string "&lt;!-- Content here -->"
+- To make sure it replaces what you expect it to replace
+  - Assert that it does not contain the string "&lt;!-- Content here -->"
 
 Run the test to make sure it passes.
 
@@ -116,7 +116,7 @@ The third test reads
 
 ```javascript
 it("should return an <option> for each category", () => {
-  expect.fail('please write this test');
+  expect.fail("please write this test");
 });
 ```
 
@@ -135,17 +135,17 @@ the third argument. Store the return value in a variable.
 In the _assert_ section, assert that each of the following are true using the
 [include] assertion provided by Chai:
 
-* To make sure that the method doesn't _remove_ the wrong things
-  * Assert that it contains the string "&lt;div>"
-  * Assert that it contains the string "&lt;/div>"
-  * Assert that it contains the string "&lt;select>"
-  * Assert that it contains the string "&lt;/select>"
-* To make sure that the method _adds_ the right things, for _each_ of the values
+- To make sure that the method doesn't _remove_ the wrong things
+  - Assert that it contains the string "&lt;div>"
+  - Assert that it contains the string "&lt;/div>"
+  - Assert that it contains the string "&lt;select>"
+  - Assert that it contains the string "&lt;/select>"
+- To make sure that the method _adds_ the right things, for _each_ of the values
   that you put in your categories array:
-  * Assert that it does contain the string "&lt;option>value n&lt;/option>"
+  - Assert that it does contain the string "&lt;option>value n&lt;/option>"
     where "value n" is one of the values in your array
-* To make sure it replaces what you expect it to replace
-  * Assert that it does not contain the string "&lt;!-- Content here -->"
+- To make sure it replaces what you expect it to replace
+  - Assert that it does not contain the string "&lt;!-- Content here -->"
 
 Run the test to make sure it passes.
 

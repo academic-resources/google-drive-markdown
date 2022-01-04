@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>06_benefits-of-pair-programming</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<h1 id="were-better-together-pair-programming">We’re Better Together: Pair Programming</h1>
+<hr />
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+<ul>
+<li><a href="#team-mentality">Team mentality</a></li>
+<li><a href="#pair-programming-roles">Pair Programming Roles</a>
+<ul>
+<li><a href="#the-driver">The Driver</a></li>
+<li><a href="#the-navigator">The Navigator</a></li>
+<li><a href="#both-roles">Both roles</a></li>
+</ul></li>
+<li><a href="#why-pair-up">Why pair up?</a></li>
+<li><a href="#what-weve-learned">What we’ve learned</a></li>
+</ul>
+<!-- /code_chunk_output -->
+<hr />
+<p>So far, you’ve been solving problems and writing code on your own. You’ll certainly spend a lot of time doing this in your future, but why not try a better way? Let’s discuss <em>pair programming</em>: an alternative approach that can boost your output, reduce errors, and improve your mood all at the same time!</p>
+<p>We’ll cover:</p>
+<ul>
+<li>a brief history of team/pair programming,</li>
+<li>typical roles when pairing up,</li>
+<li>and benefits of learning this useful skill!</li>
+</ul>
+<h2 id="team-mentality">Team mentality</h2>
+<p>Despite what “hacker” personalities in movies might have you think, software development has never been a single-player game. Tracing back to the earliest days of computing, computer scientists have worked in pairs or teams to solve the biggest problems. Fred Brooks, in his popular software/project management guide “The Mythical Man Month” (published in 1975) even advocated for small <a href="https://en.wikipedia.org/wiki/The_Mythical_Man-Month#The_surgical_team">“surgical teams”</a> to approach software development!</p>
+<p>Even so, it’s easy to get focused on a problem and stop communicating with your teammates. To prevent this behavior, many teams practice <em>pair programming</em>, an approach in which two developers work together on a single computer. Pairing up ensures that both developers are engaged with each other and with the problem at hand, and it helps us share knowledge faster!</p>
+<p>Pair programming is by far the most popular approach, but there are other ways for small groups to collaborate! You may also hear about <em>mob programming</em>, where a group of 3+ individuals gather around a single screen to work through an issue, or <em>extreme programming (XP)</em>, a highly-structured approach to pair programming where the whole team rotates through projects. We’ll refer to all of these multi-developer approaches as <em>collaborative programming</em>.</p>
+<p>There are a few common concepts in all these approaches:</p>
+<ul>
+<li><p><strong>One shared device for coding:</strong> Keeping your code in sync with someone else is a bigger challenge than it’s worth, so collaborative programmers have found that coding only on one device keeps it simple. You can always share your code with each other once you’re done working on it.</p></li>
+<li><p><strong>Everyone has a job:</strong> Regardless of how many people you’re collaborating with, it’s important that each person has a role to play. This increases engagement and ensures that no one gets bored! If you find yourself in a group but without a clearly-defined role, there may be a better use of your time.</p></li>
+<li><p><strong>Everyone gets a turn:</strong> The best way to learn is by doing, so everyone should be able to work in all the roles on a collaborative programming team. This means developers may rotate into different roles on a timer, or change roles with each new session.</p></li>
+<li><p><strong>No one is “too good to pair”:</strong> It’s important to note that pairing should be a <strong>whole team</strong> process. One of the benefits of pair programming is that a more senior engineer can share knowledge with a junior engineer, skilling them up faster. No truly collaborative programming session excludes certain people because they’re outliers. It’s never too early (or too late!) to start pairing up.</p></li>
+</ul>
+<h2 id="pair-programming-roles">Pair Programming Roles</h2>
+<p>When we talk about pair programming specifically, there are two well-known roles: that of the <em>Driver</em> and that of the <em>Navigator</em>. Let’s break down their individual responsibilities.</p>
+<h3 id="the-driver">The Driver</h3>
+<p>The <em>Driver</em> takes ownership of the keyboard. They’ll be in charge of typing code and asking questions. The driver should focus on the current task and can let go of the bigger picture for a little while. The Driver might also suggest ways to improve/refactor the code, as the project continues.</p>
+<h3 id="the-navigator">The Navigator</h3>
+<p>The <em>Navigator</em> is in charge of what’s being typed and maintaining the project’s momentum. They should lead the discussion and direct the driver about what to type. The navigator won’t do any typing themselves. Instead, their goal is to make it as easy as possible for the driver to create code. While the driver types, the navigator should be double-checking the code for errors.</p>
+<h3 id="both-roles">Both roles</h3>
+<p>If these roles sound limiting to you, good; that’s the point! Having a clearly defined role means you never have to wonder what you should be doing at any given time. If you’re driving, you should be writing code. If you’re navigating, you should be designing what comes next and sharing that with the driver.</p>
+<p>These roles provide some structure, but they’re not excuses for poor communication. It’s up to <strong>both</strong> programmers to discuss the plan early and often. As the navigator leads the way, the driver should be constantly second-guessing the plan. If there’s a potential problem, it’s okay for the driver to bring this up! This is one of the strengths of pair programming: both developers have a voice in service of the final product.</p>
+<p>Both the driver and navigator should help keep each other on task as well. If you find yourself getting quiet or distracted, switch roles! The change of context should help you get your head back in the game.</p>
+<h2 id="why-pair-up">Why pair up?</h2>
+<p>This all sounds like a lot of work! If you’re already capable of coding alone, why might you want to pair up at all? Let’s look at some of the benefits.</p>
+<p>First, some statistics. A <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.26.9064">study from 2000</a> found that pair programming results in 15% slower development time. Yikes! That sounds a lot less scary when you recognize that we would theoretically expect it to result in 50% slower time, though. After all, we’re taking two people who could be working at “full speed” and assigning them to one task. Somehow, this process only causes them to move 15% slower - wow!</p>
+<p>The same study notes the payback for that loss of velocity: the resulting code contains 15% fewer errors. If this sounds like an even trade, consider this: debugging, correcting, and redeploying that erroneous code could take from 15 to 60 times as long as the paltry 15% slowdown caused by pairing up! Spending a little extra time up front can make a world of difference later on.</p>
+<p>Pair programming is also a great way to fulfill your social needs. Coding alone can be a lonely endeavor, especially when you face new challenges and aren’t sure how to proceed. Instead of getting lost in a search engine, pairing partners can help each other navigate these challenges and celebrate each others’ successes.</p>
+<p>Lastly, a big motivator for being a practiced pair programmer is the job search. Many companies include pair programming in their interview process. You may be asked to code while some of the company’s engineers observe, or you might get to work directly with another engineer on a collaborative project! Practicing this skill now means you’ll be comfortable when the stakes are higher, and more likely to make a good impression on the interviewing team.</p>
+<h2 id="what-weve-learned">What we’ve learned</h2>
+<p>When it comes to writing code, we are truly better together! Pair programming is an effective process for writing more code, writing better code, and improving your development skills at a dramatically increased rate. Starting now, we’ll be encouraging you to pair with other students on App Academy projects.</p>
+<p>After reading this lesson, you should feel comfortable: - defining collaborative programming, - describing the roles of the Driver and Navigator, - and naming a few benefits of pair programming.</p>
+</body>
+</html>

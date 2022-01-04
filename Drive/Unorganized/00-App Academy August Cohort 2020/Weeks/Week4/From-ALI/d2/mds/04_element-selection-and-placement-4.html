@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>04_element-selection-and-placement-4</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="hello-world-domination-console.log-element.innerhtml-and-the-date-object">Hello, World DOMination: Console.log, Element.innerHTML, and the Date Object</h1>
+<p>In this section, we’ll learn about how to use <code>console.log</code> to print element values. We’ll also use <code>Element.innerHTML</code> to fill in the HTML of a DOM element. Finally, we’ll learn about the Javascript Date object and how to use it to construct a clock that keeps the current time.</p>
+<h2 id="console-logging-element-values">Console Logging Element Values</h2>
+<p>Along with the other developer tools, the console is a valuable tool Javascript developers use to debug and check that scripts are running correctly. In this exercise, we’ll practice logging to the console.</p>
+<p>Create an HTML file that contains the following:</p>
+<p><strong>HTML</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb1-1" title="1"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">&lt;html&gt;</span></a>
+<a class="sourceLine" id="cb1-3" title="3">  <span class="kw">&lt;head&gt;</span> <span class="kw">&lt;/head&gt;</span></a>
+<a class="sourceLine" id="cb1-4" title="4">  <span class="kw">&lt;body&gt;</span></a>
+<a class="sourceLine" id="cb1-5" title="5">    <span class="kw">&lt;ul</span><span class="ot"> id=</span><span class="st">&quot;your-best-friend&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb1-6" title="6">      <span class="kw">&lt;li&gt;</span>Has your back<span class="kw">&lt;/li&gt;</span></a>
+<a class="sourceLine" id="cb1-7" title="7">      <span class="kw">&lt;li&gt;</span>Gives you support<span class="kw">&lt;/li&gt;</span></a>
+<a class="sourceLine" id="cb1-8" title="8">      <span class="kw">&lt;li&gt;</span>Actively listens to you<span class="kw">&lt;/li&gt;</span></a>
+<a class="sourceLine" id="cb1-9" title="9">      <span class="kw">&lt;li&gt;</span>Lends a helping hand<span class="kw">&lt;/li&gt;</span></a>
+<a class="sourceLine" id="cb1-10" title="10">      <span class="kw">&lt;li&gt;</span>Cheers you up when you&#39;re down<span class="kw">&lt;/li&gt;</span></a>
+<a class="sourceLine" id="cb1-11" title="11">      <span class="kw">&lt;li&gt;</span>Celebrates important moments with you<span class="kw">&lt;/li&gt;</span></a>
+<a class="sourceLine" id="cb1-12" title="12">    <span class="kw">&lt;/ul&gt;</span></a>
+<a class="sourceLine" id="cb1-13" title="13">  <span class="kw">&lt;/body&gt;</span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="kw">&lt;/html&gt;</span></a></code></pre></div>
+<p>In the above code, we see an id with which we can reference the <code>ul</code> element. Recall that we previously used <code>document.querySelectorAll()</code> to store multiple elements with the same class name in a single variable, as a NodeList. However, in the above example, we see only one id for the parent element. We can reference the parent element via its id to get access to the content of its children.</p>
+<p><strong>Javascript</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="va">window</span>.<span class="at">addEventListener</span>(<span class="st">&quot;DOMContentLoaded&quot;</span><span class="op">,</span> event <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-2" title="2">  <span class="kw">const</span> parent <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;your-best-friend&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-3" title="3">  <span class="kw">const</span> childNodes <span class="op">=</span> <span class="va">parent</span>.<span class="at">childNodes</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-4" title="4">  <span class="cf">for</span> (<span class="kw">let</span> value <span class="kw">of</span> <span class="va">childNodes</span>.<span class="at">values</span>()) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-5" title="5">    <span class="va">console</span>.<span class="at">log</span>(value)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-6" title="6">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>In your browser, use the developer tools to open the console and see that the values of each <code>li</code> have been printed out.</p>
+<h2 id="using-element.innerhtml">Using Element.innerHTML</h2>
+<p>Thus far, we have referenced DOM elements via their id or class name and appended new elements to existing DOM elements. Additionally, we can use the inner HTML property to get or set the HTML or XML markup contained within an element.</p>
+<p>In an HTML file, create a <code>ul</code> element with the id “your-worst-enemy” that has no children. We’ll add some JavaScript to construct a string that contains six <code>li</code> tags each containing a random number and set the inner HTML property of <code>ul#your-worst-enemy</code> to that string.</p>
+<p><strong>HTML</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb3-1" title="1"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">&lt;html&gt;</span></a>
+<a class="sourceLine" id="cb3-3" title="3">  <span class="kw">&lt;head&gt;</span></a>
+<a class="sourceLine" id="cb3-4" title="4">    <span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="ot"> src=</span><span class="st">&quot;example.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a>
+<a class="sourceLine" id="cb3-5" title="5">  <span class="kw">&lt;/head&gt;</span></a>
+<a class="sourceLine" id="cb3-6" title="6">  <span class="kw">&lt;body&gt;</span></a>
+<a class="sourceLine" id="cb3-7" title="7">    <span class="kw">&lt;ul</span><span class="ot"> id=</span><span class="st">&quot;your-worst-enemy&quot;</span><span class="kw">&gt;&lt;/ul&gt;</span></a>
+<a class="sourceLine" id="cb3-8" title="8">  <span class="kw">&lt;/body&gt;</span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="kw">&lt;/html&gt;</span></a></code></pre></div>
+<p><strong>Javascript</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="co">// generate a random number for each list item</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw">const</span> getRandomInt <span class="op">=</span> max <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-3" title="3">  <span class="cf">return</span> <span class="va">Math</span>.<span class="at">floor</span>(<span class="va">Math</span>.<span class="at">random</span>() <span class="op">*</span> <span class="va">Math</span>.<span class="at">floor</span>(max))<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="op">};</span></a>
+<a class="sourceLine" id="cb4-5" title="5"></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">// listen for DOM ready event</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="va">window</span>.<span class="at">addEventListener</span>(<span class="st">&quot;DOMContentLoaded&quot;</span><span class="op">,</span> event <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-8" title="8">  <span class="co">// push 6 LI elements into an array and join</span></a>
+<a class="sourceLine" id="cb4-9" title="9">  <span class="kw">const</span> liArr <span class="op">=</span> []<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-10" title="10">  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">6</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-11" title="11">    <span class="va">liArr</span>.<span class="at">push</span>(<span class="st">&quot;&lt;li&gt;&quot;</span> <span class="op">+</span> <span class="at">getRandomInt</span>(<span class="dv">10</span>) <span class="op">+</span> <span class="st">&quot;&lt;/li&gt;&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-12" title="12">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb4-13" title="13">  <span class="kw">const</span> liString <span class="op">=</span> <span class="va">liArr</span>.<span class="at">join</span>(<span class="st">&quot; &quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-14" title="14"></a>
+<a class="sourceLine" id="cb4-15" title="15">  <span class="co">// insert string into the DOM using innerHTML</span></a>
+<a class="sourceLine" id="cb4-16" title="16">  <span class="kw">const</span> listElement <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;your-worst-enemy&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-17" title="17">  <span class="va">listElement</span>.<span class="at">innerHTML</span> <span class="op">=</span> liString<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-18" title="18"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Save your changes, and refresh your browser page. You should see six new list items on the page, each containing a random number.</p>
+<h2 id="inserting-a-date-object-into-the-dom">Inserting a Date Object into the DOM</h2>
+<p>We’ve learned a lot about accessing and manipulating the DOM! Let’s use what we’ve learned so far to add extra functionality involving the Javascript Date object.</p>
+<p>Our objective is to update the title of the document to the current time at a reasonable interval such that it looks like a real clock.</p>
+<p>We know we’ll be starting with an HTML document that contains an empty title element. We’ve learned a couple of different ways to fill the content of an element so far. We could create a new element and append it to the title element, or we could use <code>innerHTML</code> to set the HTML of the title element. Since we don’t need to create a new element nor do we care whether it appears last, we can use the latter method.</p>
+<p>Let’s give our title an id for easy reference.</p>
+<p><strong>HTML</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">&lt;title</span><span class="ot"> id=</span><span class="st">&quot;title&quot;</span><span class="kw">&gt;&lt;/title&gt;</span></a></code></pre></div>
+<p>In our Javascript file, we’ll use the Date constructor to instantiate a new <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">Date object</a>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">const</span> date <span class="op">=</span> <span class="kw">new</span> <span class="at">Date</span>()<span class="op">;</span></a></code></pre></div>
+<p><strong>Javascript</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="va">window</span>.<span class="at">addEventListener</span>(<span class="st">&quot;DOMContentLoaded&quot;</span><span class="op">,</span> event <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-2" title="2">  <span class="kw">const</span> title <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;title&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-3" title="3">  <span class="kw">const</span> time <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-4" title="4">    <span class="kw">const</span> date <span class="op">=</span> <span class="kw">new</span> <span class="at">Date</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-5" title="5">    <span class="kw">const</span> seconds <span class="op">=</span> <span class="va">date</span>.<span class="at">getSeconds</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-6" title="6">    <span class="kw">const</span> minutes <span class="op">=</span> <span class="va">date</span>.<span class="at">getMinutes</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-7" title="7">    <span class="kw">const</span> hours <span class="op">=</span> <span class="va">date</span>.<span class="at">getHours</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-8" title="8"></a>
+<a class="sourceLine" id="cb7-9" title="9">    <span class="va">title</span>.<span class="at">innerHTML</span> <span class="op">=</span> hours <span class="op">+</span> <span class="st">&quot;:&quot;</span> <span class="op">+</span> minutes <span class="op">+</span> <span class="st">&quot;:&quot;</span> <span class="op">+</span> seconds<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-10" title="10">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb7-11" title="11">  <span class="at">setInterval</span>(time<span class="op">,</span> <span class="dv">1000</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-12" title="12"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<p>Save your changes and refresh your browser. Observe the clock we inserted dynamically keeping the current time in your document title!</p>
+<h2 id="what-we-learned">What We Learned:</h2>
+<ul>
+<li>What the DOM is and how we can access it</li>
+<li>How to access DOM elements using <code>document.getElementById()</code> and <code>document.querySelectorAll()</code></li>
+<li>How to create new elements with <code>document.createElement()</code> and <code>document.createTextNode</code>, and append them to existing DOM elements with <code>Element.appendChild()</code></li>
+<li>The difference between <code>window.onload</code> and <code>DOMContentLoaded</code></li>
+<li>How to access children nodes with <code>NodeList.childNodes</code></li>
+<li>Updating DOM elements with <code>Element.innerHTML</code></li>
+<li>The Javascript Date object</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>homework_notes</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="the-browser-object-model">THE BROWSER OBJECT MODEL</h1>
+<p>Document Object Model (DOM) - contains collection of nodes (HTML elements) - nodes can be accessed and manipulated - <code>document</code> object is a web page - DOM represents obj hierarchy of that <code>document</code></p>
+<p>Browser Object Model (BOM) - hierarchy of browser objects - document object is part of that hierarchy - <code>window</code> is chief browser objecet - contians props and methods we can use to access different objects</p>
+<p>Window Object - <code>window.navigator</code>: ref to nav obj - <code>window.screen</code>: ref to screen obj assoc with window - <code>window.history</code>: ref to history obj - <code>window.location</code>: gets/sets location or current URL of window - <code>window.document</code>: ref to document obj - all methods can can be shorted to just name, ie <code>document</code></p>
+<p>The Browser Diagram</p>
+<ol type="1">
+<li>User Interface
+<ul>
+<li>what users interact with
+<ul>
+<li>address bar, back/forward buttons, bookmarks, etc.</li>
+<li>everything except page content</li>
+</ul></li>
+</ul></li>
+<li>Browser Engine
+<ul>
+<li>manages interactions between UI and rendering engine</li>
+</ul></li>
+<li>Render Engine
+<ul>
+<li>displays requested page content</li>
+<li>parses HTML and CSS and renders parsed content</li>
+</ul></li>
+<li>Networking
+<ul>
+<li>handles network calls like HTTP req</li>
+</ul></li>
+<li>Javascript Interpreter
+<ul>
+<li>parses and executes JS code</li>
+</ul></li>
+<li>UI Backend
+<ul>
+<li>used for drawing basic widgets</li>
+</ul></li>
+<li>Data Storage
+<ul>
+<li>persistence of data in browser (i.e cookies)</li>
+</ul></li>
+</ol>
+<h1 id="request-response-cycle">REQUEST / RESPONSE CYCLE</h1>
+<p>Overview - browsing web is series of req and res - request: searching for info or navigating to page - response: what we expect to receive from req</p>
+<p>Request / Response Cycle Diagram</p>
+<ol type="1">
+<li>Client Side (browser)
+<ul>
+<li>what user interacts with</li>
+</ul></li>
+<li>Internet
+<ul>
+<li>series of client req and server responses</li>
+</ul></li>
+<li>Server side
+<ul>
+<li>handles req and sends res</li>
+<li>more on this later</li>
+</ul></li>
+</ol>
+<p>The role of the browser - used to make req to server - can view req/res in Network Tab of Developer Tools - parses HTML, CSS, JS - renders info to user by constructing &amp; rendering DOM tree</p>
+<h1 id="running-js-scripts-in-browser">RUNNING JS SCRIPTS IN BROWSER</h1>
+<p>Using the Window API - can execute window code in developer tools console</p>
+<h1 id="context-scope-and-anonymous-functions">Context, Scope, and Anonymous Functions</h1>
+<p>Overview 1. every function has a context and a scope 2. context refers to obj that owns the function - value of <code>this</code> inside a given func 3. context is usually determined by how func is invoked</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">// anonymous func is method of foo object</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">// `this` reeturns the object itself</span></a>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="kw">const</span> foo <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="dt">bar</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-7" title="7">        <span class="cf">return</span> <span class="kw">this</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-8" title="8">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="op">}</span></a>
+<a class="sourceLine" id="cb1-10" title="10"></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="va">console</span>.<span class="at">log</span>(<span class="va">foo</span>.<span class="at">bar</span>() <span class="op">===</span> foo) <span class="co">// true</span></a>
+<a class="sourceLine" id="cb1-12" title="12"></a>
+<a class="sourceLine" id="cb1-13" title="13"></a>
+<a class="sourceLine" id="cb1-14" title="14"></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="co">// unbound funcs or funcs not scoped inside another</span></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="co">// prints window obj if run in browser</span></a>
+<a class="sourceLine" id="cb1-17" title="17">(<span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-18" title="18">    <span class="va">console</span>.<span class="at">log</span>(<span class="kw">this</span>)</a>
+<a class="sourceLine" id="cb1-19" title="19"><span class="op">}</span>)() </a></code></pre></div>
+<p>when func is called in global scope, <code>this</code> defaults to global context - when running code in browser, <code>window</code> object is global context</p>
+<p>running a script on DOMContentLoaded - runs when document has been loaded - doesnt wait for stylesheets, images, subframes to load</p>
+<p>running a script when <code>window.onload</code> - waits for everything in document to load before running script</p>
+<p>ways to prevent script from running until page loads 1. use DOMContentLoaded event in external JS file 2. put script at bottom of HTML file - HTML builds DOM tree in order of how HTML file is structured - whatever is on top will be loaded first 3. add attribute to script tag like <code>async</code> or <code>defer</code></p>
+<p>using <code>async</code> to control when script is run - script is fetch asynchronously - after script is fetched, HTML parsing is paused to execute script, then resumes</p>
+<p>using <code>defer</code> - script is fetch asynchronously - executed only after HTML parsing is finished</p>
+</body>
+</html>

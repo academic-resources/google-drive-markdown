@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>homework_notes</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="common-page-events">COMMON PAGE EVENTS</h1>
+<p>addEventListener() vs onclick - onclick * just a property * will be overwrittene * inline JS is discouraged (highest specificity) - addEventListenerr * bind event handler to element * can assign multiple handlers</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">// format for adding an event listener</span></a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co">// 1. using named callback</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="kw">let</span> callback <span class="op">=</span> (event) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-7" title="7">    <span class="co">// what to do when event occurs</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="op">}</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="va">element</span>.<span class="at">addEventListener</span>(<span class="st">&#39;&lt;EVENT-NAME&gt;&#39;</span><span class="op">,</span> callback)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-10" title="10"></a>
+<a class="sourceLine" id="cb1-11" title="11"></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co">// 2. using anonymous callback</span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="va">element</span>.<span class="at">addEventListener</span>(<span class="st">&#39;&lt;EVENT-NAME&gt;&#39;</span><span class="op">,</span> (event) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-14" title="14">    <span class="co">// what to do when event occurs</span></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="op">}</span>)</a></code></pre></div>
+<p>Common Events Overview - “click” : fires when associated element has been clicked - “input” : fires when value of INPUT, SELECT, or, TEXTAREA has changed</p>
+<h1 id="input-focus-and-blur-events">INPUT FOCUS AND BLUR EVENTS</h1>
+<p>Events Overview - “focus” : fires when element has received focus (when user clicks in field) * typically used for inputs - “blur” : fires when element has lost focus (user clicks away0) * typically used for inputs</p>
+<h1 id="form-validation">FORM VALIDATION</h1>
+the “submit” event - forms have special behavior - clicking a button in a
+<form>
+</form>
+<p>element triggers a “submit” event on form - attach eventlistener for “submit” to the form</p>
+<p>summary - clicking on the BUTTON triggers a “submit” event on the FORM</p>
+<p>Default Actions - some events have default behavior - behavior that will occur when event fires, in addition to code in event handler - ex: default behavior for a form submission is to refresh the page - ex: default behavior of clicking on a link is to follow the URL - sometimes we don’t want the default behavior to occur - might not want the page to refresh - <code>event.preventDefault()</code> : method called on event object to prevent default behavior</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb2-1" title="1"></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">&lt;form</span><span class="ot"> id=</span><span class="st">&quot;my-form&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb2-3" title="3">    <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> placeeholder=</span><span class="st">&quot;Name&quot;</span> <span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb2-4" title="4">    <span class="kw">&lt;button&gt;</span>Submit<span class="kw">&lt;/button&gt;</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="kw">&lt;/form&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="va">document</span>.<span class="at">addEventListener</span>(<span class="st">&#39;DOMContentLoaded&#39;</span><span class="op">,</span> (event) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4">    <span class="kw">let</span> form <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&#39;my-form&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-5" title="5"></a>
+<a class="sourceLine" id="cb3-6" title="6">    <span class="va">form</span>.<span class="at">addEventListener</span>(<span class="st">&#39;submit&#39;</span><span class="op">,</span> (event) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-7" title="7">        <span class="co">// prevent default behavior of form submission (page refresh)</span></a>
+<a class="sourceLine" id="cb3-8" title="8">        <span class="va">event</span>.<span class="at">preventDefault</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-9" title="9">        <span class="co">// do something</span></a>
+<a class="sourceLine" id="cb3-10" title="10">    <span class="op">}</span>)</a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="op">}</span>)</a></code></pre></div>
+<h1 id="drag-and-drop">DRAG AND DROP</h1>
+<p>Drag Events - dragstart handler: occurs when the user clicks the mouse and starts dragging - dragenter handler: occurs when element enters drop zone - dragover handler: occurs when the dragged element is over the drop target - dragleave handler: occurs when the dragged element leaves the drop target - drop handler: occurs when the user releases the mouse click and “drops” the element</p>
+<p>Drag and Drop Process 1. add attribute <code>draggable="true"</code> to element you want to drag 2. register <code>dragstart</code> event on draggable element - fires when user clicks the mouse and starts dragging - event handler should set relevant data in <code>dataTransfer</code> object 3. can subscribe to four events in “drop zone” - <code>dragenter</code>, <code>dragover</code>, <code>dragleave</code>, <code>drop</code> - must <code>preventDefault</code> on <code>dragenter</code> and <code>dragover</code> events in order for <code>drop</code> event to fire</p>
+<p>Data Transfer Object - includes drag event’s state (i.e type of drag being done - move/copy) - includes drag’s data (one or more items)</p>
+<h1 id="click-events-with-targets">CLICK EVENTS WITH TARGETS</h1>
+<p>Event Target and Current Target - <code>event.target</code>: element on which event occurred (ele you clicked on) - <code>event.currentTarget</code>: element the event handler is attached to</p>
+<h1 id="the-bubbling-principle">THE BUBBLING PRINCIPLE</h1>
+<p>The Bubbling Principle - when event occurs on an element, it first will run the handlers on that element, then on its parent, then on that parents parent and so on - i.e event bubbles up through DOM, causing other events to happen - SOME events do not bubble (focus, blur)</p>
+<p><code>event.stopPropagation()</code> - prevents event from bubbling to ancestors</p>
+<ul>
+<li>TODO : SHOW USING ONCLICK</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1">    <span class="va">middleDiv</span>.<span class="at">onclick</span> <span class="op">=</span> (event) <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-2" title="2">        <span class="va">event</span>.<span class="at">stopPropagation</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-3" title="3"></a>
+<a class="sourceLine" id="cb4-4" title="4">        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;middle div event triggered&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-5" title="5">    <span class="op">}</span></a></code></pre></div>
+<p><code>event.stopImmediatePropagation()</code> - prevents bubbling and prevents other handlers on current element from running - no other handlers execute after</p>
+<ul>
+<li>TODO: SHOW USING MULTIPLE HANDLERS / STOP IMMEDIATE</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1">    <span class="va">middleDiv</span>.<span class="at">addEventListener</span>(<span class="st">&#39;click&#39;</span><span class="op">,</span> event <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">        <span class="va">event</span>.<span class="at">stopPropagation</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-3" title="3">        <span class="co">// event.stopImmediatePropagation();</span></a>
+<a class="sourceLine" id="cb5-4" title="4">    <span class="op">}</span>)</a>
+<a class="sourceLine" id="cb5-5" title="5"></a>
+<a class="sourceLine" id="cb5-6" title="6">    <span class="va">middleDiv</span>.<span class="at">addEventListener</span>(<span class="st">&#39;click&#39;</span><span class="op">,</span> event <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-7" title="7">        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;middle div event triggered&#39;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-8" title="8">    <span class="op">}</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb6-1" title="1"></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="kw">&lt;body</span><span class="ot"> onclick=</span><span class="st">&quot;console.log(&#39;the event will not reach this handler&#39;)&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb6-3" title="3">    <span class="kw">&lt;button</span><span class="ot"> onclick=</span><span class="st">&quot;event.stopPropagation()&quot;</span><span class="kw">&gt;</span>Click Me<span class="kw">&lt;/button&gt;</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="kw">&lt;/body&gt;</span></a></code></pre></div>
+<p>Event Propogation - blanket term for event bubbling and event capturing - phases: 1. Event Capture Phase - event works from window to target - capturer listeners are called - capturer: listener registered with third param as <code>true</code> 2. Event Target Phase - listeners registered on event target will be called 3. Event Bubbling Phase - event bubbles up through DOM - invokes registered event handlers on ancestor elements</p>
+<h1 id="learninig-objectives">LEARNINIG OBJECTIVES</h1>
+<h1 id="section">1.</h1>
+<p>Given an HTML page that includes <button id="increment-count">I have been clicked <span id="clicked-count">0</span> times</button>, write JavaScript that increases the value of the content of span#clicked-count by 1 every time button#increment-count is clicked.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="va">window</span>.<span class="at">addEventListener</span>(<span class="st">&quot;DOMContentLoaded&quot;</span><span class="op">,</span> event <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-3" title="3"></a>
+<a class="sourceLine" id="cb7-4" title="4">  <span class="co">// grab button and span elements by their id</span></a>
+<a class="sourceLine" id="cb7-5" title="5">  <span class="kw">const</span> button <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;increment-count&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-6" title="6">  <span class="kw">const</span> count <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;clicked-count&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-7" title="7">  </a>
+<a class="sourceLine" id="cb7-8" title="8">  <span class="co">// counter variable</span></a>
+<a class="sourceLine" id="cb7-9" title="9">  <span class="kw">let</span> clicks <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-10" title="10">  <span class="va">button</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span> event <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-11" title="11"></a>
+<a class="sourceLine" id="cb7-12" title="12">    <span class="co">// incremenet counter</span></a>
+<a class="sourceLine" id="cb7-13" title="13">    clicks <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-14" title="14">    <span class="va">count</span>.<span class="at">innerHTML</span> <span class="op">=</span> clicks<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-15" title="15">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-16" title="16"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h1 id="section-1">2.</h1>
+Given an HTML page that includes <input type="checkbox" id="on-off">
+<div id="now-you-see-me">
+Now you see me
+</div>
+<p>, write JavaScript that sets the display of div#now-you-see-me to “none” when input#on-off is checked and to “block” when input#on-off is not checked.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="va">window</span>.<span class="at">addEventListener</span>(<span class="st">&quot;DOMContentLoaded&quot;</span><span class="op">,</span> event <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-2" title="2">  <span class="co">// store the elements we need in variables</span></a>
+<a class="sourceLine" id="cb8-3" title="3">  <span class="kw">const</span> checkbox <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;on-off&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-4" title="4">  <span class="kw">const</span> divShowHide <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;now-you-see-me&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-5" title="5"></a>
+<a class="sourceLine" id="cb8-6" title="6">  <span class="co">// add an event listener for the checkbox click</span></a>
+<a class="sourceLine" id="cb8-7" title="7">  <span class="va">checkbox</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span> event <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-8" title="8"></a>
+<a class="sourceLine" id="cb8-9" title="9">    <span class="co">// use the &#39;checked&#39; attribute of checkbox inputs</span></a>
+<a class="sourceLine" id="cb8-10" title="10">    <span class="co">// returns true if checked, false if unchecked</span></a>
+<a class="sourceLine" id="cb8-11" title="11">    <span class="cf">if</span> (<span class="va">checkbox</span>.<span class="at">checked</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-12" title="12"></a>
+<a class="sourceLine" id="cb8-13" title="13">      <span class="co">// if the box is checked, show the div</span></a>
+<a class="sourceLine" id="cb8-14" title="14">      <span class="va">divShowHide</span>.<span class="va">style</span>.<span class="at">display</span> <span class="op">=</span> <span class="st">&quot;block&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb8-15" title="15"></a>
+<a class="sourceLine" id="cb8-16" title="16">      <span class="co">// else hide the div</span></a>
+<a class="sourceLine" id="cb8-17" title="17">    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-18" title="18">      <span class="va">divShowHide</span>.<span class="va">style</span>.<span class="at">display</span> <span class="op">=</span> <span class="st">&quot;none&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb8-19" title="19">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb8-20" title="20">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-21" title="21"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h1 id="section-2">3.</h1>
+<p>Given an HTML file that includes <input id="stopper" type="text" placeholder="Quick! Type STOP">, write JavaScript that will change the background color of the page to cyan five seconds after a page loads unless the field input#stopper contains only the text “STOP”.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="va">window</span>.<span class="at">addEventListener</span>(<span class="st">&quot;DOMContentLoaded&quot;</span><span class="op">,</span> event <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-3" title="3">  <span class="kw">const</span> stopCyanMadness <span class="op">=</span> () <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-4" title="4"></a>
+<a class="sourceLine" id="cb9-5" title="5">    <span class="co">// get the value of the input field</span></a>
+<a class="sourceLine" id="cb9-6" title="6">    <span class="kw">const</span> inputValue <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;stopper&quot;</span>).<span class="at">value</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb9-7" title="7"></a>
+<a class="sourceLine" id="cb9-8" title="8">    <span class="co">// if value is anything other than &#39;STOP&#39;, change background color</span></a>
+<a class="sourceLine" id="cb9-9" title="9">    <span class="cf">if</span> (inputValue <span class="op">!==</span> <span class="st">&quot;STOP&quot;</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-10" title="10">      <span class="va">document</span>.<span class="va">body</span>.<span class="va">style</span>.<span class="at">backgroundColor</span> <span class="op">=</span> <span class="st">&quot;cyan&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb9-11" title="11">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb9-12" title="12">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb9-13" title="13"></a>
+<a class="sourceLine" id="cb9-14" title="14">  <span class="at">setTimeout</span>(stopCyanMadness<span class="op">,</span> <span class="dv">5000</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-15" title="15"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h1 id="section-3">4.</h1>
+<p>Given an HTML page with that includes <input type=”text” id=”fancypants”>, write JavaScript that changes the background color of the textbox to #E8F5E9 when the caret is in the textbox and turns it back to its normal color when focus is elsewhere.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="va">window</span>.<span class="at">addEventListener</span>(<span class="st">&quot;DOMContentLoaded&quot;</span><span class="op">,</span> event <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-3" title="3">  <span class="kw">const</span> input <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;fancypants&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-4" title="4"></a>
+<a class="sourceLine" id="cb10-5" title="5">  <span class="co">// when we click on the input</span></a>
+<a class="sourceLine" id="cb10-6" title="6">  <span class="va">input</span>.<span class="at">addEventListener</span>(<span class="st">&quot;focus&quot;</span><span class="op">,</span> event <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-7" title="7">    <span class="va">event</span>.<span class="va">target</span>.<span class="va">style</span>.<span class="at">backgroundColor</span> <span class="op">=</span> <span class="st">&quot;#E8F5E9&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb10-8" title="8">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-9" title="9"></a>
+<a class="sourceLine" id="cb10-10" title="10">  <span class="co">// when we click away from that input</span></a>
+<a class="sourceLine" id="cb10-11" title="11">  <span class="va">input</span>.<span class="at">addEventListener</span>(<span class="st">&quot;blur&quot;</span><span class="op">,</span> event <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-12" title="12">    <span class="va">event</span>.<span class="va">target</span>.<span class="va">style</span>.<span class="at">backgroundColor</span> <span class="op">=</span> <span class="st">&quot;initial&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb10-13" title="13">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-14" title="14"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h1 id="section-4">5.</h1>
+<p>Given an HTML page that includes a form with two password fields, write JavaScript that subscribes to the forms submission event and cancels it if the values in the two password fields differ.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"></a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="va">window</span>.<span class="at">addEventListener</span>(<span class="st">&quot;DOMContentLoaded&quot;</span><span class="op">,</span> event <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb11-3" title="3">  <span class="co">// get the form element</span></a>
+<a class="sourceLine" id="cb11-4" title="4">  <span class="kw">const</span> form <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;signup-form&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-5" title="5"></a>
+<a class="sourceLine" id="cb11-6" title="6">  <span class="kw">const</span> checkPasswordMatch <span class="op">=</span> event <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb11-7" title="7">    <span class="co">// get the values of the pw field and pw confirm field</span></a>
+<a class="sourceLine" id="cb11-8" title="8">    <span class="kw">const</span> passwordValue <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;password&quot;</span>).<span class="at">value</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb11-9" title="9">    <span class="kw">const</span> passwordConfirmValue <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;confirm-password&quot;</span>)</a>
+<a class="sourceLine" id="cb11-10" title="10">      .<span class="at">value</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb11-11" title="11">    <span class="co">// if the values are not equal, alert the user</span></a>
+<a class="sourceLine" id="cb11-12" title="12">    <span class="co">// otherwise, submit the form</span></a>
+<a class="sourceLine" id="cb11-13" title="13">    <span class="cf">if</span> (passwordValue <span class="op">!==</span> passwordConfirmValue) <span class="op">{</span></a>
+<a class="sourceLine" id="cb11-14" title="14">      <span class="co">// prevent the default submission behavior</span></a>
+<a class="sourceLine" id="cb11-15" title="15">      <span class="va">event</span>.<span class="at">preventDefault</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-16" title="16">      <span class="at">alert</span>(<span class="st">&quot;Passwords must match!&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-17" title="17">    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb11-18" title="18">      <span class="at">alert</span>(<span class="st">&quot;The form was submitted!&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-19" title="19">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb11-20" title="20">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb11-21" title="21">  <span class="co">// listen for submit event and run password check</span></a>
+<a class="sourceLine" id="cb11-22" title="22">  <span class="va">form</span>.<span class="at">addEventListener</span>(<span class="st">&quot;submit&quot;</span><span class="op">,</span> checkPasswordMatch)<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-23" title="23"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h1 id="section-5">6.</h1>
+<p>Given an HTML page that includes a div styled as a square with a red background, write JavaScript that allows a user to drag the square around the screen.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="op">&lt;</span>div id<span class="op">=</span><span class="st">&quot;red-square&quot;</span> draggable<span class="op">=</span><span class="st">&quot;true&quot;</span><span class="op">&gt;</span>&lt;/div<span class="op">&gt;</span></a></code></pre></div>
+<ul>
+<li>dragstart handler: occurs when the user clicks the mouse and starts dragging</li>
+<li>dragenter handler: occurs when element enters drop zone</li>
+<li>dragover handler: occurs when the dragged element is over the drop target</li>
+<li>dragleave handler: occurs when the dragged element leaves the drop target</li>
+<li>drop handler: occurs when the user releases the mouse click and “drops” the element</li>
+</ul>
+<h1 id="section-6">7.</h1>
+<p>Given an HTML page that has 300 DIVs, create one click event subscription that will print the id of the element clicked on to the console.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="va">window</span>.<span class="at">addEventListener</span>(<span class="st">&quot;DOMContentLoaded&quot;</span><span class="op">,</span> event <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb13-2" title="2">  <span class="co">// Add a click event listener on the document’s body</span></a>
+<a class="sourceLine" id="cb13-3" title="3">  <span class="va">document</span>.<span class="va">body</span>.<span class="at">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span> event <span class="kw">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb13-4" title="4">    <span class="co">// console.log the event target’s ID</span></a>
+<a class="sourceLine" id="cb13-5" title="5">    <span class="va">console</span>.<span class="at">log</span>(<span class="va">event</span>.<span class="va">target</span>.<span class="at">id</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb13-6" title="6">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb13-7" title="7"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h1 id="section-7">8.</h1>
+<p>Identify the definition of the bubbling principle.</p>
+<ul>
+<li>when an event happens on an element,</li>
+<li>it first runs the handlers on it,</li>
+<li>then on its parent,</li>
+<li>then all the way up on other ancestors.</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1">  <span class="op">&lt;</span>form onclick<span class="op">=</span><span class="st">&quot;alert(&#39;form&#39;)&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb14-2" title="2">    form</a>
+<a class="sourceLine" id="cb14-3" title="3">    <span class="op">&lt;</span>div id<span class="op">=</span><span class="st">&quot;stopper&quot;</span> onclick<span class="op">=</span><span class="st">&quot;alert(&#39;div&#39;)&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb14-4" title="4">      div</a>
+<a class="sourceLine" id="cb14-5" title="5">      <span class="op">&lt;</span>p onclick<span class="op">=</span><span class="st">&quot;alert(&#39;p&#39;)&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb14-6" title="6">        P</a>
+<a class="sourceLine" id="cb14-7" title="7">      &lt;/p<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb14-8" title="8">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb14-9" title="9">  &lt;/form<span class="op">&gt;</span></a></code></pre></div>
+</body>
+</html>

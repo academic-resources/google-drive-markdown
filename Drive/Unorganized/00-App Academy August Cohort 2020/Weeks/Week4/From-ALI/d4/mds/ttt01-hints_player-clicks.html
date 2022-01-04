@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>ttt01-hints_player-clicks</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<h1 id="hints-2-tracking-grid-clicks">Hints 2: Tracking Grid Clicks</h1>
+<p>To track and store the grid clicks, you can perform the following steps in the JavaScript file:</p>
+<ol type="1">
+<li>Declare a variable named <code>currentPlayerSymbol</code> and set it to “x”.</li>
+<li>Declare a variable named <code>squareValues</code> and initialize it to an array with nine empty string entries.</li>
+<li>Add an event listener to the <code>window</code> object for the <code>DOMContentLoaded</code> event.</li>
+<li>In the event handler for the <code>DOMContentLoaded</code> event, add a click event handler to the tic-tac-toe grid <code>&lt;div&gt;</code>.</li>
+<li>In the click event handler, inspect the target of the event. Ignore the event if its <code>id</code> does not begin with “square-”.</li>
+<li>If the event target’s <code>id</code> attribute does begin with “square-”, then parse the number after “square-” using the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/parseInt"><code>Number.parseInt</code></a> method.</li>
+<li>If the value in the <code>squareValues</code> array for the index of the parsed number is not an empty string, then ignore the event.</li>
+<li>There must not be a play in that square, so:
+<ul>
+<li>Programmatically create an <code>img</code> element, set its source to appropriate value from the requirements by using the value in <code>currentPlayerSymbol</code>, and append the <code>img</code> element to the event target.</li>
+<li>Store the value of <code>currentPlayerSymbol</code> in the corresponding slot in the <code>squareValues</code> array.</li>
+<li>If the <code>currentPlayerSymbol</code> is “x”, then set it to “o”. Otherwise, set <code>currentPlayerSymbol</code> to “x”.</li>
+</ul></li>
+</ol>
+<p><strong>Why do these hints suggest creating an array in which to track the symbols?</strong> In the world of good programming, the <em>state</em> of the application is kept separate from the <em>visualization</em> of the program’s state. What that practically means is that the Tic Tac Toe game really only cares about the “x” values and the “o” values, not the fact that there are fancy SVG images in the UI. For it to figure out the winner or tie, it cares about the <em>data</em> that describes the game board at any given point, not the HTML elements that the players see. If the program knows the state of the board at any given point, then it can make those determinations as well as restoring the game board from that point in the future.</p>
+<p>When you finish, you should have something similar to the following.</p>
+<figure>
+<img src="https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/requirement-2.gif" alt="clickable squares" /><figcaption>clickable squares</figcaption>
+</figure>
+</body>
+</html>

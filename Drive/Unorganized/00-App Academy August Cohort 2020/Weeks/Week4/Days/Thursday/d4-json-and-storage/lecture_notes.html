@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>lecture_notes</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<h1 id="cookies-and-web-storage">COOKIES AND WEB STORAGE</h1>
+<p>Cookie - small file stored on users computer - included with http requests - server sends data to browser, sent back on next req</p>
+<p>What are cookies used for? - used to store stateful info about user - ex: personal info, browser history, form inputs - session cookie for user login/validation - expire at specified time</p>
+<p>Creating Cookies with Javascript - <code>document</code> interface represents web page loaded in browser - cookies stored in browser - thus: can use <code>document</code> to get/set cookies</p>
+<p>Deleting Cookies - set cookie’s expiration date to date in past - can manually delete in chrome dev tools</p>
+<ul>
+<li>TODO: SHOW COOKIE DEMO</li>
+</ul>
+<h1 id="web-storage-api">WEB STORAGE API</h1>
+<p>Web Storage API - available with HTML5 - includes Local Storage and Session Storage</p>
+<p>Session Storage (<code>sessionStorage</code>) - stores data for a session (until browser window/tab is closed) - never transfers data to server - storage limit of 5MB (much bigger than cookie)</p>
+<p>Local Storage (<code>localStorage</code>) - stores data with no expiration date - deleted when clearing the browser cache - has max storage limit in browser When to use Web Storage API? - can store more data than cookies - ideal for storing multiple key-value pairs - data can only be saved as a string - with web storage, data stored on users machine - only accessible client side - cookies can be read both server and client side</p>
+<p>Common Uses for Web Storage - shopping cart - input data on forms - user preferences</p>
+<p>Common Cookie Uses - user’s identification info - users session ID after login</p>
+<ul>
+<li>TODO: SHOW STORAGE DEMO</li>
+</ul>
+<h1 id="javascript-object-notataion-json">JAVASCRIPT OBJECT NOTATAION (JSON)</h1>
+<p>Overview - JSON is just a string - looks a lot like JS syntax - invented by avid JS developer (Douglas Crockford) - commonly used to replace XML - used to be the common format for data sent between computers - XML looks a lot like HTML - not as user friendly as JSON</p>
+<p>Terminology - serialization - turning data into string (or some value like “binary”) so program can send data to other computer - deserialization - take text and turn it into data</p>
+<p>Built in JSON Object - built in methods we can use to manipulate our data - <code>JSON.stringify(value)</code> - turns value passed into it into a string - <code>JSON.parse(str)</code> - turns JSON-formatted string into JS object</p>
+</body>
+</html>

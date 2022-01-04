@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>01_the-browser-object-model</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<h1 id="browsers-theyre-the-bom-dot-com">Browsers: They’re The BOM Dot Com!</h1>
+<p>If the Internet exists, but there’s no way to browse it, does it even really exist? Unless you’ve been living under a rock for the past couple decades, you should know what a browser is, and you probably use it multiple times a day. Browsers are something most people take for granted, but behind the scenes is a complex structure working to display information to users who browse the Web.</p>
+<p>Web developers rely on browsers constantly. They can be your best friend or your worst enemy. (<em>Yes, we’re looking at you, IE!</em>) Spending some time learning about browsers will help you get a higher-level understanding of how the Web operates, how to debug, and how to write code that works across browsers. In this reading, we’ll learn about the BOM (Browser Object Model), how it’s structured, and how it differs from the DOM (Document Object Model).</p>
+<h2 id="the-dom-vs.-the-bom">The DOM vs. the BOM</h2>
+<p>By now, you’ve learned about the <strong>DOM, or Document Object Model</strong>, and that it contains a collection of nodes (HTML elements), that can be accessed and manipulated. In essence, the <code>document</code> object is a Web page, and the DOM represents the object hierarchy of that document.</p>
+<p>How do we access a document on the Web? Through a browser, of course! If we took a bird’s-eye view of the browser, we would see that the document object is part of a <a href="http://itwebtutorials.mga.edu/js/chp1/browser-object-model.aspx">hierarchy of browser objects</a>. This hierarchy is known as the <strong>BOM, or Browser Object Model</strong>.</p>
+<p>The chief browser object is the <code>window</code> object, which contains properties and methods we can use to access different objects within the window. These include:</p>
+<ul>
+<li><code>window.navigator</code>
+<ul>
+<li>Returns a reference to the navigator object.</li>
+</ul></li>
+<li><code>window.screen</code>
+<ul>
+<li>Returns a reference to the screen object associated with the window.</li>
+</ul></li>
+<li><code>window.history</code>
+<ul>
+<li>Returns a reference to the history object.</li>
+</ul></li>
+<li><code>window.location</code>
+<ul>
+<li>Gets/sets the location, or current URL, of the window object.</li>
+</ul></li>
+<li><code>window.document</code>, which can be shortened to just <code>document</code>
+<ul>
+<li>Returns a reference to the document that the window contains.</li>
+</ul></li>
+</ul>
+<p>Note how we can shorten <code>window.document</code> to <code>document.</code> For example, the <code>document</code> in <code>document.getElementById(‘id’)</code> actually refers to <code>window.document</code>. All of the methods above can be shortened in the same way.</p>
+<h2 id="the-browser-diagram">The browser diagram</h2>
+<p>We started in the DOM, and we stepped outside it into the BOM. Now, let’s take an even higher view of the browser itself. Take a look at this diagram depicting a high-level structure of the browser, from <a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/">html5rocks.com</a>:</p>
+<p>
+<img src="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-DOM-API/browser-basics/assets/browser.png" style="width: 100%; height: auto;">
+</p>
+<ul>
+<li><strong>User interface</strong>: This is the browser interface that users interact with, including the address bar, back and forward buttons, bookmarks menu, etc. It includes everything except for the requested page content.</li>
+<li><strong>Browser engine</strong>: Manages the interactions between the UI and the rendering engine.</li>
+<li><strong>Rendering engine</strong>: Displays, or renders, the requested page content. If the requested content is HTML, it will parse HTML and CSS and render the parsed content.</li>
+<li><strong>Networking</strong>: Handles network calls, such as HTTP requests.</li>
+<li><strong>Javascript interpreter</strong>: Parses and executes JavaScript code.</li>
+<li><strong>UI backend</strong>: Used for drawing basic widgets like combo boxes and windows; uses operating system user interface methods.</li>
+<li><strong>Data storage</strong>: The persistence of data stored in the browser, such as cookies.</li>
+</ul>
+<h2 id="what-we-learned">What we learned:</h2>
+<ul>
+<li>Review of the DOM, or Document Object Model</li>
+<li>How the BOM differs from the DOM</li>
+<li>The window object and related methods</li>
+</ul>
+</body>
+</html>

@@ -17,11 +17,11 @@ gain in writing code that comes together.
 One of the ways that you can make this project more enjoyable is to vary the
 way that you pair on it. For each step,
 
-* Discuss what the next feature is that you want to write
-* One person writes a unit test to test the code
-* Both examine the code and determine if there is any duplication to refactor
+- Discuss what the next feature is that you want to write
+- One person writes a unit test to test the code
+- Both examine the code and determine if there is any duplication to refactor
   into common functions or classes
-* Loop, but swap who writes the unit test and who writes the code
+- Loop, but swap who writes the unit test and who writes the code
 
 At the end, you will leverage your test by swapping out the mechanism used to
 generate the HTML. This is the other part of writing good tests: tests give you
@@ -36,10 +36,10 @@ method in such a way to break code that you're not working on.
 
 To get started,
 
-* clone the project from
+- clone the project from
   https://github.com/appacademy-starters/testing-an-existing-app-project
-* change directory into the project
-* run `npm install` to install the modules
+- change directory into the project
+- run `npm install` to install the modules
 
 If you want to run the server, type `node server.js` and go to
 http://localhost:3000/items to see what it does. You can add categories, add

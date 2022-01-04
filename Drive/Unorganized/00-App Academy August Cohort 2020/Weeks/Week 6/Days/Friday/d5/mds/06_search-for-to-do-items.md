@@ -39,7 +39,7 @@ that meet the comparison in the function. The comparison function makes the
 title lower case and checks to see if the term is contained in that string.
 
 ```javascript
-return items.filter(x => {
+return items.filter((x) => {
   const title = x.title.toLowerCase();
   return title.indexOf(term) >= 0;
 });
@@ -53,10 +53,10 @@ Here is an example. Supposed you have the following items in your array.
 
 ```javascript
 [
-  { title: 'Go grocery shopping', category: 'Home' },
-  { title: 'Play with my puppy', category: 'Pet' },
-  { title: 'Shop for a puppy bed', category: 'Pet' },
-]
+  { title: "Go grocery shopping", category: "Home" },
+  { title: "Play with my puppy", category: "Pet" },
+  { title: "Shop for a puppy bed", category: "Pet" },
+];
 ```
 
 Now, say the search term someone entered is "SHOP". This is what happens in the
@@ -102,11 +102,11 @@ break something in their earnest to add new functionality!
 
 Here's what you did:
 
-* You've looked at, read, and understood other people's code
-* You've seen and used a variety of assertions
-* You've seen how to do real (not fake) asynchronous testing using the `done`
+- You've looked at, read, and understood other people's code
+- You've seen and used a variety of assertions
+- You've seen how to do real (not fake) asynchronous testing using the `done`
   method
-* You've invested time in hardening the maintainability of an application
+- You've invested time in hardening the maintainability of an application
 
 Here's a link to a solution.
 https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-JavaScript/testing/projects/testing-an-existing-project-solution.zip

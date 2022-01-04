@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>04_rest-and-spread</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="using-the-spread-operator-and-rest-parameter-syntax">Using the Spread Operator and Rest Parameter Syntax</h1>
+<hr />
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+<ul>
+<li><a href="#accepting-arguments">Accepting arguments</a>
+<ul>
+<li><a href="#functions-with-fewer-arguments-than-specified">Functions with fewer arguments than specified</a></li>
+<li><a href="#more-arguments-than-specified">More arguments than specified</a></li>
+</ul></li>
+<li><a href="#utilizing-rest-parameters">Utilizing Rest Parameters</a></li>
+<li><a href="#utilizing-spread-syntax">Utilizing Spread Syntax</a>
+<ul>
+<li><a href="#spreading-elements">Spreading elements</a></li>
+<li><a href="#spreading-arguments">Spreading arguments</a></li>
+</ul></li>
+<li><a href="#what-you-learned">What you learned</a></li>
+</ul>
+<!-- /code_chunk_output -->
+<hr />
+<p>When writing functions in JavaScript you gain a certain flexibility that other programming languages don’t allow. As we have previously covered, JavaScript functions will happily take fewer arguments than specified, or more arguments than specified. This flexibility can be taken advantage of by using the <em>spread operator</em> and <em>rest parameter</em> syntax.</p>
+<p>When you finish this reading, you should be able to:</p>
+<ol type="1">
+<li>Use rest parameter syntax to accept an arbitrary number of arguments inside a function.</li>
+<li>Use spread operator syntax with both Objects and Arrays.</li>
+</ol>
+<h2 id="accepting-arguments">Accepting arguments</h2>
+<p>Before we jump into talking about using new syntax let’s quickly recap on what we already know about functions.</p>
+<h3 id="functions-with-fewer-arguments-than-specified">Functions with fewer arguments than specified</h3>
+<p>As we’ve previously covered, JavaScript functions can take fewer arguments than expected. If a parameter has been declared when the function itself was defined, then the default value of that parameter is <code>undefined</code>.</p>
+<p>Below is an example of a function with a defined parameter both with and without an argument being passed in:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">function</span> <span class="at">tester</span>(arg) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-2" title="2">  <span class="cf">return</span> arg<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="op">}</span></a>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="va">console</span>.<span class="at">log</span>(<span class="at">tester</span>(<span class="dv">5</span>))<span class="op">;</span> <span class="co">// =&gt; prints: 5</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="va">console</span>.<span class="at">log</span>(<span class="at">tester</span>())<span class="op">;</span> <span class="co">// =&gt; prints: undefined</span></a></code></pre></div>
+<p>Always keep in mind that a function will still run even if it has been passed no arguments at all.</p>
+<h3 id="more-arguments-than-specified">More arguments than specified</h3>
+<p>JavaScript functions will also accept more arguments than were previously defined by parameters.</p>
+<p>Below is an example of a function with extra arguments being passed in:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">function</span> <span class="at">adder</span>(num1<span class="op">,</span> num2) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-2" title="2">  <span class="kw">let</span> sum <span class="op">=</span> num1 <span class="op">+</span> num2<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-3" title="3">  <span class="cf">return</span> sum<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="op">}</span></a>
+<a class="sourceLine" id="cb2-5" title="5"></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="co">// adder will assign the first two parameters to the passed in arguments</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="co">// and ignore the rest</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="va">console</span>.<span class="at">log</span>(<span class="at">adder</span>(<span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span>))<span class="op">;</span> <span class="co">// =&gt; 5</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="va">console</span>.<span class="at">log</span>(<span class="at">adder</span>(<span class="dv">1</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">19</span><span class="op">,</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">13</span>))<span class="op">;</span> <span class="co">// =&gt; 6</span></a></code></pre></div>
+<h2 id="utilizing-rest-parameters">Utilizing Rest Parameters</h2>
+<p>We know that JavaScript functions can take in extra arguments - but how do we access those extra arguments? For the above example of the <code>adder</code> function: how could we add all incoming arguments - even the ones we didn’t define as parameters?</p>
+<p><strong>Rest parameter</strong> syntax allows us to capture all of a function’s incoming arguments into an array. Let’s take a look at the syntax:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="co">// to use the rest parameter you use ... then the name of the array</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="co">// the arguments will be contained within</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="kw">function</span> <span class="at">tester</span>(...<span class="at">restOfArgs</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-4" title="4">  <span class="co">// ...</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="op">}</span></a></code></pre></div>
+<p>In order to use <em>rest parameter</em> syntax a function’s last parameter can be prefixed with <code>...</code> which will then cause all remaining arguments to be placed within an array. Only the <strong>last parameter</strong> can be a <em>rest parameter</em>.</p>
+<p>Here is a simple example using <em>rest parameter</em> syntax to capture all incoming arguments into an array:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">function</span> <span class="at">logArguments</span>(...<span class="at">allArguments</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-2" title="2">  <span class="va">console</span>.<span class="at">log</span>(allArguments)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="op">}</span></a>
+<a class="sourceLine" id="cb4-4" title="4"></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="at">logArguments</span>(<span class="st">&quot;apple&quot;</span><span class="op">,</span> <span class="dv">15</span><span class="op">,</span> <span class="dv">3</span>)<span class="op">;</span> <span class="co">// prints: [&quot;apple&quot;, 15, 3]</span></a></code></pre></div>
+<p>For a more practical example let’s expand on our <code>adder</code> function from before using <em>rest parameter syntax</em>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">function</span> <span class="at">adder</span>(num1<span class="op">,</span> ...<span class="at">otherNums</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-2" title="2">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;The first number is: &quot;</span> <span class="op">+</span> num1)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-3" title="3">  <span class="kw">let</span> sum <span class="op">=</span> num1<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-4" title="4"></a>
+<a class="sourceLine" id="cb5-5" title="5">  <span class="co">// captures all other arguments into an array and adds them to our sum</span></a>
+<a class="sourceLine" id="cb5-6" title="6">  <span class="va">otherNums</span>.<span class="at">forEach</span>(<span class="kw">function</span>(num) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-7" title="7">    sum <span class="op">+=</span> num<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-8" title="8">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-9" title="9"></a>
+<a class="sourceLine" id="cb5-10" title="10">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;The sum is: &quot;</span> <span class="op">+</span> sum)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-11" title="11"><span class="op">}</span></a>
+<a class="sourceLine" id="cb5-12" title="12"></a>
+<a class="sourceLine" id="cb5-13" title="13"><span class="at">adder</span>(<span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-14" title="14"><span class="co">// prints out:</span></a>
+<a class="sourceLine" id="cb5-15" title="15"><span class="co">// The first number is: 2</span></a>
+<a class="sourceLine" id="cb5-16" title="16"><span class="co">// The sum is: 9</span></a></code></pre></div>
+<p>To recap - we can use the <em>rest parameter</em> to capture a function’s incoming arguments into an array.</p>
+<h2 id="utilizing-spread-syntax">Utilizing Spread Syntax</h2>
+<p>Let’s now talk about a very interesting and useful operator in JavaScript. In essence, the <em>spread operator</em> allows you to break down a data type into the elements that make it up.</p>
+<p>The <em>spread operator</em> has two basic behaviors:</p>
+<ol type="1">
+<li>Take a data type (i.e. an array, an object) and <em>spread</em> the values of that type where <strong>elements</strong> are expected</li>
+<li>Take an iterable data type (an array or a string) and <em>spread</em> the elements of that type where <strong>arguments</strong> are expected.</li>
+</ol>
+<h3 id="spreading-elements">Spreading elements</h3>
+<p>The spread operator is very useful for <em>spreading</em> the values of an array or object where comma-separated elements are expected.</p>
+<p><strong>Spread operator</strong> syntax is very similar to rest parameter syntax but they do very different things:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">let</span> numArray <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-2" title="2"></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="co">// here we are taking `numArray` and *spreading* it into a new array where</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="co">// comma separated elements are expected to be</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="kw">let</span> moreNums <span class="op">=</span> [...<span class="at">numArray</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">6</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-6" title="6"></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="op">&gt;</span> moreNums</a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="co">// =&gt; [1, 2, 3, 4, 5, 6]</span></a></code></pre></div>
+<p>In the above example you can see we used the spread operator to <em>spread</em> the values of <code>numArray</code> into a new array. Previously we used the <code>concat</code> method for this purpose, but we can now accomplish the same behavior using the <em>spread operator</em>.</p>
+<p>We can also <em>spread</em> Objects! Using the spread operator you can <em>spread</em> the <code>key</code>-<code>value</code> pairs from one object and into another new object.</p>
+<p>Here is an example:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">let</span> colors <span class="op">=</span> <span class="op">{</span> <span class="dt">red</span><span class="op">:</span> <span class="st">&quot;scarlet&quot;</span><span class="op">,</span> <span class="dt">blue</span><span class="op">:</span> <span class="st">&quot;aquamarine&quot;</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="kw">let</span> newColors <span class="op">=</span> <span class="op">{</span> ...<span class="at">colors</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb7-3" title="3"></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="op">&gt;</span> newColors</a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="co">// { red: &quot;scarlet&quot;, blue: &quot;aquamarine&quot; };</span></a></code></pre></div>
+<p>Just like we previously showed with arrays, we can use this spread behavior to <em>merge</em> objects together:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">let</span> colors <span class="op">=</span> <span class="op">{</span> <span class="dt">red</span><span class="op">:</span> <span class="st">&quot;scarlet&quot;</span><span class="op">,</span> <span class="dt">blue</span><span class="op">:</span> <span class="st">&quot;aquamarine&quot;</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="kw">let</span> colors2 <span class="op">=</span> <span class="op">{</span> <span class="dt">green</span><span class="op">:</span> <span class="st">&quot;forest&quot;</span><span class="op">,</span> <span class="dt">yellow</span><span class="op">:</span> <span class="st">&quot;sunflower&quot;</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb8-3" title="3"></a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="kw">let</span> moreColors <span class="op">=</span> <span class="op">{</span> ...<span class="at">colors</span><span class="op">,</span> ...<span class="at">colors2</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb8-5" title="5"></a>
+<a class="sourceLine" id="cb8-6" title="6"><span class="op">&gt;</span> moreColors</a>
+<a class="sourceLine" id="cb8-7" title="7"><span class="co">// {red: &quot;scarlet&quot;, blue: &quot;aquamarine&quot;, green: &quot;forest&quot;, yellow: &quot;sunflower&quot;}</span></a></code></pre></div>
+<h3 id="spreading-arguments">Spreading arguments</h3>
+<p>The other scenario in which <em>spread</em> proves useful is <em>spreading</em> an iterable data type into the passed in arguments of a function. To clarify, when we say <em>iterable</em> data types we mean arrays and string, <strong>not Objects</strong>.</p>
+<p>Here is a common example of spreading an array into a function’s arguments:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">function</span> <span class="at">speak</span>(verb<span class="op">,</span> noun) <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-2" title="2">  <span class="cf">return</span> <span class="st">&quot;I like to go &quot;</span> <span class="op">+</span> verb <span class="op">+</span> <span class="st">&quot; with &quot;</span> <span class="op">+</span> noun <span class="op">+</span> <span class="st">&quot;.&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="op">}</span></a>
+<a class="sourceLine" id="cb9-4" title="4"></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="kw">const</span> words <span class="op">=</span> [<span class="st">&quot;running&quot;</span><span class="op">,</span> <span class="st">&quot;Jet&quot;</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-6" title="6"></a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="va">console</span>.<span class="at">log</span>(<span class="at">speak</span>(<span class="st">&quot;running&quot;</span><span class="op">,</span> <span class="st">&quot;Jet&quot;</span>))<span class="op">;</span> <span class="co">// =&gt; I like to go running with Jet.</span></a>
+<a class="sourceLine" id="cb9-8" title="8"><span class="va">console</span>.<span class="at">log</span>(<span class="at">speak</span>(...<span class="at">words</span>))<span class="op">;</span> <span class="co">// =&gt; I like to go running with Jet.</span></a></code></pre></div>
+<p>Using <em>spread</em> allowed us to pass in the <code>words</code> array, which was then broken down into the separate parameters of the <code>speak</code> function. The spread operator allows you to pass an array as an argument to a function and the values of that array be will be <em>spread</em> to fill in the separate parameters.</p>
+<h2 id="what-you-learned">What you learned</h2>
+<p><em>Rest parameter</em> syntax may look like <em>spread operator</em> syntax but they are pretty much opposites<sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Rest_syntax_(parameters)">1</a></sup>:</p>
+<ol type="1">
+<li>Spread ‘expands’ a data type into its elements</li>
+<li>Rest collects multiple elements and ‘condenses’ them into a single data type.</li>
+</ol>
+<p>What this reading covered:</p>
+<ul>
+<li>JavaScript functions can accept any number of arguments</li>
+<li>Using rest parameter syntax we can capture the arguments of a JavaScript function in an array</li>
+<li>Using <em>spread operator</em> syntax to spread iterable data types where arguments or values are expected
+<ul>
+<li>Using the spread operator to spread an array and object into their separate elements</li>
+</ul></li>
+</ul>
+</body>
+</html>

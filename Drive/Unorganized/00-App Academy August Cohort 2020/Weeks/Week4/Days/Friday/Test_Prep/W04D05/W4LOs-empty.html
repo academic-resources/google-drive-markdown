@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>W4LOs-empty</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<h1 id="week-4-learning-objectives">Week 4 Learning Objectives</h1>
+<h2 id="browser-basics">Browser Basics</h2>
+<ol type="1">
+<li><p>Explain the difference between the BOM (browser object model) and the DOM(document object model).</p></li>
+<li><p>Given a diagram of all the different parts of the Browser identify each part.</p></li>
+<li><p>Use the Window API to change the innerHeight of a user’s window.</p></li>
+<li><p>Identify the context of an anonymous functions running in the Browser (the window).</p></li>
+<li><p>Given a JS file and an HTML file, use a script tag to import the JS file and execute the code therein when all the elements on the page load (using DOMContentLoaded)</p></li>
+<li><p>Given a JS file and an HTML file, use a script tag to import the JS file and execute the code therein when the page loads</p></li>
+<li><p>Identify three ways to prevent JS code from executing until an entire HTML page is loaded</p></li>
+<li><p>Label a diagram on the Request/Response cycle.</p></li>
+<li><p>Explain the Browser’s main role in the request/response cycle.</p></li>
+<li><p>Given several detractors - identify which real-world situations could be implemented with the Web Storage API</p></li>
+<li><p>Given a website to visit that depends on cookies (like Amazon), students should be able to go to that site add something to their cart and then delete that cookie using the Chrome Developer tools in order to empty their cart.</p></li>
+</ol>
+<h2 id="element-selection">Element Selection</h2>
+<ol type="1">
+<li><p>Given HTML that includes <code>&lt;div id=”catch-me-if-you-can”&gt;HI!&lt;/div&gt;</code>, write a JavaScript statement that stores a reference to the HTMLDivElement with the id “catch-me-if-you-can” in a variable named “divOfInterest”.</p></li>
+<li><p>Given HTML that includes seven SPAN elements each with the class “cloudy”, write a JavaScript statement that stores a reference to a NodeList filled with references to the seven HTMLSpanElements in a variable named “cloudySpans”.</p></li>
+<li><p>Given an HTML file with HTML, HEAD, TITLE, and BODY elements, create and reference a JS file that in which the JavaScript will create and attach to the BODY element an H1 element with the id “sleeping-giant” with the content “Jell-O, Burled!”.</p></li>
+<li><p>Given an HTML file with HTML, HEAD, TITLE, SCRIPT, and BODY elements with the SCRIPT’s SRC attribute referencing an empty JS file, write a script in the JS file to create a DIV element with the id “lickable-frog” and add it as the last child to the BODY element.</p></li>
+<li><p>Given an HTML file with HTML, HEAD, TITLE, SCRIPT, and BODY elements with no SRC attribute on the SCRIPT element, write a script in the SCRIPT block to create a UL element with no id, create an LI element with the id “dreamy-eyes”, add the LI as a child to the UL element, and add the UL element as the first child of the BODY element.</p></li>
+<li><p>Write JavaScript to add the CSS class “i-got-loaded” to the BODY element when the window fires the DOMContentLoaded event.</p></li>
+<li><p>Given an HTML file with a UL element with the id “your-best-friend” that has six non-empty LIs as its children, write JavaScript to write the content of each LI to the console.</p></li>
+<li><p>Given an HTML file with a UL element with the id “your-worst-enemy” that has no children, write JavaScript to construct a string that contains six LI tags each containing a random number and set the inner HTML property of ul#your-worst-enemy to that string.</p></li>
+<li><p>Write JavaScript to update the title of the document to the current time at a reasonable interval such that it looks like a real clock.</p></li>
+</ol>
+<h2 id="event-handling">Event Handling</h2>
+<ol type="1">
+<li><p>Given an HTML page that includes <code>&lt;button id="increment-count"&gt;I have been clicked &lt;span id="clicked-count"&gt;0&lt;/span&gt; times&lt;/button&gt;</code>, write JavaScript that increases the value of the content of span#clicked-count by 1 every time button#increment-count is clicked.</p></li>
+<li><p>Given an HTML page that includes <code>&lt;input type="checkbox" id="on-off"&gt;&lt;div id="now-you-see-me"&gt;Now you see me&lt;/div&gt;</code>, write JavaScript that sets the display of div#now-you-see-me to “none” when input#on-off is checked and to “block” when input#on-off is not checked.</p></li>
+<li><p>Given an HTML file that includes <code>&lt;input id="stopper" type="text" placeholder="Quick! Type STOP"&gt;</code>, write JavaScript that will change the background color of the page to cyan five seconds after a page loads unless the field input#stopper contains only the text “STOP”.</p></li>
+<li><p>Given an HTML page with that includes <code>&lt;input type=”text” id=”fancypants”&gt;</code>, write JavaScript that changes the background color of the textbox to #E8F5E9 when the caret is in the textbox and turns it back to its normal color when focus is elsewhere.</p></li>
+<li><p>Given an HTML page that includes a form with two password fields, write JavaScript that subscribes to the forms submission event and cancels it if the values in the two password fields differ.</p></li>
+<li><p>Given an HTML page that includes a div styled as a square with a red background, write JavaScript that allows a user to drag the square around the screen.</p></li>
+<li><p>Given an HTML page that has 300 DIVs, create one click event subscription that will print the id of the element clicked on to the console.</p></li>
+<li><p>Identify the definition of the bubbling principle.</p></li>
+</ol>
+<h2 id="json">JSON</h2>
+<ol type="1">
+<li><p>Identify and generate valid JSON-formatted strings</p></li>
+<li><p>Use JSON.parse to deserialize JSON-formatted strings</p></li>
+<li><p>Use JSON.stringify to serialize JavaScript objects</p></li>
+<li><p>Correctly identify the definition of “deserialize”</p></li>
+<li><p>Correctly identify the definition of “serialize”</p></li>
+</ol>
+<h2 id="storage">Storage</h2>
+<ol type="1">
+<li><p>Write JavaScript to store the value “I &lt;3 falafel” with the key “eatz” in the browser’s local storage.</p></li>
+<li><p>Write JavaScript to read the value stored in local storage for the key “paper-trail”.</p></li>
+</ol>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>01_the-object-type</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="the-object-type">The Object Type</h1>
+<hr />
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+<ul>
+<li><a href="#the-object-of-my-affections">The object of my affections</a></li>
+<li><a href="#setting-keys-and-values">Setting keys and values</a>
+<ul>
+<li><a href="#keys-without-values">Keys without values</a></li>
+<li><a href="#using-variables-as-keys">Using variables as keys</a></li>
+</ul></li>
+<li><a href="#using-different-notations">Using different notations</a>
+<ul>
+<li><a href="#bracket-notation-vs-dot-notation">Bracket notation vs Dot notation</a></li>
+<li><a href="#putting-it-all-together">Putting it all together</a></li>
+<li><a href="#operator-precedence-revisited">Operator precedence revisited</a></li>
+</ul></li>
+<li><a href="#what-you-learned">What you learned</a></li>
+</ul>
+<!-- /code_chunk_output -->
+<hr />
+<p>Up to this point you’ve interacted with a lot of different data types in JavaScript. Now it’s time to introduce one of the most diverse and widely used data types of all: <strong><code>Objects</code></strong>.</p>
+<p>An object is a data structure that stores other data, similar to how an array stores elements. An object differs in that each <code>value</code> stored in an object is associated with a <code>key</code>. <code>Keys</code> are almost always strings while <code>values</code> can be any data type: numbers, strings, functions, arrays, other objects, anything at all!</p>
+<p>When you finish this reading, you should be able to:</p>
+<ol type="1">
+<li>Create objects using correct syntax with a variety of values.</li>
+<li>Identify that an object is an unordered collection of values.</li>
+<li>Key into an object to receive a single value using both Bracket and Dot notation</li>
+<li>Use Bracket notation to set a variable as a key in a Object.</li>
+<li>Implement a check to see if a key already exists within an Object.</li>
+<li>Understand how object precedence fits in with dot notation for objects.</li>
+</ol>
+<h2 id="the-object-of-my-affections">The object of my affections</h2>
+<p>To reiterate, an object is a data structure that stores other data. In other programming languages similar data structures to the Object type are referred to as ‘dictionaries’, ‘maps’, or ‘associative arrays’. Objects are different from the previous data structures we’ve talked about (i.e. arrays) in two important ways:</p>
+<ol type="1">
+<li><p>Instead of accessing values within an object through an index with numbers, objects are indexed using <code>keys</code>.</p>
+<ul>
+<li>This allows us to access values quickly and efficiently. We’ll be talking a more more about this point later on in the course.</li>
+</ul></li>
+<li><p>Order is <strong>not</strong> guaranteed within an Object. When you iterate through the values in an object, they may not be in the same order as when they were entered.</p></li>
+</ol>
+<p>Objects are defined by using curly braces: <code>{}</code>. See below for an example:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="op">&gt;</span> <span class="kw">let</span> car <span class="op">=</span> <span class="op">{};</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="co">// here is our new empty object!</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="op">&gt;</span> car</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="op">{}</span></a></code></pre></div>
+<p><strong>Fun Fact</strong>: Objects are known by the affectionate industry jargon: Plain Old JavaScript Objects (or POJO for short). Expect to see that short-hand often!</p>
+<h2 id="setting-keys-and-values">Setting keys and values</h2>
+<p>When learning about objects it can be helpful to think about real life objects. For instance think about a car. A real life car can have a color, a number of wheels, a number of seats, a weight, etc. So a real life car has a number of different properties that you wouldn’t list in any particular order, though all those properties define the characteristics of that car.</p>
+<p>Thinking of a car - let’s create a <code>car</code> object to represent that collection of properties. We can create new <code>key</code>-<code>value</code> pairs using bracket notation <code>[]</code> and assignment <code>=</code>. Notice that the key inside the brackets is represented with a string:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="co">// here &quot;color&quot; is the key!</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="op">&gt;</span> car[<span class="st">&quot;color&quot;</span>] <span class="op">=</span> <span class="st">&quot;Blue&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="st">&quot;Blue&quot;</span></a>
+<a class="sourceLine" id="cb2-4" title="4"></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="op">&gt;</span> car[<span class="st">&quot;seats&quot;</span>] <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="dv">2</span></a>
+<a class="sourceLine" id="cb2-7" title="7"></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="co">// accessing our object at the key of color</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="op">&gt;</span> car[<span class="st">&quot;color&quot;</span>]</a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="st">&quot;Blue&quot;</span></a>
+<a class="sourceLine" id="cb2-11" title="11"></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="op">&gt;</span> car[<span class="st">&quot;seats&quot;</span>]</a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="dv">2</span></a>
+<a class="sourceLine" id="cb2-14" title="14"></a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="op">&gt;</span> car</a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Blue&quot;</span><span class="op">,</span> <span class="dt">seats</span><span class="op">:</span> <span class="dv">2</span><span class="op">}</span></a></code></pre></div>
+<p>When we enter <code>car["color"]</code>, we are using <code>"color"</code> as our <code>key</code>. You can think of <code>keys</code> and <code>values</code> in an object just like a lock and key in real life. The <code>"color"</code> key “unlocks” the corresponding value to give us our <code>car</code>’s color, <code>"Blue"</code>!</p>
+<h3 id="keys-without-values">Keys without values</h3>
+<p>What happens if we try to access a key that we have not yet assigned within an object?</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="op">&gt;</span> car</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Blue&quot;</span><span class="op">,</span> <span class="dt">seats</span><span class="op">:</span> <span class="dv">2</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="op">&gt;</span> car[<span class="st">&quot;weight&quot;</span>]</a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="kw">undefined</span></a></code></pre></div>
+<p><strong>If we try to access a key that is not inside an object we get <code>undefined</code></strong>. This falls right into place with our understanding of where <code>undefined</code> shows up in JavaScript. It’s the common default value of a lot of things. The <code>undefined</code> type is the default for unassigned variables, functions without a <code>return</code>, out-of-array elements, and non-existent object values.</p>
+<p>Using this knowledge, we can check if a key exists in an object:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="op">&gt;</span> car</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Blue&quot;</span><span class="op">,</span> <span class="dt">seats</span><span class="op">:</span> <span class="dv">2</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb4-3" title="3"></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="op">&gt;</span> car[<span class="st">&quot;color&quot;</span>]</a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="st">&quot;Blue&quot;</span></a>
+<a class="sourceLine" id="cb4-6" title="6"></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="op">&gt;</span> car[<span class="st">&quot;color&quot;</span>] <span class="op">===</span> <span class="kw">undefined</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="kw">false</span></a>
+<a class="sourceLine" id="cb4-9" title="9"></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="op">&gt;</span> car[<span class="st">&quot;weight&quot;</span>] <span class="op">===</span> <span class="kw">undefined</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="kw">true</span></a></code></pre></div>
+<p>While this is a common pattern, in modern JS the preferred method to check if an object exists in a key is to use the <code>in</code> operator:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="op">&gt;</span> car</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Blue&quot;</span><span class="op">,</span> <span class="dt">seats</span><span class="op">:</span> <span class="dv">2</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb5-3" title="3"></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="op">&gt;</span> <span class="st">&quot;color&quot;</span> <span class="kw">in</span> car<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="kw">true</span></a>
+<a class="sourceLine" id="cb5-6" title="6"></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="op">&gt;</span> <span class="st">&quot;model&quot;</span> <span class="kw">in</span> car<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="kw">false</span></a></code></pre></div>
+<h3 id="using-variables-as-keys">Using variables as keys</h3>
+<p>So we’ve talked about assigning string keys within Objects. Additionally, we know how to create variables that have strings as values. Sooo… you might be thinking: what happens if we assign a variable with a string value as a <code>key</code> within an <code>Object</code>? Glad you asked! Let’s look at an example below for setting keys within <code>Objects</code> using <code>variables</code>.</p>
+<p>Let’s keep playing with the <code>car</code> we made previously:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="op">&gt;</span> car</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Blue&quot;</span><span class="op">,</span> <span class="dt">seats</span><span class="op">:</span> <span class="dv">2</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb6-3" title="3"></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="op">&gt;</span> <span class="kw">let</span> newVariable <span class="op">=</span> <span class="st">&quot;color&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb6-6" title="6"></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="op">&gt;</span> newVariable</a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="st">&quot;color&quot;</span></a>
+<a class="sourceLine" id="cb6-9" title="9"></a>
+<a class="sourceLine" id="cb6-10" title="10"><span class="op">&gt;</span> car[newVariable]</a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="st">&quot;Blue&quot;</span></a>
+<a class="sourceLine" id="cb6-12" title="12"></a>
+<a class="sourceLine" id="cb6-13" title="13"><span class="op">&gt;</span> car[<span class="st">&quot;color&quot;</span>]</a>
+<a class="sourceLine" id="cb6-14" title="14"><span class="st">&quot;Blue&quot;</span></a></code></pre></div>
+<p>Aha! Of course we can use a variable as our key! A variable <em>always</em> evaluates to the value we assigned it. So <code>car[newVariable]</code> and <code>car["color"]</code> are equivalent! Why is this useful? We know that variables can change; so now the keys we use for objects can change!</p>
+<p>Let’s take a look at what happens when we change the variable above:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="op">&gt;</span> car</a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Blue&quot;</span><span class="op">,</span> <span class="dt">seats</span><span class="op">:</span> <span class="dv">2</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb7-3" title="3"></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="op">&gt;</span> newVariable</a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="st">&quot;color&quot;</span></a>
+<a class="sourceLine" id="cb7-6" title="6"></a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="op">&gt;</span> newVariable <span class="op">=</span> <span class="st">&quot;weight&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb7-8" title="8"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb7-9" title="9"></a>
+<a class="sourceLine" id="cb7-10" title="10"><span class="op">&gt;</span> car[newVariable]</a>
+<a class="sourceLine" id="cb7-11" title="11"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb7-12" title="12"></a>
+<a class="sourceLine" id="cb7-13" title="13"><span class="co">// car doesn&#39;t change because we didn&#39;t *assign* the new variable key in our object</span></a>
+<a class="sourceLine" id="cb7-14" title="14"><span class="op">&gt;</span> car</a>
+<a class="sourceLine" id="cb7-15" title="15"><span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Blue&quot;</span><span class="op">,</span> <span class="dt">seats</span><span class="op">:</span> <span class="dv">2</span><span class="op">}</span></a></code></pre></div>
+<p>We can now use our newly assigned variable to set a <em>new key</em> in our object:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="op">&gt;</span> car</a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Blue&quot;</span><span class="op">,</span> <span class="dt">seats</span><span class="op">:</span> <span class="dv">2</span><span class="op">}</span></a>
+<a class="sourceLine" id="cb8-4" title="4"></a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="op">&gt;</span> newVariable</a>
+<a class="sourceLine" id="cb8-6" title="6"><span class="st">&quot;weight&quot;</span></a>
+<a class="sourceLine" id="cb8-7" title="7"></a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="co">// assigning a key value pair using a variable!</span></a>
+<a class="sourceLine" id="cb8-9" title="9"><span class="op">&gt;</span> car[newVariable] <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb8-10" title="10"><span class="dv">1000</span></a>
+<a class="sourceLine" id="cb8-11" title="11"></a>
+<a class="sourceLine" id="cb8-12" title="12"><span class="op">&gt;</span> car</a>
+<a class="sourceLine" id="cb8-13" title="13"><span class="op">{</span><span class="dt">color</span><span class="op">:</span> <span class="st">&quot;Blue&quot;</span><span class="op">,</span> <span class="dt">seats</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">weight</span><span class="op">:</span> <span class="dv">1000</span><span class="op">}</span></a></code></pre></div>
+<h2 id="using-different-notations">Using different notations</h2>
+<p>So far we’ve shown how to access and set values in objects using <code>object[key]</code> - also known as <em>Bracket Notation</em>. However, this is only one of two ways to access values within an object. The second way we can access values within an object is called <em>Dot Notation</em>. We can use <code>.</code> to assign and access our key-value pairs. The easiest to notice difference is when we use <em>dot notation</em>, we don’t need to use string quotes as the key:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="op">&gt;</span> <span class="kw">let</span> dog <span class="op">=</span> <span class="op">{};</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb9-3" title="3"></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="op">&gt;</span> <span class="va">dog</span>.<span class="at">bark</span> <span class="op">=</span> <span class="st">&quot;Bowowowo&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="st">&quot;Bowowowowo&quot;</span></a>
+<a class="sourceLine" id="cb9-6" title="6"></a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="op">&gt;</span> <span class="va">dog</span>.<span class="at">bark</span></a>
+<a class="sourceLine" id="cb9-8" title="8"><span class="st">&quot;Bowowowo&quot;</span></a>
+<a class="sourceLine" id="cb9-9" title="9"></a>
+<a class="sourceLine" id="cb9-10" title="10"><span class="op">&gt;</span> dog</a>
+<a class="sourceLine" id="cb9-11" title="11"><span class="op">{</span> <span class="dt">bark</span><span class="op">:</span> <span class="st">&quot;Bowowowowo&quot;</span> <span class="op">}</span></a></code></pre></div>
+<h3 id="bracket-notation-vs-dot-notation">Bracket notation vs Dot notation</h3>
+<p>Now that we know two ways to access values of an object, you are probably asking yourself: which one should you use? Here is a quick list of pros for each.</p>
+<p><strong>Dot notation:</strong></p>
+<ul>
+<li>easier to read</li>
+<li>easier to write because we don’t have to deal with using quotation marks</li>
+<li><strong>cannot</strong> use variables as keys</li>
+<li>keys can’t contain numbers as their first character (<code>object.1key</code> doesn’t work!)</li>
+</ul>
+<p><strong>Bracket notation Pros:</strong></p>
+<ul>
+<li>you can use variables (assigned to string values) as keys!</li>
+<li>It is okay to use variables and Strings that start with numbers as keys (use <code>object['1key']</code> does work, while <code>object.1key</code> does not)</li>
+</ul>
+<p>There are tradeoffs and advantages for either notation, so practice using both! You will learn quickly that there are <strong>a ton</strong> of different ways to write the same thing in JavaScript. Having both of these options available to you will allow you to use different tools to solve different problems.</p>
+<p>One of the most fun parts of being a programmer is the ability to come up with different solutions to the same problem. So you should have both types of notation in your tool-belt to be a versatile programmer!</p>
+<p>Let’s look at the difference:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">let</span> myDog <span class="op">=</span> <span class="op">{};</span></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="va">myDog</span>.<span class="at">name</span> <span class="op">=</span> <span class="st">&quot;Fido&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb10-3" title="3"></a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="co">// let&#39;s use a variable as our key and some bracket notation:</span></a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="kw">let</span> myKey <span class="op">=</span> <span class="st">&quot;name&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb10-6" title="6"><span class="va">console</span>.<span class="at">log</span>(myDog)<span class="op">;</span> <span class="co">// prints `{name: &quot;Fido&quot;}`</span></a>
+<a class="sourceLine" id="cb10-7" title="7"><span class="va">console</span>.<span class="at">log</span>(myDog[myKey])<span class="op">;</span> <span class="co">// prints `Fido`</span></a>
+<a class="sourceLine" id="cb10-8" title="8"></a>
+<a class="sourceLine" id="cb10-9" title="9"><span class="co">// what if we try to use the variable in dot notation:</span></a>
+<a class="sourceLine" id="cb10-10" title="10"><span class="co">// the below is interpreted as myDog[&#39;myKey&#39;]</span></a>
+<a class="sourceLine" id="cb10-11" title="11"><span class="va">console</span>.<span class="at">log</span>(<span class="va">myDog</span>.<span class="at">myKey</span>)<span class="op">;</span> <span class="co">// prints: undefined</span></a></code></pre></div>
+<p>When we use dot notation to write <code>myDog.myKey</code>, <code>myKey</code> will <strong>not be interpreted by JavaScript as a variable</strong>. The text we write after the <code>.</code> will be used as the <strong>literal</strong> key. Remember that if we try to use a key that does not exist in an object, we get back the default value of <code>undefined</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="co">// continued from above</span></a>
+<a class="sourceLine" id="cb11-2" title="2"></a>
+<a class="sourceLine" id="cb11-3" title="3"><span class="va">console</span>.<span class="at">log</span>(<span class="va">myDog</span>.<span class="at">myKey</span>)<span class="op">;</span> <span class="co">// prints `undefined`</span></a>
+<a class="sourceLine" id="cb11-4" title="4"><span class="va">myDog</span>.<span class="at">myKey</span> <span class="op">=</span> <span class="st">&quot;???&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb11-5" title="5"><span class="va">console</span>.<span class="at">log</span>(myDog)<span class="op">;</span> <span class="co">// prints `{name: &quot;Fido&quot;, myKey: &quot;???&quot;}`</span></a>
+<a class="sourceLine" id="cb11-6" title="6"><span class="va">console</span>.<span class="at">log</span>(<span class="va">myDog</span>.<span class="at">myKey</span>)<span class="op">;</span> <span class="co">// prints `???`</span></a>
+<a class="sourceLine" id="cb11-7" title="7"><span class="co">// mind === &quot;blown&quot;</span></a></code></pre></div>
+<h3 id="putting-it-all-together">Putting it all together</h3>
+<p>We can also create an entire object in a single statement:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">let</span> myDog <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb12-2" title="2">  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Fido&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-3" title="3">  <span class="dt">type</span><span class="op">:</span> <span class="st">&quot;Doge&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-4" title="4">  <span class="dt">age</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb12-5" title="5">  <span class="dt">favoriteToys</span><span class="op">:</span> [<span class="st">&quot;bone&quot;</span><span class="op">,</span> <span class="st">&quot;ball&quot;</span>]</a>
+<a class="sourceLine" id="cb12-6" title="6"><span class="op">};</span></a>
+<a class="sourceLine" id="cb12-7" title="7"></a>
+<a class="sourceLine" id="cb12-8" title="8"><span class="va">console</span>.<span class="at">log</span>(<span class="va">myDog</span>.<span class="at">age</span>)<span class="op">;</span> <span class="co">// prints 2</span></a>
+<a class="sourceLine" id="cb12-9" title="9"><span class="va">console</span>.<span class="at">log</span>(myDog[<span class="st">&quot;favoriteToys&quot;</span>])<span class="op">;</span> <span class="co">// prints [&quot;bone&quot;, &quot;ball&quot;]</span></a></code></pre></div>
+<h3 id="operator-precedence-revisited">Operator precedence revisited</h3>
+<p>Just like with math and logical operators, the concepts of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence">operator precedence</a> also pertain to objects. Associativity determines the order of operation, along with precedence. There are two types of associativity: right-associativity and left-associativity.</p>
+<p><strong>Right-associativity</strong> is when code is evaluated right-to-left. Let’s take a closer look at what is happening in the line of code below:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1">a <span class="op">=</span> b <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></a></code></pre></div>
+<ol type="1">
+<li>Variable <code>b</code> is assigned as <code>1</code>.</li>
+<li>Variable <code>a</code> is assigned as <code>b = 1</code>.</li>
+<li><code>b = 1</code> returns the value <code>1</code>, so variable <code>a</code> is now assigned as <code>1</code>.</li>
+</ol>
+<p>The assignment of variables takes lowest precedence, which is why we evaluate the return value of <code>b = 1</code> before completing the assignment of variable <code>a</code>.</p>
+<p>The example below is <strong>left-associativity</strong> is when code is evaluated left-to-right. It evaluates the <code>document.getElementById</code> method before accessing <code>value</code>.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">let</span> id <span class="op">=</span> <span class="st">&quot;header&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="kw">let</span> element <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(id).<span class="at">value</span><span class="op">;</span></a></code></pre></div>
+<ol type="1">
+<li>We resolve the <code>document</code> variable to be the <em>document object</em>.</li>
+<li>We use dot notation to retrieve the <code>getElementById</code> function. (The function is a property of the <em>document object</em>).</li>
+<li>We attempt to call it, but before the call can proceed we must first evaluate the function’s arguments.</li>
+<li>We resolve the <code>id</code> variable to be the string <code>"header"</code>.</li>
+<li>The <code>getELementById</code> function returns an <em>HTMLElement object</em> and then uses dot notation to access <code>value</code>.</li>
+<li>Finally we do assignment which is the LOWEST precedence (that’s why assignment happens last). Its associativity is right to left, so we take the value on the right and assign it to the left.</li>
+</ol>
+<p>Now let’s dive into the example below. Resolving the variables to their values happens before the operators.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb15-1" title="1"><span class="at">add</span>(number1<span class="op">,</span> number2) <span class="op">+</span> number3<span class="op">;</span></a></code></pre></div>
+<ol type="1">
+<li><code>number3</code> is resolved to its value.</li>
+<li>The function is invoked, but its variables need to be resolved.</li>
+<li><code>number1</code> and <code>number2</code> are resolved to their values.</li>
+<li>The function is invoked so <code>number1</code>, <code>number2</code>, and <code>number3</code> are finally added together!</li>
+</ol>
+<h2 id="what-you-learned">What you learned</h2>
+<p>In this reading we covered:</p>
+<ul>
+<li>Objects are un-ordered data structures consisting of key and value pairs.</li>
+<li>Object <code>keys</code> are strings, but their <code>values</code> can be anything (arrays, numbers, strings, functions, etc.)</li>
+<li>Setting key and value pairs using both Bracket and Dot notation
+<ul>
+<li>Using Bracket notation to set variables as <code>keys</code> in Objects</li>
+</ul></li>
+<li>The default value when accessing a key <strong>not</strong> in an object is <code>undefined</code>
+<ul>
+<li>How to check if a key is already within an object using the <code>object[key] === undefined</code> pattern</li>
+</ul></li>
+</ul>
+</body>
+</html>

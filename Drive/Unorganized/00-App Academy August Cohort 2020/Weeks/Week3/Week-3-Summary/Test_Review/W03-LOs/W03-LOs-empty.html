@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>W03-LOs-empty</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<h1 id="intermediate-javascript-and-the-command-line-week-3---learning-objectives">Intermediate JavaScript and the Command Line (Week 3) - Learning Objectives</h1>
+<h2 id="assessment-structure">Assessment Structure</h2>
+<ul>
+<li>2 hours 19 minutes (very specific!)</li>
+<li>Mixture multiple choice (25-30), free response (4-6), coding in an online REPL (1-2), and coding problems completed in VSCode and uploaded (8-10).
+<ul>
+<li>Coding problems will have specs to run (<code>mocha</code>) and check your work against</li>
+</ul></li>
+<li>Standard assesment procedures
+<ul>
+<li>You will be in an individual breakout room</li>
+<li>Use a single monitor and share your screen</li>
+<li>Only have open those resources needed to complete the assessment:
+<ul>
+<li>Zoom</li>
+<li>VSCode</li>
+<li>Browser with AAO and Progress Tracker (to ask questions)</li>
+<li>Approved Resources for this assessment:
+<ul>
+<li>Node.js Documentation: https://nodejs.org/en/docs/</li>
+<li>Git Documentation: https://git-scm.com/docs</li>
+<li>MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="asynchronous-javascript-w3d1---learning-objectives">Asynchronous JavaScript (W3D1) - Learning Objectives</h2>
+<h3 id="asynchronous-js">Asynchronous JS</h3>
+<ol type="1">
+<li>Identify JavaScript as a language that utilizes an event loop model</li>
+<li>Identify JavaScript as a single threaded language</li>
+<li>Describe the difference between asynchronous and synchronous code</li>
+<li>Execute the asynchronous function setTimeout with a callback.</li>
+<li>Given the function “function asyncy(cb) { setTimeout(cb, 1000); console.log(”async“) }” and the function “function callback() { console.log(”callback“); }”, predict the output of “asyncy(callback);”</li>
+<li>Use setInterval to have a function execute 10 times with a 1 second period. After the 10th cycle, clear the interval.</li>
+<li>Write a program that accepts user input using Node’s readline module</li>
+</ol>
+<h2 id="node.js-and-git-w3d2---learning-objectives">Node.js and Git (W3D2) - Learning Objectives</h2>
+<h3 id="node.js">Node.js</h3>
+<ol type="1">
+<li>Define NodeJS as distinct from browser based JavaScript runtimes.</li>
+<li>Write a program that reads in a dictionary file using node’s FS API and reads a line of text from the terminal input. The program should ‘spell check’ by putting asterisks around every word that is NOT found in the dictionary.</li>
+</ol>
+<h3 id="git">Git</h3>
+<ol type="1">
+<li>Use Git to initialize a repo</li>
+<li>Explain the difference between Git and GitHub</li>
+<li>Given ‘adding to staging’, ‘committing’, and ‘pushing to remote’, match attributes that apply to each.</li>
+<li>Use Git to clone an existing repo from GitHub</li>
+<li>Use Git to push a local commit to a remote branch</li>
+<li>Use git to make a branch, push it to github, and make a pull request on GitHub to merge it to master</li>
+<li>Given a git merge conflict, resolve it</li>
+<li>Match the three types of git reset with appropriate descriptions of the operation.</li>
+<li>Use Git reset to rollback local-only commits.</li>
+<li>Identify what the git rebase command does</li>
+<li>Use git diff to compare a local ‘staging’ branch and ‘master’ branch.</li>
+<li>Use git checkout to check out a specific commit by commit id</li>
+</ol>
+<h2 id="command-line-interface-w3d3---learning-objectives">Command Line Interface (W3D3) - Learning Objectives</h2>
+<h3 id="command-line-interface-cli-basics">Command Line Interface (CLI) Basics</h3>
+<ol type="1">
+<li>Given a folder structure diagram, a list of <code>cd (path)</code> commands and target files, match the paths to the target files.</li>
+<li>Create, rename, and move folders using unix command line tools.</li>
+<li>Use <code>grep</code> and <code>|</code> to count matches of a pattern in a sample text file and save result to another file.</li>
+<li>Find what <code>-c</code>, <code>-r</code>, and <code>-b</code> flags do in <code>grep</code> by reading the manual.</li>
+<li>Identify the difference in two different files using <code>diff</code>.</li>
+<li>Open and close nano with and without saving a file.</li>
+<li>Use <code>curl</code> to download a file.</li>
+<li>Read the variables of <code>$PATH</code>.</li>
+<li>Explain the difference between <code>.bash_profile</code> and <code>.bashrc</code>.</li>
+<li>Create a new alias by editing the <code>.bash_profile</code>.</li>
+<li>Given a list of common scenarios, identify when it is appropriate and safe to use <code>sudo</code>, and when it is a dangerous mistake.</li>
+<li>Write a shell script that greets a user by their <code>$USER</code> name using <code>echo</code>.</li>
+<li>Use <code>chmod</code> to make a shell script executable.</li>
+</ol>
+<h2 id="recursion-w3d4---learning-objectives">Recursion (W3D4) - Learning Objectives</h2>
+<h3 id="recursion">Recursion</h3>
+<ol type="1">
+<li>Given a recursive function, identify what is the base case and the recursive case.</li>
+<li>Explain when a recursive solution is appropriate to solving a problem over an iterative solution.</li>
+<li>Write a recursive function that takes in a number, n, argument and calculates the n-th number of the Fibonacci sequence.</li>
+<li>Write a function that calculates a factorial recursively.</li>
+<li>Write a function that calculates an exponent (positive and negative) recursively.</li>
+<li>Write a function that sums all elements of an array recursively.</li>
+<li>Write a function that flattens an arbitrarily nested array into one dimension.</li>
+<li>Given a buggy recursive function that causes a RangeError: Maximum call stack and examples of correct behavior, debug the function.</li>
+</ol>
+<h2 id="javascript-trivia-w3d5---learning-objectives">JavaScript Trivia (W3D5) - Learning Objectives</h2>
+<h3 id="javascript-trivia-aka-important-javascript-things-not-in-one-nice-category">JavaScript Trivia, aka Important JavaScript Things Not in One Nice Category</h3>
+<ol type="1">
+<li>Given a code snippet of an unassigned variable, predict its value.</li>
+<li>Explain why functions are “First Class Objects” in JavaScript</li>
+<li>Define what IIFEs are and explain their use case</li>
+<li>(Whiteboarding) Implement a closure</li>
+<li>Identify JavaScript’s falsey values</li>
+<li>Interpolate a string using back-ticks</li>
+<li>Identify that object keys are strings or symbols</li>
+<li>A primitive type is data that is not an object and therefore cannot have methods(functions that belong to them).</li>
+<li>Given a code snippet where variable and function hoisting occurs, identify the return value of a function.</li>
+</ol>
+</body>
+</html>

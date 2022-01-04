@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>05_destructuring</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="destructuring">Destructuring</h1>
+<hr />
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+<ul>
+<li><a href="#destructuring-data-into-variables">Destructuring data into variables</a>
+<ul>
+<li><a href="#swapping-variables-using-destructuring">Swapping variables using destructuring</a></li>
+<li><a href="#destructuring-objects-into-variables">Destructuring objects into variables</a></li>
+<li><a href="#destructuring-and-the-rest-pattern">Destructuring and the rest pattern</a></li>
+</ul></li>
+<li><a href="#destructuring-parameters">Destructuring parameters</a></li>
+<li><a href="#what-you-learned">What you learned</a></li>
+</ul>
+<!-- /code_chunk_output -->
+<hr />
+<p>Up to this point we’ve learned how to collect related values and elements and store them in lovely data structures. Now it’s time to tear those data structures down to the ground! Just kidding. In this reading we will be talking about the concept of <strong>destructuring</strong> an array or object in order to more easily access their individual elements.</p>
+<p>When you finish this reading, you should be able to:</p>
+<ol type="1">
+<li>Destructure an array to reference specific elements</li>
+<li>Destructure an object to reference specific values</li>
+<li>Destructure incoming parameters into a function</li>
+</ol>
+<h2 id="destructuring-data-into-variables">Destructuring data into variables</h2>
+<p>The <em>destructuring assignment</em> syntax allows you to extract parts of an array or object into distinct variables.</p>
+<p>Let’s see an example:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">let</span> numArray <span class="op">=</span> [<span class="dv">10</span><span class="op">,</span> <span class="dv">20</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">// here we are &quot;unpacking&quot; the array values into two separate variables</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">let</span> [firstEl<span class="op">,</span> secondEl] <span class="op">=</span> numArray<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-5" title="5"></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="va">console</span>.<span class="at">log</span>(firstEl)<span class="op">;</span> <span class="co">//=&gt; 10</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="va">console</span>.<span class="at">log</span>(secondEl)<span class="op">;</span> <span class="co">//=&gt; 20</span></a></code></pre></div>
+<p>As with normal variable assignment you put the name of the variable you are assigning on the left, and the values you are assigning on the right. The above code assigns <code>firstEl</code> to the value in the first position in <code>numArray</code>, and <code>secondEl</code> to the second position in <code>numArray</code>.</p>
+<p>We can alternatively declare our variables before destructuring as well:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">let</span> animalArray <span class="op">=</span> [<span class="st">&quot;tiger&quot;</span><span class="op">,</span> <span class="st">&quot;hippo&quot;</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="kw">let</span> animal1<span class="op">,</span> animal2<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-4" title="4"></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="co">// here we are &quot;unpacking&quot; the array values into two separate variables</span></a>
+<a class="sourceLine" id="cb2-6" title="6">[animal1<span class="op">,</span> animal2] <span class="op">=</span> animalArray<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-7" title="7"></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="va">console</span>.<span class="at">log</span>(animal1)<span class="op">;</span> <span class="co">//=&gt; &quot;tiger&quot;</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="va">console</span>.<span class="at">log</span>(animal2)<span class="op">;</span> <span class="co">//=&gt; &quot;hippo&quot;</span></a></code></pre></div>
+<h3 id="swapping-variables-using-destructuring">Swapping variables using destructuring</h3>
+<p>One of the really cool things you can do with destructuring is swapping the values of two variables:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">let</span> num1 <span class="op">=</span> <span class="dv">17</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">let</span> num2 <span class="op">=</span> <span class="dv">3</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co">// this syntax will swap the values of the two variables</span></a>
+<a class="sourceLine" id="cb3-5" title="5">[num1<span class="op">,</span> num2] <span class="op">=</span> [num2<span class="op">,</span> num1]<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-6" title="6"></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="va">console</span>.<span class="at">log</span>(num1)<span class="op">;</span> <span class="co">// 3</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="va">console</span>.<span class="at">log</span>(num2)<span class="op">;</span> <span class="co">// 17</span></a></code></pre></div>
+<p>Neat, right? This little syntactic trick can save you a few lines of code.</p>
+<h3 id="destructuring-objects-into-variables">Destructuring objects into variables</h3>
+<p>As you’ve previously read - objects can contain a lot of varied information including arrays, functions, and other objects. One of the most useful applications for destructuring is the ability to take apart and assign little slices of large objects to variables.</p>
+<p>Let’s take a look at the basic syntax for destructuring objects when the extracted variables have the same name as their associated keys:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">let</span> obj <span class="op">=</span> <span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Apples&quot;</span><span class="op">,</span> <span class="dt">breed</span><span class="op">:</span> [<span class="st">&quot;tabby&quot;</span><span class="op">,</span> <span class="st">&quot;short hair&quot;</span>] <span class="op">};</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw">let</span> <span class="op">{</span> name<span class="op">,</span> breed <span class="op">}</span> <span class="op">=</span> obj<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-3" title="3"></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="va">console</span>.<span class="at">log</span>(name)<span class="op">;</span> <span class="co">// &quot;Apples&quot;</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="va">console</span>.<span class="at">log</span>(breed)<span class="op">;</span> <span class="co">// [&quot;tabby&quot;, &quot;short hair&quot;]</span></a></code></pre></div>
+<p>Now this syntax works by matching object <code>properties</code>, so we can choose exactly which keys we want. If we only wanted to save certain properties, we could do something like this:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">let</span> <span class="op">{</span> a<span class="op">,</span> c <span class="op">}</span> <span class="op">=</span> <span class="op">{</span> <span class="dt">a</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">b</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="dv">3</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb5-2" title="2">a<span class="op">;</span> <span class="co">//=&gt; 1</span></a>
+<a class="sourceLine" id="cb5-3" title="3">c<span class="op">;</span> <span class="co">//=&gt; 3</span></a></code></pre></div>
+<p>Now in all the previous examples we previously examined our variable names shared the same name as our object’s keys. Let’s take a quick look at the syntax we would need to use if the variable we are creating <em>does not</em> have the same name as our object’s keys. This is referred to as <em>aliased</em> object destructuring:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">let</span> obj <span class="op">=</span> <span class="op">{</span> <span class="dt">apple</span><span class="op">:</span> <span class="st">&quot;red&quot;</span><span class="op">,</span> <span class="dt">banana</span><span class="op">:</span> <span class="st">&quot;yellow&quot;</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="kw">let</span> <span class="op">{</span> <span class="dt">apple</span><span class="op">:</span> newApple<span class="op">,</span> <span class="dt">banana</span><span class="op">:</span> newBanana <span class="op">}</span> <span class="op">=</span> obj<span class="op">;</span></a>
+<a class="sourceLine" id="cb6-3" title="3"></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="va">console</span>.<span class="at">log</span>(newApple)<span class="op">;</span> <span class="co">// &quot;red&quot;</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="va">console</span>.<span class="at">log</span>(newBanana)<span class="op">;</span> <span class="co">// &quot;yellow&quot;</span></a></code></pre></div>
+<p>Object deconstructing really becomes useful as you start working with larger and nested objects. Let’s take a look at destructuring with nested objects. In the below example our goal is to capture the value of the <code>species</code> key into a variable named <code>species</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">let</span> object <span class="op">=</span> <span class="op">{</span> <span class="dt">animal</span><span class="op">:</span> <span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Fiona&quot;</span><span class="op">,</span> <span class="dt">species</span><span class="op">:</span> <span class="st">&quot;Hippo&quot;</span> <span class="op">}</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb7-2" title="2"></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="co">// here we are specifying that within the animal object we want to assign the</span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="co">// *species* variable to the value held by the *species* key</span></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="kw">let</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-6" title="6">  <span class="dt">animal</span><span class="op">:</span> <span class="op">{</span> species <span class="op">}</span></a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="op">}</span> <span class="op">=</span> object<span class="op">;</span></a>
+<a class="sourceLine" id="cb7-8" title="8"></a>
+<a class="sourceLine" id="cb7-9" title="9"><span class="va">console</span>.<span class="at">log</span>(species)<span class="op">;</span> <span class="co">// =&gt; &#39;Hippo&#39;</span></a></code></pre></div>
+<p>Take a look at the example below to see how object destructuring can make your code more readable in more complex situations. For this example we are trying to get the <code>fname</code> value into a variable:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">let</span> user <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-2" title="2">  <span class="dt">userId</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb8-3" title="3">  <span class="dt">favoriteAnimal</span><span class="op">:</span> <span class="st">&quot;hippo&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb8-4" title="4">  <span class="dt">fullName</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-5" title="5">    <span class="dt">fname</span><span class="op">:</span> <span class="st">&quot;Rose&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb8-6" title="6">    <span class="dt">lname</span><span class="op">:</span> <span class="st">&quot;K&quot;</span></a>
+<a class="sourceLine" id="cb8-7" title="7">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="op">};</span></a>
+<a class="sourceLine" id="cb8-9" title="9"></a>
+<a class="sourceLine" id="cb8-10" title="10"><span class="co">// accessing values *with* destructuring</span></a>
+<a class="sourceLine" id="cb8-11" title="11"><span class="kw">let</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb8-12" title="12">  userId<span class="op">,</span></a>
+<a class="sourceLine" id="cb8-13" title="13">  <span class="dt">fullName</span><span class="op">:</span> <span class="op">{</span> fname<span class="op">,</span> lname <span class="op">}</span></a>
+<a class="sourceLine" id="cb8-14" title="14"><span class="op">}</span> <span class="op">=</span> user<span class="op">;</span></a>
+<a class="sourceLine" id="cb8-15" title="15"></a>
+<a class="sourceLine" id="cb8-16" title="16"><span class="va">console</span>.<span class="at">log</span>(userId<span class="op">,</span> fname<span class="op">,</span> lname)<span class="op">;</span> <span class="co">// prints out:</span></a>
+<a class="sourceLine" id="cb8-17" title="17"><span class="co">// 1 &quot;Rose&quot; &quot;K&quot;</span></a></code></pre></div>
+<p>Destructuring allowed us to assign multiple variables to multiple values in our <code>user</code> object all in one line of code!</p>
+<p>The whole point of destructuring is to make writing code easier to write and read. However, destructuring can become harder to read with super nested objects. A good rule of thumb to keep clarity in your code is to only destructure values from objects that are two levels deep.</p>
+<p>Let’s look at a quick example:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" title="1"><span class="co">// the fname key is nested more than two levels deep</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="co">// (within bootcamp.instructor.fullName)</span></a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="kw">let</span> bootcamp <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-4" title="4">  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;App Academy&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb9-5" title="5">  <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;red&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb9-6" title="6">  <span class="dt">instructor</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-7" title="7">    <span class="dt">fullName</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-8" title="8">      <span class="dt">fname</span><span class="op">:</span> <span class="st">&quot;Rose&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb9-9" title="9">      <span class="dt">lname</span><span class="op">:</span> <span class="st">&quot;K&quot;</span></a>
+<a class="sourceLine" id="cb9-10" title="10">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb9-11" title="11">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb9-12" title="12"><span class="op">};</span></a>
+<a class="sourceLine" id="cb9-13" title="13"></a>
+<a class="sourceLine" id="cb9-14" title="14"><span class="co">// this is hard to follow:</span></a>
+<a class="sourceLine" id="cb9-15" title="15"><span class="kw">let</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-16" title="16">  <span class="dt">instructor</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb9-17" title="17">    <span class="dt">fullName</span><span class="op">:</span> <span class="op">{</span> fname<span class="op">,</span> lname <span class="op">}</span></a>
+<a class="sourceLine" id="cb9-18" title="18">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb9-19" title="19"><span class="op">}</span> <span class="op">=</span> bootcamp<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-20" title="20"><span class="va">console</span>.<span class="at">log</span>(fname<span class="op">,</span> lname)<span class="op">;</span></a>
+<a class="sourceLine" id="cb9-21" title="21"></a>
+<a class="sourceLine" id="cb9-22" title="22"><span class="co">// this is much easier to read:</span></a>
+<a class="sourceLine" id="cb9-23" title="23"><span class="kw">let</span> <span class="op">{</span> fname<span class="op">,</span> lname <span class="op">}</span> <span class="op">=</span> <span class="va">bootcamp</span>.<span class="va">instructor</span>.<span class="at">fullName</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb9-24" title="24"><span class="va">console</span>.<span class="at">log</span>(fname<span class="op">,</span> lname)<span class="op">;</span></a></code></pre></div>
+<h3 id="destructuring-and-the-rest-pattern">Destructuring and the rest pattern</h3>
+<p>Earlier you saw how the rest parameter syntax allows us to prefix a function’s last parameter with <code>...</code> to capture all remaining arguments into an array:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">function</span> <span class="at">logArguments</span>(firstArgument<span class="op">,</span> ...<span class="at">restOfArguments</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb10-2" title="2">  <span class="va">console</span>.<span class="at">log</span>(firstArgument)<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-3" title="3">  <span class="va">console</span>.<span class="at">log</span>(restOfArguments)<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="op">}</span></a>
+<a class="sourceLine" id="cb10-5" title="5"></a>
+<a class="sourceLine" id="cb10-6" title="6"><span class="at">logArguments</span>(<span class="st">&quot;apple&quot;</span><span class="op">,</span> <span class="dv">15</span><span class="op">,</span> <span class="dv">3</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb10-7" title="7"><span class="co">// prints out:</span></a>
+<a class="sourceLine" id="cb10-8" title="8"><span class="co">// &quot;apple&quot;</span></a>
+<a class="sourceLine" id="cb10-9" title="9"><span class="co">// [15, 3]</span></a></code></pre></div>
+<p>This coding pattern of saying “give me the <em>rest</em> of” can also be used when destructuring an array by prefixing the last variable with <code>...</code>. In this example, the <code>otherFoods</code> variable is prefixed with <code>...</code> to initialize the variable to an array containing the remaining array elements that weren’t explicitly destructured:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">let</span> foods <span class="op">=</span> [<span class="st">&quot;pizza&quot;</span><span class="op">,</span> <span class="st">&quot;ramen&quot;</span><span class="op">,</span> <span class="st">&quot;sushi&quot;</span><span class="op">,</span> <span class="st">&quot;kale&quot;</span><span class="op">,</span> <span class="st">&quot;tacos&quot;</span>]<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-2" title="2"></a>
+<a class="sourceLine" id="cb11-3" title="3"><span class="kw">let</span> [firstFood<span class="op">,</span> secondFood<span class="op">,</span> ...<span class="at">otherFoods</span>] <span class="op">=</span> foods<span class="op">;</span></a>
+<a class="sourceLine" id="cb11-4" title="4"><span class="va">console</span>.<span class="at">log</span>(firstFood)<span class="op">;</span> <span class="co">// =&gt; &quot;pizza&quot;</span></a>
+<a class="sourceLine" id="cb11-5" title="5"><span class="va">console</span>.<span class="at">log</span>(secondFood)<span class="op">;</span> <span class="co">// =&gt; &quot;ramen&quot;</span></a>
+<a class="sourceLine" id="cb11-6" title="6"><span class="va">console</span>.<span class="at">log</span>(otherFoods)<span class="op">;</span> <span class="co">// =&gt; [&quot;sushi&quot;, &quot;kale&quot;, &quot;tacos&quot;]</span></a></code></pre></div>
+<p>At the time of this writing, the rest pattern is only officially supported by JavaScript when destructuring arrays, though an <a href="https://github.com/tc39/proposal-object-rest-spread">ECMAScript proposal</a> adds support when destructuring objects. Recent versions of Chrome and Firefox support this proposed addition to the JavaScript language.</p>
+<p>Similar to when using the rest pattern with array destructuring, the last variable <code>obj</code> is prefixed with <code>...</code> to initialize it to an object containing the remaining own enumerable property keys (and their values) that weren’t explicitly destructured:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">let</span> <span class="op">{</span> a<span class="op">,</span> c<span class="op">,</span> ...<span class="at">obj</span> <span class="op">}</span> <span class="op">=</span> <span class="op">{</span> <span class="dt">a</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">b</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">c</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">d</span><span class="op">:</span> <span class="dv">4</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="va">console</span>.<span class="at">log</span>(a)<span class="op">;</span> <span class="co">// =&gt; 1</span></a>
+<a class="sourceLine" id="cb12-3" title="3"><span class="va">console</span>.<span class="at">log</span>(c)<span class="op">;</span> <span class="co">// =&gt; 3</span></a>
+<a class="sourceLine" id="cb12-4" title="4"><span class="va">console</span>.<span class="at">log</span>(obj)<span class="op">;</span> <span class="co">// =&gt; { b: 2, d: 4 }</span></a></code></pre></div>
+<h2 id="destructuring-parameters">Destructuring parameters</h2>
+<p>So far we’ve talked about destructuring things into variables - but the other main use for destructuring is destructuring <strong>incoming parameters</strong> into a function. This gets to be really useful when we’re passing objects around to different functions. Each function can the be responsible for pulling the parameters it needs from an incoming object - making it that much easier to work with.</p>
+<p>Let’s look at a simple example of destructuring an object in a function’s parameters:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">let</span> cat <span class="op">=</span> <span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Rupert&quot;</span><span class="op">,</span> <span class="dt">owner</span><span class="op">:</span> <span class="st">&quot;Curtis&quot;</span><span class="op">,</span> <span class="dt">weight</span><span class="op">:</span> <span class="dv">10</span> <span class="op">};</span></a>
+<a class="sourceLine" id="cb13-2" title="2"></a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="co">// This unpacks the *owner* key out of any incoming object argument and</span></a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="co">// assigns it to a owner parameter(variable)</span></a>
+<a class="sourceLine" id="cb13-5" title="5"><span class="kw">function</span> <span class="at">ownerName</span>(<span class="op">{</span> owner <span class="op">}</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb13-6" title="6">  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;This cat is owned by &quot;</span> <span class="op">+</span> owner)<span class="op">;</span></a>
+<a class="sourceLine" id="cb13-7" title="7"><span class="op">}</span></a>
+<a class="sourceLine" id="cb13-8" title="8"></a>
+<a class="sourceLine" id="cb13-9" title="9"><span class="at">ownerName</span>(cat)<span class="op">;</span></a></code></pre></div>
+<p>In the above example we destructured any incoming arguments to the <code>ownerName</code> function to assign the value at the key <code>owner</code> to the parameter name of <code>owner</code>. This syntax might seem a little much just for getting one parameter but this syntax can become <em>invaluable</em> with nested objects.</p>
+<p>Let’s look at one more slightly more complex example to see the power of destructuring parameters. In the below example we want to find and return an array of the toys that belong to all cats:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">let</span> bigCat <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb14-2" title="2">  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Jet&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb14-3" title="3">  <span class="dt">owner</span><span class="op">:</span> <span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Rose&quot;</span> <span class="op">},</span></a>
+<a class="sourceLine" id="cb14-4" title="4">  <span class="dt">toys</span><span class="op">:</span> [<span class="st">&quot;ribbon&quot;</span>]<span class="op">,</span></a>
+<a class="sourceLine" id="cb14-5" title="5">  <span class="dt">siblings</span><span class="op">:</span> <span class="op">{</span> <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Freyja&quot;</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;orange&quot;</span><span class="op">,</span> <span class="dt">toys</span><span class="op">:</span> [<span class="st">&quot;mouse&quot;</span><span class="op">,</span> <span class="st">&quot;string&quot;</span>] <span class="op">}</span></a>
+<a class="sourceLine" id="cb14-6" title="6"><span class="op">};</span></a>
+<a class="sourceLine" id="cb14-7" title="7"></a>
+<a class="sourceLine" id="cb14-8" title="8"><span class="co">// here we use *aliased* object destructuring to create a siblingToys variable</span></a>
+<a class="sourceLine" id="cb14-9" title="9"><span class="kw">function</span> <span class="at">toyFinder</span>(<span class="op">{</span> toys<span class="op">,</span> <span class="dt">siblings</span><span class="op">:</span> <span class="op">{</span> <span class="dt">toys</span><span class="op">:</span> siblingToys <span class="op">}</span> <span class="op">}</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb14-10" title="10">  <span class="kw">let</span> allToys <span class="op">=</span> <span class="va">toys</span>.<span class="at">concat</span>(siblingToys)<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-11" title="11">  <span class="cf">return</span> allToys<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-12" title="12"><span class="op">}</span></a>
+<a class="sourceLine" id="cb14-13" title="13"></a>
+<a class="sourceLine" id="cb14-14" title="14"><span class="va">console</span>.<span class="at">log</span>(<span class="at">toyFinder</span>(bigCat))<span class="op">;</span> <span class="co">// =&gt; [&quot;ribbon&quot;, &quot;mouse&quot;, &quot;string&quot;]</span></a></code></pre></div>
+<p>One thing we’d like to draw your attention to is the parameters of the <code>toyFinder</code> function. As you are all aware, we can’t declare the same variable twice - so in the above <code>toyFinder</code> we ran into a situation where two objects had the same key name: <code>toy</code>. We solved this using <em>aliased</em> object destructuring - we alias the <code>toys</code> key within the <code>siblings</code> object as <code>siblingToys</code>.</p>
+<p>Thanks to object destructuring in parameters, all we had to do when we invoked <code>toyFinder</code> was pass in the whole object! Making our code easier to write and our object easier to work with.</p>
+<h2 id="what-you-learned">What you learned</h2>
+<p>What this reading covered:</p>
+<ul>
+<li>How to destructure an array to reference specific elements</li>
+<li>How to destructure an object to reference specific elements</li>
+<li>How to destructure incoming parameters into a function</li>
+</ul>
+</body>
+</html>

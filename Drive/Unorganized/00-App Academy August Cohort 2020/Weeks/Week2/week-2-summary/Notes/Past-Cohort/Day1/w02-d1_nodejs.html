@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>w02-d1_nodejs</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="week-02-day-1-nodejs" data-ignore="true">WEEK-02 DAY-1<br><em>Nodejs</em></h1>
+<hr />
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=2 orderedList=false} -->
+<!-- code_chunk_output -->
+<ul>
+<li><a href="#running-js-locally-lesson-learning-objectives">Running JS Locally Lesson Learning Objectives</a>
+<ul>
+<li><a href="#terminal-basics">Terminal Basics</a></li>
+<li><a href="#file-tree">File tree</a></li>
+</ul></li>
+<li><a href="#basic-terminal-navigation">Basic terminal navigation</a>
+<ul>
+<li><a href="#navigation-of-the-unix-file-system">Navigation of the Unix file system</a></li>
+<li><a href="#what-you-learned">What you learned</a></li>
+</ul></li>
+<li><a href="#setup-installations-on-windows-10">Setup &amp; Installations on Windows 10</a>
+<ul>
+<li><a href="#windows-subsytem-for-linux-wsl-and-ubuntu">Windows Subsytem for Linux (WSL) and Ubuntu</a></li>
+<li><a href="#git">Git</a></li>
+<li><a href="#google-chrome">Google Chrome</a></li>
+<li><a href="#nodejs">Node.js</a></li>
+<li><a href="#unzip">Unzip</a></li>
+<li><a href="#mochajs">Mocha.js</a></li>
+<li><a href="#python-3">Python 3</a></li>
+<li><a href="#note-about-wsl"><em>Note about WSL</em></a></li>
+<li><a href="#now-you-have-everything-installed">Now, you have everything installed!</a></li>
+</ul></li>
+<li><a href="#setup-installations-on-macos-catalina-or-mojave">Setup &amp; Installations on macOS Catalina or Mojave</a>
+<ul>
+<li><a href="#preparing-your-machine">Preparing your machine</a></li>
+<li><a href="#what-you-learned-1">What you learned</a></li>
+<li><a href="#running-javascript-code">Running JavaScript Code</a></li>
+<li><a href="#node-repl-vs-javascript-file">Node REPL vs. JavaScript File</a></li>
+<li><a href="#what-you-learned-2">What you learned</a></li>
+</ul></li>
+<li><a href="#running-javascript-locally">Running JavaScript Locally</a>
+<ul>
+<li><a href="#phase-1-creating-files-and-folders">Phase 1: Creating files and folders</a></li>
+<li><a href="#phase-2-using-node-to-run-javascript-files">Phase 2: Using Node to run JavaScript files</a></li>
+<li><a href="#phase-3-running-tests-using-mocha">Phase 3: Running tests using Mocha</a></li>
+</ul></li>
+</ul>
+<!-- /code_chunk_output -->
+<hr />
+<hr />
+<h1 id="running-js-locally-lesson-learning-objectives">Running JS Locally Lesson Learning Objectives</h1>
+<p>Below is a complete list of the terminal learning objectives for this lesson. When you complete this lesson, you should be able to perform each of the following objectives. These objectives capture how you may be evaluated on the assessment for this lesson.</p>
+<ol type="1">
+<li>Match the commands ls, cd, pwd to their descriptions</li>
+<li>Given a folder structure diagram, a list of ‘cd (path)’ commands and target files, match the paths to the target files.</li>
+<li>Use VSCode to create a folder. Within the folder create a .js file containing <code>console.log('hello new world');</code> and save it.</li>
+<li><p>Use node to execute a JavaScript file in the termina terminal learning objectives for this lesson. When you complete this lesson, you should be able to perform each of the following objectives. These objectives capture how you may be evaluated on the assessment for this lesson.</p></li>
+<li>Match the commands ls, cd, pwd to their descriptions</li>
+<li>Given a folder structure diagram, a list of ‘cd (path)’ commands and target files, match the paths to the target files.</li>
+<li>Use VSCode to create a folder. Within the folder create a .js file containing <code>console.log('hello new world');</code> and save it.</li>
+<li><p>Use node to execute a JavaScript file in the terminal ________________________________________________________________________________ ## Terminal Basics</p></li>
+</ol>
+<p>Part of the journey of growing into a skilled programmer is about becoming proficient with the tools we have at our disposal. The terminal is a text-based system that allows you, as a user, to control your computer and do everything from creating new files and folders to starting up entire applications.</p>
+<p>Interacting with the terminal is something you will most likely do everyday in your coding career. You may find the terminal initially intimidating to use - all commands must be entered as text and the terminal has its own language. However, once we get over this initial learning curve, you’ll discover the terminal is your most powerful tool!</p>
+<p>Let’s start with the basics. There are a few differences between this tool on Mac and Windows environments; we’ll be sure to highlight these differences as we go. On Mac and Linux we use the <strong>Terminal</strong>, while on Windows we use the <strong>Command Prompt</strong>. Both applications are analogous and you can launch them normally by searching your apps.</p>
+<p>When you finish this reading, you should be able to:</p>
+<ul>
+<li>Start a terminal session on your local computer</li>
+<li>Utilize the commands <code>ls</code>, <code>cd</code>, and <code>pwd</code> to navigate a computer’s file systems.</li>
+<li>Navigate through a file tree to access specific directories</li>
+</ul>
+<h2 id="file-tree">File tree</h2>
+<p>As you start writing code on your local computer you’ll find it soon becomes essential to have the ability to navigate around your file system. Before we start exploring the syntax of how to navigate your file system - we’ll introduce you to the basics of how your files are structured.</p>
+<p>Below is a basic visualization of what a file tree might look like <sub><a href="https://info474-s17.github.io/book/introduction-to-the-command-line.html">1</a></sub> :</p>
+<figure>
+<img src="images/directory_structure.png" alt="file-directory" /><figcaption>file-directory</figcaption>
+</figure>
+<h3 id="essential-terminology">Essential terminology</h3>
+<p>To explain the above picture properly we first need to go over some important terminology that we’ll be using for the rest of the course.</p>
+<ul>
+<li><strong>directory</strong> - same as a folder on your computer; a directory can contain many files or subdirectories (folders within themselves)</li>
+<li><strong>root</strong> - the outer most main directory of our computer represented by <code>/</code></li>
+<li><strong>path</strong> - location on your computer specified by directories. <code>/Desktop/photos/cats.pdf</code> is an example of a path.</li>
+</ul>
+<p>Now take a look again at the visualization above and things will make a little more sense. The <strong>root</strong> directory sits at the top of the chart as the outer main directory. All other <strong>directories</strong> can be accessed from root by following a <strong>path</strong> (the dotted lines in the chart above). All directories can contain both files and subdirectories.</p>
+<p>Two more important words to know are:</p>
+<ul>
+<li><strong>CLI</strong> - (short for Command Line Interface) is the text-based user interface used to view and manage computer files. (<em>Terminal</em> for Mac &amp; Linux vs. <em>Command Prompt</em> for Windows).</li>
+<li><strong>GUI</strong> - (Graphic User Interface) is the visual alternative of the CLI. The GUI is probably what you’ve been using to navigate your computer so far (with icons representing folders and files).</li>
+</ul>
+<p>The CLI, Command Line Interface, predates the graphic interface you are familiar with. Many coding specific programs can <em>only</em> be run from the command line (like <code>Node</code>!). Working with your own computer will really help these ideas sink in, and once your have fluency with commands in the CLI you’ll find it much faster to do essential tasks. Plus, matrix ninja w00t.</p>
+<h1 id="basic-terminal-navigation">Basic terminal navigation</h1>
+<p><strong>NOTE:</strong> <code>Unix</code> is a term we will be using a lot in the future. It refers to the parent operating system upon which Mac is built upon and Linux is inspired by. They have (nearly) identical commands and features and both use the Terminal. Windows is not Unix based and the commands are slightly different. For the rest of the course we will only support Unix/Linux and we will not give any additional Windows specific commands.</p>
+<h2 id="navigation-of-the-unix-file-system">Navigation of the Unix file system</h2>
+<p>Let’s get started! Search your computer for an Application named “Terminal”. Upon opening the application a new Terminal window will greet you with:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">~</span> $</a></code></pre></div>
+<h3 id="navigation-commands">Navigation commands</h3>
+<p>We’ll start by covering some basic commands that you will find yourself using all the time:</p>
+<ul>
+<li><code>ls</code> - lists all the files and subdirectories in the current directory</li>
+<li><code>cd [path]</code> - changes the current directory to the directory specified by the <code>path</code> argument. (i.e. <code>cd /cats</code> would enter a directory named “cats”).</li>
+<li><code>pwd</code> - short for “Print Working Directory”. The <code>pwd</code> command lists the path to your current location in your file system starting from the <em>root</em>.</li>
+</ul>
+<blockquote>
+<p>When opening a fresh terminal window the default directory opened will be the <em>home</em> directory. Your home directory will be represented by a <code>~</code>. So for example, if your computer user’s name was <code>janedoe</code> then a fresh terminal would open to <code>~</code> and using the <code>pwd</code> command would print out your current location as <code>/Users/janedoe/</code>.</p>
+</blockquote>
+<p>To navigate through directories in the command line, we need to specify which directories to go through. Let’s say we are in the home directory for our user, (<code>~</code>), and want to navigate into a directory we have on our Desktop (for example <code>photos</code>). We need to first go into the <code>Desktop</code> directory, and then go into <code>photos</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">~</span> $ <span class="fu">ls</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="ex">Applications</span>    Desktop</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="ex">Documents</span>       Downloads</a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="ex">Library</span>         Movies</a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="ex">Music</span>           Pictures</a>
+<a class="sourceLine" id="cb2-6" title="6"></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="ex">~</span> $ <span class="bu">cd</span> Desktop</a>
+<a class="sourceLine" id="cb2-8" title="8"></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="ex">~</span> <span class="ex">Desktop</span> $ ls</a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="ex">photos</span>          lectures</a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="ex">memes</span>           projects</a>
+<a class="sourceLine" id="cb2-12" title="12"></a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="ex">~</span> <span class="ex">Desktop</span> $ cd photos</a>
+<a class="sourceLine" id="cb2-14" title="14"></a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="ex">~</span> <span class="ex">photos</span> $ ls</a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="ex">cats.jpeg</span>       hey_programmers.gif</a></code></pre></div>
+<p>Notice, after we navigate to a new folder using <code>cd</code>, the current path before the <code>$</code> changed to reflect where we currently are in our <em>file system</em>. Test changing directories in your Terminal.</p>
+<p>You can also navigate into and through multiple directories at once by specifying a path of a directory and its subdirectory:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">~</span> $ <span class="fu">ls</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="ex">Applications</span>    Desktop</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="ex">Documents</span>       Downloads</a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="ex">Library</span>         Movies</a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="ex">Music</span>           Pictures</a>
+<a class="sourceLine" id="cb3-6" title="6"></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="ex">~</span> $ <span class="bu">cd</span> Desktop/photos</a>
+<a class="sourceLine" id="cb3-8" title="8"></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="ex">~</span> <span class="ex">photos</span> $ ls</a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="ex">cats.jpeg</span>       hey_programmers.gif</a></code></pre></div>
+<p>If you ever need a reminder on where you are in your file system you can use the <code>pwd</code> command. Let’s take a look at at how to use <code>pwd</code> continuing from our above example:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">~</span> <span class="ex">photos</span> $ ls</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="ex">cats.jpeg</span>       hey_programmers.gif</a>
+<a class="sourceLine" id="cb4-3" title="3"></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="ex">~</span> <span class="ex">photos</span> $ pwd</a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="ex">/Users/rose/Desktop/photos</span></a></code></pre></div>
+<h3 id="directory-shortcuts">Directory Shortcuts</h3>
+<p>Use the command <code>cd ..</code> to go back to the previous directory. If we are in the <code>photos</code> directory on our <code>Desktop</code>, and want to go back to the <code>Desktop</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">~</span> <span class="ex">photos</span> $ cd ..</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="ex">~</span> <span class="ex">Desktop</span> $</a></code></pre></div>
+<p>Use the command <code>cd</code> (by itself) to go back to your home directory instantly:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="ex">~</span> <span class="ex">photos</span> $ cd</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="ex">~</span> $</a></code></pre></div>
+<p>Those are the basics of navigating around the terminal! We’ll trickle in more commands as we move forward, but you’ll use <code>ls</code>, <code>pwd</code> and <code>cd</code> the most.</p>
+<h2 id="what-you-learned">What you learned</h2>
+<ul>
+<li>How to start a new terminal session</li>
+<li>How to navigate your file system using <code>cd</code>, <code>ls</code>, and <code>pwd</code></li>
+<li>How to navigate through a file tree to access specific directories</li>
+</ul>
+<hr />
+<h1 id="setup-installations-on-windows-10">Setup &amp; Installations on Windows 10</h1>
+<p>This reading is only applicable to Windows users. If you’re on macOS, please use the instructions in <strong>Setup &amp; Installations (macOS)</strong>.</p>
+<h2 id="windows-subsytem-for-linux-wsl-and-ubuntu">Windows Subsytem for Linux (WSL) and Ubuntu</h2>
+<p>Test if you have Ubuntu installed by typing “Ubuntu” in the search box in the bottom app bar that reads “Type here to search”. If you see a search result that reads “Ubuntu” with “App” under it, then you have it installed. Otherwise, follow these instructions to install the WSL and Ubuntu.</p>
+<ol type="1">
+<li>In the application search box in the bottom bar, type “PowerShell” to find the application named “Windows PowerShell”</li>
+<li>Right-click on “Windows PowerShell” and choose “Run as administrator” from the popup menu</li>
+<li>In the blue PowerShell window, type the following: <code>Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux</code></li>
+<li>Restart your computer</li>
+<li>In the application search box in the bottom bar, type “Store” to find the application named “Microsoft Store”</li>
+<li>Click “Microsoft Store”</li>
+<li>Click the “Search” button in the upper-right corner of the window</li>
+<li>Type in “Ubuntu”</li>
+<li>Click “Run Linux on Windows (Get the apps)”</li>
+<li>Click the orange tile labeled “Ubuntu”</li>
+<li>Click “Install”</li>
+<li>After it downloads, click “Launch”</li>
+<li>If you get the option, pin the application to the task bar. Otherwise, right-click on the orange Ubuntu icon in the task bar and choose “Pin to taskbar”</li>
+<li>Wait for it to install the local files</li>
+<li>When prompted to “Enter new UNIX username”, type your first name with no spaces</li>
+<li>When prompted, enter and retype a password for this UNIX user (it can be the same as your Windows password)</li>
+<li>Confirm your installation by typing the command <code>whoami</code> followed by Enter at the prompt (it should print your first name)</li>
+<li>You need to update your packages, so type <code>sudo apt update</code> (if prompted for your password, enter it)</li>
+<li>You need to upgrade your packages, so type <code>sudo apt upgrade</code> (if prompted for your password, enter it)</li>
+</ol>
+<h2 id="git">Git</h2>
+<p>Git comes with Ubuntu, so there’s nothing to install. However, you should configure it using the following instructions.</p>
+<ol type="1">
+<li>Open an Ubuntu terminal if you don’t have one open already.</li>
+<li>You need to configure Git, so type <code>git config --global user.name "Your Name"</code> with replacing “Your Name” with your real name.</li>
+<li>You need to configure Git, so type <code>git config --global user.email your@email.com</code> with replacing “your@email.com” with your real email.</li>
+</ol>
+<h2 id="google-chrome">Google Chrome</h2>
+<p>Test if you have Chrome installed by typing “Chrome” in the search box in the bottom app bar that reads “Type here to search”. If you see a search result that reads “Chrome” with “App” under it, then you have it installed. Otherwise, follow these instructions to install Google Chrome.</p>
+<ol type="1">
+<li>Open Microsoft Edge, the blue “e” in the task bar, and type in http://chrome.google.com. Click the “Download Chrome” button. Click the “Accept and Install” button after reading the terms of service. Click “Save” in the “What do you want to do with ChromeSetup.exe” dialog at the bottom of the window. When you have the option to “Run” it, do so. Answer the questions as you’d like. Set it as the default browser.</li>
+<li>Right-click on the Chrome icon in the task bar and choose “Pin to taskbar”</li>
+</ol>
+<h2 id="node.js">Node.js</h2>
+<p>Test if you have Node.js installed by opening an Ubuntu terminal and typing <code>node --version</code>. If it reports “Command ‘node’ not found”, then you need to follow these directions.</p>
+<ol type="1">
+<li>In the Ubuntu terminal, type <code>sudo apt update</code> and press Enter</li>
+<li>In the Ubuntu terminal, type <code>sudo apt install build-essential</code> and press Enter</li>
+<li>In the Ubuntu terminal, type <code>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash</code> and press Enter</li>
+<li>In the Ubuntu terminal, type <code>. ./.bashrc</code> and press Enter</li>
+<li>In the Ubuntu terminal, type <code>nvm install --lts</code> and press Enter</li>
+<li>Confirm that <strong>node</strong> is installed by typing <code>node --version</code> and seeing it print something that is not “Command not found”!</li>
+</ol>
+<h2 id="unzip">Unzip</h2>
+<p>For your projects you will often have to download a zip file and unzip it. It is easier to do this from the command line. So we need to install a linux unzip utility.</p>
+<p>In the Ubuntu terminal type: <code>sudo apt install unzip</code> and press Enter</p>
+<h2 id="mocha.js">Mocha.js</h2>
+<p>Test if you have Mocha.js installed by opening an Ubuntu terminal and typing <code>which mocha</code>. If it prints a path, then you’re good. Otherwise, if it prints nothing, install Mocha.js by typing <code>npm install -g mocha</code>.</p>
+<h2 id="python-3">Python 3</h2>
+<p>Ubuntu does not come with Python 3. Install it using the command <code>sudo apt install python3</code>. Test it by typing <code>python3 --version</code> and seeing it print a number.</p>
+<h2 id="note-about-wsl"><em>Note about WSL</em></h2>
+<p>As of the time of writing of this document, WSL has an issue renaming or deleting files if Visual Studio Code is open. So before doing any linux commands which manipulate files, make sure you <strong>close</strong> Visual Studio Code before running those commands in the Ubuntu terminal.</p>
+<h2 id="now-you-have-everything-installed">Now, you have everything installed!</h2>
+<hr />
+<h1 id="setup-installations-on-macos-catalina-or-mojave">Setup &amp; Installations on macOS Catalina or Mojave</h1>
+<p>Being a developer isn’t just about hacking away into the wee hours of the morning or debugging a new feature. All craftspeople must have mastery of their tools to be successful in their trade, and programmers are no different. For a developer the most important tools are our CLI, text editor, web browser, compiler, package manager, and Node environment for running JavaScript. Mastery of these tools will be invaluable for the entire duration of our careers.</p>
+<p>This reading will cover the installation of the basic tools you’ll need to run code on your computer.</p>
+<p>When you finish this reading, you should have:</p>
+<ul>
+<li>Installed Visual Studio Code (VS Code)</li>
+<li>Installed Node &amp; NPM (Node Package Manager)</li>
+<li>Installed Google Chrome</li>
+<li>Installed Xcode &amp; Homebrew (Mac)</li>
+<li>Installed Python 3</li>
+</ul>
+<h2 id="preparing-your-machine">Preparing your machine</h2>
+<p>The commands you need to enter are listed below. Here we will install basic developer tools, such as <a href="https://brew.sh/">homebrew</a> (a 3rd party package manager for MacOS), <a href="https://itunes.apple.com/us/app/xcode/id497799835">Xcode</a> (a library of developer tools provided by Apple), VS Code (a full-featured text-editor), and Node (a JavaScript runtime environment).</p>
+<h3 id="chrome">Chrome</h3>
+<p>Here at App Academy, our browser of choice is Google Chrome. This isn’t super important at the beginning of the course, but once we get into frontend development (writing code that runs in a web browser) the Chrome Devtools will be crucial for debugging every manner of issue.</p>
+<p>To install Google Chrome, download the necessary files and follow the instructions on the <a href="https://www.google.com/chrome/browser/desktop/index.html">Google Chrome website</a>.</p>
+<h3 id="xcode">Xcode</h3>
+<p>Let’s start with Xcode. The Xcode command line tools are a requirement for installing the homebrew package manager in the next step.</p>
+<p><strong>NOTE: If you are using a Linux machine you will not be able to install Xcode or homebrew.</strong></p>
+<p>Install the Xcode command line tools by running the following from the console.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1">$ <span class="ex">xcode-select</span> --install</a></code></pre></div>
+<p>To conclude the installation you will need to agree to the Xcode license. Start the Xcode app, click “Agree”, and allow the installation to finish. Then you can go ahead and quit the Xcode app.</p>
+<h3 id="homebrew">Homebrew</h3>
+<p>Homebrew is kind of like a low-tech App Store. It allows us access to and the ability to install a wide variety of software and command line tools from the console. These are distinct from those hosted on the App Store and will need to be managed by Homebrew.</p>
+<p>Enter the following in your terminal to download and install Homebrew:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="ex">/usr/bin/ruby</span> -e <span class="st">&quot;</span><span class="va">$(</span><span class="ex">curl</span> -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="va">)</span><span class="st">&quot;</span></a></code></pre></div>
+<p>You will be given a list of dependencies that will be installed and prompted to continue or abort. Press <code>RETURN</code> to continue.</p>
+<p>Let’s break this command down a bit. <code>curl</code>, a command-line tool commonly used for downloading files from the internet, is used to download the Homebrew installation file. The <code>"$(...)"</code> transforms the file content into a string. Finally, the string is passed to a Ruby language executable (<code>/usr/bin/ruby</code> is where the system Ruby executable file is stored on our machine) with the <code>-e</code> flag to tell Ruby to run the argument as code.</p>
+<p>Check out the <a href="https://brew.sh/">Homebrew website</a> to learn the basic commands.</p>
+<h3 id="node.js-npm">Node.js &amp; NPM</h3>
+<p><a href="https://nodejs.org/en/">Node.js</a> is a very powerful runtime environment built on Google Chrome’s JavaScript V8 Engine. It is used to develop I/O intensive applications like video streaming sites, robots, and other general purpose applications. For our purposes Node provides a way for us to run JavaScript outside of the browser.</p>
+<p>We want to use a version manager with Node to help us manage potential conflicts between versions and dependencies. In this case we will be using <a href="https://github.com/creationix/nvm">NVM</a> (Node Version Manager) to install/manage Node.js.</p>
+<p>Open up your console (the Terminal application on Mac) and run the following:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># download and run the official install script</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="ex">curl</span> -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh <span class="kw">|</span> <span class="fu">bash</span></a>
+<a class="sourceLine" id="cb9-3" title="3"></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="co"># update your terminal config (you will now have access to the nvm command)</span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="bu">source</span> ~/.bashrc</a>
+<a class="sourceLine" id="cb9-6" title="6"></a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="co"># install a stable version of node</span></a>
+<a class="sourceLine" id="cb9-8" title="8"><span class="ex">nvm</span> install 10.16</a>
+<a class="sourceLine" id="cb9-9" title="9"></a>
+<a class="sourceLine" id="cb9-10" title="10"><span class="co"># set version 10.16.0 as default version</span></a>
+<a class="sourceLine" id="cb9-11" title="11"><span class="ex">nvm</span> use 10.16</a>
+<a class="sourceLine" id="cb9-12" title="12"></a>
+<a class="sourceLine" id="cb9-13" title="13"><span class="co"># verify install/config</span></a>
+<a class="sourceLine" id="cb9-14" title="14"><span class="fu">which</span> node <span class="co"># =&gt; /Users/username/.nvm/versions/node/v10.16.0/bin/node</span></a></code></pre></div>
+<p>Node comes with a package manager called <a href="https://docs.npmjs.com/">NPM</a>, which provides access to a whole ecosystem of libraries and tools we can use. NPM comes pre-bundled with Node, so there is no additional work for us to do. By default we don’t need any additional libraries, and any additional packages we do need to use will be installed on a project-by-project basis.</p>
+<h3 id="vs-code">VS Code</h3>
+<p>This one is pretty easy. Go to website for <a href="https://code.visualstudio.com/">Visual Studio Code</a>, then download and install VS Code.</p>
+<p>To verify that the shell commands were installed correctly, run <code>which code</code> in your terminal. If <code>code</code> is not a recognized command, open the VS Code editor, open the Command Palette (<code>Cmd+Shift+P</code> on macOS ,<code>Ctrl+Shift+P</code> on Linux) and type <code>shell command</code> to find the <code>Shell Command: Install 'code' command in PATH</code> command. Then restart the terminal. This will now allow you to easily open files in VS Code from the terminal using the <code>code</code> command followed by a file or directory.</p>
+<p>Next, we’ll want to install a few useful VS Code extensions and configure VS Code to play nice with these extensions. Download <a href="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-JavaScript/js-local/setup-vs-code.zip">this zip file</a>, which contains a script that will do the work for you. Unzip the file and open the <code>setup_vscode</code> directory. Navigate into that directory in the terminal (drag and drop the folder over to the terminal icon on macOS or right click in the directory and select <code>Open in Terminal</code> on most Linux distributions).</p>
+<p>To run the script, run the command:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="ex">~</span> <span class="ex">./setup-vs-code.sh</span></a></code></pre></div>
+<p>The script will do the rest. Now restart VS Code and you’ll be good to go.</p>
+<h3 id="mocha-testing-framework">Mocha testing framework</h3>
+<p>The last thing we’ll be installing will be Mocha. Mocha is a JavaScript testing framework that we will be using to test our work in the future. Here are the instructions of how to install <code>mocha</code>!</p>
+<h4 id="installing-mocha">Installing Mocha</h4>
+<ol type="1">
+<li>Open Terminal</li>
+<li>Enter this command: <code>npm install -g mocha</code></li>
+<li>To test your installation, run the command: <code>mocha --version</code>. If it returns a version number, you’ve successfully installed mocha! Otherwise, let your instructor know and they’ll help you fix things.</li>
+</ol>
+<h3 id="installing-python3">Installing Python3</h3>
+<p>You can just use <em>homebrew</em> for this install, too.</p>
+<pre><code>brew install python</code></pre>
+<h2 id="what-you-learned-1">What you learned</h2>
+<p>How to install the various tools you’ll need to create a development environment.</p>
+<p>After you finished this reading you should have the following installed:</p>
+<ul>
+<li>Virtual Studio Code (VS Code)</li>
+<li>Node &amp; NPM (Node Package Manager)</li>
+<li>Mocha the JavaScript testing framework</li>
+<li>Google Chrome</li>
+<li>Xcode &amp; Homebrew (Mac)</li>
+<li>Python 3</li>
+</ul>
+<hr />
+<h2 id="running-javascript-code">Running JavaScript Code</h2>
+<p>JavaScript is <strong>the</strong> language of the <em>Internet</em>! Whenever you browse your favorite website (google, facebook, twitter, appacademy.io), your web browser is executing JavaScript code. There are two main environments we use to run JavaScript: the first is the browser (Chrome, Firefox, etc.) and the second is Node. Writing code for the browser, (aka front end engineering), requires a lot more than just understanding JavaScript, so we’ll come back to that topic later in the course. For now, we will concentrate on running JavaScript on our computers using Node.</p>
+<p>So what is <a href="https://nodejs.org/en/">Node</a> exactly? <a href="https://nodejs.org/en/">Node.js</a> is a very powerful runtime environment built on Google Chrome’s JavaScript V8 Engine. It is used to develop I/O intensive applications like video streaming sites, robots, and other general purpose applications. For our purposes the most advantageous feature of Node is that it provides a way for us to run JavaScript outside of the browser.</p>
+<p>Now that you have Node installed on your local computer it’s time to run some JavaScript! Running your own code on your own computer is a rite of passage for all developers. We know you are up to the challenge!</p>
+<p>By the end of this reading you should be able to:</p>
+<ul>
+<li>Use the Node REPL to test out simple expressions and functions</li>
+<li>Use VSCode to create a folder and a <code>.js</code> file within that folder</li>
+<li>Use Node to run a <code>.js</code> file</li>
+</ul>
+<h2 id="node-repl-vs.-javascript-file">Node REPL vs. JavaScript File</h2>
+<p>Before we begin running code we wanted to make a clear distinction. Using Node there are two ways that we can run JavaScript code:</p>
+<ol type="1">
+<li>using the <strong>Node REPL</strong></li>
+<li>using Node to run a <strong>.js file</strong></li>
+</ol>
+<p>Both the Node REPL and using a JavaScript file are common ways to execute JavaScript code, but they are useful in different scenarios:</p>
+<p><strong>Node REPL</strong> (Read, Evaluate, Print, Loop) is used for testing quick ideas. The Node REPL is useful when playing around with any curiosities you have because you can see how an expression is evaluated quickly. Any code that you type into the Node REPL will be lost when you exit the REPL. If you’ve ever used a program that let you write a line of code and execute it immediately, without a separate command, then you’ve used a REPL.</p>
+<p><strong>JS Files</strong> are used for saving code for the long term. If you create a <code>.js</code> file and save it then all the code within can be referenced and used later. When you work on problem sets, projects, and anything else you want to save, you should always save your code to a <code>.js</code> file!</p>
+<h3 id="using-the-node-repl">Using the Node REPL</h3>
+<p>To use the <strong>Node REPL</strong>, simply open up your command line (Terminal) and enter the command <code>node</code>. In the examples below we use the <code>$</code> to show that we are in the command line (in our case Terminal).</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb12-1" title="1"><span class="op">~</span> $ node</a>
+<a class="sourceLine" id="cb12-2" title="2">Welcome to <span class="va">Node</span>.<span class="at">js</span></a>
+<a class="sourceLine" id="cb12-3" title="3">Type <span class="st">&quot;.help&quot;</span> <span class="cf">for</span> more <span class="va">information</span>.</a>
+<a class="sourceLine" id="cb12-4" title="4"><span class="op">&gt;</span></a></code></pre></div>
+<p>Notice that as soon as we enter the <code>node</code> command, we get a welcome message and we see our Terminal icon change to look like this: <code>&gt;</code>. This <code>&gt;</code> icon means that we are inside the Node REPL, so we can type any valid JavaScript lines and see what they evaluate to:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb13-1" title="1"><span class="op">~</span> $ node</a>
+<a class="sourceLine" id="cb13-2" title="2">Welcome to <span class="va">Node</span>.<span class="at">js</span></a>
+<a class="sourceLine" id="cb13-3" title="3">Type <span class="st">&quot;.help&quot;</span> <span class="cf">for</span> more <span class="va">information</span>.</a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="op">&gt;</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb13-5" title="5"><span class="dv">2</span></a>
+<a class="sourceLine" id="cb13-6" title="6"><span class="op">&gt;</span> <span class="kw">let</span> message <span class="op">=</span> <span class="st">&quot;Hello&quot;</span> <span class="op">+</span> <span class="st">&quot;world&quot;</span></a>
+<a class="sourceLine" id="cb13-7" title="7"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb13-8" title="8"><span class="op">&gt;</span> message</a>
+<a class="sourceLine" id="cb13-9" title="9"><span class="st">&#39;Helloworld&#39;</span></a></code></pre></div>
+<p>We can also define functions in the Node REPL though you’ll find writing them in that environment is not super fun due to the Node REPL not being optimized for that kind of coding.</p>
+<p>Here is an example of defining and invoking a function using <code>node</code>:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb14-1" title="1"><span class="op">~</span> $ node</a>
+<a class="sourceLine" id="cb14-2" title="2">Welcome to <span class="va">Node</span>.<span class="at">js</span></a>
+<a class="sourceLine" id="cb14-3" title="3">Type <span class="st">&quot;.help&quot;</span> <span class="cf">for</span> more <span class="va">information</span>.</a>
+<a class="sourceLine" id="cb14-4" title="4"></a>
+<a class="sourceLine" id="cb14-5" title="5"><span class="op">&gt;</span> <span class="kw">function</span> <span class="at">sayHello</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb14-6" title="6">... <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;hello!&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-7" title="7">... <span class="op">}</span></a>
+<a class="sourceLine" id="cb14-8" title="8"><span class="kw">undefined</span></a>
+<a class="sourceLine" id="cb14-9" title="9"><span class="op">&gt;</span> <span class="at">sayHello</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb14-10" title="10">hello<span class="op">!</span></a></code></pre></div>
+<p>If you want to exit the Node REPL, and head back to our plain old command line enter the command <code>.exit</code> in the REPL. Doing this will get rid of the <code>&gt;</code> icon, which means we are no longer in the REPL. When we are back inside our command line we can enter the normal commands (i.e <code>cd</code>, <code>ls</code>, <code>pwd</code>):</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb15-1" title="1">$ node</a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="op">&gt;</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb15-3" title="3"><span class="dv">2</span></a>
+<a class="sourceLine" id="cb15-4" title="4"><span class="op">&gt;</span> <span class="st">&quot;How do I get out of here&quot;</span> <span class="op">+</span> <span class="st">&quot;!?!?&quot;</span></a>
+<a class="sourceLine" id="cb15-5" title="5"><span class="st">&#39;How do I get out of here!?!?&#39;</span></a>
+<a class="sourceLine" id="cb15-6" title="6"><span class="op">&gt;</span> .<span class="at">exit</span></a>
+<a class="sourceLine" id="cb15-7" title="7"><span class="op">~</span> $</a></code></pre></div>
+<h3 id="using-javascript-files">Using JavaScript Files</h3>
+<p>The first thing you’ll need in order to run a JavaScript file is to create a file that will contain the code you will be running. A new file is like a blank canvas - just awaiting the chance to be made into art.</p>
+<p>If you don’t currently have a dedicated coding folder start off by creating a new folder somewhere accessible, like your <code>Desktop</code> folder. Then you can open that folder using VS Code. From there you can simply create a “New File”. In order to create a JavaScript file, make sure that you change the file name to one that ends in <code>.js</code>, for example <code>myFile.js</code>.</p>
+<p>Now take a moment to enter some code into your new <code>.js</code> file like the following:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode js"><code class="sourceCode javascript"><a class="sourceLine" id="cb16-1" title="1"><span class="co">// AppAcademyWork/myFile.js</span></a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;hello world!&quot;</span>)<span class="op">;</span></a></code></pre></div>
+<p>Don’t forget to save the file with your new code!</p>
+<p>Now to run a JS file you need to first go into the folder that contains that file by using <code>cd</code> in your command line. Feel free to use <code>ls</code> to list your folders and see where you have to go. Once you are inside of the correct folder, run <code>node &lt;fileName&gt;</code>, for example <code>node myFile.js</code>. When you enter these commands, be aware of the capitalization. <strong>File names are case sensitive</strong>!</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1"><span class="ex">~</span> $ <span class="fu">ls</span></a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="ex">Downloads</span></a>
+<a class="sourceLine" id="cb17-3" title="3"><span class="ex">Desktop</span></a>
+<a class="sourceLine" id="cb17-4" title="4"><span class="ex">Music</span></a>
+<a class="sourceLine" id="cb17-5" title="5"><span class="ex">Videos</span></a>
+<a class="sourceLine" id="cb17-6" title="6"></a>
+<a class="sourceLine" id="cb17-7" title="7"><span class="ex">~</span> $ <span class="bu">cd</span> Desktop</a>
+<a class="sourceLine" id="cb17-8" title="8"><span class="ex">~</span> <span class="ex">Desktop</span> $ ls</a>
+<a class="sourceLine" id="cb17-9" title="9"><span class="ex">AppAcademyWork</span></a>
+<a class="sourceLine" id="cb17-10" title="10"></a>
+<a class="sourceLine" id="cb17-11" title="11"><span class="ex">~</span> <span class="ex">Desktop</span> $ cd AppAcademyWork</a>
+<a class="sourceLine" id="cb17-12" title="12"></a>
+<a class="sourceLine" id="cb17-13" title="13"><span class="ex">~</span> <span class="ex">AppAcademyWork</span> $ ls</a>
+<a class="sourceLine" id="cb17-14" title="14"><span class="ex">myFile.js</span></a>
+<a class="sourceLine" id="cb17-15" title="15"></a>
+<a class="sourceLine" id="cb17-16" title="16"><span class="ex">~</span> <span class="ex">AppAcademyWork</span> $ node myFile.js</a>
+<a class="sourceLine" id="cb17-17" title="17"><span class="ex">Hello</span> world</a></code></pre></div>
+<p>That is how you run JavaScript on your local computer! You create and save a file, navigate to that file in your terminal, then run the file using the <code>node</code> command followed by the filename (<code>node &lt;fileName&gt;</code>).</p>
+<h2 id="what-you-learned-2">What you learned</h2>
+<ul>
+<li>How to use the Node REPL to test out simple expressions and functions</li>
+<li>How to use VSCode to create a folder and a <code>.js</code> file within that folder</li>
+<li>How to use Node to run a <code>.js</code> file</li>
+</ul>
+<hr />
+<h1 id="running-javascript-locally">Running JavaScript Locally</h1>
+<p>Now it’s time to become a leet Hacker and put your new found Terminal skills to the test! In the past you have been writing JavaScript within the confines of the App Academy Online platform but it’s time to break free and start writing code on your local computer.</p>
+<p>In this project we’ll be working VS Code to create new folders and files, Node to run JavaScript, and <code>mocha</code> to help us run tests.</p>
+<h2 id="phase-1-creating-files-and-folders">Phase 1: Creating files and folders</h2>
+<p>We’ll kick off this project by creating a folder for to contain the code you write. This would be a good time to create a folder for your work here at App Academy. Feel free to name the folder whatever you like - just make sure you remember where you put it (the Desktop is the ideal place)! Once you’ve created a folder for your work create a new folder within that folder. This folder will be representative of some of the work you do for this project, so name it <code>firstProject</code>.</p>
+<p>The first thing you’ll want to do with this <code>firstProject</code> folder is open it up in VS Code. Once you’ve entered VS Code you can go to “File” then “New File” to create a new file. Name this file <code>phaseOne.js</code>.</p>
+<p>Now we’ll teach you a fun trick - in the Sidebar of VS Code you should see the folder named <code>firstProject</code> and if you click the arrow beside it you should see the file named <code>phaseOne.js</code>. Let’s create a second file in the <code>firstProject</code> directory but this time we’ll use a nifty VS code shortcut. If you click within the <code>firstProject</code> folder and type <code>a</code> then a new file will be automatically created and you will be able to quickly name this file. Here is a gif of us doing the same thing:</p>
+<figure>
+<img src="images/file-name-gif.gif" alt="gif" /><figcaption>gif</figcaption>
+</figure>
+<p>So you can use both the “New File” option or the above shortcut to create new files. Additionally, you create subdirectories within a directory by typing <code>Shift + a</code>. For now create new files and folders using whatever method is most comfortable.</p>
+<p>Name the second file you created above <code>phaseTwo.js</code> and let’s go run some JavaScript.</p>
+<h2 id="phase-2-using-node-to-run-javascript-files">Phase 2: Using Node to run JavaScript files</h2>
+<h3 id="phase-2a-using-the-node-repl">Phase 2A: Using the Node REPL</h3>
+<p>The first way we’ll run JavaScript today is by using the Node REPL. Open a window of the Terminal application and type in the command:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1"><span class="ex">~</span> $ <span class="ex">node</span></a>
+<a class="sourceLine" id="cb18-2" title="2"><span class="op">&gt;</span></a></code></pre></div>
+<p>You should see your icon change to look like this: <code>&gt;</code>. Now do the following to get comfortable with using the Node REPL:</p>
+<ol type="1">
+<li>Write a <code>console.log</code> statement that will print “Hello Node!”</li>
+<li>Write four mathematical expressions:
+<ul>
+<li>each using one of the following symbols: <code>+</code>, <code>-</code>, <code>*</code> and <code>%</code></li>
+</ul></li>
+<li>Write a function named <code>addTwo</code> that will accept a number as an argument and then will <code>return</code> the number with <code>2</code> added to it. Next, invoke <code>addTwo</code> passing in a number as an argument.</li>
+</ol>
+<p>The Node REPL is an interactive code environment which allows you to test how JavaScript will react to simple expressions. Learning to use a REPL to test ideas and to ask your coding environment questions (as shown in the above simple and quick problems) is a great way to teach yourself, and become more self-sufficient as a programmer.</p>
+<h3 id="phase-2b-using-node-to-run-javascript-files">Phase 2B: Using Node to run JavaScript files</h3>
+<p>In the <code>phaseOne.js</code> file we previously created write a simple <code>console.log</code> statement that will print “Look at me go!” to the console. Next, open a window of the Terminal application on your computer and navigate to the <code>firstProject</code> directory. Once inside the directory run the code within the <code>phaseOne.js</code> file by using the following command:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1"><span class="ex">~</span> <span class="ex">firstProject</span> $ node phaseOne.js</a></code></pre></div>
+<p>You should see “Look at me go!” printed to the console.</p>
+<p>Congratulations, you’ve just run JavaScript on your computer using both the Node REPL and by running a <code>.js</code> file!</p>
+<p>Celebrate your victory by writing a new function in the <code>phaseTwo.js</code> file. Write a function named <code>helloNode</code> that when invoked will <code>return</code> the string “Hello Node”. Try invoking your function below where you defined it and use <code>node</code> to run the file:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb20-1" title="1"><span class="ex">~</span> <span class="ex">firstProject</span> $ node phaseTwo.js</a>
+<a class="sourceLine" id="cb20-2" title="2"><span class="ex">~</span> <span class="ex">firstProject</span> $</a></code></pre></div>
+<p>Notice how you don’t see anything printed to the console! That is because we <code>return</code>ed the value but didn’t print it to the console. Now try wrapping your function call for <code>helloNode</code> in a <code>console.log</code> statement. Then run the <code>phaseTwo.js</code> file again using <code>node</code>. You should see “Hello Node” printed to the console.</p>
+<p>Nice! You’ve now written and run a function using a <code>.js</code> file. For the rest of this course you will be utilizing VS Code and Node to write and run code.</p>
+<h2 id="phase-3-running-tests-using-mocha">Phase 3: Running tests using Mocha</h2>
+<p>At work, you will often be writing tests for your own code to ensure it works. Here at App Academy you will primarily be running tests we have written for you to guide your development. Now that you know how to write and run code in this environment let’s practice using <code>mocha</code> to <em>test</em> the output of functions. We’ll do a deep dive into testing practices soon - but for now know that <strong>testing</strong> is how we can ensure that functions work the way we expect them to. While you had previously used <code>console.log</code> to see if your functions gave the expected output when given a certain input, Mocha automates this process for you.</p>
+<p>We will now go over an important testing workflow you’ll be using a lot in the future of this course. The workflow we are talking about breaks down into several steps:</p>
+<ol type="1">
+<li>Download problems &amp; tests</li>
+<li>Start working on an individual problem</li>
+<li>Run tests (also known as <code>specs</code>) to see if you have solved the problem successfully</li>
+<li>Move onto to the next problem and repeat steps 2 &amp; 3</li>
+</ol>
+<p>We’ll now walk through what each of these steps entails.</p>
+<h4 id="step-one-download-problems-tests">Step One: Download problems &amp; tests</h4>
+<ul>
+<li><p>Click <a href="https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-JavaScript/js-local/skeleton.zip">here</a> to download a <code>.zip</code> file containing the problems you’ll be working on. &gt; <em>Note:</em> If you use Windows you might find it easier to use <code>curl</code> to download the zip file into your WSL. Here’s how to do that: &gt; 1) right click on the link to the zip file and copy the link to your clipboard &gt; 2) In the Ubuntu Terminal type the following: &gt; <code>curl -o skeleton.zip</code> and then paste in the link you copied and press Enter. This will download the zip file into your current directory. It should look something like this: <code>curl -o skeleton.zip https://appacademy-open-assets.s3-us-west-1.amazonaws.com/Module-JavaScript/js-local/skeleton.zip</code> &gt; 3) Use <code>unzip</code> to unzip the file like this: <code>unzip skeleton.zip</code> &gt; &gt; You can use this method anytime you need to download zip files for your projects.</p></li>
+<li>Unzip/Uncompress the file somewhere you can access easily, like your <code>Desktop</code> folder. Unzipping the file will leave you with a folder named <code>skeleton</code>.</li>
+<li><p>Within the <code>skeleton</code> folder there will be folder named <code>problems</code>. You’ll now be working on completing each of these problem in order.</p></li>
+</ul>
+<h4 id="step-two-start-working-on-an-individual-problem">Step Two: Start working on an individual problem</h4>
+<ul>
+<li>Open up the <code>problems</code> folder in VS Code, you’ll see the problems are numbered in sequential order.</li>
+</ul>
+<p><strong>Only write your code to the <code>.js</code> files in the <code>problems</code> folder. Do not move or edit any of the files in the <code>test</code> folder. Also, do not change the names of the files in the <code>problems</code> folder.</strong> The reason for this is because the tests are expecting to find the files in a certain place and with the names we provided for each function. Moving or editing files could cause the tests to break.</p>
+<h4 id="step-three-run-tests-to-see-if-you-have-solved-the-problem-successfully">Step Three: Run tests to see if you have solved the problem successfully</h4>
+<ul>
+<li>In your Terminal, use the <code>cd</code> command to navigate into the <code>skeleton</code> folder.
+<ul>
+<li><em>Note</em>: If you unzipped the <code>skeleton</code> onto your <code>Desktop</code>, you need to <code>cd</code> into your <code>Desktop</code> first, then <code>cd</code> into <code>skeleton</code>.</li>
+</ul></li>
+<li>From here you can now use the <code>mocha</code> command to run the problem set against the mocha test cases we provided:</li>
+</ul>
+<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb21-1" title="1"><span class="ex">~</span> <span class="ex">skeleton</span> $ mocha</a></code></pre></div>
+<ul>
+<li>If you scroll up toward the top of the <code>mocha</code> output, you will see a quick breakdown of what specs were passed. You can test with <code>mocha</code> as many times as you want to!</li>
+</ul>
+<p>Here is an example of setting up a problem set in the command line:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb22-1" title="1"><span class="ex">~</span> $ <span class="bu">cd</span> Desktop/</a>
+<a class="sourceLine" id="cb22-2" title="2"><span class="ex">~</span> <span class="ex">Desktop</span> $ ls</a>
+<a class="sourceLine" id="cb22-3" title="3"> <span class="ex">skeleton</span></a>
+<a class="sourceLine" id="cb22-4" title="4"></a>
+<a class="sourceLine" id="cb22-5" title="5"><span class="ex">~</span> <span class="ex">Desktop</span> $ cd skeleton/</a>
+<a class="sourceLine" id="cb22-6" title="6"></a>
+<a class="sourceLine" id="cb22-7" title="7"><span class="ex">~</span> <span class="ex">skeleton</span> $ ls</a>
+<a class="sourceLine" id="cb22-8" title="8"> <span class="ex">problems</span> test</a>
+<a class="sourceLine" id="cb22-9" title="9"></a>
+<a class="sourceLine" id="cb22-10" title="10"><span class="ex">~</span> <span class="ex">skeleton</span> $ mocha</a>
+<a class="sourceLine" id="cb22-11" title="11">  <span class="fu">diffArrayLen()</span></a>
+<a class="sourceLine" id="cb22-12" title="12">    <span class="ex">1</span>) <span class="ex">should</span> return a boolean indicating the lengths of the arrays are the same</a>
+<a class="sourceLine" id="cb22-13" title="13"></a>
+<a class="sourceLine" id="cb22-14" title="14">  <span class="fu">avgValue()</span></a>
+<a class="sourceLine" id="cb22-15" title="15">    <span class="ex">2</span>) <span class="ex">should</span> return the average of an array of numbers</a>
+<a class="sourceLine" id="cb22-16" title="16"></a>
+<a class="sourceLine" id="cb22-17" title="17">  <span class="ex">...</span> etc.</a>
+<a class="sourceLine" id="cb22-18" title="18"></a>
+<a class="sourceLine" id="cb22-19" title="19">  <span class="ex">0</span> passing</a>
+<a class="sourceLine" id="cb22-20" title="20">  <span class="ex">9</span> failing</a></code></pre></div>
+<p>If you have any trouble with this don’t hesitate to ask a TA for help!</p>
+<p>You can feel free at any point to move your <code>skeleton</code> folder into the <code>firstProject</code> folder you created in the previous phase. Just make you you navigate to it correctly!</p>
+<h4 id="a-note-about-testing-manually">A note about testing manually</h4>
+<ul>
+<li>If you’d like to test a problem manually (without Mocha), you can still do that. You can wrap function invocations in <code>console.log</code> statements below where each function is defined in the file.
+<ul>
+<li>Then you can <code>cd</code> into the <code>skeleton</code> folder and run the individual <code>.js</code> files using <code>node</code>. (for example: <code>node 01-diff-array-lens.js</code>)</li>
+</ul></li>
+<li>Before moving on from a problem, be sure to verify your function works as expected using <code>mocha</code>.</li>
+</ul>
+<p>Now go forth and solve the problems you’ve been given! Once you’ve passed all the tests give yourself a pat on the back for passing your first series of specs. May you have many more passed specs in your future! 🙌</p>
+</body>
+</html>
