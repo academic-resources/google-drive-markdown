@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>promises</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<p>**</p>
+<p>**</p>
+<h2 id="a-mostly-complete-guide-to-promises-i" class="sc-kPVwWT bRXTmH">A Mostly Complete Guide to Promises I</h2>
+<ul>
+<li>Profile</li>
+<li><a href="https://launchpass.com/p/app-academy-mentor">**</a></li>
+<li>**</li>
+<li><a href="https://forum.appacademy.io/">**</a></li>
+</ul>
+<h1 id="a-mostly-complete-guide-to-promises-i-1">A Mostly Complete Guide to Promises I</h1>
+<h1 id="a-promise-is-a-promise-a-mostly-complete-guide-to-javascript-promises-i">A Promise is a Promise: A Mostly Complete Guide to JavaScript Promises I</h1>
+<ul>
+<li><p>JavaScript feature formally introduced into the language in 2015: the <code>Promise</code> object.</p></li>
+<li>The<code>Promise</code> is as a way to encourage writing asynchronous code in a way that <em>appeared</em> synchronous.</li>
+<li>Provide examples of why <code>Promise</code> -based code is easier to maintain than traditional asynchronous callbacks;</li>
+<li><p>Recall the three states of a <code>Promise</code> , what each state means, and any associated data with that state.</p></li>
+</ul>
+<h2 id="a-quick-review-of-function-declarations">A quick review of function declarations</h2>
+<p>It’s important to remember about how JavaScript handles the declaration of a function. Please look at the following code.</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} function loudLog(message) {   console.log(message.toUpperCase()); }</code></p>
+<p>When JavaScript encounters that code, it does not run the function. You probably know that, but it’s important to read again. When JavaScript encounters that code, it does not run the function.</p>
+<p>It <em>does</em> create a <code>Function</code> object and stores that in a variable named <code>loudLog</code> . At some time later, you can run the function object in that variable with the syntax <code>loudLog("error occurred");</code> . That <em>runs</em> the function. Just declaring a function doesn’t run it. Look at this following code.</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} function () {   console.log('How did you call me?'); }</code></p>
+<p>JavaScript will, again, create a <code>Function</code> object. However, there’s no name for the function, so it doesn’t get assigned to any variable, and just disappears with no way for us to use it. So, why would you declare functions without names?</p>
+<h2 id="the-looming-problem-of-asynchronous-code-with-callbacks">The looming problem of asynchronous code with callbacks</h2>
+<p>Let’s look at the documentation for how to read files in Node.js. Don’t worry if you haven’t used Node.js, yet. It’s just like any other JavaScript.</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} readFile(path, encoding, callback)</p>
+<p>Arguments: path <string> path to the file encoding <string> the encoding of the file callback <function> two arguments: err <error object> content <string></p>
+<p>Asynchronously reads the entire contents of a file. ```</p>
+<p>The function named <code>readFile</code> accepts three arguments: a string that contains the <code>path</code> to the file, the <code>encoding</code> of the file, and a callback function that <code>readFile</code> calls once it’s read the content of the file. If you wanted to write out the content of the file with a header, you could write code like this.</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} function writeWithHeader(err, content) { console.log(“YOUR FILE CONTAINS:”); console.log(content); }</p>
+<p>readFile(‘~/Documents/todos.txt’, ‘utf8’, writeWithHeader); ```</p>
+<p>Recall that when JavaScript found the function declaration at the beginning of that code block, it created a <code>Function</code> object and stored it in a variable named <code>writeWithHeader</code> . Now, that variable contains the actual function that can later be run. That code passes the value of that variable, the <code>Function</code> object, into the <code>readFile</code> function so the <code>readFile</code> function can run it later.</p>
+<p>If you’re not going to use the <code>writeWithHeader</code> function anywhere else in your code, idiomatic JavaScript instructs you to get rid of the name of the function and declare it directly as the second argument of the <code>readFile</code> functions. That would turn the above code block into the following.</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} readFile('~/Documents/todos.txt', 'utf8', function (err, content) {   console.log("YOUR FILE CONTAINS:");   console.log(content); });</code></p>
+<p>Since 2015, idiomatic JavaScript would instruct you to get rid of the function keyword and just use an arrow function.</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} readFile('~/Documents/todos.txt', 'utf8', (err, content) =&gt; {   console.log("YOUR FILE CONTAINS:");   console.log(content); });</code></p>
+<p>The key to remember here is that you have only declared that function that <code>readFile</code> will call later, <code>readFile</code> is in charge of running that function.</p>
+<p>Imagine that you have a file that has a list of other file names in it named <code>manifest.txt</code> . You want to read the file and read each of the files listed in it. Then, you want to count the characters in each of those files and print those numbers.</p>
+<p>You would start out by reading <code>manifest.txt</code> and splitting the content on the newline character to get the names of the files. That would look like this:</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} readFile(‘manifest.txt’, ‘utf8’, (err, manifest) =&gt; { const fileNames = manifest.split(‘’);</p>
+<p>// More to come }); ```</p>
+<p>Now that you have the list of file names, you can loop over them to read each of those files. As each of those files are read, you want to count the characters in each file. Imagine that you already have the function named <code>countCharacters</code> somewhere. The looping code could look like this:</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} readFile(‘manifest.txt’, ‘utf8’, (err, manifest) =&gt; { const fileNames = manifest.split(‘’); const characterCounts = {};</p>
+<p>// Loop over each file name for (let fileName of fileNames) { // Read that file’s content readFile(fileName, ‘utf8’, (err, content) =&gt; { // Count the characters and store it in // characterCounts countCharacters(characterCounts, content); }); } }); ```</p>
+<p>At this point, you feel pretty good. There’s only one thing left to do: print out the total of all the characters in the files. So, where do you put that <code>console.log</code> statement?</p>
+<p>This is kind of a trick question because there’s no place to put it in the way the code works now.</p>
+<p>If you put it here:</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} readFile(‘manifest.txt’, ‘utf8’, (err, manifest) =&gt; { const fileNames = manifest.split(‘’); const characterCounts = {};</p>
+<p>// Loop over each file name for (let fileName of fileNames) { // Read that file’s content readFile(fileName, ‘utf8’, (err, content) =&gt; { // Count the characters and store it in // characterCounts countCharacters(characterCounts, content); }); }</p>
+<p>// MY PRINT STATEMENT HERE console.log(characterCounts); }); ```</p>
+<p>then you will get the output <code>{}</code> every time because the code in the inner <code>readFile</code> s doesn’t run until after the <code>console.log</code> because <code>readFile</code> doesn’t run the function with the arguments <code>(err, content)</code> until <em>after</em> the file is read and the current function completes.</p>
+<p>If you put it here:</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} readFile(‘manifest.txt’, ‘utf8’, (err, manifest) =&gt; { const fileNames = manifest.split(‘’); const characterCounts = {};</p>
+<p>// Loop over each file name for (let fileName of fileNames) { // Read that file’s content readFile(fileName, ‘utf8’, (err, content) =&gt; { // Count the characters and store it in // characterCounts countCharacters(characterCounts, content);</p>
+<pre><code>  // MY PRINT STATEMENT HERE
+  console.log(characterCounts);
+});</code></pre>
+<p>} }); ```</p>
+<p>then it will print the number of times that your code reads a file. That’s not what you want, either. To get it to work, you have to count the number of files that have been read each time one completes. Then, you only print when that number equals the total number of files to be read. The code could like this:</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} readFile(‘manifest.txt’, ‘utf8’, (err, manifest) =&gt; { const fileNames = manifest.split(‘’); const characterCounts = {}; let numberOfFilesRead = 0;</p>
+<p>// Loop over each file name for (let fileName of fileNames) { // Read that file’s content readFile(fileName, ‘utf8’, (err, content) =&gt; { // Count the characters and store it in // characterCounts countCharacters(characterCounts, content);</p>
+<pre><code>  // Increment the number of files read
+  numberOfFilesRead += 1;
+
+  // If the number of files read is equal to the
+  // number of files to read, then print because
+  // you&#39;re done!
+  if (numberOfFilesRead === fileNames.length) {
+    console.log(characterCounts);
+  }
+});</code></pre>
+<p>} }); ```</p>
+<p>The asynchronous nature of this code requires you to do a lot of housekeeping just to figure out when everything is done. Imagine writing this code and going back to it in six months to add a new feature. It’s not the clearest code in the world, even with code comments. That leads to a maintenance nightmare. The JavaScript community wanted a way to code better and clearer.</p>
+<h2 id="designing-a-better-solution">Designing a better solution</h2>
+<p>Look at the following code that has numbers in the order in which the <code>console.log</code> statements are run. It will print out “Q”, “W”, “E”, “R”, and “T” on separate lines.†</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} console.log('Q'); //---- 1 setTimeout(() =&gt; {   console.log('E'); //-- 3   setTimeout(() =&gt; {     console.log('T'); // 5   }, 100);   console.log('R'); //-- 4 }, 200); console.log('W'); //---- 2</code></p>
+<p>What would really help is if you could get those numbers in order so that what appears in the code at least <strong>appears</strong> to be synchronous even though it might be asynchronous in nature. As humans, we understand things from top-to-bottom much better than in the order 1, 3, 5, 4, 2.</p>
+<p>Reordering the code above to reflect how it really runs, you’d get this somewhat more maintainable block.</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} console.log('Q'); //---- 1 console.log('W'); //---- 2 setTimeout(() =&gt; {   console.log('E'); //-- 3   console.log('R'); //-- 4   setTimeout(() =&gt; {     console.log('T'); // 5   }, 100); }, 200);</code></p>
+<p>But, now you’re stuck with those human-necessary indents to understand the function calls that occur in the code. And, to know how long the <code>setTimeout</code> s run, you have to go way to the bottom of the code blocks. The JavaScript community agreed with you and decided it’d be great if they could somehow just chain a bunch of those things together without the indentation, something like this. (The function names are completely invented for this code block.);</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} log('Q')   .then(() =&gt; log('W'))   .then(() =&gt; pause(200))   .then(() =&gt; log('E'))   .then(() =&gt; log('R'))   .then(() =&gt; pause(100))   .then(() =&gt; log('T'));</code></p>
+<p>The JavaScript community realized that they’d have to use functions in the <code>then</code> blocks lest the function be immediately invoked. Remember, a function declaration is not invoked when interpreted. That means each function in each of the <code>then</code> calls is passed into the <code>then</code> function for it to run at a later time, presumably when the previous thing finishes, a previous <code>log</code> or <code>pause</code> in this example. They decided to create a new kind of abstraction in JavaScript named the “Promise”.</p>
+<h2 id="so-what-is-a-promise">So, what is a “Promise”?</h2>
+<p>Look at a line of code using the <code>readFile</code> method found in Node.js. Don’t worry if you don’t know the specifics about this function. It’s the <em>form</em> of the code to which you should draw your attention.</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} readFile('manifest.txt', 'utf8', (err, manifest) =&gt; {</code></p>
+<p>You could interpret that line of code as “Read the file named”manifest.txt" and, when done, call the method that is declared with <code>(err, manifest) =&gt; {</code> .</p>
+<p>The important part to understand is the “when done, call the method…”. That’s the part that’s potentially asynchronous, the part that is beyond your control. When it calls that function, it will either provide an error in the <code>err</code> parameter or a value in the <code>manifest</code> parameter. When you change it to the <code>then</code> version, you still get the same kind of guarantee: eventually, you will get an error or the value of the operation. So that’s what a <code>Promise</code> is.</p>
+<blockquote>
+<p>A <code>Promise</code> in JavaScript is a commitment that sometime in the future, your code will get <strong>a value</strong> from some operation (like reading a file or getting JSON from a Web site) or your code will get <strong>an error</strong> from that operation (like the file doesn’t exist or the Web site is down).</p>
+</blockquote>
+<p>Promises can exist in three states. They are:</p>
+<ul>
+<li><strong>Pending</strong>: The <code>Promise</code> object has not resolved. Once it does, the state of the <code class="sc-cMljjf hbDMZX">Promise</code> object may transition to either the fulfilled or rejected state.</li>
+<li><strong>Fulfilled</strong>: Whatever operation the <code>Promise</code> represented succeeded and your success handler will get called. Now that it’s <em>fulfilled</em>, the <code>Promise</code> :
+<ul>
+<li>must not transition to any other state.</li>
+<li>must have a value, which must not change.</li>
+</ul></li>
+<li><strong>Rejected</strong>: Whatever operation the <code>Promise</code> represented failed and your error handler will get called. Now that it’s <em>rejected</em>, the <code>Promise</code> :
+<ul>
+<li>must not transition to any other state.</li>
+<li>must have a reason, which must not change.</li>
+</ul></li>
+</ul>
+<p><code>Promise</code> objects have the following methods available on them so that you can handle the state change from <em>pending</em> to either <em>fulfilled</em> or <em>rejected</em>.</p>
+<ul>
+<li><code>then(successHandler, errorHandler)</code> is a way to handle a <code>Promise</code> when it leaves the <em>pending</em> state.</li>
+<li><code>catch(errorHandler)</code></li>
+</ul>
+<p>The handlers mentioned in the previous list are:</p>
+<ul>
+<li><strong>Success Handler</strong> is a function that has one parameter, the value that a <em>fulfilled</em> <code>Promise</code> has.</li>
+<li><strong>Error Handler</strong> is a function that has one parameter, the reason that the <code>Promise</code> failed.</li>
+</ul>
+<p>We’ll elaborate on these methods in part two of this article.</p>
+<h2 id="what-youve-learned">What you’ve learned</h2>
+<p>In this reading, you learned some fancy new things that allows you to turn asynchronous code into seemingly synchronous-looking code. You did that by learning that…</p>
+<ul>
+<li>A <code>Promise</code> in JavaScript is a commitment that sometime in the future, your code will get <strong>a value</strong> from some operation (like reading a file or getting JSON from a Web site) or your code will get <strong>an error</strong> from that operation (like the file doesn’t exist or the Web site is down).</li>
+</ul>
+<p>†: One can argue that the code following this statement is already very bad and shouldn’t be written that way. I would agree. Please don’t write code like that. It is <em>only</em> for demonstration purposes. However, do not be surprised if you find <strong>someone else</strong> wrote code like that. ;-)</p>
+<h1 id="a-mostly-complete-guide-to-promises-ii">A Mostly Complete Guide to Promises II</h1>
+<ul>
+<li><p>⏱ 15 minutes</p></li>
+<li>Catalog**</li>
+<li>Js Py Aug 2020 Online**</li>
+<li>Week 6 Aug 2020 Online**</li>
+<li><p>A Mostly Complete Guide To Promises Ii</p></li>
+</ul>
+<h1 id="a-promise-is-a-promise-a-mostly-complete-guide-to-javascript-promises-ii">A Promise is a Promise: A Mostly Complete Guide to JavaScript Promises II</h1>
+<p>This is part two of an article about classic JavaScript promises. If you have not read part one, we recommend that you navigate to the previous task to do so.</p>
+<p>When you finish this article, you should be able to:</p>
+<ul>
+<li>Create your own <code>Promise</code> s</li>
+<li>Use <code>Promise</code> objects returned by language and framework libraries</li>
+</ul>
+<h2 id="handling-success-with-then">Handling success with <code>then</code></h2>
+<p>Returning to another file-reading example, consider the following block of code.</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} readFile("manifest.txt", "utf8", (err, manifest) =&gt; {   if (err) {     console.error("Badness happened", err);   } else {     const fileList = manifest.split("\n");     console.log("Reading", fileList.length, "files");   } });</code></p>
+<p>If this succeeds, then you would expect a statement like “Reading 12 files” to appear if the file contained a list of 12 files.</p>
+<p>Now, to rewrite that using a <code>Promise</code> and printing that same statement, you would get a file-reading function that returns a <code>Promise</code> object. Later on, you’ll see how to create one for yourself. At this moment, just presume that a function named <code>readFilePromise</code> exists. When you call it, it would return a promise that, when <em>fulfilled</em>, would invoke the success handler registered for the object through the <code>then</code> method. Very explicitly, you could write that code like this.</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} /* EXPLICIT CODE: NOT FOR REAL USE */</p>
+<p>// Declare a function that will handle the content of // the file read by readFilePromise. function readFileSuccessHandler(manifest) { const fileList = manifest.split(“”); console.log(“Reading”, fileList.length, “files”); }</p>
+<p>// Get a promise that will return the contents of the // file. const filePromise = readFilePromise(“manifest.txt”);</p>
+<p>// Register a success handler to process the contents // of the file. In this case, it is the function // defined above. filePromise.then(readFileSuccessHandler); ```</p>
+<p>Most <code>Promise</code> -based code does <strong>not</strong> look like that, though. Idiomatic JavaScript instructs to not create variables that don’t need to be created. You would see the above code in a real-live code base written like this, instead. Spend a moment comparing and contrasting the forms from <strong>very explicit</strong> to <strong>idiomatic</strong>.</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} readFilePromise("manifest.txt").then(manifest =&gt; {   const fileList = manifest.split("\n");   console.log("Reading", fileList.length, "files"); });</code></p>
+<p>That’s slightly easier to read than the weird callback thing you had above. But, you still have that nasty double indentation. The designers of the <code>Promise</code> didn’t want that for you, so they allow you to chain <code>then</code> s.</p>
+<h2 id="chaining-then-s.">Chaining <code>then</code> s.</h2>
+<p>In the above code that uses <code>readFilePromise</code> , it does not look like the ideal code that JavaScript could give us because of the success-handling function being on multiple lines that require another indent. It may be a little thing, but it still prevents you from the most readable code. Again, the Technical Committee 39 had your back. They designed “chainable thens” for you. The rules are a little complex to read.</p>
+<ul>
+<li>Each <code>Promise</code> has a <code>then</code> method that handles what happens when the <code class="sc-cMljjf hbDMZX">Promise</code> transitions out of the <strong>pending</strong> state.</li>
+<li>Each <code>then</code> method returns a <code>Promise</code> that transitions out of its <strong>pending</strong> state when the <code>then</code> that created it completes.</li>
+<li>(One more condition described below.)</li>
+</ul>
+<p>That chaining property gives you the ability to break apart the two lines of the success handler in the previous example to two one-line functions that do the same thing with less code! If you write that form explicitly, you’d have the following.</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} /* EXPLICIT CODE: NOT FOR REAL USE */</p>
+<p>// Get a Promise that fulfills when the file is read // with the value of the content of the file. const filePromise = readFilePromise(“manifest.txt”);</p>
+<p>// Register a success handler that takes the fulfilled // value of the filePromise in the parameter named “manifest”, // which is the content of the file, split it on newline // characters, and return a Promise whose fulfilled value is // list of lines. const fileListPromise = filePromise.then(manifest =&gt; manifest.split(“”));</p>
+<p>// Register a success handler to the fileListPromise that // receives the fulfilled value in the “fileList” parameter // and returns a Promise whose fulfilled value is the length // of the fileList array. const lengthPromise = fileListPromise.then(fileList =&gt; fileList.length);</p>
+<p>// Register a success handler to the lengthPromise that // receives the fulfilled value in the “numberOfFiles” parameter // and uses it to print the number of files to be read. lengthPromise.then(numberOfFiles =&gt; console.log(“Reading”, numberOfFiles, “files”) ); ```</p>
+<p>That code block has a lot of words to describe what happens at each step of the process of using “chainable thens”. In the real world, were you to find that code in a real application, it would likely look like the following.</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} readFilePromise("manifest.txt")   .then(manifest =&gt; manifest.split("\n"))   .then(fileList =&gt; fileList.length)   .then(numberOfFiles =&gt; console.log("Reading", numberOfFiles, "files"));</code></p>
+<p>Here’s a diagram of what happens in the above code.</p>
+<figure>
+<img src="./Promise_files/promise-success-diagram-source.svg" alt="promise errors" /><figcaption>promise errors</figcaption>
+</figure>
+<p>You can see that each call to <code>then</code> creates a new <code>Promise</code> object that resolves to the value of the output of the previous success handler. That’s what happens when everything works out. What happens when it doesn’t?</p>
+<h2 id="handling-failure-with-then">Handling failure with <code>then</code></h2>
+<p>As you may recall from the section <a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/a-mostly-complete-guide-to-promises-ii#so-what-is-a-promise">So, what is a “Promise”?</a>, you learned that the <code>then</code> method can also accept a second argument that is an error handler that takes care of things should something go wrong. Back to the file reading example from above, you add a second method to the <code>then</code> which accepts a <strong>reason</strong> that the error happened. For reading a file, that could be that the file doesn’t exist, the current user doesn’t have permissions to read it, or it ran out of memory trying to read a <em>huge</em> file.</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} readFilePromise("manifest.txt").then(   manifest =&gt; {     const fileList = manifest.split("\n");     console.log("Reading", fileList.length, "files");   },   reason =&gt; {     console.error("Badness happened", reason);   } );</code></p>
+<p>That works, but has taken you back to the original bad multiline form of the success handler. What happens if you did it like this? How does this work?</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} readFilePromise("manifest.txt")   .then(     manifest =&gt; manifest.split("\n"),     reason =&gt; console.err("Badness happened", reason)   )   .then(fileList =&gt; fileList.length)   .then(numberOfFiles =&gt; console.log("Reading", numberOfFiles, "files"));</code></p>
+<p>Here’s what happens with regard to the <code>Promise</code> s in this chain of <code>then</code> s.</p>
+<figure>
+<img src="./Promise_files/promise-error-diagram-source.svg" alt="promise errors" /><figcaption>promise errors</figcaption>
+</figure>
+<p>As you can see, the first <code>Promise</code> object from the <code>readFilePromise</code> function goes into the <strong>rejected</strong> state because, according to the error message, the file didn’t exist at the time the system tried to read it. That reason is represented as an object that has a code of “ENOENT” which a Unix error code and a message that provides a human-readable explanation of the error. That error reason object gets passed to the error handler of the first <code>then</code> . It’s what happens after that that is crazy neat.</p>
+<p>The second <code>Promise</code> object is <strong>fulfilled</strong>! Because the first <code>then</code> doesn’t have any errors, because the error handler in the first then completes without any problem (printing out the error reason), the <code>Promise</code> returned by that <code>then</code> <em>does not</em> get <strong>rejected</strong>. Because of that, the <code>Promise</code> resolves with the value returned by the <code>console.error('Badness happened', err)</code> call. The <code>console.error</code> method returns <code>undefined</code> , so that becomes the value passed into the next <code>then</code> handler.</p>
+<p>Because the second <code>then</code> success handler relies on an object with a <code>length</code> property, when it runs, an exception gets raised because the <code>undefined</code> value has no <code>length</code> property. This causes the <code>Promise</code> returned by the second <code>then</code> to become <strong>rejected</strong> because the code threw an exception.</p>
+<p>Because that <code>Promise</code> is in the <strong>rejected</strong> state, it attempts to run the error handler of the next (third) <code>then</code> . There is no error handler. In the browser, it just looks like nothing happened. In Node.js, an <code>UnhandledPromiseRejectionWarning</code> is emitted to the console. In a future version of Node.js, it will cause the process to terminate with an exit code indicating an error bringing your service to a halt.</p>
+<p>To correctly handle the exception of no file to read and still have all of the other lines of code run properly, you should write the following code.</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} readFilePromise("manifest.txt")   .then(manifest =&gt; manifest.split("\n"))   .then(fileList =&gt; fileList.length)   .then(     numberOfFiles =&gt; console.log("Reading", numberOfFiles, "files"),     reason =&gt; console.err("Badness happened", reason)   );</code></p>
+<p>Now, if an error occurs, the chain of <code>then</code> s evaluates like this:</p>
+<ol type="1">
+<li>First <code>then</code> : I do not have an error handler. I will pass the error on and not run the success handler.</li>
+<li>Second <code>then</code> : I do not have an error handler. I will pass the error on and not run the success handler.</li>
+<li>Third <code>then</code> : I have an error handler and will run it.</li>
+</ol>
+<p>Now, the code looks almost like you’d imagined back in the <a href="https://open.appacademy.io/learn/js-py---aug-2020-online/week-6-aug-2020-online/a-mostly-complete-guide-to-promises-ii#designing-a-better-solution">Designing a better solution</a> section. There’s still that annoying last double handler code that makes us use indentation and passing in two function objects to a <code>then</code> which looks kind of yucky. The Technical Committee gave you a solution for that, too.</p>
+<blockquote>
+<p><code>then</code> can handle both success and failures. The success handler is called with the value of the operation of the <code>Promise</code> when the <code>Promise</code> object transitions to the <strong>fulfilled</strong> state. If an error condition occurs, them the error handler of the <code>then</code> is called.</p>
+<p>If a <code>Promise</code> object transitions to the <strong>rejected</strong> state and no error handler exists for the <code>then</code> , then that <code>then</code> is skipped altogether.</p>
+<p>If an error handler is called and does not raise an exception, then the next <code>Promise</code> object transitions to the <strong>fulfilled</strong> state and the next success handler is called.</p>
+</blockquote>
+<h2 id="handling-failure-with-catch">Handling failure with <code>catch</code></h2>
+<p>Rather than using a <code>then</code> with a success and error handler, you can use the similar <code>catch</code> method that takes just an error handler. By doing that, the code from the last section ends up looking like this.</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} readFilePromise("manifest.txt")   .then(manifest =&gt; manifest.split("\n"))   .then(fileList =&gt; fileList.length)   .then(numberOfFiles =&gt; console.log("Reading", numberOfFiles, "files"))   .catch(reason =&gt; console.err("Badness happened", reason));</code></p>
+<p>That is exactly what the design expressed. The <code>catch</code> acts just like an error handler in the last <code>then</code> . If the <code>catch</code> doesn’t throw an exception, then it returns a <code>Promise</code> in a fulfilled state with whatever the return value is, just like the error handler of a <code>then</code> .</p>
+<blockquote>
+<p><code>catch</code> is a convenient way to do error handling in a <code>then</code> chain that looks kind of like part of a try/catch block.</p>
+</blockquote>
+<h2 id="using-promise.all-for-many-future-values">Using <code>Promise.all</code> for many future values</h2>
+<p>You’re almost to the place where you can read the manifest file, get the list, and then count the characters in each of the files, and print out the result. You need to learn about two more features of JavaScript <code>Promise</code> s.</p>
+<p>Imagine that you have three files that you want to read with the <code>readFilePromise</code> method. You want to wait until all three are done, but let them read files simultaneously. How do you manage all three <code>Promise</code> s as one <code>Promise</code> ? That’s what the <code>Promise.all</code> method allows you to do.</p>
+<p>For example, imagine you have the following array.</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} const values = [   readFilePromise("file-boop.txt"), // this is a Promise object: pending   readFilePromise("file-doop.txt"), // this is a Promise object: pending   readFilePromise("file-goop.txt"), // this is a Promise object: pending ];</code></p>
+<p>When you pass that array into <code>Promise.all</code> , it returns a <code>Promise</code> object that manages all of the <code>Promise</code> s in the array!</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} const superPromise = Promise.all(values); // superPromise is a Promise object in the pending state. // // Inside superPromise is an array of Promise objects // that look like this: // // 1. file reading promise in pending state, same as the one passed in // 2. file reading promise in pending state, same as the one passed in // 3. file reading promise in pending state, same as the one passed in</code></p>
+<p>When all of the <code>Promise</code> objects in the super <code>Promise</code> transition out of the pending state, then the super <code>Promise</code> will also transition out of the pending state. If any one of the <code>Promise</code> objects in the array transition to the <strong>rejected</strong> state, then the super <code>Promise</code> will immediately transition to the <strong>rejected</strong> state with the same reason as the inner <code>Promise</code> failed with. If <em>all</em> of the internal <code>Promise</code> objects transition to the <strong>fulfilled</strong> state, then the super <code>Promise</code> will transition to the <strong>fulfilled</strong> state and its value will be an array of <em>all</em> of the resolved values of the original array.</p>
+<p>With that in mind, you could continue the above code with a <code>then</code> and a <code>catch</code> that would demonstrate what happens.</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} superPromise .then(values =&gt; console.log(values)) .catch(reason =&gt; console.error(reason));</p>
+<p>// If the function successfully reads the file, the values passed // to the then come from the values that were in the superPromise // // 1. the content of file-boop.txt // 2. the content of file-doop.txt // 3. the content of file-goop.txt</p>
+<p>// If something goes wrong with reading the file, then the <code>catch</code> // gets called with the error reason from the Promise object that // first failed. ```</p>
+<blockquote>
+<p><code>Promise.all</code> accepts an array of values and returns a new <code>Promise</code> object in the <strong>pending</strong> state colloquially called a “super promise”. It converts all non-<code>Promise</code> values into <code>Promise</code> objects that are immediately in the <strong>fulfilled</strong> state. Then,</p>
+<ul>
+<li>If any one of the <code>Promise</code> s in the array transitions to the <strong>rejected</strong> state, then the “super promise” transitions to the <strong>rejected</strong> state with the same reason that the inner <code>Promise</code> object failed.</li>
+<li>If all of the inner <code>Promise</code> objects in the array transition to the <strong>fulfilled</strong> state, then the “super promise” transitions to the <strong>fulfilled</strong> state with a value of an array populated, in order, of the resolved values of the original array.</li>
+</ul>
+</blockquote>
+<h2 id="flattening-promises">Flattening <code>Promises</code></h2>
+<p>The last thing you need to learn about <code>Promise</code> s is the coolest feature of them all. If you return a <code>Promise</code> object from either a success or error handler, the next step doesn’t get run until that <code>Promise</code> object resolves! Here’s what happens when you type the following code. It’s step 4 that is the amazing part.</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} readFilePromise(“manifest.txt”) .then(manifestContent =&gt; manifestContent.split(“”)) .then(manifestList =&gt; manifestList[0]) .then(fileName =&gt; readFilePromise(fileName)) .then(otherFileContent =&gt; console.log(otherFileContent));</p>
+<p>// Interpreted as: // 1. Read the file of the manifest.txt file and pass the // content to the first then. // 2. Split the content from manifest.txt on newline chars // to get the full list of files. // 3. Return just the first entry in the list of files. // 4. RETURN A PROMISE THAT WILL READ THE FILE NAMED ON THE // FIRST LINE OF THE manifest.txt! The next then method // doesn’t get called until this Promise object completes! // 5. Get the content of the file just read and print it. ```</p>
+<p>Again, here’s the rule.</p>
+<blockquote>
+<p>If you return a <code>Promise</code> from a success or error handler, the next handler isn’t called until that <code>Promise</code> completes.</p>
+</blockquote>
+<h2 id="putting-it-all-together">Putting it all together</h2>
+<p>You can now use all of this knowledge to use <code>Promise</code> s to read a manifest file, read each of the files in the manifest files, and count all of the characters in those files with code that reads much better than this.</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} readFile(“manifest.txt”, “utf8”, (err, manifest) =&gt; { const fileNames = manifest.split(“”); const characterCounts = {}; let numberOfFilesRead = 0;</p>
+<p>// Loop over each file name for (let fileName of fileNames) { // Read that file’s content readFile(fileName, “utf8”, (err, content) =&gt; { // Count the characters and store it in // characterCounts countCharacters(characterCounts, content);</p>
+<pre><code>  // Increment the number of files read
+  numberOfFilesRead += 1;
+
+  // If the number of files read is equal to the
+  // number of files to read, then print because
+  // we&#39;re done!
+  if (numberOfFilesRead === fileNames.length) {
+    console.log(characterCounts);
+  }
+});</code></pre>
+<p>} }); ```</p>
+<p>Remember that you’ve created a <code>countCharacters</code> methods elsewhere that does the grunt work of counting characters. So, now, if you were to list out the steps that you’d like to have the code perform, you should be able to write a <code>Promise</code> -based chain of <code>then</code> s that does that work.</p>
+<ol type="1">
+<li>Read <code>manifest.txt</code> .</li>
+<li>Split the content into a list of files.</li>
+<li>Read the contents of each file.</li>
+<li>If all of them succeed, then
+<ul>
+<li>count the characters in each file and</li>
+<li>print the character counts.</li>
+</ul></li>
+<li>If anything fails, print the error.</li>
+</ol>
+<p>So, in code, that you would translate that to the following.</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} const characterCounts = {}; readFilePromise('manifest.txt')   .then(fileContent =&gt; fileContent.split('\n'))   .then(fileList =&gt; fileList.map(fileName =&gt; readFilePromise(fileName)))   .then(lotsOfReadFilePromises =&gt; Promise.all(lotsOfReadFilePromises))   .then(contentsArray =&gt; contentsArray.forEach(c =&gt; countCharacters(characterCounts, c))   .then(() =&gt; console.log(characterCounts))   .catch(reason =&gt; console.error(reason));</code></p>
+<p>Through the magic of <code>Promise</code> s, you have now been able to do lots of asynchronous work but make it look synchronous!</p>
+<h2 id="creating-your-own-promises">Creating your own <code>Promise</code>s</h2>
+<p>Early on, you designed the way <code>Promise</code> s should work to look something like this.</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} log("Q")   .then(() =&gt; log("W"))   .then(() =&gt; pause(2))   .then(() =&gt; log("E"))   .then(() =&gt; log("R"))   .then(() =&gt; pause(1))   .then(() =&gt; log("T"));</code></p>
+<p>That code uses two functions that you can define:</p>
+<ul>
+<li>a <code>log</code> function that takes a value to print and returns a <code>Promise</code> object that is in the <strong>fulfilled</strong> state; and,</li>
+<li>a <code>pause</code> function that takes a number and returns a <code>Promise</code> object that, after the indicated number of seconds, transitions to the <strong>fulfilled</strong> state.</li>
+</ul>
+<p>Here is a way that you could create those functions.</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} function log(message) {   console.log(message);   return Promise.resolve(); }</code></p>
+<p>The above function logs the message passed to it and, then creates a <code>Promise</code> object already transitioned to the <strong>fulfilled</strong> state. If you provide a value to the resolve method, then that becomes the value of the <code>Promise</code> object.†</p>
+<p>The <code>pause</code> method is a little more difficult. You have to create a new <code>Promise</code> object from scratch to pause and then continue. To do that, you will use the <code>Promise</code> constructor.</p>
+<p>The <code>Promise</code> constructor accepts a function that has two parameters. Each of those parameters will be functions, themselves. The first parameter is the so-called <strong>resolve</strong> parameter which, when called, transitions the <code>Promise</code> object to the <strong>fulfilled</strong> state. The second parameter is the so-called <strong>reject</strong> parameter which, when called, transitions the <code>Promise</code> object to the <strong>rejected</strong> state.</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} function pause(numberOfSeconds) {   return new Promise((resolve, reject) =&gt; {     setTimeout(() =&gt; resolve(), numberOfSeconds * 1000);   }); }</code></p>
+<p>As you can see from the above code, the <code>new Promise</code> gets a single argument, a two-parameter function that does some asynchronous thing. The two parameters are the <strong>resolve</strong> and the <strong>reject</strong> functions that you can use to transition the state of the <code>Promise</code> object being constructed. In this case, after a certain amount of time, the <code>resolve()</code> method is invoked which transitions the <code>Promise</code> object to the <strong>fulfilled</strong> state. The value is <code>undefined</code> because you’ve passed no value into the <code>resolve()</code> function invocation. If you wanted the <code>Promise</code> to have the value of 6.28, then you would invoke it like this <code>resolve(6.28)</code> . You can pass any one value into the <code>resolve</code> function, be it a number, a boolean, an array, an object, or whatever.</p>
+<p>With that knowledge, think about how you would write a function using the <code>readFile</code> function that would return a <code>Promise</code> object that would resolve to the contents of the file on success and reject the <code>Promise</code> if an error occurred. Take a moment to scratch that out into an editor or something.</p>
+<p>If you wrote something similar to the following, then you did a great job! If you didn’t, work through the following in a Node.js JavaScript environment to figure out how it works. You can use it like in any of the above examples.</p>
+<p>``` {style=“color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco,”Andale Mono“,”Ubuntu Mono“, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;”} const { readFile } = require(“fs”); // This is just the way to get // the readFile method into the // current file. If you don’t // understand it, that’s ok.</p>
+<p>function readFilePromise(path) { return new Promise((resolve, reject) =&gt; { readFile(path, “utf8”, (err, content) =&gt; { if (err) { reject(err); } else { resolve(content); } }); }); } ```</p>
+<h2 id="what-youve-learned-1">What you’ve learned</h2>
+<p>In this reading, you learned some fancy new things that let’s you turn asynchronous code into seemingly synchronous-looking code. You did that by learning that…</p>
+<ul>
+<li><code>then</code> can handle both success and failures. The success handler is called with the value of the operation of the <code>Promise</code> when the <code>Promise</code> object transitions to the <strong>fulfilled</strong> state. If an error condition occurs, them the error handler of the <code>then</code> is called.</li>
+<li>If a <code>Promise</code> object transitions to the <strong>rejected</strong> state and no error handler exists for the <code>then</code> , then that <code>then</code> is skipped altogether.</li>
+<li>If an error handler is called and does not raise an exception, then the next <code>Promise</code> object transitions to the <strong>fulfilled</strong> state and the next success handler is called.</li>
+<li><code>catch</code> is a convenient way to do error handling in a <code>then</code> chain that looks kind of like part of a try/catch block.</li>
+<li><code>Promise.all</code> accepts an array of values and returns a new <code>Promise</code> object in the <strong>pending</strong> state colloquially called a “super promise”. It converts all non-<code>Promise</code> values into <code>Promise</code> objects that are immediately in the <strong>fulfilled</strong> state. Then,
+<ul>
+<li>If any one of the <code>Promise</code> s in the array transitions to the <strong>rejected</strong> state, then the “super promise” transitions to the <strong>rejected</strong> state with the same reason that the inner <code>Promise</code> object failed.</li>
+<li>If all of the inner <code>Promise</code> objects in the array transition to the <strong>fulfilled</strong> state, then the “super promise” transitions to the <strong>fulfilled</strong> state with a value of an array populated, in order, of the resolved values of the original array.</li>
+</ul></li>
+<li>If you return a <code>Promise</code> from a success or error handler, the next handler isn’t called until that <code>Promise</code> completes.</li>
+<li>You can create a <strong>fulfilled</strong> <code>Promise</code> object by using the <code>Promise.resolve(value)</code> method.</li>
+<li><p>You can create your own <code>Promise</code> objects from scratch by using the <code>Promise</code> constructor with the form</p>
+<p><code>{style="color: rgb(248, 248, 242); background: rgb(45, 45, 45); font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; overflow: auto; font-size: 16px;"} new Promise((resolve, reject) =&gt; {   // do some async stuff   // call resolve(value) to make the Promise succeed   // call reject(reason) to make the Promise fail });</code></p></li>
+</ul>
+<h2 id="see-also">See also</h2>
+<ul>
+<li><a href="https://www.ecma-international.org/ecma-262/6.0/#sec-promise-objects">Section: Promises, ECMAScript® 2015 Language Specification</a> is the minimum standard for how JavaScript Promises should act in <strong>all</strong> JavaScript environments. Language standards are dense and hard to read. You may want to give it a shot. The more you grow in your knowledge of how JavaScript works, the clearer it should become.</li>
+<li><a href="https://promisesaplus.com/">The Promises/A+ Specification</a> has a very nice terse description of how Promises work. It is mostly the standard that was adopted by the Technical Committee 39 when including the <code>Promise</code> object into JavaScript.</li>
+</ul>
+<p>†: There’s a corresponding <code>Promise.reject(reason)</code> method that creates a <code>Promise</code> object immediately in the <strong>rejected</strong> state.</p>
+<p>Did you find this lesson helpful?</p>
+<p>No</p>
+<p>Yes</p>
+<p>✔︎ Mark As Complete</p>
+<p>Finished with this task? Click <strong>Mark as Complete</strong> to continue to the next page!</p>
+</body>
+</html>
